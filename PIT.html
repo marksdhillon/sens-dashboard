@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pittsburgh Penguins — 2025-26</title>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root,:root[data-theme="dark"]{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--border-subtle:rgba(255,255,255,0.04);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8b230;--accent-soft:rgba(232,178,48,0.12);--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.015);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.04);--tag-dash:rgba(255,255,255,0.08);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--tab-hover-bg:rgba(255,255,255,0.03);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1)}
+:root[data-theme="light"]{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--border-subtle:rgba(0,0,0,0.05);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#c59728;--accent-soft:rgba(232,178,48,0.08);--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.04);--tag-dash:rgba(0,0,0,0.12);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--tab-hover-bg:rgba(0,0,0,0.03);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:'cv02','cv03','cv04','cv11'}
+a{color:var(--text);text-decoration:none}
+a:hover{color:var(--text-strong)}
+
+/* Header */
+.top-bar{display:none}
+.header{max-width:880px;margin:0 auto;padding:48px 28px 0}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.team-logo{width:44px;height:44px;opacity:0.95}
+.header h1{font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:0;color:var(--text-strong)}
+.header .subtitle{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.hdr-pct{text-align:right}
+.pct-val{font-size:32px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
+.pct-label{display:block;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:8px;font-weight:500}
+.delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
+@media(max-width:500px){.team-logo{width:36px;height:36px}.header h1{font-size:17px}.pct-val{font-size:26px}}
+
+.stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0}
+.stat-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--bg-surface);border-radius:8px;font-size:12px;white-space:nowrap;transition:background 0.2s ease}
+.stat-pill:hover{background:var(--bg-elevated)}
+.stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.6px;font-weight:500}
+.stat-pill .sv{font-weight:600;color:var(--text)}
+.pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
+
+/* Tabs */
+.container{max-width:880px;margin:0 auto;padding:0 28px 60px}
+input[name="tab"]{display:none}
+.tab-bar{display:flex;gap:2px;margin-bottom:36px;padding:3px;background:var(--bg-surface);border-radius:10px;width:fit-content}
+.tab-bar label{padding:7px 16px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;border-radius:7px;transition:all 0.2s ease;white-space:nowrap}
+.tab-bar label:hover{color:var(--text-secondary);background:var(--tab-hover-bg)}
+.panel{display:none}
+#tab-roster:checked~.tab-bar label[for="tab-roster"],
+#tab-standings:checked~.tab-bar label[for="tab-standings"],
+#tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
+#tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-news:checked~.tab-bar label[for="tab-news"],
+#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
+#tab-roster:checked~#p-roster,
+#tab-standings:checked~#p-standings,
+#tab-playoffs:checked~#p-playoffs,
+#tab-schedule:checked~#p-schedule,
+#tab-news:checked~#p-news,
+#tab-community:checked~#p-community{display:block}
+
+/* Typography */
+h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
+.sub-note{font-size:12px;color:var(--text-muted);margin-bottom:20px}
+
+/* Tables */
+.nhl-tbl{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
+.nhl-tbl thead th.r{text-align:right}
+.nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl thead th.name-col{min-width:160px}
+/* Frozen rank + player columns on horizontal scroll */
+#skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
+#skater-tbl th.rank,#skater-tbl td.rank,#goalie-tbl th.rank,#goalie-tbl td.rank{position:sticky;left:0;z-index:2;background:var(--bg) !important}
+#skater-tbl th.name-col,#skater-tbl td.name-cell,#goalie-tbl th.name-col,#goalie-tbl td.name-cell{position:sticky;left:30px;z-index:2;background:var(--bg) !important;box-shadow:2px 0 4px rgba(0,0,0,0.15)}
+#skater-tbl thead th.rank,#skater-tbl thead th.name-col,#goalie-tbl thead th.rank,#goalie-tbl thead th.name-col{z-index:3}
+.nhl-tbl td{padding:8px 8px;border:none;border-bottom:1px solid var(--border-subtle);white-space:nowrap;color:var(--text-secondary)}
+.nhl-tbl td.r{text-align:right}
+.nhl-tbl td.rank{text-align:center;color:var(--text-muted);font-size:11px}
+.nhl-tbl td.pts-col{font-weight:700;color:var(--text)}
+.nhl-tbl .player-summary:hover td{background:var(--bg-hover)}
+.nhl-tbl .player-summary.alt td{background:var(--alt-row)}
+.nhl-tbl .player-summary.alt:hover td{background:var(--bg-hover)}
+.nhl-tbl .goalie-row:hover td{background:var(--bg-hover)}
+.nhl-tbl .goalie-row.alt td{background:var(--alt-row)}
+.nhl-tbl .goalie-row.alt:hover td{background:var(--bg-hover)}
+/* Headshot */
+.hs{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--hs-bg)}
+.hs-empty{display:inline-block}
+.name-cell{padding-left:4px}
+.name-flex{display:flex;align-items:center;gap:8px}
+a.pname{font-weight:600;white-space:nowrap;font-size:12.5px;color:var(--text);text-decoration:none;transition:color 0.15s}
+a.pname:hover{color:var(--text-strong)}
+/* Advanced stat columns */
+.adv{color:var(--text-muted)}
+.adv-pos{color:var(--green);font-weight:600}
+.adv-neg{color:var(--red);font-weight:600}
+.adv-hdr{background:var(--bg) !important}
+.sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
+.cutoff td{border-bottom:2px dashed var(--text-muted)}
+.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
+.div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
+.div-label:first-child{margin-top:0}
+.stnd-tbl td{padding:7px 6px;font-size:11px}.stnd-tbl thead th{padding:8px 6px;font-size:9px}
+.stnd-tbl .sens-row td{background:var(--accent-soft)}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* KPI Row */
+.kpi-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.kpi{flex:1;min-width:90px;padding:20px 16px;background:var(--bg-surface);border-radius:12px;text-align:center;box-shadow:var(--card-shadow);transition:box-shadow 0.25s ease}
+.kpi:hover{box-shadow:var(--card-shadow-hover)}
+.kpi-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text-strong)}
+.kpi-label{font-size:10px;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:0.8px;font-weight:500}
+
+/* Scenario impact */
+.sc-label{font-weight:600;white-space:nowrap;color:var(--text)}
+.sc-up{color:var(--green);font-weight:600}
+.sc-down{color:var(--red);font-weight:600}
+.footnote{margin-top:36px;font-size:11px;color:var(--text-muted)}
+
+/* Schedule */
+.sched-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.sm-card{flex:1;min-width:70px;text-align:center;padding:18px 10px;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow)}
+.sm-val{font-size:24px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
+.sm-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:8px;font-weight:500}
+.sched-list{display:flex;flex-direction:column;gap:4px}
+.game-detail{border-radius:12px;overflow:hidden}
+.game-tag{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
+.tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
+.tag-desperate{color:var(--amber);background:var(--amber-bg)}
+.tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
+.tag-hot{color:var(--text-strong);background:var(--accent);box-shadow:0 0 8px rgba(232,56,79,0.3)}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);transition:all 0.2s ease}
+.game-summary:hover{background:var(--bg-elevated);box-shadow:var(--card-shadow-hover)}
+.game-summary::-webkit-details-marker{display:none}
+.game-summary::marker{display:none;content:""}
+.game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.game-left{display:flex;align-items:center;gap:12px}
+.game-date{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}
+.game-opp{font-size:13px;font-weight:600;color:var(--text)}
+.game-right{display:flex;align-items:center;gap:10px}
+.game-meta{font-size:11px;color:var(--text-muted)}
+.game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
+.loc-home{background:var(--loc-home-bg);color:var(--green)}
+.loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
+.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:12px;border-bottom-right-radius:12px;padding:20px}
+.cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.cmp-tbl thead th:first-child{text-align:left}
+.cmp-tbl thead th:last-child{text-align:right}
+.cmp-tbl td{padding:6px 8px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary)}
+.cmp-stat-l{font-weight:600;text-align:left;color:var(--text)}
+.cmp-stat-label{text-align:center;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
+.cmp-stat-r{font-weight:600;text-align:right;color:var(--text)}
+.matchup-notes{margin:0 0 16px;padding:0;list-style:none;font-size:11px;color:var(--text-secondary);line-height:1.5}
+.matchup-notes li{padding:6px 12px;background:var(--matchup-bg);border-radius:8px;margin-bottom:4px;font-weight:500}
+
+/* News / Trade Rumors */
+.news-list{display:flex;flex-direction:column;gap:1px}
+.news-item{display:block;padding:14px 16px;border-radius:10px;text-decoration:none;transition:background 0.2s ease}
+.news-item:hover{background:var(--bg-hover);text-decoration:none}
+.news-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.news-source{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}
+.news-date{font-size:10px;color:var(--text-muted)}
+.news-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.45}
+
+/* Community */
+.community-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.community-list{grid-template-columns:1fr}}
+.community-card{display:block;padding:20px;background:var(--bg-surface);border-radius:12px;text-decoration:none;box-shadow:var(--card-shadow);transition:all 0.2s ease}
+.community-card:hover{background:var(--bg-elevated);box-shadow:var(--card-shadow-hover);text-decoration:none}
+.cc-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.cc-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
+
+/* Sortable columns */
+.sort-th{cursor:pointer;user-select:none;position:relative;transition:color 0.15s}
+.sort-th:hover{color:var(--text-secondary)}
+.sort-th::after{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}
+.sort-th.asc::after{content:"\25B2";opacity:0.8}
+.sort-th.desc::after{content:"\25BC";opacity:0.8}
+
+/* Progress ring */
+.odds-ring{position:relative;width:72px;height:72px;flex-shrink:0}
+.odds-ring svg{transform:rotate(-90deg);width:72px;height:72px}
+.odds-ring .ring-bg{fill:none;stroke:var(--ring-bg);stroke-width:5}
+.odds-ring .ring-fg{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 0.5s ease}
+.odds-ring .ring-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.odds-ring .ring-val{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.5px;line-height:1}
+.odds-ring .ring-label{font-size:8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;font-weight:500}
+
+/* Standings card wrap */
+.stnd-card{background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);padding:4px 0;margin-bottom:8px;overflow:hidden}
+.stnd-card .scroll-x{padding:0}
+.stnd-card .nhl-tbl thead th{background:transparent}
+
+/* Community icons */
+.cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
+.cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Mobile tabs */
+@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+
+/* Empty state */
+.empty-state{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}
+.empty-state span{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}
+
+/* Footer */
+.footer{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}
+.footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
+.footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
+
+/* Team selector */
+.team-select{appearance:none;-webkit-appearance:none;background:var(--bg-surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.2s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.team-select:hover{background-color:var(--bg-elevated);border-color:var(--border)}
+.team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
+.team-select optgroup{font-weight:600;color:var(--text-muted)}
+.team-select option{background:var(--bg);color:var(--text)}
+
+/* Theme toggle */
+.hdr-right{display:flex;align-items:center;gap:10px}
+.theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
+.theme-btn{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}.theme-btn:hover{color:var(--text-secondary);background:var(--bg-hover)}
+.theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
+</style></head><body>
+
+<div class="top-bar"></div>
+<div class="header">
+  <div class="hdr-top">
+    <div class="hdr-left">
+      <img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" alt="Pittsburgh Penguins" class="team-logo">
+      <div>
+        <h1>Pittsburgh Penguins</h1>
+        <div class="subtitle">Updated March 2, 2026 at 2:35 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html" selected>Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <span class="stat-pill pill-accent" title="MoneyPuck playoff probability"><span class="sl">Playoff Odds</span> <span class="sv">90%</span></span>
+    <span class="stat-pill"><span class="sl">Record</span> <span class="sv">31-15-13</span></span>
+    <span class="stat-pill" title="Record vs teams above .500"><span class="sl">vs .500+</span> <span class="sv">9-5-5</span></span>
+    <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">+30</span></span>
+    <span class="stat-pill" title="Power play goals / power play shots — league rank out of 32"><span class="sl">PP%</span> <span class="sv">16.3% <small>(10th)</small></span></span>
+    <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">88.3% <small>(7th)</small></span></span>
+    <span class="stat-pill"><span class="sl">L10</span> <span class="sv">7-1-2</span></span>
+  </div>
+</div>
+
+<div class="container">
+  <input type="radio" name="tab" id="tab-standings" checked>
+  <input type="radio" name="tab" id="tab-schedule">
+  <input type="radio" name="tab" id="tab-playoffs">
+  <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-news">
+  <input type="radio" name="tab" id="tab-community">
+  <div class="tab-bar">
+    <label for="tab-standings">Standings</label>
+    <label for="tab-schedule">Remaining Games</label>
+    <label for="tab-playoffs">Playoff Odds</label>
+    <label for="tab-roster">Player Stats</label>
+    <label for="tab-news">Trade Rumors</label>
+    <label for="tab-community">Community</label>
+  </div>
+  <div class="panel" id="p-standings"><div class="div-label">Wild Card Race</div>
+<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs PIT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
+<tbody><tr><td class="rank-in">WC1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">Detroit Red Wings</a></td><td>A</td><td class="r">60</td><td class="r">34</td><td class="r">20</td><td class="r">6</td><td class="r bpts">74</td><td class="r">.616</td><td class="r">178</td><td class="r">181</td><td class="r">-3</td><td class="r">18-10-2</td><td class="r">16-10-4</td><td class="r">4-4-2</td><td class="r">L1</td><td class="r">0-1-1</td><td class="r">8-13-4</td><td class="r">26-7-2</td></tr><tr class="cutoff"><td class="rank-in">WC2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">Boston Bruins</a></td><td>A</td><td class="r">59</td><td class="r">33</td><td class="r">21</td><td class="r">5</td><td class="r bpts">71</td><td class="r">.601</td><td class="r">200</td><td class="r">187</td><td class="r">+13</td><td class="r">22-8-1</td><td class="r">11-13-4</td><td class="r">5-2-3</td><td class="r">L1</td><td class="r">1-0-0</td><td class="r">13-11-1</td><td class="r">20-10-4</td></tr><tr><td class="rank-out">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">Washington Capitals</a></td><td>M</td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td><td class="r">197</td><td class="r">186</td><td class="r">+11</td><td class="r">19-10-3</td><td class="r">12-14-4</td><td class="r">6-3-1</td><td class="r">L1</td><td class="r">0-1-0</td><td class="r">11-11-4</td><td class="r">20-13-3</td></tr><tr><td class="rank-out">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">Ottawa Senators</a></td><td>A</td><td class="r">59</td><td class="r">29</td><td class="r">22</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.559</td><td class="r">197</td><td class="r">188</td><td class="r">+9</td><td class="r">14-10-5</td><td class="r">15-12-3</td><td class="r">6-3-1</td><td class="r">W1</td><td class="r">2-0-0</td><td class="r">10-9-7</td><td class="r">19-13-1</td></tr><tr><td class="rank-out">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">Columbus Blue Jackets</a></td><td>M</td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td><td class="r">184</td><td class="r">185</td><td class="r">-1</td><td class="r">15-8-5</td><td class="r">14-13-3</td><td class="r">7-2-1</td><td class="r">OT1</td><td class="r">2-0-2</td><td class="r">14-7-4</td><td class="r">15-14-4</td></tr><tr><td class="rank-out">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">Philadelphia Flyers</a></td><td>M</td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td><td class="r">174</td><td class="r">186</td><td class="r">-12</td><td class="r">14-9-7</td><td class="r">13-12-4</td><td class="r">4-4-2</td><td class="r">W2</td><td class="r">1-2-0</td><td class="r">10-11-4</td><td class="r">17-10-7</td></tr><tr><td class="rank-out">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">Florida Panthers</a></td><td>A</td><td class="r">60</td><td class="r">30</td><td class="r">27</td><td class="r">3</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">185</td><td class="r">200</td><td class="r">-15</td><td class="r">16-14-3</td><td class="r">14-13-0</td><td class="r">3-7-0</td><td class="r">L2</td><td class="r">0-1-0</td><td class="r">12-14-2</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">Toronto Maple Leafs</a></td><td>A</td><td class="r">60</td><td class="r">27</td><td class="r">24</td><td class="r">9</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">193</td><td class="r">208</td><td class="r">-15</td><td class="r">16-10-6</td><td class="r">11-14-3</td><td class="r">3-7-0</td><td class="r">L3</td><td class="r">3-0-0</td><td class="r">9-13-4</td><td class="r">18-11-5</td></tr><tr><td class="rank-out">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">New Jersey Devils</a></td><td>M</td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td><td class="r">151</td><td class="r">182</td><td class="r">-31</td><td class="r">13-13-2</td><td class="r">16-16-0</td><td class="r">3-7-0</td><td class="r">W1</td><td class="r">1-2-0</td><td class="r">11-16-1</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">New York Rangers</a></td><td>M</td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td><td class="r">156</td><td class="r">185</td><td class="r">-29</td><td class="r">7-15-5</td><td class="r">16-14-2</td><td class="r">2-7-1</td><td class="r">W1</td><td class="r">2-2-0</td><td class="r">11-17-3</td><td class="r">12-12-4</td></tr></tbody></table></div></div><div class="div-label">Atlantic Division</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs PIT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
+<tbody><tr><td class="rank-in">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">Tampa Bay Lightning</a></td><td class="r">58</td><td class="r">38</td><td class="r">16</td><td class="r">4</td><td class="r bpts">80</td><td class="r">.689</td><td class="r">209</td><td class="r">153</td><td class="r">+56</td><td class="r">19-10-0</td><td class="r">19-6-4</td><td class="r">7-3-0</td><td class="r">L2</td><td class="r">1-1-0</td><td class="r">15-6-2</td><td class="r">23-10-2</td></tr><tr><td class="rank-in">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">Buffalo Sabres</a></td><td class="r">60</td><td class="r">35</td><td class="r">19</td><td class="r">6</td><td class="r bpts">76</td><td class="r">.633</td><td class="r">206</td><td class="r">181</td><td class="r">+25</td><td class="r">17-8-3</td><td class="r">18-11-3</td><td class="r">7-2-1</td><td class="r">W3</td><td class="r">0-2-0</td><td class="r">12-10-4</td><td class="r">23-9-2</td></tr><tr class="cutoff"><td class="rank-in">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">Montréal Canadiens</a></td><td class="r">59</td><td class="r">33</td><td class="r">17</td><td class="r">9</td><td class="r bpts">75</td><td class="r">.635</td><td class="r">208</td><td class="r">193</td><td class="r">+15</td><td class="r">17-11-2</td><td class="r">16-6-7</td><td class="r">6-2-2</td><td class="r">W1</td><td class="r">2-0-1</td><td class="r">12-8-4</td><td class="r">21-9-5</td></tr><tr><td class="rank-out">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">Detroit Red Wings</a></td><td class="r">60</td><td class="r">34</td><td class="r">20</td><td class="r">6</td><td class="r bpts">74</td><td class="r">.616</td><td class="r">178</td><td class="r">181</td><td class="r">-3</td><td class="r">18-10-2</td><td class="r">16-10-4</td><td class="r">4-4-2</td><td class="r">L1</td><td class="r">0-1-1</td><td class="r">8-13-4</td><td class="r">26-7-2</td></tr><tr><td class="rank-out">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">Boston Bruins</a></td><td class="r">59</td><td class="r">33</td><td class="r">21</td><td class="r">5</td><td class="r bpts">71</td><td class="r">.601</td><td class="r">200</td><td class="r">187</td><td class="r">+13</td><td class="r">22-8-1</td><td class="r">11-13-4</td><td class="r">5-2-3</td><td class="r">L1</td><td class="r">1-0-0</td><td class="r">13-11-1</td><td class="r">20-10-4</td></tr><tr><td class="rank-out">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">Ottawa Senators</a></td><td class="r">59</td><td class="r">29</td><td class="r">22</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.559</td><td class="r">197</td><td class="r">188</td><td class="r">+9</td><td class="r">14-10-5</td><td class="r">15-12-3</td><td class="r">6-3-1</td><td class="r">W1</td><td class="r">2-0-0</td><td class="r">10-9-7</td><td class="r">19-13-1</td></tr><tr><td class="rank-out">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">Florida Panthers</a></td><td class="r">60</td><td class="r">30</td><td class="r">27</td><td class="r">3</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">185</td><td class="r">200</td><td class="r">-15</td><td class="r">16-14-3</td><td class="r">14-13-0</td><td class="r">3-7-0</td><td class="r">L2</td><td class="r">0-1-0</td><td class="r">12-14-2</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">Toronto Maple Leafs</a></td><td class="r">60</td><td class="r">27</td><td class="r">24</td><td class="r">9</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">193</td><td class="r">208</td><td class="r">-15</td><td class="r">16-10-6</td><td class="r">11-14-3</td><td class="r">3-7-0</td><td class="r">L3</td><td class="r">3-0-0</td><td class="r">9-13-4</td><td class="r">18-11-5</td></tr></tbody></table></div></div><div class="div-label">Metropolitan Division</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs PIT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
+<tbody><tr><td class="rank-in">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">Carolina Hurricanes</a></td><td class="r">59</td><td class="r">38</td><td class="r">15</td><td class="r">6</td><td class="r bpts">82</td><td class="r">.694</td><td class="r">207</td><td class="r">169</td><td class="r">+38</td><td class="r">23-8-2</td><td class="r">15-7-4</td><td class="r">8-0-2</td><td class="r">W5</td><td class="r">0-1-0</td><td class="r">13-7-2</td><td class="r">25-8-4</td></tr><tr class="sens-row"><td class="rank-in">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">Pittsburgh Penguins</a></td><td class="r">59</td><td class="r">31</td><td class="r">15</td><td class="r">13</td><td class="r bpts">75</td><td class="r">.635</td><td class="r">203</td><td class="r">173</td><td class="r">+30</td><td class="r">15-8-7</td><td class="r">16-7-6</td><td class="r">7-1-2</td><td class="r">W1</td><td class="r">0-0-0</td><td class="r">9-5-5</td><td class="r">22-10-8</td></tr><tr class="cutoff"><td class="rank-in">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">New York Islanders</a></td><td class="r">61</td><td class="r">35</td><td class="r">21</td><td class="r">5</td><td class="r bpts">75</td><td class="r">.614</td><td class="r">182</td><td class="r">172</td><td class="r">+10</td><td class="r">17-10-2</td><td class="r">18-11-3</td><td class="r">8-2-0</td><td class="r">W5</td><td class="r">1-1-0</td><td class="r">12-9-2</td><td class="r">23-12-3</td></tr><tr><td class="rank-out">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">Washington Capitals</a></td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td><td class="r">197</td><td class="r">186</td><td class="r">+11</td><td class="r">19-10-3</td><td class="r">12-14-4</td><td class="r">6-3-1</td><td class="r">L1</td><td class="r">0-1-0</td><td class="r">11-11-4</td><td class="r">20-13-3</td></tr><tr><td class="rank-out">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">Columbus Blue Jackets</a></td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td><td class="r">184</td><td class="r">185</td><td class="r">-1</td><td class="r">15-8-5</td><td class="r">14-13-3</td><td class="r">7-2-1</td><td class="r">OT1</td><td class="r">2-0-2</td><td class="r">14-7-4</td><td class="r">15-14-4</td></tr><tr><td class="rank-out">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">Philadelphia Flyers</a></td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td><td class="r">174</td><td class="r">186</td><td class="r">-12</td><td class="r">14-9-7</td><td class="r">13-12-4</td><td class="r">4-4-2</td><td class="r">W2</td><td class="r">1-2-0</td><td class="r">10-11-4</td><td class="r">17-10-7</td></tr><tr><td class="rank-out">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">New Jersey Devils</a></td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td><td class="r">151</td><td class="r">182</td><td class="r">-31</td><td class="r">13-13-2</td><td class="r">16-16-0</td><td class="r">3-7-0</td><td class="r">W1</td><td class="r">1-2-0</td><td class="r">11-16-1</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">New York Rangers</a></td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td><td class="r">156</td><td class="r">185</td><td class="r">-29</td><td class="r">7-15-5</td><td class="r">16-14-2</td><td class="r">2-7-1</td><td class="r">W1</td><td class="r">2-2-0</td><td class="r">11-17-3</td><td class="r">12-12-4</td></tr></tbody></table></div></div></div>
+  <div class="panel" id="p-schedule"><div class="sched-meta">
+  <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
+  <div class="sm-card"><div class="sm-val">11</div><div class="sm-label">Home</div></div>
+  <div class="sm-card"><div class="sm-val">12</div><div class="sm-label">Away</div></div>
+  <div class="sm-card"><div class="sm-val">13</div><div class="sm-label">vs .500+</div></div>
+</div>
+<div class="sched-list"><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">@ Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT trails season series 0-1-0</li><li>PIT holds a 4-pt lead over BOS</li><li>BOS is on the bubble (55% playoff odds)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>BOS</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-21-5</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">71</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-8-1</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-2-3</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">187</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">vs Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 2-0-0</li><li>Separated by only 1 pts — a direct rival</li><li>BUF projected to make playoffs (88% odds)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-8-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs Philadelphia</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-21-11 &middot; 65p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 2-0-1</li><li>PIT holds a 10-pt lead over PHI</li><li>PHI is fading — only 12% playoff odds</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>PHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-21-11</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">65</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-9-7</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-12-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">174</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">186</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 8</span><span class="game-opp">vs Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT trails season series 0-1-0</li><li>PIT holds a 4-pt lead over BOS</li><li>BOS is on the bubble (55% playoff odds)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>BOS</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-21-5</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">71</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-8-1</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-2-3</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">187</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Carolina</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">38-15-6 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>CAR holds a 7-pt lead over PIT</li><li>CAR is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-15-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-7-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-0-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">207</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">169</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 5-pt lead over VGK</li><li>VGK projected to make playoffs (92% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>VGK</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-18-14</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">70</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-8-7</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-10-7</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">191</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>PIT holds a 9-pt lead over UTA</li><li>UTA projected to make playoffs (77% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-4</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">190</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">167</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 16</span><span class="game-opp">@ Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">39-10-9 &middot; 87p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>COL holds a 12-pt lead over PIT</li><li>COL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.2 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">39-10-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">87</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-6-5</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">221</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">146</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 18</span><span class="game-opp">@ Carolina</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">38-15-6 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>CAR holds a 7-pt lead over PIT</li><li>CAR is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-15-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-7-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-0-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">207</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">169</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT trails season series 0-1-0</li><li>PIT holds a 19-pt lead over WPG</li><li>WPG is fading — only 6% playoff odds</li><li>WPG is cold — 3-3-4 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-26-10</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">56</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-11-5</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">168</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">184</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 22</span><span class="game-opp">vs Carolina</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">38-15-6 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>CAR holds a 7-pt lead over PIT</li><li>CAR is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-15-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-7-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-0-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">207</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">169</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">vs Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">39-10-9 &middot; 87p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>COL holds a 12-pt lead over PIT</li><li>COL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.2 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">39-10-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">87</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-6-5</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">221</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">146</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT trails season series 0-2-0</li><li>PIT holds a 9-pt lead over OTT</li><li>OTT is on the bubble (45% playoff odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-8</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-3</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">vs Dallas</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W8</span></div><div class="game-right"><span class="game-meta">36-14-9 &middot; 81p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>DAL holds a 6-pt lead over PIT</li><li>DAL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>DAL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">36-14-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">81</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-7-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-7-6</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">9-1-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">163</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">@ New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>Separated by only 0 pts — a direct rival</li><li>NYI projected to make playoffs (79% odds)</li><li>NYI is hot — 8-2-0 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">172</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">vs Detroit</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">34-20-6 &middot; 74p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 2-0-0</li><li>Separated by only 1 pts — a direct rival</li><li>DET projected to make playoffs (77% odds)</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">34-20-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">74</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-10-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">178</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>TBL holds a 5-pt lead over PIT</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.0 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 12-pt lead over FLA</li><li>FLA is fading — only 6% playoff odds</li><li>FLA is cold — 3-7-0 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 5</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 12-pt lead over FLA</li><li>FLA is fading — only 6% playoff odds</li><li>FLA is cold — 3-7-0 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ New Jersey</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">29-29-2 &middot; 60p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 2-0-1</li><li>PIT holds a 15-pt lead over NJD</li><li>NJD is fading — only 1% playoff odds</li><li>NJD is cold — 3-7-0 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>NJD</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-29-2</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">60</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">13-13-2</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-16-0</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">151</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">182</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 6-pt lead over WSH</li><li>WSH is on the bubble (28% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-24-7</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">186</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 12</span><span class="game-opp">@ Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 6-pt lead over WSH</li><li>WSH is on the bubble (28% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-24-7</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-3</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">186</td></tr></tbody></table>
+</div></details><details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 14</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></summary>
+<div class="game-expand">
+  <ul class="matchup-notes"><li>PIT leads season series 1-0-0</li><li>PIT holds a 22-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-15-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">16-7-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">7-1-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">203</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">173</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
+</div></details></div></div>
+  <div class="panel" id="p-playoffs"><div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">93</div><div class="kpi-label">Playoff Target</div></div>
+  <div class="kpi"><div class="kpi-val">101 <span style="font-size:16px;color:var(--green)">(+8)</span></div><div class="kpi-label">Projected Pts</div></div>
+  <div class="kpi"><div class="kpi-val">75</div><div class="kpi-label">Current Pts</div></div>
+  <div class="kpi"><div class="kpi-val">18</div><div class="kpi-label">Pts Still Needed</div></div>
+</div>
+
+<h3>Next Game Impact</h3>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">93.5%</td><td class="r sc-up">+3.8%</td><td class="r">102</td><td class="r">50.4%</td><td class="r">5.3%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">92.8%</td><td class="r sc-up">+3.1%</td><td class="r">102</td><td class="r">49.5%</td><td class="r">5.0%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">89.1%</td><td class="r sc-down">-0.5%</td><td class="r">101</td><td class="r">48.6%</td><td class="r">5.5%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">85.5%</td><td class="r sc-down">-4.2%</td><td class="r">100</td><td class="r">46.5%</td><td class="r">4.9%</td></tr></tbody></table></div>
+
+<h3 style="margin-top:28px">Eastern Conference</h3>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">CAR</a></td><td class="r">99.9%</td><td class="r">61.7%</td><td class="r">38.6%</td><td class="r">21.3%</td><td class="r">12.1%</td><td class="r">111</td><td class="r">90.2%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">TBL</a></td><td class="r">99.8%</td><td class="r">62.0%</td><td class="r">38.5%</td><td class="r">21.5%</td><td class="r">12.3%</td><td class="r">110</td><td class="r">83.2%</td></tr><tr class="sens-row"><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">PIT</a></td><td class="r">89.7%</td><td class="r">48.5%</td><td class="r">21.7%</td><td class="r">10.3%</td><td class="r">5.1%</td><td class="r">101</td><td class="r">7.3%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">BUF</a></td><td class="r">88.5%</td><td class="r">37.7%</td><td class="r">15.4%</td><td class="r">6.4%</td><td class="r">2.7%</td><td class="r">101</td><td class="r">6.9%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">MTL</a></td><td class="r">85.4%</td><td class="r">37.6%</td><td class="r">15.7%</td><td class="r">6.9%</td><td class="r">3.0%</td><td class="r">101</td><td class="r">5.6%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">NYI</a></td><td class="r">78.6%</td><td class="r">32.8%</td><td class="r">12.6%</td><td class="r">5.3%</td><td class="r">2.3%</td><td class="r">99</td><td class="r">2.2%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">DET</a></td><td class="r">77.2%</td><td class="r">35.7%</td><td class="r">16.2%</td><td class="r">7.4%</td><td class="r">3.5%</td><td class="r">99</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">BOS</a></td><td class="r">55.0%</td><td class="r">22.6%</td><td class="r">10.1%</td><td class="r">4.6%</td><td class="r">2.0%</td><td class="r">96</td><td class="r">0.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">OTT</a></td><td class="r">45.4%</td><td class="r">24.4%</td><td class="r">14.2%</td><td class="r">8.1%</td><td class="r">4.7%</td><td class="r">95</td><td class="r">0.5%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">CBJ</a></td><td class="r">32.5%</td><td class="r">14.8%</td><td class="r">6.6%</td><td class="r">3.1%</td><td class="r">1.5%</td><td class="r">93</td><td class="r">0.3%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">WSH</a></td><td class="r">28.3%</td><td class="r">13.9%</td><td class="r">6.8%</td><td class="r">3.4%</td><td class="r">1.7%</td><td class="r">92</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">PHI</a></td><td class="r">12.0%</td><td class="r">5.0%</td><td class="r">2.1%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">FLA</a></td><td class="r">5.9%</td><td class="r">2.6%</td><td class="r">1.4%</td><td class="r">0.7%</td><td class="r">0.4%</td><td class="r">88</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">TOR</a></td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">NJD</a></td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">NYR</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
+
+<p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
+  <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Games played this season">GP</th><th class="r sort-th" data-col="4" title="Goals scored">G</th><th class="r sort-th" data-col="5" title="Assists">A</th><th class="r sort-th" data-col="6" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="7" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="8" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="9" title="Points per game played">P/GP</th><th class="r sort-th" data-col="10" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="11" title="Even-strength points">EVP</th><th class="r sort-th" data-col="12" title="Power-play goals">PPG</th><th class="r sort-th" data-col="13" title="Power-play points">PPP</th><th class="r sort-th" data-col="14" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="15" title="Short-handed points">SHP</th><th class="r sort-th" data-col="16" title="Overtime goals">OTG</th><th class="r sort-th" data-col="17" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="18" title="Shots on goal">S</th><th class="r sort-th" data-col="19" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="20" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="21" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="22" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="23" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="24" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th></tr></thead>
+<tbody><tr class="player-summary">
+<td class="rank" data-sort="1">1</td>
+<td class="name-cell" data-sort="Sidney Crosby"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8471675.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Sidney+Crosby" target="_blank" rel="noopener" class="pname">Sidney Crosby</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="56">56</td><td class="r" data-sort="27">27</td><td class="r" data-sort="32">32</td>
+<td class="r pts-col" data-sort="59">59</td><td class="r" data-sort="1">+1</td>
+<td class="r" data-sort="38">38</td><td class="r" data-sort="1.05">1.05</td>
+<td class="r" data-sort="17">17</td><td class="r" data-sort="39">39</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="20">20</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="132">132</td><td class="r" data-sort="20.5">20.5</td>
+<td class="r" data-sort="1175">19:35</td><td class="r" data-sort="55.4">55.4</td>
+<td class="r adv adv-pos" data-sort="10.1">+10.1</td>
+<td class="r adv" data-sort="48.0">48.0</td>
+<td class="r adv" data-sort="0.94">0.94</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="2">2</td>
+<td class="name-cell" data-sort="Evgeni Malkin"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8471215.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Evgeni+Malkin" target="_blank" rel="noopener" class="pname">Evgeni Malkin</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="44">44</td><td class="r" data-sort="13">13</td><td class="r" data-sort="34">34</td>
+<td class="r pts-col" data-sort="47">47</td><td class="r" data-sort="14">+14</td>
+<td class="r" data-sort="34">34</td><td class="r" data-sort="1.07">1.07</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="30">30</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="17">17</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="121">121</td><td class="r" data-sort="10.7">10.7</td>
+<td class="r" data-sort="1059">17:39</td><td class="r" data-sort="45.1">45.1</td>
+<td class="r adv adv-neg" data-sort="-1.7">-1.7</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="0.88">0.88</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="3">3</td>
+<td class="name-cell" data-sort="Anthony Mantha"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8477511.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Anthony+Mantha" target="_blank" rel="noopener" class="pname">Anthony Mantha</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="59">59</td><td class="r" data-sort="21">21</td><td class="r" data-sort="24">24</td>
+<td class="r pts-col" data-sort="45">45</td><td class="r" data-sort="16">+16</td>
+<td class="r" data-sort="21">21</td><td class="r" data-sort="0.76">0.76</td>
+<td class="r" data-sort="16">16</td><td class="r" data-sort="35">35</td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="10">10</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="108">108</td><td class="r" data-sort="19.4">19.4</td>
+<td class="r" data-sort="893">14:53</td><td class="r" data-sort="22.2">22.2</td>
+<td class="r adv adv-pos" data-sort="7.5">+7.5</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="0.68">0.68</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="4">4</td>
+<td class="name-cell" data-sort="Bryan Rust"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8475810.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Bryan+Rust" target="_blank" rel="noopener" class="pname">Bryan Rust</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="52">52</td><td class="r" data-sort="20">20</td><td class="r" data-sort="23">23</td>
+<td class="r pts-col" data-sort="43">43</td><td class="r" data-sort="-1">-1</td>
+<td class="r" data-sort="18">18</td><td class="r" data-sort="0.83">0.83</td>
+<td class="r" data-sort="15">15</td><td class="r" data-sort="23">23</td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="20">20</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="131">131</td><td class="r" data-sort="15.3">15.3</td>
+<td class="r" data-sort="1201">20:01</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-0.7">-0.7</td>
+<td class="r adv" data-sort="45.0">45.0</td>
+<td class="r adv" data-sort="0.75">0.75</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="5">5</td>
+<td class="name-cell" data-sort="Erik Karlsson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8474578.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Erik+Karlsson" target="_blank" rel="noopener" class="pname">Erik Karlsson</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="54">54</td><td class="r" data-sort="4">4</td><td class="r" data-sort="34">34</td>
+<td class="r pts-col" data-sort="38">38</td><td class="r" data-sort="9">+9</td>
+<td class="r" data-sort="16">16</td><td class="r" data-sort="0.70">0.70</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="21">21</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="17">17</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="113">113</td><td class="r" data-sort="3.5">3.5</td>
+<td class="r" data-sort="1417">23:37</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-2.3">-2.3</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="0.8">0.80</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="6">6</td>
+<td class="name-cell" data-sort="Tommy Novak"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478438.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Tommy+Novak" target="_blank" rel="noopener" class="pname">Tommy Novak</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="59">59</td><td class="r" data-sort="12">12</td><td class="r" data-sort="21">21</td>
+<td class="r pts-col" data-sort="33">33</td><td class="r" data-sort="4">+4</td>
+<td class="r" data-sort="22">22</td><td class="r" data-sort="0.56">0.56</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="27">27</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="6">6</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="93">93</td><td class="r" data-sort="12.9">12.9</td>
+<td class="r" data-sort="820">13:40</td><td class="r" data-sort="40.2">40.2</td>
+<td class="r adv" data-sort="-0.5">-0.5</td>
+<td class="r adv" data-sort="55.00000000000001">55.0</td>
+<td class="r adv" data-sort="0.54">0.54</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="7">7</td>
+<td class="name-cell" data-sort="Justin Brazeau"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8479638.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Justin+Brazeau" target="_blank" rel="noopener" class="pname">Justin Brazeau</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="45">45</td><td class="r" data-sort="16">16</td><td class="r" data-sort="13">13</td>
+<td class="r pts-col" data-sort="29">29</td><td class="r" data-sort="5">+5</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="0.64">0.64</td>
+<td class="r" data-sort="13">13</td><td class="r" data-sort="25">25</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="82">82</td><td class="r" data-sort="19.5">19.5</td>
+<td class="r" data-sort="776">12:56</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="4.2">+4.2</td>
+<td class="r adv" data-sort="51.0">51.0</td>
+<td class="r adv" data-sort="0.61">0.61</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="8">8</td>
+<td class="name-cell" data-sort="Ben Kindel"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8485414.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ben+Kindel" target="_blank" rel="noopener" class="pname">Ben Kindel</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="56">56</td><td class="r" data-sort="15">15</td><td class="r" data-sort="14">14</td>
+<td class="r pts-col" data-sort="29">29</td><td class="r" data-sort="-1">-1</td>
+<td class="r" data-sort="16">16</td><td class="r" data-sort="0.52">0.52</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="18">18</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="10">10</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="120">120</td><td class="r" data-sort="12.5">12.5</td>
+<td class="r" data-sort="924">15:24</td><td class="r" data-sort="45.8">45.8</td>
+<td class="r adv adv-neg" data-sort="-1.6">-1.6</td>
+<td class="r adv" data-sort="53.0">53.0</td>
+<td class="r adv" data-sort="0.66">0.66</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="9">9</td>
+<td class="name-cell" data-sort="Kris Letang"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8471724.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Kris+Letang" target="_blank" rel="noopener" class="pname">Kris Letang</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="53">53</td><td class="r" data-sort="3">3</td><td class="r" data-sort="24">24</td>
+<td class="r pts-col" data-sort="27">27</td><td class="r" data-sort="2">+2</td>
+<td class="r" data-sort="26">26</td><td class="r" data-sort="0.51">0.51</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="18">18</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="9">9</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="87">87</td><td class="r" data-sort="3.4">3.4</td>
+<td class="r" data-sort="1320">22:00</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-1.5">-1.5</td>
+<td class="r adv" data-sort="51.0">51.0</td>
+<td class="r adv" data-sort="0.49">0.49</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="10">10</td>
+<td class="name-cell" data-sort="Rickard Rakell"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8476483.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Rickard+Rakell" target="_blank" rel="noopener" class="pname">Rickard Rakell</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="38">38</td><td class="r" data-sort="11">11</td><td class="r" data-sort="14">14</td>
+<td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="0.66">0.66</td>
+<td class="r" data-sort="7">7</td><td class="r" data-sort="16">16</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="8">8</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="108">108</td><td class="r" data-sort="10.2">10.2</td>
+<td class="r" data-sort="1133">18:53</td><td class="r" data-sort="18.8">18.8</td>
+<td class="r adv adv-neg" data-sort="-3.7">-3.7</td>
+<td class="r adv" data-sort="45.0">45.0</td>
+<td class="r adv" data-sort="0.64">0.64</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="11">11</td>
+<td class="name-cell" data-sort="Ryan Shea"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478854.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ryan+Shea" target="_blank" rel="noopener" class="pname">Ryan Shea</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="59">59</td><td class="r" data-sort="4">4</td><td class="r" data-sort="20">20</td>
+<td class="r pts-col" data-sort="24">24</td><td class="r" data-sort="24">+24</td>
+<td class="r" data-sort="20">20</td><td class="r" data-sort="0.41">0.41</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="24">24</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="60">60</td><td class="r" data-sort="6.7">6.7</td>
+<td class="r" data-sort="1140">19:00</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="0.8">+0.8</td>
+<td class="r adv" data-sort="53.0">53.0</td>
+<td class="r adv" data-sort="0.46">0.46</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="12">12</td>
+<td class="name-cell" data-sort="Connor Dewar"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8480980.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Connor+Dewar" target="_blank" rel="noopener" class="pname">Connor Dewar</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="59">59</td><td class="r" data-sort="13">13</td><td class="r" data-sort="11">11</td>
+<td class="r pts-col" data-sort="24">24</td><td class="r" data-sort="12">+12</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="0.41">0.41</td>
+<td class="r" data-sort="12">12</td><td class="r" data-sort="22">22</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="89">89</td><td class="r" data-sort="14.6">14.6</td>
+<td class="r" data-sort="821">13:41</td><td class="r" data-sort="48.6">48.6</td>
+<td class="r adv adv-pos" data-sort="1.1">+1.1</td>
+<td class="r adv" data-sort="51.0">51.0</td>
+<td class="r adv" data-sort="0.52">0.52</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="13">13</td>
+<td class="name-cell" data-sort="Parker Wotherspoon"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478450.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Parker+Wotherspoon" target="_blank" rel="noopener" class="pname">Parker Wotherspoon</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="59">59</td><td class="r" data-sort="3">3</td><td class="r" data-sort="16">16</td>
+<td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="10">+10</td>
+<td class="r" data-sort="36">36</td><td class="r" data-sort="0.32">0.32</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="18">18</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="53">53</td><td class="r" data-sort="5.7">5.7</td>
+<td class="r" data-sort="1222">20:22</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="1.1">+1.1</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="0.42">0.42</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="14">14</td>
+<td class="name-cell" data-sort="Blake Lizotte"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8481481.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Blake+Lizotte" target="_blank" rel="noopener" class="pname">Blake Lizotte</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="49">49</td><td class="r" data-sort="7">7</td><td class="r" data-sort="12">12</td>
+<td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="12">+12</td>
+<td class="r" data-sort="25">25</td><td class="r" data-sort="0.39">0.39</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="18">18</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="44">44</td><td class="r" data-sort="15.9">15.9</td>
+<td class="r" data-sort="826">13:46</td><td class="r" data-sort="50.5">50.5</td>
+<td class="r adv" data-sort="-0.4">-0.4</td>
+<td class="r adv" data-sort="53.0">53.0</td>
+<td class="r adv" data-sort="0.44">0.44</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="15">15</td>
+<td class="name-cell" data-sort="Noel Acciari"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478569.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Noel+Acciari" target="_blank" rel="noopener" class="pname">Noel Acciari</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="45">45</td><td class="r" data-sort="6">6</td><td class="r" data-sort="9">9</td>
+<td class="r pts-col" data-sort="15">15</td><td class="r" data-sort="10">+10</td>
+<td class="r" data-sort="17">17</td><td class="r" data-sort="0.33">0.33</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="15">15</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="54">54</td><td class="r" data-sort="11.1">11.1</td>
+<td class="r" data-sort="797">13:17</td><td class="r" data-sort="53.7">53.7</td>
+<td class="r adv adv-neg" data-sort="-1.8">-1.8</td>
+<td class="r adv" data-sort="54.0">54.0</td>
+<td class="r adv" data-sort="0.43">0.43</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="16">16</td>
+<td class="name-cell" data-sort="Egor Chinakhov"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8482475.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Egor+Chinakhov" target="_blank" rel="noopener" class="pname">Egor Chinakhov</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="21">21</td><td class="r" data-sort="10">10</td><td class="r" data-sort="4">4</td>
+<td class="r pts-col" data-sort="14">14</td><td class="r" data-sort="6">+6</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0.67">0.67</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="14">14</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="48">48</td><td class="r" data-sort="20.8">20.8</td>
+<td class="r" data-sort="828">13:48</td><td class="r" data-sort="33.3">33.3</td>
+<td class="r adv adv-pos" data-sort="1.5">+1.5</td>
+<td class="r adv" data-sort="52.0">52.0</td>
+<td class="r adv" data-sort="1.11">1.11</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="17">17</td>
+<td class="name-cell" data-sort="Jack St. Ivany"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8481030.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jack+St.+Ivany" target="_blank" rel="noopener" class="pname">Jack St. Ivany</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="17">17</td><td class="r" data-sort="0">0</td><td class="r" data-sort="7">7</td>
+<td class="r pts-col" data-sort="7">7</td><td class="r" data-sort="7">+7</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="0.41">0.41</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="7">7</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="16">16</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="938">15:38</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-1.3">-1.3</td>
+<td class="r adv" data-sort="48.0">48.0</td>
+<td class="r adv" data-sort="0.34">0.34</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="18">18</td>
+<td class="name-cell" data-sort="Kevin Hayes"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8475763.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Kevin+Hayes" target="_blank" rel="noopener" class="pname">Kevin Hayes</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="24">24</td><td class="r" data-sort="3">3</td><td class="r" data-sort="2">2</td>
+<td class="r pts-col" data-sort="5">5</td><td class="r" data-sort="-4">-4</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="0.21">0.21</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="5">5</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="40">40</td><td class="r" data-sort="7.5">7.5</td>
+<td class="r" data-sort="747">12:27</td><td class="r" data-sort="37.6">37.6</td>
+<td class="r adv adv-neg" data-sort="-0.7">-0.7</td>
+<td class="r adv" data-sort="56.99999999999999">57.0</td>
+<td class="r adv" data-sort="0.3">0.30</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="19">19</td>
+<td class="name-cell" data-sort="Connor Clifton"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8477365.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Connor+Clifton" target="_blank" rel="noopener" class="pname">Connor Clifton</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="29">29</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3">3</td>
+<td class="r pts-col" data-sort="5">5</td><td class="r" data-sort="3">+3</td>
+<td class="r" data-sort="31">31</td><td class="r" data-sort="0.17">0.17</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="5">5</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="21">21</td><td class="r" data-sort="9.5">9.5</td>
+<td class="r" data-sort="991">16:31</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="1.1">+1.1</td>
+<td class="r adv" data-sort="54.0">54.0</td>
+<td class="r adv" data-sort="0.19">0.19</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="20">20</td>
+<td class="name-cell" data-sort="Ville Koivunen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8482758.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ville+Koivunen" target="_blank" rel="noopener" class="pname">Ville Koivunen</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="27">27</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3">3</td>
+<td class="r pts-col" data-sort="5">5</td><td class="r" data-sort="-5">-5</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="0.19">0.19</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="28">28</td><td class="r" data-sort="7.1">7.1</td>
+<td class="r" data-sort="761">12:41</td><td class="r" data-sort="100.0">100.0</td>
+<td class="r adv adv-neg" data-sort="-2.3">-2.3</td>
+<td class="r adv" data-sort="57.99999999999999">58.0</td>
+<td class="r adv" data-sort="0.35">0.35</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="21">21</td>
+<td class="name-cell" data-sort="Rutger McGroarty"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8483487.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Rutger+McGroarty" target="_blank" rel="noopener" class="pname">Rutger McGroarty</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="20">20</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3">3</td>
+<td class="r pts-col" data-sort="5">5</td><td class="r" data-sort="-1">-1</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0.25">0.25</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="5">5</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="34">34</td><td class="r" data-sort="5.9">5.9</td>
+<td class="r" data-sort="708">11:48</td><td class="r" data-sort="40.0">40.0</td>
+<td class="r adv adv-neg" data-sort="-2.0">-2.0</td>
+<td class="r adv" data-sort="55.00000000000001">55.0</td>
+<td class="r adv" data-sort="0.49">0.49</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="22">22</td>
+<td class="name-cell" data-sort="Filip Hallander"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8480842.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Filip+Hallander" target="_blank" rel="noopener" class="pname">Filip Hallander</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="13">13</td><td class="r" data-sort="1">1</td><td class="r" data-sort="3">3</td>
+<td class="r pts-col" data-sort="4">4</td><td class="r" data-sort="4">+4</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0.31">0.31</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="22">22</td><td class="r" data-sort="4.5">4.5</td>
+<td class="r" data-sort="788">13:08</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-2.4">-2.4</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="0.36">0.36</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="23">23</td>
+<td class="name-cell" data-sort="Mathew Dumba"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8476856.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Mathew+Dumba" target="_blank" rel="noopener" class="pname">Mathew Dumba</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="11">11</td><td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r pts-col" data-sort="3">3</td><td class="r" data-sort="-5">-5</td>
+<td class="r" data-sort="11">11</td><td class="r" data-sort="0.27">0.27</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="7">7</td><td class="r" data-sort="14.3">14.3</td>
+<td class="r" data-sort="896">14:56</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="0.7">+0.7</td>
+<td class="r adv" data-sort="45.0">45.0</td>
+<td class="r adv" data-sort="0.09">0.09</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="24">24</td>
+<td class="name-cell" data-sort="Ilya Solovyov"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8482470.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ilya+Solovyov" target="_blank" rel="noopener" class="pname">Ilya Solovyov</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
+<td class="r pts-col" data-sort="3">3</td><td class="r" data-sort="6">+6</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0.60">0.60</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="6.2">6.2</td>
+<td class="r" data-sort="829">13:49</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-0.6">-0.6</td>
+<td class="r adv" data-sort="61.0">61.0</td>
+<td class="r adv" data-sort="2.01">2.01</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="25">25</td>
+<td class="name-cell" data-sort="Avery Hayes"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8482993.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Avery+Hayes" target="_blank" rel="noopener" class="pname">Avery Hayes</a></div></td>
+<td class="r pos-col" data-sort="R">R</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="2">2</td><td class="r" data-sort="1">+1</td>
+<td class="r" data-sort="7">7</td><td class="r" data-sort="0.50">0.50</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="25.0">25.0</td>
+<td class="r" data-sort="707">11:47</td><td class="r" data-sort="33.3">33.3</td>
+<td class="r adv" data-sort="0.4">+0.4</td>
+<td class="r adv" data-sort="60.0">60.0</td>
+<td class="r adv" data-sort="0.5">0.50</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="26">26</td>
+<td class="name-cell" data-sort="Ryan Graves"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8477435.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ryan+Graves" target="_blank" rel="noopener" class="pname">Ryan Graves</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="19">19</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="-2">-2</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="0.05">0.05</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="19">19</td><td class="r" data-sort="5.3">5.3</td>
+<td class="r" data-sort="928">15:28</td><td class="r" data-sort="0">--</td>
+<td class="r adv" data-sort="0.1">+0.1</td>
+<td class="r adv" data-sort="55.00000000000001">55.0</td>
+<td class="r adv" data-sort="0.25">0.25</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="27">27</td>
+<td class="name-cell" data-sort="Caleb Jones"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478452.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Caleb+Jones" target="_blank" rel="noopener" class="pname">Caleb Jones</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="7">7</td><td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="1">+1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0.14">0.14</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1030">17:10</td><td class="r" data-sort="0">--</td>
+<td class="r adv" data-sort="-0.2">-0.2</td>
+<td class="r adv" data-sort="47.0">47.0</td>
+<td class="r adv" data-sort="0.05">0.05</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="28">28</td>
+<td class="name-cell" data-sort="Joona Koppanen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8479533.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Joona+Koppanen" target="_blank" rel="noopener" class="pname">Joona Koppanen</a></div></td>
+<td class="r pos-col" data-sort="L">L</td>
+<td class="r" data-sort="10">10</td><td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="-1">-1</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0.10">0.10</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="748">12:28</td><td class="r" data-sort="48.0">48.0</td>
+<td class="r adv adv-neg" data-sort="-0.8">-0.8</td>
+<td class="r adv" data-sort="47.0">47.0</td>
+<td class="r adv" data-sort="0.1">0.10</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="29">29</td>
+<td class="name-cell" data-sort="Harrison Brunicke"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8484839.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Harrison+Brunicke" target="_blank" rel="noopener" class="pname">Harrison Brunicke</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="9">9</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="-4">-4</td>
+<td class="r" data-sort="6">6</td><td class="r" data-sort="0.11">0.11</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="12.5">12.5</td>
+<td class="r" data-sort="942">15:42</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="0.6">+0.6</td>
+<td class="r adv" data-sort="52.0">52.0</td>
+<td class="r adv" data-sort="0.1">0.10</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="30">30</td>
+<td class="name-cell" data-sort="Bokondji Imama"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478147.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Bokondji+Imama" target="_blank" rel="noopener" class="pname">Bokondji Imama</a></div></td>
+<td class="r pos-col" data-sort="L">L</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="0.00">0.00</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="458">7:38</td><td class="r" data-sort="0">--</td>
+<td class="r adv" data-sort="-0.3">-0.3</td>
+<td class="r adv" data-sort="71.0">71.0</td>
+<td class="r adv" data-sort="0.25">0.25</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="31">31</td>
+<td class="name-cell" data-sort="Samuel Girard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8479398.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Samuel+Girard" target="_blank" rel="noopener" class="pname">Samuel Girard</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="9.1">9.1</td>
+<td class="r" data-sort="1136">18:56</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-neg" data-sort="-1.8">-1.8</td>
+<td class="r adv" data-sort="55.00000000000001">55.0</td>
+<td class="r adv" data-sort="7.12">7.12</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="32">32</td>
+<td class="name-cell" data-sort="Tristan Broz"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8482698.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Tristan+Broz" target="_blank" rel="noopener" class="pname">Tristan Broz</a></div></td>
+<td class="r pos-col" data-sort="C">C</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-1">-1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="690">11:30</td><td class="r" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="-0.1">-0.1</td>
+<td class="r adv" data-sort="22.0">22.0</td>
+<td class="r adv" data-sort="-0.4">-0.40</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="33">33</td>
+<td class="name-cell" data-sort="Owen Pickering"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8483503.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Owen+Pickering" target="_blank" rel="noopener" class="pname">Owen Pickering</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-3">-3</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0.00">0.00</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="725">12:05</td><td class="r" data-sort="0">--</td>
+<td class="r adv" data-sort="-0.0">-0.0</td>
+<td class="r adv" data-sort="42.0">42.0</td>
+<td class="r adv" data-sort="-0.18">-0.18</td>
+</tr></tbody></table></div>
+
+<h3 style="margin-top:32px">Goaltenders</h3>
+<div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Games played">GP</th><th class="r sort-th" data-col="3" title="Games started">GS</th><th class="r sort-th" data-col="4" title="Wins">W</th><th class="r sort-th" data-col="5" title="Losses">L</th><th class="r sort-th" data-col="6" title="Overtime losses">OT</th><th class="r sort-th" data-col="7" title="Shots against">SA</th><th class="r sort-th" data-col="8" title="Goals against">GA</th><th class="r sort-th" data-col="9" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="10" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="11" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="12" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="13" title="Total time on ice">TOI</th></tr></thead>
+<tbody><tr class="goalie-row"><td class="rank" data-sort="1">1</td>
+<td class="name-cell" data-sort="Arturs Silovs"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8481668.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Arturs+Silovs" target="_blank" rel="noopener" class="pname">Arturs Silovs</a></div></td>
+<td class="r" data-sort="28">28</td><td class="r" data-sort="28">28</td>
+<td class="r" data-sort="13">13</td><td class="r" data-sort="7">7</td><td class="r" data-sort="8">8</td>
+<td class="r" data-sort="753">753</td><td class="r" data-sort="75">75</td><td class="r" data-sort="2.75">2.75</td>
+<td class="r" data-sort="679">679</td><td class="r" data-sort="0.9020">.902</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="98154">1635:54</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="2">2</td>
+<td class="name-cell" data-sort="Stuart Skinner"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8479973.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Stuart+Skinner" target="_blank" rel="noopener" class="pname">Stuart Skinner</a></div></td>
+<td class="r" data-sort="14">14</td><td class="r" data-sort="14">14</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="4">4</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="335">335</td><td class="r" data-sort="37">37</td><td class="r" data-sort="2.66">2.66</td>
+<td class="r" data-sort="298">298</td><td class="r" data-sort="0.8900">.890</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="50142">835:42</td></tr><tr class="goalie-row"><td class="rank" data-sort="3">3</td>
+<td class="name-cell" data-sort="Sergei Murashov"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8483703.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Sergei+Murashov" target="_blank" rel="noopener" class="pname">Sergei Murashov</a></div></td>
+<td class="r" data-sort="5">5</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="116">116</td><td class="r" data-sort="12">12</td><td class="r" data-sort="2.56">2.56</td>
+<td class="r" data-sort="104">104</td><td class="r" data-sort="0.8970">.897</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="16877">281:17</td></tr></tbody></table></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNb0YxMHRfVDhpRHQyWUVqN3RiWkc4NzhUYWtVQ2MyMjVuM0ZUODNDRWU1NVRMSkk1RWk4ay1NbzBzYmdOOHlpUmEwcW5BTzV2WWxPOWhRNHhuV2ptSDJnRWpmTDdMQ01YOFJmdDZmZWJFYkdaT1ZmcENQN2tLc0tsZWVmdUo4ZkM2UEV1V1kyTERtd2VyUjZXb0hzUHRuY0xoYldTeHR3LXlYXzF3ZzBFak5BcGZfRWNNUVE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Las Vegas Review-Journal</span><span class="news-date">Mar 2 &middot; 3:24 AM</span></div>
+<div class="news-title">Golden Knights lose captain, game in another lackluster effort</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOeUxTVDZtYlUtVG80ZWtDSzd5QjNCZGZrVmtSTGJMRENuOWNCX1VmTmxtUXNmeVpMODdmbjJWZWNRaUI2ZENTWVdEWHNzaGJoWXhwVUdKbW5BOFhTX1pjdlNtYTVqdURUeHdtWnNadW9TaVVhSVpSV2p0cXdjMkNHbGxGZnppVmlmQzU0ZTU5aXBwV290ejRFN3Fn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Forever Blueshirts</span><span class="news-date">Mar 1 &middot; 11:52 PM</span></div>
+<div class="news-title">Rangers Week Ahead: NHL Trade Deadline overshadows on-ice action</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNcXpOemRJRVMzVnVsVTcxSVlyUXlGdW5FN3B4UU5ORjZiRGtZcTNzQ0FCT3FrU1o3OTlNaGJSUTg5MXFjT3RmUmE0V1c0d3hDTjBVMlZtSDJ4M2FPWW1GRWFpOFlKNmRjQnBzV2hvUjdlRmx0NVB6b0xiUVpYU2pzOUpmdXhTTUJZS0lBUEtpZEZHV1BUd1drcHI1bFJBdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Evrim Ağacı</span><span class="news-date">Mar 1 &middot; 10:40 PM</span></div>
+<div class="news-title">Golden Knights And Penguins Face Off In High-Stakes NHL Showdown</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOUGhzYlZkSGJObnZYQjBfTkZuN3N4em9oYlpxMlNoODJYVUJfcDlQdTJDeDZVM3lOV042azZqM1JpVEM1S1pKbHhkOGFtcWdRS0wtaktrcFRyU25tclIwaVZjVjcwRF9XRlhRUzdWMldqU19hWm9BY1JwdFNhQmVENndLTk03SGVN?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 10:30 PM</span></div>
+<div class="news-title">Musings: March of the Penguins Begins with a Win</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxPTDlUbW5HcXZZeGFOcDl2UEhaYkRqQU1KZ1otdlc0ekNNai1Xb3ZPMlpWNG9aaC1zR2ZXVUtOdm9va0hOd1Zhc1FMdGl6b1RsQzg0dmxqckYzeWo1WUw4ZkJVaFExRi1rX3pfYTBneWhHRW5URW5BYUhPWnRybFF5Zjk5bElzaUl1QWJfQ0dTcHpnXzA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 9:58 PM</span></div>
+<div class="news-title">🎥 POSTGAME SOUND: McNabb, Smith & Cassidy</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNdV84anZRQjBBVUIxN00yR1BTNVc4aWcxbWo1dlQtU29wTVpWQy13V3M5Wms4cmRHV3JmejRMa0p5ZnpYNzJoOXROTGRSemZEd21lQjdsdEROckdBTmVBcmR2bkE1YW1nLThSNzU0MFFQTnJ1ejl6VVJpZkdKeDZCcG16SGNHR1JGZTJPdmJUbjg1QlZ6amtGRENhaw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 1 &middot; 9:55 PM</span></div>
+<div class="news-title">Golden Knights captain Mark Stone leaves game vs. Penguins</div></a><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOMzF3UTJqWHU2d3dEaWpkRFBDdGtGT1VWS0hPeXZXRkRIdTl3VklTSXdHVVdsZDJWV2N0VXBzektOaWIxeVhlYlpoRGdZZ05qbDVzOV82bkdjOUFHTG9NTkNFdVZYN1JwYW5mVjFXUml0bXFuclJnV2RxeHdaRGxZODdXRXdQc1QwSGN2RXNGQ0E5RS05cEI5V1p4UF9YTG5OZkJnNkYtcjlHOFZEbG9LVW1qd3NZaTJRMEJveG9LbDU0ZlpVSGVvdXRka3A5aUV3dGNHTVJR0gHbAUFVX3lxTE5aRDhHNzBtSTNtWXJMTUZ0RlBrSEI0eHBHTlpvTTd6MUsydmNWOHFtSXZ0bVRSSEhjZ3Nza242YmN5M3pTQXB3UkRKbFZ1SElYUkpQX3JZQjlPVHRIRVZVUEpuVVZWS0N5LV85bXRpSTZraXpXSk8yb2k3cWRrUVVtN0dRV0FaLVlHTVNWeHN5S1BNTFRwczFKLUdVamhMS3hBRzJoZm9jLWhxZUFkdUFwQ0ZybFZOY09KQ1UxOGlxMldEejhNUFZKRGgyV3lBQTJmVy1UdF9COVlxaw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 1 &middot; 9:52 PM</span></div>
+<div class="news-title">NY Rangers and Mike Sullivan could lose star as Penguins trade rumors grow in NHL after message by Sidney C...</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE8xT0hpdHNWSGx2VjZua1BneFh1X1Q1YjZJS19LNkhPZVVCZzZidUhmUnN6NklLUGNfTHdGME82UVpfMkNIeGdxM1hTVXBKV3RxZjY1aHdlMzRSWkN3d0ZENERoYm8xMDJiQmFhaDBHZVZMWGh1UHcwUkg1MDk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 9:45 PM</span></div>
+<div class="news-title">Post Game: Rust (03.01.26)</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNSWN2T3QwaFFJdG5wd1F6TVZ3aHptVlhrUjh6VUJNWjZ1ZVo0aThVSk5XQ2VaZW1VUGVNOTdaYTRVcWQ1TklTRkJBYlR6YzQxVFdnU0YtWXJ0Sy1SbFp1UWQteFJjMjQzT2xxeEs5UHVjMW9wVUtnMkVvN3NtTHN0OVc5OEdpdHdEVmp4MmR5YXpqWVAxT3l1NnkwOA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 1 &middot; 9:01 PM</span></div>
+<div class="news-title">Arturs Silovs, Penguins blank Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFBoaWc2bXBsWmxjdk94SWdfakZFZU1rb3dKclZVWm5wcDdNaUJqcjZwWTdkM3k0cnlNYnVHVXhnZnpmUTVnY0FVd3ZZRFMyM0I5bXJzRDA0MktZaUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 1 &middot; 9:01 PM</span></div>
+<div class="news-title">Penguins 5-0 Golden Knights (Mar 1, 2026) Game Recap</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9MRHJXRUxBUm9sMEVwY1VUcGUwa0V0NFhLSmNZZDQtRkVtR3B6cE44eS1BMllaQ2x0RXdqOVhYWkNsX2QxNWc3a3NkLWpqbnY2ZEo5V0pQWmRnb0VzdUJwaEJuM1JVR092bWdsVDB3UzI?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 8:41 PM</span></div>
+<div class="news-title">NHL On Tap: Islanders host Panthers thriving on home ice</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOaXJ1UXBvQ3g1UjdqSnplYzkzTjFQS1FwN2xlVGRrWEFIUlB0WUdfa2l4dXdheFRLUC1pWWRDZW1TOUczbzF2aFZacVlMRmpQMWVvTlZWRWZYZFczdTNoaGNvY1ZwUzM5U1NKa0hrM1RyN2YwNzNJcy1DbVdtanFUUHNobW5mMkc5eUdHSTVSUkpMWUJCT1lpMlNpM1o3dldvekhydnQ4Y0ZuZ1BNTF9ZMnRyVUVPSjhvZUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pittsburgh Post-Gazette</span><span class="news-date">Mar 1 &middot; 8:36 PM</span></div>
+<div class="news-title">Arturs Silovs, Penguins shut out Golden Knights in 'statement' performance</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOZ0N3ZXRsd2xZNUNMY2Y1TThwMS1UVFgyUmhRUU1zdmp0Q2dWeklybTBnQ1lvRFBPWUc4VVI4VFIwdEFOc0h3aExDZVF0eWNpV0Y0TjBRN3VaaU8taUVFX3BHYURvZ3h5Q19CbjVHQkg5UW1ZZVlreWRqcVlsX01BSWtIUUhvalFVbkNBZ0ZDTktlRW1pSEtEUXRpS0c3RzhUWDNFeXdHUlRaS2YzUXExS1E5VQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 1 &middot; 8:10 PM</span></div>
+<div class="news-title">Penguins putting off Evgeni Malkin contract talks until offseason</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPUGRld3JQQlhxTkdqaWl6RVBacTdETXJ4dFJ1NllVbS1xeDVPVjFrZzlicFVOczF2M2lzd2d1ZXVySE9PMnliZFBIVFk3YUx5NlRnb2VHUGtkRUNUTE5Yb3NwcFVWbXF6VjRWbkN6bDFEZ0lZNUtXMEM5T2VTMUduV0VaN2hDWWs?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 1 &middot; 7:52 PM</span></div>
+<div class="news-title">Former Penguins PTO Invite Waived By New Team</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUXlXZm5PMUZzRFQ3QTZJYkFqTFhiNHdiVXZZS1h6OHdDMzA1RVp6TmpWU01pcHJMM2d2M0kzY25mVVJYU3hkOTdkTWY2SXNVRFg3b0lzVjNLaGx4TTFGaFBEUFloNlVwemU1cC1sa3pMdDdDT3RwWDVTTGJkcDA5UU94S0lHTXVkU0VEMUcyLS1hSU1hVlo2Uk5jN3JaZlliOV9CSE10VHY2d1k?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 1 &middot; 7:52 PM</span></div>
+<div class="news-title">Former Penguins PTO Invite Waived By New Team</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPRW4wNThsenpoU295ei02eGFrdmxpRTlWUUZRaE92NENUWkpKcUlndnQySmpFQ2JpSTBoT05mdW04WDlaejRHdjItaWFfVmhUTk5MM2RXRUJMLU8zOW91Z2VLdnJXZ3QxSFRJQ25rUmpkY1ZzM3k2TnRVbkNubElTNzhUQWpOZHFfRHZNbnFnT2g3dTFBYlZWbmRuTl9YdF9TcW1Z?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 1 &middot; 7:51 PM</span></div>
+<div class="news-title">Golden Knights' Mark Stone leaves game with undisclosed injury</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQR2gwS0pvX1VNQ1g5ZzdlS294Qjk5dGdrTGlvTlFkbEpjQVYyekJ1a1hTYWstOWlSLWNqdVB0TzNEa0dHUlBLUjUtdXVlZjVRMjJ1SjVUaURuZ3pEY2V0TGxYZ19tTXlmcEhNTGdHSjFiZmpxMllia1l2WEIxSS04eXljaHhNY0RvY3l6TkJWajhaZUk0bTgybGl4ZjNEM0g3MFE2NzV0cU5KUm84MkdkbnFRNA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pittsburgh Hockey Now</span><span class="news-date">Mar 1 &middot; 6:12 PM</span></div>
+<div class="news-title">Dan’s Daily: Center Trade Market Get Hot; Malkin Situation; Penguins Drop</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQQXJsc2g0bEp6RXlqUEVYUFB2ZC1OVGVUYW96bk5FV3Z5LWtpVGNZUjNFaUtCSld2b1FzN1RjVkNMRGhvdHlJSGNMVXIzTjFTTXZhbzdtZ2ZVWnk3dGhrSjBnT2V3RUFpRmdqZnBEU0x3M29MZWQ4NmNYMURINUxzWWRCM0xvUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 4:48 PM</span></div>
+<div class="news-title">Game Preview: 03.01.26 vs. Vegas Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQa0dINFhhNWlnRGdjNE4tWVhSQlhkbk9XcHkzdDd6b0s5bUJIRHE5cnNLRGpVZ3dhNm9nTDRWLWhoSEFmTDNwZE05TmF0MFd4d0o2Mndqd29wbzd5UzB6ckp5OWRJVTY0YUtKRjhKYWRJOXZfR3RpTVk1NVFlQ2xpdEF6eTJpbUIwdElxMHR0d3dtTVhXR0U5bVM3Njc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">penslabyrinth.com</span><span class="news-date">Mar 1 &middot; 3:38 PM</span></div>
+<div class="news-title">Could Vincent Trocheck be an option for the Penguins at Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQZDVuYnp2UE4yS0prWUNGZzFqdjFSN2JhaFFzdVNldVh5MFRJOEwwOGFzaTctZFJlWDB2b2wyUkhxLTg0NHQtUW9mQi1jd1JhT182MGROaFZoN0RsMVZaTGlidDdmc3BoQjFDRzQ1U016STJZb3Nic2NfNnV1WFE0QkFjdjBMMmxieUdDWl9UNzdFVFV1QkxkTFp6bWpFSHEzZEppeUxLYUIzX0dZTHBaSnZDc0JNMHRQVzNlR3lR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 1 &middot; 3:01 PM</span></div>
+<div class="news-title">NHL Game Preview: Vegas Golden Knights at Pittsburgh Penguins with Line Combinations 03/01/2026</div></a><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxQTEw3elpUYU8zQld4UkhQcVlKek5ldmdTLUlDRHllVkpqeWdhbTVzVDI5YWhvOENVNDlrZU5YV0w3bkl2TjRWWnR6Q3N0VFVmdGplaS1Qb3NNQ1hobTFYcVBUelFEdTVuanhkSFBBYjVSOWtOTDVsRmw3RXdpZ3kyeFo4eU9JNk85U2o1QjB2NXNaa0JaY2hKYzl4WXhkQlFmOEZlanpCMUp4OFp2XzA3MDF1ZUk3OFZOVVNUYzNfT1hEX3had3lMbnFLREhGb1pUMU5raHZzSXZYLU45aVQtcjlORHBHWUROT1NPYnVrOXY3bEFVV2xPMUxUeXo1eFHSAYQCQVVfeXFMUDhJYjVQYjFhUUlrX0JMallRSnpQVmJKVWNZem5HdFJxeXZqcWVkb2VfYkhBazZSN09wc1VuWjZOWEc1YUozWF9lZ0pfME91Wk03MXkzME5hWVJOdWxfNTF0SnRnSGpwVzlHRWhLZTdWSmMtQ2pfWTRoRjJhRkVkRVUtUG1GZTVfSmtjMEtYZ25vU0x5TDVOYjR3TWpLU0t0OWlCNjdRaTdIdlE3MmNjVDM1ZTRBN2stUXZxWl95aWhKS2dydWhXbVdEWHNNamdNdDBLNFZuVjhoNDkyaUJVc1NMc0tJSU1qSTY3TzVWNHQzNUEyVUZrcl9SYlhNSWpVNV9OSi0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 1 &middot; 1:59 PM</span></div>
+<div class="news-title">Evgeni Malkin's future with Pittsburgh Penguins remains uncertain as NHL trade deadline looms</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQRGpEU09zMjdyMnU1NmhkS01MWnE0d19wMEt3ZnR5ZXc4cjYzRHlNd1k0b3ZzeXhfa081NE5WazhWZVVRSFRoZ0dmSU5NcFZXZ1F1dDFmd2hoN2NOdDZsUFBJYnVocWxvQ2pBTlk3dUpaWTNZV2xoSmkycklqemcwRGpjb2VUU1lzLUthdFNuRFZidw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 1 &middot; 1:45 PM</span></div>
+<div class="news-title">3 Takeaways From the Penguins’ Shootout Loss to the Rangers</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVGNnYklOVzVuQS1OdkFUcHozNDZfc29TT21HTFExbC1BdGhzNTlMQURkdktPNDhyQ3B1OEp1SWVnM3YzNi1oOEdfeWlYM19GTjY1VWZhaFJPTnlSTk5Fa1lFUUtsQTdJdnkzTzZSSWM4YkdTNi0yVjQxeFRYY2pfVElSeEI5Q1FNWVd3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 1 &middot; 1:42 PM</span></div>
+<div class="news-title">NHL Predictions: March 1st, Vegas Golden Knights at Pittsburgh Penguins</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5nN3JKaHFyNWc0R0JUNlJzZTBiRHJQMDBLTU5wN1JOZWpoYXNMdjlpcWdtZlpOUkF3dHdjVVpwdS1PRWl6REl2TUN5dFRjMHZWWUtjRXFMbVp6V0F1ZElaaWpsWEpVMERqUlB6MTZhdDNjamcwVVBGOTNIa1E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 1 &middot; 12:11 PM</span></div>
+<div class="news-title">Evgeni Malkin Frustrated With Penguins' Management</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYlFBYUpiU0VNRVcwRmpCYl9DTTVzRmtWdHFkYkliTE5pU0VJMkdPQmdKckw3X2NWa0pJbmM1cDVNeUdsdUhnNzVCd1NvcnJUN0xDRnZTVE90Sm5xcEh3UEdYV0pTX24zcXFVVGhlY2xoT2hGeEE1eS1DY001MEE3VWZjVDZTV3BZZnBvRnlnWW9oVlBrV2dDQ3V4VXdvclRwRmh1YTFJZ0RBcTNKSGtNQVJReTl6enNHT2tOT01jNUhMa28?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">PensBurgh</span><span class="news-date">Mar 1 &middot; 11:00 AM</span></div>
+<div class="news-title">Game Preview: Vegas Golden Knights @ Pittsburgh Penguins 3/1/2026</div></a></div></div>
+  <div class="panel" id="p-community">
+    <div class="community-list">
+      <a href="https://www.reddit.com/r/penguins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/penguins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
+      <a href="https://x.com/search?q=%22Pittsburgh%20Penguins%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Pittsburgh Penguins mentions. Breaking news, insider tweets, fan reactions.</div></a>
+      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
+      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+    </div>
+  </div>
+</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 2, 2026 at 2:35 AM ET</span></div>
+<script>
+document.querySelectorAll(".sortable").forEach(function(tbl){
+  tbl.querySelectorAll(".sort-th").forEach(function(th){
+    th.addEventListener("click",function(){
+      var col=parseInt(th.dataset.col),asc=th.classList.contains("asc");
+      tbl.querySelectorAll(".sort-th").forEach(function(h){h.classList.remove("asc","desc")});
+      var dir=asc?"desc":"asc";
+      th.classList.add(dir);
+      var tbody=tbl.querySelector("tbody");
+      var rows=Array.from(tbody.querySelectorAll("tr"));
+      rows.sort(function(a,b){
+        var ca=a.children[col],cb=b.children[col];
+        var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
+        var na=parseFloat(va),nb=parseFloat(vb);
+        if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
+        return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
+      });
+      rows.forEach(function(r){tbody.appendChild(r)});
+    });
+  });
+});
+</script>
+<script>
+(function(){
+  var root=document.documentElement;
+  var btns=document.querySelectorAll('.theme-btn');
+  var saved=localStorage.getItem('theme')||'dark';
+  btns.forEach(function(b){
+    if(b.dataset.theme===saved) b.classList.add('active');
+    b.addEventListener('click',function(){
+      var t=b.dataset.theme;
+      root.setAttribute('data-theme',t);
+      localStorage.setItem('theme',t);
+      btns.forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+    });
+  });
+})();
+</script>
+</body></html>
