@@ -355,6 +355,51 @@ def get_goalies(club_stats, nhl_goalie_summary):
     goalies.sort(key=lambda x: x["gp"], reverse=True)
     return goalies
 
+def fetch_east_team_records(east_teams, above500):
+    """Fetch schedules for all Eastern teams; compute vs OTT, vs above/below .500."""
+    records = {}
+    for t in east_teams:
+        abbrev = t["abbrev"]
+        try:
+            data = fetch_json(f"{NHL_API}/club-schedule-season/{abbrev}/{SEASON}")
+        except Exception:
+            records[abbrev] = {"vsOTT": (0, 0, 0), "vsAbove": (0, 0, 0), "vsBelow": (0, 0, 0)}
+            continue
+        vs_ott = [0, 0, 0]  # w, l, otl
+        vs_above = [0, 0, 0]
+        vs_below = [0, 0, 0]
+        for g in data.get("games", []):
+            if g.get("gameType") != 2:
+                continue
+            if g.get("gameState") not in ("FINAL", "OFF"):
+                continue
+            home = g.get("homeTeam", {})
+            away = g.get("awayTeam", {})
+            is_home = home.get("abbrev") == abbrev
+            opp = away.get("abbrev") if is_home else home.get("abbrev")
+            my_score = home.get("score", 0) if is_home else away.get("score", 0)
+            opp_score = away.get("score", 0) if is_home else home.get("score", 0)
+            period = g.get("periodDescriptor", {}).get("periodType", "REG")
+            # Determine result
+            if my_score > opp_score:
+                result = 0  # win
+            elif period in ("OT", "SO"):
+                result = 2  # otl
+            else:
+                result = 1  # loss
+            if opp == TEAM:
+                vs_ott[result] += 1
+            if opp in above500:
+                vs_above[result] += 1
+            else:
+                vs_below[result] += 1
+        records[abbrev] = {
+            "vsOTT": tuple(vs_ott),
+            "vsAbove": tuple(vs_above),
+            "vsBelow": tuple(vs_below),
+        }
+    return records
+
 def get_remaining_schedule(schedule_data, above500):
     games = []
     for g in schedule_data.get("games", []):
@@ -546,9 +591,12 @@ def build_roster_html(skaters, goalies, mp_players):
 <thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">GS</th><th class="r">W</th><th class="r">L</th><th class="r">OT</th><th class="r">SA</th><th class="r">GA</th><th class="r">GAA</th><th class="r">SV</th><th class="r">SV%</th><th class="r">SO</th><th class="r">TOI</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
-def build_standings_section(east_teams):
+def build_standings_section(east_teams, east_records):
     atlantic = sorted([t for t in east_teams if t["div"] == "Atlantic"], key=lambda x: -x["pts"])
     metro = sorted([t for t in east_teams if t["div"] == "Metropolitan"], key=lambda x: -x["pts"])
+
+    def fmt_rec(w, l, otl):
+        return f"{w}-{l}-{otl}"
 
     def team_row(t, rank, is_playoff=False, is_cutoff=False, is_sens=False):
         cls_list = []
@@ -557,12 +605,21 @@ def build_standings_section(east_teams):
         cls = f' class="{" ".join(cls_list)}"' if cls_list else ''
         pp = f".{int(t['ptsPct']*1000):03d}" if t['ptsPct'] < 1 else f"{t['ptsPct']:.3f}"
         rank_cls = "rank-in" if is_playoff else "rank-out"
-        return f'<tr{cls}><td class="{rank_cls}">{rank}</td><td class="tcol">{t["name"]}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td></tr>'
+        l10 = fmt_rec(t["l10w"], t["l10l"], t["l10otl"])
+        home = fmt_rec(t["homeW"], t["homeL"], t["homeOtl"])
+        road = fmt_rec(t["roadW"], t["roadL"], t["roadOtl"])
+        er = east_records.get(t["abbrev"], {})
+        vs_ott = fmt_rec(*er.get("vsOTT", (0, 0, 0)))
+        vs_above = fmt_rec(*er.get("vsAbove", (0, 0, 0)))
+        vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
+        diff = t["gf"] - t["ga"]
+        diff_str = f"+{diff}" if diff > 0 else str(diff)
+        return f'''<tr{cls}><td class="{rank_cls}">{rank}</td><td class="tcol">{t["name"]}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>'''
 
     def div_table(teams, name):
         rows = [team_row(t, i+1, i<3, i==2, t["abbrev"]==TEAM) for i, t in enumerate(teams)]
-        return f'''<div class="div-label">{name}</div><div class="scroll-x"><table class="tbl">
-<thead><tr><th></th><th>Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th></tr></thead>
+        return f'''<div class="div-label">{name}</div><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div>'''
 
     wc_all = sorted(atlantic[3:] + metro[3:], key=lambda x: -x["pts"])
@@ -570,18 +627,27 @@ def build_standings_section(east_teams):
     for i, t in enumerate(wc_all):
         is_sens = t["abbrev"] == TEAM
         label = f"WC{i+1}" if i < 2 else str(i+1)
-        rem = 82 - t["gp"]
         cls_list = []
         if is_sens: cls_list.append("sens-row")
         if i == 1: cls_list.append("cutoff")
         cls = f' class="{" ".join(cls_list)}"' if cls_list else ''
         rank_cls = "rank-in" if i < 2 else "rank-out"
-        wc_rows.append(f'<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{t["name"]}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{rem}</td><td class="r">{t["pts"]+rem*2}</td></tr>')
+        pp = f".{int(t['ptsPct']*1000):03d}" if t['ptsPct'] < 1 else f"{t['ptsPct']:.3f}"
+        l10 = fmt_rec(t["l10w"], t["l10l"], t["l10otl"])
+        home = fmt_rec(t["homeW"], t["homeL"], t["homeOtl"])
+        road = fmt_rec(t["roadW"], t["roadL"], t["roadOtl"])
+        er = east_records.get(t["abbrev"], {})
+        vs_ott = fmt_rec(*er.get("vsOTT", (0, 0, 0)))
+        vs_above = fmt_rec(*er.get("vsAbove", (0, 0, 0)))
+        vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
+        diff = t["gf"] - t["ga"]
+        diff_str = f"+{diff}" if diff > 0 else str(diff)
+        wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{t["name"]}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
 
     return div_table(atlantic, "Atlantic Division") + div_table(metro, "Metropolitan Division") + f'''<div class="div-label">Wild Card Race</div>
 <p class="sub-note">Top 2 qualify for playoffs. Dashed line = cutoff.</p>
-<div class="scroll-x"><table class="tbl">
-<thead><tr><th></th><th>Team</th><th>Div</th><th class="r">GP</th><th class="r">PTS</th><th class="r">Rem</th><th class="r">Max</th></tr></thead>
+<div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(wc_rows)}</tbody></table></div>'''
 
 def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
@@ -886,12 +952,14 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .px-row{{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}}
 .px-label{{color:var(--text-secondary)}}
 .px-val{{font-weight:600;font-variant-numeric:tabular-nums}}
-.sens-row{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
+.sens-row td{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
 .tcol{{font-weight:600;white-space:nowrap}}.bpts{{font-weight:700}}
 .div-label{{margin:28px 0 8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
+.stnd-tbl td{{padding:5px 5px;font-size:11px}}.stnd-tbl thead th{{padding:6px 5px;font-size:9px}}
+.stnd-tbl .sens-row td{{background:#f7f6f3}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
@@ -1008,8 +1076,8 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   </div>
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-standings">
-    <h3>Eastern Conference</h3>
-    <p class="sub-note">Top 3 per division + 2 wild cards qualify for playoffs.</p>
+    <h3>Eastern Conference Standings</h3>
+    <p class="sub-note">Top 3 per division + 2 wild cards qualify. Dashed line = cutoff.</p>
     {standings_html}
   </div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
@@ -1090,9 +1158,13 @@ def main():
     else:
         print("  No game played since last update, skipping snapshot save")
 
+    print("Fetching Eastern Conference team schedules...")
+    east_records = fetch_east_team_records(east_teams, above500)
+    print(f"  {len(east_records)} team records computed")
+
     print("Building HTML...")
     roster_html = build_roster_html(skaters, goalies, mp_players)
-    standings_html = build_standings_section(east_teams)
+    standings_html = build_standings_section(east_teams, east_records)
     projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams)
     schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds)
     html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas)
