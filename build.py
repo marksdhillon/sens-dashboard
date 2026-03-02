@@ -1087,8 +1087,12 @@ a.pname:hover{{color:var(--text-strong)}}
 .tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none;transition:color 0.15s}}.tcol-link:hover{{color:var(--text-strong)}}.bpts{{font-weight:700;color:var(--text)}}
 .div-label{{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
+.stnd-tbl{{border-collapse:separate;border-spacing:0}}
 .stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
-.stnd-tbl .sens-row td{{background:var(--accent-soft)}}
+.stnd-tbl td.rank-in,.stnd-tbl td.rank-out,.stnd-tbl th.rank{{position:sticky;left:0;z-index:2;background:var(--bg) !important}}
+.stnd-tbl td.tcol,.stnd-tbl th.name-col{{position:sticky;left:30px;z-index:2;background:var(--bg) !important;box-shadow:2px 0 4px rgba(0,0,0,0.15)}}
+.stnd-tbl thead th.rank,.stnd-tbl thead th.name-col{{z-index:3}}
+.stnd-tbl .sens-row td{{background:var(--accent-soft)}}.stnd-tbl .sens-row td.rank-in,.stnd-tbl .sens-row td.rank-out,.stnd-tbl .sens-row td.tcol{{background:var(--bg) !important}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
