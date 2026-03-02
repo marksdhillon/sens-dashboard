@@ -47,13 +47,29 @@ def fetch_moneypuck_odds():
     for r in rows:
         team = r.get("teamCode", "")
         scenario = r.get("scenerio", "")
+        entry = {
+            "playoffPct": float(r.get("madePlayoffs", 0)),
+            "projPts": float(r.get("points", 0)),
+            "cupPct": float(r.get("wonCup", 0)),
+            "divWinPct": float(r.get("wonDivision", 0)),
+            "round2": float(r.get("round2", 0)),
+            "round3": float(r.get("round3", 0)),
+            "finals": float(r.get("round4", 0)),
+            "div2": float(r.get("divisionPlace2Odds", 0)),
+            "div3": float(r.get("divisionPlace3Odds", 0)),
+            "wc1": float(r.get("wildcard1Odds", 0)),
+            "wc2": float(r.get("wildcard2Odds", 0)),
+            "firstPick": float(r.get("firstOverall", 0)),
+            "draftLottery": float(r.get("draftLottery", 0)),
+        }
         if scenario == "ALL":
-            odds[team] = {
-                "playoffPct": float(r.get("madePlayoffs", 0)),
-                "projPts": float(r.get("points", 0)),
-                "cupPct": float(r.get("wonCup", 0)),
-                "divWinPct": float(r.get("wonDivision", 0)),
-            }
+            if team not in odds:
+                odds[team] = {}
+            odds[team]["ALL"] = entry
+        elif scenario in ("WINREG", "WINOT", "LOSSOT", "LOSSREG"):
+            if team not in odds:
+                odds[team] = {}
+            odds[team][scenario] = entry
     return odds
 
 def fetch_moneypuck_team_stats():
@@ -568,14 +584,14 @@ def build_standings_section(east_teams):
 <thead><tr><th></th><th>Team</th><th>Div</th><th class="r">GP</th><th class="r">PTS</th><th class="r">Rem</th><th class="r">Max</th></tr></thead>
 <tbody>{"".join(wc_rows)}</tbody></table></div>'''
 
-def build_projections_html(sens, vs500, mp_odds, mp_stats):
+def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
     pts = sens["pts"]
     gp = sens["gp"]
     remaining = 82 - gp
     pace = round(sens["ptsPct"] * 2 * 82, 1)
-    ott_odds = mp_odds.get(TEAM, {})
-    playoff_pct = ott_odds.get("playoffPct", 0)
-    proj_pts = ott_odds.get("projPts", pace)
+    ott_all = mp_odds.get(TEAM, {}).get("ALL", {})
+    playoff_pct = ott_all.get("playoffPct", 0)
+    proj_pts = ott_all.get("projPts", pace)
     target = 93
     needed = max(0, target - pts)
     deficit = round(proj_pts - target, 1)
@@ -595,42 +611,122 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats):
 
     deficit_str = f"+{deficit}" if deficit >= 0 else str(deficit)
 
-    return f'''<div class="kpi-row">
-  <div class="kpi"><div class="kpi-val" style="font-size:42px">{playoff_pct*100:.1f}%</div><div class="kpi-label">Playoff Probability</div><div class="kpi-sub">MoneyPuck Model</div></div>
-  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Points</div></div>
-  <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Target Points</div></div>
-  <div class="kpi"><div class="kpi-val">{deficit_str}</div><div class="kpi-label">vs Target</div></div>
-  <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Points</div><div class="kpi-sub">MoneyPuck</div></div>
-</div>
-<div class="kpi-row" style="margin-bottom:28px">
-  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Points Needed</div></div>
-  <div class="kpi"><div class="kpi-val">{w500}-{l500}-{otl500}</div><div class="kpi-label">vs Above .500</div></div>
-  <div class="kpi"><div class="kpi-val">{ppg_current}</div><div class="kpi-label">Current P/GP</div></div>
-  <div class="kpi"><div class="kpi-val">{ppg_needed}</div><div class="kpi-label">Needed P/GP</div></div>
+    # Ottawa's playoff journey bar
+    r2 = ott_all.get("round2", 0)
+    r3 = ott_all.get("round3", 0)
+    finals = ott_all.get("finals", 0)
+    cup = ott_all.get("cupPct", 0)
+
+    # Division placement odds
+    div_win = ott_all.get("divWinPct", 0)
+    div2 = ott_all.get("div2", 0)
+    div3 = ott_all.get("div3", 0)
+    wc1 = ott_all.get("wc1", 0)
+    wc2 = ott_all.get("wc2", 0)
+    draft = ott_all.get("draftLottery", 0)
+
+    # Scenario impact (next game outcomes)
+    scenarios = []
+    for key, label in [("WINREG", "Win (REG)"), ("WINOT", "Win (OT)"), ("LOSSOT", "Loss (OT)"), ("LOSSREG", "Loss (REG)")]:
+        sc = mp_odds.get(TEAM, {}).get(key, {})
+        if sc:
+            scenarios.append({
+                "label": label,
+                "playoff": sc.get("playoffPct", 0),
+                "pts": sc.get("projPts", 0),
+                "r2": sc.get("round2", 0),
+                "cup": sc.get("cupPct", 0),
+            })
+
+    scenario_rows = ""
+    for sc in scenarios:
+        d_po = sc["playoff"] - playoff_pct
+        po_cls = "sc-up" if d_po > 0 else "sc-down" if d_po < 0 else ""
+        scenario_rows += f'''<tr><td class="sc-label">{sc["label"]}</td><td class="r">{sc["playoff"]*100:.1f}%</td><td class="r {po_cls}">{d_po*100:+.1f}%</td><td class="r">{sc["pts"]:.0f}</td><td class="r">{sc["r2"]*100:.1f}%</td><td class="r">{sc["cup"]*100:.1f}%</td></tr>'''
+
+    # Eastern Conference predictions table
+    east_abbrevs = {t["abbrev"] for t in east_teams}
+    east_odds = []
+    for abbrev in east_abbrevs:
+        team_data = mp_odds.get(abbrev, {}).get("ALL", {})
+        if team_data:
+            east_odds.append({"team": abbrev, **team_data})
+    east_odds.sort(key=lambda x: -x.get("playoffPct", 0))
+
+    east_rows = ""
+    for i, t in enumerate(east_odds):
+        tc = t["team"]
+        is_sens = "sens-row" if tc == TEAM else ""
+        east_rows += f'''<tr class="{is_sens}"><td class="rank">{i+1}</td><td class="tcol">{tc}</td><td class="r">{t.get("playoffPct",0)*100:.1f}%</td><td class="r">{t.get("round2",0)*100:.1f}%</td><td class="r">{t.get("round3",0)*100:.1f}%</td><td class="r">{t.get("finals",0)*100:.1f}%</td><td class="r">{t.get("cupPct",0)*100:.1f}%</td><td class="r">{t.get("projPts",0):.0f}</td><td class="r">{t.get("divWinPct",0)*100:.1f}%</td></tr>'''
+
+    ott_mp = mp_stats.get(TEAM, {})
+    ott_mp_all = ott_mp.get("all", {})
+    ott_mp_5v5 = ott_mp.get("5v5", {})
+
+    return f'''<h3>Playoff Journey</h3>
+<p class="sub-note">Ottawa's probability of reaching each round &mdash; MoneyPuck simulations</p>
+<div class="journey-bar">
+  <div class="j-step"><div class="j-pct">{playoff_pct*100:.1f}%</div><div class="j-label">Make Playoffs</div><div class="j-fill" style="height:{max(2, playoff_pct*100)}%"></div></div>
+  <div class="j-step"><div class="j-pct">{r2*100:.1f}%</div><div class="j-label">2nd Round</div><div class="j-fill" style="height:{max(2, r2*100)}%"></div></div>
+  <div class="j-step"><div class="j-pct">{r3*100:.1f}%</div><div class="j-label">Conf. Final</div><div class="j-fill" style="height:{max(2, r3*100)}%"></div></div>
+  <div class="j-step"><div class="j-pct">{finals*100:.1f}%</div><div class="j-label">Cup Final</div><div class="j-fill" style="height:{max(2, finals*100)}%"></div></div>
+  <div class="j-step"><div class="j-pct">{cup*100:.1f}%</div><div class="j-label">Win Cup</div><div class="j-fill j-cup" style="height:{max(2, cup*100)}%"></div></div>
 </div>
 
-<h3>Points Progress</h3>
+<div class="kpi-row" style="margin-top:28px">
+  <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Points</div></div>
+  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Points</div></div>
+  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Points Needed</div></div>
+  <div class="kpi"><div class="kpi-val">{deficit_str}</div><div class="kpi-label">vs 93 Target</div></div>
+</div>
+
+<h3 style="margin-top:28px">Points Progress</h3>
 <div class="progress-wrap">
   <div class="progress-bar"><div class="progress-fill" style="width:{progress_pct}%"></div><div class="progress-marker" style="left:{target_pct}%"><span>93</span></div></div>
   <div class="progress-labels"><span>{pts} earned</span><span>{needed} needed &middot; {remaining} games left</span></div>
 </div>
 
-<h3>Advanced Metrics</h3>
-<p class="sub-note">Ottawa's analytics profile from MoneyPuck</p>
+<h3>Seeding Probability</h3>
+<p class="sub-note">How Ottawa is most likely to qualify</p>
+<div class="seed-grid">
+  <div class="seed-item"><div class="seed-val">{div_win*100:.1f}%</div><div class="seed-label">Win Division</div></div>
+  <div class="seed-item"><div class="seed-val">{div2*100:.1f}%</div><div class="seed-label">2nd in Division</div></div>
+  <div class="seed-item"><div class="seed-val">{div3*100:.1f}%</div><div class="seed-label">3rd in Division</div></div>
+  <div class="seed-item"><div class="seed-val">{wc1*100:.1f}%</div><div class="seed-label">Wild Card 1</div></div>
+  <div class="seed-item"><div class="seed-val">{wc2*100:.1f}%</div><div class="seed-label">Wild Card 2</div></div>
+  <div class="seed-item"><div class="seed-val">{draft*100:.1f}%</div><div class="seed-label">Draft Lottery</div></div>
+</div>
+
+<h3>Next Game Impact</h3>
+<p class="sub-note">How each outcome changes Ottawa's odds</p>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
+<tbody>{scenario_rows}</tbody></table></div>
+
+<h3 style="margin-top:28px">Eastern Conference Predictions</h3>
+<p class="sub-note">All 16 Eastern teams &mdash; sorted by playoff probability</p>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
+<tbody>{east_rows}</tbody></table></div>
+
+<h3 style="margin-top:28px">Team Analytics</h3>
+<p class="sub-note">Ottawa's underlying performance from MoneyPuck</p>
 <div class="metric-grid">
-  <div class="metric-card"><div class="metric-val">{ott_5v5.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (5v5)</div><div class="metric-desc">Expected goals-for share at even strength</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_5v5.get("CFpct",0)*100:.1f}%</div><div class="metric-label">CF% (5v5)</div><div class="metric-desc">Corsi (shot attempts) share</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_all.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (All)</div><div class="metric-desc">Expected goals share, all situations</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_all.get("gfpg",0)}</div><div class="metric-label">GF/GP</div><div class="metric-desc">Goals for per game</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_all.get("gapg",0)}</div><div class="metric-label">GA/GP</div><div class="metric-desc">Goals against per game</div></div>
+  <div class="metric-card"><div class="metric-val">{ott_mp_5v5.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (5v5)</div><div class="metric-desc">Expected goals-for share at even strength</div></div>
+  <div class="metric-card"><div class="metric-val">{ott_mp_5v5.get("CFpct",0)*100:.1f}%</div><div class="metric-label">CF% (5v5)</div><div class="metric-desc">Corsi (shot attempts) share</div></div>
+  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (All)</div><div class="metric-desc">Expected goals share, all situations</div></div>
+  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("gfpg",0)}</div><div class="metric-label">GF/GP</div><div class="metric-desc">Goals for per game</div></div>
+  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("gapg",0)}</div><div class="metric-label">GA/GP</div><div class="metric-desc">Goals against per game</div></div>
   <div class="metric-card"><div class="metric-val">{pace}</div><div class="metric-label">Pace</div><div class="metric-desc">Projected 82-game point total</div></div>
 </div>
 
-<h3>Scenarios</h3>
-<div class="scenario"><span class="tag tag-dark">Target</span> Reach 93 pts &mdash; go ~{s1_w}-{s1_otl}-{s1_l} the rest of the way. A .587+ pace.</div>
-<div class="scenario"><span class="tag tag-dark">Stretch</span> Reach 96 pts &mdash; locks in a spot. Win 2-3 more beyond target.</div>
-<div class="scenario"><span class="tag tag-muted">Minimum</span> Reach 90 pts &mdash; needs help from other bubble teams. 91 was last year's East cutoff.</div>
-<p class="footnote">Playoff probability from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a>. Updated automatically after each game.</p>'''
+<div class="kpi-row" style="margin-top:12px;margin-bottom:28px">
+  <div class="kpi"><div class="kpi-val">{ppg_current}</div><div class="kpi-label">Current P/GP</div></div>
+  <div class="kpi"><div class="kpi-val">{ppg_needed}</div><div class="kpi-label">Needed P/GP</div></div>
+  <div class="kpi"><div class="kpi-val">{w500}-{l500}-{otl500}</div><div class="kpi-label">vs Above .500</div></div>
+</div>
+
+<p class="footnote">All projections from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a>. Updated automatically after each game.</p>'''
 
 def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds):
     ott_all = mp_stats.get(TEAM, {}).get("all", {})
@@ -682,7 +778,7 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
     road_rec = f"{sens['roadW']}-{sens['roadL']}-{sens['roadOtl']}"
     l10 = f"{sens['l10w']}-{sens['l10l']}-{sens['l10otl']}"
     w500, l500, otl500 = vs500
-    ott_odds = mp_odds.get(TEAM, {})
+    ott_odds = mp_odds.get(TEAM, {}).get("ALL", {})
     playoff_pct = ott_odds.get("playoffPct", 0)
     proj_pts = ott_odds.get("projPts", pace)
     target = 93
@@ -821,6 +917,23 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .metric-label{{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}}
 .metric-desc{{font-size:11px;color:var(--text-muted);margin-top:2px}}
 
+/* Journey Bar */
+.journey-bar{{display:flex;gap:4px;align-items:flex-end;height:180px;padding:0 8px;margin-bottom:24px}}
+.j-step{{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;height:100%}}
+.j-pct{{font-size:18px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}}
+.j-label{{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;text-align:center}}
+.j-fill{{width:100%;border-radius:6px 6px 0 0;background:var(--black);margin-top:auto;min-height:2px;transition:height 0.3s}}
+.j-cup{{background:#c9a200}}
+/* Seed Grid */
+.seed-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px}}
+@media(max-width:500px){{.seed-grid{{grid-template-columns:repeat(2,1fr)}}}}
+.seed-item{{background:var(--bg);padding:16px;text-align:center}}
+.seed-val{{font-size:22px;font-weight:700;letter-spacing:-0.5px}}
+.seed-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
+/* Scenario impact */
+.sc-label{{font-weight:600;white-space:nowrap}}
+.sc-up{{color:#1a8a1a;font-weight:600}}
+.sc-down{{color:#c43c3c;font-weight:600}}
 /* Scenarios */
 .scenario{{padding:12px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.6}}
 .tag{{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:4px;margin-right:4px;vertical-align:middle}}
@@ -934,7 +1047,7 @@ def main():
 
     print("Fetching MoneyPuck playoff odds...")
     mp_odds = fetch_moneypuck_odds()
-    ott_odds = mp_odds.get(TEAM, {})
+    ott_odds = mp_odds.get(TEAM, {}).get("ALL", {})
     print(f"  Playoff: {ott_odds.get('playoffPct',0)*100:.1f}%, Proj: {ott_odds.get('projPts',0):.0f} pts")
 
     print("Fetching MoneyPuck team stats...")
@@ -980,7 +1093,7 @@ def main():
     print("Building HTML...")
     roster_html = build_roster_html(skaters, goalies, mp_players)
     standings_html = build_standings_section(east_teams)
-    projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats)
+    projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams)
     schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds)
     html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas)
 
