@@ -1199,7 +1199,7 @@ a.pname:hover{{text-decoration:underline}}
       <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">HFBoards</div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
       <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/OttawaSenators</div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
       <a href="https://x.com/search?q=%22Ottawa%20Senators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-name">X / Twitter</div><div class="cc-desc">Live feed of Senators mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://www.reddit.com/r/hockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/hockey</div><div class="cc-desc">The main NHL subreddit. League-wide discussion, trades, and highlights.</div></a>
+      <a href="https://www.youtube.com/@Cominginhotsens/streams" target="_blank" rel="noopener" class="community-card"><div class="cc-name">Coming in Hot Podcast</div><div class="cc-desc">Sens-focused podcast. Live streams, game breakdowns, and trade talk.</div></a>
     </div>
   </div>
 </div>
