@@ -12,7 +12,7 @@ import re
 import unicodedata
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 TEAM = "OTT"
@@ -932,7 +932,8 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 <div class="sched-list">{"".join(cards)}</div>'''
 
 def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams):
-    now = datetime.now(timezone.utc).strftime("%B %-d, %Y at %-I:%M %p UTC")
+    eastern = timezone(timedelta(hours=-5))
+    now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
     record = f"{sens['w']}-{sens['l']}-{sens['otl']}"
     remaining = 82 - sens["gp"]
     pace = round(sens["ptsPct"] * 2 * 82, 1)
