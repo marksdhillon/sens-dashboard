@@ -955,9 +955,12 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .news-title{{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}}
 
 /* Community */
-.forum-frame{{width:100%;height:75vh;border:1px solid var(--border);border-radius:8px}}
-.forum-link{{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);margin-bottom:12px}}
-.forum-link:hover{{color:var(--text)}}
+.community-list{{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
+@media(max-width:560px){{.community-list{{grid-template-columns:1fr}}}}
+.community-card{{display:block;padding:16px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:background 0.1s,border-color 0.1s}}
+.community-card:hover{{background:var(--bg-hover);border-color:var(--text-muted);text-decoration:none}}
+.cc-name{{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}}
+.cc-desc{{font-size:12px;color:var(--text-secondary);line-height:1.4}}
 
 /* Sortable columns */
 .sort-th{{cursor:pointer;user-select:none;position:relative}}
@@ -1013,8 +1016,14 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
-    <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="forum-link">Open in new tab &#8599;</a>
-    <iframe src="https://forums.hfboards.com/forums/ottawa-senators.98/" class="forum-frame" loading="lazy"></iframe>
+    <div class="community-list">
+      <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">HFBoards</div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
+      <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/OttawaSenators</div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
+      <a href="https://x.com/search?q=%22Ottawa%20Senators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-name">X / Twitter</div><div class="cc-desc">Live feed of Senators mentions. Breaking news, insider tweets, fan reactions.</div></a>
+      <a href="https://www.reddit.com/r/hockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/hockey</div><div class="cc-desc">The main NHL subreddit. League-wide discussion, trades, and highlights.</div></a>
+      <a href="https://www.nhl.com/senators" target="_blank" rel="noopener" class="community-card"><div class="cc-name">NHL.com — Senators</div><div class="cc-desc">Official team page. News, video, schedule, and stats.</div></a>
+      <a href="https://www.sportsnet.ca/nhl/teams/ottawa-senators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">Sportsnet</div><div class="cc-desc">Canadian coverage. Analysis, columns, and game recaps.</div></a>
+    </div>
   </div>
 </div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
