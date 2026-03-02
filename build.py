@@ -745,7 +745,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p>'''
 
-def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds):
+def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds, results):
     ott = team_records.get(TEAM, {})
     fmt_r = lambda w, l, o: f"{w}-{l}-{o}"
     ott_record = fmt_r(ott.get("w",0), ott.get("l",0), ott.get("otl",0))
@@ -755,6 +755,17 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
     ott_gf = ott.get("gf", 0)
     ott_ga = ott.get("ga", 0)
     ott_pts = ott.get("pts", 0)
+    ott_gp = ott.get("gp", 1)
+    ott_mp = mp_stats.get(TEAM, {})
+    ott_odds_all = mp_odds.get(TEAM, {}).get("ALL", {})
+
+    # Season series: count W/L/OTL vs each opponent
+    series = {}
+    for r in results:
+        a = r["oppAbbrev"]
+        if a not in series:
+            series[a] = {"W": 0, "L": 0, "OTL": 0}
+        series[a][r["result"]] += 1
 
     cards = []
     for g in remaining:
@@ -771,16 +782,79 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
         opp_gf = o.get("gf", 0)
         opp_ga = o.get("ga", 0)
         o_pts = o.get("pts", 0)
+        opp_gp = o.get("gp", 1)
 
         def row(label, v_ott, v_opp):
             return f'<tr><td class="cmp-stat-l">{v_ott}</td><td class="cmp-stat-label">{label}</td><td class="cmp-stat-r">{v_opp}</td></tr>'
 
         rows = row("Record", ott_record, opp_record) + row("PTS", ott_pts, o_pts) + row("Home", ott_home, opp_home) + row("Away", ott_away, opp_away) + row("L10", ott_l10, opp_l10) + row("GF", ott_gf, opp_gf) + row("GA", ott_ga, opp_ga)
 
+        # ── Build matchup insights ──
+        notes = []
+
+        # 1. Season series
+        s = series.get(opp)
+        if s:
+            sw, sl, so = s["W"], s["L"], s["OTL"]
+            series_str = f"{sw}-{sl}-{so}"
+            if sw > sl + so:
+                notes.append(f"OTT leads season series {series_str}")
+            elif sl > sw:
+                notes.append(f"OTT trails season series {series_str}")
+            elif sw == sl and so == 0:
+                notes.append(f"Season series tied {series_str}")
+            else:
+                notes.append(f"Season series: {series_str}")
+        else:
+            notes.append("First meeting of the season")
+
+        # 2. Points gap context
+        gap = ott_pts - o_pts
+        if abs(gap) <= 3:
+            notes.append(f"Separated by only {abs(gap)} pts — a direct rival")
+        elif gap > 0:
+            notes.append(f"OTT holds a {gap}-pt lead over {opp}")
+        else:
+            notes.append(f"{opp} holds a {abs(gap)}-pt lead over OTT")
+
+        # 3. Opponent playoff odds (if available)
+        opp_odds = mp_odds.get(opp, {}).get("ALL", {})
+        opp_playoff_pct = opp_odds.get("playoffPct", 0)
+        if opp_playoff_pct >= 0.95:
+            notes.append(f"{opp} is a virtual lock for playoffs ({opp_playoff_pct*100:.0f}%)")
+        elif opp_playoff_pct >= 0.6:
+            notes.append(f"{opp} projected to make playoffs ({opp_playoff_pct*100:.0f}% odds)")
+        elif opp_playoff_pct >= 0.2:
+            notes.append(f"{opp} is on the bubble ({opp_playoff_pct*100:.0f}% playoff odds)")
+        elif opp_playoff_pct > 0:
+            notes.append(f"{opp} is fading — only {opp_playoff_pct*100:.0f}% playoff odds")
+        else:
+            notes.append(f"{opp} is out of the playoff picture")
+
+        # 4. Scoring rate comparison
+        ott_gfpg = round(ott_gf / ott_gp, 1) if ott_gp else 0
+        opp_gfpg = round(opp_gf / opp_gp, 1) if opp_gp else 0
+        combined = round(ott_gfpg + opp_gfpg, 1)
+        if combined >= 6.6:
+            notes.append(f"High-scoring matchup — combined {combined} goals/game avg")
+        elif combined <= 5.2:
+            notes.append(f"Low-scoring matchup — combined {combined} goals/game avg")
+
+        # 5. L10 hot/cold
+        opp_l10w = o.get("l10w", 0)
+        opp_l10l = o.get("l10l", 0)
+        if opp_l10w >= 7:
+            notes.append(f"{opp} is hot — {opp_l10} in last 10")
+        elif opp_l10w <= 3:
+            notes.append(f"{opp} is cold — {opp_l10} in last 10")
+
+        notes_html = "".join(f'<li>{n}</li>' for n in notes[:4])
+
         cards.append(f'''<details class="game-detail{tough_cls}">
 <summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span></div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
 <div class="game-expand">
   <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
+  <ul class="matchup-notes">{notes_html}</ul>
 </div></details>''')
 
     return f'''<div class="sched-meta">
@@ -944,6 +1018,8 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .cmp-stat-l{{font-weight:600;text-align:left}}
 .cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-stat-r{{font-weight:600;text-align:right}}
+.matchup-notes{{margin:12px 0 0;padding:0 0 0 18px;font-size:12px;color:var(--text-muted);line-height:1.6}}
+.matchup-notes li{{margin-bottom:2px}}
 
 /* News / Trade Rumors */
 .news-list{{display:flex;flex-direction:column;gap:2px}}
@@ -1133,7 +1209,7 @@ def main():
     roster_html = build_roster_html(skaters, goalies, mp_players)
     standings_html = build_standings_section(east_teams, east_records)
     projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams)
-    schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds)
+    schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds, results)
     news_html = build_news_html(news_articles)
     html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas)
 
