@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ottawa Senators 2025-26 Dashboard</title>
+<style>
+  :root {
+    --sens-red: #C52032; --sens-black: #1A1A2E; --sens-gold: #C8A951;
+    --bg-dark: #0D0D1A; --bg-card: #16162A; --border: rgba(200,169,81,0.15);
+    --text-primary: #EEEEF0; --text-secondary: #9999B0; --text-muted: #666680;
+    --green: #22C55E; --red: #EF4444; --yellow: #EAB308; --blue: #3B82F6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg-dark); color:var(--text-primary); line-height:1.4; }
+  .hero { background:linear-gradient(135deg,var(--sens-black) 0%,#1a0a0e 50%,var(--sens-black) 100%); border-bottom:1px solid var(--border); padding:28px 24px 24px; }
+  .hero-inner { max-width:1100px; margin:0 auto; }
+  .team-header { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .team-logo { width:52px;height:52px;background:var(--sens-red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:white;box-shadow:0 4px 16px rgba(197,32,50,0.35);letter-spacing:-1px; }
+  .team-name { font-size:26px;font-weight:800;letter-spacing:-0.5px; }
+  .team-name b { color:var(--sens-red); }
+  .team-sub { font-size:12px;color:var(--text-secondary);font-weight:500;margin-top:2px; }
+  .chips { display:flex;gap:10px;flex-wrap:wrap; }
+  .chip { background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:10px 16px;min-width:90px;text-align:center; }
+  .chip .cl { font-size:9px;text-transform:uppercase;letter-spacing:1.1px;color:var(--text-muted);font-weight:600;margin-bottom:3px; }
+  .chip .cv { font-size:20px;font-weight:800;letter-spacing:-0.5px; }
+  .c-gold { color:var(--sens-gold); } .c-blue { color:var(--blue); } .c-yellow { color:var(--yellow); } .c-green { color:var(--green); }
+  .container { max-width:1100px;margin:0 auto;padding:20px 24px 40px; }
+  input[name="tab"] { display:none; }
+  .tab-bar { display:flex;gap:3px;background:rgba(255,255,255,0.04);border-radius:10px;padding:3px;margin-bottom:20px;border:1px solid var(--border); }
+  .tab-bar label { flex:1;padding:9px 12px;border-radius:7px;font-size:12px;font-weight:600;text-align:center;cursor:pointer;color:var(--text-secondary);transition:all 0.15s; }
+  .tab-bar label:hover { color:var(--text-primary);background:rgba(255,255,255,0.04); }
+  .panel { display:none; }
+  #tab-roster:checked ~ .tab-bar label[for="tab-roster"],
+  #tab-standings:checked ~ .tab-bar label[for="tab-standings"],
+  #tab-playoffs:checked ~ .tab-bar label[for="tab-playoffs"],
+  #tab-schedule:checked ~ .tab-bar label[for="tab-schedule"] { background:var(--sens-red);color:white;box-shadow:0 2px 10px rgba(197,32,50,0.3); }
+  #tab-roster:checked ~ #p-roster,
+  #tab-standings:checked ~ #p-standings,
+  #tab-playoffs:checked ~ #p-playoffs,
+  #tab-schedule:checked ~ #p-schedule { display:block; }
+  .stitle { font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px; }
+  .stitle .dot { width:7px;height:7px;border-radius:50%;background:var(--sens-red);flex-shrink:0; }
+  .tbl { width:100%;border-collapse:collapse;font-size:12px; }
+  .tbl th { background:rgba(255,255,255,0.04);padding:8px 10px;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border); }
+  .tbl th.r,.tbl td.r { text-align:right; }
+  .tbl td { padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);font-variant-numeric:tabular-nums; }
+  .tbl tbody tr:hover { background:rgba(197,32,50,0.05); }
+  .pname { font-weight:600;white-space:nowrap; }
+  .pos-tag { display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle; }
+  .pos-fw { background:rgba(59,130,246,0.15);color:#60A5FA; }
+  .pos-d { background:rgba(34,197,94,0.15);color:#4ADE80; }
+  .plus { color:var(--green); } .minus { color:var(--red); }
+  .pts-lead { color:var(--sens-gold);font-weight:700; }
+  .tbl .sens-row { background:rgba(197,32,50,0.1); }
+  .tbl .sens-row td:first-child { font-weight:700;color:var(--sens-red); }
+  .tbl .cutoff td { border-bottom:2px dashed var(--sens-gold); }
+  .in { color:var(--green);font-weight:600; } .out { color:var(--text-muted); }
+  .tcol { font-weight:600;white-space:nowrap; } .bpts { font-weight:700; }
+  .div-label { margin:20px 0 6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted); }
+  .div-label:first-child { margin-top:0; }
+  .sub-note { font-size:11px;color:var(--text-secondary);margin-bottom:14px; }
+  .pgrid { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px; }
+  @media (max-width:700px) { .pgrid { grid-template-columns:1fr; } }
+  .pcard { background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px; }
+  .pcard .pct { font-size:10px;text-transform:uppercase;letter-spacing:1.1px;color:var(--text-muted);font-weight:600;margin-bottom:10px; }
+  .pcard .pnum { font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:5px; }
+  .pcard .pdesc { font-size:11px;color:var(--text-secondary);line-height:1.5; }
+  .pcard .pdesc strong { color:var(--text-primary); }
+  .pbar-wrap { margin:16px 0; }
+  .pbar-labels { display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-bottom:5px; }
+  .pbar { height:9px;background:rgba(255,255,255,0.06);border-radius:5px;position:relative;overflow:visible; }
+  .pbar-fill { height:100%;border-radius:5px;background:linear-gradient(90deg,var(--sens-red),#E04050); }
+  .pbar-mark { position:absolute;top:-3px;width:2px;height:15px;background:var(--sens-gold);border-radius:1px; }
+  .pbar-mark span { position:absolute;top:-16px;font-size:9px;color:var(--sens-gold);font-weight:600;white-space:nowrap;transform:translateX(-50%);left:50%; }
+  .pbar-bottom { display:flex;justify-content:space-between;margin-top:6px;font-size:10px; }
+  .scenario { background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px; }
+  .scenario .st { font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:7px; }
+  .scenario .sd { font-size:11px;color:var(--text-secondary);line-height:1.5; }
+  .badge { display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px; }
+  .badge-g { background:rgba(34,197,94,0.15);color:var(--green); }
+  .badge-y { background:rgba(234,179,8,0.15);color:var(--yellow); }
+  .badge-r { background:rgba(239,68,68,0.15);color:var(--red); }
+  .footnote { margin-top:20px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;font-size:10px;color:var(--text-muted);line-height:1.6; }
+  .sched-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px; }
+  .gc { background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center; }
+  .gc.a5 { border-left:3px solid var(--yellow); }
+  .gc .gd { font-size:10px;color:var(--text-muted);font-weight:500; }
+  .gc .go { font-size:12px;font-weight:600; }
+  .gc .gl { font-size:9px;padding:2px 5px;border-radius:3px;font-weight:600; }
+  .gc .gl-h { background:rgba(34,197,94,0.12);color:var(--green); }
+  .gc .gl-a { background:rgba(239,68,68,0.12);color:var(--red); }
+  .legend { display:flex;gap:14px;margin-bottom:10px;font-size:10px;color:var(--text-secondary); }
+  .legend-item { display:flex;align-items:center;gap:5px; }
+  .ldot { width:9px;height:9px;border-radius:3px; }
+  .scroll-x { overflow-x:auto;-webkit-overflow-scrolling:touch; }
+  .updated { text-align:center;padding:16px;font-size:10px;color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="hero"><div class="hero-inner">
+  <div class="team-header">
+    <div class="team-logo">OTT</div>
+    <div><div class="team-name">Ottawa <b>Senators</b></div><div class="team-sub">2025-26 Season &middot; Updated March 2, 2026 at 12:04 AM UTC</div></div>
+  </div>
+  <div class="chips">
+    <div class="chip"><div class="cl">Record</div><div class="cv">29-22-8</div></div>
+    <div class="chip"><div class="cl">Points</div><div class="cv c-gold">66</div></div>
+    <div class="chip"><div class="cl">GP</div><div class="cv">59</div></div>
+    <div class="chip"><div class="cl">Remaining</div><div class="cv c-blue">23</div></div>
+    <div class="chip"><div class="cl">GF / GA</div><div class="cv">197 / 188</div></div>
+    <div class="chip"><div class="cl">Pts Pace</div><div class="cv c-yellow">91.7</div></div>
+    <div class="chip"><div class="cl">Home</div><div class="cv">14-10-5</div></div>
+    <div class="chip"><div class="cl">Road</div><div class="cv">15-12-3</div></div>
+    <div class="chip"><div class="cl">L10</div><div class="cv c-green">6-3-1</div></div>
+    <div class="chip"><div class="cl">Streak</div><div class="cv">W1</div></div>
+  </div>
+</div></div>
+<div class="container">
+  <input type="radio" name="tab" id="tab-roster" checked>
+  <input type="radio" name="tab" id="tab-standings">
+  <input type="radio" name="tab" id="tab-playoffs">
+  <input type="radio" name="tab" id="tab-schedule">
+  <div class="tab-bar">
+    <label for="tab-roster">Roster Stats</label>
+    <label for="tab-standings">Standings</label>
+    <label for="tab-playoffs">Playoff Projections</label>
+    <label for="tab-schedule">Remaining Games</label>
+  </div>
+  <div class="panel" id="p-roster"><div class="stitle"><span class="dot"></span> Skater Statistics</div>
+<div class="scroll-x"><table class="tbl">
+<thead><tr><th>Player</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">PTS</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">P/GP</th></tr></thead>
+<tbody><tr><td class="pname">Tim Stützle <span class="pos-tag pos-fw">C</span></td><td class="r">59</td><td class="r">28</td><td class="r">35</td><td class="r pts-lead">63</td><td class="r plus">+6</td><td class="r">31</td><td class="r">1.07</td></tr><tr><td class="pname">Drake Batherson <span class="pos-tag pos-fw">R</span></td><td class="r">56</td><td class="r">21</td><td class="r">30</td><td class="r">51</td><td class="r minus">-3</td><td class="r">23</td><td class="r">0.91</td></tr><tr><td class="pname">Jake Sanderson <span class="pos-tag pos-d">D</span></td><td class="r">59</td><td class="r">11</td><td class="r">37</td><td class="r">48</td><td class="r plus">+8</td><td class="r">8</td><td class="r">0.81</td></tr><tr><td class="pname">Dylan Cozens <span class="pos-tag pos-fw">C</span></td><td class="r">59</td><td class="r">20</td><td class="r">26</td><td class="r">46</td><td class="r minus">-12</td><td class="r">49</td><td class="r">0.78</td></tr><tr><td class="pname">Claude Giroux <span class="pos-tag pos-fw">R</span></td><td class="r">59</td><td class="r">11</td><td class="r">28</td><td class="r">39</td><td class="r plus">+15</td><td class="r">20</td><td class="r">0.66</td></tr><tr><td class="pname">Brady Tkachuk <span class="pos-tag pos-fw">L</span></td><td class="r">39</td><td class="r">15</td><td class="r">24</td><td class="r">39</td><td class="r minus">-2</td><td class="r">46</td><td class="r">1.00</td></tr><tr><td class="pname">Shane Pinto <span class="pos-tag pos-fw">C</span></td><td class="r">49</td><td class="r">15</td><td class="r">14</td><td class="r">29</td><td class="r plus">+1</td><td class="r">30</td><td class="r">0.59</td></tr><tr><td class="pname">David Perron <span class="pos-tag pos-fw">L</span></td><td class="r">49</td><td class="r">10</td><td class="r">15</td><td class="r">25</td><td class="r plus">+2</td><td class="r">22</td><td class="r">0.51</td></tr><tr><td class="pname">Ridly Greig <span class="pos-tag pos-fw">C</span></td><td class="r">54</td><td class="r">9</td><td class="r">16</td><td class="r">25</td><td class="r plus">+6</td><td class="r">67</td><td class="r">0.46</td></tr><tr><td class="pname">Thomas Chabot <span class="pos-tag pos-d">D</span></td><td class="r">44</td><td class="r">6</td><td class="r">18</td><td class="r">24</td><td class="r plus">+1</td><td class="r">18</td><td class="r">0.55</td></tr><tr><td class="pname">Fabian Zetterlund <span class="pos-tag pos-fw">L</span></td><td class="r">59</td><td class="r">12</td><td class="r">11</td><td class="r">23</td><td class="r minus">-5</td><td class="r">16</td><td class="r">0.39</td></tr><tr><td class="pname">Michael Amadio <span class="pos-tag pos-fw">R</span></td><td class="r">59</td><td class="r">8</td><td class="r">14</td><td class="r">22</td><td class="r plus">+4</td><td class="r">14</td><td class="r">0.37</td></tr><tr><td class="pname">Jordan Spence <span class="pos-tag pos-d">D</span></td><td class="r">50</td><td class="r">4</td><td class="r">15</td><td class="r">19</td><td class="r plus">+14</td><td class="r">10</td><td class="r">0.38</td></tr><tr><td class="pname">Artem Zub <span class="pos-tag pos-d">D</span></td><td class="r">58</td><td class="r">4</td><td class="r">15</td><td class="r">19</td><td class="r plus">+13</td><td class="r">34</td><td class="r">0.33</td></tr><tr><td class="pname">Nick Cousins <span class="pos-tag pos-fw">C</span></td><td class="r">58</td><td class="r">8</td><td class="r">8</td><td class="r">16</td><td class="r plus">+8</td><td class="r">68</td><td class="r">0.28</td></tr><tr><td class="pname">Nick Jensen <span class="pos-tag pos-d">D</span></td><td class="r">56</td><td class="r">4</td><td class="r">11</td><td class="r">15</td><td class="r minus">-7</td><td class="r">22</td><td class="r">0.27</td></tr><tr><td class="pname">Tyler Kleven <span class="pos-tag pos-d">D</span></td><td class="r">54</td><td class="r">1</td><td class="r">10</td><td class="r">11</td><td class="r minus">-4</td><td class="r">28</td><td class="r">0.20</td></tr><tr><td class="pname">Stephen Halliday <span class="pos-tag pos-fw">C</span></td><td class="r">27</td><td class="r">4</td><td class="r">7</td><td class="r">11</td><td class="r plus">+1</td><td class="r">2</td><td class="r">0.41</td></tr><tr><td class="pname">Lars Eller <span class="pos-tag pos-fw">C</span></td><td class="r">45</td><td class="r">2</td><td class="r">7</td><td class="r">9</td><td class="r ">0</td><td class="r">6</td><td class="r">0.20</td></tr><tr><td class="pname">Nikolas Matinpalo <span class="pos-tag pos-d">D</span></td><td class="r">30</td><td class="r">0</td><td class="r">4</td><td class="r">4</td><td class="r ">0</td><td class="r">10</td><td class="r">0.13</td></tr><tr><td class="pname">Olle Lycksell <span class="pos-tag pos-fw">R</span></td><td class="r">7</td><td class="r">1</td><td class="r">1</td><td class="r">2</td><td class="r minus">-2</td><td class="r">0</td><td class="r">0.29</td></tr><tr><td class="pname">Kurtis MacDermid <span class="pos-tag pos-fw">L</span></td><td class="r">16</td><td class="r">0</td><td class="r">1</td><td class="r">1</td><td class="r minus">-3</td><td class="r">33</td><td class="r">0.06</td></tr><tr><td class="pname">Arthur Kaliyev <span class="pos-tag pos-fw">R</span></td><td class="r">2</td><td class="r">0</td><td class="r">1</td><td class="r">1</td><td class="r ">0</td><td class="r">0</td><td class="r">0.50</td></tr><tr><td class="pname">Hayden Hodgson <span class="pos-tag pos-fw">R</span></td><td class="r">9</td><td class="r">0</td><td class="r">0</td><td class="r">0</td><td class="r minus">-1</td><td class="r">11</td><td class="r">0.00</td></tr><tr><td class="pname">Dennis Gilbert <span class="pos-tag pos-d">D</span></td><td class="r">1</td><td class="r">0</td><td class="r">0</td><td class="r">0</td><td class="r minus">-1</td><td class="r">0</td><td class="r">0.00</td></tr><tr><td class="pname">Xavier Bourgault <span class="pos-tag pos-fw">R</span></td><td class="r">2</td><td class="r">0</td><td class="r">0</td><td class="r">0</td><td class="r minus">-1</td><td class="r">0</td><td class="r">0.00</td></tr></tbody></table></div>
+<div style="margin-top:22px"><div class="stitle"><span class="dot"></span> Goaltenders</div>
+<div class="scroll-x"><table class="tbl">
+<thead><tr><th>Player</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">GAA</th><th class="r">SV%</th><th class="r">SO</th></tr></thead>
+<tbody><tr><td class="pname">Linus Ullmark</td><td class="r">32</td><td class="r">17</td><td class="r">8</td><td class="r">6</td><td class="r">2.80</td><td class="r">.885</td><td class="r">1</td></tr><tr><td class="pname">Leevi Meriläinen</td><td class="r">20</td><td class="r">8</td><td class="r">10</td><td class="r">1</td><td class="r">3.51</td><td class="r">.860</td><td class="r">0</td></tr><tr><td class="pname">James Reimer</td><td class="r">7</td><td class="r">3</td><td class="r">3</td><td class="r">1</td><td class="r">2.90</td><td class="r">.870</td><td class="r">0</td></tr><tr><td class="pname">Mads Sogaard</td><td class="r">2</td><td class="r">1</td><td class="r">0</td><td class="r">0</td><td class="r">4.65</td><td class="r">.833</td><td class="r">0</td></tr><tr><td class="pname">Hunter Shepard</td><td class="r">1</td><td class="r">0</td><td class="r">1</td><td class="r">0</td><td class="r">3.35</td><td class="r">.833</td><td class="r">0</td></tr></tbody></table></div></div></div>
+  <div class="panel" id="p-standings">
+    <div class="stitle"><span class="dot"></span> Eastern Conference — Wild Card Picture</div>
+    <p class="sub-note">Top 3 from each division + 2 Wild Cards qualify. Dashed line = playoff cutoff.</p>
+    <div class="div-label">Atlantic Division</div>
+<div class="scroll-x"><table class="tbl">
+<thead><tr><th></th><th>Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th></tr></thead>
+<tbody><tr><td class="in">1</td><td class="tcol">Tampa Bay Lightning</td><td class="r">58</td><td class="r">38</td><td class="r">16</td><td class="r">4</td><td class="r bpts">80</td><td class="r">.689</td></tr><tr><td class="in">2</td><td class="tcol">Buffalo Sabres</td><td class="r">60</td><td class="r">35</td><td class="r">19</td><td class="r">6</td><td class="r bpts">76</td><td class="r">.633</td></tr><tr class="cutoff"><td class="in">3</td><td class="tcol">Montréal Canadiens</td><td class="r">59</td><td class="r">33</td><td class="r">17</td><td class="r">9</td><td class="r bpts">75</td><td class="r">.635</td></tr><tr><td class="out">4</td><td class="tcol">Detroit Red Wings</td><td class="r">60</td><td class="r">34</td><td class="r">20</td><td class="r">6</td><td class="r bpts">74</td><td class="r">.616</td></tr><tr><td class="out">5</td><td class="tcol">Boston Bruins</td><td class="r">59</td><td class="r">33</td><td class="r">21</td><td class="r">5</td><td class="r bpts">71</td><td class="r">.601</td></tr><tr class="sens-row"><td class="out">6</td><td class="tcol">Ottawa Senators</td><td class="r">59</td><td class="r">29</td><td class="r">22</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.559</td></tr><tr><td class="out">7</td><td class="tcol">Florida Panthers</td><td class="r">59</td><td class="r">30</td><td class="r">26</td><td class="r">3</td><td class="r bpts">63</td><td class="r">.533</td></tr><tr><td class="out">8</td><td class="tcol">Toronto Maple Leafs</td><td class="r">60</td><td class="r">27</td><td class="r">24</td><td class="r">9</td><td class="r bpts">63</td><td class="r">.525</td></tr></tbody></table></div><div class="div-label">Metropolitan Division</div>
+<div class="scroll-x"><table class="tbl">
+<thead><tr><th></th><th>Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th></tr></thead>
+<tbody><tr><td class="in">1</td><td class="tcol">Carolina Hurricanes</td><td class="r">59</td><td class="r">38</td><td class="r">15</td><td class="r">6</td><td class="r bpts">82</td><td class="r">.694</td></tr><tr><td class="in">2</td><td class="tcol">Pittsburgh Penguins</td><td class="r">59</td><td class="r">31</td><td class="r">15</td><td class="r">13</td><td class="r bpts">75</td><td class="r">.635</td></tr><tr class="cutoff"><td class="in">3</td><td class="tcol">New York Islanders</td><td class="r">60</td><td class="r">34</td><td class="r">21</td><td class="r">5</td><td class="r bpts">73</td><td class="r">.608</td></tr><tr><td class="out">4</td><td class="tcol">Washington Capitals</td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td></tr><tr><td class="out">5</td><td class="tcol">Columbus Blue Jackets</td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td></tr><tr><td class="out">6</td><td class="tcol">Philadelphia Flyers</td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td></tr><tr><td class="out">7</td><td class="tcol">New Jersey Devils</td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td></tr><tr><td class="out">8</td><td class="tcol">New York Rangers</td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td></tr></tbody></table></div><div class="div-label">Wild Card Race (Top 2 Qualify)</div>
+<div class="scroll-x"><table class="tbl">
+<thead><tr><th></th><th>Team</th><th>Div</th><th class="r">GP</th><th class="r">PTS</th><th class="r">Remaining</th><th class="r">Max Pts</th></tr></thead>
+<tbody><tr style="background:rgba(34,197,94,0.06)"><td class="in">WC1</td><td class="tcol">Detroit Red Wings</td><td>A</td><td class="r">60</td><td class="r bpts">74</td><td class="r">22</td><td class="r">118</td></tr><tr class="cutoff" style="background:rgba(34,197,94,0.06)"><td class="in">WC2</td><td class="tcol">Boston Bruins</td><td>A</td><td class="r">59</td><td class="r bpts">71</td><td class="r">23</td><td class="r">117</td></tr><tr><td class="out">3</td><td class="tcol">Washington Capitals</td><td>M</td><td class="r">62</td><td class="r bpts">69</td><td class="r">20</td><td class="r">109</td></tr><tr class="sens-row"><td class="">4</td><td class="tcol">Ottawa Senators</td><td>A</td><td class="r">59</td><td class="r bpts">66</td><td class="r">23</td><td class="r">112</td></tr><tr><td class="out">5</td><td class="tcol">Columbus Blue Jackets</td><td>M</td><td class="r">58</td><td class="r bpts">66</td><td class="r">24</td><td class="r">114</td></tr><tr><td class="out">6</td><td class="tcol">Philadelphia Flyers</td><td>M</td><td class="r">59</td><td class="r bpts">65</td><td class="r">23</td><td class="r">111</td></tr><tr><td class="out">7</td><td class="tcol">Florida Panthers</td><td>A</td><td class="r">59</td><td class="r bpts">63</td><td class="r">23</td><td class="r">109</td></tr><tr><td class="out">8</td><td class="tcol">Toronto Maple Leafs</td><td>A</td><td class="r">60</td><td class="r bpts">63</td><td class="r">22</td><td class="r">107</td></tr><tr><td class="out">9</td><td class="tcol">New Jersey Devils</td><td>M</td><td class="r">60</td><td class="r bpts">60</td><td class="r">22</td><td class="r">104</td></tr><tr><td class="out">10</td><td class="tcol">New York Rangers</td><td>M</td><td class="r">59</td><td class="r bpts">53</td><td class="r">23</td><td class="r">99</td></tr></tbody></table></div>
+  </div>
+  <div class="panel" id="p-playoffs"><div class="stitle"><span class="dot"></span> Playoff Projection Analysis</div>
+<div class="pgrid">
+  <div class="pcard"><div class="pct">Current Pace</div><div class="pnum" style="color:var(--yellow)">~91.7 pts</div><div class="pdesc">At their current points percentage (0.559), Ottawa projects to <strong>~91.7 points</strong> over 82 games.</div></div>
+  <div class="pcard"><div class="pct">Points Needed for 93</div><div class="pnum" style="color:var(--sens-gold)">27 pts</div><div class="pdesc">Need <strong>27 more points</strong> in 23 games to reach 93 — a safe playoff target.</div></div>
+  <div class="pcard"><div class="pct">Win Rate Needed</div><div class="pnum" style="color:var(--blue)">0.587</div><div class="pdesc">Must earn <strong>1.17 pts/game</strong> the rest of the way. Current pace: 1.12.</div></div>
+  <div class="pcard"><div class="pct">Record vs Above .500</div><div class="pnum" style="color:var(--red)">10-11-7</div><div class="pdesc">Record against teams with winning records this season.</div></div>
+</div>
+<div class="pcard" style="margin-bottom:20px">
+  <div class="pct">Season Points Progress</div>
+  <div class="pbar-wrap">
+    <div class="pbar-labels"><span>0 pts</span><span>82 games &rarr; 164 max</span></div>
+    <div class="pbar">
+      <div class="pbar-fill" style="width:40.2%"></div>
+      <div class="pbar-mark" style="left:56.7%"><span>93 pts target</span></div>
+    </div>
+    <div class="pbar-bottom">
+      <span style="color:var(--sens-red);font-weight:600">66 pts earned</span>
+      <span style="color:var(--text-muted)">27 pts needed &rarr; 23 games left</span>
+    </div>
+  </div>
+</div>
+<div class="stitle"><span class="dot"></span> Scenarios to Make the Playoffs</div>
+<div class="scenario"><div class="st"><span class="badge badge-g">Target</span> Reach 93 points — Go ~14-0-9</div><div class="sd">A .587+ points pace the rest of the way. A step up from the season average but doable with a strong push. Likely secures a Wild Card spot.</div></div>
+<div class="scenario"><div class="st"><span class="badge badge-y">Stretch</span> Reach 96 points — Lock it in</div><div class="sd">Win 2-3 more beyond the target to secure a spot with room to spare. Takes pressure off the final week.</div></div>
+<div class="scenario"><div class="st"><span class="badge badge-r">Minimum</span> Reach 90 points — Need help</div><div class="sd">The bare minimum — may sneak in if other bubble teams collapse. Last year, 91 was the Eastern Conference cutoff.</div></div>
+<div class="footnote"><strong>Key context:</strong> The Sens play at a 101-point pace with Ullmark in net vs. 70-point pace without him — goaltending health is the single biggest variable. The remaining schedule features 23 games with several matchups against fellow bubble teams.</div></div>
+  <div class="panel" id="p-schedule"><div class="stitle"><span class="dot"></span> Remaining Schedule — 23 Games</div>
+<div class="legend">
+  <div class="legend-item"><div class="ldot" style="background:var(--yellow)"></div> vs. above-.500 team</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--green)"></div> Home</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--red)"></div> Away</div>
+</div>
+<div class="sched-grid"><div class="gc"><div><div class="gd">Mar 3</div><div class="go">@ Edmonton</div></div><div class="gl gl-a">AWAY</div></div><div class="gc"><div><div class="gd">Mar 5</div><div class="go">@ Calgary</div></div><div class="gl gl-a">AWAY</div></div><div class="gc"><div><div class="gd">Mar 7</div><div class="go">@ Seattle</div></div><div class="gl gl-a">AWAY</div></div><div class="gc"><div><div class="gd">Mar 9</div><div class="go">@ Vancouver</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Mar 11</div><div class="go">vs Montréal</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Mar 14</div><div class="go">vs Anaheim</div></div><div class="gl gl-h">HOME</div></div><div class="gc"><div><div class="gd">Mar 15</div><div class="go">vs San Jose</div></div><div class="gl gl-h">HOME</div></div><div class="gc"><div><div class="gd">Mar 18</div><div class="go">@ Washington</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Mar 19</div><div class="go">vs New York</div></div><div class="gl gl-h">HOME</div></div><div class="gc"><div><div class="gd">Mar 21</div><div class="go">vs Toronto</div></div><div class="gl gl-h">HOME</div></div><div class="gc"><div><div class="gd">Mar 23</div><div class="go">@ New York</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Mar 24</div><div class="go">@ Detroit</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Mar 26</div><div class="go">vs Pittsburgh</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Mar 28</div><div class="go">@ Tampa Bay</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Mar 31</div><div class="go">@ Florida</div></div><div class="gl gl-a">AWAY</div></div><div class="gc a5"><div><div class="gd">Apr 2</div><div class="go">vs Buffalo</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Apr 4</div><div class="go">vs Minnesota</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Apr 5</div><div class="go">vs Carolina</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Apr 7</div><div class="go">vs Tampa Bay</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Apr 9</div><div class="go">vs Florida</div></div><div class="gl gl-h">HOME</div></div><div class="gc a5"><div><div class="gd">Apr 11</div><div class="go">@ New York</div></div><div class="gl gl-a">AWAY</div></div><div class="gc"><div><div class="gd">Apr 12</div><div class="go">@ New Jersey</div></div><div class="gl gl-a">AWAY</div></div><div class="gc"><div><div class="gd">Apr 15</div><div class="go">vs Toronto</div></div><div class="gl gl-h">HOME</div></div></div>
+<div style="margin-top:20px"><div class="stitle"><span class="dot"></span> Schedule Breakdown</div>
+<div class="pgrid">
+  <div class="pcard"><div class="pct">Home / Away</div><div class="pnum">12 <span style="font-size:16px;color:var(--text-muted)">/</span> 11</div><div class="pdesc">12 home games, 11 road games.</div></div>
+  <div class="pcard"><div class="pct">vs. Above .500 Teams</div><div class="pnum" style="color:var(--yellow)">13</div><div class="pdesc">13 of 23 remaining games against above-.500 teams.</div></div>
+</div></div></div>
+</div>
+<div class="updated">Auto-updated via GitHub Actions &middot; Data from NHL API &middot; March 2, 2026 at 12:04 AM UTC</div>
+</body></html>
