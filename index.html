@@ -155,14 +155,14 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .loc-home{background:#eef8ee;color:#3d8c40}
 .loc-away{background:#f5f5f5;color:var(--text-secondary)}
 .game-expand{border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
-.cmp-header{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.cmp-header-mid{font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
-.cmp-row{margin-bottom:10px}
-.cmp-label{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);font-weight:500;margin-bottom:2px}
-.cmp-vals{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:3px}
-.cmp-vs{font-size:10px;color:var(--text-muted);font-weight:400}
-.cmp-bar{display:flex;height:4px;border-radius:2px;overflow:hidden;gap:2px}
-.cmp-bar-l,.cmp-bar-r{height:100%;border-radius:2px;opacity:0.5}
+.cmp-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.cmp-tbl thead th{font-size:12px;font-weight:700;padding:6px 8px;border-bottom:2px solid var(--border);text-align:center}
+.cmp-tbl thead th:first-child{text-align:left}
+.cmp-tbl thead th:last-child{text-align:right}
+.cmp-tbl td{padding:5px 8px;border-bottom:1px solid var(--border)}
+.cmp-stat-l{font-weight:600;text-align:left}
+.cmp-stat-label{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.cmp-stat-r{font-weight:600;text-align:right}
 
 /* Footer */
 .footer{text-align:center;padding:24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}
@@ -170,7 +170,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 
 <div class="header">
   <h1>Ottawa Senators</h1>
-  <div class="subtitle">2025-26 Season &middot; Updated March 2, 2026 at 2:43 AM UTC</div>
+  <div class="subtitle">2025-26 Season &middot; Updated March 2, 2026 at 2:45 AM UTC</div>
   <div class="playoff-banner">
     <div class="pb-item"><div class="pb-val">45.9%</div><div class="pb-label">Playoff Probability</div></div>
     <div class="pb-item"><div class="pb-val">66</div><div class="pb-label">Points (27 to target)</div></div>
@@ -199,7 +199,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
     <label for="tab-roster">Roster</label>
     <label for="tab-standings">Standings</label>
     <label for="tab-playoffs">Playoff %</label>
-    <label for="tab-schedule">Schedule</label>
+    <label for="tab-schedule">Remaining Games</label>
   </div>
   <div class="panel" id="p-roster"><p class="sub-note">Click any player to see MoneyPuck advanced analytics.</p>
 <div class="scroll-x"><table class="nhl-tbl">
@@ -1139,674 +1139,99 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
   <span>12 home &middot; 11 away</span>
   <span>11 vs above .500</span>
 </div>
-<p class="sub-note">Click any game to see head-to-head advanced metrics.</p>
+<p class="sub-note">Click any game to compare records.</p>
 <div class="sched-list"><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">@ Edmonton</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">@ Edmonton</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>EDM</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.52</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#ccc"></div><div class="cmp-bar-r" style="width:52%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.33</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#111"></div><div class="cmp-bar-r" style="width:51%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-24-8</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">@ Calgary</span></div><div class="game-right"><span class="game-meta">24-28-6 &middot; 54p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">@ Calgary</span></div><div class="game-right"><span class="game-meta">24-28-6 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>CGY</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.48</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:57%;background:#111"></div><div class="cmp-bar-r" style="width:43%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.93</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#ccc"></div><div class="cmp-bar-r" style="width:48%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>CGY</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-28-6</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">@ Seattle</span></div><div class="game-right"><span class="game-meta">28-22-9 &middot; 65p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">@ Seattle</span></div><div class="game-right"><span class="game-meta">28-22-9 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>SEA</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">45.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:55%;background:#111"></div><div class="cmp-bar-r" style="width:45%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">45.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">47.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.85</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.90</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#ccc"></div><div class="cmp-bar-r" style="width:48%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>SEA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-22-9</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 9</span><span class="game-opp">@ Vancouver</span></div><div class="game-right"><span class="game-meta">18-34-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 9</span><span class="game-opp">@ Vancouver</span></div><div class="game-right"><span class="game-meta">18-34-7 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>VAN</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:55%;background:#111"></div><div class="cmp-bar-r" style="width:45%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.51</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:57%;background:#111"></div><div class="cmp-bar-r" style="width:43%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.66</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:47%;background:#111"></div><div class="cmp-bar-r" style="width:53%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>VAN</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">18-34-7</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 11</span><span class="game-opp">vs Montréal</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 11</span><span class="game-opp">vs Montréal</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>MTL</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.49</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#ccc"></div><div class="cmp-bar-r" style="width:51%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.20</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-17-9</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">vs Anaheim</span></div><div class="game-right"><span class="game-meta">32-23-3 &middot; 67p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">vs Anaheim</span></div><div class="game-right"><span class="game-meta">32-23-3 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>ANA</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">52.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.28</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.52</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#111"></div><div class="cmp-bar-r" style="width:52%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">52.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">32-23-3</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">vs San Jose</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">vs San Jose</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>SJS</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:55%;background:#111"></div><div class="cmp-bar-r" style="width:45%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">45.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">47.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.07</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.51</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#111"></div><div class="cmp-bar-r" style="width:52%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 18</span><span class="game-opp">@ Washington</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 18</span><span class="game-opp">@ Washington</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>WSH</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.16</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.92</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#ccc"></div><div class="cmp-bar-r" style="width:48%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-24-7</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">vs New York</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">vs New York</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>NYI</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">47.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.88</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.72</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#ccc"></div><div class="cmp-bar-r" style="width:46%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Toronto</span></div><div class="game-right"><span class="game-meta">27-24-9 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Toronto</span></div><div class="game-right"><span class="game-meta">27-24-9 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>TOR</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.20</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.45</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#111"></div><div class="cmp-bar-r" style="width:52%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>TOR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-24-9</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 23</span><span class="game-opp">@ New York</span></div><div class="game-right"><span class="game-meta">23-29-7 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 23</span><span class="game-opp">@ New York</span></div><div class="game-right"><span class="game-meta">23-29-7 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>NYR</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.59</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:56%;background:#111"></div><div class="cmp-bar-r" style="width:44%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.14</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>NYR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-29-7</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Detroit</span></div><div class="game-right"><span class="game-meta">34-20-6 &middot; 74p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Detroit</span></div><div class="game-right"><span class="game-meta">34-20-6 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>DET</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.93</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.97</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#ccc"></div><div class="cmp-bar-r" style="width:48%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">34-20-6</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">vs Pittsburgh</span></div><div class="game-right"><span class="game-meta">31-15-13 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">vs Pittsburgh</span></div><div class="game-right"><span class="game-meta">31-15-13 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>PIT</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.42</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#ccc"></div><div class="cmp-bar-r" style="width:51%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.80</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#ccc"></div><div class="cmp-bar-r" style="width:47%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>PIT</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-15-13</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Tampa Bay</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Tampa Bay</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>TBL</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">55.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="">53.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="">54.0%</span><span class="cmp-vs">vs</span><span style="font-weight:700">55.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.53</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#ccc"></div><div class="cmp-bar-r" style="width:52%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.60</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:55%;background:#ccc"></div><div class="cmp-bar-r" style="width:45%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">@ Florida</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">@ Florida</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>FLA</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">52.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.00</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.29</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#111"></div><div class="cmp-bar-r" style="width:51%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Buffalo</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Buffalo</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>BUF</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.38</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#ccc"></div><div class="cmp-bar-r" style="width:51%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.02</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#ccc"></div><div class="cmp-bar-r" style="width:49%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Minnesota</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Minnesota</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>MIN</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">47.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">52.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.32</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.88</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#ccc"></div><div class="cmp-bar-r" style="width:47%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-16-10</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 5</span><span class="game-opp">vs Carolina</span></div><div class="game-right"><span class="game-meta">38-15-6 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 5</span><span class="game-opp">vs Carolina</span></div><div class="game-right"><span class="game-meta">38-15-6 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>CAR</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="">56.0%</span><span class="cmp-vs">vs</span><span style="">56.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="">53.0%</span><span class="cmp-vs">vs</span><span style="font-weight:700">59.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:47%;background:#ccc"></div><div class="cmp-bar-r" style="width:53%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="">54.0%</span><span class="cmp-vs">vs</span><span style="font-weight:700">56.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#ccc"></div><div class="cmp-bar-r" style="width:51%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.44</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#ccc"></div><div class="cmp-bar-r" style="width:51%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.81</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#ccc"></div><div class="cmp-bar-r" style="width:47%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="">54.0%</span><span class="cmp-vs">vs</span><span style="font-weight:700">59.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#ccc"></div><div class="cmp-bar-r" style="width:52%;background:#111"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-15-6</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">vs Tampa Bay</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">vs Tampa Bay</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>TBL</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">55.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="">53.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="">54.0%</span><span class="cmp-vs">vs</span><span style="font-weight:700">55.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#ccc"></div><div class="cmp-bar-r" style="width:50%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="">3.29</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.53</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#ccc"></div><div class="cmp-bar-r" style="width:52%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.60</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:55%;background:#ccc"></div><div class="cmp-bar-r" style="width:45%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Florida</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Florida</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>FLA</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">52.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.00</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.29</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:49%;background:#111"></div><div class="cmp-bar-r" style="width:51%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">53.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:50%;background:#111"></div><div class="cmp-bar-r" style="width:50%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail tough">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ New York</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ New York</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>NYI</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">47.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.88</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">2.72</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#ccc"></div><div class="cmp-bar-r" style="width:46%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">49.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 12</span><span class="game-opp">@ New Jersey</span></div><div class="game-right"><span class="game-meta">29-29-2 &middot; 60p</span><span class="game-loc loc-away">Away</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 12</span><span class="game-opp">@ New Jersey</span></div><div class="game-right"><span class="game-meta">29-29-2 &middot; 0p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>NJD</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">50.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:52%;background:#111"></div><div class="cmp-bar-r" style="width:48%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">2.47</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:57%;background:#111"></div><div class="cmp-bar-r" style="width:43%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="">3.19</span><span class="cmp-vs">vs</span><span style="font-weight:700">3.03</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#ccc"></div><div class="cmp-bar-r" style="width:49%;background:#111"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">51.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>NJD</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-29-2</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">vs Toronto</span></div><div class="game-right"><span class="game-meta">27-24-9 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">vs Toronto</span></div><div class="game-right"><span class="game-meta">27-24-9 &middot; 0p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>TOR</span></div>
-  <div class="cmp-row">
-<div class="cmp-label">xGF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">56.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (5v5)</div>
-<div class="cmp-vals"><span style="font-weight:700">53.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">xGF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">48.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:53%;background:#111"></div><div class="cmp-bar-r" style="width:47%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GF/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.29</span><span class="cmp-vs">vs</span><span style="">3.20</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:51%;background:#111"></div><div class="cmp-bar-r" style="width:49%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">GA/GP</div>
-<div class="cmp-vals"><span style="font-weight:700">3.19</span><span class="cmp-vs">vs</span><span style="">3.45</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:48%;background:#111"></div><div class="cmp-bar-r" style="width:52%;background:#ccc"></div></div>
-</div><div class="cmp-row">
-<div class="cmp-label">CF% (All)</div>
-<div class="cmp-vals"><span style="font-weight:700">54.0%</span><span class="cmp-vs">vs</span><span style="">46.0%</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:54%;background:#111"></div><div class="cmp-bar-r" style="width:46%;background:#ccc"></div></div>
-</div>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>TOR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-24-9</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0-0-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">0-0-0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">0</td></tr><tr><td class="cmp-stat-l">0</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">0</td></tr></tbody></table>
 </div></details></div></div>
 </div>
 <div class="footer">NHL API + <a href="https://moneypuck.com">MoneyPuck</a> &middot; Auto-updated via GitHub Actions</div>

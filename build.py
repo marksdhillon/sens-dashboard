@@ -462,39 +462,6 @@ def compute_vs_above500(results, above500):
 
 # ── HTML Builders ─────────────────────────────────────────
 
-def cmp_bar(label, val_ott, val_opp, fmt="pct", higher_better=True):
-    if fmt == "pct":
-        s_ott = f"{val_ott*100:.1f}%"
-        s_opp = f"{val_opp*100:.1f}%"
-        pct_ott = val_ott * 100
-        pct_opp = val_opp * 100
-    elif fmt == "dec":
-        s_ott = f"{val_ott:.2f}"
-        s_opp = f"{val_opp:.2f}"
-        pct_ott = val_ott * 20
-        pct_opp = val_opp * 20
-    else:
-        s_ott = str(val_ott)
-        s_opp = str(val_opp)
-        pct_ott = val_ott
-        pct_opp = val_opp
-
-    total = pct_ott + pct_opp if (pct_ott + pct_opp) > 0 else 1
-    w_ott = round(pct_ott / total * 100)
-    w_opp = 100 - w_ott
-
-    ott_better = (val_ott > val_opp) if higher_better else (val_ott < val_opp)
-    opp_better = (val_opp > val_ott) if higher_better else (val_opp < val_ott)
-    c_ott = "font-weight:700" if ott_better else ""
-    c_opp = "font-weight:700" if opp_better else ""
-    bar_ott = "#111" if ott_better else "#ccc"
-    bar_opp = "#111" if opp_better else "#ccc"
-
-    return f'''<div class="cmp-row">
-<div class="cmp-label">{label}</div>
-<div class="cmp-vals"><span style="{c_ott}">{s_ott}</span><span class="cmp-vs">vs</span><span style="{c_opp}">{s_opp}</span></div>
-<div class="cmp-bar"><div class="cmp-bar-l" style="width:{w_ott}%;background:{bar_ott}"></div><div class="cmp-bar-r" style="width:{w_opp}%;background:{bar_opp}"></div></div>
-</div>'''
 
 def build_roster_html(skaters, goalies, mp_players):
     rows = []
@@ -761,8 +728,15 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 <p class="footnote">All projections from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a>. Updated automatically after each game.</p>'''
 
 def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds):
-    ott_all = mp_stats.get(TEAM, {}).get("all", {})
-    ott_5v5 = mp_stats.get(TEAM, {}).get("5v5", {})
+    ott = team_records.get(TEAM, {})
+    fmt_r = lambda w, l, o: f"{w}-{l}-{o}"
+    ott_record = fmt_r(ott.get("w",0), ott.get("l",0), ott.get("otl",0))
+    ott_home = fmt_r(ott.get("homeWins",0), ott.get("homeLosses",0), ott.get("homeOtLosses",0))
+    ott_away = fmt_r(ott.get("roadWins",0), ott.get("roadLosses",0), ott.get("roadOtLosses",0))
+    ott_l10 = fmt_r(ott.get("l10Wins",0), ott.get("l10Losses",0), ott.get("l10OtLosses",0))
+    ott_gf = ott.get("goalFor", 0)
+    ott_ga = ott.get("goalAgainst", 0)
+    ott_pts = ott.get("points", 0)
 
     cards = []
     for g in remaining:
@@ -771,26 +745,24 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
         tough_cls = " tough" if g["above500"] else ""
 
         opp = g["oppAbbrev"]
-        opp_rec = team_records.get(opp, {})
-        opp_record = f'{opp_rec.get("w",0)}-{opp_rec.get("l",0)}-{opp_rec.get("otl",0)}'
-        opp_pts = opp_rec.get("pts", 0)
-        opp_mp = mp_stats.get(opp, {})
-        opp_all = opp_mp.get("all", {})
-        opp_5v5 = opp_mp.get("5v5", {})
+        o = team_records.get(opp, {})
+        opp_record = fmt_r(o.get("w",0), o.get("l",0), o.get("otl",0))
+        opp_home = fmt_r(o.get("homeWins",0), o.get("homeLosses",0), o.get("homeOtLosses",0))
+        opp_away = fmt_r(o.get("roadWins",0), o.get("roadLosses",0), o.get("roadOtLosses",0))
+        opp_l10 = fmt_r(o.get("l10Wins",0), o.get("l10Losses",0), o.get("l10OtLosses",0))
+        opp_gf = o.get("goalFor", 0)
+        opp_ga = o.get("goalAgainst", 0)
+        o_pts = o.get("points", 0)
 
-        bars = []
-        bars.append(cmp_bar("xGF% (5v5)", ott_5v5.get("xGFpct", 0.5), opp_5v5.get("xGFpct", 0.5), "pct"))
-        bars.append(cmp_bar("CF% (5v5)", ott_5v5.get("CFpct", 0.5), opp_5v5.get("CFpct", 0.5), "pct"))
-        bars.append(cmp_bar("xGF% (All)", ott_all.get("xGFpct", 0.5), opp_all.get("xGFpct", 0.5), "pct"))
-        bars.append(cmp_bar("GF/GP", ott_all.get("gfpg", 0), opp_all.get("gfpg", 0), "dec"))
-        bars.append(cmp_bar("GA/GP", ott_all.get("gapg", 0), opp_all.get("gapg", 0), "dec", higher_better=False))
-        bars.append(cmp_bar("CF% (All)", ott_all.get("CFpct", 0.5), opp_all.get("CFpct", 0.5), "pct"))
+        def row(label, v_ott, v_opp):
+            return f'<tr><td class="cmp-stat-l">{v_ott}</td><td class="cmp-stat-label">{label}</td><td class="cmp-stat-r">{v_opp}</td></tr>'
+
+        rows = row("Record", ott_record, opp_record) + row("PTS", ott_pts, o_pts) + row("Home", ott_home, opp_home) + row("Away", ott_away, opp_away) + row("L10", ott_l10, opp_l10) + row("GF", ott_gf, opp_gf) + row("GA", ott_ga, opp_ga)
 
         cards.append(f'''<details class="game-detail{tough_cls}">
-<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span></div><div class="game-right"><span class="game-meta">{opp_record} &middot; {opp_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span></div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
 <div class="game-expand">
-  <div class="cmp-header"><span>OTT</span><span class="cmp-header-mid">Matchup</span><span>{opp}</span></div>
-  {"".join(bars)}
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
 </div></details>''')
 
     return f'''<div class="sched-meta">
@@ -798,7 +770,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
   <span>{home_count} home &middot; {away_count} away</span>
   <span>{above500_count} vs above .500</span>
 </div>
-<p class="sub-note">Click any game to see head-to-head advanced metrics.</p>
+<p class="sub-note">Click any game to compare records.</p>
 <div class="sched-list">{"".join(cards)}</div>'''
 
 def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas):
@@ -981,14 +953,14 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .loc-home{{background:#eef8ee;color:#3d8c40}}
 .loc-away{{background:#f5f5f5;color:var(--text-secondary)}}
 .game-expand{{border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}}
-.cmp-header{{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
-.cmp-header-mid{{font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.5px}}
-.cmp-row{{margin-bottom:10px}}
-.cmp-label{{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);font-weight:500;margin-bottom:2px}}
-.cmp-vals{{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:3px}}
-.cmp-vs{{font-size:10px;color:var(--text-muted);font-weight:400}}
-.cmp-bar{{display:flex;height:4px;border-radius:2px;overflow:hidden;gap:2px}}
-.cmp-bar-l,.cmp-bar-r{{height:100%;border-radius:2px;opacity:0.5}}
+.cmp-tbl{{width:100%;border-collapse:collapse;font-size:13px}}
+.cmp-tbl thead th{{font-size:12px;font-weight:700;padding:6px 8px;border-bottom:2px solid var(--border);text-align:center}}
+.cmp-tbl thead th:first-child{{text-align:left}}
+.cmp-tbl thead th:last-child{{text-align:right}}
+.cmp-tbl td{{padding:5px 8px;border-bottom:1px solid var(--border)}}
+.cmp-stat-l{{font-weight:600;text-align:left}}
+.cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
+.cmp-stat-r{{font-weight:600;text-align:right}}
 
 /* Footer */
 .footer{{text-align:center;padding:24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}}
@@ -1025,7 +997,7 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
     <label for="tab-roster">Roster</label>
     <label for="tab-standings">Standings</label>
     <label for="tab-playoffs">Playoff %</label>
-    <label for="tab-schedule">Schedule</label>
+    <label for="tab-schedule">Remaining Games</label>
   </div>
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-standings">
