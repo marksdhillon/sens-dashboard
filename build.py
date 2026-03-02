@@ -1222,14 +1222,13 @@ a.pname:hover{{color:var(--text-strong)}}
     </div>
   </div>
   <div class="stat-row">
-    <span class="stat-pill pill-accent" title="MoneyPuck playoff probability"><span class="sl">Playoffs</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
+    <span class="stat-pill pill-accent" title="MoneyPuck playoff probability"><span class="sl">Playoff Odds</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
     <span class="stat-pill" title="Record vs teams above .500"><span class="sl">vs .500+</span> <span class="sv">{vs500_str}</span></span>
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">{goal_diff_str}</span></span>
     <span class="stat-pill" title="Power play goals / power play shots — league rank out of 32"><span class="sl">PP%</span> <span class="sv">{pp_pct}% <small>({ordinal(pp_rank)})</small></span></span>
     <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">{pk_pct}% <small>({ordinal(pk_rank)})</small></span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
-    <span class="stat-pill"><span class="sl">Streak</span> <span class="sv">{sens["streak"]}</span></span>
   </div>
 </div>
 
