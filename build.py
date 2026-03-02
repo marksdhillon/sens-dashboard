@@ -273,7 +273,7 @@ def fmt_delta(current, previous, fmt="num", invert=False):
     else:
         is_good = diff > 0
     arrow = "&#9650;" if diff > 0 else "&#9660;"
-    color = "#34d399" if is_good else "#fb7185"
+    color = "var(--green)" if is_good else "var(--red)"
     if fmt == "pct":
         label = f"{abs(diff)*100:.1f}%"
     elif fmt == "dec":
@@ -755,7 +755,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 
     proj_diff = proj_pts - target
     diff_sign = "+" if proj_diff >= 0 else ""
-    diff_color = "#34d399" if proj_diff >= 0 else "#fb7185"
+    diff_color = "var(--green)" if proj_diff >= 0 else "var(--red)"
     return f'''<div class="kpi-row">
   <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">{proj_pts:.0f} <span style="font-size:16px;color:{diff_color}">({diff_sign}{proj_diff:.0f})</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -992,13 +992,16 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Ottawa Senators — 2025-26</title>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--border-subtle:rgba(255,255,255,0.04);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8384f;--accent-soft:rgba(232,56,79,0.12);--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08)}}
+:root,:root[data-theme="dark"]{{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--border-subtle:rgba(255,255,255,0.04);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8384f;--accent-soft:rgba(232,56,79,0.12);--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.015);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.04);--tag-dash:rgba(255,255,255,0.08);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--tab-hover-bg:rgba(255,255,255,0.03);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1)}}
+:root[data-theme="light"]{{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--border-subtle:rgba(0,0,0,0.05);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#d6293e;--accent-soft:rgba(214,41,62,0.08);--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.04);--tag-dash:rgba(0,0,0,0.12);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--tab-hover-bg:rgba(0,0,0,0.03);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.12)}}
+@media(prefers-color-scheme:light){{:root[data-theme="system"]{{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--border-subtle:rgba(0,0,0,0.05);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#d6293e;--accent-soft:rgba(214,41,62,0.08);--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.04);--tag-dash:rgba(0,0,0,0.12);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--tab-hover-bg:rgba(0,0,0,0.03);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.12)}}}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:'cv02','cv03','cv04','cv11'}}
 a{{color:var(--text);text-decoration:none}}
-a:hover{{color:#fff}}
+a:hover{{color:var(--text-strong)}}
 
 /* Header */
 .top-bar{{display:none}}
@@ -1006,7 +1009,7 @@ a:hover{{color:#fff}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
 .team-logo{{width:44px;height:44px;opacity:0.95}}
-.header h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:0;color:#fff}}
+.header h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:0;color:var(--text-strong)}}
 .header .subtitle{{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}}
 .hdr-pct{{text-align:right}}
 .pct-val{{font-size:32px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}}
@@ -1025,14 +1028,14 @@ a:hover{{color:#fff}}
 input[name="tab"]{{display:none}}
 .tab-bar{{display:flex;gap:2px;margin-bottom:36px;padding:3px;background:var(--bg-surface);border-radius:10px;width:fit-content}}
 .tab-bar label{{padding:7px 16px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;border-radius:7px;transition:all 0.2s ease;white-space:nowrap}}
-.tab-bar label:hover{{color:var(--text-secondary);background:rgba(255,255,255,0.03)}}
+.tab-bar label:hover{{color:var(--text-secondary);background:var(--tab-hover-bg)}}
 .panel{{display:none}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{{color:#fff;font-weight:600;background:var(--bg-elevated);box-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06)}}
+#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
@@ -1055,18 +1058,18 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .nhl-tbl td.rank{{text-align:center;color:var(--text-muted);font-size:11px}}
 .nhl-tbl td.pts-col{{font-weight:700;color:var(--text)}}
 .nhl-tbl .player-summary:hover td{{background:var(--bg-hover)}}
-.nhl-tbl .player-summary.alt td{{background:rgba(255,255,255,0.015)}}
+.nhl-tbl .player-summary.alt td{{background:var(--alt-row)}}
 .nhl-tbl .player-summary.alt:hover td{{background:var(--bg-hover)}}
 .nhl-tbl .goalie-row:hover td{{background:var(--bg-hover)}}
-.nhl-tbl .goalie-row.alt td{{background:rgba(255,255,255,0.015)}}
+.nhl-tbl .goalie-row.alt td{{background:var(--alt-row)}}
 .nhl-tbl .goalie-row.alt:hover td{{background:var(--bg-hover)}}
 /* Headshot */
-.hs{{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.06)}}
+.hs{{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--hs-bg)}}
 .hs-empty{{display:inline-block}}
 .name-cell{{padding-left:4px}}
 .name-flex{{display:flex;align-items:center;gap:8px}}
 a.pname{{font-weight:600;white-space:nowrap;font-size:12.5px;color:var(--text);text-decoration:none;transition:color 0.15s}}
-a.pname:hover{{color:#fff}}
+a.pname:hover{{color:var(--text-strong)}}
 /* Advanced stat columns */
 .adv{{color:var(--text-muted)}}
 .adv-pos{{color:var(--green);font-weight:600}}
@@ -1075,7 +1078,7 @@ a.pname:hover{{color:#fff}}
 .sens-row td{{background:var(--accent-soft)}}.sens-row td:first-child{{font-weight:700;color:var(--accent)}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
-.tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none;transition:color 0.15s}}.tcol-link:hover{{color:#fff}}.bpts{{font-weight:700;color:var(--text)}}
+.tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none;transition:color 0.15s}}.tcol-link:hover{{color:var(--text-strong)}}.bpts{{font-weight:700;color:var(--text)}}
 .div-label{{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
 .stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
@@ -1086,7 +1089,7 @@ a.pname:hover{{color:#fff}}
 .kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}}
 .kpi{{flex:1;min-width:90px;padding:20px 16px;background:var(--bg-surface);border-radius:12px;text-align:center;box-shadow:var(--card-shadow);transition:box-shadow 0.25s ease}}
 .kpi:hover{{box-shadow:var(--card-shadow-hover)}}
-.kpi-val{{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:#fff}}
+.kpi-val{{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text-strong)}}
 .kpi-label{{font-size:10px;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:0.8px;font-weight:500}}
 
 /* Scenario impact */
@@ -1098,15 +1101,15 @@ a.pname:hover{{color:#fff}}
 /* Schedule */
 .sched-meta{{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}}
 .sm-card{{flex:1;min-width:70px;text-align:center;padding:18px 10px;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow)}}
-.sm-val{{font-size:24px;font-weight:700;line-height:1;color:#fff;letter-spacing:-0.5px}}
+.sm-val{{font-size:24px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}}
 .sm-label{{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:8px;font-weight:500}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
 .game-detail{{border-radius:12px;overflow:hidden}}
 .game-tag{{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
-.tag-playoff{{color:var(--text-muted);background:rgba(255,255,255,0.04)}}
-.tag-desperate{{color:#fbbf24;background:rgba(251,191,36,0.08)}}
-.tag-sellers{{color:var(--text-muted);background:transparent;border:1px dashed rgba(255,255,255,0.08)}}
-.tag-hot{{color:#fff;background:var(--accent);box-shadow:0 0 8px rgba(232,56,79,0.3)}}
+.tag-playoff{{color:var(--text-muted);background:var(--tag-bg)}}
+.tag-desperate{{color:var(--amber);background:var(--amber-bg)}}
+.tag-sellers{{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}}
+.tag-hot{{color:var(--text-strong);background:var(--accent);box-shadow:0 0 8px rgba(232,56,79,0.3)}}
 .game-summary{{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);transition:all 0.2s ease}}
 .game-summary:hover{{background:var(--bg-elevated);box-shadow:var(--card-shadow-hover)}}
 .game-summary::-webkit-details-marker{{display:none}}
@@ -1118,9 +1121,9 @@ a.pname:hover{{color:#fff}}
 .game-right{{display:flex;align-items:center;gap:10px}}
 .game-meta{{font-size:11px;color:var(--text-muted)}}
 .game-loc{{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}}
-.loc-home{{background:rgba(52,211,153,0.1);color:var(--green)}}
-.loc-away{{background:rgba(255,255,255,0.03);color:var(--text-muted)}}
-.game-expand{{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-top:0;border-bottom-left-radius:12px;border-bottom-right-radius:12px;padding:20px}}
+.loc-home{{background:var(--loc-home-bg);color:var(--green)}}
+.loc-away{{background:var(--loc-away-bg);color:var(--text-muted)}}
+.game-expand{{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:12px;border-bottom-right-radius:12px;padding:20px}}
 .cmp-tbl{{width:100%;border-collapse:collapse;font-size:12px}}
 .cmp-tbl thead th{{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-tbl thead th:first-child{{text-align:left}}
@@ -1130,7 +1133,7 @@ a.pname:hover{{color:#fff}}
 .cmp-stat-label{{text-align:center;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:500}}
 .cmp-stat-r{{font-weight:600;text-align:right;color:var(--text)}}
 .matchup-notes{{margin:0 0 16px;padding:0;list-style:none;font-size:11px;color:var(--text-secondary);line-height:1.5}}
-.matchup-notes li{{padding:6px 12px;background:rgba(255,255,255,0.02);border-radius:8px;margin-bottom:4px;font-weight:500}}
+.matchup-notes li{{padding:6px 12px;background:var(--matchup-bg);border-radius:8px;margin-bottom:4px;font-weight:500}}
 
 /* News / Trade Rumors */
 .news-list{{display:flex;flex-direction:column;gap:1px}}
@@ -1159,7 +1162,7 @@ a.pname:hover{{color:#fff}}
 /* Progress ring */
 .odds-ring{{position:relative;width:72px;height:72px;flex-shrink:0}}
 .odds-ring svg{{transform:rotate(-90deg);width:72px;height:72px}}
-.odds-ring .ring-bg{{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:5}}
+.odds-ring .ring-bg{{fill:none;stroke:var(--ring-bg);stroke-width:5}}
 .odds-ring .ring-fg{{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 0.5s ease}}
 .odds-ring .ring-text{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}}
 .odds-ring .ring-val{{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.5px;line-height:1}}
@@ -1183,8 +1186,14 @@ a.pname:hover{{color:#fff}}
 
 /* Footer */
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}}
-.footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.1);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
+.footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
+
+/* Theme toggle */
+.hdr-right{{display:flex;align-items:center;gap:16px}}
+.theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
+.theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
+.theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
 </style></head><body>
 
 <div class="top-bar"></div>
@@ -1196,9 +1205,16 @@ a.pname:hover{{color:#fff}}
         <h1>Ottawa Senators</h1>
       </div>
     </div>
-    <div class="odds-ring">
-      <svg viewBox="0 0 72 72"><circle class="ring-bg" cx="36" cy="36" r="30"/><circle class="ring-fg" cx="36" cy="36" r="30" stroke-dasharray="{2*3.14159*30:.1f}" stroke-dashoffset="{2*3.14159*30*(1-playoff_pct):.1f}"/></svg>
-      <div class="ring-text"><span class="ring-val">{playoff_pct*100:.0f}%</span><span class="ring-label">Playoffs</span></div>
+    <div class="hdr-right">
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="theme-btn" data-theme="system" title="System" aria-label="System theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M5.5 14h5M8 11v3" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="odds-ring">
+        <svg viewBox="0 0 72 72"><circle class="ring-bg" cx="36" cy="36" r="30"/><circle class="ring-fg" cx="36" cy="36" r="30" stroke-dasharray="{2*3.14159*30:.1f}" stroke-dashoffset="{2*3.14159*30*(1-playoff_pct):.1f}"/></svg>
+        <div class="ring-text"><span class="ring-val">{playoff_pct*100:.0f}%</span><span class="ring-label">Playoffs</span></div>
+      </div>
     </div>
   </div>
   <div class="stat-row">
@@ -1264,6 +1280,23 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
     }});
   }});
 }});
+</script>
+<script>
+(function(){{
+  var root=document.documentElement;
+  var btns=document.querySelectorAll('.theme-btn');
+  var saved=localStorage.getItem('theme')||'dark';
+  btns.forEach(function(b){{
+    if(b.dataset.theme===saved) b.classList.add('active');
+    b.addEventListener('click',function(){{
+      var t=b.dataset.theme;
+      root.setAttribute('data-theme',t);
+      localStorage.setItem('theme',t);
+      btns.forEach(function(x){{x.classList.remove('active')}});
+      b.classList.add('active');
+    }});
+  }});
+}})();
 </script>
 </body></html>'''
 
