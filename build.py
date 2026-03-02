@@ -523,6 +523,8 @@ def compute_vs_above500(results, above500):
 
 
 def build_roster_html(skaters, goalies, mp_players):
+    if not skaters and not goalies:
+        return '<div class="empty-state"><span>&#127917;</span>Player stats unavailable. Data will refresh shortly.</div>'
     rows = []
     for i, s in enumerate(skaters):
         pm_val = s["pm"]
@@ -594,7 +596,7 @@ def build_roster_html(skaters, goalies, mp_players):
 
 def build_news_html(articles):
     if not articles:
-        return '<p class="sub-note">No recent articles found.</p>'
+        return '<div class="empty-state"><span>&#128240;</span>No recent trade rumors found. Check back later.</div>'
     items = []
     for a in articles:
         items.append(f'''<a href="{a["link"]}" target="_blank" rel="noopener" class="news-item">
@@ -654,9 +656,9 @@ def build_standings_section(east_teams, east_records):
 
     def div_table(teams, name):
         rows = [team_row(t, i+1, i<3, i==2, t["abbrev"]==TEAM) for i, t in enumerate(teams)]
-        return f'''<div class="div-label">{name}</div><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+        return f'''<div class="div-label">{name}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
-<tbody>{"".join(rows)}</tbody></table></div>'''
+<tbody>{"".join(rows)}</tbody></table></div></div>'''
 
     wc_all = sorted(atlantic[3:] + metro[3:], key=lambda x: -x["pts"])
     wc_rows = []
@@ -681,9 +683,9 @@ def build_standings_section(east_teams, east_records):
         wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{espn_link(t["abbrev"], t["name"])}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
 
     wc_html = f'''<div class="div-label">Wild Card Race</div>
-<div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
-<tbody>{"".join(wc_rows)}</tbody></table></div>'''
+<tbody>{"".join(wc_rows)}</tbody></table></div></div>'''
     return wc_html + div_table(atlantic, "Atlantic Division") + div_table(metro, "Metropolitan Division")
 
 def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
@@ -774,6 +776,8 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p>'''
 
 def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds, results):
+    if not remaining:
+        return '<div class="empty-state"><span>&#127944;</span>Season complete! No remaining games.</div>'
     ott = team_records.get(TEAM, {})
     fmt_r = lambda w, l, o: f"{w}-{l}-{o}"
     ott_record = fmt_r(ott.get("w",0), ott.get("l",0), ott.get("otl",0))
@@ -1152,9 +1156,35 @@ a.pname:hover{{color:#fff}}
 .sort-th.asc::after{{content:"\\25B2";opacity:0.8}}
 .sort-th.desc::after{{content:"\\25BC";opacity:0.8}}
 
+/* Progress ring */
+.odds-ring{{position:relative;width:72px;height:72px;flex-shrink:0}}
+.odds-ring svg{{transform:rotate(-90deg);width:72px;height:72px}}
+.odds-ring .ring-bg{{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:5}}
+.odds-ring .ring-fg{{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 0.5s ease}}
+.odds-ring .ring-text{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}}
+.odds-ring .ring-val{{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.5px;line-height:1}}
+.odds-ring .ring-label{{font-size:8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;font-weight:500}}
+
+/* Standings card wrap */
+.stnd-card{{background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);padding:4px 0;margin-bottom:8px;overflow:hidden}}
+.stnd-card .scroll-x{{padding:0}}
+.stnd-card .nhl-tbl thead th{{background:transparent}}
+
+/* Community icons */
+.cc-icon{{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}}
+.cc-head{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
+
+/* Mobile tabs */
+@media(max-width:680px){{.tab-bar{{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}}.tab-bar::-webkit-scrollbar{{display:none}}}}
+
+/* Empty state */
+.empty-state{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}}
+.empty-state span{{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}}
+
 /* Footer */
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.1);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
+.footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 </style></head><body>
 
 <div class="top-bar"></div>
@@ -1166,7 +1196,10 @@ a.pname:hover{{color:#fff}}
         <h1>Ottawa Senators</h1>
       </div>
     </div>
-    <div class="hdr-pct"><span class="pct-val">{playoff_pct*100:.1f}%{d_pct}</span><span class="pct-label">Playoff Odds</span></div>
+    <div class="odds-ring">
+      <svg viewBox="0 0 72 72"><circle class="ring-bg" cx="36" cy="36" r="30"/><circle class="ring-fg" cx="36" cy="36" r="30" stroke-dasharray="{2*3.14159*30:.1f}" stroke-dashoffset="{2*3.14159*30*(1-playoff_pct):.1f}"/></svg>
+      <div class="ring-text"><span class="ring-val">{playoff_pct*100:.0f}%</span><span class="ring-label">Playoffs</span></div>
+    </div>
   </div>
   <div class="stat-row">
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
@@ -1201,15 +1234,15 @@ a.pname:hover{{color:#fff}}
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
     <div class="community-list">
-      <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">HFBoards</div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/OttawaSenators</div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Ottawa%20Senators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-name">X / Twitter</div><div class="cc-desc">Live feed of Senators mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://www.youtube.com/@Cominginhotsens/streams" target="_blank" rel="noopener" class="community-card"><div class="cc-name">Coming in Hot Podcast</div><div class="cc-desc">Sens-focused podcast. Live streams, game breakdowns, and trade talk.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-name">NHL League Stats</div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
+      <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/OttawaSenators</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
+      <a href="https://x.com/search?q=%22Ottawa%20Senators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Senators mentions. Breaking news, insider tweets, fan reactions.</div></a>
+      <a href="https://www.youtube.com/@Cominginhotsens/streams" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Coming in Hot Podcast</div></div><div class="cc-desc">Sens-focused podcast. Live streams, game breakdowns, and trade talk.</div></a>
+      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated {now}</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){{
   tbl.querySelectorAll(".sort-th").forEach(function(th){{
