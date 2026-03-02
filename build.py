@@ -1023,6 +1023,7 @@ a:hover{{color:var(--text-strong)}}
 .stat-pill:hover{{background:var(--bg-elevated)}}
 .stat-pill .sl{{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.6px;font-weight:500}}
 .stat-pill .sv{{font-weight:600;color:var(--text)}}
+.pill-accent{{background:var(--accent-soft)}}.pill-accent .sv{{color:var(--accent);font-weight:700}}
 
 /* Tabs */
 .container{{max-width:880px;margin:0 auto;padding:0 28px 60px}}
@@ -1213,13 +1214,10 @@ a.pname:hover{{color:var(--text-strong)}}
         <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="theme-btn" data-theme="system" title="System" aria-label="System theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M5.5 14h5M8 11v3" stroke-linecap="round"/></svg></button>
       </div>
-      <div class="odds-ring">
-        <svg viewBox="0 0 72 72"><circle class="ring-bg" cx="36" cy="36" r="30"/><circle class="ring-fg" cx="36" cy="36" r="30" stroke-dasharray="{2*3.14159*30:.1f}" stroke-dashoffset="{2*3.14159*30*(1-playoff_pct):.1f}"/></svg>
-        <div class="ring-text"><span class="ring-val">{playoff_pct*100:.0f}%</span><span class="ring-label">Playoffs</span></div>
-      </div>
     </div>
   </div>
   <div class="stat-row">
+    <span class="stat-pill pill-accent" title="MoneyPuck playoff probability"><span class="sl">Playoffs</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
     <span class="stat-pill" title="Record vs teams above .500"><span class="sl">vs .500+</span> <span class="sv">{vs500_str}</span></span>
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">{goal_diff_str}</span></span>
