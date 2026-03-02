@@ -548,8 +548,7 @@ def build_roster_html(skaters, goalies, mp_players):
 <td class="r">{g["sv"]}</td><td class="r">{svp}</td>
 <td class="r">{g["so"]}</td><td class="r">{g["toi"]}</td></tr>''')
 
-    return f'''<p class="sub-note">Click any player to see MoneyPuck advanced analytics.</p>
-<div class="scroll-x"><table class="nhl-tbl">
+    return f'''<div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">Pos</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">P/GP</th><th class="r">EVG</th><th class="r">EVP</th><th class="r">PPG</th><th class="r">PPP</th><th class="r">SHG</th><th class="r">SHP</th><th class="r">OTG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">FOW%</th></tr></thead>
 {"".join(rows)}</table></div>
 
@@ -683,48 +682,23 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
     ott_mp_5v5 = ott_mp.get("5v5", {})
 
     return f'''<div class="kpi-row">
-  <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Points</div></div>
-  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Points</div></div>
-  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Points Needed</div></div>
+  <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Pts</div></div>
+  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Pts</div></div>
+  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Pts Needed</div></div>
   <div class="kpi"><div class="kpi-val">{deficit_str}</div><div class="kpi-label">vs 93 Target</div></div>
 </div>
 
-<h3 style="margin-top:28px">Points Progress</h3>
-<div class="progress-wrap">
-  <div class="progress-bar"><div class="progress-fill" style="width:{progress_pct}%"></div><div class="progress-marker" style="left:{target_pct}%"><span>93</span></div></div>
-  <div class="progress-labels"><span>{pts} earned</span><span>{needed} needed &middot; {remaining} games left</span></div>
-</div>
-
 <h3>Next Game Impact</h3>
-<p class="sub-note">How each outcome changes Ottawa's odds</p>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
 <tbody>{scenario_rows}</tbody></table></div>
 
-<h3 style="margin-top:28px">Eastern Conference Predictions</h3>
-<p class="sub-note">All 16 Eastern teams &mdash; sorted by playoff probability</p>
+<h3 style="margin-top:28px">Eastern Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
 <tbody>{east_rows}</tbody></table></div>
 
-<h3 style="margin-top:28px">Team Analytics</h3>
-<p class="sub-note">Ottawa's underlying performance from MoneyPuck</p>
-<div class="metric-grid">
-  <div class="metric-card"><div class="metric-val">{ott_mp_5v5.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (5v5)</div><div class="metric-desc">Expected goals-for share at even strength</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_mp_5v5.get("CFpct",0)*100:.1f}%</div><div class="metric-label">CF% (5v5)</div><div class="metric-desc">Corsi (shot attempts) share</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("xGFpct",0)*100:.1f}%</div><div class="metric-label">xGF% (All)</div><div class="metric-desc">Expected goals share, all situations</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("gfpg",0)}</div><div class="metric-label">GF/GP</div><div class="metric-desc">Goals for per game</div></div>
-  <div class="metric-card"><div class="metric-val">{ott_mp_all.get("gapg",0)}</div><div class="metric-label">GA/GP</div><div class="metric-desc">Goals against per game</div></div>
-  <div class="metric-card"><div class="metric-val">{pace}</div><div class="metric-label">Pace</div><div class="metric-desc">Projected 82-game point total</div></div>
-</div>
-
-<div class="kpi-row" style="margin-top:12px;margin-bottom:28px">
-  <div class="kpi"><div class="kpi-val">{ppg_current}</div><div class="kpi-label">Current P/GP</div></div>
-  <div class="kpi"><div class="kpi-val">{ppg_needed}</div><div class="kpi-label">Needed P/GP</div></div>
-  <div class="kpi"><div class="kpi-val">{w500}-{l500}-{otl500}</div><div class="kpi-label">vs Above .500</div></div>
-</div>
-
-<p class="footnote">All projections from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a>. Updated automatically after each game.</p>'''
+<p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p>'''
 
 def build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds):
     ott = team_records.get(TEAM, {})
@@ -769,7 +743,6 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
   <span>{home_count} home &middot; {away_count} away</span>
   <span>{above500_count} vs above .500</span>
 </div>
-<p class="sub-note">Click any game to compare records.</p>
 <div class="sched-list">{"".join(cards)}</div>'''
 
 def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas):
@@ -827,9 +800,9 @@ a:hover{{color:var(--black)}}
 .stat-pill .sv{{font-weight:600}}
 
 /* Tabs (CSS only) */
-.container{{max-width:900px;margin:0 auto;padding:0 24px 60px}}
+.container{{max-width:900px;margin:0 auto;padding:0 24px 48px}}
 input[name="tab"]{{display:none}}
-.tab-bar{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:28px}}
+.tab-bar{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}}
 .tab-bar label{{padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.1s}}
 .tab-bar label:hover{{color:var(--text)}}
 .panel{{display:none}}
@@ -847,12 +820,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .sub-note{{font-size:13px;color:var(--text-secondary);margin-bottom:16px}}
 
 /* Tables */
-.tbl{{width:100%;border-collapse:collapse;font-size:13px}}
-.tbl th{{padding:6px 10px;font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border)}}
-.tbl th.r,.tbl td.r{{text-align:right}}
-.tbl td{{padding:7px 10px;border-bottom:1px solid #f0f0ef;font-variant-numeric:tabular-nums}}
-.tbl tbody tr:hover{{background:var(--bg-hover)}}
-/* NHL.com Stats Table */
 .nhl-tbl{{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}}
 .nhl-tbl thead th{{background:#111;color:#fff;padding:8px 6px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}}
 .nhl-tbl thead th.r{{text-align:right}}
@@ -874,8 +841,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .name-cell{{padding-left:4px}}
 .name-flex{{display:flex;align-items:center;gap:8px}}
 .pname{{font-weight:600;white-space:nowrap;font-size:13px}}
-.ppos{{font-size:10px;color:var(--text-muted);margin-left:4px}}
-.name-wrap{{display:flex;align-items:baseline;gap:4px}}
 /* Details toggle for player */
 .pd{{display:inline}}.pd summary.pd-s{{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none}}
 .pd summary.pd-s::-webkit-details-marker{{display:none}}
@@ -883,12 +848,10 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .player-group{{border-bottom:1px solid #eee}}
 /* Expand row */
 .expand-row{{display:none}}
-.pd[open]+td,.pd[open]~td{{}}
 .player-group:has(.pd[open]) .expand-row{{display:table-row}}
 .expand-row td{{padding:16px;background:#fafafa;border-top:1px solid #eee}}
 .px-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
 @media(max-width:600px){{.px-grid{{grid-template-columns:1fr 1fr}}}}
-.px-section{{}}
 .px-title{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}}
 .px-row{{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}}
 .px-label{{color:var(--text-secondary)}}
@@ -904,38 +867,16 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
-.kpi-row{{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}}
-.kpi{{flex:1;min-width:100px;padding:16px;border:1px solid var(--border);border-radius:8px;text-align:center}}
-.kpi-val{{font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.1}}
+.kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}}
+.kpi{{flex:1;min-width:90px;padding:14px;border:1px solid var(--border);border-radius:8px;text-align:center}}
+.kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1}}
 .kpi-label{{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}}
-.kpi-sub{{font-size:10px;color:var(--text-muted);margin-top:2px}}
-
-/* Progress bar */
-.progress-wrap{{margin-bottom:32px}}
-.progress-bar{{height:8px;background:var(--bg-tag);border-radius:4px;position:relative;overflow:visible;margin-bottom:8px}}
-.progress-fill{{height:100%;border-radius:4px;background:var(--black)}}
-.progress-marker{{position:absolute;top:-4px;width:2px;height:16px;background:var(--text-muted);border-radius:1px}}
-.progress-marker span{{position:absolute;top:-18px;font-size:10px;color:var(--text-muted);font-weight:600;white-space:nowrap;transform:translateX(-50%);left:50%}}
-.progress-labels{{display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary)}}
-
-/* Metric grid */
-.metric-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}}
-@media(max-width:600px){{.metric-grid{{grid-template-columns:1fr 1fr}}}}
-.metric-card{{padding:16px;border:1px solid var(--border);border-radius:8px}}
-.metric-val{{font-size:24px;font-weight:700;letter-spacing:-0.5px}}
-.metric-label{{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}}
-.metric-desc{{font-size:11px;color:var(--text-muted);margin-top:2px}}
 
 /* Scenario impact */
 .sc-label{{font-weight:600;white-space:nowrap}}
 .sc-up{{color:#1a8a1a;font-weight:600}}
 .sc-down{{color:#c43c3c;font-weight:600}}
-/* Scenarios */
-.scenario{{padding:12px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.6}}
-.tag{{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:4px;margin-right:4px;vertical-align:middle}}
-.tag-dark{{background:var(--black);color:#fff}}
-.tag-muted{{background:var(--bg-tag);color:var(--text-secondary)}}
-.footnote{{margin-top:24px;font-size:12px;color:var(--text-muted);line-height:1.6}}
+.footnote{{margin-top:24px;font-size:12px;color:var(--text-muted)}}
 
 /* Schedule */
 .sched-meta{{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}}
@@ -1002,14 +943,11 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
     <label for="tab-roster">Player Stats</label>
   </div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
-  <div class="panel" id="p-standings">
-    <h3>Eastern Conference Standings</h3>
-    {standings_html}
-  </div>
+  <div class="panel" id="p-standings">{standings_html}</div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
 </div>
-<div class="footer">NHL API + <a href="https://moneypuck.com">MoneyPuck</a> &middot; Auto-updated via GitHub Actions</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
 </body></html>'''
 
 # ── Main ──────────────────────────────────────────────────

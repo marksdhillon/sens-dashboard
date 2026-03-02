@@ -30,9 +30,9 @@ a:hover{color:var(--black)}
 .stat-pill .sv{font-weight:600}
 
 /* Tabs (CSS only) */
-.container{max-width:900px;margin:0 auto;padding:0 24px 60px}
+.container{max-width:900px;margin:0 auto;padding:0 24px 48px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:28px}
+.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}
 .tab-bar label{padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.1s}
 .tab-bar label:hover{color:var(--text)}
 .panel{display:none}
@@ -50,12 +50,6 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .sub-note{font-size:13px;color:var(--text-secondary);margin-bottom:16px}
 
 /* Tables */
-.tbl{width:100%;border-collapse:collapse;font-size:13px}
-.tbl th{padding:6px 10px;font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border)}
-.tbl th.r,.tbl td.r{text-align:right}
-.tbl td{padding:7px 10px;border-bottom:1px solid #f0f0ef;font-variant-numeric:tabular-nums}
-.tbl tbody tr:hover{background:var(--bg-hover)}
-/* NHL.com Stats Table */
 .nhl-tbl{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
 .nhl-tbl thead th{background:#111;color:#fff;padding:8px 6px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}
 .nhl-tbl thead th.r{text-align:right}
@@ -77,8 +71,6 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .name-cell{padding-left:4px}
 .name-flex{display:flex;align-items:center;gap:8px}
 .pname{font-weight:600;white-space:nowrap;font-size:13px}
-.ppos{font-size:10px;color:var(--text-muted);margin-left:4px}
-.name-wrap{display:flex;align-items:baseline;gap:4px}
 /* Details toggle for player */
 .pd{display:inline}.pd summary.pd-s{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none}
 .pd summary.pd-s::-webkit-details-marker{display:none}
@@ -86,12 +78,10 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .player-group{border-bottom:1px solid #eee}
 /* Expand row */
 .expand-row{display:none}
-.pd[open]+td,.pd[open]~td{}
 .player-group:has(.pd[open]) .expand-row{display:table-row}
 .expand-row td{padding:16px;background:#fafafa;border-top:1px solid #eee}
 .px-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:600px){.px-grid{grid-template-columns:1fr 1fr}}
-.px-section{}
 .px-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
 .px-row{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}
 .px-label{color:var(--text-secondary)}
@@ -107,38 +97,16 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* KPI Row */
-.kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.kpi{flex:1;min-width:100px;padding:16px;border:1px solid var(--border);border-radius:8px;text-align:center}
-.kpi-val{font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.1}
+.kpi-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.kpi{flex:1;min-width:90px;padding:14px;border:1px solid var(--border);border-radius:8px;text-align:center}
+.kpi-val{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1}
 .kpi-label{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
-.kpi-sub{font-size:10px;color:var(--text-muted);margin-top:2px}
-
-/* Progress bar */
-.progress-wrap{margin-bottom:32px}
-.progress-bar{height:8px;background:var(--bg-tag);border-radius:4px;position:relative;overflow:visible;margin-bottom:8px}
-.progress-fill{height:100%;border-radius:4px;background:var(--black)}
-.progress-marker{position:absolute;top:-4px;width:2px;height:16px;background:var(--text-muted);border-radius:1px}
-.progress-marker span{position:absolute;top:-18px;font-size:10px;color:var(--text-muted);font-weight:600;white-space:nowrap;transform:translateX(-50%);left:50%}
-.progress-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary)}
-
-/* Metric grid */
-.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-@media(max-width:600px){.metric-grid{grid-template-columns:1fr 1fr}}
-.metric-card{padding:16px;border:1px solid var(--border);border-radius:8px}
-.metric-val{font-size:24px;font-weight:700;letter-spacing:-0.5px}
-.metric-label{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}
-.metric-desc{font-size:11px;color:var(--text-muted);margin-top:2px}
 
 /* Scenario impact */
 .sc-label{font-weight:600;white-space:nowrap}
 .sc-up{color:#1a8a1a;font-weight:600}
 .sc-down{color:#c43c3c;font-weight:600}
-/* Scenarios */
-.scenario{padding:12px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.6}
-.tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:4px;margin-right:4px;vertical-align:middle}
-.tag-dark{background:var(--black);color:#fff}
-.tag-muted{background:var(--bg-tag);color:var(--text-secondary)}
-.footnote{margin-top:24px;font-size:12px;color:var(--text-muted);line-height:1.6}
+.footnote{margin-top:24px;font-size:12px;color:var(--text-muted)}
 
 /* Schedule */
 .sched-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}
@@ -205,65 +173,36 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
     <label for="tab-roster">Player Stats</label>
   </div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
-  <div class="kpi"><div class="kpi-val">95</div><div class="kpi-label">Projected Points</div></div>
-  <div class="kpi"><div class="kpi-val">66</div><div class="kpi-label">Current Points</div></div>
-  <div class="kpi"><div class="kpi-val">27</div><div class="kpi-label">Points Needed</div></div>
+  <div class="kpi"><div class="kpi-val">95</div><div class="kpi-label">Projected Pts</div></div>
+  <div class="kpi"><div class="kpi-val">66</div><div class="kpi-label">Current Pts</div></div>
+  <div class="kpi"><div class="kpi-val">27</div><div class="kpi-label">Pts Needed</div></div>
   <div class="kpi"><div class="kpi-val">+2.0</div><div class="kpi-label">vs 93 Target</div></div>
 </div>
 
-<h3 style="margin-top:28px">Points Progress</h3>
-<div class="progress-wrap">
-  <div class="progress-bar"><div class="progress-fill" style="width:40.2%"></div><div class="progress-marker" style="left:56.7%"><span>93</span></div></div>
-  <div class="progress-labels"><span>66 earned</span><span>27 needed &middot; 23 games left</span></div>
-</div>
-
 <h3>Next Game Impact</h3>
-<p class="sub-note">How each outcome changes Ottawa's odds</p>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
 <tbody><tr><td class="sc-label">Win (REG)</td><td class="r">51.9%</td><td class="r sc-up">+6.8%</td><td class="r">96</td><td class="r">28.1%</td><td class="r">5.7%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">51.8%</td><td class="r sc-up">+6.8%</td><td class="r">96</td><td class="r">28.5%</td><td class="r">6.6%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">43.1%</td><td class="r sc-down">-1.9%</td><td class="r">95</td><td class="r">22.9%</td><td class="r">4.6%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">36.2%</td><td class="r sc-down">-8.8%</td><td class="r">94</td><td class="r">20.1%</td><td class="r">4.0%</td></tr></tbody></table></div>
 
-<h3 style="margin-top:28px">Eastern Conference Predictions</h3>
-<p class="sub-note">All 16 Eastern teams &mdash; sorted by playoff probability</p>
+<h3 style="margin-top:28px">Eastern Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
 <tbody><tr class=""><td class="rank">1</td><td class="tcol">CAR</td><td class="r">99.9%</td><td class="r">61.9%</td><td class="r">38.1%</td><td class="r">20.9%</td><td class="r">12.0%</td><td class="r">111</td><td class="r">89.9%</td></tr><tr class=""><td class="rank">2</td><td class="tcol">TBL</td><td class="r">99.8%</td><td class="r">61.3%</td><td class="r">38.0%</td><td class="r">21.0%</td><td class="r">12.1%</td><td class="r">110</td><td class="r">83.3%</td></tr><tr class=""><td class="rank">3</td><td class="tcol">PIT</td><td class="r">89.8%</td><td class="r">48.4%</td><td class="r">22.3%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">101</td><td class="r">7.4%</td></tr><tr class=""><td class="rank">4</td><td class="tcol">BUF</td><td class="r">88.9%</td><td class="r">37.8%</td><td class="r">15.0%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">101</td><td class="r">7.1%</td></tr><tr class=""><td class="rank">5</td><td class="tcol">MTL</td><td class="r">85.4%</td><td class="r">37.7%</td><td class="r">16.1%</td><td class="r">7.0%</td><td class="r">3.1%</td><td class="r">101</td><td class="r">5.5%</td></tr><tr class=""><td class="rank">6</td><td class="tcol">NYI</td><td class="r">78.7%</td><td class="r">33.0%</td><td class="r">12.9%</td><td class="r">5.4%</td><td class="r">2.3%</td><td class="r">99</td><td class="r">2.3%</td></tr><tr class=""><td class="rank">7</td><td class="tcol">DET</td><td class="r">76.7%</td><td class="r">35.4%</td><td class="r">16.0%</td><td class="r">7.5%</td><td class="r">3.5%</td><td class="r">99</td><td class="r">2.9%</td></tr><tr class=""><td class="rank">8</td><td class="tcol">BOS</td><td class="r">55.1%</td><td class="r">22.9%</td><td class="r">10.2%</td><td class="r">4.5%</td><td class="r">1.9%</td><td class="r">96</td><td class="r">0.8%</td></tr><tr class="sens-row"><td class="rank">9</td><td class="tcol">OTT</td><td class="r">45.0%</td><td class="r">24.5%</td><td class="r">14.5%</td><td class="r">8.4%</td><td class="r">5.0%</td><td class="r">95</td><td class="r">0.4%</td></tr><tr class=""><td class="rank">10</td><td class="tcol">CBJ</td><td class="r">33.0%</td><td class="r">15.0%</td><td class="r">6.6%</td><td class="r">3.1%</td><td class="r">1.4%</td><td class="r">93</td><td class="r">0.3%</td></tr><tr class=""><td class="rank">11</td><td class="tcol">WSH</td><td class="r">28.1%</td><td class="r">13.9%</td><td class="r">6.7%</td><td class="r">3.4%</td><td class="r">1.8%</td><td class="r">92</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">12</td><td class="tcol">PHI</td><td class="r">12.0%</td><td class="r">5.0%</td><td class="r">2.0%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol">FLA</td><td class="r">5.8%</td><td class="r">2.6%</td><td class="r">1.3%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">88</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol">TOR</td><td class="r">1.1%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol">NJD</td><td class="r">0.6%</td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol">NYR</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
 
-<h3 style="margin-top:28px">Team Analytics</h3>
-<p class="sub-note">Ottawa's underlying performance from MoneyPuck</p>
-<div class="metric-grid">
-  <div class="metric-card"><div class="metric-val">56.0%</div><div class="metric-label">xGF% (5v5)</div><div class="metric-desc">Expected goals-for share at even strength</div></div>
-  <div class="metric-card"><div class="metric-val">53.0%</div><div class="metric-label">CF% (5v5)</div><div class="metric-desc">Corsi (shot attempts) share</div></div>
-  <div class="metric-card"><div class="metric-val">54.0%</div><div class="metric-label">xGF% (All)</div><div class="metric-desc">Expected goals share, all situations</div></div>
-  <div class="metric-card"><div class="metric-val">3.29</div><div class="metric-label">GF/GP</div><div class="metric-desc">Goals for per game</div></div>
-  <div class="metric-card"><div class="metric-val">3.19</div><div class="metric-label">GA/GP</div><div class="metric-desc">Goals against per game</div></div>
-  <div class="metric-card"><div class="metric-val">91.7</div><div class="metric-label">Pace</div><div class="metric-desc">Projected 82-game point total</div></div>
-</div>
-
-<div class="kpi-row" style="margin-top:12px;margin-bottom:28px">
-  <div class="kpi"><div class="kpi-val">1.12</div><div class="kpi-label">Current P/GP</div></div>
-  <div class="kpi"><div class="kpi-val">1.17</div><div class="kpi-label">Needed P/GP</div></div>
-  <div class="kpi"><div class="kpi-val">10-9-7</div><div class="kpi-label">vs Above .500</div></div>
-</div>
-
-<p class="footnote">All projections from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a>. Updated automatically after each game.</p></div>
-  <div class="panel" id="p-standings">
-    <h3>Eastern Conference Standings</h3>
-    <div class="div-label">Wild Card Race</div>
+<p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
+  <div class="panel" id="p-standings"><div class="div-label">Wild Card Race</div>
 <div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody><tr><td class="rank-in">WC1</td><td class="tcol">Detroit Red Wings</td><td>A</td><td class="r">60</td><td class="r">34</td><td class="r">20</td><td class="r">6</td><td class="r bpts">74</td><td class="r">.616</td><td class="r">178</td><td class="r">181</td><td class="r">-3</td><td class="r">18-10-2</td><td class="r">16-10-4</td><td class="r">4-4-2</td><td class="r">L1</td><td class="r">3-0-0</td><td class="r">8-13-4</td><td class="r">26-7-2</td></tr><tr class="cutoff"><td class="rank-in">WC2</td><td class="tcol">Boston Bruins</td><td>A</td><td class="r">59</td><td class="r">33</td><td class="r">21</td><td class="r">5</td><td class="r bpts">71</td><td class="r">.601</td><td class="r">200</td><td class="r">187</td><td class="r">+13</td><td class="r">22-8-1</td><td class="r">11-13-4</td><td class="r">5-2-3</td><td class="r">L1</td><td class="r">1-3-0</td><td class="r">13-11-1</td><td class="r">20-10-4</td></tr><tr><td class="rank-out">3</td><td class="tcol">Washington Capitals</td><td>M</td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td><td class="r">197</td><td class="r">186</td><td class="r">+11</td><td class="r">19-10-3</td><td class="r">12-14-4</td><td class="r">6-3-1</td><td class="r">L1</td><td class="r">0-2-0</td><td class="r">11-11-4</td><td class="r">20-13-3</td></tr><tr class="sens-row"><td class="rank-out">4</td><td class="tcol">Ottawa Senators</td><td>A</td><td class="r">59</td><td class="r">29</td><td class="r">22</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.559</td><td class="r">197</td><td class="r">188</td><td class="r">+9</td><td class="r">14-10-5</td><td class="r">15-12-3</td><td class="r">6-3-1</td><td class="r">W1</td><td class="r">0-0-0</td><td class="r">10-9-7</td><td class="r">19-13-1</td></tr><tr><td class="rank-out">5</td><td class="tcol">Columbus Blue Jackets</td><td>M</td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td><td class="r">184</td><td class="r">185</td><td class="r">-1</td><td class="r">15-8-5</td><td class="r">14-13-3</td><td class="r">7-2-1</td><td class="r">OT1</td><td class="r">1-2-0</td><td class="r">14-7-4</td><td class="r">15-14-4</td></tr><tr><td class="rank-out">6</td><td class="tcol">Philadelphia Flyers</td><td>M</td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td><td class="r">174</td><td class="r">186</td><td class="r">-12</td><td class="r">14-9-7</td><td class="r">13-12-4</td><td class="r">4-4-2</td><td class="r">W2</td><td class="r">0-1-2</td><td class="r">10-11-4</td><td class="r">17-10-7</td></tr><tr><td class="rank-out">7</td><td class="tcol">Florida Panthers</td><td>A</td><td class="r">60</td><td class="r">30</td><td class="r">27</td><td class="r">3</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">185</td><td class="r">200</td><td class="r">-15</td><td class="r">16-14-3</td><td class="r">14-13-0</td><td class="r">3-7-0</td><td class="r">L2</td><td class="r">2-0-0</td><td class="r">12-14-2</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol">Toronto Maple Leafs</td><td>A</td><td class="r">60</td><td class="r">27</td><td class="r">24</td><td class="r">9</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">193</td><td class="r">208</td><td class="r">-15</td><td class="r">16-10-6</td><td class="r">11-14-3</td><td class="r">3-7-0</td><td class="r">L3</td><td class="r">1-1-0</td><td class="r">9-13-4</td><td class="r">18-11-5</td></tr><tr><td class="rank-out">9</td><td class="tcol">New Jersey Devils</td><td>M</td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td><td class="r">151</td><td class="r">182</td><td class="r">-31</td><td class="r">13-13-2</td><td class="r">16-16-0</td><td class="r">3-7-0</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-16-1</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">10</td><td class="tcol">New York Rangers</td><td>M</td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td><td class="r">156</td><td class="r">185</td><td class="r">-29</td><td class="r">7-15-5</td><td class="r">16-14-2</td><td class="r">2-7-1</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-17-3</td><td class="r">12-12-4</td></tr></tbody></table></div><div class="div-label">Atlantic Division</div><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody><tr><td class="rank-in">1</td><td class="tcol">Tampa Bay Lightning</td><td class="r">58</td><td class="r">38</td><td class="r">16</td><td class="r">4</td><td class="r bpts">80</td><td class="r">.689</td><td class="r">209</td><td class="r">153</td><td class="r">+56</td><td class="r">19-10-0</td><td class="r">19-6-4</td><td class="r">7-3-0</td><td class="r">L2</td><td class="r">0-1-0</td><td class="r">15-6-2</td><td class="r">23-10-2</td></tr><tr><td class="rank-in">2</td><td class="tcol">Buffalo Sabres</td><td class="r">60</td><td class="r">35</td><td class="r">19</td><td class="r">6</td><td class="r bpts">76</td><td class="r">.633</td><td class="r">206</td><td class="r">181</td><td class="r">+25</td><td class="r">17-8-3</td><td class="r">18-11-3</td><td class="r">7-2-1</td><td class="r">W3</td><td class="r">2-0-0</td><td class="r">12-10-4</td><td class="r">23-9-2</td></tr><tr class="cutoff"><td class="rank-in">3</td><td class="tcol">Montréal Canadiens</td><td class="r">59</td><td class="r">33</td><td class="r">17</td><td class="r">9</td><td class="r bpts">75</td><td class="r">.635</td><td class="r">208</td><td class="r">193</td><td class="r">+15</td><td class="r">17-11-2</td><td class="r">16-6-7</td><td class="r">6-2-2</td><td class="r">W1</td><td class="r">2-1-0</td><td class="r">12-8-4</td><td class="r">21-9-5</td></tr><tr><td class="rank-out">4</td><td class="tcol">Detroit Red Wings</td><td class="r">60</td><td class="r">34</td><td class="r">20</td><td class="r">6</td><td class="r bpts">74</td><td class="r">.616</td><td class="r">178</td><td class="r">181</td><td class="r">-3</td><td class="r">18-10-2</td><td class="r">16-10-4</td><td class="r">4-4-2</td><td class="r">L1</td><td class="r">3-0-0</td><td class="r">8-13-4</td><td class="r">26-7-2</td></tr><tr><td class="rank-out">5</td><td class="tcol">Boston Bruins</td><td class="r">59</td><td class="r">33</td><td class="r">21</td><td class="r">5</td><td class="r bpts">71</td><td class="r">.601</td><td class="r">200</td><td class="r">187</td><td class="r">+13</td><td class="r">22-8-1</td><td class="r">11-13-4</td><td class="r">5-2-3</td><td class="r">L1</td><td class="r">1-3-0</td><td class="r">13-11-1</td><td class="r">20-10-4</td></tr><tr class="sens-row"><td class="rank-out">6</td><td class="tcol">Ottawa Senators</td><td class="r">59</td><td class="r">29</td><td class="r">22</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.559</td><td class="r">197</td><td class="r">188</td><td class="r">+9</td><td class="r">14-10-5</td><td class="r">15-12-3</td><td class="r">6-3-1</td><td class="r">W1</td><td class="r">0-0-0</td><td class="r">10-9-7</td><td class="r">19-13-1</td></tr><tr><td class="rank-out">7</td><td class="tcol">Florida Panthers</td><td class="r">60</td><td class="r">30</td><td class="r">27</td><td class="r">3</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">185</td><td class="r">200</td><td class="r">-15</td><td class="r">16-14-3</td><td class="r">14-13-0</td><td class="r">3-7-0</td><td class="r">L2</td><td class="r">2-0-0</td><td class="r">12-14-2</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol">Toronto Maple Leafs</td><td class="r">60</td><td class="r">27</td><td class="r">24</td><td class="r">9</td><td class="r bpts">63</td><td class="r">.525</td><td class="r">193</td><td class="r">208</td><td class="r">-15</td><td class="r">16-10-6</td><td class="r">11-14-3</td><td class="r">3-7-0</td><td class="r">L3</td><td class="r">1-1-0</td><td class="r">9-13-4</td><td class="r">18-11-5</td></tr></tbody></table></div><div class="div-label">Metropolitan Division</div><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
-<tbody><tr><td class="rank-in">1</td><td class="tcol">Carolina Hurricanes</td><td class="r">59</td><td class="r">38</td><td class="r">15</td><td class="r">6</td><td class="r bpts">82</td><td class="r">.694</td><td class="r">207</td><td class="r">169</td><td class="r">+38</td><td class="r">23-8-2</td><td class="r">15-7-4</td><td class="r">8-0-2</td><td class="r">W5</td><td class="r">2-0-0</td><td class="r">13-7-2</td><td class="r">25-8-4</td></tr><tr><td class="rank-in">2</td><td class="tcol">Pittsburgh Penguins</td><td class="r">59</td><td class="r">31</td><td class="r">15</td><td class="r">13</td><td class="r bpts">75</td><td class="r">.635</td><td class="r">203</td><td class="r">173</td><td class="r">+30</td><td class="r">15-8-7</td><td class="r">16-7-6</td><td class="r">7-1-2</td><td class="r">W1</td><td class="r">0-2-0</td><td class="r">9-5-5</td><td class="r">22-10-8</td></tr><tr class="cutoff"><td class="rank-in">3</td><td class="tcol">New York Islanders</td><td class="r">61</td><td class="r">35</td><td class="r">21</td><td class="r">5</td><td class="r bpts">75</td><td class="r">.614</td><td class="r">182</td><td class="r">172</td><td class="r">+10</td><td class="r">17-10-2</td><td class="r">18-11-3</td><td class="r">8-2-0</td><td class="r">W5</td><td class="r">1-0-0</td><td class="r">12-9-2</td><td class="r">23-12-3</td></tr><tr><td class="rank-out">4</td><td class="tcol">Washington Capitals</td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td><td class="r">197</td><td class="r">186</td><td class="r">+11</td><td class="r">19-10-3</td><td class="r">12-14-4</td><td class="r">6-3-1</td><td class="r">L1</td><td class="r">0-2-0</td><td class="r">11-11-4</td><td class="r">20-13-3</td></tr><tr><td class="rank-out">5</td><td class="tcol">Columbus Blue Jackets</td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td><td class="r">184</td><td class="r">185</td><td class="r">-1</td><td class="r">15-8-5</td><td class="r">14-13-3</td><td class="r">7-2-1</td><td class="r">OT1</td><td class="r">1-2-0</td><td class="r">14-7-4</td><td class="r">15-14-4</td></tr><tr><td class="rank-out">6</td><td class="tcol">Philadelphia Flyers</td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td><td class="r">174</td><td class="r">186</td><td class="r">-12</td><td class="r">14-9-7</td><td class="r">13-12-4</td><td class="r">4-4-2</td><td class="r">W2</td><td class="r">0-1-2</td><td class="r">10-11-4</td><td class="r">17-10-7</td></tr><tr><td class="rank-out">7</td><td class="tcol">New Jersey Devils</td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td><td class="r">151</td><td class="r">182</td><td class="r">-31</td><td class="r">13-13-2</td><td class="r">16-16-0</td><td class="r">3-7-0</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-16-1</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol">New York Rangers</td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td><td class="r">156</td><td class="r">185</td><td class="r">-29</td><td class="r">7-15-5</td><td class="r">16-14-2</td><td class="r">2-7-1</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-17-3</td><td class="r">12-12-4</td></tr></tbody></table></div>
-  </div>
+<tbody><tr><td class="rank-in">1</td><td class="tcol">Carolina Hurricanes</td><td class="r">59</td><td class="r">38</td><td class="r">15</td><td class="r">6</td><td class="r bpts">82</td><td class="r">.694</td><td class="r">207</td><td class="r">169</td><td class="r">+38</td><td class="r">23-8-2</td><td class="r">15-7-4</td><td class="r">8-0-2</td><td class="r">W5</td><td class="r">2-0-0</td><td class="r">13-7-2</td><td class="r">25-8-4</td></tr><tr><td class="rank-in">2</td><td class="tcol">Pittsburgh Penguins</td><td class="r">59</td><td class="r">31</td><td class="r">15</td><td class="r">13</td><td class="r bpts">75</td><td class="r">.635</td><td class="r">203</td><td class="r">173</td><td class="r">+30</td><td class="r">15-8-7</td><td class="r">16-7-6</td><td class="r">7-1-2</td><td class="r">W1</td><td class="r">0-2-0</td><td class="r">9-5-5</td><td class="r">22-10-8</td></tr><tr class="cutoff"><td class="rank-in">3</td><td class="tcol">New York Islanders</td><td class="r">61</td><td class="r">35</td><td class="r">21</td><td class="r">5</td><td class="r bpts">75</td><td class="r">.614</td><td class="r">182</td><td class="r">172</td><td class="r">+10</td><td class="r">17-10-2</td><td class="r">18-11-3</td><td class="r">8-2-0</td><td class="r">W5</td><td class="r">1-0-0</td><td class="r">12-9-2</td><td class="r">23-12-3</td></tr><tr><td class="rank-out">4</td><td class="tcol">Washington Capitals</td><td class="r">62</td><td class="r">31</td><td class="r">24</td><td class="r">7</td><td class="r bpts">69</td><td class="r">.556</td><td class="r">197</td><td class="r">186</td><td class="r">+11</td><td class="r">19-10-3</td><td class="r">12-14-4</td><td class="r">6-3-1</td><td class="r">L1</td><td class="r">0-2-0</td><td class="r">11-11-4</td><td class="r">20-13-3</td></tr><tr><td class="rank-out">5</td><td class="tcol">Columbus Blue Jackets</td><td class="r">58</td><td class="r">29</td><td class="r">21</td><td class="r">8</td><td class="r bpts">66</td><td class="r">.568</td><td class="r">184</td><td class="r">185</td><td class="r">-1</td><td class="r">15-8-5</td><td class="r">14-13-3</td><td class="r">7-2-1</td><td class="r">OT1</td><td class="r">1-2-0</td><td class="r">14-7-4</td><td class="r">15-14-4</td></tr><tr><td class="rank-out">6</td><td class="tcol">Philadelphia Flyers</td><td class="r">59</td><td class="r">27</td><td class="r">21</td><td class="r">11</td><td class="r bpts">65</td><td class="r">.550</td><td class="r">174</td><td class="r">186</td><td class="r">-12</td><td class="r">14-9-7</td><td class="r">13-12-4</td><td class="r">4-4-2</td><td class="r">W2</td><td class="r">0-1-2</td><td class="r">10-11-4</td><td class="r">17-10-7</td></tr><tr><td class="rank-out">7</td><td class="tcol">New Jersey Devils</td><td class="r">60</td><td class="r">29</td><td class="r">29</td><td class="r">2</td><td class="r bpts">60</td><td class="r">.500</td><td class="r">151</td><td class="r">182</td><td class="r">-31</td><td class="r">13-13-2</td><td class="r">16-16-0</td><td class="r">3-7-0</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-16-1</td><td class="r">18-13-1</td></tr><tr><td class="rank-out">8</td><td class="tcol">New York Rangers</td><td class="r">59</td><td class="r">23</td><td class="r">29</td><td class="r">7</td><td class="r bpts">53</td><td class="r">.449</td><td class="r">156</td><td class="r">185</td><td class="r">-29</td><td class="r">7-15-5</td><td class="r">16-14-2</td><td class="r">2-7-1</td><td class="r">W1</td><td class="r">1-1-0</td><td class="r">11-17-3</td><td class="r">12-12-4</td></tr></tbody></table></div></div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <span>23 games remaining</span>
   <span>12 home &middot; 11 away</span>
   <span>11 vs above .500</span>
 </div>
-<p class="sub-note">Click any game to compare records.</p>
 <div class="sched-list"><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">@ Edmonton</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
@@ -357,8 +296,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <div class="game-expand">
   <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>TOR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-24-9</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">14-10-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-6</td></tr><tr><td class="cmp-stat-l">15-12-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-3</td></tr><tr><td class="cmp-stat-l">6-3-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">197</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">193</td></tr><tr><td class="cmp-stat-l">188</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
 </div></details></div></div>
-  <div class="panel" id="p-roster"><p class="sub-note">Click any player to see MoneyPuck advanced analytics.</p>
-<div class="scroll-x"><table class="nhl-tbl">
+  <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">Pos</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">P/GP</th><th class="r">EVG</th><th class="r">EVP</th><th class="r">PPG</th><th class="r">PPP</th><th class="r">SHG</th><th class="r">SHP</th><th class="r">OTG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">FOW%</th></tr></thead>
 <tbody class="player-group"><tr class="player-summary">
 <td class="rank">1</td>
@@ -1235,5 +1173,5 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r">10</td><td class="r">.833</td>
 <td class="r">0</td><td class="r">35:47</td></tr></tbody></table></div></div>
 </div>
-<div class="footer">NHL API + <a href="https://moneypuck.com">MoneyPuck</a> &middot; Auto-updated via GitHub Actions</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
 </body></html>
