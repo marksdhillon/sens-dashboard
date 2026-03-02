@@ -97,6 +97,32 @@ def fetch_moneypuck_team_stats():
             }
     return stats
 
+def fetch_nhl_skater_summary():
+    """Fetch full skater summary from NHL stats API (evGoals, evPoints, ppPoints, shPoints, etc.)."""
+    url = (
+        "https://api.nhle.com/stats/rest/en/skater/summary?"
+        "isAggregate=false&isGame=false"
+        "&sort=%5B%7B%22property%22:%22points%22,%22direction%22:%22DESC%22%7D%5D"
+        "&start=0&limit=100"
+        "&factCayenneExp=gamesPlayed%3E=1"
+        f"&cayenneExp=franchiseId%3D30%20and%20seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+    )
+    data = fetch_json(url)
+    return {p["playerId"]: p for p in data.get("data", [])}
+
+def fetch_nhl_goalie_summary():
+    """Fetch full goalie summary from NHL stats API (gamesStarted, timeOnIce, etc.)."""
+    url = (
+        "https://api.nhle.com/stats/rest/en/goalie/summary?"
+        "isAggregate=false&isGame=false"
+        "&sort=%5B%7B%22property%22:%22wins%22,%22direction%22:%22DESC%22%7D%5D"
+        "&start=0&limit=20"
+        "&factCayenneExp=gamesPlayed%3E=1"
+        f"&cayenneExp=franchiseId%3D30%20and%20seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+    )
+    data = fetch_json(url)
+    return {g["playerId"]: g for g in data.get("data", [])}
+
 def fetch_moneypuck_player_stats():
     """Fetch individual player advanced stats from MoneyPuck for OTT."""
     rows = fetch_csv_rows(f"{MONEYPUCK}/playerData/seasonSummary/{SEASON_SHORT}/regular/skaters.csv")
@@ -230,57 +256,85 @@ def get_above500_teams(all_teams):
 def get_team_records(all_teams):
     return {t["abbrev"]: t for t in all_teams}
 
-def get_skaters(club_stats):
+def get_skaters(club_stats, nhl_summary):
+    """Build skater list merging club-stats (headshots) + NHL stats API (full summary)."""
     skaters = []
     for s in club_stats.get("skaters", []):
+        pid = s.get("playerId", 0)
         first = s.get("firstName", {})
         last = s.get("lastName", {})
         if isinstance(first, dict): first = first.get("default", "")
         if isinstance(last, dict): last = last.get("default", "")
-        gp = s.get("gamesPlayed", 0)
-        pts = s.get("points", 0)
-        shots = s.get("shots", 0)
-        toi_sec = s.get("avgTimeOnIcePerGame", 0)
+        headshot = s.get("headshot", "")
+
+        # Merge full stats from NHL stats API
+        ns = nhl_summary.get(pid, {})
+        gp = ns.get("gamesPlayed", s.get("gamesPlayed", 0))
+        pts = ns.get("points", s.get("points", 0))
+        goals = ns.get("goals", s.get("goals", 0))
+        assists = ns.get("assists", s.get("assists", 0))
+        toi_sec = ns.get("timeOnIcePerGame", s.get("avgTimeOnIcePerGame", 0))
         toi_min = int(toi_sec // 60)
         toi_s = int(toi_sec % 60)
-        fo_pct = s.get("faceoffWinPctg", 0)
-        headshot = s.get("headshot", "")
+
         skaters.append({
-            "name": f"{first} {last}", "pos": s.get("positionCode", ""),
+            "name": f"{first} {last}",
+            "pos": ns.get("positionCode", s.get("positionCode", "")),
             "headshot": headshot,
-            "gp": gp, "g": s.get("goals", 0), "a": s.get("assists", 0),
-            "pts": pts, "pm": s.get("plusMinus", 0),
-            "pim": s.get("penaltyMinutes", 0),
-            "ppg": round(pts / gp, 2) if gp > 0 else 0,
-            "shots": shots,
-            "shPct": round(s.get("shootingPctg", 0) * 100, 1),
+            "gp": gp,
+            "g": goals,
+            "a": assists,
+            "pts": pts,
+            "pm": ns.get("plusMinus", s.get("plusMinus", 0)),
+            "pim": ns.get("penaltyMinutes", s.get("penaltyMinutes", 0)),
+            "ppg": ns.get("pointsPerGame", round(pts / gp, 2) if gp > 0 else 0),
+            "evg": ns.get("evGoals", 0),
+            "evp": ns.get("evPoints", 0),
+            "ppGoals": ns.get("ppGoals", s.get("powerPlayGoals", 0)),
+            "ppPts": ns.get("ppPoints", 0),
+            "shGoals": ns.get("shGoals", s.get("shorthandedGoals", 0)),
+            "shPts": ns.get("shPoints", 0),
+            "otg": ns.get("otGoals", s.get("overtimeGoals", 0)),
+            "gwg": ns.get("gameWinningGoals", s.get("gameWinningGoals", 0)),
+            "shots": ns.get("shots", s.get("shots", 0)),
+            "shPct": round((ns.get("shootingPct") or s.get("shootingPctg") or 0) * 100, 1),
             "toi": f"{toi_min}:{toi_s:02d}",
-            "ppGoals": s.get("powerPlayGoals", 0),
-            "shGoals": s.get("shorthandedGoals", 0),
-            "gwg": s.get("gameWinningGoals", 0),
-            "otg": s.get("overtimeGoals", 0),
-            "foPct": round(fo_pct * 100, 1) if fo_pct else 0,
+            "foPct": round((ns.get("faceoffWinPct") or s.get("faceoffWinPctg") or 0) * 100, 1),
         })
     skaters.sort(key=lambda x: x["pts"], reverse=True)
     return skaters
 
-def get_goalies(club_stats):
+def get_goalies(club_stats, nhl_goalie_summary):
+    """Build goalie list merging club-stats (headshots) + NHL stats API (full summary)."""
     goalies = []
     for g in club_stats.get("goalies", []):
+        pid = g.get("playerId", 0)
         first = g.get("firstName", {})
         last = g.get("lastName", {})
         if isinstance(first, dict): first = first.get("default", "")
         if isinstance(last, dict): last = last.get("default", "")
+
+        ns = nhl_goalie_summary.get(pid, {})
+        toi_total = ns.get("timeOnIce", 0)
+        toi_h = int(toi_total // 3600)
+        toi_m = int((toi_total % 3600) // 60)
+        toi_str = f"{toi_h * 60 + toi_m}:{int(toi_total % 60):02d}" if toi_total else "0:00"
+
         goalies.append({
-            "name": f"{first} {last}", "headshot": g.get("headshot", ""),
-            "gp": g.get("gamesPlayed", 0),
-            "w": g.get("wins", 0), "l": g.get("losses", 0),
-            "otl": g.get("overtimeLosses", 0),
-            "gaa": round(g.get("goalsAgainstAverage", 0), 2),
-            "svPct": round(g.get("savePercentage", 0), 3),
-            "so": g.get("shutouts", 0),
-            "sa": g.get("shotsAgainst", 0), "sv": g.get("saves", 0),
-            "ga": g.get("goalsAgainst", 0),
+            "name": f"{first} {last}",
+            "headshot": g.get("headshot", ""),
+            "gp": ns.get("gamesPlayed", g.get("gamesPlayed", 0)),
+            "gs": ns.get("gamesStarted", 0),
+            "w": ns.get("wins", g.get("wins", 0)),
+            "l": ns.get("losses", g.get("losses", 0)),
+            "otl": ns.get("otLosses", g.get("overtimeLosses", 0)),
+            "sa": ns.get("shotsAgainst", g.get("shotsAgainst", 0)),
+            "ga": ns.get("goalsAgainst", g.get("goalsAgainst", 0)),
+            "gaa": round(ns.get("goalsAgainstAverage", g.get("goalsAgainstAverage", 0)), 2),
+            "sv": ns.get("saves", g.get("saves", 0)),
+            "svPct": round(ns.get("savePct", g.get("savePercentage", 0)), 3),
+            "so": ns.get("shutouts", g.get("shutouts", 0)),
+            "toi": toi_str,
         })
     goalies.sort(key=lambda x: x["gp"], reverse=True)
     return goalies
@@ -382,12 +436,13 @@ def cmp_bar(label, val_ott, val_opp, fmt="pct", higher_better=True):
 </div>'''
 
 def build_roster_html(skaters, goalies, mp_players):
-    max_pts = max((s["pts"] for s in skaters), default=0)
     rows = []
+    ncols = 22  # total columns in skater table
     for i, s in enumerate(skaters):
         pm_val = s["pm"]
         pm_str = f"+{pm_val}" if pm_val > 0 else str(pm_val)
         alt = " alt" if i % 2 == 1 else ""
+        fo_str = f'{s["foPct"]:.1f}' if s["foPct"] > 0 else "--"
 
         # MoneyPuck advanced stats
         mp = mp_players.get(s["name"], {})
@@ -413,7 +468,7 @@ def build_roster_html(skaters, goalies, mp_players):
 
         expand_html = ""
         if has_mp:
-            expand_html = f'''<tr class="expand-row"><td colspan="14"><div class="px-grid">
+            expand_html = f'''<tr class="expand-row"><td colspan="{ncols}"><div class="px-grid">
   <div class="px-section"><div class="px-title">Expected Goals</div>
     <div class="px-row"><span class="px-label">xG (All Sit.)</span><span class="px-val">{xg:.1f}</span></div>
     <div class="px-row"><span class="px-label">xG (5v5)</span><span class="px-val">{xg5:.1f}</span></div>
@@ -439,13 +494,17 @@ def build_roster_html(skaters, goalies, mp_players):
 
         rows.append(f'''<tbody class="player-group"><tr class="player-summary{alt}">
 <td class="rank">{i+1}</td>
-<td class="name-cell"><details class="pd"><summary class="pd-s">{img}<div class="name-wrap"><span class="pname">{s["name"]}</span><span class="ppos">{s["pos"]}</span></div></summary></details></td>
+<td class="name-cell"><details class="pd"><summary class="pd-s">{img}<span class="pname">{s["name"]}</span></summary></details></td>
+<td class="r pos-col">{s["pos"]}</td>
 <td class="r">{s["gp"]}</td><td class="r">{s["g"]}</td><td class="r">{s["a"]}</td>
 <td class="r pts-col">{s["pts"]}</td><td class="r">{pm_str}</td>
-<td class="r">{s["pim"]}</td><td class="r">{s["ppGoals"]}</td>
-<td class="r">{s["gwg"]}</td><td class="r">{s["shots"]}</td>
-<td class="r">{s["shPct"]}</td><td class="r">{s["toi"]}</td>
-<td class="r">{s["ppg"]:.2f}</td>
+<td class="r">{s["pim"]}</td><td class="r">{s["ppg"]:.2f}</td>
+<td class="r">{s["evg"]}</td><td class="r">{s["evp"]}</td>
+<td class="r">{s["ppGoals"]}</td><td class="r">{s["ppPts"]}</td>
+<td class="r">{s["shGoals"]}</td><td class="r">{s["shPts"]}</td>
+<td class="r">{s["otg"]}</td><td class="r">{s["gwg"]}</td>
+<td class="r">{s["shots"]}</td><td class="r">{s["shPct"]}</td>
+<td class="r">{s["toi"]}</td><td class="r">{fo_str}</td>
 </tr>{expand_html}</tbody>''')
 
     goalie_rows = []
@@ -453,16 +512,22 @@ def build_roster_html(skaters, goalies, mp_players):
         svp = f".{int(g['svPct']*1000):03d}" if 0 < g["svPct"] < 1 else f"{g['svPct']:.3f}"
         alt = " alt" if i % 2 == 1 else ""
         img = f'<img src="{g["headshot"]}" class="hs" alt="">' if g["headshot"] else '<div class="hs hs-empty"></div>'
-        goalie_rows.append(f'<tr class="goalie-row{alt}"><td class="rank">{i+1}</td><td class="name-cell"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td><td class="r">{g["gp"]}</td><td class="r">{g["w"]}</td><td class="r">{g["l"]}</td><td class="r">{g["otl"]}</td><td class="r">{g["gaa"]:.2f}</td><td class="r">{svp}</td><td class="r">{g["sa"]}</td><td class="r">{g["sv"]}</td><td class="r">{g["ga"]}</td><td class="r">{g["so"]}</td></tr>')
+        goalie_rows.append(f'''<tr class="goalie-row{alt}"><td class="rank">{i+1}</td>
+<td class="name-cell"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td>
+<td class="r">{g["gp"]}</td><td class="r">{g["gs"]}</td>
+<td class="r">{g["w"]}</td><td class="r">{g["l"]}</td><td class="r">{g["otl"]}</td>
+<td class="r">{g["sa"]}</td><td class="r">{g["ga"]}</td><td class="r">{g["gaa"]:.2f}</td>
+<td class="r">{g["sv"]}</td><td class="r">{svp}</td>
+<td class="r">{g["so"]}</td><td class="r">{g["toi"]}</td></tr>''')
 
     return f'''<p class="sub-note">Click any player to see MoneyPuck advanced analytics.</p>
 <div class="scroll-x"><table class="nhl-tbl">
-<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">PPG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">P/GP</th></tr></thead>
+<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">Pos</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">P/GP</th><th class="r">EVG</th><th class="r">EVP</th><th class="r">PPG</th><th class="r">PPP</th><th class="r">SHG</th><th class="r">SHP</th><th class="r">OTG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">FOW%</th></tr></thead>
 {"".join(rows)}</table></div>
 
 <h3 style="margin-top:32px">Goaltenders</h3>
 <div class="scroll-x"><table class="nhl-tbl">
-<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">GAA</th><th class="r">SV%</th><th class="r">SA</th><th class="r">SV</th><th class="r">GA</th><th class="r">SO</th></tr></thead>
+<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">GS</th><th class="r">W</th><th class="r">L</th><th class="r">OT</th><th class="r">SA</th><th class="r">GA</th><th class="r">GAA</th><th class="r">SV</th><th class="r">SV%</th><th class="r">SO</th><th class="r">TOI</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
 def build_standings_section(east_teams):
@@ -852,8 +917,12 @@ def main():
 
     print("Fetching NHL club stats...")
     club_stats = fetch_club_stats()
-    skaters = get_skaters(club_stats)
-    goalies = get_goalies(club_stats)
+    print("Fetching NHL stats API (skater + goalie summary)...")
+    nhl_skater_summary = fetch_nhl_skater_summary()
+    nhl_goalie_summary = fetch_nhl_goalie_summary()
+    print(f"  Stats API: {len(nhl_skater_summary)} skaters, {len(nhl_goalie_summary)} goalies")
+    skaters = get_skaters(club_stats, nhl_skater_summary)
+    goalies = get_goalies(club_stats, nhl_goalie_summary)
     print(f"  {len(skaters)} skaters, {len(goalies)} goalies")
 
     print("Fetching NHL schedule...")
