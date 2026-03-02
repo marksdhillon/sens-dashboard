@@ -988,23 +988,23 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 </div>
 
 <div class="container">
-  <input type="radio" name="tab" id="tab-roster" checked>
+  <input type="radio" name="tab" id="tab-playoffs" checked>
   <input type="radio" name="tab" id="tab-standings">
-  <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-schedule">
+  <input type="radio" name="tab" id="tab-roster">
   <div class="tab-bar">
-    <label for="tab-roster">Player Stats</label>
-    <label for="tab-standings">Standings</label>
     <label for="tab-playoffs">Playoff Odds</label>
+    <label for="tab-standings">Standings</label>
     <label for="tab-schedule">Remaining Games</label>
+    <label for="tab-roster">Player Stats</label>
   </div>
-  <div class="panel" id="p-roster">{roster_html}</div>
+  <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-standings">
     <h3>Eastern Conference Standings</h3>
     {standings_html}
   </div>
-  <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
+  <div class="panel" id="p-roster">{roster_html}</div>
 </div>
 <div class="footer">NHL API + <a href="https://moneypuck.com">MoneyPuck</a> &middot; Auto-updated via GitHub Actions</div>
 </body></html>'''
