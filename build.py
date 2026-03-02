@@ -850,8 +850,9 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 
         notes_html = "".join(f'<li>{n}</li>' for n in notes[:4])
 
+        tough_tag = '<span class="tough-tag">.500+</span>' if g["above500"] else ""
         cards.append(f'''<details class="game-detail{tough_cls}">
-<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span></div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
+<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span>{tough_tag}</div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
 <div class="game-expand">
   <ul class="matchup-notes">{notes_html}</ul>
   <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
@@ -1030,7 +1031,8 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .sched-meta{{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
-.game-detail.tough{{border-left:3px solid var(--black)}}
+.game-detail.tough .game-summary{{border-left:3px solid var(--black)}}
+.tough-tag{{font-size:10px;font-weight:700;color:#fff;background:var(--black);padding:2px 6px;border-radius:4px;margin-left:8px;letter-spacing:0.3px;vertical-align:middle}}
 .game-summary{{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
 .game-summary:hover{{background:var(--bg-hover)}}
 .game-summary::-webkit-details-marker{{display:none}}
