@@ -273,7 +273,7 @@ def fmt_delta(current, previous, fmt="num", invert=False):
     else:
         is_good = diff > 0
     arrow = "&#9650;" if diff > 0 else "&#9660;"
-    color = "#1a8a1a" if is_good else "#c43c3c"
+    color = "#4ade80" if is_good else "#f87171"
     if fmt == "pct":
         label = f"{abs(diff)*100:.1f}%"
     elif fmt == "dec":
@@ -753,7 +753,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 
     proj_diff = proj_pts - target
     diff_sign = "+" if proj_diff >= 0 else ""
-    diff_color = "#1a8a1a" if proj_diff >= 0 else "#c43c3c"
+    diff_color = "#4ade80" if proj_diff >= 0 else "#f87171"
     return f'''<div class="kpi-row">
   <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">{proj_pts:.0f} <span style="font-size:16px;color:{diff_color}">({diff_sign}{proj_diff:.0f})</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -989,46 +989,44 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Ottawa Senators — 2025-26</title>
 <style>
-:root{{--bg:#ffffff;--bg-hover:#fdf6ec;--bg-tag:#f5f0e8;--border:#e3e3e0;--text:#37352f;--text-secondary:#787774;--text-muted:#b4b4b0;--black:#111;--accent:#c8102e;--sens-red:#c8102e;--sens-dark:#a00d24}}
+:root{{--bg:#0c0c0d;--bg-surface:#161618;--bg-hover:#1e1e21;--bg-tag:#1e1e21;--border:rgba(255,255,255,0.06);--border-strong:rgba(255,255,255,0.1);--text:#ededef;--text-secondary:#8a8a8e;--text-muted:#5c5c63;--accent:#e8384f;--accent-dim:rgba(232,56,79,0.15)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}}
-a{{color:var(--text);text-decoration:underline;text-underline-offset:2px}}
-a:hover{{color:var(--black)}}
-
-/* Top Bar */
-.top-bar{{height:4px;background:var(--sens-red)}}
+a{{color:var(--text);text-decoration:none}}
+a:hover{{color:#fff}}
 
 /* Header */
+.top-bar{{display:none}}
 .header{{max-width:900px;margin:0 auto;padding:40px 24px 0}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
-.team-logo{{width:56px;height:56px}}
-.header h1{{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:1px;color:var(--sens-dark)}}
+.team-logo{{width:48px;height:48px}}
+.header h1{{font-size:22px;font-weight:600;letter-spacing:-0.3px;margin-bottom:1px;color:#fff}}
 .header .subtitle{{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}}
 .hdr-pct{{text-align:right}}
-.pct-val{{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1;color:var(--sens-red)}}
-.pct-label{{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
+.pct-val{{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;color:var(--accent)}}
+.pct-label{{display:block;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:6px}}
 .delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
-@media(max-width:500px){{.team-logo{{width:40px;height:40px}}.header h1{{font-size:22px}}.pct-val{{font-size:28px}}}}
+@media(max-width:500px){{.team-logo{{width:36px;height:36px}}.header h1{{font-size:18px}}.pct-val{{font-size:28px}}}}
 
-.stat-row{{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0;border-bottom:1px solid var(--border)}}
-.stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}}
-.stat-pill .sl{{color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:0.5px}}
-.stat-pill .sv{{font-weight:600}}
+.stat-row{{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0;border-bottom:1px solid var(--border)}}
+.stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--bg-surface);border:1px solid var(--border);border-radius:6px;font-size:12px;white-space:nowrap}}
+.stat-pill .sl{{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px}}
+.stat-pill .sv{{font-weight:600;color:var(--text)}}
 
 /* Tabs (CSS only) */
 .container{{max-width:900px;margin:0 auto;padding:0 24px 56px}}
 input[name="tab"]{{display:none}}
 .tab-bar{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:32px}}
-.tab-bar label{{padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.1s}}
-.tab-bar label:hover{{color:var(--text)}}
+.tab-bar label{{padding:10px 16px;font-size:13px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.15s}}
+.tab-bar label:hover{{color:var(--text-secondary)}}
 .panel{{display:none}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text);font-weight:600;border-bottom-color:var(--sens-red)}}
+#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text);font-weight:600;border-bottom-color:var(--accent)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
@@ -1037,116 +1035,116 @@ input[name="tab"]{{display:none}}
 #tab-community:checked~#p-community{{display:block}}
 
 /* Typography */
-h3{{font-size:16px;font-weight:600;margin-bottom:16px;letter-spacing:-0.2px}}
-.sub-note{{font-size:13px;color:var(--text-secondary);margin-bottom:20px}}
+h3{{font-size:15px;font-weight:600;margin-bottom:16px;letter-spacing:-0.2px;color:var(--text)}}
+.sub-note{{font-size:12px;color:var(--text-muted);margin-bottom:20px}}
 
 /* Tables */
 .nhl-tbl{{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}}
-.nhl-tbl thead th{{background:#111;color:#fff;padding:9px 8px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}}
+.nhl-tbl thead th{{background:var(--bg-surface);color:var(--text-muted);padding:9px 8px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border-strong)}}
 .nhl-tbl thead th.r{{text-align:right}}
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
 .nhl-tbl thead th.name-col{{min-width:160px}}
-.nhl-tbl td{{padding:7px 8px;border:none;white-space:nowrap}}
+.nhl-tbl td{{padding:7px 8px;border:none;border-bottom:1px solid var(--border);white-space:nowrap;color:var(--text-secondary)}}
 .nhl-tbl td.r{{text-align:right}}
 .nhl-tbl td.rank{{text-align:center;color:var(--text-muted);font-size:11px}}
-.nhl-tbl td.pts-col{{font-weight:700}}
-.nhl-tbl .player-summary:hover td{{background:#fdf6ec}}
-.nhl-tbl .player-summary.alt td{{background:#faf8f5}}
-.nhl-tbl .player-summary.alt:hover td{{background:#fdf6ec}}
-.nhl-tbl .goalie-row:hover td{{background:#fdf6ec}}
-.nhl-tbl .goalie-row.alt td{{background:#faf8f5}}
-.nhl-tbl .goalie-row.alt:hover td{{background:#fdf6ec}}
+.nhl-tbl td.pts-col{{font-weight:700;color:var(--text)}}
+.nhl-tbl .player-summary:hover td{{background:var(--bg-hover)}}
+.nhl-tbl .player-summary.alt td{{background:rgba(255,255,255,0.02)}}
+.nhl-tbl .player-summary.alt:hover td{{background:var(--bg-hover)}}
+.nhl-tbl .goalie-row:hover td{{background:var(--bg-hover)}}
+.nhl-tbl .goalie-row.alt td{{background:rgba(255,255,255,0.02)}}
+.nhl-tbl .goalie-row.alt:hover td{{background:var(--bg-hover)}}
 /* Headshot */
-.hs{{width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#e8e8e8}}
+.hs{{width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--bg-surface)}}
 .hs-empty{{display:inline-block}}
 .name-cell{{padding-left:4px}}
 .name-flex{{display:flex;align-items:center;gap:8px}}
 a.pname{{font-weight:600;white-space:nowrap;font-size:13px;color:var(--text);text-decoration:none}}
-a.pname:hover{{text-decoration:underline}}
+a.pname:hover{{color:#fff;text-decoration:underline;text-decoration-color:var(--text-muted)}}
 /* Advanced stat columns */
-.adv{{color:var(--text-secondary)}}
-.adv-pos{{color:#1a8a1a;font-weight:600}}
-.adv-neg{{color:#c43c3c;font-weight:600}}
-.adv-hdr{{background:#1a1a2e !important}}
-.sens-row td{{background:#fdf6ec}}.sens-row td:first-child{{font-weight:700;color:var(--sens-dark)}}
+.adv{{color:var(--text-muted)}}
+.adv-pos{{color:#4ade80;font-weight:600}}
+.adv-neg{{color:#f87171;font-weight:600}}
+.adv-hdr{{background:var(--bg-surface) !important}}
+.sens-row td{{background:var(--accent-dim)}}.sens-row td:first-child{{font-weight:700;color:var(--accent)}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
-.tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none}}.tcol-link:hover{{text-decoration:underline}}.bpts{{font-weight:700}}
-.div-label{{margin:32px 0 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
+.tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none}}.tcol-link:hover{{color:#fff;text-decoration:underline;text-decoration-color:var(--text-muted)}}.bpts{{font-weight:700;color:var(--text)}}
+.div-label{{margin:32px 0 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
 .stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
-.stnd-tbl .sens-row td{{background:#fdf6ec}}
+.stnd-tbl .sens-row td{{background:var(--accent-dim)}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
-.kpi-row{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}}
-.kpi{{flex:1;min-width:90px;padding:18px;border:1px solid var(--border);border-radius:8px;text-align:center}}
-.kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:var(--sens-dark)}}
-.kpi-label{{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}}
+.kpi-row{{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}}
+.kpi{{flex:1;min-width:90px;padding:18px;background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;text-align:center}}
+.kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#fff}}
+.kpi-label{{font-size:10px;color:var(--text-muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.8px}}
 
 /* Scenario impact */
-.sc-label{{font-weight:600;white-space:nowrap}}
-.sc-up{{color:#1a8a1a;font-weight:600}}
-.sc-down{{color:#c43c3c;font-weight:600}}
+.sc-label{{font-weight:600;white-space:nowrap;color:var(--text)}}
+.sc-up{{color:#4ade80;font-weight:600}}
+.sc-down{{color:#f87171;font-weight:600}}
 .footnote{{margin-top:32px;font-size:12px;color:var(--text-muted)}}
 
 /* Schedule */
-.sched-meta{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}}
-.sm-card{{flex:1;min-width:70px;text-align:center;padding:16px 10px;border:1px solid var(--border);border-radius:8px}}
-.sm-val{{font-size:24px;font-weight:700;line-height:1;color:var(--sens-dark)}}
-.sm-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
-.sched-list{{display:flex;flex-direction:column;gap:8px}}
-.game-detail{{border-radius:8px;overflow:hidden}}
-.game-tag{{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
-.tag-playoff{{color:var(--text-secondary);background:var(--bg-tag);border:1px solid var(--border)}}
-.tag-desperate{{color:#b45309;background:#fef3c7}}
-.tag-sellers{{color:var(--text-muted);background:var(--bg);border:1px dashed var(--border)}}
-.tag-hot{{color:#fff;background:#c0392b}}
-.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
-.game-summary:hover{{background:var(--bg-hover)}}
+.sched-meta{{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}}
+.sm-card{{flex:1;min-width:70px;text-align:center;padding:16px 10px;background:var(--bg-surface);border:1px solid var(--border);border-radius:10px}}
+.sm-val{{font-size:24px;font-weight:700;line-height:1;color:#fff}}
+.sm-label{{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:6px}}
+.sched-list{{display:flex;flex-direction:column;gap:6px}}
+.game-detail{{border-radius:10px;overflow:hidden}}
+.game-tag{{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
+.tag-playoff{{color:var(--text-muted);background:rgba(255,255,255,0.04);border:1px solid var(--border)}}
+.tag-desperate{{color:#fbbf24;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2)}}
+.tag-sellers{{color:var(--text-muted);background:transparent;border:1px dashed var(--border)}}
+.tag-hot{{color:#fff;background:var(--accent)}}
+.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;transition:all 0.15s}}
+.game-summary:hover{{background:var(--bg-hover);border-color:var(--border-strong)}}
 .game-summary::-webkit-details-marker{{display:none}}
 .game-summary::marker{{display:none;content:""}}
 .game-detail[open] .game-summary{{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:transparent}}
 .game-left{{display:flex;align-items:center;gap:12px}}
 .game-date{{font-size:12px;color:var(--text-muted);min-width:44px}}
-.game-opp{{font-size:14px;font-weight:600}}
+.game-opp{{font-size:14px;font-weight:600;color:var(--text)}}
 .game-right{{display:flex;align-items:center;gap:10px}}
 .game-meta{{font-size:12px;color:var(--text-muted)}}
-.game-loc{{font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px}}
-.loc-home{{background:#eef8ee;color:#3d8c40}}
-.loc-away{{background:#f5f5f5;color:var(--text-secondary)}}
-.game-expand{{border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:20px}}
+.game-loc{{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}}
+.loc-home{{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.15)}}
+.loc-away{{background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border)}}
+.game-expand{{background:var(--bg-surface);border:1px solid var(--border);border-top:0;border-bottom-left-radius:10px;border-bottom-right-radius:10px;padding:20px}}
 .cmp-tbl{{width:100%;border-collapse:collapse;font-size:13px}}
-.cmp-tbl thead th{{font-size:12px;font-weight:700;padding:6px 8px;border-bottom:2px solid var(--border);text-align:center}}
+.cmp-tbl thead th{{font-size:11px;font-weight:600;padding:6px 8px;border-bottom:1px solid var(--border-strong);text-align:center;color:var(--text-muted)}}
 .cmp-tbl thead th:first-child{{text-align:left}}
 .cmp-tbl thead th:last-child{{text-align:right}}
-.cmp-tbl td{{padding:5px 8px;border-bottom:1px solid var(--border)}}
-.cmp-stat-l{{font-weight:600;text-align:left}}
-.cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
-.cmp-stat-r{{font-weight:600;text-align:right}}
-.matchup-notes{{margin:0 0 14px;padding:0;list-style:none;font-size:13px;color:var(--text);line-height:1.5}}
-.matchup-notes li{{padding:4px 10px;background:var(--bg-tag);border-radius:6px;margin-bottom:5px;font-weight:500}}
+.cmp-tbl td{{padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)}}
+.cmp-stat-l{{font-weight:600;text-align:left;color:var(--text)}}
+.cmp-stat-label{{text-align:center;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
+.cmp-stat-r{{font-weight:600;text-align:right;color:var(--text)}}
+.matchup-notes{{margin:0 0 14px;padding:0;list-style:none;font-size:12px;color:var(--text-secondary);line-height:1.5}}
+.matchup-notes li{{padding:5px 12px;background:rgba(255,255,255,0.03);border-radius:6px;margin-bottom:4px;font-weight:500;border:1px solid var(--border)}}
 
 /* News / Trade Rumors */
-.news-list{{display:flex;flex-direction:column;gap:6px}}
-.news-item{{display:block;padding:14px 16px;border-radius:8px;text-decoration:none;transition:background 0.1s}}
+.news-list{{display:flex;flex-direction:column;gap:2px}}
+.news-item{{display:block;padding:14px 16px;border-radius:8px;text-decoration:none;transition:background 0.15s}}
 .news-item:hover{{background:var(--bg-hover);text-decoration:none}}
 .news-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}}
-.news-source{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted)}}
+.news-source{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted)}}
 .news-date{{font-size:11px;color:var(--text-muted)}}
 .news-title{{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}}
 
 /* Community */
-.community-list{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+.community-list{{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
 @media(max-width:560px){{.community-list{{grid-template-columns:1fr}}}}
-.community-card{{display:block;padding:20px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:background 0.1s,border-color 0.1s}}
-.community-card:hover{{background:var(--bg-hover);border-color:var(--text-muted);text-decoration:none}}
+.community-card{{display:block;padding:20px;background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.15s}}
+.community-card:hover{{background:var(--bg-hover);border-color:var(--border-strong);text-decoration:none}}
 .cc-name{{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}}
-.cc-desc{{font-size:12px;color:var(--text-secondary);line-height:1.4}}
+.cc-desc{{font-size:12px;color:var(--text-muted);line-height:1.4}}
 
 /* Sortable columns */
 .sort-th{{cursor:pointer;user-select:none;position:relative}}
-.sort-th:hover{{background:#222}}
+.sort-th:hover{{background:var(--bg-hover)}}
 .sort-th::after{{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}}
 .sort-th.asc::after{{content:"\\25B2";opacity:0.9}}
 .sort-th.desc::after{{content:"\\25BC";opacity:0.9}}
