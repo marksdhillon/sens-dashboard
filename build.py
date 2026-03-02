@@ -470,67 +470,35 @@ def compute_vs_above500(results, above500):
 
 def build_roster_html(skaters, goalies, mp_players):
     rows = []
-    ncols = 22  # total columns in skater table
     for i, s in enumerate(skaters):
         pm_val = s["pm"]
         pm_str = f"+{pm_val}" if pm_val > 0 else str(pm_val)
         alt = " alt" if i % 2 == 1 else ""
         fo_str = f'{s["foPct"]:.1f}' if s["foPct"] > 0 else "--"
-
-        # MoneyPuck advanced stats
-        mp = mp_players.get(normalize_name(s["name"]), {})
-        mp5 = mp.get("5v5", {})
-        mp_all = mp.get("all", {})
-        has_mp = bool(mp5)
-
-        xg = mp_all.get("xG", 0)
-        xg5 = mp5.get("xG", 0)
-        xgf_pct = mp5.get("xGFpct", 0)
-        cf_pct = mp5.get("CFpct", 0)
-        hd_shots = mp5.get("hdShots", 0)
-        hd_goals = mp5.get("hdGoals", 0)
-        hits = mp5.get("hits", 0)
-        tkwy = mp5.get("takeaways", 0)
-        gvwy = mp5.get("giveaways", 0)
-        oz = mp5.get("ozStarts", 0)
-        dz = mp5.get("dzStarts", 0)
-        oz_pct = round(oz / (oz + dz) * 100, 1) if (oz + dz) > 0 else 0
-        game_score = mp_all.get("gameScore", 0)
-        gs_pg = round(game_score / s["gp"], 2) if s["gp"] > 0 else 0
-        g_minus_xg = s["g"] - xg
-
-        expand_html = ""
-        if has_mp:
-            expand_html = f'''<tr class="expand-row"><td colspan="{ncols}"><div class="px-grid">
-  <div class="px-section"><div class="px-title">Expected Goals</div>
-    <div class="px-row"><span class="px-label">xG (All Sit.)</span><span class="px-val">{xg:.1f}</span></div>
-    <div class="px-row"><span class="px-label">xG (5v5)</span><span class="px-val">{xg5:.1f}</span></div>
-    <div class="px-row"><span class="px-label">Goals &minus; xG</span><span class="px-val" style="color:{"#1a8a1a" if g_minus_xg > 0.5 else "#c43c3c" if g_minus_xg < -0.5 else "inherit"}">{g_minus_xg:+.1f}</span></div>
-    <div class="px-row"><span class="px-label">xGF% (5v5)</span><span class="px-val">{xgf_pct*100:.1f}%</span></div>
-    <div class="px-row"><span class="px-label">GameScore/GP</span><span class="px-val">{gs_pg}</span></div>
-  </div>
-  <div class="px-section"><div class="px-title">Possession (5v5)</div>
-    <div class="px-row"><span class="px-label">CF%</span><span class="px-val">{cf_pct*100:.1f}%</span></div>
-    <div class="px-row"><span class="px-label">OZ Start %</span><span class="px-val">{oz_pct}%</span></div>
-    <div class="px-row"><span class="px-label">HD Shots</span><span class="px-val">{hd_shots}</span></div>
-    <div class="px-row"><span class="px-label">HD Goals</span><span class="px-val">{hd_goals}</span></div>
-  </div>
-  <div class="px-section"><div class="px-title">Physical (5v5)</div>
-    <div class="px-row"><span class="px-label">Hits</span><span class="px-val">{hits}</span></div>
-    <div class="px-row"><span class="px-label">Takeaways</span><span class="px-val">{tkwy}</span></div>
-    <div class="px-row"><span class="px-label">Giveaways</span><span class="px-val">{gvwy}</span></div>
-    {"<div class='px-row'><span class='px-label'>FO%</span><span class='px-val'>" + str(s["foPct"]) + "%</span></div>" if s["foPct"] > 0 else ""}
-  </div>
-</div></td></tr>'''
-
         img = f'<img src="{s["headshot"]}" class="hs" alt="">' if s["headshot"] else '<div class="hs hs-empty"></div>'
-
         toi_sec = int(s["toi"].split(":")[0]) * 60 + int(s["toi"].split(":")[1])
         fo_sort = s["foPct"] if s["foPct"] > 0 else 0
 
-        rows.append(f'''<tbody class="player-group"><tr class="player-summary{alt}">
+        # MoneyPuck advanced stats (inline columns)
+        mp = mp_players.get(normalize_name(s["name"]), {})
+        mp_all = mp.get("all", {})
+        mp5 = mp.get("5v5", {})
+        xg = mp_all.get("xG", 0)
+        g_minus_xg = round(s["g"] - xg, 1)
+        gxg_str = f"{g_minus_xg:+.1f}" if xg > 0 else "--"
+        gxg_sort = g_minus_xg if xg > 0 else 0
+        gxg_cls = " adv-pos" if g_minus_xg > 0.5 else " adv-neg" if g_minus_xg < -0.5 else ""
+        game_score = mp_all.get("gameScore", 0)
+        gs_pg = round(game_score / s["gp"], 2) if s["gp"] > 0 and game_score else 0
+        gs_str = f"{gs_pg:.2f}" if gs_pg else "--"
+        gs_sort = gs_pg if gs_pg else 0
+        xgf_pct = mp5.get("xGFpct", 0)
+        xgf_str = f"{xgf_pct*100:.1f}" if xgf_pct > 0 else "--"
+        xgf_sort = xgf_pct * 100 if xgf_pct > 0 else 0
+
+        rows.append(f'''<tr class="player-summary{alt}">
 <td class="rank" data-sort="{i+1}">{i+1}</td>
-<td class="name-cell" data-sort="{s["name"]}"><details class="pd"><summary class="pd-s">{img}<span class="pname">{s["name"]}</span></summary></details></td>
+<td class="name-cell" data-sort="{s["name"]}"><div class="name-flex">{img}<span class="pname">{s["name"]}</span></div></td>
 <td class="r pos-col" data-sort="{s["pos"]}">{s["pos"]}</td>
 <td class="r" data-sort="{s["gp"]}">{s["gp"]}</td><td class="r" data-sort="{s["g"]}">{s["g"]}</td><td class="r" data-sort="{s["a"]}">{s["a"]}</td>
 <td class="r pts-col" data-sort="{s["pts"]}">{s["pts"]}</td><td class="r" data-sort="{s["pm"]}">{pm_str}</td>
@@ -541,7 +509,10 @@ def build_roster_html(skaters, goalies, mp_players):
 <td class="r" data-sort="{s["otg"]}">{s["otg"]}</td><td class="r" data-sort="{s["gwg"]}">{s["gwg"]}</td>
 <td class="r" data-sort="{s["shots"]}">{s["shots"]}</td><td class="r" data-sort="{s["shPct"]}">{s["shPct"]}</td>
 <td class="r" data-sort="{toi_sec}">{s["toi"]}</td><td class="r" data-sort="{fo_sort}">{fo_str}</td>
-</tr>{expand_html}</tbody>''')
+<td class="r adv{gxg_cls}" data-sort="{gxg_sort}">{gxg_str}</td>
+<td class="r adv" data-sort="{xgf_sort}">{xgf_str}</td>
+<td class="r adv" data-sort="{gs_sort}">{gs_str}</td>
+</tr>''')
 
     goalie_rows = []
     for i, g in enumerate(goalies):
@@ -550,7 +521,7 @@ def build_roster_html(skaters, goalies, mp_players):
         img = f'<img src="{g["headshot"]}" class="hs" alt="">' if g["headshot"] else '<div class="hs hs-empty"></div>'
         toi_parts = g["toi"].split(":")
         g_toi_sec = int(toi_parts[0]) * 60 + int(toi_parts[1]) if len(toi_parts) == 2 else 0
-        goalie_rows.append(f'''<tr class="goalie-row{alt}" data-goalie><td class="rank" data-sort="{i+1}">{i+1}</td>
+        goalie_rows.append(f'''<tr class="goalie-row{alt}"><td class="rank" data-sort="{i+1}">{i+1}</td>
 <td class="name-cell" data-sort="{g["name"]}"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td>
 <td class="r" data-sort="{g["gp"]}">{g["gp"]}</td><td class="r" data-sort="{g["gs"]}">{g["gs"]}</td>
 <td class="r" data-sort="{g["w"]}">{g["w"]}</td><td class="r" data-sort="{g["l"]}">{g["l"]}</td><td class="r" data-sort="{g["otl"]}">{g["otl"]}</td>
@@ -559,8 +530,8 @@ def build_roster_html(skaters, goalies, mp_players):
 <td class="r" data-sort="{g["so"]}">{g["so"]}</td><td class="r" data-sort="{g_toi_sec}">{g["toi"]}</td></tr>''')
 
     return f'''<div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
-<thead><tr><th class="rank sort-th" data-col="0">#</th><th class="name-col sort-th" data-col="1">Player</th><th class="r sort-th" data-col="2">Pos</th><th class="r sort-th" data-col="3">GP</th><th class="r sort-th" data-col="4">G</th><th class="r sort-th" data-col="5">A</th><th class="r sort-th" data-col="6">P</th><th class="r sort-th" data-col="7">+/-</th><th class="r sort-th" data-col="8">PIM</th><th class="r sort-th" data-col="9">P/GP</th><th class="r sort-th" data-col="10">EVG</th><th class="r sort-th" data-col="11">EVP</th><th class="r sort-th" data-col="12">PPG</th><th class="r sort-th" data-col="13">PPP</th><th class="r sort-th" data-col="14">SHG</th><th class="r sort-th" data-col="15">SHP</th><th class="r sort-th" data-col="16">OTG</th><th class="r sort-th" data-col="17">GWG</th><th class="r sort-th" data-col="18">S</th><th class="r sort-th" data-col="19">S%</th><th class="r sort-th" data-col="20">TOI/GP</th><th class="r sort-th" data-col="21">FOW%</th></tr></thead>
-{"".join(rows)}</table></div>
+<thead><tr><th class="rank sort-th" data-col="0">#</th><th class="name-col sort-th" data-col="1">Player</th><th class="r sort-th" data-col="2">Pos</th><th class="r sort-th" data-col="3">GP</th><th class="r sort-th" data-col="4">G</th><th class="r sort-th" data-col="5">A</th><th class="r sort-th" data-col="6">P</th><th class="r sort-th" data-col="7">+/-</th><th class="r sort-th" data-col="8">PIM</th><th class="r sort-th" data-col="9">P/GP</th><th class="r sort-th" data-col="10">EVG</th><th class="r sort-th" data-col="11">EVP</th><th class="r sort-th" data-col="12">PPG</th><th class="r sort-th" data-col="13">PPP</th><th class="r sort-th" data-col="14">SHG</th><th class="r sort-th" data-col="15">SHP</th><th class="r sort-th" data-col="16">OTG</th><th class="r sort-th" data-col="17">GWG</th><th class="r sort-th" data-col="18">S</th><th class="r sort-th" data-col="19">S%</th><th class="r sort-th" data-col="20">TOI</th><th class="r sort-th" data-col="21">FO%</th><th class="r sort-th adv-hdr" data-col="22">G-xG</th><th class="r sort-th adv-hdr" data-col="23">xGF%</th><th class="r sort-th adv-hdr" data-col="24">GS/GP</th></tr></thead>
+<tbody>{"".join(rows)}</tbody></table></div>
 
 <h3 style="margin-top:32px">Goaltenders</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
@@ -851,21 +822,11 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .name-cell{{padding-left:4px}}
 .name-flex{{display:flex;align-items:center;gap:8px}}
 .pname{{font-weight:600;white-space:nowrap;font-size:13px}}
-/* Details toggle for player */
-.pd{{display:inline}}.pd summary.pd-s{{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none}}
-.pd summary.pd-s::-webkit-details-marker{{display:none}}
-.pd summary.pd-s::marker{{display:none;content:""}}
-.player-group{{border-bottom:1px solid #eee}}
-/* Expand row */
-.expand-row{{display:none}}
-.player-group:has(.pd[open]) .expand-row{{display:table-row}}
-.expand-row td{{padding:16px;background:#fafafa;border-top:1px solid #eee}}
-.px-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
-@media(max-width:600px){{.px-grid{{grid-template-columns:1fr 1fr}}}}
-.px-title{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}}
-.px-row{{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}}
-.px-label{{color:var(--text-secondary)}}
-.px-val{{font-weight:600;font-variant-numeric:tabular-nums}}
+/* Advanced stat columns */
+.adv{{color:var(--text-secondary)}}
+.adv-pos{{color:#1a8a1a;font-weight:600}}
+.adv-neg{{color:#c43c3c;font-weight:600}}
+.adv-hdr{{background:#1a1a2e !important}}
 .sens-row td{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
@@ -973,29 +934,16 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
       tbl.querySelectorAll(".sort-th").forEach(function(h){{h.classList.remove("asc","desc")}});
       var dir=asc?"desc":"asc";
       th.classList.add(dir);
-      var isSkater=tbl.id==="skater-tbl";
-      if(isSkater){{
-        var groups=Array.from(tbl.querySelectorAll("tbody.player-group"));
-        groups.sort(function(a,b){{
-          var ca=a.querySelector("tr").children[col],cb=b.querySelector("tr").children[col];
-          var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
-          var na=parseFloat(va),nb=parseFloat(vb);
-          if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
-          return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
-        }});
-        groups.forEach(function(g){{tbl.appendChild(g)}});
-      }}else{{
-        var tbody=tbl.querySelector("tbody");
-        var rows=Array.from(tbody.querySelectorAll("tr"));
-        rows.sort(function(a,b){{
-          var ca=a.children[col],cb=b.children[col];
-          var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
-          var na=parseFloat(va),nb=parseFloat(vb);
-          if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
-          return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
-        }});
-        rows.forEach(function(r){{tbody.appendChild(r)}});
-      }}
+      var tbody=tbl.querySelector("tbody");
+      var rows=Array.from(tbody.querySelectorAll("tr"));
+      rows.sort(function(a,b){{
+        var ca=a.children[col],cb=b.children[col];
+        var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
+        var na=parseFloat(va),nb=parseFloat(vb);
+        if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
+        return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
+      }});
+      rows.forEach(function(r){{tbody.appendChild(r)}});
     }});
   }});
 }});
