@@ -883,29 +883,35 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
     goal_diff = sens["gf"] - sens["ga"]
     goal_diff_str = f"+{goal_diff}" if goal_diff >= 0 else str(goal_diff)
     ott_mp = mp_stats.get(TEAM, {})
-    ott_mp_all = ott_mp.get("all", {})
-    ott_mp_5v5 = ott_mp.get("5v5", {})
-    xgf_pct = ott_mp_5v5.get("xGFpct", 0)
-    # PP% and PK%
-    pp_data = ott_mp.get("pp", {})
-    pk_data = ott_mp.get("pk", {})
-    pp_pct = round(pp_data.get("gf", 0) / max(pp_data.get("gp", 1), 1) * 100 / max(1, 1), 1) if pp_data else 0
-    pk_sa = pk_data.get("sa", 0)
-    pk_ga = pk_data.get("ga", 0)
-    pk_pct = round((1 - pk_ga / max(pk_sa, 1)) * 100, 1) if pk_data else 0
-    # Actually compute PP% from shots: pp_gf / pp_opportunities isn't available
-    # Use a simpler approach: gf per 60 isn't great either. Let's compute PP% properly.
-    # MoneyPuck pp gp = power play opportunities (games with PP). Let's use goals/GP as a rate.
-    pp_gf = pp_data.get("gf", 0)
-    pp_shots = pp_data.get("shots", 0)
-    # PP% is typically goals / opportunities, but we have goals and shots. Let's show PP GF/GP and PK%
-    pp_gfpg = round(pp_gf / gp, 2)
-    # League ranking for goal diff
-    all_diffs = sorted([t["gf"] - t["ga"] for t in all_teams], reverse=True)
-    gd_rank = all_diffs.index(goal_diff) + 1 if goal_diff in all_diffs else 0
     def ordinal(n):
         if 11 <= n % 100 <= 13: return f"{n}th"
         return f"{n}" + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+
+    # PP% and PK% with league rankings (from MoneyPuck, all 32 teams)
+    def calc_pp_pct(team_mp):
+        d = team_mp.get("pp", {})
+        shots = d.get("shots", 0)
+        return round(d.get("gf", 0) / max(shots, 1) * 100, 1) if shots else 0
+    def calc_pk_pct(team_mp):
+        d = team_mp.get("pk", {})
+        sa = d.get("sa", 0)
+        return round((1 - d.get("ga", 0) / max(sa, 1)) * 100, 1) if sa else 0
+
+    all_pp = sorted([(t, calc_pp_pct(mp_stats.get(t, {}))) for t in mp_stats], key=lambda x: -x[1])
+    all_pk = sorted([(t, calc_pk_pct(mp_stats.get(t, {}))) for t in mp_stats], key=lambda x: -x[1])
+    pp_pct = calc_pp_pct(ott_mp)
+    pk_pct = calc_pk_pct(ott_mp)
+    pp_rank = next((i+1 for i, (t, _) in enumerate(all_pp) if t == TEAM), 0)
+    pk_rank = next((i+1 for i, (t, _) in enumerate(all_pk) if t == TEAM), 0)
+
+    # Points pace (projected 82-game total from pts%)
+    pts_pace = round(sens["ptsPct"] * 2 * 82)
+
+    # 1-goal games record (clutch factor) — count from results
+    # Not available directly; use goal diff per game as proxy
+    gf_pg = round(sens["gf"] / gp, 1)
+    ga_pg = round(sens["ga"] / gp, 1)
+
     # vs .500 record
     vs500_str = f"{w500}-{l500}-{otl500}"
     gap_str = f"+{gap}" if gap >= 0 else str(gap)
@@ -1091,10 +1097,12 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   </div>
   <div class="stat-row">
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
-    <span class="stat-pill" title="Goal differential (league rank)"><span class="sl">Goal Diff</span> <span class="sv">{goal_diff_str} <small>({ordinal(gd_rank)})</small></span></span>
-    <span class="stat-pill" title="Expected Goals For % at 5v5 — above 50% means outshooting opponents in quality chances"><span class="sl">xGF%</span> <span class="sv">{xgf_pct*100:.1f}%</span></span>
-    <span class="stat-pill" title="Penalty kill — saves / shots against on the PK"><span class="sl">PK%</span> <span class="sv">{pk_pct}%</span></span>
     <span class="stat-pill" title="Record vs teams above .500"><span class="sl">vs .500+</span> <span class="sv">{vs500_str}</span></span>
+    <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">{goal_diff_str}</span></span>
+    <span class="stat-pill" title="Power play goals / power play shots — league rank out of 32"><span class="sl">PP%</span> <span class="sv">{pp_pct}% <small>({ordinal(pp_rank)})</small></span></span>
+    <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">{pk_pct}% <small>({ordinal(pk_rank)})</small></span></span>
+    <span class="stat-pill" title="Goals scored per game / goals allowed per game"><span class="sl">GF·GA/GP</span> <span class="sv">{gf_pg}·{ga_pg}</span></span>
+    <span class="stat-pill" title="82-game point pace based on current points percentage"><span class="sl">Pace</span> <span class="sv">{pts_pace} pts</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
     <span class="stat-pill"><span class="sl">Streak</span> <span class="sv">{sens["streak"]}</span></span>
   </div>
