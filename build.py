@@ -552,7 +552,7 @@ def build_roster_html(skaters, goalies, mp_players):
 
         rows.append(f'''<tr class="player-summary{alt}">
 <td class="rank" data-sort="{i+1}">{i+1}</td>
-<td class="name-cell" data-sort="{s["name"]}"><div class="name-flex">{img}<span class="pname">{s["name"]}</span></div></td>
+<td class="name-cell" data-sort="{s["name"]}"><div class="name-flex">{img}<a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={s["name"].replace(" ", "+")}" target="_blank" rel="noopener" class="pname">{s["name"]}</a></div></td>
 <td class="r pos-col" data-sort="{s["pos"]}">{s["pos"]}</td>
 <td class="r" data-sort="{s["gp"]}">{s["gp"]}</td><td class="r" data-sort="{s["g"]}">{s["g"]}</td><td class="r" data-sort="{s["a"]}">{s["a"]}</td>
 <td class="r pts-col" data-sort="{s["pts"]}">{s["pts"]}</td><td class="r" data-sort="{s["pm"]}">{pm_str}</td>
@@ -576,7 +576,7 @@ def build_roster_html(skaters, goalies, mp_players):
         toi_parts = g["toi"].split(":")
         g_toi_sec = int(toi_parts[0]) * 60 + int(toi_parts[1]) if len(toi_parts) == 2 else 0
         goalie_rows.append(f'''<tr class="goalie-row{alt}"><td class="rank" data-sort="{i+1}">{i+1}</td>
-<td class="name-cell" data-sort="{g["name"]}"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td>
+<td class="name-cell" data-sort="{g["name"]}"><div class="name-flex">{img}<a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={g["name"].replace(" ", "+")}" target="_blank" rel="noopener" class="pname">{g["name"]}</a></div></td>
 <td class="r" data-sort="{g["gp"]}">{g["gp"]}</td><td class="r" data-sort="{g["gs"]}">{g["gs"]}</td>
 <td class="r" data-sort="{g["w"]}">{g["w"]}</td><td class="r" data-sort="{g["l"]}">{g["l"]}</td><td class="r" data-sort="{g["otl"]}">{g["otl"]}</td>
 <td class="r" data-sort="{g["sa"]}">{g["sa"]}</td><td class="r" data-sort="{g["ga"]}">{g["ga"]}</td><td class="r" data-sort="{g["gaa"]:.2f}">{g["gaa"]:.2f}</td>
@@ -1027,7 +1027,8 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .hs-empty{{display:inline-block}}
 .name-cell{{padding-left:4px}}
 .name-flex{{display:flex;align-items:center;gap:8px}}
-.pname{{font-weight:600;white-space:nowrap;font-size:13px}}
+a.pname{{font-weight:600;white-space:nowrap;font-size:13px;color:var(--text);text-decoration:none}}
+a.pname:hover{{text-decoration:underline}}
 /* Advanced stat columns */
 .adv{{color:var(--text-secondary)}}
 .adv-pos{{color:#1a8a1a;font-weight:600}}

@@ -74,7 +74,8 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .hs-empty{display:inline-block}
 .name-cell{padding-left:4px}
 .name-flex{display:flex;align-items:center;gap:8px}
-.pname{font-weight:600;white-space:nowrap;font-size:13px}
+a.pname{font-weight:600;white-space:nowrap;font-size:13px;color:var(--text);text-decoration:none}
+a.pname:hover{text-decoration:underline}
 /* Advanced stat columns */
 .adv{color:var(--text-secondary)}
 .adv-pos{color:#1a8a1a;font-weight:600}
@@ -332,7 +333,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Games played this season">GP</th><th class="r sort-th" data-col="4" title="Goals scored">G</th><th class="r sort-th" data-col="5" title="Assists">A</th><th class="r sort-th" data-col="6" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="7" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="8" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="9" title="Points per game played">P/GP</th><th class="r sort-th" data-col="10" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="11" title="Even-strength points">EVP</th><th class="r sort-th" data-col="12" title="Power-play goals">PPG</th><th class="r sort-th" data-col="13" title="Power-play points">PPP</th><th class="r sort-th" data-col="14" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="15" title="Short-handed points">SHP</th><th class="r sort-th" data-col="16" title="Overtime goals">OTG</th><th class="r sort-th" data-col="17" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="18" title="Shots on goal">S</th><th class="r sort-th" data-col="19" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="20" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="21" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="22" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="23" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="24" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th></tr></thead>
 <tbody><tr class="player-summary">
 <td class="rank" data-sort="1">1</td>
-<td class="name-cell" data-sort="Tim Stützle"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482116.png" class="hs" alt=""><span class="pname">Tim Stützle</span></div></td>
+<td class="name-cell" data-sort="Tim Stützle"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482116.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Tim+Stützle" target="_blank" rel="noopener" class="pname">Tim Stützle</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="28">28</td><td class="r" data-sort="35">35</td>
 <td class="r pts-col" data-sort="63">63</td><td class="r" data-sort="6">+6</td>
@@ -348,7 +349,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="1.11">1.11</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="2">2</td>
-<td class="name-cell" data-sort="Drake Batherson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480208.png" class="hs" alt=""><span class="pname">Drake Batherson</span></div></td>
+<td class="name-cell" data-sort="Drake Batherson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480208.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Drake+Batherson" target="_blank" rel="noopener" class="pname">Drake Batherson</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="56">56</td><td class="r" data-sort="21">21</td><td class="r" data-sort="30">30</td>
 <td class="r pts-col" data-sort="51">51</td><td class="r" data-sort="-3">-3</td>
@@ -364,7 +365,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.92">0.92</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="3">3</td>
-<td class="name-cell" data-sort="Jake Sanderson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482105.png" class="hs" alt=""><span class="pname">Jake Sanderson</span></div></td>
+<td class="name-cell" data-sort="Jake Sanderson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482105.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jake+Sanderson" target="_blank" rel="noopener" class="pname">Jake Sanderson</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="11">11</td><td class="r" data-sort="37">37</td>
 <td class="r pts-col" data-sort="48">48</td><td class="r" data-sort="8">+8</td>
@@ -380,7 +381,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.99">0.99</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="4">4</td>
-<td class="name-cell" data-sort="Dylan Cozens"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481528.png" class="hs" alt=""><span class="pname">Dylan Cozens</span></div></td>
+<td class="name-cell" data-sort="Dylan Cozens"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481528.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Dylan+Cozens" target="_blank" rel="noopener" class="pname">Dylan Cozens</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="20">20</td><td class="r" data-sort="26">26</td>
 <td class="r pts-col" data-sort="46">46</td><td class="r" data-sort="-12">-12</td>
@@ -396,7 +397,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.86">0.86</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="5">5</td>
-<td class="name-cell" data-sort="Claude Giroux"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8473512.png" class="hs" alt=""><span class="pname">Claude Giroux</span></div></td>
+<td class="name-cell" data-sort="Claude Giroux"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8473512.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Claude+Giroux" target="_blank" rel="noopener" class="pname">Claude Giroux</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="11">11</td><td class="r" data-sort="28">28</td>
 <td class="r pts-col" data-sort="39">39</td><td class="r" data-sort="15">+15</td>
@@ -412,7 +413,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.71">0.71</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="6">6</td>
-<td class="name-cell" data-sort="Brady Tkachuk"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480801.png" class="hs" alt=""><span class="pname">Brady Tkachuk</span></div></td>
+<td class="name-cell" data-sort="Brady Tkachuk"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480801.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brady+Tkachuk" target="_blank" rel="noopener" class="pname">Brady Tkachuk</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="39">39</td><td class="r" data-sort="15">15</td><td class="r" data-sort="24">24</td>
 <td class="r pts-col" data-sort="39">39</td><td class="r" data-sort="-2">-2</td>
@@ -428,7 +429,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="1.22">1.22</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="7">7</td>
-<td class="name-cell" data-sort="Shane Pinto"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481596.png" class="hs" alt=""><span class="pname">Shane Pinto</span></div></td>
+<td class="name-cell" data-sort="Shane Pinto"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481596.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Shane+Pinto" target="_blank" rel="noopener" class="pname">Shane Pinto</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="49">49</td><td class="r" data-sort="15">15</td><td class="r" data-sort="14">14</td>
 <td class="r pts-col" data-sort="29">29</td><td class="r" data-sort="1">+1</td>
@@ -444,7 +445,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.67">0.67</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="8">8</td>
-<td class="name-cell" data-sort="David Perron"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8474102.png" class="hs" alt=""><span class="pname">David Perron</span></div></td>
+<td class="name-cell" data-sort="David Perron"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8474102.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=David+Perron" target="_blank" rel="noopener" class="pname">David Perron</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="49">49</td><td class="r" data-sort="10">10</td><td class="r" data-sort="15">15</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="2">+2</td>
@@ -460,7 +461,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.54">0.54</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="9">9</td>
-<td class="name-cell" data-sort="Ridly Greig"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482092.png" class="hs" alt=""><span class="pname">Ridly Greig</span></div></td>
+<td class="name-cell" data-sort="Ridly Greig"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482092.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ridly+Greig" target="_blank" rel="noopener" class="pname">Ridly Greig</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="54">54</td><td class="r" data-sort="9">9</td><td class="r" data-sort="16">16</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="6">+6</td>
@@ -476,7 +477,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.51">0.51</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="10">10</td>
-<td class="name-cell" data-sort="Thomas Chabot"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478469.png" class="hs" alt=""><span class="pname">Thomas Chabot</span></div></td>
+<td class="name-cell" data-sort="Thomas Chabot"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478469.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Thomas+Chabot" target="_blank" rel="noopener" class="pname">Thomas Chabot</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="44">44</td><td class="r" data-sort="6">6</td><td class="r" data-sort="18">18</td>
 <td class="r pts-col" data-sort="24">24</td><td class="r" data-sort="1">+1</td>
@@ -492,7 +493,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.67">0.67</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="11">11</td>
-<td class="name-cell" data-sort="Fabian Zetterlund"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480188.png" class="hs" alt=""><span class="pname">Fabian Zetterlund</span></div></td>
+<td class="name-cell" data-sort="Fabian Zetterlund"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480188.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Fabian+Zetterlund" target="_blank" rel="noopener" class="pname">Fabian Zetterlund</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="12">12</td><td class="r" data-sort="11">11</td>
 <td class="r pts-col" data-sort="23">23</td><td class="r" data-sort="-5">-5</td>
@@ -508,7 +509,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.5">0.50</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="12">12</td>
-<td class="name-cell" data-sort="Michael Amadio"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478020.png" class="hs" alt=""><span class="pname">Michael Amadio</span></div></td>
+<td class="name-cell" data-sort="Michael Amadio"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478020.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Michael+Amadio" target="_blank" rel="noopener" class="pname">Michael Amadio</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="8">8</td><td class="r" data-sort="14">14</td>
 <td class="r pts-col" data-sort="22">22</td><td class="r" data-sort="4">+4</td>
@@ -524,7 +525,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.45">0.45</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="13">13</td>
-<td class="name-cell" data-sort="Jordan Spence"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481606.png" class="hs" alt=""><span class="pname">Jordan Spence</span></div></td>
+<td class="name-cell" data-sort="Jordan Spence"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481606.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jordan+Spence" target="_blank" rel="noopener" class="pname">Jordan Spence</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="50">50</td><td class="r" data-sort="4">4</td><td class="r" data-sort="15">15</td>
 <td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="14">+14</td>
@@ -540,7 +541,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.74">0.74</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="14">14</td>
-<td class="name-cell" data-sort="Artem Zub"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482245.png" class="hs" alt=""><span class="pname">Artem Zub</span></div></td>
+<td class="name-cell" data-sort="Artem Zub"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482245.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Artem+Zub" target="_blank" rel="noopener" class="pname">Artem Zub</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="4">4</td><td class="r" data-sort="15">15</td>
 <td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="13">+13</td>
@@ -556,7 +557,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.43">0.43</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="15">15</td>
-<td class="name-cell" data-sort="Nick Cousins"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8476393.png" class="hs" alt=""><span class="pname">Nick Cousins</span></div></td>
+<td class="name-cell" data-sort="Nick Cousins"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8476393.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Nick+Cousins" target="_blank" rel="noopener" class="pname">Nick Cousins</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="8">8</td><td class="r" data-sort="8">8</td>
 <td class="r pts-col" data-sort="16">16</td><td class="r" data-sort="8">+8</td>
@@ -572,7 +573,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.37">0.37</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="16">16</td>
-<td class="name-cell" data-sort="Nick Jensen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8475324.png" class="hs" alt=""><span class="pname">Nick Jensen</span></div></td>
+<td class="name-cell" data-sort="Nick Jensen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8475324.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Nick+Jensen" target="_blank" rel="noopener" class="pname">Nick Jensen</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="56">56</td><td class="r" data-sort="4">4</td><td class="r" data-sort="11">11</td>
 <td class="r pts-col" data-sort="15">15</td><td class="r" data-sort="-7">-7</td>
@@ -588,7 +589,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.19">0.19</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="17">17</td>
-<td class="name-cell" data-sort="Tyler Kleven"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482095.png" class="hs" alt=""><span class="pname">Tyler Kleven</span></div></td>
+<td class="name-cell" data-sort="Tyler Kleven"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482095.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Tyler+Kleven" target="_blank" rel="noopener" class="pname">Tyler Kleven</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="54">54</td><td class="r" data-sort="1">1</td><td class="r" data-sort="10">10</td>
 <td class="r pts-col" data-sort="11">11</td><td class="r" data-sort="-4">-4</td>
@@ -604,7 +605,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.32">0.32</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="18">18</td>
-<td class="name-cell" data-sort="Stephen Halliday"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8483676.png" class="hs" alt=""><span class="pname">Stephen Halliday</span></div></td>
+<td class="name-cell" data-sort="Stephen Halliday"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8483676.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Stephen+Halliday" target="_blank" rel="noopener" class="pname">Stephen Halliday</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="27">27</td><td class="r" data-sort="4">4</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="11">11</td><td class="r" data-sort="1">+1</td>
@@ -620,7 +621,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.44">0.44</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="19">19</td>
-<td class="name-cell" data-sort="Lars Eller"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8474189.png" class="hs" alt=""><span class="pname">Lars Eller</span></div></td>
+<td class="name-cell" data-sort="Lars Eller"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8474189.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Lars+Eller" target="_blank" rel="noopener" class="pname">Lars Eller</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="45">45</td><td class="r" data-sort="2">2</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="9">9</td><td class="r" data-sort="0">0</td>
@@ -636,7 +637,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.23">0.23</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="20">20</td>
-<td class="name-cell" data-sort="Nikolas Matinpalo"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8484321.png" class="hs" alt=""><span class="pname">Nikolas Matinpalo</span></div></td>
+<td class="name-cell" data-sort="Nikolas Matinpalo"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8484321.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Nikolas+Matinpalo" target="_blank" rel="noopener" class="pname">Nikolas Matinpalo</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="0">0</td><td class="r" data-sort="4">4</td>
 <td class="r pts-col" data-sort="4">4</td><td class="r" data-sort="0">0</td>
@@ -652,7 +653,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.07">0.07</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="21">21</td>
-<td class="name-cell" data-sort="Olle Lycksell"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480245.png" class="hs" alt=""><span class="pname">Olle Lycksell</span></div></td>
+<td class="name-cell" data-sort="Olle Lycksell"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480245.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Olle+Lycksell" target="_blank" rel="noopener" class="pname">Olle Lycksell</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="7">7</td><td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="2">2</td><td class="r" data-sort="-2">-2</td>
@@ -668,7 +669,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.15">0.15</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="22">22</td>
-<td class="name-cell" data-sort="Kurtis MacDermid"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8477073.png" class="hs" alt=""><span class="pname">Kurtis MacDermid</span></div></td>
+<td class="name-cell" data-sort="Kurtis MacDermid"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8477073.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Kurtis+MacDermid" target="_blank" rel="noopener" class="pname">Kurtis MacDermid</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="16">16</td><td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="-3">-3</td>
@@ -684,7 +685,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="-0.14">-0.14</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="23">23</td>
-<td class="name-cell" data-sort="Arthur Kaliyev"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481560.png" class="hs" alt=""><span class="pname">Arthur Kaliyev</span></div></td>
+<td class="name-cell" data-sort="Arthur Kaliyev"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481560.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Arthur+Kaliyev" target="_blank" rel="noopener" class="pname">Arthur Kaliyev</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="0">0</td>
@@ -700,7 +701,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0.57">0.57</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="24">24</td>
-<td class="name-cell" data-sort="Hayden Hodgson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478173.png" class="hs" alt=""><span class="pname">Hayden Hodgson</span></div></td>
+<td class="name-cell" data-sort="Hayden Hodgson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478173.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Hayden+Hodgson" target="_blank" rel="noopener" class="pname">Hayden Hodgson</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="9">9</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-1">-1</td>
@@ -716,7 +717,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="-0.03">-0.03</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="25">25</td>
-<td class="name-cell" data-sort="Dennis Gilbert"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478502.png" class="hs" alt=""><span class="pname">Dennis Gilbert</span></div></td>
+<td class="name-cell" data-sort="Dennis Gilbert"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478502.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Dennis+Gilbert" target="_blank" rel="noopener" class="pname">Dennis Gilbert</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-1">-1</td>
@@ -732,7 +733,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <td class="r adv" data-sort="0">--</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="26">26</td>
-<td class="name-cell" data-sort="Xavier Bourgault"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482673.png" class="hs" alt=""><span class="pname">Xavier Bourgault</span></div></td>
+<td class="name-cell" data-sort="Xavier Bourgault"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482673.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Xavier+Bourgault" target="_blank" rel="noopener" class="pname">Xavier Bourgault</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-1">-1</td>
@@ -752,31 +753,31 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
 <thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Games played">GP</th><th class="r sort-th" data-col="3" title="Games started">GS</th><th class="r sort-th" data-col="4" title="Wins">W</th><th class="r sort-th" data-col="5" title="Losses">L</th><th class="r sort-th" data-col="6" title="Overtime losses">OT</th><th class="r sort-th" data-col="7" title="Shots against">SA</th><th class="r sort-th" data-col="8" title="Goals against">GA</th><th class="r sort-th" data-col="9" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="10" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="11" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="12" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="13" title="Total time on ice">TOI</th></tr></thead>
 <tbody><tr class="goalie-row"><td class="rank" data-sort="1">1</td>
-<td class="name-cell" data-sort="Linus Ullmark"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8476999.png" class="hs" alt=""><span class="pname">Linus Ullmark</span></div></td>
+<td class="name-cell" data-sort="Linus Ullmark"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8476999.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Linus+Ullmark" target="_blank" rel="noopener" class="pname">Linus Ullmark</a></div></td>
 <td class="r" data-sort="32">32</td><td class="r" data-sort="32">32</td>
 <td class="r" data-sort="17">17</td><td class="r" data-sort="8">8</td><td class="r" data-sort="6">6</td>
 <td class="r" data-sort="773">773</td><td class="r" data-sort="89">89</td><td class="r" data-sort="2.80">2.80</td>
 <td class="r" data-sort="684">684</td><td class="r" data-sort="0.8850">.885</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="114461">1907:41</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="2">2</td>
-<td class="name-cell" data-sort="Leevi Meriläinen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482447.png" class="hs" alt=""><span class="pname">Leevi Meriläinen</span></div></td>
+<td class="name-cell" data-sort="Leevi Meriläinen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482447.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Leevi+Meriläinen" target="_blank" rel="noopener" class="pname">Leevi Meriläinen</a></div></td>
 <td class="r" data-sort="20">20</td><td class="r" data-sort="19">19</td>
 <td class="r" data-sort="8">8</td><td class="r" data-sort="10">10</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="457">457</td><td class="r" data-sort="64">64</td><td class="r" data-sort="3.51">3.51</td>
 <td class="r" data-sort="393">393</td><td class="r" data-sort="0.8600">.860</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="65669">1094:29</td></tr><tr class="goalie-row"><td class="rank" data-sort="3">3</td>
-<td class="name-cell" data-sort="James Reimer"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8473503.png" class="hs" alt=""><span class="pname">James Reimer</span></div></td>
+<td class="name-cell" data-sort="James Reimer"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8473503.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=James+Reimer" target="_blank" rel="noopener" class="pname">James Reimer</a></div></td>
 <td class="r" data-sort="7">7</td><td class="r" data-sort="7">7</td>
 <td class="r" data-sort="3">3</td><td class="r" data-sort="3">3</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="154">154</td><td class="r" data-sort="20">20</td><td class="r" data-sort="2.90">2.90</td>
 <td class="r" data-sort="134">134</td><td class="r" data-sort="0.8700">.870</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="24864">414:24</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="4">4</td>
-<td class="name-cell" data-sort="Mads Sogaard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481544.png" class="hs" alt=""><span class="pname">Mads Sogaard</span></div></td>
+<td class="name-cell" data-sort="Mads Sogaard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481544.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Mads+Sogaard" target="_blank" rel="noopener" class="pname">Mads Sogaard</a></div></td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="36">36</td><td class="r" data-sort="6">6</td><td class="r" data-sort="4.65">4.65</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="0.8330">.833</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="4645">77:25</td></tr><tr class="goalie-row"><td class="rank" data-sort="5">5</td>
-<td class="name-cell" data-sort="Hunter Shepard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482411.png" class="hs" alt=""><span class="pname">Hunter Shepard</span></div></td>
+<td class="name-cell" data-sort="Hunter Shepard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482411.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Hunter+Shepard" target="_blank" rel="noopener" class="pname">Hunter Shepard</a></div></td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="12">12</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3.35">3.35</td>
@@ -820,9 +821,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <div class="news-meta"><span class="news-source">Ottawa Citizen</span><span class="news-date">Feb 28 &middot; 10:42 PM</span></div>
 <div class="news-title">What we're hearing going into the NHL's trade deadline next Friday</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNemhhWGpXeThvcjJnanFIcXJJLWNaNlNrVEktODBmSVNhNUhuX2JzdENpT0xtemJLYklhZ0c5RFJ2bDFKY1hwcWgzaUZBNi1TN3ZIWWZQa3ZnUTJyYVcySk9FbEYtcHpTZUloTVdFdThoZndkbDFTZ01zY08teFFLaHZDcWVSWDhpRldLczkyTzltdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Feb 28 &middot; 4:30 PM</span></div>
-<div class="news-title">Maple Leafs News & Rumours: Matthews, Woll, McMann, Who’s Leaving?</div></a><a href="https://news.google.com/rss/articles/CBMiggJBVV95cUxQTTBBendQSGlCeDNUZ1RZRHRMQlZacjdjMG5Bdnd4VmxaZG9FTURLMlNEcGZHbnc2dlFmXzBXRzZ1TUdWRkhaWFFVczVvbDczQTEwaEkzMjh6N3c3Uk1uZlJiT1Y4OENzdWNpcFEwNk1RckFsQ0VIUlJhdUN2ZFNCUUZRNE9CakExOVQ4cTdkamxUR1oyVk9KbktycW5FRmdjN0Y5VFFJc1FnUl9YVnNyX1lXSnJsYmpPS0dUSlFraE50MkN6SXlHOTIzQVRoQXc0UUg3ZEp0RE5SMUxJS2lISUk5WkVsX3BuSUktWHpmSC1Gd2JQRWd1NlZmVEd0clF6R3fSAYcCQVVfeXFMT0cteGNOUkxCazBfRm5abUhoU3p3eFM1ejVmNkxTeHh0RzJ6bXBnUVkyN01xeUlpclhsMVV5aTdCN1pKOWNmbEFzXzEtaDhWUUpGV25fSkdBQnM5czNhM3AyRUpzVi16R0FCTzBwcjFJbjdDanVWclBGdzF5UXU5X1hFZkFBRWxlcnFZQzRnejBLS0ViTWJQS3VJemp1NTFwQ2pVN21kR3dUR0NSckVKRHIwYUdCYVFYcXVoVktEWC1HSlJtcVotaGY3cFNYcGI3dERnbjIybDFmSnJWUy1FTjZ2bDdFbUp2MFhxdkxJOU9VN0JjRl9CYzdmRS1ocl9OMzBQbzVMTXM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Feb 28 &middot; 3:34 PM</span></div>
-<div class="news-title">Ottawa Senators Could Make Claude Giroux Available if Playoff Hopes Fade Before Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQM1VxYWxZcFpheGotT1kwVFg0anVQemJqaTRlWTZZQnI3dmZwMGRqSkduWThBMnlzUGQ0TF9MV2Y5d0RRLTVxc3U0cWp5Nzhwc0VPMDIwZUw3czhrV1ctUU82Y1dWMkVmaTJTRlRBZFA0d1NrSWJaVzZ1c0ZKOXl6V1FHdENUa2M4TDFmbUNkN1UwLUJMV1IxN1hFTUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs News & Rumours: Matthews, Woll, McMann, Who’s Leaving?</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQM1VxYWxZcFpheGotT1kwVFg0anVQemJqaTRlWTZZQnI3dmZwMGRqSkduWThBMnlzUGQ0TF9MV2Y5d0RRLTVxc3U0cWp5Nzhwc0VPMDIwZUw3czhrV1ctUU82Y1dWMkVmaTJTRlRBZFA0d1NrSWJaVzZ1c0ZKOXl6V1FHdENUa2M4TDFmbUNkN1UwLUJMV1IxN1hFTUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Feb 28 &middot; 3:05 PM</span></div>
 <div class="news-title">3 Right-Shot Center Targets for Hurricanes Ahead of Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNMTBnTElYNHo2UnZNek1XM3dwZFk3R3hOZi0tMlMxQmdYUk5BLWVyWmhGRDQtSk5wS2RQRnB3YkRRaDRPbzRWVFdnRkNpcHdVUVdMMG9RbmFBZHpBdXhlMHIxeFVoX3B6Q2twUWQyeXpRbzl3b2hmaXpoOWNDelhTV2tDUmU0QzBJb2c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Feb 28 &middot; 12:00 PM</span></div>
@@ -842,7 +841,9 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Feb 26 &middot; 12:12 AM</span></div>
 <div class="news-title">Deadline Decisions: Thursday's Game Against Red Wings Might Be Final Home Game For Some Senators</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPaDdmLW9kTnE2Y1QtRzA2cC04OHFuUVZRTDhwRDIzOVV3OFhyV251djhCdk91UnM0ejdtbHdIYWpPU0p1ZVZKSEtjel9VcHowZ2tSclV6R3NaUzRHUkstU0l5djVzMm5IeV9UeU95a2JGYVJYWlg1WDRTcHIyNHRPTzVyNVc1UWVpamJDMnpXUkNjWWVtaDdkc3lUcWxZSVZxbkt5NG9rSQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Feb 25 &middot; 12:46 PM</span></div>
-<div class="news-title">NHL Rumours and What is the Ottawa Senators Main Trade Deadline Priority</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOVEtJODFRQlZOWGNvb2lTLUplVlhCTHBHTE9yY2l5MTF3THlRV2pobFVhcXJRR3NiR2I3UHNWS0NYRllhVjNLX1VaekxCMVJhQlFNdm5zWHRVWFF0RDJvUzQtYTE4MkFQV1otbTBlNi1kajBkbW5xVkxLU2l5TGw1eA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumours and What is the Ottawa Senators Main Trade Deadline Priority</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQd21jLXVxR0ZlVHliRWwxME8xSWpMcWNxZTVjVUVqb1pOM2xCOXZSV1pMWi04SFhTUXVlVXV6dm1WSGE5aE1GTHhDUzhlVWEwaDl5NUQ3NHBvNndqZHFGem5xV0Q2aEFITlByaGRpTXRxSFVjLW0zVnJVaVlraEw5QjZRbjdzY3NsWDItZ3kwUVdDbHhSMThCN3Btbw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Feb 25 &middot; 2:10 AM</span></div>
+<div class="news-title">1 player Senators must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOVEtJODFRQlZOWGNvb2lTLUplVlhCTHBHTE9yY2l5MTF3THlRV2pobFVhcXJRR3NiR2I3UHNWS0NYRllhVjNLX1VaekxCMVJhQlFNdm5zWHRVWFF0RDJvUzQtYTE4MkFQV1otbTBlNi1kajBkbW5xVkxLU2l5TGw1eA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo News Canada</span><span class="news-date">Feb 24 &middot; 11:00 AM</span></div>
 <div class="news-title">Ottawa Senators know they need a strong finish with March 6 NHL trade deadline looming</div></a><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxNSE0yNjFCbGp2QmNCWEV0M0Eyaldndl90aHpyLWtjWE1kMEZZWUNJcVhMaE9oczJIdHVkcU1yalNqSU5uU2NmWUNNYThtdkJUUnB4Y2hEeHN6ODY4TEFTa2ZBakVFVnNrQUZSR3Y5aTJob21OQlllcndMMk1fQnEzSWNEekdIUGdjWHFQZVVwQjdQZlhlVC1HTWV1Z2pERG5DUFJrYjFSTmpILXp1a3hIenhJUm9ra2U2ZTdRYVFwNlJOazkwT2RLZnVlWGxFUFcyQ2xxNTZhN3N1VnlJbmc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Feb 24 &middot; 12:44 AM</span></div>
