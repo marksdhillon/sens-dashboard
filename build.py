@@ -520,19 +520,22 @@ def build_roster_html(skaters, goalies, mp_players):
 
         img = f'<img src="{s["headshot"]}" class="hs" alt="">' if s["headshot"] else '<div class="hs hs-empty"></div>'
 
+        toi_sec = int(s["toi"].split(":")[0]) * 60 + int(s["toi"].split(":")[1])
+        fo_sort = s["foPct"] if s["foPct"] > 0 else 0
+
         rows.append(f'''<tbody class="player-group"><tr class="player-summary{alt}">
-<td class="rank">{i+1}</td>
-<td class="name-cell"><details class="pd"><summary class="pd-s">{img}<span class="pname">{s["name"]}</span></summary></details></td>
-<td class="r pos-col">{s["pos"]}</td>
-<td class="r">{s["gp"]}</td><td class="r">{s["g"]}</td><td class="r">{s["a"]}</td>
-<td class="r pts-col">{s["pts"]}</td><td class="r">{pm_str}</td>
-<td class="r">{s["pim"]}</td><td class="r">{s["ppg"]:.2f}</td>
-<td class="r">{s["evg"]}</td><td class="r">{s["evp"]}</td>
-<td class="r">{s["ppGoals"]}</td><td class="r">{s["ppPts"]}</td>
-<td class="r">{s["shGoals"]}</td><td class="r">{s["shPts"]}</td>
-<td class="r">{s["otg"]}</td><td class="r">{s["gwg"]}</td>
-<td class="r">{s["shots"]}</td><td class="r">{s["shPct"]}</td>
-<td class="r">{s["toi"]}</td><td class="r">{fo_str}</td>
+<td class="rank" data-sort="{i+1}">{i+1}</td>
+<td class="name-cell" data-sort="{s["name"]}"><details class="pd"><summary class="pd-s">{img}<span class="pname">{s["name"]}</span></summary></details></td>
+<td class="r pos-col" data-sort="{s["pos"]}">{s["pos"]}</td>
+<td class="r" data-sort="{s["gp"]}">{s["gp"]}</td><td class="r" data-sort="{s["g"]}">{s["g"]}</td><td class="r" data-sort="{s["a"]}">{s["a"]}</td>
+<td class="r pts-col" data-sort="{s["pts"]}">{s["pts"]}</td><td class="r" data-sort="{s["pm"]}">{pm_str}</td>
+<td class="r" data-sort="{s["pim"]}">{s["pim"]}</td><td class="r" data-sort="{s["ppg"]:.2f}">{s["ppg"]:.2f}</td>
+<td class="r" data-sort="{s["evg"]}">{s["evg"]}</td><td class="r" data-sort="{s["evp"]}">{s["evp"]}</td>
+<td class="r" data-sort="{s["ppGoals"]}">{s["ppGoals"]}</td><td class="r" data-sort="{s["ppPts"]}">{s["ppPts"]}</td>
+<td class="r" data-sort="{s["shGoals"]}">{s["shGoals"]}</td><td class="r" data-sort="{s["shPts"]}">{s["shPts"]}</td>
+<td class="r" data-sort="{s["otg"]}">{s["otg"]}</td><td class="r" data-sort="{s["gwg"]}">{s["gwg"]}</td>
+<td class="r" data-sort="{s["shots"]}">{s["shots"]}</td><td class="r" data-sort="{s["shPct"]}">{s["shPct"]}</td>
+<td class="r" data-sort="{toi_sec}">{s["toi"]}</td><td class="r" data-sort="{fo_sort}">{fo_str}</td>
 </tr>{expand_html}</tbody>''')
 
     goalie_rows = []
@@ -540,21 +543,23 @@ def build_roster_html(skaters, goalies, mp_players):
         svp = f".{int(g['svPct']*1000):03d}" if 0 < g["svPct"] < 1 else f"{g['svPct']:.3f}"
         alt = " alt" if i % 2 == 1 else ""
         img = f'<img src="{g["headshot"]}" class="hs" alt="">' if g["headshot"] else '<div class="hs hs-empty"></div>'
-        goalie_rows.append(f'''<tr class="goalie-row{alt}"><td class="rank">{i+1}</td>
-<td class="name-cell"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td>
-<td class="r">{g["gp"]}</td><td class="r">{g["gs"]}</td>
-<td class="r">{g["w"]}</td><td class="r">{g["l"]}</td><td class="r">{g["otl"]}</td>
-<td class="r">{g["sa"]}</td><td class="r">{g["ga"]}</td><td class="r">{g["gaa"]:.2f}</td>
-<td class="r">{g["sv"]}</td><td class="r">{svp}</td>
-<td class="r">{g["so"]}</td><td class="r">{g["toi"]}</td></tr>''')
+        toi_parts = g["toi"].split(":")
+        g_toi_sec = int(toi_parts[0]) * 60 + int(toi_parts[1]) if len(toi_parts) == 2 else 0
+        goalie_rows.append(f'''<tr class="goalie-row{alt}" data-goalie><td class="rank" data-sort="{i+1}">{i+1}</td>
+<td class="name-cell" data-sort="{g["name"]}"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td>
+<td class="r" data-sort="{g["gp"]}">{g["gp"]}</td><td class="r" data-sort="{g["gs"]}">{g["gs"]}</td>
+<td class="r" data-sort="{g["w"]}">{g["w"]}</td><td class="r" data-sort="{g["l"]}">{g["l"]}</td><td class="r" data-sort="{g["otl"]}">{g["otl"]}</td>
+<td class="r" data-sort="{g["sa"]}">{g["sa"]}</td><td class="r" data-sort="{g["ga"]}">{g["ga"]}</td><td class="r" data-sort="{g["gaa"]:.2f}">{g["gaa"]:.2f}</td>
+<td class="r" data-sort="{g["sv"]}">{g["sv"]}</td><td class="r" data-sort="{g["svPct"]:.4f}">{svp}</td>
+<td class="r" data-sort="{g["so"]}">{g["so"]}</td><td class="r" data-sort="{g_toi_sec}">{g["toi"]}</td></tr>''')
 
-    return f'''<div class="scroll-x"><table class="nhl-tbl">
-<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">Pos</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">P/GP</th><th class="r">EVG</th><th class="r">EVP</th><th class="r">PPG</th><th class="r">PPP</th><th class="r">SHG</th><th class="r">SHP</th><th class="r">OTG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">FOW%</th></tr></thead>
+    return f'''<div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
+<thead><tr><th class="rank sort-th" data-col="0">#</th><th class="name-col sort-th" data-col="1">Player</th><th class="r sort-th" data-col="2">Pos</th><th class="r sort-th" data-col="3">GP</th><th class="r sort-th" data-col="4">G</th><th class="r sort-th" data-col="5">A</th><th class="r sort-th" data-col="6">P</th><th class="r sort-th" data-col="7">+/-</th><th class="r sort-th" data-col="8">PIM</th><th class="r sort-th" data-col="9">P/GP</th><th class="r sort-th" data-col="10">EVG</th><th class="r sort-th" data-col="11">EVP</th><th class="r sort-th" data-col="12">PPG</th><th class="r sort-th" data-col="13">PPP</th><th class="r sort-th" data-col="14">SHG</th><th class="r sort-th" data-col="15">SHP</th><th class="r sort-th" data-col="16">OTG</th><th class="r sort-th" data-col="17">GWG</th><th class="r sort-th" data-col="18">S</th><th class="r sort-th" data-col="19">S%</th><th class="r sort-th" data-col="20">TOI/GP</th><th class="r sort-th" data-col="21">FOW%</th></tr></thead>
 {"".join(rows)}</table></div>
 
 <h3 style="margin-top:32px">Goaltenders</h3>
-<div class="scroll-x"><table class="nhl-tbl">
-<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">GS</th><th class="r">W</th><th class="r">L</th><th class="r">OT</th><th class="r">SA</th><th class="r">GA</th><th class="r">GAA</th><th class="r">SV</th><th class="r">SV%</th><th class="r">SO</th><th class="r">TOI</th></tr></thead>
+<div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
+<thead><tr><th class="rank sort-th" data-col="0">#</th><th class="name-col sort-th" data-col="1">Player</th><th class="r sort-th" data-col="2">GP</th><th class="r sort-th" data-col="3">GS</th><th class="r sort-th" data-col="4">W</th><th class="r sort-th" data-col="5">L</th><th class="r sort-th" data-col="6">OT</th><th class="r sort-th" data-col="7">SA</th><th class="r sort-th" data-col="8">GA</th><th class="r sort-th" data-col="9">GAA</th><th class="r sort-th" data-col="10">SV</th><th class="r sort-th" data-col="11">SV%</th><th class="r sort-th" data-col="12">SO</th><th class="r sort-th" data-col="13">TOI</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
 def build_standings_section(east_teams, east_records):
@@ -906,6 +911,13 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-stat-r{{font-weight:600;text-align:right}}
 
+/* Sortable columns */
+.sort-th{{cursor:pointer;user-select:none;position:relative}}
+.sort-th:hover{{background:#222}}
+.sort-th::after{{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}}
+.sort-th.asc::after{{content:"\\25B2";opacity:0.9}}
+.sort-th.desc::after{{content:"\\25BC";opacity:0.9}}
+
 /* Footer */
 .footer{{text-align:center;padding:24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}}
 </style></head><body>
@@ -948,6 +960,41 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   <div class="panel" id="p-roster">{roster_html}</div>
 </div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
+<script>
+document.querySelectorAll(".sortable").forEach(function(tbl){{
+  tbl.querySelectorAll(".sort-th").forEach(function(th){{
+    th.addEventListener("click",function(){{
+      var col=parseInt(th.dataset.col),asc=th.classList.contains("asc");
+      tbl.querySelectorAll(".sort-th").forEach(function(h){{h.classList.remove("asc","desc")}});
+      var dir=asc?"desc":"asc";
+      th.classList.add(dir);
+      var isSkater=tbl.id==="skater-tbl";
+      if(isSkater){{
+        var groups=Array.from(tbl.querySelectorAll("tbody.player-group"));
+        groups.sort(function(a,b){{
+          var ca=a.querySelector("tr").children[col],cb=b.querySelector("tr").children[col];
+          var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
+          var na=parseFloat(va),nb=parseFloat(vb);
+          if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
+          return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
+        }});
+        groups.forEach(function(g){{tbl.appendChild(g)}});
+      }}else{{
+        var tbody=tbl.querySelector("tbody");
+        var rows=Array.from(tbody.querySelectorAll("tr"));
+        rows.sort(function(a,b){{
+          var ca=a.children[col],cb=b.children[col];
+          var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
+          var na=parseFloat(va),nb=parseFloat(vb);
+          if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
+          return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
+        }});
+        rows.forEach(function(r){{tbody.appendChild(r)}});
+      }}
+    }});
+  }});
+}});
+</script>
 </body></html>'''
 
 # ── Main ──────────────────────────────────────────────────
