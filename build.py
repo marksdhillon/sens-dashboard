@@ -853,8 +853,8 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
         cards.append(f'''<details class="game-detail{tough_cls}">
 <summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span></div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
 <div class="game-expand">
-  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
   <ul class="matchup-notes">{notes_html}</ul>
+  <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
 </div></details>''')
 
     return f'''<div class="sched-meta">
@@ -1053,8 +1053,8 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .cmp-stat-l{{font-weight:600;text-align:left}}
 .cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-stat-r{{font-weight:600;text-align:right}}
-.matchup-notes{{margin:12px 0 0;padding:0 0 0 18px;font-size:12px;color:var(--text-muted);line-height:1.6}}
-.matchup-notes li{{margin-bottom:2px}}
+.matchup-notes{{margin:0 0 14px;padding:0;list-style:none;font-size:13px;color:var(--text);line-height:1.5}}
+.matchup-notes li{{padding:4px 10px;background:var(--bg-tag);border-radius:6px;margin-bottom:5px;font-weight:500}}
 
 /* News / Trade Rumors */
 .news-list{{display:flex;flex-direction:column;gap:2px}}
