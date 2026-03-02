@@ -980,7 +980,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
     <span class="stat-pill"><span class="sl">Away</span> <span class="sv">{road_rec}</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
     <span class="stat-pill"><span class="sl">Streak</span> <span class="sv">{sens["streak"]}</span></span>
-    <span class="stat-pill"><span class="sl">Pace</span> <span class="sv">{pace}</span></span>
   </div>
 </div>
 
