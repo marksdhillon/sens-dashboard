@@ -1017,7 +1017,7 @@ a:hover{{color:var(--text-strong)}}
 .delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
 @media(max-width:500px){{.team-logo{{width:36px;height:36px}}.header h1{{font-size:17px}}.pct-val{{font-size:26px}}}}
 
-.stat-row{{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0;border-bottom:1px solid var(--border)}}
+.stat-row{{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0}}
 .stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--bg-surface);border-radius:8px;font-size:12px;white-space:nowrap;transition:background 0.2s ease}}
 .stat-pill:hover{{background:var(--bg-elevated)}}
 .stat-pill .sl{{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.6px;font-weight:500}}
