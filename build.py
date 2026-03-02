@@ -996,8 +996,8 @@ a:hover{{color:var(--black)}}
 .top-bar{{height:4px;background:#111}}
 
 /* Header */
-.header{{max-width:900px;margin:0 auto;padding:32px 24px 0}}
-.hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}}
+.header{{max-width:900px;margin:0 auto;padding:40px 24px 0}}
+.hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
 .team-logo{{width:56px;height:56px;filter:grayscale(1) contrast(1.2)}}
 .header h1{{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:1px}}
@@ -1008,15 +1008,15 @@ a:hover{{color:var(--black)}}
 .delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
 @media(max-width:500px){{.team-logo{{width:40px;height:40px}}.header h1{{font-size:22px}}.pct-val{{font-size:28px}}}}
 
-.stat-row{{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0;border-bottom:1px solid var(--border)}}
-.stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}}
+.stat-row{{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0;border-bottom:1px solid var(--border)}}
+.stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}}
 .stat-pill .sl{{color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:0.5px}}
 .stat-pill .sv{{font-weight:600}}
 
 /* Tabs (CSS only) */
-.container{{max-width:900px;margin:0 auto;padding:0 24px 48px}}
+.container{{max-width:900px;margin:0 auto;padding:0 24px 56px}}
 input[name="tab"]{{display:none}}
-.tab-bar{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}}
+.tab-bar{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:32px}}
 .tab-bar label{{padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.1s}}
 .tab-bar label:hover{{color:var(--text)}}
 .panel{{display:none}}
@@ -1034,16 +1034,16 @@ input[name="tab"]{{display:none}}
 #tab-community:checked~#p-community{{display:block}}
 
 /* Typography */
-h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
-.sub-note{{font-size:13px;color:var(--text-secondary);margin-bottom:16px}}
+h3{{font-size:16px;font-weight:600;margin-bottom:16px;letter-spacing:-0.2px}}
+.sub-note{{font-size:13px;color:var(--text-secondary);margin-bottom:20px}}
 
 /* Tables */
 .nhl-tbl{{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}}
-.nhl-tbl thead th{{background:#111;color:#fff;padding:8px 6px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}}
+.nhl-tbl thead th{{background:#111;color:#fff;padding:9px 8px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}}
 .nhl-tbl thead th.r{{text-align:right}}
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
 .nhl-tbl thead th.name-col{{min-width:160px}}
-.nhl-tbl td{{padding:5px 6px;border:none;white-space:nowrap}}
+.nhl-tbl td{{padding:7px 8px;border:none;white-space:nowrap}}
 .nhl-tbl td.r{{text-align:right}}
 .nhl-tbl td.rank{{text-align:center;color:var(--text-muted);font-size:11px}}
 .nhl-tbl td.pts-col{{font-weight:700}}
@@ -1069,15 +1069,15 @@ a.pname:hover{{text-decoration:underline}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
 .tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none}}.tcol-link:hover{{text-decoration:underline}}.bpts{{font-weight:700}}
-.div-label{{margin:28px 0 8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
+.div-label{{margin:32px 0 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
-.stnd-tbl td{{padding:5px 5px;font-size:11px}}.stnd-tbl thead th{{padding:6px 5px;font-size:9px}}
+.stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
 .stnd-tbl .sens-row td{{background:#f7f6f3}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
-.kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}}
-.kpi{{flex:1;min-width:90px;padding:14px;border:1px solid var(--border);border-radius:8px;text-align:center}}
+.kpi-row{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}}
+.kpi{{flex:1;min-width:90px;padding:18px;border:1px solid var(--border);border-radius:8px;text-align:center}}
 .kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1}}
 .kpi-label{{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}}
 
@@ -1085,21 +1085,21 @@ a.pname:hover{{text-decoration:underline}}
 .sc-label{{font-weight:600;white-space:nowrap}}
 .sc-up{{color:#1a8a1a;font-weight:600}}
 .sc-down{{color:#c43c3c;font-weight:600}}
-.footnote{{margin-top:24px;font-size:12px;color:var(--text-muted)}}
+.footnote{{margin-top:32px;font-size:12px;color:var(--text-muted)}}
 
 /* Schedule */
-.sched-meta{{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}}
-.sm-card{{flex:1;min-width:70px;text-align:center;padding:14px 8px;border:1px solid var(--border);border-radius:8px}}
+.sched-meta{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}}
+.sm-card{{flex:1;min-width:70px;text-align:center;padding:16px 10px;border:1px solid var(--border);border-radius:8px}}
 .sm-val{{font-size:24px;font-weight:700;line-height:1}}
 .sm-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
-.sched-list{{display:flex;flex-direction:column;gap:4px}}
+.sched-list{{display:flex;flex-direction:column;gap:8px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
 .game-tag{{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
 .tag-playoff{{color:var(--text-secondary);background:var(--bg-tag);border:1px solid var(--border)}}
 .tag-desperate{{color:#b45309;background:#fef3c7}}
 .tag-sellers{{color:var(--text-muted);background:var(--bg);border:1px dashed var(--border)}}
 .tag-hot{{color:#fff;background:#c0392b}}
-.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
+.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
 .game-summary:hover{{background:var(--bg-hover)}}
 .game-summary::-webkit-details-marker{{display:none}}
 .game-summary::marker{{display:none;content:""}}
@@ -1112,7 +1112,7 @@ a.pname:hover{{text-decoration:underline}}
 .game-loc{{font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px}}
 .loc-home{{background:#eef8ee;color:#3d8c40}}
 .loc-away{{background:#f5f5f5;color:var(--text-secondary)}}
-.game-expand{{border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}}
+.game-expand{{border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:20px}}
 .cmp-tbl{{width:100%;border-collapse:collapse;font-size:13px}}
 .cmp-tbl thead th{{font-size:12px;font-weight:700;padding:6px 8px;border-bottom:2px solid var(--border);text-align:center}}
 .cmp-tbl thead th:first-child{{text-align:left}}
@@ -1125,8 +1125,8 @@ a.pname:hover{{text-decoration:underline}}
 .matchup-notes li{{padding:4px 10px;background:var(--bg-tag);border-radius:6px;margin-bottom:5px;font-weight:500}}
 
 /* News / Trade Rumors */
-.news-list{{display:flex;flex-direction:column;gap:2px}}
-.news-item{{display:block;padding:12px 14px;border-radius:8px;text-decoration:none;transition:background 0.1s}}
+.news-list{{display:flex;flex-direction:column;gap:6px}}
+.news-item{{display:block;padding:14px 16px;border-radius:8px;text-decoration:none;transition:background 0.1s}}
 .news-item:hover{{background:var(--bg-hover);text-decoration:none}}
 .news-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}}
 .news-source{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted)}}
@@ -1134,9 +1134,9 @@ a.pname:hover{{text-decoration:underline}}
 .news-title{{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}}
 
 /* Community */
-.community-list{{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
+.community-list{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
 @media(max-width:560px){{.community-list{{grid-template-columns:1fr}}}}
-.community-card{{display:block;padding:16px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:background 0.1s,border-color 0.1s}}
+.community-card{{display:block;padding:20px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:background 0.1s,border-color 0.1s}}
 .community-card:hover{{background:var(--bg-hover);border-color:var(--text-muted);text-decoration:none}}
 .cc-name{{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}}
 .cc-desc{{font-size:12px;color:var(--text-secondary);line-height:1.4}}
@@ -1149,7 +1149,7 @@ a.pname:hover{{text-decoration:underline}}
 .sort-th.desc::after{{content:"\\25BC";opacity:0.9}}
 
 /* Footer */
-.footer{{text-align:center;padding:24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}}
+.footer{{text-align:center;padding:32px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}}
 </style></head><body>
 
 <div class="top-bar"></div>
