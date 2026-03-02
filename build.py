@@ -8,6 +8,7 @@ import csv
 import io
 import json
 import os
+import unicodedata
 import urllib.request
 from datetime import datetime, timezone
 
@@ -139,6 +140,13 @@ def fetch_nhl_goalie_summary():
     data = fetch_json(url)
     return {g["playerId"]: g for g in data.get("data", [])}
 
+def normalize_name(name):
+    """Strip diacritics for cross-source name matching (e.g. Stützle -> Stutzle)."""
+    return "".join(
+        c for c in unicodedata.normalize("NFD", name)
+        if unicodedata.category(c) != "Mn"
+    )
+
 def fetch_moneypuck_player_stats():
     """Fetch individual player advanced stats from MoneyPuck for OTT."""
     rows = fetch_csv_rows(f"{MONEYPUCK}/playerData/seasonSummary/{SEASON_SHORT}/regular/skaters.csv")
@@ -146,7 +154,7 @@ def fetch_moneypuck_player_stats():
     for r in rows:
         if r.get("team") != TEAM:
             continue
-        name = r.get("name", "")
+        name = normalize_name(r.get("name", ""))
         sit = r.get("situation", "")
         if not name:
             continue
@@ -473,7 +481,7 @@ def build_roster_html(skaters, goalies, mp_players):
         fo_str = f'{s["foPct"]:.1f}' if s["foPct"] > 0 else "--"
 
         # MoneyPuck advanced stats
-        mp = mp_players.get(s["name"], {})
+        mp = mp_players.get(normalize_name(s["name"]), {})
         mp5 = mp.get("5v5", {})
         mp_all = mp.get("all", {})
         has_mp = bool(mp5)
