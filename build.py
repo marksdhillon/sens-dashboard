@@ -1021,8 +1021,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
       <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/OttawaSenators</div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
       <a href="https://x.com/search?q=%22Ottawa%20Senators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-name">X / Twitter</div><div class="cc-desc">Live feed of Senators mentions. Breaking news, insider tweets, fan reactions.</div></a>
       <a href="https://www.reddit.com/r/hockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">r/hockey</div><div class="cc-desc">The main NHL subreddit. League-wide discussion, trades, and highlights.</div></a>
-      <a href="https://www.nhl.com/senators" target="_blank" rel="noopener" class="community-card"><div class="cc-name">NHL.com — Senators</div><div class="cc-desc">Official team page. News, video, schedule, and stats.</div></a>
-      <a href="https://www.sportsnet.ca/nhl/teams/ottawa-senators/" target="_blank" rel="noopener" class="community-card"><div class="cc-name">Sportsnet</div><div class="cc-desc">Canadian coverage. Analysis, columns, and game recaps.</div></a>
     </div>
   </div>
 </div>
