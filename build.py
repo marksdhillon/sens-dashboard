@@ -678,20 +678,6 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 
     deficit_str = f"+{deficit}" if deficit >= 0 else str(deficit)
 
-    # Ottawa's playoff journey bar
-    r2 = ott_all.get("round2", 0)
-    r3 = ott_all.get("round3", 0)
-    finals = ott_all.get("finals", 0)
-    cup = ott_all.get("cupPct", 0)
-
-    # Division placement odds
-    div_win = ott_all.get("divWinPct", 0)
-    div2 = ott_all.get("div2", 0)
-    div3 = ott_all.get("div3", 0)
-    wc1 = ott_all.get("wc1", 0)
-    wc2 = ott_all.get("wc2", 0)
-    draft = ott_all.get("draftLottery", 0)
-
     # Scenario impact (next game outcomes)
     scenarios = []
     for key, label in [("WINREG", "Win (REG)"), ("WINOT", "Win (OT)"), ("LOSSOT", "Loss (OT)"), ("LOSSREG", "Loss (REG)")]:
@@ -730,17 +716,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
     ott_mp_all = ott_mp.get("all", {})
     ott_mp_5v5 = ott_mp.get("5v5", {})
 
-    return f'''<h3>Playoff Journey</h3>
-<p class="sub-note">Ottawa's probability of reaching each round &mdash; MoneyPuck simulations</p>
-<div class="journey-bar">
-  <div class="j-step"><div class="j-pct">{playoff_pct*100:.1f}%</div><div class="j-label">Make Playoffs</div><div class="j-fill" style="height:{max(2, playoff_pct*100)}%"></div></div>
-  <div class="j-step"><div class="j-pct">{r2*100:.1f}%</div><div class="j-label">2nd Round</div><div class="j-fill" style="height:{max(2, r2*100)}%"></div></div>
-  <div class="j-step"><div class="j-pct">{r3*100:.1f}%</div><div class="j-label">Conf. Final</div><div class="j-fill" style="height:{max(2, r3*100)}%"></div></div>
-  <div class="j-step"><div class="j-pct">{finals*100:.1f}%</div><div class="j-label">Cup Final</div><div class="j-fill" style="height:{max(2, finals*100)}%"></div></div>
-  <div class="j-step"><div class="j-pct">{cup*100:.1f}%</div><div class="j-label">Win Cup</div><div class="j-fill j-cup" style="height:{max(2, cup*100)}%"></div></div>
-</div>
-
-<div class="kpi-row" style="margin-top:28px">
+    return f'''<div class="kpi-row">
   <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Points</div></div>
   <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Points</div></div>
   <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Points Needed</div></div>
@@ -751,17 +727,6 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 <div class="progress-wrap">
   <div class="progress-bar"><div class="progress-fill" style="width:{progress_pct}%"></div><div class="progress-marker" style="left:{target_pct}%"><span>93</span></div></div>
   <div class="progress-labels"><span>{pts} earned</span><span>{needed} needed &middot; {remaining} games left</span></div>
-</div>
-
-<h3>Seeding Probability</h3>
-<p class="sub-note">How Ottawa is most likely to qualify</p>
-<div class="seed-grid">
-  <div class="seed-item"><div class="seed-val">{div_win*100:.1f}%</div><div class="seed-label">Win Division</div></div>
-  <div class="seed-item"><div class="seed-val">{div2*100:.1f}%</div><div class="seed-label">2nd in Division</div></div>
-  <div class="seed-item"><div class="seed-val">{div3*100:.1f}%</div><div class="seed-label">3rd in Division</div></div>
-  <div class="seed-item"><div class="seed-val">{wc1*100:.1f}%</div><div class="seed-label">Wild Card 1</div></div>
-  <div class="seed-item"><div class="seed-val">{wc2*100:.1f}%</div><div class="seed-label">Wild Card 2</div></div>
-  <div class="seed-item"><div class="seed-val">{draft*100:.1f}%</div><div class="seed-label">Draft Lottery</div></div>
 </div>
 
 <h3>Next Game Impact</h3>
@@ -986,19 +951,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .metric-label{{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}}
 .metric-desc{{font-size:11px;color:var(--text-muted);margin-top:2px}}
 
-/* Journey Bar */
-.journey-bar{{display:flex;gap:4px;align-items:flex-end;height:180px;padding:0 8px;margin-bottom:24px}}
-.j-step{{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;height:100%}}
-.j-pct{{font-size:18px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}}
-.j-label{{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;text-align:center}}
-.j-fill{{width:100%;border-radius:6px 6px 0 0;background:var(--black);margin-top:auto;min-height:2px;transition:height 0.3s}}
-.j-cup{{background:#c9a200}}
-/* Seed Grid */
-.seed-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px}}
-@media(max-width:500px){{.seed-grid{{grid-template-columns:repeat(2,1fr)}}}}
-.seed-item{{background:var(--bg);padding:16px;text-align:center}}
-.seed-val{{font-size:22px;font-weight:700;letter-spacing:-0.5px}}
-.seed-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
 /* Scenario impact */
 .sc-label{{font-weight:600;white-space:nowrap}}
 .sc-up{{color:#1a8a1a;font-weight:600}}
