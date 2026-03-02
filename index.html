@@ -8,17 +8,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,"Apple Co
 a{color:var(--text);text-decoration:underline;text-underline-offset:2px}
 a:hover{color:var(--black)}
 
+/* Top Bar */
+.top-bar{height:4px;background:#111}
+
 /* Header */
-.header{max-width:900px;margin:0 auto;padding:40px 24px 0}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
-.header h1{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:2px}
-.header .subtitle{font-size:14px;color:var(--text-secondary)}
+.header{max-width:900px;margin:0 auto;padding:32px 24px 0}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.team-logo{width:56px;height:56px;filter:grayscale(1) contrast(1.2)}
+.header h1{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:1px}
+.header .subtitle{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
 .hdr-pct{text-align:right}
 .pct-val{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1}
 .pct-label{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
+@media(max-width:500px){.team-logo{width:40px;height:40px}.header h1{font-size:22px}.pct-val{font-size:28px}}
 
-.stat-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0;border-bottom:1px solid var(--border)}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}
 .stat-pill .sl{color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:0.5px}
 .stat-pill .sv{font-weight:600}
@@ -166,9 +172,16 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 .footer{text-align:center;padding:24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);max-width:900px;margin:0 auto}
 </style></head><body>
 
+<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
-    <div><h1>Ottawa Senators</h1><div class="subtitle">29-22-8 &middot; 66 pts &middot; 59 GP</div></div>
+    <div class="hdr-left">
+      <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
+      <div>
+        <h1>Ottawa Senators</h1>
+        <div class="subtitle">29-22-8 &middot; 66 pts &middot; 59 GP</div>
+      </div>
+    </div>
     <div class="hdr-pct"><span class="pct-val">45.0%<span class="delta" style="color:#c43c3c">&#9660; 0.8%</span></span><span class="pct-label">Playoff Odds</span></div>
   </div>
   <div class="stat-row">
