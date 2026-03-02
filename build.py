@@ -1177,22 +1177,22 @@ a.pname:hover{{text-decoration:underline}}
 <div class="container">
   <input type="radio" name="tab" id="tab-standings" checked>
   <input type="radio" name="tab" id="tab-schedule">
-  <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-playoffs">
+  <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
     <label for="tab-standings">Standings</label>
     <label for="tab-schedule">Remaining Games</label>
-    <label for="tab-roster">Player Stats</label>
     <label for="tab-playoffs">Playoff Odds</label>
+    <label for="tab-roster">Player Stats</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
   </div>
   <div class="panel" id="p-standings">{standings_html}</div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
-  <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
+  <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
     <div class="community-list">
