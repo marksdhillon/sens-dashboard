@@ -63,6 +63,11 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
 .nhl-tbl thead th.name-col{min-width:160px}
+/* Frozen rank + player columns on horizontal scroll */
+#skater-tbl th.rank,#skater-tbl td.rank,#goalie-tbl th.rank,#goalie-tbl td.rank{position:sticky;left:0;z-index:2;background:var(--bg)}
+#skater-tbl th.name-col,#skater-tbl td.name-cell,#goalie-tbl th.name-col,#goalie-tbl td.name-cell{position:sticky;left:30px;z-index:2;background:var(--bg);box-shadow:2px 0 4px rgba(0,0,0,0.1)}
+#skater-tbl .alt td.rank,#skater-tbl .alt td.name-cell,#goalie-tbl .alt td.rank,#goalie-tbl .alt td.name-cell{background:var(--bg)}
+#skater-tbl tr:hover td.rank,#skater-tbl tr:hover td.name-cell,#goalie-tbl tr:hover td.rank,#goalie-tbl tr:hover td.name-cell{background:var(--bg-hover)}
 .nhl-tbl td{padding:8px 8px;border:none;border-bottom:1px solid var(--border-subtle);white-space:nowrap;color:var(--text-secondary)}
 .nhl-tbl td.r{text-align:right}
 .nhl-tbl td.rank{text-align:center;color:var(--text-muted);font-size:11px}
@@ -213,7 +218,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
       <div>
         <h1>Ottawa Senators</h1>
-        <div class="subtitle">Updated March 2, 2026 at 1:58 AM ET</div>
+        <div class="subtitle">Updated March 2, 2026 at 1:59 AM ET</div>
       </div>
     </div>
     <div class="hdr-right">
@@ -914,7 +919,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 2, 2026 at 1:58 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 2, 2026 at 1:59 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
