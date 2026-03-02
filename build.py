@@ -1203,6 +1203,7 @@ a.pname:hover{{color:var(--text-strong)}}
       <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
       <div>
         <h1>Ottawa Senators</h1>
+        <div class="subtitle">Updated {now}</div>
       </div>
     </div>
     <div class="hdr-right">
