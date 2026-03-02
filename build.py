@@ -855,12 +855,14 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
-#tab-news:checked~.tab-bar label[for="tab-news"]{{color:var(--text);font-weight:600;border-bottom-color:var(--black)}}
+#tab-news:checked~.tab-bar label[for="tab-news"],
+#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text);font-weight:600;border-bottom-color:var(--black)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
-#tab-news:checked~#p-news{{display:block}}
+#tab-news:checked~#p-news,
+#tab-community:checked~#p-community{{display:block}}
 
 /* Typography */
 h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
@@ -952,6 +954,11 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .news-date{{font-size:11px;color:var(--text-muted)}}
 .news-title{{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}}
 
+/* Community */
+.forum-frame{{width:100%;height:75vh;border:1px solid var(--border);border-radius:8px}}
+.forum-link{{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);margin-bottom:12px}}
+.forum-link:hover{{color:var(--text)}}
+
 /* Sortable columns */
 .sort-th{{cursor:pointer;user-select:none;position:relative}}
 .sort-th:hover{{background:#222}}
@@ -991,18 +998,24 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-news">
+  <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-standings">Standings</label>
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-news">Trade Rumors</label>
+    <label for="tab-community">Community</label>
   </div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-standings">{standings_html}</div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
+  <div class="panel" id="p-community">
+    <a href="https://forums.hfboards.com/forums/ottawa-senators.98/" target="_blank" rel="noopener" class="forum-link">Open in new tab &#8599;</a>
+    <iframe src="https://forums.hfboards.com/forums/ottawa-senators.98/" class="forum-frame" loading="lazy"></iframe>
+  </div>
 </div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
 <script>
