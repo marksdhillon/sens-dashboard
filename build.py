@@ -8,9 +8,12 @@ import csv
 import io
 import json
 import os
+import re
 import unicodedata
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
 TEAM = "OTT"
 PREV_FILE = "previous.json"
@@ -139,6 +142,57 @@ def fetch_nhl_goalie_summary():
     )
     data = fetch_json(url)
     return {g["playerId"]: g for g in data.get("data", [])}
+
+def fetch_sens_news():
+    """Fetch recent Ottawa Senators news/trade articles from Google News RSS."""
+    queries = [
+        "%22Ottawa+Senators%22+trade",
+        "%22Ottawa+Senators%22+rumors+OR+rumours",
+        "%22Ottawa+Senators%22+NHL+deadline",
+    ]
+    seen_titles = set()
+    articles = []
+    for q in queries:
+        url = f"https://news.google.com/rss/search?q={q}&hl=en-CA&gl=CA&ceid=CA:en"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "SensDashboard/1.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = resp.read()
+            root = ET.fromstring(data)
+            for item in root.findall(".//item"):
+                title_el = item.find("title")
+                link_el = item.find("link")
+                source_el = item.find("source")
+                pub_el = item.find("pubDate")
+                if title_el is None or link_el is None:
+                    continue
+                title = title_el.text or ""
+                # Deduplicate by normalized title
+                norm_title = re.sub(r"\s+", " ", title.lower().strip())
+                if norm_title in seen_titles:
+                    continue
+                seen_titles.add(norm_title)
+                source = source_el.text if source_el is not None else ""
+                link = link_el.text or ""
+                pub_str = pub_el.text if pub_el is not None else ""
+                try:
+                    pub_dt = parsedate_to_datetime(pub_str)
+                except Exception:
+                    pub_dt = datetime.now(timezone.utc)
+                # Clean title: remove " - Source Name" suffix Google News appends
+                clean_title = re.sub(r"\s*-\s*" + re.escape(source) + r"$", "", title) if source else title
+                articles.append({
+                    "title": clean_title,
+                    "source": source,
+                    "link": link,
+                    "date": pub_dt,
+                    "date_str": pub_dt.strftime("%b %-d"),
+                    "time_str": pub_dt.strftime("%-I:%M %p"),
+                })
+        except Exception as e:
+            print(f"  Warning: RSS fetch failed for query: {e}")
+    articles.sort(key=lambda x: x["date"], reverse=True)
+    return articles[:25]
 
 def normalize_name(name):
     """Strip non-ASCII for cross-source name matching (e.g. Stützle/Sttzle -> Sttzle)."""
@@ -538,6 +592,16 @@ def build_roster_html(skaters, goalies, mp_players):
 <thead><tr><th class="rank sort-th" data-col="0">#</th><th class="name-col sort-th" data-col="1">Player</th><th class="r sort-th" data-col="2">GP</th><th class="r sort-th" data-col="3">GS</th><th class="r sort-th" data-col="4">W</th><th class="r sort-th" data-col="5">L</th><th class="r sort-th" data-col="6">OT</th><th class="r sort-th" data-col="7">SA</th><th class="r sort-th" data-col="8">GA</th><th class="r sort-th" data-col="9">GAA</th><th class="r sort-th" data-col="10">SV</th><th class="r sort-th" data-col="11">SV%</th><th class="r sort-th" data-col="12">SO</th><th class="r sort-th" data-col="13">TOI</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
+def build_news_html(articles):
+    if not articles:
+        return '<p class="sub-note">No recent articles found.</p>'
+    items = []
+    for a in articles:
+        items.append(f'''<a href="{a["link"]}" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">{a["source"]}</span><span class="news-date">{a["date_str"]} &middot; {a["time_str"]}</span></div>
+<div class="news-title">{a["title"]}</div></a>''')
+    return f'<div class="news-list">{"".join(items)}</div>'
+
 def build_standings_section(east_teams, east_records):
     atlantic = sorted([t for t in east_teams if t["div"] == "Atlantic"], key=lambda x: -x["pts"])
     metro = sorted([t for t in east_teams if t["div"] == "Metropolitan"], key=lambda x: -x["pts"])
@@ -726,7 +790,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas):
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas):
     now = datetime.now(timezone.utc).strftime("%B %-d, %Y at %-I:%M %p UTC")
     record = f"{sens['w']}-{sens['l']}-{sens['otl']}"
     remaining = 82 - sens["gp"]
@@ -790,11 +854,13 @@ input[name="tab"]{{display:none}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
-#tab-schedule:checked~.tab-bar label[for="tab-schedule"]{{color:var(--text);font-weight:600;border-bottom-color:var(--black)}}
+#tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-news:checked~.tab-bar label[for="tab-news"]{{color:var(--text);font-weight:600;border-bottom-color:var(--black)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
-#tab-schedule:checked~#p-schedule{{display:block}}
+#tab-schedule:checked~#p-schedule,
+#tab-news:checked~#p-news{{display:block}}
 
 /* Typography */
 h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
@@ -877,6 +943,15 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .cmp-stat-label{{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-stat-r{{font-weight:600;text-align:right}}
 
+/* News / Trade Rumors */
+.news-list{{display:flex;flex-direction:column;gap:2px}}
+.news-item{{display:block;padding:12px 14px;border-radius:8px;text-decoration:none;transition:background 0.1s}}
+.news-item:hover{{background:var(--bg-hover);text-decoration:none}}
+.news-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}}
+.news-source{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted)}}
+.news-date{{font-size:11px;color:var(--text-muted)}}
+.news-title{{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}}
+
 /* Sortable columns */
 .sort-th{{cursor:pointer;user-select:none;position:relative}}
 .sort-th:hover{{background:#222}}
@@ -914,16 +989,19 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   <input type="radio" name="tab" id="tab-standings">
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-news">
   <div class="tab-bar">
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-standings">Standings</label>
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-news">Trade Rumors</label>
   </div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-standings">{standings_html}</div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
+  <div class="panel" id="p-news">{news_html}</div>
 </div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a></div>
 <script>
@@ -1026,12 +1104,17 @@ def main():
     east_records = fetch_east_team_records(east_teams, above500)
     print(f"  {len(east_records)} team records computed")
 
+    print("Fetching trade rumors / news...")
+    news_articles = fetch_sens_news()
+    print(f"  {len(news_articles)} articles found")
+
     print("Building HTML...")
     roster_html = build_roster_html(skaters, goalies, mp_players)
     standings_html = build_standings_section(east_teams, east_records)
     projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams)
     schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds)
-    html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas)
+    news_html = build_news_html(news_articles)
+    html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas)
 
     with open("index.html", "w") as f:
         f.write(html)
