@@ -755,7 +755,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
   <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Pts</div></div>
   <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Pts</div></div>
-  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Magic Number</div></div>
+  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Pts Still Needed</div></div>
 </div>
 
 <h3>Next Game Impact</h3>
