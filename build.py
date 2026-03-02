@@ -767,11 +767,27 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
             series[a] = {"W": 0, "L": 0, "OTL": 0}
         series[a][r["result"]] += 1
 
+    # Determine which teams are in a playoff position (top 3 per div + 2 WC per conf)
+    playoff_teams = set()
+    for conf_name in ("Eastern", "Western"):
+        conf_teams = [t for t in team_records.values() if t.get("conf") == conf_name]
+        divs = {}
+        for t in conf_teams:
+            divs.setdefault(t.get("div", ""), []).append(t)
+        wc_pool = []
+        for div_name, div_teams in divs.items():
+            div_sorted = sorted(div_teams, key=lambda x: -x["pts"])
+            for t in div_sorted[:3]:
+                playoff_teams.add(t["abbrev"])
+            wc_pool.extend(div_sorted[3:])
+        wc_sorted = sorted(wc_pool, key=lambda x: -x["pts"])
+        for t in wc_sorted[:2]:
+            playoff_teams.add(t["abbrev"])
+
     cards = []
     for g in remaining:
         prefix = "@ " if g["loc"] == "away" else "vs "
         loc_text = "Away" if g["loc"] == "away" else "Home"
-        tough_cls = " tough" if g["above500"] else ""
 
         opp = g["oppAbbrev"]
         o = team_records.get(opp, {})
@@ -850,9 +866,21 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 
         notes_html = "".join(f'<li>{n}</li>' for n in notes[:4])
 
-        tough_tag = '<span class="tough-tag">.500+</span>' if g["above500"] else ""
-        cards.append(f'''<details class="game-detail{tough_cls}">
-<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span>{tough_tag}</div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
+        # Tags: playoff position + hot streak
+        tags = ""
+        opp_streak = o.get("streak", "")
+        if opp in playoff_teams:
+            tags += '<span class="game-tag tag-playoff">Playoff</span>'
+        # Hot = win streak of 3+
+        if opp_streak.startswith("W") and len(opp_streak) > 1:
+            try:
+                streak_n = int(opp_streak[1:])
+                if streak_n >= 3:
+                    tags += f'<span class="game-tag tag-hot">W{streak_n}</span>'
+            except ValueError:
+                pass
+        cards.append(f'''<details class="game-detail">
+<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span>{tags}</div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
 <div class="game-expand">
   <ul class="matchup-notes">{notes_html}</ul>
   <table class="cmp-tbl"><thead><tr><th>OTT</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
@@ -1031,8 +1059,9 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .sched-meta{{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
-.game-detail.tough .game-summary{{border-left:3px solid var(--black)}}
-.tough-tag{{font-size:10px;font-weight:700;color:#fff;background:var(--black);padding:2px 6px;border-radius:4px;margin-left:8px;letter-spacing:0.3px;vertical-align:middle}}
+.game-tag{{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:8px;letter-spacing:0.3px;vertical-align:middle}}
+.tag-playoff{{color:#fff;background:var(--black)}}
+.tag-hot{{color:#fff;background:#c0392b}}
 .game-summary{{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
 .game-summary:hover{{background:var(--bg-hover)}}
 .game-summary::-webkit-details-marker{{display:none}}
