@@ -141,11 +141,8 @@ def fetch_nhl_goalie_summary():
     return {g["playerId"]: g for g in data.get("data", [])}
 
 def normalize_name(name):
-    """Strip diacritics for cross-source name matching (e.g. Stützle -> Stutzle)."""
-    return "".join(
-        c for c in unicodedata.normalize("NFD", name)
-        if unicodedata.category(c) != "Mn"
-    )
+    """Strip non-ASCII for cross-source name matching (e.g. Stützle/Sttzle -> Sttzle)."""
+    return "".join(c for c in name if ord(c) < 128)
 
 def fetch_moneypuck_player_stats():
     """Fetch individual player advanced stats from MoneyPuck for OTT."""
