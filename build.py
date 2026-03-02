@@ -892,9 +892,10 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div></details>''')
 
     return f'''<div class="sched-meta">
-  <span>{len(remaining)} games remaining</span>
-  <span>{home_count} home &middot; {away_count} away</span>
-  <span>{above500_count} vs above .500</span>
+  <div class="sm-card"><div class="sm-val">{len(remaining)}</div><div class="sm-label">Games Left</div></div>
+  <div class="sm-card"><div class="sm-val">{home_count}</div><div class="sm-label">Home</div></div>
+  <div class="sm-card"><div class="sm-val">{away_count}</div><div class="sm-label">Away</div></div>
+  <div class="sm-card"><div class="sm-val">{above500_count}</div><div class="sm-label">vs .500+</div></div>
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
@@ -1062,7 +1063,10 @@ a.pname:hover{{text-decoration:underline}}
 .footnote{{margin-top:24px;font-size:12px;color:var(--text-muted)}}
 
 /* Schedule */
-.sched-meta{{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}}
+.sched-meta{{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}}
+.sm-card{{flex:1;min-width:70px;text-align:center;padding:14px 8px;border:1px solid var(--border);border-radius:8px}}
+.sm-val{{font-size:24px;font-weight:700;line-height:1}}
+.sm-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
 .game-tag{{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
