@@ -866,11 +866,16 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 
         notes_html = "".join(f'<li>{n}</li>' for n in notes[:4])
 
-        # Tags: playoff position + hot streak
+        # Tags based on playoff picture + hot streak
         tags = ""
         opp_streak = o.get("streak", "")
-        if opp in playoff_teams:
-            tags += '<span class="game-tag tag-playoff">Playoff</span>'
+        opp_po = mp_odds.get(opp, {}).get("ALL", {}).get("playoffPct", 0)
+        if opp_po >= 0.60:
+            tags += '<span class="game-tag tag-playoff">Playoff Team</span>'
+        elif opp_po >= 0.15:
+            tags += '<span class="game-tag tag-desperate">Desperate</span>'
+        else:
+            tags += '<span class="game-tag tag-sellers">Sellers</span>'
         # Hot = win streak of 3+
         if opp_streak.startswith("W") and len(opp_streak) > 1:
             try:
@@ -1060,8 +1065,10 @@ a.pname:hover{{text-decoration:underline}}
 .sched-meta{{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:8px}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
-.game-tag{{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:8px;letter-spacing:0.3px;vertical-align:middle}}
-.tag-playoff{{color:#fff;background:var(--black)}}
+.game-tag{{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
+.tag-playoff{{color:var(--text-secondary);background:var(--bg-tag);border:1px solid var(--border)}}
+.tag-desperate{{color:#b45309;background:#fef3c7}}
+.tag-sellers{{color:var(--text-muted);background:var(--bg);border:1px dashed var(--border)}}
 .tag-hot{{color:#fff;background:#c0392b}}
 .game-summary{{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;cursor:pointer;list-style:none;border:1px solid var(--border);border-radius:8px;transition:background 0.1s}}
 .game-summary:hover{{background:var(--bg-hover)}}
