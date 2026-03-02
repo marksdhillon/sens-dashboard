@@ -989,24 +989,24 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Ottawa Senators — 2025-26</title>
 <style>
-:root{{--bg:#ffffff;--bg-hover:#f7f6f3;--bg-tag:#f1f1ef;--border:#e3e3e0;--text:#37352f;--text-secondary:#787774;--text-muted:#b4b4b0;--black:#111;--accent:#37352f}}
+:root{{--bg:#ffffff;--bg-hover:#fdf6ec;--bg-tag:#f5f0e8;--border:#e3e3e0;--text:#37352f;--text-secondary:#787774;--text-muted:#b4b4b0;--black:#111;--accent:#c8102e;--sens-red:#c8102e;--sens-dark:#a00d24}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}}
 a{{color:var(--text);text-decoration:underline;text-underline-offset:2px}}
 a:hover{{color:var(--black)}}
 
 /* Top Bar */
-.top-bar{{height:4px;background:#111}}
+.top-bar{{height:4px;background:var(--sens-red)}}
 
 /* Header */
 .header{{max-width:900px;margin:0 auto;padding:40px 24px 0}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
-.team-logo{{width:56px;height:56px;filter:grayscale(1) contrast(1.2)}}
-.header h1{{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:1px}}
+.team-logo{{width:56px;height:56px}}
+.header h1{{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:1px;color:var(--sens-dark)}}
 .header .subtitle{{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}}
 .hdr-pct{{text-align:right}}
-.pct-val{{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1}}
+.pct-val{{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1;color:var(--sens-red)}}
 .pct-label{{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
 .delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
 @media(max-width:500px){{.team-logo{{width:40px;height:40px}}.header h1{{font-size:22px}}.pct-val{{font-size:28px}}}}
@@ -1028,7 +1028,7 @@ input[name="tab"]{{display:none}}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text);font-weight:600;border-bottom-color:var(--black)}}
+#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text);font-weight:600;border-bottom-color:var(--sens-red)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
@@ -1050,12 +1050,12 @@ h3{{font-size:16px;font-weight:600;margin-bottom:16px;letter-spacing:-0.2px}}
 .nhl-tbl td.r{{text-align:right}}
 .nhl-tbl td.rank{{text-align:center;color:var(--text-muted);font-size:11px}}
 .nhl-tbl td.pts-col{{font-weight:700}}
-.nhl-tbl .player-summary:hover td{{background:#eef1f7}}
-.nhl-tbl .player-summary.alt td{{background:#f7f7f8}}
-.nhl-tbl .player-summary.alt:hover td{{background:#eaecf0}}
-.nhl-tbl .goalie-row:hover td{{background:#eef1f7}}
-.nhl-tbl .goalie-row.alt td{{background:#f7f7f8}}
-.nhl-tbl .goalie-row.alt:hover td{{background:#eaecf0}}
+.nhl-tbl .player-summary:hover td{{background:#fdf6ec}}
+.nhl-tbl .player-summary.alt td{{background:#faf8f5}}
+.nhl-tbl .player-summary.alt:hover td{{background:#fdf6ec}}
+.nhl-tbl .goalie-row:hover td{{background:#fdf6ec}}
+.nhl-tbl .goalie-row.alt td{{background:#faf8f5}}
+.nhl-tbl .goalie-row.alt:hover td{{background:#fdf6ec}}
 /* Headshot */
 .hs{{width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#e8e8e8}}
 .hs-empty{{display:inline-block}}
@@ -1068,20 +1068,20 @@ a.pname:hover{{text-decoration:underline}}
 .adv-pos{{color:#1a8a1a;font-weight:600}}
 .adv-neg{{color:#c43c3c;font-weight:600}}
 .adv-hdr{{background:#1a1a2e !important}}
-.sens-row td{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
+.sens-row td{{background:#fdf6ec}}.sens-row td:first-child{{font-weight:700;color:var(--sens-dark)}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
 .tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none}}.tcol-link:hover{{text-decoration:underline}}.bpts{{font-weight:700}}
 .div-label{{margin:32px 0 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
 .stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
-.stnd-tbl .sens-row td{{background:#f7f6f3}}
+.stnd-tbl .sens-row td{{background:#fdf6ec}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
 /* KPI Row */
 .kpi-row{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}}
 .kpi{{flex:1;min-width:90px;padding:18px;border:1px solid var(--border);border-radius:8px;text-align:center}}
-.kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1}}
+.kpi-val{{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:var(--sens-dark)}}
 .kpi-label{{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}}
 
 /* Scenario impact */
@@ -1093,7 +1093,7 @@ a.pname:hover{{text-decoration:underline}}
 /* Schedule */
 .sched-meta{{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}}
 .sm-card{{flex:1;min-width:70px;text-align:center;padding:16px 10px;border:1px solid var(--border);border-radius:8px}}
-.sm-val{{font-size:24px;font-weight:700;line-height:1}}
+.sm-val{{font-size:24px;font-weight:700;line-height:1;color:var(--sens-dark)}}
 .sm-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}}
 .sched-list{{display:flex;flex-direction:column;gap:8px}}
 .game-detail{{border-radius:8px;overflow:hidden}}
