@@ -7,10 +7,12 @@ Fetches live data from the NHL API + MoneyPuck analytics and generates a static 
 import csv
 import io
 import json
+import os
 import urllib.request
 from datetime import datetime, timezone
 
 TEAM = "OTT"
+PREV_FILE = "previous.json"
 SEASON = "20252026"
 SEASON_SHORT = "2025"
 NHL_API = "https://api-web.nhle.com/v1"
@@ -94,6 +96,43 @@ def fetch_moneypuck_team_stats():
                 "CFpct": float(r.get("corsiPercentage", 0) or 0),
             }
     return stats
+
+# ── Persistence (delta tracking) ──────────────────────────
+
+def load_previous():
+    if os.path.exists(PREV_FILE):
+        try:
+            with open(PREV_FILE) as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {}
+
+def save_current(data):
+    with open(PREV_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+def fmt_delta(current, previous, fmt="num", invert=False):
+    """Format a delta indicator. Returns HTML string or empty string if no previous data."""
+    if previous is None:
+        return ""
+    diff = current - previous
+    if abs(diff) < 0.001:
+        return ""
+    # For 'needed' and 'gap', going down is good. invert flips the arrow meaning.
+    if invert:
+        is_good = diff < 0
+    else:
+        is_good = diff > 0
+    arrow = "&#9650;" if diff > 0 else "&#9660;"
+    color = "#1a8a1a" if is_good else "#c43c3c"
+    if fmt == "pct":
+        label = f"{abs(diff)*100:.1f}%"
+    elif fmt == "dec":
+        label = f"{abs(diff):.1f}"
+    else:
+        label = f"{abs(diff):g}"
+    return f'<span class="delta" style="color:{color}">{arrow} {label}</span>'
 
 # ── Data Processors ───────────────────────────────────────
 
@@ -441,7 +480,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 <p class="sub-note">Click any game to see head-to-head advanced metrics.</p>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds):
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas):
     now = datetime.now(timezone.utc).strftime("%B %-d, %Y at %-I:%M %p UTC")
     record = f"{sens['w']}-{sens['l']}-{sens['otl']}"
     remaining = 82 - sens["gp"]
@@ -452,6 +491,17 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
     w500, l500, otl500 = vs500
     ott_odds = mp_odds.get(TEAM, {})
     playoff_pct = ott_odds.get("playoffPct", 0)
+    proj_pts = ott_odds.get("projPts", pace)
+    target = 93
+    needed = max(0, target - sens["pts"])
+    gap = round(proj_pts - target, 1)
+    gap_str = f"+{gap}" if gap >= 0 else str(gap)
+
+    # Delta indicators
+    d_pct = fmt_delta(playoff_pct, deltas.get("playoffPct"), fmt="pct")
+    d_needed = fmt_delta(needed, deltas.get("needed"), invert=True)
+    d_gap = fmt_delta(gap, deltas.get("gap"))
+    d_pts = fmt_delta(sens["pts"], deltas.get("pts"))
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -467,6 +517,14 @@ a:hover{{color:var(--black)}}
 .header{{max-width:900px;margin:0 auto;padding:48px 24px 0}}
 .header h1{{font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}}
 .header .subtitle{{font-size:14px;color:var(--text-secondary);margin-bottom:24px}}
+/* Playoff Banner */
+.playoff-banner{{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px}}
+.pb-item{{background:var(--bg);padding:20px 16px;text-align:center}}
+.pb-val{{font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1}}
+.pb-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:6px}}
+.delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
+@media(max-width:500px){{.playoff-banner{{grid-template-columns:repeat(2,1fr)}}}}
+
 .stat-row{{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px}}
 .stat-pill{{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}}
 .stat-pill .sl{{color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px}}
@@ -575,10 +633,14 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 <div class="header">
   <h1>Ottawa Senators</h1>
   <div class="subtitle">2025-26 Season &middot; Updated {now}</div>
+  <div class="playoff-banner">
+    <div class="pb-item"><div class="pb-val">{playoff_pct*100:.1f}%{d_pct}</div><div class="pb-label">Playoff Probability</div></div>
+    <div class="pb-item"><div class="pb-val">{sens["pts"]}{d_pts}</div><div class="pb-label">Points ({needed} to target)</div></div>
+    <div class="pb-item"><div class="pb-val">{needed}{d_needed}</div><div class="pb-label">Points Needed</div></div>
+    <div class="pb-item"><div class="pb-val">{gap_str}{d_gap}</div><div class="pb-label">Projected vs 93</div></div>
+  </div>
   <div class="stat-row">
     <div class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></div>
-    <div class="stat-pill"><span class="sl">Points</span> <span class="sv">{sens["pts"]}</span></div>
-    <div class="stat-pill"><span class="sl">Playoff</span> <span class="sv">{playoff_pct*100:.0f}%</span></div>
     <div class="stat-pill"><span class="sl">vs .500+</span> <span class="sv">{w500}-{l500}-{otl500}</span></div>
     <div class="stat-pill"><span class="sl">Remaining</span> <span class="sv">{remaining}</span></div>
     <div class="stat-pill"><span class="sl">Pace</span> <span class="sv">{pace}</span></div>
@@ -649,12 +711,40 @@ def main():
     home_count = sum(1 for g in remaining if g["loc"] == "home")
     away_count = sum(1 for g in remaining if g["loc"] == "away")
 
+    # Delta tracking
+    prev = load_previous()
+    target = 93
+    needed = max(0, target - sens["pts"])
+    proj_pts = ott_odds.get("projPts", 0)
+    gap = round(proj_pts - target, 1)
+    deltas = {
+        "playoffPct": prev.get("playoffPct"),
+        "pts": prev.get("pts"),
+        "needed": prev.get("needed"),
+        "gap": prev.get("gap"),
+    }
+    current = {
+        "playoffPct": ott_odds.get("playoffPct", 0),
+        "pts": sens["pts"],
+        "needed": needed,
+        "gap": gap,
+    }
+    # Only save if points changed (i.e., a game was actually played)
+    if prev.get("pts") != sens["pts"]:
+        save_current(current)
+        print(f"  Saved snapshot (pts changed: {prev.get('pts')} -> {sens['pts']})")
+    elif not prev:
+        save_current(current)
+        print("  Saved initial snapshot")
+    else:
+        print("  No game played since last update, skipping snapshot save")
+
     print("Building HTML...")
     roster_html = build_roster_html(skaters, goalies)
     standings_html = build_standings_section(east_teams)
     projections_html = build_projections_html(sens, vs500, mp_odds, mp_stats)
     schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records, mp_stats, mp_odds)
-    html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds)
+    html = generate_html(sens, roster_html, standings_html, projections_html, schedule_html, vs500, mp_odds, deltas)
 
     with open("index.html", "w") as f:
         f.write(html)

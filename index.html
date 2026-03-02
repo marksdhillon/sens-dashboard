@@ -12,6 +12,14 @@ a:hover{color:var(--black)}
 .header{max-width:900px;margin:0 auto;padding:48px 24px 0}
 .header h1{font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}
 .header .subtitle{font-size:14px;color:var(--text-secondary);margin-bottom:24px}
+/* Playoff Banner */
+.playoff-banner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px}
+.pb-item{background:var(--bg);padding:20px 16px;text-align:center}
+.pb-val{font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1}
+.pb-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:6px}
+.delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
+@media(max-width:500px){.playoff-banner{grid-template-columns:repeat(2,1fr)}}
+
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px}
 .stat-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}
 .stat-pill .sl{color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
@@ -119,11 +127,15 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 
 <div class="header">
   <h1>Ottawa Senators</h1>
-  <div class="subtitle">2025-26 Season &middot; Updated March 2, 2026 at 1:22 AM UTC</div>
+  <div class="subtitle">2025-26 Season &middot; Updated March 2, 2026 at 1:27 AM UTC</div>
+  <div class="playoff-banner">
+    <div class="pb-item"><div class="pb-val">45.9%</div><div class="pb-label">Playoff Probability</div></div>
+    <div class="pb-item"><div class="pb-val">66</div><div class="pb-label">Points (27 to target)</div></div>
+    <div class="pb-item"><div class="pb-val">27</div><div class="pb-label">Points Needed</div></div>
+    <div class="pb-item"><div class="pb-val">+2.1</div><div class="pb-label">Projected vs 93</div></div>
+  </div>
   <div class="stat-row">
     <div class="stat-pill"><span class="sl">Record</span> <span class="sv">29-22-8</span></div>
-    <div class="stat-pill"><span class="sl">Points</span> <span class="sv">66</span></div>
-    <div class="stat-pill"><span class="sl">Playoff</span> <span class="sv">46%</span></div>
     <div class="stat-pill"><span class="sl">vs .500+</span> <span class="sv">10-11-7</span></div>
     <div class="stat-pill"><span class="sl">Remaining</span> <span class="sv">23</span></div>
     <div class="stat-pill"><span class="sl">Pace</span> <span class="sv">91.7</span></div>
