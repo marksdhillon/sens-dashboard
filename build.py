@@ -1056,8 +1056,10 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
 .nhl-tbl thead th.name-col{{min-width:160px}}
 /* Frozen rank + player columns on horizontal scroll */
+#skater-tbl,#goalie-tbl{{border-collapse:separate;border-spacing:0}}
 #skater-tbl th.rank,#skater-tbl td.rank,#goalie-tbl th.rank,#goalie-tbl td.rank{{position:sticky;left:0;z-index:2;background:var(--bg)}}
-#skater-tbl th.name-col,#skater-tbl td.name-cell,#goalie-tbl th.name-col,#goalie-tbl td.name-cell{{position:sticky;left:30px;z-index:2;background:var(--bg);box-shadow:2px 0 4px rgba(0,0,0,0.1)}}
+#skater-tbl th.name-col,#skater-tbl td.name-cell,#goalie-tbl th.name-col,#goalie-tbl td.name-cell{{position:sticky;left:30px;z-index:2;background:var(--bg);box-shadow:2px 0 4px rgba(0,0,0,0.15)}}
+#skater-tbl thead th.rank,#skater-tbl thead th.name-col,#goalie-tbl thead th.rank,#goalie-tbl thead th.name-col{{z-index:3}}
 #skater-tbl .alt td.rank,#skater-tbl .alt td.name-cell,#goalie-tbl .alt td.rank,#goalie-tbl .alt td.name-cell{{background:var(--bg)}}
 #skater-tbl tr:hover td.rank,#skater-tbl tr:hover td.name-cell,#goalie-tbl tr:hover td.rank,#goalie-tbl tr:hover td.name-cell{{background:var(--bg-hover)}}
 .nhl-tbl td{{padding:8px 8px;border:none;border-bottom:1px solid var(--border-subtle);white-space:nowrap;color:var(--text-secondary)}}
