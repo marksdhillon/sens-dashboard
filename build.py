@@ -752,10 +752,10 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
     ott_mp_5v5 = ott_mp.get("5v5", {})
 
     return f'''<div class="kpi-row">
-  <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Pts to Make Playoffs</div></div>
+  <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target</div></div>
+  <div class="kpi"><div class="kpi-val">{proj_pts:.0f}</div><div class="kpi-label">Projected Pts</div></div>
   <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Pts</div></div>
-  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Pts Needed</div></div>
-  <div class="kpi"><div class="kpi-val">{deficit_str}</div><div class="kpi-label">Projected vs Target</div></div>
+  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Magic Number</div></div>
 </div>
 
 <h3>Next Game Impact</h3>
