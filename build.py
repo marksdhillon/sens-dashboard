@@ -1101,8 +1101,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">{goal_diff_str}</span></span>
     <span class="stat-pill" title="Power play goals / power play shots — league rank out of 32"><span class="sl">PP%</span> <span class="sv">{pp_pct}% <small>({ordinal(pp_rank)})</small></span></span>
     <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">{pk_pct}% <small>({ordinal(pk_rank)})</small></span></span>
-    <span class="stat-pill" title="Goals scored per game / goals allowed per game"><span class="sl">GF·GA/GP</span> <span class="sv">{gf_pg}·{ga_pg}</span></span>
-    <span class="stat-pill" title="82-game point pace based on current points percentage"><span class="sl">Pace</span> <span class="sv">{pts_pace} pts</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
     <span class="stat-pill"><span class="sl">Streak</span> <span class="sv">{sens["streak"]}</span></span>
   </div>
