@@ -731,12 +731,12 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
     ott = team_records.get(TEAM, {})
     fmt_r = lambda w, l, o: f"{w}-{l}-{o}"
     ott_record = fmt_r(ott.get("w",0), ott.get("l",0), ott.get("otl",0))
-    ott_home = fmt_r(ott.get("homeWins",0), ott.get("homeLosses",0), ott.get("homeOtLosses",0))
-    ott_away = fmt_r(ott.get("roadWins",0), ott.get("roadLosses",0), ott.get("roadOtLosses",0))
-    ott_l10 = fmt_r(ott.get("l10Wins",0), ott.get("l10Losses",0), ott.get("l10OtLosses",0))
-    ott_gf = ott.get("goalFor", 0)
-    ott_ga = ott.get("goalAgainst", 0)
-    ott_pts = ott.get("points", 0)
+    ott_home = fmt_r(ott.get("homeW",0), ott.get("homeL",0), ott.get("homeOtl",0))
+    ott_away = fmt_r(ott.get("roadW",0), ott.get("roadL",0), ott.get("roadOtl",0))
+    ott_l10 = fmt_r(ott.get("l10w",0), ott.get("l10l",0), ott.get("l10otl",0))
+    ott_gf = ott.get("gf", 0)
+    ott_ga = ott.get("ga", 0)
+    ott_pts = ott.get("pts", 0)
 
     cards = []
     for g in remaining:
@@ -747,12 +747,12 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
         opp = g["oppAbbrev"]
         o = team_records.get(opp, {})
         opp_record = fmt_r(o.get("w",0), o.get("l",0), o.get("otl",0))
-        opp_home = fmt_r(o.get("homeWins",0), o.get("homeLosses",0), o.get("homeOtLosses",0))
-        opp_away = fmt_r(o.get("roadWins",0), o.get("roadLosses",0), o.get("roadOtLosses",0))
-        opp_l10 = fmt_r(o.get("l10Wins",0), o.get("l10Losses",0), o.get("l10OtLosses",0))
-        opp_gf = o.get("goalFor", 0)
-        opp_ga = o.get("goalAgainst", 0)
-        o_pts = o.get("points", 0)
+        opp_home = fmt_r(o.get("homeW",0), o.get("homeL",0), o.get("homeOtl",0))
+        opp_away = fmt_r(o.get("roadW",0), o.get("roadL",0), o.get("roadOtl",0))
+        opp_l10 = fmt_r(o.get("l10w",0), o.get("l10l",0), o.get("l10otl",0))
+        opp_gf = o.get("gf", 0)
+        opp_ga = o.get("ga", 0)
+        o_pts = o.get("pts", 0)
 
         def row(label, v_ott, v_opp):
             return f'<tr><td class="cmp-stat-l">{v_ott}</td><td class="cmp-stat-label">{label}</td><td class="cmp-stat-r">{v_opp}</td></tr>'
