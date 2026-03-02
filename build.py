@@ -970,12 +970,14 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
       <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
       <div>
         <h1>Ottawa Senators</h1>
-        <div class="subtitle">{record} &middot; {sens["pts"]} pts &middot; {sens["gp"]} GP</div>
       </div>
     </div>
     <div class="hdr-pct"><span class="pct-val">{playoff_pct*100:.1f}%{d_pct}</span><span class="pct-label">Playoff Odds</span></div>
   </div>
   <div class="stat-row">
+    <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
+    <span class="stat-pill"><span class="sl">PTS</span> <span class="sv">{sens["pts"]}</span></span>
+    <span class="stat-pill"><span class="sl">GP</span> <span class="sv">{sens["gp"]}</span></span>
     <span class="stat-pill"><span class="sl">Home</span> <span class="sv">{home_rec}</span></span>
     <span class="stat-pill"><span class="sl">Away</span> <span class="sv">{road_rec}</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
