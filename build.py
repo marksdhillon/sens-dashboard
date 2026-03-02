@@ -244,8 +244,10 @@ def get_skaters(club_stats):
         toi_min = int(toi_sec // 60)
         toi_s = int(toi_sec % 60)
         fo_pct = s.get("faceoffWinPctg", 0)
+        headshot = s.get("headshot", "")
         skaters.append({
             "name": f"{first} {last}", "pos": s.get("positionCode", ""),
+            "headshot": headshot,
             "gp": gp, "g": s.get("goals", 0), "a": s.get("assists", 0),
             "pts": pts, "pm": s.get("plusMinus", 0),
             "pim": s.get("penaltyMinutes", 0),
@@ -270,12 +272,15 @@ def get_goalies(club_stats):
         if isinstance(first, dict): first = first.get("default", "")
         if isinstance(last, dict): last = last.get("default", "")
         goalies.append({
-            "name": f"{first} {last}", "gp": g.get("gamesPlayed", 0),
+            "name": f"{first} {last}", "headshot": g.get("headshot", ""),
+            "gp": g.get("gamesPlayed", 0),
             "w": g.get("wins", 0), "l": g.get("losses", 0),
             "otl": g.get("overtimeLosses", 0),
             "gaa": round(g.get("goalsAgainstAverage", 0), 2),
             "svPct": round(g.get("savePercentage", 0), 3),
             "so": g.get("shutouts", 0),
+            "sa": g.get("shotsAgainst", 0), "sv": g.get("saves", 0),
+            "ga": g.get("goalsAgainst", 0),
         })
     goalies.sort(key=lambda x: x["gp"], reverse=True)
     return goalies
@@ -379,20 +384,17 @@ def cmp_bar(label, val_ott, val_opp, fmt="pct", higher_better=True):
 def build_roster_html(skaters, goalies, mp_players):
     max_pts = max((s["pts"] for s in skaters), default=0)
     rows = []
-    for s in skaters:
-        pos_class = "pos-d" if s["pos"] == "D" else "pos-fw"
+    for i, s in enumerate(skaters):
         pm_val = s["pm"]
-        pm_class = "pm-pos" if pm_val > 0 else "pm-neg" if pm_val < 0 else ""
         pm_str = f"+{pm_val}" if pm_val > 0 else str(pm_val)
-        pts_class = ' pts-lead' if s["pts"] == max_pts else ''
+        alt = " alt" if i % 2 == 1 else ""
 
-        # MoneyPuck advanced stats for this player
+        # MoneyPuck advanced stats
         mp = mp_players.get(s["name"], {})
         mp5 = mp.get("5v5", {})
         mp_all = mp.get("all", {})
         has_mp = bool(mp5)
 
-        # Build the expanded stats grid
         xg = mp_all.get("xG", 0)
         xg5 = mp5.get("xG", 0)
         xgf_pct = mp5.get("xGFpct", 0)
@@ -407,59 +409,60 @@ def build_roster_html(skaters, goalies, mp_players):
         oz_pct = round(oz / (oz + dz) * 100, 1) if (oz + dz) > 0 else 0
         game_score = mp_all.get("gameScore", 0)
         gs_pg = round(game_score / s["gp"], 2) if s["gp"] > 0 else 0
+        g_minus_xg = s["g"] - xg
 
         expand_html = ""
         if has_mp:
-            expand_html = f'''<div class="player-expand">
-  <div class="px-grid">
-    <div class="px-section">
-      <div class="px-title">Scoring</div>
-      <div class="px-row"><span class="px-label">Shots</span><span class="px-val">{s["shots"]}</span></div>
-      <div class="px-row"><span class="px-label">SH%</span><span class="px-val">{s["shPct"]}%</span></div>
-      <div class="px-row"><span class="px-label">PPG</span><span class="px-val">{s["ppGoals"]}</span></div>
-      <div class="px-row"><span class="px-label">SHG</span><span class="px-val">{s["shGoals"]}</span></div>
-      <div class="px-row"><span class="px-label">GWG</span><span class="px-val">{s["gwg"]}</span></div>
-    </div>
-    <div class="px-section">
-      <div class="px-title">Expected Goals</div>
-      <div class="px-row"><span class="px-label">xG (all)</span><span class="px-val">{xg:.1f}</span></div>
-      <div class="px-row"><span class="px-label">xG (5v5)</span><span class="px-val">{xg5:.1f}</span></div>
-      <div class="px-row"><span class="px-label">xGF% (5v5)</span><span class="px-val">{xgf_pct*100:.1f}%</span></div>
-      <div class="px-row"><span class="px-label">Goals &minus; xG</span><span class="px-val">{s["g"] - xg:+.1f}</span></div>
-      <div class="px-row"><span class="px-label">GameScore/GP</span><span class="px-val">{gs_pg}</span></div>
-    </div>
-    <div class="px-section">
-      <div class="px-title">Possession (5v5)</div>
-      <div class="px-row"><span class="px-label">CF%</span><span class="px-val">{cf_pct*100:.1f}%</span></div>
-      <div class="px-row"><span class="px-label">OZ Start %</span><span class="px-val">{oz_pct}%</span></div>
-      <div class="px-row"><span class="px-label">HD Shots</span><span class="px-val">{hd_shots}</span></div>
-      <div class="px-row"><span class="px-label">HD Goals</span><span class="px-val">{hd_goals}</span></div>
-    </div>
-    <div class="px-section">
-      <div class="px-title">Physical (5v5)</div>
-      <div class="px-row"><span class="px-label">TOI/GP</span><span class="px-val">{s["toi"]}</span></div>
-      <div class="px-row"><span class="px-label">Hits</span><span class="px-val">{hits}</span></div>
-      <div class="px-row"><span class="px-label">Takeaways</span><span class="px-val">{tkwy}</span></div>
-      <div class="px-row"><span class="px-label">Giveaways</span><span class="px-val">{gvwy}</span></div>
-      {"<div class='px-row'><span class='px-label'>FO%</span><span class='px-val'>" + str(s["foPct"]) + "%</span></div>" if s["foPct"] > 0 else ""}
-    </div>
+            expand_html = f'''<tr class="expand-row"><td colspan="14"><div class="px-grid">
+  <div class="px-section"><div class="px-title">Expected Goals</div>
+    <div class="px-row"><span class="px-label">xG (All Sit.)</span><span class="px-val">{xg:.1f}</span></div>
+    <div class="px-row"><span class="px-label">xG (5v5)</span><span class="px-val">{xg5:.1f}</span></div>
+    <div class="px-row"><span class="px-label">Goals &minus; xG</span><span class="px-val" style="color:{"#1a8a1a" if g_minus_xg > 0.5 else "#c43c3c" if g_minus_xg < -0.5 else "inherit"}">{g_minus_xg:+.1f}</span></div>
+    <div class="px-row"><span class="px-label">xGF% (5v5)</span><span class="px-val">{xgf_pct*100:.1f}%</span></div>
+    <div class="px-row"><span class="px-label">GameScore/GP</span><span class="px-val">{gs_pg}</span></div>
   </div>
-</div>'''
+  <div class="px-section"><div class="px-title">Possession (5v5)</div>
+    <div class="px-row"><span class="px-label">CF%</span><span class="px-val">{cf_pct*100:.1f}%</span></div>
+    <div class="px-row"><span class="px-label">OZ Start %</span><span class="px-val">{oz_pct}%</span></div>
+    <div class="px-row"><span class="px-label">HD Shots</span><span class="px-val">{hd_shots}</span></div>
+    <div class="px-row"><span class="px-label">HD Goals</span><span class="px-val">{hd_goals}</span></div>
+  </div>
+  <div class="px-section"><div class="px-title">Physical (5v5)</div>
+    <div class="px-row"><span class="px-label">Hits</span><span class="px-val">{hits}</span></div>
+    <div class="px-row"><span class="px-label">Takeaways</span><span class="px-val">{tkwy}</span></div>
+    <div class="px-row"><span class="px-label">Giveaways</span><span class="px-val">{gvwy}</span></div>
+    {"<div class='px-row'><span class='px-label'>FO%</span><span class='px-val'>" + str(s["foPct"]) + "%</span></div>" if s["foPct"] > 0 else ""}
+  </div>
+</div></td></tr>'''
 
-        rows.append(f'''<details class="player-detail">
-<summary class="player-row"><span class="pname">{s["name"]} <span class="pos-tag {pos_class}">{s["pos"]}</span></span><span class="pr-stats"><span class="r">{s["gp"]}</span><span class="r">{s["g"]}</span><span class="r">{s["a"]}</span><span class="r{pts_class}">{s["pts"]}</span><span class="r {pm_class}">{pm_str}</span><span class="r">{s["pim"]}</span><span class="r">{s["ppg"]:.2f}</span></span></summary>
-{expand_html}</details>''')
+        img = f'<img src="{s["headshot"]}" class="hs" alt="">' if s["headshot"] else '<div class="hs hs-empty"></div>'
+
+        rows.append(f'''<tbody class="player-group"><tr class="player-summary{alt}">
+<td class="rank">{i+1}</td>
+<td class="name-cell"><details class="pd"><summary class="pd-s">{img}<div class="name-wrap"><span class="pname">{s["name"]}</span><span class="ppos">{s["pos"]}</span></div></summary></details></td>
+<td class="r">{s["gp"]}</td><td class="r">{s["g"]}</td><td class="r">{s["a"]}</td>
+<td class="r pts-col">{s["pts"]}</td><td class="r">{pm_str}</td>
+<td class="r">{s["pim"]}</td><td class="r">{s["ppGoals"]}</td>
+<td class="r">{s["gwg"]}</td><td class="r">{s["shots"]}</td>
+<td class="r">{s["shPct"]}</td><td class="r">{s["toi"]}</td>
+<td class="r">{s["ppg"]:.2f}</td>
+</tr>{expand_html}</tbody>''')
 
     goalie_rows = []
-    for g in goalies:
+    for i, g in enumerate(goalies):
         svp = f".{int(g['svPct']*1000):03d}" if 0 < g["svPct"] < 1 else f"{g['svPct']:.3f}"
-        goalie_rows.append(f'<tr><td class="pname">{g["name"]}</td><td class="r">{g["gp"]}</td><td class="r">{g["w"]}</td><td class="r">{g["l"]}</td><td class="r">{g["otl"]}</td><td class="r">{g["gaa"]:.2f}</td><td class="r">{svp}</td><td class="r">{g["so"]}</td></tr>')
-    return f'''<h3>Skaters</h3>
-<p class="sub-note">Click any player to see advanced stats.</p>
-<div class="player-header"><span>Player</span><span class="pr-stats"><span>GP</span><span>G</span><span>A</span><span>PTS</span><span>+/-</span><span>PIM</span><span>P/GP</span></span></div>
-<div class="player-list">{"".join(rows)}</div>
+        alt = " alt" if i % 2 == 1 else ""
+        img = f'<img src="{g["headshot"]}" class="hs" alt="">' if g["headshot"] else '<div class="hs hs-empty"></div>'
+        goalie_rows.append(f'<tr class="goalie-row{alt}"><td class="rank">{i+1}</td><td class="name-cell"><div class="name-flex">{img}<span class="pname">{g["name"]}</span></div></td><td class="r">{g["gp"]}</td><td class="r">{g["w"]}</td><td class="r">{g["l"]}</td><td class="r">{g["otl"]}</td><td class="r">{g["gaa"]:.2f}</td><td class="r">{svp}</td><td class="r">{g["sa"]}</td><td class="r">{g["sv"]}</td><td class="r">{g["ga"]}</td><td class="r">{g["so"]}</td></tr>')
+
+    return f'''<p class="sub-note">Click any player to see MoneyPuck advanced analytics.</p>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">G</th><th class="r">A</th><th class="r">P</th><th class="r">+/-</th><th class="r">PIM</th><th class="r">PPG</th><th class="r">GWG</th><th class="r">S</th><th class="r">S%</th><th class="r">TOI/GP</th><th class="r">P/GP</th></tr></thead>
+{"".join(rows)}</table></div>
+
 <h3 style="margin-top:32px">Goaltenders</h3>
-<div class="scroll-x"><table class="tbl"><thead><tr><th>Player</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">GAA</th><th class="r">SV%</th><th class="r">SO</th></tr></thead>
+<div class="scroll-x"><table class="nhl-tbl">
+<thead><tr><th class="rank">#</th><th class="name-col">Player</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">GAA</th><th class="r">SV%</th><th class="r">SA</th><th class="r">SV</th><th class="r">GA</th><th class="r">SO</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
 def build_standings_section(east_teams):
@@ -681,28 +684,47 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
 .tbl th.r,.tbl td.r{{text-align:right}}
 .tbl td{{padding:7px 10px;border-bottom:1px solid #f0f0ef;font-variant-numeric:tabular-nums}}
 .tbl tbody tr:hover{{background:var(--bg-hover)}}
-.pname{{font-weight:600;white-space:nowrap}}
-.pos-tag{{display:inline-block;font-size:10px;font-weight:600;padding:1px 5px;border-radius:4px;margin-left:4px;vertical-align:middle;background:var(--bg-tag);color:var(--text-secondary)}}
-.pos-fw{{background:#eef3ff;color:#4a73c7}}.pos-d{{background:#eef8ee;color:#3d8c40}}
-/* Player expandable rows */
-.player-header{{display:flex;justify-content:space-between;align-items:center;padding:6px 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);border-bottom:1px solid var(--border)}}
-.player-header .pr-stats{{display:grid;grid-template-columns:repeat(7,44px);text-align:right}}
-.player-list{{display:flex;flex-direction:column}}
-.player-detail{{border-bottom:1px solid #f0f0ef}}
-.player-detail summary.player-row{{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;cursor:pointer;list-style:none;transition:background 0.1s}}
-.player-detail summary.player-row:hover{{background:var(--bg-hover)}}
-.player-detail summary.player-row::-webkit-details-marker{{display:none}}
-.player-detail summary.player-row::marker{{display:none;content:""}}
-.pr-stats{{display:grid;grid-template-columns:repeat(7,44px);text-align:right;font-size:13px;font-variant-numeric:tabular-nums}}
-.player-expand{{padding:16px 14px;background:#fafaf9;border-top:1px solid #f0f0ef}}
-.px-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
-@media(max-width:700px){{.px-grid{{grid-template-columns:repeat(2,1fr)}}}}
+/* NHL.com Stats Table */
+.nhl-tbl{{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}}
+.nhl-tbl thead th{{background:#111;color:#fff;padding:8px 6px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0}}
+.nhl-tbl thead th.r{{text-align:right}}
+.nhl-tbl thead th.rank{{width:30px;text-align:center}}
+.nhl-tbl thead th.name-col{{min-width:160px}}
+.nhl-tbl td{{padding:5px 6px;border:none;white-space:nowrap}}
+.nhl-tbl td.r{{text-align:right}}
+.nhl-tbl td.rank{{text-align:center;color:var(--text-muted);font-size:11px}}
+.nhl-tbl td.pts-col{{font-weight:700}}
+.nhl-tbl .player-summary:hover td{{background:#eef1f7}}
+.nhl-tbl .player-summary.alt td{{background:#f7f7f8}}
+.nhl-tbl .player-summary.alt:hover td{{background:#eaecf0}}
+.nhl-tbl .goalie-row:hover td{{background:#eef1f7}}
+.nhl-tbl .goalie-row.alt td{{background:#f7f7f8}}
+.nhl-tbl .goalie-row.alt:hover td{{background:#eaecf0}}
+/* Headshot */
+.hs{{width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#e8e8e8}}
+.hs-empty{{display:inline-block}}
+.name-cell{{padding-left:4px}}
+.name-flex{{display:flex;align-items:center;gap:8px}}
+.pname{{font-weight:600;white-space:nowrap;font-size:13px}}
+.ppos{{font-size:10px;color:var(--text-muted);margin-left:4px}}
+.name-wrap{{display:flex;align-items:baseline;gap:4px}}
+/* Details toggle for player */
+.pd{{display:inline}}.pd summary.pd-s{{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none}}
+.pd summary.pd-s::-webkit-details-marker{{display:none}}
+.pd summary.pd-s::marker{{display:none;content:""}}
+.player-group{{border-bottom:1px solid #eee}}
+/* Expand row */
+.expand-row{{display:none}}
+.pd[open]+td,.pd[open]~td{{}}
+.player-group:has(.pd[open]) .expand-row{{display:table-row}}
+.expand-row td{{padding:16px;background:#fafafa;border-top:1px solid #eee}}
+.px-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+@media(max-width:600px){{.px-grid{{grid-template-columns:1fr 1fr}}}}
 .px-section{{}}
 .px-title{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}}
 .px-row{{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}}
 .px-label{{color:var(--text-secondary)}}
 .px-val{{font-weight:600;font-variant-numeric:tabular-nums}}
-.pm-pos{{color:#1a8a1a}}.pm-neg{{color:#c43c3c}}.pts-lead{{font-weight:700}}
 .sens-row{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
