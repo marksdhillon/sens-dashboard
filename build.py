@@ -612,7 +612,6 @@ def build_standings_section(east_teams, east_records):
         wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{t["name"]}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
 
     wc_html = f'''<div class="div-label">Wild Card Race</div>
-<p class="sub-note">Top 2 qualify for playoffs. Dashed line = cutoff.</p>
 <div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs OTT</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(wc_rows)}</tbody></table></div>'''
@@ -1002,7 +1001,6 @@ h3{{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}}
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-standings">
     <h3>Eastern Conference Standings</h3>
-    <p class="sub-note">Top 3 per division + 2 wild cards qualify. Dashed line = cutoff.</p>
     {standings_html}
   </div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
