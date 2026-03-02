@@ -9,20 +9,18 @@ a{color:var(--text);text-decoration:underline;text-underline-offset:2px}
 a:hover{color:var(--black)}
 
 /* Header */
-.header{max-width:900px;margin:0 auto;padding:48px 24px 0}
-.header h1{font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}
-.header .subtitle{font-size:14px;color:var(--text-secondary);margin-bottom:24px}
-/* Playoff Banner */
-.playoff-banner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px}
-.pb-item{background:var(--bg);padding:20px 16px;text-align:center}
-.pb-val{font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1}
-.pb-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:6px}
+.header{max-width:900px;margin:0 auto;padding:40px 24px 0}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.header h1{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:2px}
+.header .subtitle{font-size:14px;color:var(--text-secondary)}
+.hdr-pct{text-align:right}
+.pct-val{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1}
+.pct-label{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.playoff-banner{grid-template-columns:repeat(2,1fr)}}
 
-.stat-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px}
-.stat-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}
-.stat-pill .sl{color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+.stat-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.stat-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;white-space:nowrap}
+.stat-pill .sl{color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:0.5px}
 .stat-pill .sv{font-weight:600}
 
 /* Tabs (CSS only) */
@@ -169,24 +167,16 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 </style></head><body>
 
 <div class="header">
-  <h1>Ottawa Senators</h1>
-  <div class="subtitle">2025-26 Season &middot; Updated March 2, 2026 at 2:58 AM UTC</div>
-  <div class="playoff-banner">
-    <div class="pb-item"><div class="pb-val">45.9%</div><div class="pb-label">Playoff Probability</div></div>
-    <div class="pb-item"><div class="pb-val">66</div><div class="pb-label">Points (27 to target)</div></div>
-    <div class="pb-item"><div class="pb-val">27</div><div class="pb-label">Points Needed</div></div>
-    <div class="pb-item"><div class="pb-val">+2.1</div><div class="pb-label">Projected vs 93</div></div>
+  <div class="hdr-top">
+    <div><h1>Ottawa Senators</h1><div class="subtitle">29-22-8 &middot; 66 pts &middot; 59 GP</div></div>
+    <div class="hdr-pct"><span class="pct-val">45.0%<span class="delta" style="color:#c43c3c">&#9660; 0.8%</span></span><span class="pct-label">Playoff Odds</span></div>
   </div>
   <div class="stat-row">
-    <div class="stat-pill"><span class="sl">Record</span> <span class="sv">29-22-8</span></div>
-    <div class="stat-pill"><span class="sl">vs .500+</span> <span class="sv">10-9-7</span></div>
-    <div class="stat-pill"><span class="sl">Remaining</span> <span class="sv">23</span></div>
-    <div class="stat-pill"><span class="sl">Pace</span> <span class="sv">91.7</span></div>
-    <div class="stat-pill"><span class="sl">GF/GA</span> <span class="sv">197/188</span></div>
-    <div class="stat-pill"><span class="sl">Home</span> <span class="sv">14-10-5</span></div>
-    <div class="stat-pill"><span class="sl">Away</span> <span class="sv">15-12-3</span></div>
-    <div class="stat-pill"><span class="sl">L10</span> <span class="sv">6-3-1</span></div>
-    <div class="stat-pill"><span class="sl">Streak</span> <span class="sv">W1</span></div>
+    <span class="stat-pill"><span class="sl">Home</span> <span class="sv">14-10-5</span></span>
+    <span class="stat-pill"><span class="sl">Away</span> <span class="sv">15-12-3</span></span>
+    <span class="stat-pill"><span class="sl">L10</span> <span class="sv">6-3-1</span></span>
+    <span class="stat-pill"><span class="sl">Streak</span> <span class="sv">W1</span></span>
+    <span class="stat-pill"><span class="sl">Pace</span> <span class="sv">91.7</span></span>
   </div>
 </div>
 
@@ -205,7 +195,7 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
   <div class="kpi"><div class="kpi-val">95</div><div class="kpi-label">Projected Points</div></div>
   <div class="kpi"><div class="kpi-val">66</div><div class="kpi-label">Current Points</div></div>
   <div class="kpi"><div class="kpi-val">27</div><div class="kpi-label">Points Needed</div></div>
-  <div class="kpi"><div class="kpi-val">+2.1</div><div class="kpi-label">vs 93 Target</div></div>
+  <div class="kpi"><div class="kpi-val">+2.0</div><div class="kpi-label">vs 93 Target</div></div>
 </div>
 
 <h3 style="margin-top:28px">Points Progress</h3>
@@ -218,13 +208,13 @@ h3{font-size:16px;font-weight:600;margin-bottom:12px;letter-spacing:-0.2px}
 <p class="sub-note">How each outcome changes Ottawa's odds</p>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
-<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">52.6%</td><td class="r sc-up">+6.7%</td><td class="r">96</td><td class="r">28.7%</td><td class="r">6.1%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">51.9%</td><td class="r sc-up">+6.1%</td><td class="r">96</td><td class="r">29.2%</td><td class="r">5.9%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">45.2%</td><td class="r sc-down">-0.7%</td><td class="r">95</td><td class="r">23.7%</td><td class="r">4.8%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">36.9%</td><td class="r sc-down">-9.0%</td><td class="r">94</td><td class="r">20.2%</td><td class="r">4.1%</td></tr></tbody></table></div>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">51.9%</td><td class="r sc-up">+6.8%</td><td class="r">96</td><td class="r">28.1%</td><td class="r">5.7%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">51.8%</td><td class="r sc-up">+6.8%</td><td class="r">96</td><td class="r">28.5%</td><td class="r">6.6%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">43.1%</td><td class="r sc-down">-1.9%</td><td class="r">95</td><td class="r">22.9%</td><td class="r">4.6%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">36.2%</td><td class="r sc-down">-8.8%</td><td class="r">94</td><td class="r">20.1%</td><td class="r">4.0%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Eastern Conference Predictions</h3>
 <p class="sub-note">All 16 Eastern teams &mdash; sorted by playoff probability</p>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol">CAR</td><td class="r">99.9%</td><td class="r">62.1%</td><td class="r">38.3%</td><td class="r">20.9%</td><td class="r">12.1%</td><td class="r">111</td><td class="r">90.5%</td></tr><tr class=""><td class="rank">2</td><td class="tcol">TBL</td><td class="r">99.7%</td><td class="r">61.5%</td><td class="r">37.8%</td><td class="r">21.2%</td><td class="r">12.0%</td><td class="r">110</td><td class="r">83.1%</td></tr><tr class=""><td class="rank">3</td><td class="tcol">PIT</td><td class="r">90.3%</td><td class="r">48.6%</td><td class="r">22.0%</td><td class="r">10.5%</td><td class="r">5.2%</td><td class="r">101</td><td class="r">7.7%</td></tr><tr class=""><td class="rank">4</td><td class="tcol">BUF</td><td class="r">89.0%</td><td class="r">37.7%</td><td class="r">15.2%</td><td class="r">6.4%</td><td class="r">2.8%</td><td class="r">101</td><td class="r">6.9%</td></tr><tr class=""><td class="rank">5</td><td class="tcol">MTL</td><td class="r">85.3%</td><td class="r">37.4%</td><td class="r">15.5%</td><td class="r">6.7%</td><td class="r">3.0%</td><td class="r">101</td><td class="r">5.6%</td></tr><tr class=""><td class="rank">6</td><td class="tcol">DET</td><td class="r">76.8%</td><td class="r">35.3%</td><td class="r">16.0%</td><td class="r">7.4%</td><td class="r">3.5%</td><td class="r">99</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol">NYI</td><td class="r">71.2%</td><td class="r">29.8%</td><td class="r">11.9%</td><td class="r">5.2%</td><td class="r">2.3%</td><td class="r">98</td><td class="r">1.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol">BOS</td><td class="r">54.3%</td><td class="r">22.6%</td><td class="r">10.1%</td><td class="r">4.3%</td><td class="r">2.0%</td><td class="r">96</td><td class="r">1.0%</td></tr><tr class="sens-row"><td class="rank">9</td><td class="tcol">OTT</td><td class="r">45.9%</td><td class="r">25.0%</td><td class="r">14.6%</td><td class="r">8.5%</td><td class="r">5.2%</td><td class="r">95</td><td class="r">0.4%</td></tr><tr class=""><td class="rank">10</td><td class="tcol">CBJ</td><td class="r">34.0%</td><td class="r">15.5%</td><td class="r">7.0%</td><td class="r">3.1%</td><td class="r">1.5%</td><td class="r">93</td><td class="r">0.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol">WSH</td><td class="r">28.9%</td><td class="r">14.2%</td><td class="r">6.9%</td><td class="r">3.6%</td><td class="r">1.8%</td><td class="r">92</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">12</td><td class="tcol">PHI</td><td class="r">13.0%</td><td class="r">5.2%</td><td class="r">2.3%</td><td class="r">1.0%</td><td class="r">0.4%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol">FLA</td><td class="r">9.9%</td><td class="r">4.3%</td><td class="r">2.2%</td><td class="r">1.0%</td><td class="r">0.5%</td><td class="r">89</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol">TOR</td><td class="r">1.1%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol">NJD</td><td class="r">0.6%</td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol">NYR</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol">CAR</td><td class="r">99.9%</td><td class="r">61.9%</td><td class="r">38.1%</td><td class="r">20.9%</td><td class="r">12.0%</td><td class="r">111</td><td class="r">89.9%</td></tr><tr class=""><td class="rank">2</td><td class="tcol">TBL</td><td class="r">99.8%</td><td class="r">61.3%</td><td class="r">38.0%</td><td class="r">21.0%</td><td class="r">12.1%</td><td class="r">110</td><td class="r">83.3%</td></tr><tr class=""><td class="rank">3</td><td class="tcol">PIT</td><td class="r">89.8%</td><td class="r">48.4%</td><td class="r">22.3%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">101</td><td class="r">7.4%</td></tr><tr class=""><td class="rank">4</td><td class="tcol">BUF</td><td class="r">88.9%</td><td class="r">37.8%</td><td class="r">15.0%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">101</td><td class="r">7.1%</td></tr><tr class=""><td class="rank">5</td><td class="tcol">MTL</td><td class="r">85.4%</td><td class="r">37.7%</td><td class="r">16.1%</td><td class="r">7.0%</td><td class="r">3.1%</td><td class="r">101</td><td class="r">5.5%</td></tr><tr class=""><td class="rank">6</td><td class="tcol">NYI</td><td class="r">78.7%</td><td class="r">33.0%</td><td class="r">12.9%</td><td class="r">5.4%</td><td class="r">2.3%</td><td class="r">99</td><td class="r">2.3%</td></tr><tr class=""><td class="rank">7</td><td class="tcol">DET</td><td class="r">76.7%</td><td class="r">35.4%</td><td class="r">16.0%</td><td class="r">7.5%</td><td class="r">3.5%</td><td class="r">99</td><td class="r">2.9%</td></tr><tr class=""><td class="rank">8</td><td class="tcol">BOS</td><td class="r">55.1%</td><td class="r">22.9%</td><td class="r">10.2%</td><td class="r">4.5%</td><td class="r">1.9%</td><td class="r">96</td><td class="r">0.8%</td></tr><tr class="sens-row"><td class="rank">9</td><td class="tcol">OTT</td><td class="r">45.0%</td><td class="r">24.5%</td><td class="r">14.5%</td><td class="r">8.4%</td><td class="r">5.0%</td><td class="r">95</td><td class="r">0.4%</td></tr><tr class=""><td class="rank">10</td><td class="tcol">CBJ</td><td class="r">33.0%</td><td class="r">15.0%</td><td class="r">6.6%</td><td class="r">3.1%</td><td class="r">1.4%</td><td class="r">93</td><td class="r">0.3%</td></tr><tr class=""><td class="rank">11</td><td class="tcol">WSH</td><td class="r">28.1%</td><td class="r">13.9%</td><td class="r">6.7%</td><td class="r">3.4%</td><td class="r">1.8%</td><td class="r">92</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">12</td><td class="tcol">PHI</td><td class="r">12.0%</td><td class="r">5.0%</td><td class="r">2.0%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol">FLA</td><td class="r">5.8%</td><td class="r">2.6%</td><td class="r">1.3%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">88</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol">TOR</td><td class="r">1.1%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol">NJD</td><td class="r">0.6%</td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol">NYR</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Team Analytics</h3>
 <p class="sub-note">Ottawa's underlying performance from MoneyPuck</p>
