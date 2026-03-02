@@ -602,6 +602,31 @@ def build_news_html(articles):
 <div class="news-title">{a["title"]}</div></a>''')
     return f'<div class="news-list">{"".join(items)}</div>'
 
+ESPN_SLUGS = {
+    "BOS": ("bos", "boston-bruins"), "BUF": ("buf", "buffalo-sabres"),
+    "DET": ("det", "detroit-red-wings"), "FLA": ("fla", "florida-panthers"),
+    "MTL": ("mtl", "montreal-canadiens"), "OTT": ("ott", "ottawa-senators"),
+    "TBL": ("tb", "tampa-bay-lightning"), "TOR": ("tor", "toronto-maple-leafs"),
+    "CAR": ("car", "carolina-hurricanes"), "CBJ": ("cbj", "columbus-blue-jackets"),
+    "NJD": ("nj", "new-jersey-devils"), "NYI": ("nyi", "new-york-islanders"),
+    "NYR": ("nyr", "new-york-rangers"), "PHI": ("phi", "philadelphia-flyers"),
+    "PIT": ("pit", "pittsburgh-penguins"), "WSH": ("wsh", "washington-capitals"),
+    "ANA": ("ana", "anaheim-ducks"), "CGY": ("cgy", "calgary-flames"),
+    "EDM": ("edm", "edmonton-oilers"), "LAK": ("la", "los-angeles-kings"),
+    "SEA": ("sea", "seattle-kraken"), "SJS": ("sj", "san-jose-sharks"),
+    "VAN": ("van", "vancouver-canucks"), "VGK": ("vgs", "vegas-golden-knights"),
+    "CHI": ("chi", "chicago-blackhawks"), "COL": ("col", "colorado-avalanche"),
+    "DAL": ("dal", "dallas-stars"), "MIN": ("min", "minnesota-wild"),
+    "NSH": ("nsh", "nashville-predators"), "STL": ("stl", "st-louis-blues"),
+    "WPG": ("wpg", "winnipeg-jets"), "UTA": ("utah", "utah-hockey-club"),
+}
+
+def espn_link(abbrev, display):
+    slug = ESPN_SLUGS.get(abbrev)
+    if slug:
+        return f'<a href="https://www.espn.com/nhl/team/_/name/{slug[0]}/{slug[1]}" target="_blank" rel="noopener" class="tcol-link">{display}</a>'
+    return display
+
 def build_standings_section(east_teams, east_records):
     atlantic = sorted([t for t in east_teams if t["div"] == "Atlantic"], key=lambda x: -x["pts"])
     metro = sorted([t for t in east_teams if t["div"] == "Metropolitan"], key=lambda x: -x["pts"])
@@ -625,7 +650,7 @@ def build_standings_section(east_teams, east_records):
         vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
         diff = t["gf"] - t["ga"]
         diff_str = f"+{diff}" if diff > 0 else str(diff)
-        return f'''<tr{cls}><td class="{rank_cls}">{rank}</td><td class="tcol">{t["name"]}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>'''
+        return f'''<tr{cls}><td class="{rank_cls}">{rank}</td><td class="tcol">{espn_link(t["abbrev"], t["name"])}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>'''
 
     def div_table(teams, name):
         rows = [team_row(t, i+1, i<3, i==2, t["abbrev"]==TEAM) for i, t in enumerate(teams)]
@@ -653,7 +678,7 @@ def build_standings_section(east_teams, east_records):
         vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
         diff = t["gf"] - t["ga"]
         diff_str = f"+{diff}" if diff > 0 else str(diff)
-        wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{t["name"]}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
+        wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{espn_link(t["abbrev"], t["name"])}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_ott}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
 
     wc_html = f'''<div class="div-label">Wild Card Race</div>
 <div class="scroll-x"><table class="nhl-tbl stnd-tbl">
@@ -720,7 +745,7 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
     for i, t in enumerate(east_odds):
         tc = t["team"]
         is_sens = "sens-row" if tc == TEAM else ""
-        east_rows += f'''<tr class="{is_sens}"><td class="rank">{i+1}</td><td class="tcol">{tc}</td><td class="r">{t.get("playoffPct",0)*100:.1f}%</td><td class="r">{t.get("round2",0)*100:.1f}%</td><td class="r">{t.get("round3",0)*100:.1f}%</td><td class="r">{t.get("finals",0)*100:.1f}%</td><td class="r">{t.get("cupPct",0)*100:.1f}%</td><td class="r">{t.get("projPts",0):.0f}</td><td class="r">{t.get("divWinPct",0)*100:.1f}%</td></tr>'''
+        east_rows += f'''<tr class="{is_sens}"><td class="rank">{i+1}</td><td class="tcol">{espn_link(tc, tc)}</td><td class="r">{t.get("playoffPct",0)*100:.1f}%</td><td class="r">{t.get("round2",0)*100:.1f}%</td><td class="r">{t.get("round3",0)*100:.1f}%</td><td class="r">{t.get("finals",0)*100:.1f}%</td><td class="r">{t.get("cupPct",0)*100:.1f}%</td><td class="r">{t.get("projPts",0):.0f}</td><td class="r">{t.get("divWinPct",0)*100:.1f}%</td></tr>'''
 
     ott_mp = mp_stats.get(TEAM, {})
     ott_mp_all = ott_mp.get("all", {})
@@ -1043,7 +1068,7 @@ a.pname:hover{{text-decoration:underline}}
 .sens-row td{{background:#f7f6f3}}.sens-row td:first-child{{font-weight:700}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
-.tcol{{font-weight:600;white-space:nowrap}}.bpts{{font-weight:700}}
+.tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none}}.tcol-link:hover{{text-decoration:underline}}.bpts{{font-weight:700}}
 .div-label{{margin:28px 0 8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
 .stnd-tbl td{{padding:5px 5px;font-size:11px}}.stnd-tbl thead th{{padding:6px 5px;font-size:9px}}
