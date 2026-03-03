@@ -387,6 +387,40 @@ def fetch_league_goalie_leaders():
             leaders[key] = []
     return leaders
 
+def fetch_full_skater_stats():
+    """Fetch top 50 skaters by points for the full stats table."""
+    url = (
+        "https://api.nhle.com/stats/rest/en/skater/summary?"
+        "isAggregate=false&isGame=false"
+        "&sort=%5B%7B%22property%22:%22points%22,%22direction%22:%22DESC%22%7D%5D"
+        "&start=0&limit=50"
+        "&factCayenneExp=gamesPlayed%3E=1"
+        f"&cayenneExp=seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+    )
+    try:
+        data = fetch_json(url)
+        return data.get("data", [])
+    except Exception as e:
+        print(f"  WARNING: full skater stats failed: {e}")
+        return []
+
+def fetch_full_goalie_stats():
+    """Fetch top 30 goalies by wins for the full stats table."""
+    url = (
+        "https://api.nhle.com/stats/rest/en/goalie/summary?"
+        "isAggregate=false&isGame=false"
+        "&sort=%5B%7B%22property%22:%22wins%22,%22direction%22:%22DESC%22%7D%5D"
+        "&start=0&limit=30"
+        "&factCayenneExp=gamesPlayed%3E=5"
+        f"&cayenneExp=seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+    )
+    try:
+        data = fetch_json(url)
+        return data.get("data", [])
+    except Exception as e:
+        print(f"  WARNING: full goalie stats failed: {e}")
+        return []
+
 def fetch_team_news():
     """Fetch recent team news/trade articles from Google News RSS."""
     team_name = TEAM_INFO.get(TEAM, {}).get("name", "Ottawa Senators")
@@ -970,6 +1004,91 @@ def build_leaders_html(skater_leaders, goalie_leaders):
 {cards[4]}
 {cards[5]}
 {cards[6]}
+</div>'''
+
+def build_full_stats_html(full_skaters, full_goalies):
+    """Build the Full Stats table HTML with skater/goalie toggle."""
+    # Skater rows
+    skater_rows = ""
+    for i, p in enumerate(full_skaters):
+        rank = i + 1
+        name = p.get("skaterFullName", "")
+        team = p.get("teamAbbrevs", "")
+        pos = p.get("positionCode", "")
+        gp = p.get("gamesPlayed", 0)
+        g = p.get("goals", 0)
+        a = p.get("assists", 0)
+        pts = p.get("points", 0)
+        pm = p.get("plusMinus", 0)
+        pm_str = f"+{pm}" if pm > 0 else str(pm)
+        pim = p.get("penaltyMinutes", 0)
+        ppg = p.get("ppGoals", 0)
+        ppa = p.get("ppPoints", 0) - ppg  # ppPoints includes ppGoals
+        sog = p.get("shots", 0)
+        spct = p.get("shootingPct", 0)
+        spct_str = f"{spct*100:.1f}" if spct else "0.0"
+        toi_sec = p.get("timeOnIcePerGame", 0)
+        toi_min = int(toi_sec // 60)
+        toi_rem = int(toi_sec % 60)
+        toi_str = f"{toi_min}:{toi_rem:02d}"
+        gwg = p.get("gameWinningGoals", 0)
+        headshot_id = p.get("playerId", 0)
+        headshot = f"https://cms.nhl.bamgrid.com/images/headshots/current/60x60/{headshot_id}.jpg"
+        team_href = "index.html" if team == DEFAULT_TEAM else f"{team}.html"
+
+        skater_rows += f'''<tr>
+<td class="fs-rank">{rank}</td>
+<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="{team_href}" class="fs-name">{name}</a><span class="fs-meta">{team} · {pos}</span></td>
+<td>{gp}</td><td class="fs-hl">{g}</td><td class="fs-hl">{a}</td><td class="fs-pts">{pts}</td>
+<td>{pm_str}</td><td>{pim}</td><td>{ppg}</td><td>{ppa}</td>
+<td>{sog}</td><td>{spct_str}</td><td>{toi_str}</td><td>{gwg}</td>
+</tr>'''
+
+    # Goalie rows
+    goalie_rows = ""
+    for i, p in enumerate(full_goalies):
+        rank = i + 1
+        name = p.get("goalieFullName", "")
+        team = p.get("teamAbbrevs", "")
+        gp = p.get("gamesPlayed", 0)
+        gs = p.get("gamesStarted", 0)
+        w = p.get("wins", 0)
+        l = p.get("losses", 0)
+        otl = p.get("otLosses", 0)
+        ga = p.get("goalsAgainst", 0)
+        gaa = p.get("goalsAgainstAverage", 0)
+        gaa_str = f"{gaa:.2f}" if gaa else "0.00"
+        sa = p.get("shotsAgainst", 0)
+        sv = p.get("saves", 0)
+        svpct = p.get("savePct", 0)
+        svpct_str = f"{svpct:.3f}" if svpct else ".000"
+        so = p.get("shutouts", 0)
+        headshot_id = p.get("playerId", 0)
+        headshot = f"https://cms.nhl.bamgrid.com/images/headshots/current/60x60/{headshot_id}.jpg"
+        team_href = "index.html" if team == DEFAULT_TEAM else f"{team}.html"
+
+        goalie_rows += f'''<tr>
+<td class="fs-rank">{rank}</td>
+<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="{team_href}" class="fs-name">{name}</a><span class="fs-meta">{team}</span></td>
+<td>{gp}</td><td>{gs}</td><td class="fs-hl">{w}</td><td>{l}</td><td>{otl}</td>
+<td>{ga}</td><td class="fs-pts">{gaa_str}</td><td>{sa}</td><td>{sv}</td><td class="fs-pts">{svpct_str}</td><td>{so}</td>
+</tr>'''
+
+    return f'''<div class="fs-toggle">
+<button class="fs-tab fs-active" onclick="switchFsTab(this,'fs-skaters')">Skating</button>
+<button class="fs-tab" onclick="switchFsTab(this,'fs-goalies')">Goaltending</button>
+</div>
+<div class="fs-panel" id="fs-skaters">
+<div class="fs-tbl-wrap"><table class="fs-tbl">
+<thead><tr><th class="fs-rank-h">#</th><th class="fs-player-h">Player</th><th>GP</th><th>G</th><th>A</th><th>PTS</th><th>+/-</th><th>PIM</th><th>PPG</th><th>PPA</th><th>SOG</th><th>S%</th><th>TOI/G</th><th>GWG</th></tr></thead>
+<tbody>{skater_rows}</tbody>
+</table></div>
+</div>
+<div class="fs-panel" id="fs-goalies" style="display:none">
+<div class="fs-tbl-wrap"><table class="fs-tbl">
+<thead><tr><th class="fs-rank-h">#</th><th class="fs-player-h">Player</th><th>GP</th><th>GS</th><th>W</th><th>L</th><th>OTL</th><th>GA</th><th>GAA</th><th>SA</th><th>SV</th><th>SV%</th><th>SO</th></tr></thead>
+<tbody>{goalie_rows}</tbody>
+</table></div>
 </div>'''
 
 ESPN_SLUGS = {
@@ -2336,12 +2455,13 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
 </script>
 </body></html>'''
 
-def build_leaders_page(skater_leaders, goalie_leaders, switcher_opts):
-    """Generate a standalone NHL Leaders page."""
+def build_leaders_page(skater_leaders, goalie_leaders, full_skaters, full_goalies, switcher_opts):
+    """Generate a standalone NHL Leaders page with Leaders and Full Stats views."""
     eastern = timezone(timedelta(hours=-5))
     now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
 
     leaders_html = build_leaders_html(skater_leaders, goalie_leaders)
+    full_stats_html = build_full_stats_html(full_skaters, full_goalies)
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -2367,9 +2487,13 @@ a{{color:var(--text);text-decoration:none}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 
-/* Leaders page content */
-.ld-header{{max-width:1200px;margin:0 auto;padding:20px 28px 0}}
+/* Page header + view toggle */
+.ld-header{{max-width:1200px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}}
 .ld-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
+.view-toggle{{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}}
+.view-btn{{padding:6px 14px;font-size:11px;font-weight:500;font-family:inherit;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}}
+.view-btn:hover{{color:var(--text-secondary)}}
+.view-btn.vt-active{{background:var(--bg-elevated);color:var(--text-strong);font-weight:600}}
 .ld-content{{max-width:1200px;margin:0 auto;padding:16px 28px 60px}}
 h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}}
 
@@ -2390,11 +2514,32 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .ld-hl .ld-name{{color:var(--accent)}}
 .ld-hl .ld-val{{color:var(--accent)}}
 
+/* Full stats table */
+.fs-toggle{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px}}
+.fs-tab{{display:flex;align-items:center;padding:8px 14px;border:none;background:transparent;color:var(--text-muted);font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;transition:color 0.15s;border-bottom:2px solid transparent;margin-bottom:-1px}}
+.fs-tab:hover{{color:var(--text-secondary)}}
+.fs-tab.fs-active{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
+.fs-tbl-wrap{{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}}
+.fs-tbl{{width:100%;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}}
+.fs-tbl thead th{{padding:8px 8px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted);text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0}}
+.fs-tbl tbody tr{{transition:background 0.1s}}
+.fs-tbl tbody tr:hover td{{background:var(--bg-hover)}}
+.fs-tbl td{{padding:6px 8px;color:var(--text-secondary);white-space:nowrap;border-bottom:1px solid var(--border)}}
+.fs-rank{{font-size:10px;font-weight:600;color:var(--text-muted);min-width:24px;text-align:right}}
+.fs-rank-h{{min-width:24px;text-align:right}}
+.fs-player{{display:flex;align-items:center;gap:8px;min-width:180px}}
+.fs-player-h{{min-width:180px}}
+.fs-headshot{{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
+.fs-name{{font-size:12px;font-weight:600;color:var(--text);text-decoration:none}}.fs-name:hover{{color:var(--accent)}}
+.fs-meta{{font-size:10px;color:var(--text-muted);margin-left:4px}}
+.fs-hl{{font-weight:600;color:var(--text)}}
+.fs-pts{{font-weight:700;color:var(--text-strong)}}
+
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:1200px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.ld-header{{padding:16px 16px 0}}.ld-content{{padding:12px 16px 40px}}}}
+@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.ld-header{{padding:16px 16px 0}}.ld-content{{padding:12px 16px 40px}}.fs-tbl{{font-size:10px}}.fs-player{{min-width:140px}}}}
 </style></head><body>
 
 <div class="topbar">
@@ -2419,10 +2564,19 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 
 <div class="ld-header">
   <h1>NHL Leaders</h1>
+  <div class="view-toggle">
+    <button class="view-btn vt-active" onclick="switchView(this,'view-leaders')">Leaders</button>
+    <button class="view-btn" onclick="switchView(this,'view-fullstats')">Full Stats</button>
+  </div>
 </div>
 
 <div class="ld-content">
-  {leaders_html}
+  <div id="view-leaders">
+    {leaders_html}
+  </div>
+  <div id="view-fullstats" style="display:none">
+    {full_stats_html}
+  </div>
 </div>
 
 <div class="footer">
@@ -2445,6 +2599,23 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
     }});
   }});
 }})();
+
+function switchView(btn,viewId){{
+  document.querySelectorAll('.view-btn').forEach(function(b){{b.classList.remove('vt-active')}});
+  btn.classList.add('vt-active');
+  document.getElementById('view-leaders').style.display='none';
+  document.getElementById('view-fullstats').style.display='none';
+  document.getElementById(viewId).style.display='';
+}}
+
+function switchFsTab(btn,panelId){{
+  var wrap=btn.closest('.ld-content')||document.querySelector('.ld-content');
+  wrap.querySelectorAll('.fs-tab').forEach(function(t){{t.classList.remove('fs-active')}});
+  wrap.querySelectorAll('.fs-panel').forEach(function(p){{p.style.display='none'}});
+  btn.classList.add('fs-active');
+  var target=document.getElementById(panelId);
+  if(target) target.style.display='';
+}}
 </script>
 </body></html>'''
 
@@ -2655,7 +2826,13 @@ def main():
     print(f"\n{'='*50}")
     print("Building leaders page...")
     TEAM = DEFAULT_TEAM  # Highlight default team's players
-    leaders_page_html = build_leaders_page(skater_leaders, goalie_leaders, sb_switcher)
+    print("  Fetching full skater stats (top 50)...")
+    full_skaters = fetch_full_skater_stats()
+    print(f"  {len(full_skaters)} skaters loaded")
+    print("  Fetching full goalie stats (top 30)...")
+    full_goalies = fetch_full_goalie_stats()
+    print(f"  {len(full_goalies)} goalies loaded")
+    leaders_page_html = build_leaders_page(skater_leaders, goalie_leaders, full_skaters, full_goalies, sb_switcher)
     with open("leaders.html", "w") as f:
         f.write(leaders_page_html)
     print("  -> leaders.html generated")
