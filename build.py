@@ -82,6 +82,15 @@ def fetch_json(url):
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read())
 
+def fetch_scores():
+    """Fetch today's NHL scores from the API."""
+    try:
+        data = fetch_json(f"{NHL_API}/score/now")
+        return data
+    except Exception as e:
+        print(f"  WARNING: scores fetch failed: {e}")
+        return {"currentDate": "", "prevDate": {"default": ""}, "nextDate": {"default": ""}, "games": []}
+
 def fetch_csv_rows(url):
     req = urllib.request.Request(url, headers={"User-Agent": "SensDashboard/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -1432,6 +1441,250 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
 </script>
 </body></html>'''
 
+# ── Scoreboard ────────────────────────────────────────────
+
+def build_scoreboard_html(scores_data):
+    """Generate a standalone scoreboard page showing today's NHL scores."""
+    eastern = timezone(timedelta(hours=-5))
+    now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
+
+    games = scores_data.get("games", [])
+    current_date = scores_data.get("currentDate", "")
+    prev_date = scores_data.get("prevDate", {})
+    next_date = scores_data.get("nextDate", {})
+    if isinstance(prev_date, dict):
+        prev_date = prev_date.get("default", "")
+    if isinstance(next_date, dict):
+        next_date = next_date.get("default", "")
+
+    # Format display date
+    display_date = current_date
+    try:
+        d = datetime.strptime(current_date, "%Y-%m-%d")
+        display_date = d.strftime("%A, %B %-d, %Y")
+    except Exception:
+        pass
+
+    game_cards = []
+    for g in games:
+        state = g.get("gameState", "")
+        away = g.get("awayTeam", {})
+        home = g.get("homeTeam", {})
+        away_abbrev = away.get("abbrev", "")
+        home_abbrev = home.get("abbrev", "")
+        away_score = away.get("score", 0)
+        home_score = home.get("score", 0)
+        away_name = away.get("placeName", {})
+        home_name = home.get("placeName", {})
+        if isinstance(away_name, dict):
+            away_name = away_name.get("default", away_abbrev)
+        if isinstance(home_name, dict):
+            home_name = home_name.get("default", home_abbrev)
+        away_full = TEAM_INFO.get(away_abbrev, {}).get("name", away_name)
+        home_full = TEAM_INFO.get(home_abbrev, {}).get("name", home_name)
+        away_accent = TEAM_INFO.get(away_abbrev, {}).get("accent", "#6b9fff")
+        home_accent = TEAM_INFO.get(home_abbrev, {}).get("accent", "#e8384f")
+
+        # Game status
+        period_desc = g.get("periodDescriptor", {})
+        period_type = period_desc.get("periodType", "REG")
+        period_num = period_desc.get("number", 0)
+        clock = g.get("clock", {})
+        time_remaining = clock.get("timeRemaining", "")
+
+        if state in ("FINAL", "OFF"):
+            if period_type == "OT":
+                status = "Final/OT"
+            elif period_type == "SO":
+                status = "Final/SO"
+            else:
+                status = "Final"
+            status_cls = "sb-final"
+        elif state == "LIVE" or state == "CRIT":
+            if period_type == "OT":
+                status = f"OT {time_remaining}"
+            elif period_type == "SO":
+                status = "Shootout"
+            else:
+                ordinals = {1: "1st", 2: "2nd", 3: "3rd"}
+                status = f"{ordinals.get(period_num, f'P{period_num}')} {time_remaining}"
+            status_cls = "sb-live"
+        elif state == "FUT" or state == "PRE":
+            start = g.get("startTimeUTC", "")
+            status = "Upcoming"
+            if start:
+                try:
+                    utc_dt = datetime.strptime(start, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                    et_dt = utc_dt.astimezone(eastern)
+                    status = et_dt.strftime("%-I:%M %p ET")
+                except Exception:
+                    pass
+            status_cls = "sb-upcoming"
+        else:
+            status = state
+            status_cls = ""
+
+        # Winner highlighting
+        away_win = "sb-winner" if state in ("FINAL", "OFF") and away_score > home_score else ""
+        home_win = "sb-winner" if state in ("FINAL", "OFF") and home_score > away_score else ""
+
+        # Goal scorers
+        goals = g.get("goals", [])
+        away_goals_html = ""
+        home_goals_html = ""
+        away_scorers = {}
+        home_scorers = {}
+        for gl in goals:
+            scorer = gl.get("name", {})
+            if isinstance(scorer, dict):
+                scorer = scorer.get("default", "")
+            team_abbr = gl.get("teamAbbrev", {})
+            if isinstance(team_abbr, dict):
+                team_abbr = team_abbr.get("default", "")
+            period = gl.get("period", 0)
+            strength = gl.get("strength", "")
+            strength_tag = ""
+            if strength == "pp":
+                strength_tag = " (PP)"
+            elif strength == "sh":
+                strength_tag = " (SH)"
+
+            if team_abbr == away_abbrev:
+                away_scorers[scorer] = away_scorers.get(scorer, 0) + 1
+            elif team_abbr == home_abbrev:
+                home_scorers[scorer] = home_scorers.get(scorer, 0) + 1
+
+        for name, count in away_scorers.items():
+            c = f" ({count})" if count > 1 else ""
+            away_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
+        for name, count in home_scorers.items():
+            c = f" ({count})" if count > 1 else ""
+            home_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
+
+        # Team page links
+        away_href = "index.html" if away_abbrev == DEFAULT_TEAM else f"{away_abbrev}.html"
+        home_href = "index.html" if home_abbrev == DEFAULT_TEAM else f"{home_abbrev}.html"
+
+        game_cards.append(f'''<div class="sb-game">
+<div class="sb-status {status_cls}">{status}</div>
+<a href="{away_href}" class="sb-team {away_win}">
+<img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" alt="{away_abbrev}" class="sb-logo">
+<div class="sb-team-info"><div class="sb-team-name">{away_full}</div><div class="sb-scorers">{away_goals_html}</div></div>
+<div class="sb-score">{away_score if state not in ("FUT", "PRE") else ""}</div>
+</a>
+<a href="{home_href}" class="sb-team {home_win}">
+<img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" alt="{home_abbrev}" class="sb-logo">
+<div class="sb-team-info"><div class="sb-team-name">{home_full}</div><div class="sb-scorers">{home_goals_html}</div></div>
+<div class="sb-score">{home_score if state not in ("FUT", "PRE") else ""}</div>
+</a>
+</div>''')
+
+    no_games = '<div class="sb-empty">No games scheduled today.</div>' if not game_cards else ""
+    games_html = "\n".join(game_cards)
+
+    # Navigation
+    prev_link = f'<a href="scores.html?date={prev_date}" class="sb-nav-link" onclick="return false;">&#8592; Prev</a>' if prev_date else ""
+    next_link = f'<a href="scores.html?date={next_date}" class="sb-nav-link" onclick="return false;">Next &#8594;</a>' if next_date else ""
+
+    return f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NHL Scoreboard — {display_date}</title>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root,:root[data-theme="dark"]{{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8384f;--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1)}}
+:root[data-theme="light"]{{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#c8102e;--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--footer-link-deco:rgba(0,0,0,0.12)}}
+*{{margin:0;padding:0;box-sizing:border-box}}
+body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}}
+a{{color:var(--text);text-decoration:none}}
+
+.sb-header{{max-width:700px;margin:0 auto;padding:48px 28px 0}}
+.sb-header-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}}
+.sb-header h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;color:var(--text-strong)}}
+.sb-date{{font-size:14px;color:var(--text-secondary);margin-bottom:28px;font-weight:500}}
+.sb-back{{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}}.sb-back:hover{{color:var(--text)}}
+
+.sb-grid{{max-width:700px;margin:0 auto;padding:0 28px 60px;display:flex;flex-direction:column;gap:12px}}
+
+.sb-game{{background:var(--bg-surface);border-radius:14px;box-shadow:var(--card-shadow);overflow:hidden;transition:box-shadow 0.2s ease}}
+.sb-game:hover{{box-shadow:var(--card-shadow-hover)}}
+
+.sb-status{{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border)}}
+.sb-live{{color:var(--red);animation:pulse 2s ease-in-out infinite}}
+.sb-final{{color:var(--text-muted)}}
+.sb-upcoming{{color:var(--text-secondary)}}
+@keyframes pulse{{0%,100%{{opacity:1}}50%{{opacity:0.5}}}}
+
+.sb-team{{display:flex;align-items:center;padding:12px 16px;gap:12px;text-decoration:none;color:var(--text);transition:background 0.15s}}
+.sb-team:hover{{background:var(--bg-hover)}}
+.sb-team+.sb-team{{border-top:1px solid var(--border)}}
+.sb-logo{{width:36px;height:36px;flex-shrink:0}}
+.sb-team-info{{flex:1;min-width:0}}
+.sb-team-name{{font-size:14px;font-weight:600;color:var(--text-secondary)}}
+.sb-winner .sb-team-name{{color:var(--text-strong)}}
+.sb-winner .sb-score{{color:var(--text-strong)}}
+.sb-scorers{{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}}
+.sb-scorer{{font-size:10px;color:var(--text-muted);font-weight:500}}
+.sb-scorer+.sb-scorer::before{{content:"\\00b7 ";margin-right:0}}
+.sb-score{{font-size:28px;font-weight:700;letter-spacing:-1px;color:var(--text-muted);min-width:36px;text-align:right;font-variant-numeric:tabular-nums}}
+
+.sb-empty{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:14px}}
+
+/* Theme toggle */
+.sb-controls{{display:flex;align-items:center;gap:10px}}
+.theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
+.theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
+.theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
+
+.footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:700px;margin:0 auto}}
+.footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
+.footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
+
+@media(max-width:500px){{.sb-logo{{width:28px;height:28px}}.sb-score{{font-size:22px}}.sb-team-name{{font-size:13px}}}}
+</style></head><body>
+
+<div class="sb-header">
+  <div class="sb-header-top">
+    <div>
+      <h1>NHL Scoreboard</h1>
+      <div class="sb-date">{display_date}</div>
+    </div>
+    <div class="sb-controls">
+      <a href="index.html" class="sb-back">&#8592; Dashboard</a>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sb-grid">
+{games_html}
+{no_games}
+</div>
+
+<div class="footer">Data from NHL API<span class="footer-ts">Updated {now}</span></div>
+
+<script>
+(function(){{
+  var root=document.documentElement;
+  var btns=document.querySelectorAll('.theme-btn');
+  var saved=localStorage.getItem('theme')||'dark';
+  btns.forEach(function(b){{
+    if(b.dataset.theme===saved) b.classList.add('active');
+    b.addEventListener('click',function(){{
+      var t=b.dataset.theme;
+      root.setAttribute('data-theme',t);
+      localStorage.setItem('theme',t);
+      btns.forEach(function(x){{x.classList.remove('active')}});
+      b.classList.add('active');
+    }});
+  }});
+}})();
+</script>
+</body></html>'''
+
 # ── Main ──────────────────────────────────────────────────
 
 def main():
@@ -1566,8 +1819,18 @@ def main():
             f.write(html)
         print(f"  -> {filename} generated")
 
+    # ── Scoreboard page ────────────────────────────────
     print(f"\n{'='*50}")
-    print("Done! All 32 team pages generated.")
+    print("Building scoreboard...")
+    scores_data = fetch_scores()
+    scoreboard_html = build_scoreboard_html(scores_data)
+    with open("scores.html", "w") as f:
+        f.write(scoreboard_html)
+    game_count = len(scores_data.get("games", []))
+    print(f"  -> scores.html generated ({game_count} games)")
+
+    print(f"\n{'='*50}")
+    print("Done! All 32 team pages + scoreboard generated.")
 
 if __name__ == "__main__":
     main()
