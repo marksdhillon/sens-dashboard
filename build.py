@@ -1942,13 +1942,20 @@ def _build_game_card(g, all_game_details, eastern):
             if goal_rows:
                 scoring_html += f'<div class="gd-period"><div class="gd-period-label">{p_label}</div>{goal_rows}</div>'
 
-        # Box score tables
+        # Box score tables with team toggle
         boxscore = details.get("boxscore")
         box_html = ""
         if boxscore:
-            for side, side_label in [("awayTeam", away_abbrev), ("homeTeam", home_abbrev)]:
+            team_panels = []
+            team_tabs = []
+            for idx, (side, side_label) in enumerate([("awayTeam", away_abbrev), ("homeTeam", home_abbrev)]):
                 team_data = boxscore.get(side, {})
                 side_name = away_full if side == "awayTeam" else home_full
+                active_cls = " bx-active" if idx == 0 else ""
+
+                team_tabs.append(f'<button class="bx-tab{active_cls}" data-bx="{idx}" onclick="switchBoxTab(this)">'
+                                 f'<img src="https://assets.nhle.com/logos/nhl/svg/{side_label}_dark.svg" class="bx-tab-logo">'
+                                 f'{side_name}</button>')
 
                 # Skaters (forwards + defense)
                 skaters = team_data.get("forwards", []) + team_data.get("defense", [])
@@ -1990,11 +1997,14 @@ def _build_game_card(g, all_game_details, eastern):
                     toi = gk.get("toi", "0:00")
                     goalie_rows += f"<tr><td>{gname}</td><td>{sa}</td><td>{sv_pct}</td><td>{toi}</td></tr>"
 
-                box_html += f'''<div class="gd-box-team">
-<div class="gd-box-team-name">{side_name}</div>
+                display = "" if idx == 0 else ' style="display:none"'
+                team_panels.append(f'''<div class="bx-panel" data-bx="{idx}"{display}>
 <div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody>{skater_rows}</tbody></table></div>
 <div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody>{goalie_rows}</tbody></table></div>
-</div>'''
+</div>''')
+
+            box_html = f'''<div class="bx-tabs">{"".join(team_tabs)}</div>
+{"".join(team_panels)}'''
 
         if scoring_html or box_html:
             detail_html = f'''<div class="gd-data" id="gd-{game_id}" style="display:none">
@@ -2127,7 +2137,8 @@ a{{color:var(--text);text-decoration:none}}
 .sb-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
 
 /* Day label */
-.sb-day-label{{font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:12px}}
+.sb-day{{display:flex;flex-direction:column;gap:8px}}
+.sb-day-label{{font-size:12px;font-weight:500;color:var(--text-muted)}}
 
 /* Game grid */
 .sb-grid{{max-width:700px;margin:0 auto;padding:16px 28px 60px;display:flex;flex-direction:column;gap:8px}}
@@ -2198,6 +2209,12 @@ a{{color:var(--text);text-decoration:none}}
 .gd-sh{{background:rgba(52,211,153,0.15);color:var(--green)}}
 .gd-en{{background:rgba(152,152,160,0.15);color:var(--text-secondary)}}
 
+/* Box score team toggle */
+.bx-tabs{{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:12px}}
+.bx-tab{{display:flex;align-items:center;gap:6px;padding:8px 14px;border:none;background:transparent;color:var(--text-muted);font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;transition:color 0.15s;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}}
+.bx-tab:hover{{color:var(--text-secondary)}}
+.bx-tab.bx-active{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
+.bx-tab-logo{{width:18px;height:18px}}
 .gd-box-team{{margin-bottom:16px}}.gd-box-team:last-child{{margin-bottom:0}}
 .gd-box-team-name{{font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px}}
 .gd-tbl-wrap{{overflow-x:auto;margin-bottom:8px;border-radius:8px}}
@@ -2307,6 +2324,17 @@ document.addEventListener('keydown',function(e){{
     }}
   }}
 }});
+
+function switchBoxTab(btn){{
+  var container=btn.closest('.gd-section');
+  if(!container) container=btn.closest('.panel-body')||btn.parentElement.parentElement;
+  var idx=btn.dataset.bx;
+  container.querySelectorAll('.bx-tab').forEach(function(t){{t.classList.remove('bx-active')}});
+  container.querySelectorAll('.bx-panel').forEach(function(p){{p.style.display='none'}});
+  btn.classList.add('bx-active');
+  var target=container.querySelector('.bx-panel[data-bx="'+idx+'"]');
+  if(target) target.style.display='';
+}}
 
 function openPanel(gameId){{
   var src=document.getElementById('gd-'+gameId);
@@ -2495,14 +2523,15 @@ def main():
             print(f"  Fetching scores for {d_str}...")
             all_days_scores.append((d_str, fetch_scores_for_date(d_str)))
 
-    # Fetch game details only for today's completed/live games
+    # Fetch game details for all completed/live games across all dates
     all_game_details = {}
-    for g in today_scores.get("games", []):
-        gid = g.get("id", 0)
-        gstate = g.get("gameState", "")
-        if gstate in ("FINAL", "OFF", "LIVE", "CRIT"):
-            print(f"  Fetching details for game {gid}...")
-            all_game_details[gid] = fetch_game_details(gid)
+    for d_str, scores_data in all_days_scores:
+        for g in scores_data.get("games", []):
+            gid = g.get("id", 0)
+            gstate = g.get("gameState", "")
+            if gstate in ("FINAL", "OFF", "LIVE", "CRIT"):
+                print(f"  Fetching details for game {gid}...")
+                all_game_details[gid] = fetch_game_details(gid)
 
     # Build team switcher for scoreboard nav
     sb_div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
