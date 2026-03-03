@@ -42,12 +42,14 @@ input[name="tab"]{display:none}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{display:block}
 
@@ -207,6 +209,19 @@ a.pname:hover{color:var(--text-strong)}
 .empty-state{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}
 .empty-state span{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}
 
+/* Injuries */
+.inj-tbl-wrap{overflow-x:auto;border-radius:8px}
+.inj-tbl td{font-size:12px}
+.inj-name{font-weight:600;color:var(--text)}
+.inj-pos{color:var(--text-muted);font-size:11px}
+.inj-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;display:inline-block}
+.inj-out{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-ir{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-dtd{background:rgba(251,191,36,0.12);color:#fbbf24}
+.inj-other{background:var(--bg-surface);color:var(--text-secondary)}
+.inj-return{font-size:11px;color:var(--text-secondary)}
+.inj-comment{font-size:11px;color:var(--text-muted);max-width:200px}
+
 /* Footer */
 .footer{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
@@ -257,7 +272,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/EDM_dark.svg" alt="Edmonton Oilers" class="team-logo">
       <div>
         <h1>Edmonton Oilers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:59 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:05 PM ET</div>
       </div>
     </div>
   </div>
@@ -277,6 +292,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
@@ -284,6 +300,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
   </div>
@@ -340,17 +357,17 @@ body{animation:fadeIn 0.15s ease}
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">vs Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>EDM holds a 4-pt lead over NSH</li><li>NSH is on the bubble (26% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
+  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>EDM holds a 4-pt lead over NSH</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">vs San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>EDM holds a 4-pt lead over SJS</li><li>SJS is on the bubble (30% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>EDM holds a 4-pt lead over SJS</li><li>SJS is on the bubble (31% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 3 pts — a direct rival</li><li>FLA is fading — only 5% playoff odds</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 3 pts — a direct rival</li><li>FLA is fading — only 6% playoff odds</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
@@ -360,7 +377,7 @@ body{animation:fadeIn 0.15s ease}
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>UTA projected to make playoffs (78% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>UTA projected to make playoffs (77% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-4</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">190</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">167</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-away">Away</span></div></summary>
@@ -370,7 +387,7 @@ body{animation:fadeIn 0.15s ease}
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">vs Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 3 pts — a direct rival</li><li>ANA projected to make playoffs (93% odds)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 3 pts — a direct rival</li><li>ANA projected to make playoffs (94% odds)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">vs Seattle</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-22-9 &middot; 67p</span><span class="game-loc loc-home">Home</span></div></summary>
@@ -390,12 +407,12 @@ body{animation:fadeIn 0.15s ease}
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">@ Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>UTA projected to make playoffs (78% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>EDM leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>UTA projected to make playoffs (77% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-4</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">190</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">167</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>EDM holds a 4-pt lead over SJS</li><li>SJS is on the bubble (30% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>EDM holds a 4-pt lead over SJS</li><li>SJS is on the bubble (31% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>EDM</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-24-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">66</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">15-10-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">14-14-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">215</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">206</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
@@ -423,12 +440,12 @@ body{animation:fadeIn 0.15s ease}
 <h3>Next Game Impact</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
-<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">74.7%</td><td class="r sc-up">+5.9%</td><td class="r">91</td><td class="r">39.4%</td><td class="r">4.3%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">74.4%</td><td class="r sc-up">+5.6%</td><td class="r">91</td><td class="r">39.3%</td><td class="r">5.0%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">68.0%</td><td class="r sc-down">-0.8%</td><td class="r">90</td><td class="r">35.0%</td><td class="r">4.0%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">60.7%</td><td class="r sc-down">-8.1%</td><td class="r">89</td><td class="r">30.9%</td><td class="r">3.6%</td></tr></tbody></table></div>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">74.5%</td><td class="r sc-up">+5.9%</td><td class="r">91</td><td class="r">38.8%</td><td class="r">4.3%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">74.2%</td><td class="r sc-up">+5.5%</td><td class="r">91</td><td class="r">38.2%</td><td class="r">4.4%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">67.6%</td><td class="r sc-down">-1.0%</td><td class="r">90</td><td class="r">34.8%</td><td class="r">4.4%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">60.6%</td><td class="r sc-down">-8.1%</td><td class="r">89</td><td class="r">31.1%</td><td class="r">3.7%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.1%</td><td class="r">32.4%</td><td class="r">19.8%</td><td class="r">10.9%</td><td class="r">111</td><td class="r">13.5%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.6%</td><td class="r">34.1%</td><td class="r">20.5%</td><td class="r">10.9%</td><td class="r">118</td><td class="r">85.3%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.3%</td><td class="r">21.9%</td><td class="r">12.0%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.5%</td><td class="r">45.4%</td><td class="r">21.2%</td><td class="r">8.6%</td><td class="r">3.6%</td><td class="r">96</td><td class="r">40.0%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">93.0%</td><td class="r">48.8%</td><td class="r">25.7%</td><td class="r">11.3%</td><td class="r">5.1%</td><td class="r">95</td><td class="r">37.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.6%</td><td class="r">35.7%</td><td class="r">17.5%</td><td class="r">7.8%</td><td class="r">3.6%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">73.2%</td><td class="r">33.4%</td><td class="r">15.5%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.6%</td></tr><tr class="sens-row"><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.8%</td><td class="r">35.8%</td><td class="r">18.9%</td><td class="r">8.9%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.2%</td><td class="r">9.9%</td><td class="r">3.4%</td><td class="r">1.0%</td><td class="r">0.4%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">27.8%</td><td class="r">10.6%</td><td class="r">4.3%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.9%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.1%</td><td class="r">9.5%</td><td class="r">3.7%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.5%</td><td class="r">2.1%</td><td class="r">0.8%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.6%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.2%</td><td class="r">80</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.5%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.8%</td><td class="r">34.2%</td><td class="r">20.6%</td><td class="r">10.9%</td><td class="r">118</td><td class="r">85.3%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.2%</td><td class="r">32.3%</td><td class="r">19.5%</td><td class="r">10.5%</td><td class="r">111</td><td class="r">13.6%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.4%</td><td class="r">21.7%</td><td class="r">12.1%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.6%</td><td class="r">45.4%</td><td class="r">21.5%</td><td class="r">8.6%</td><td class="r">3.7%</td><td class="r">96</td><td class="r">40.1%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">92.9%</td><td class="r">49.0%</td><td class="r">26.1%</td><td class="r">11.7%</td><td class="r">5.4%</td><td class="r">95</td><td class="r">37.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.4%</td><td class="r">35.6%</td><td class="r">17.3%</td><td class="r">7.6%</td><td class="r">3.3%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">72.8%</td><td class="r">33.5%</td><td class="r">15.5%</td><td class="r">6.3%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.5%</td></tr><tr class="sens-row"><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.6%</td><td class="r">35.5%</td><td class="r">18.4%</td><td class="r">8.6%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.6%</td><td class="r">10.1%</td><td class="r">3.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">27.7%</td><td class="r">10.6%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">0.9%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.6%</td><td class="r">9.2%</td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.6%</td><td class="r">2.1%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">80</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.5%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -627,6 +644,22 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0.24">0.24</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="13">13</td>
+<td class="name-cell" data-sort="Connor Murphy"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8476473.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Connor+Murphy" target="_blank" rel="noopener" class="pname">Connor Murphy</a></div></td>
+<td class="r pos-col" data-sort="D">D</td>
+<td class="r" data-sort="60">60</td><td class="r" data-sort="4">4</td><td class="r" data-sort="9">9</td>
+<td class="r pts-col" data-sort="13">13</td><td class="r" data-sort="-3">-3</td>
+<td class="r" data-sort="46">46</td><td class="r" data-sort="0.22">0.22</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="55">55</td><td class="r" data-sort="7.3">7.3</td>
+<td class="r" data-sort="994">16:34</td><td class="r" data-sort="0">--</td>
+<td class="r adv adv-pos" data-sort="0">--</td>
+<td class="r adv" data-sort="0">--</td>
+<td class="r adv" data-sort="0">--</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="14">14</td>
 <td class="name-cell" data-sort="Kasperi Kapanen"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8477953.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Kasperi+Kapanen" target="_blank" rel="noopener" class="pname">Kasperi Kapanen</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="20">20</td><td class="r" data-sort="5">5</td><td class="r" data-sort="7">7</td>
@@ -641,8 +674,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="2.3">+2.3</td>
 <td class="r adv" data-sort="51.0">51.0</td>
 <td class="r adv" data-sort="0.67">0.67</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="14">14</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="15">15</td>
 <td class="name-cell" data-sort="Ty Emberson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8480834.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Ty+Emberson" target="_blank" rel="noopener" class="pname">Ty Emberson</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="56">56</td><td class="r" data-sort="2">2</td><td class="r" data-sort="10">10</td>
@@ -657,8 +690,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="1.0">+1.0</td>
 <td class="r adv" data-sort="49.0">49.0</td>
 <td class="r adv" data-sort="0.18">0.18</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="15">15</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="16">16</td>
 <td class="name-cell" data-sort="Adam Henrique"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8474641.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Adam+Henrique" target="_blank" rel="noopener" class="pname">Adam Henrique</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="46">46</td><td class="r" data-sort="2">2</td><td class="r" data-sort="8">8</td>
@@ -673,8 +706,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-5.7">-5.7</td>
 <td class="r adv" data-sort="48.0">48.0</td>
 <td class="r adv" data-sort="0.23">0.23</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="16">16</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="17">17</td>
 <td class="name-cell" data-sort="Mattias Janmark"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8477406.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Mattias+Janmark" target="_blank" rel="noopener" class="pname">Mattias Janmark</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="43">43</td><td class="r" data-sort="1">1</td><td class="r" data-sort="7">7</td>
@@ -689,8 +722,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.8">-2.8</td>
 <td class="r adv" data-sort="48.0">48.0</td>
 <td class="r adv" data-sort="0.06">0.06</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="17">17</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="18">18</td>
 <td class="name-cell" data-sort="Curtis Lazar"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8477508.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Curtis+Lazar" target="_blank" rel="noopener" class="pname">Curtis Lazar</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="37">37</td><td class="r" data-sort="3">3</td><td class="r" data-sort="2">2</td>
@@ -705,8 +738,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-0.9">-0.9</td>
 <td class="r adv" data-sort="51.0">51.0</td>
 <td class="r adv" data-sort="0.11">0.11</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="18">18</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="19">19</td>
 <td class="name-cell" data-sort="Isaac Howard"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8483455.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Isaac+Howard" target="_blank" rel="noopener" class="pname">Isaac Howard</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="28">28</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3">3</td>
@@ -721,8 +754,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-1.7">-1.7</td>
 <td class="r adv" data-sort="43.0">43.0</td>
 <td class="r adv" data-sort="0.07">0.07</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="19">19</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="20">20</td>
 <td class="name-cell" data-sort="Trent Frederic"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8479365.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Trent+Frederic" target="_blank" rel="noopener" class="pname">Trent Frederic</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="3">3</td><td class="r" data-sort="1">1</td>
@@ -737,8 +770,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-5.0">-5.0</td>
 <td class="r adv" data-sort="48.0">48.0</td>
 <td class="r adv" data-sort="0.04">0.04</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="20">20</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="21">21</td>
 <td class="name-cell" data-sort="Alec Regula"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8480831.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Alec+Regula" target="_blank" rel="noopener" class="pname">Alec Regula</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="29">29</td><td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
@@ -753,8 +786,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-0.7">-0.7</td>
 <td class="r adv" data-sort="51.0">51.0</td>
 <td class="r adv" data-sort="-0.02">-0.02</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="21">21</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="22">22</td>
 <td class="name-cell" data-sort="Max Jones"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8479368.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Max+Jones" target="_blank" rel="noopener" class="pname">Max Jones</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="8">8</td><td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
@@ -769,8 +802,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="-0.1">-0.1</td>
 <td class="r adv" data-sort="54.0">54.0</td>
 <td class="r adv" data-sort="0.34">0.34</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="22">22</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="23">23</td>
 <td class="name-cell" data-sort="Josh Samanski"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8484509.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Josh+Samanski" target="_blank" rel="noopener" class="pname">Josh Samanski</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
@@ -785,8 +818,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="-0.1">-0.1</td>
 <td class="r adv" data-sort="60.0">60.0</td>
 <td class="r adv" data-sort="0.54">0.54</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="23">23</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="24">24</td>
 <td class="name-cell" data-sort="Spencer Stastney"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8481056.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Spencer+Stastney" target="_blank" rel="noopener" class="pname">Spencer Stastney</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
@@ -801,8 +834,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-1.1">-1.1</td>
 <td class="r adv" data-sort="49.0">49.0</td>
 <td class="r adv" data-sort="0.53">0.53</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="24">24</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="25">25</td>
 <td class="name-cell" data-sort="Connor Clattenburg"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8484529.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Connor+Clattenburg" target="_blank" rel="noopener" class="pname">Connor Clattenburg</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="5">5</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
@@ -817,8 +850,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0.1">+0.1</td>
 <td class="r adv" data-sort="66.0">66.0</td>
 <td class="r adv" data-sort="0.18">0.18</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="25">25</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="26">26</td>
 <td class="name-cell" data-sort="Quinn Hutson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8485511.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Quinn+Hutson" target="_blank" rel="noopener" class="pname">Quinn Hutson</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="4">4</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
@@ -833,8 +866,8 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="0.8">+0.8</td>
 <td class="r adv" data-sort="28.000000000000004">28.0</td>
 <td class="r adv" data-sort="0.01">0.01</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="26">26</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="27">27</td>
 <td class="name-cell" data-sort="Riley Stillman"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/EDM/8479388.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Riley+Stillman" target="_blank" rel="noopener" class="pname">Riley Stillman</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -873,57 +906,71 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="295">295</td><td class="r" data-sort="40">40</td><td class="r" data-sort="3.85">3.85</td>
 <td class="r" data-sort="255">255</td><td class="r" data-sort="0.8640">.864</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="37404">623:24</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPX3c3enVwM0tvM2x1Q2ZSeGlnMl9tUXAxdXJHVWNhakNKc1NlYTAwRFdHUzVna201NGlzNlM3SmM3dk5qSFZiRTZhU3NjeThROXR0MW5TUkNXUXRmWGR2aGJhWUI5RmZrUnEwTUlHRlNsZUt4Q3Q4Q1lZWlFhODNabl9iQWN3MXdpMTFsdU1VOFBzdnhMSFJaZlZuR2RHRmFNdHZZLUFPNC1VeUc4Y0ZwWDhtVlZhb1RJZ2Fz?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 5:14 AM</span></div>
-<div class="news-title">'Buckle up Oiler fans!': Smoke signals Edmonton working on blockbuster trade</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFAzLTRWZ18xWFJKSERTMGVKSFlkYjlWaUpIb0w2Y19pMW1YbXg5Ni1mamtFc25XSzdmU09oY3E5Q3d1REJlRFpnN3QzOExsbk9tS19pQWU3N2tvMVdTNUh5My04MFJqY21xSVFKcjM5cWFvWHZqdnE0NWoyUTk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo News Canada</span><span class="news-date">Mar 3 &middot; 5:13 AM</span></div>
-<div class="news-title">'Buckle up Oiler fans!': Smoke signals Edmonton working on blockbuster trade</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9QMWJLaWxyVFVKdDY5R19peVQ1dHI2YnNPd0FZVUxfRWl2Mjg0eDdMLTRINTltRDJCNnRUUEI4OGNxZFdZaGN1b3N1NTF1eWtUVnNuUGZ6UWFMQUhEaHFPRzV4MkNkaTdod3loQXdNX0FYYjlER0E?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:03 AM</span></div>
-<div class="news-title">PREVIEW: Oilers vs. Senators</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNSTBXbDEtaWpVUjhDZ0Zrc3dMZXlHR1R6cHY0OVB5LWhFUVdVbWh1anBLSHZWOTVNbkl3VC1TRnRSN1BCaVZmTERQRVNka2lDcGZIODRPRkVKLWVpR0I3UVB2UEx6OFhoYTBteXlFSHNjTG4wRHFDVloxZlM1OWI2LXV6djVrakYtSkhFMUlOSG1PVGJWZGMzN0t5Z3JIV2xCUzAyUjJOMjZoVDYtRk9pUkJR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 4:49 AM</span></div>
-<div class="news-title">Oilers insider says Edmonton could make two more trades: 'I do not believe the Oilers are done'</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5TS19SdFZ5VUxiVFUzRG1TVnROQ1BwQ3N6NU1CdUpnVWhPVUtEOFFHYWctMDFIZkVWQTZ5dWt6a1VYaUlnbUhHUGpNMHdoUVZIWXRMZmQxRi0xbE1sU3NnZ3pYSjNHVFluM1pHSHBXQnllODc0Z21NSXZraw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:37 AM</span></div>
-<div class="news-title">NHL Trade Deadline affects players, talking point with coaches</div></a><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQblI1M0dtRmtNeGRJWVliTE8zZGxGTE9LQ2p6aGN1UjRrcUdGYVhEektJazNXdW1pOXdib2NDYTZxVTNkUXJNQkhyN056U1FMSVpJbEx1WXhhRlRqZU93MnJMMVlnZ01oRmQzRzJfY21LOVF5WXJTZ3MycGQzZEVDTXhXZV9ET1NIaFpvSHk3aEJVQ1RXZW1qX3A5U21ydjRwOGk0MExEaGpDQzFvN2hVVG9SRWg4U2VFSktSVTlmaUVhYVRueXJfeHJtb2pRRHdfZXd0LWJObDFzd0pQNUs4YXozX1VMZDlRcHJWbktTNWo1MnFfNjRReng1RlpDeFQ4Z0p5Q1haUm8xZ9IBjwJBVV95cUxNSWpXeFRoSVp4RHVsVmdJOUYwWGlBWTdzZkNsOHBkYWVGdkNNZlhta0J0d3JkMWQycEh2TUpDNE5pWG1Yb2dRRTctV0ZPMmhSc2VrMjVPUUxZU0NxMXFRamt1ZWdZOERBWl9zcUIzeVI1QWhPc3FZd2hqelhEMDJxS1VTSXRfQy13WlZzY0dMN3lxeTNLUlZkSU9BM2Z0eDZMV0hNekdCZ1o1V2lnOTJsUGdaSmVzN3FselNnWkVOWlFDOVp4M3E0NHZDOF9CVExnUTRNcWFiOUF4R3FTYXJXQVB1a1ZLcjdEVGZtRllxdVZoMXJwMFlqcWVEN3BrbzlFbDZvSG1NY2xrRW5QeUxv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 4:20 AM</span></div>
-<div class="news-title">Connor Murphy traded to Edmonton Oilers from Chicago Blackhawks ahead of the NHL trade deadline 2026</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPdFRUSHBxOXZYLWpSZk03Sll1VmtLLUN2VVpXTTBhZ1BfejJaTHhsM09oYUY3ZFRWMlJkajlZYkkxZ25jeWJkVmNfT2ZwaFdvVnYyckMyVVhDSmVPbUstNVUtWlA1elNQajVhNEktNUtFVWdxWWlYM016dWJDUTlRUnQ0ZmxOd1lSS2R3Y3VKN2ctV1lSWHVzdExJakxhTm8tVTJQT0EwZG1jYXZhS0F0VjJzUlpvRDNXbWZ2S2piNy1kQzBES1E?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 3:34 AM</span></div>
-<div class="news-title">Oilers actually made it easier to trade Andrew Mangiapane by waiving him</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPWVhTUkdZNnlsVnE1bm5Dc29lMklRYk9fcHNFXzhXZE55SDl0NkVmb2hwTjg0YTZBeXZ6bVMtV0JVY0xVUzJEWU1vN3NsRlg3cURadjl4eVJabU1UdUdMdzQtRE1QS2ljRk5yYkZXSnFIY0Q5d19WZHgyUnhoZzFKUDZvVGVKYmthaWJoeGw4RlJYbEFqRnpuVkZraXhDR2k1Z3lHZ1gyQldWLXBVWDFMaGZ1UFotYlRpcGgwdmRfR2s?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Oilers Nation</span><span class="news-date">Mar 3 &middot; 3:29 AM</span></div>
-<div class="news-title">Talks ‘intensifying’ as Oilers nearing acquisition of Blackhawks defenceman Connor Murphy</div></a><a href="https://news.google.com/rss/articles/CBMiggJBVV95cUxNeHVtaEFiRldOeDFoaUdUUmtEWjJOdDVvX0ZHUFY2ZUQ2cGNaN3FjRXAtVjFZX0dHQU9yN2VMYVRxbDFNVG5MdmRMMUdDakEyd2ZkRWhaelc4S09RWlo2LUs0UFMwWVVFM0FWMTRJdy1wOFc0THJlRll0a0lZNllMQW82Z044U1lwa01WNU0tRjFxM1RJWTFBeFRnUHZZcDJIN1JKazBuMkpTSmRtbXF6NkJuLXdNb0xtMFk0Y0VEbllyT1FmanYzeUF4eGx6STFnVERWdHdlb0ZObU1jeFNZZ2lTdkhZRWp0ck9CSFMwaHlQTTlwbW5EaFg2ajZtN3ZsVmfSAYcCQVVfeXFMTnBNMTZVMWVVbUF3WmwzR3lIaEM5bE1Bblk0MWFZVkdKVXJ6N0ZsV1hlTnF1RmMxb3VtXzZTallRelA5c0ctLVh6QVk4WERqQU50T2tvMzZEOVFqS3dBbEkwTW9EanlwYUNZc3BQUjF2anZ4NEtVc0RXQ1lxdUh2cjJXME9TZWhadk9mMjk2RG8zRzRsWk5YSVNsVVJneG45NWMxTzU3Rk5OMjZyRUZNNXFaWlFleGJ0RFdLb2lsb1c3bGR4R1lIaVNyV0ZrRWZHeGpWRlZuZ1FyeER0UndrdzBkRV9MMDI0REJoZ2Ffd2tqcFJaS1dvcWJsbE9reU5WT1dyMHNfcTA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 2:57 AM</span></div>
-<div class="news-title">Connor McDavid's future uncertain with Edmonton Oilers amid pressure to fix defense this season</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOWnRFTXNidHk2WkVYQjE5MlhwRWJSSmZ6Q3lsa3VvWXZrSHJEM1E4Z0gxdTU0ZmJtZzFKYzZBXzhBaXFOOUp4eDZwZlJ4UjhudEZEVXE2LTNTaWtKbGFDYkxvZmZ0emh0SE41R2JZNlJrcVNHTTRUWWZEZGppbXFVOHpCQjZqUGFxelB1di04OElvUnBJR0hVVDdjUU5JVnhCbjlXSURpMGQzNTlkYVE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:44 AM</span></div>
-<div class="news-title">NHL Rumors: 4 Blackhawks Who Could Be Traded Next</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPSGFkS1dmbDMyRWVQWW1vcWdxVi1Dblh5YTk0dk8tZkhWeE1BczRBOTc1UG5iM2pIRzNuQUp5QVdTYng5ei1Dejl3WE9sMDAwMUpKd0NXdXBLWklxOGZ0RWNZM2NKc1R5NW5zQThodUJ0YXFWZThkQlh6bktPdWRkRko1bkVqd3FoMmRkdkpDY3pNdEsyRWV2NzctemhtS3c2amhuLUU2ZEJkOFVtdjZZUw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 2:22 AM</span></div>
-<div class="news-title">Oilers news: Edmonton kicks off deadline week with Blackhawks trade</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUllSREs0TkpCTUtjTS1HeGFRVS05Y2lieWlpUXE0VzlVSDNMSDZDdkJZYk5wd2UyeVZnV0FsTnhhSm1YTXNOdmVYd2F2b0lBejQxNk53Vnpjckt1VHBxdXZPdzVzNmVmVFlSLXFIZnM1OEhmeUdHLTRCTGg3V2RYRk5sZVI0cHBDOWg0M2RPeTB4cmpjWDl5Vlkxb0d2ZW1EWGJjc29fQ3ItZ0otdDdkME5hVG1lZ01vOXdIRVhGM3NqRzVoczJfdWhPX2VUUDhoa2c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Oilers Nation</span><span class="news-date">Mar 3 &middot; 2:02 AM</span></div>
-<div class="news-title">Mangiapane, Regula clear NHL waivers, Oilers expected to recall Samanski, Howard</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQaGJET2ZCV2NEek9FV1YyMXMtT0UySUU1Z240LVp0QWVxZU1UUGRUSzMxQzBKUWZScURvUVE1MHJTTGZVSkc1MXJyV1lzenhkZ0V4TlFMdjVBZi1rc2VSbGZSX2Q5YTh6TjU3ZnVxSXlmWjlSUjhpVVNyTXZWTzEtZWxXTFFMdC1iWDZmd3VsN0ZlZ0xJLWh0OGZSOUNjR2ltMFhLbVNVSk95VF9qcE5aMDhHSEpKQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 1:47 AM</span></div>
-<div class="news-title">'I love this trade': Hockey world reacts as Edmonton Oilers make first big deadline trade</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQVmhmcy1LcE9KdEZRcU1hQnp6ZjZDX3Rqakd5MFFZVVh1aHl4NHJGdi1XeEsyMmszS212S181akJVcEpzWmF4UVduamlfNnZXYkRKTm1rNFBzODdxb3IzbmhnU2FaWS1XUHktelZYbEdxS0lSQ09WbUFiQ29uc3k5Q3VHLXc5R1V2TU1sOFpzYUpPdw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CTV News</span><span class="news-date">Mar 3 &middot; 1:29 AM</span></div>
-<div class="news-title">Oilers trade draft pick for defenceman</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPSV84ZExsV2ZlSlJIdkM4Ym9GeTdwTFl3ZHV2c1BjX2xyQmhDbE1rYk80LXpJdndveUcwTVNXZXdJSUxKQVhKQktvdkpzZks5b2tBOEVEbzZUck52RzFoR2M5Z2pxUHJ2UFF0QnV4aVdxQjdKOXJYRW55SkYxdDY1Y0Zrd3pWU1lSUU10Q0J0VjI2NXpP?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 1:18 AM</span></div>
-<div class="news-title">Blackhawks trade reliable defenseman Connor Murphy to Oilers for second-round draft pick - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNODRscU1YS3B0ekZYbHU1Tlktel85S01hajFneVlBMUwyX3RNNDFEVnFIVktMWk92cUNRSFBqbV9qYkFDT0RvQ3h6b21zNjY1YnhzcnlSOGF5VXZYb3R1a2gydHZSNjVxVUNEbG96ZEpGYmw0Tnpnb0MzNU9lV2hjTjQ0YW5TaHlWaHNKQWZxUWk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Talk</span><span class="news-date">Mar 3 &middot; 1:17 AM</span></div>
-<div class="news-title">Insider Casts Doubt on Connor McDavid’s Future with the Oilers</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNQW1pd044T0hPRUZsSF9wNFViV20xOXF1cGNXb3RwQ0JEYWdsZkw5QVNJekZET1BHSVBlOFlDSG94dVU5YUFmYWJfT0pzSTNCdWRjYUJVVFN1SUZMUmliTkJOcDB5TjU3U3J1bHVVMThWZ1RIakpRQkxDVThKVUhrSmdfbktHNF9HcGFyVmY5UGNnOWRzdjNDWDloc2N3bmp6NTBsTA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 1:06 AM</span></div>
-<div class="news-title">Oilers acquire defenceman Connor Murphy from Blackhawks</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOZzk5YWNmNkRXeU5YWUV6MG42YnR6LVFQQmlWdXNrNzQ5RDNjdVQ3TS1XeXhxeXhLYVk1WmUtSWVVQXhUQzUtMUM2ZHhRSWkyZ29ncS1iMUwzRENDbHA0Vmh3aDdJQXFPTWVITk1EdklCYWFJT2tLTXZKSk1UWTFHeUdaeHlEcHBqZFV3M2FJTFMyMXpNN1F6QXAyQVpJeC1rLWVZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 12:47 AM</span></div>
-<div class="news-title">Oilers GM Stan Bowman discusses plan ahead of trade deadline week</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPajRzWmtoQVJMSGJvd25xc05uaGh3UGVpR2JINzdvMWotWXdpd3pMMVVOU3lsNE0wczhpbDBfSEVQWE42S2p0NUtaM0QwV2tmQW1WQTNoUWJrdEZnQmdEVkR1RGlGRjdpaXBRalBEM2xBck5tLXJjNTgwZkdiMEdCWmp3YXlFWWpQU3JRWXlmc3EtUlVvbEdzVUl3?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 12:30 AM</span></div>
-<div class="news-title">Edmonton Oilers acquire safe, solid Connor Murphy from Chicago Blackhawks</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1OVmNmVUdjNVdWbktEaDlub3VOWkRmWUlNbTZSWVlTcE9CemhnaTlrc2FuazdmWU1IQ0ozckQ4VjlxS0JSZFdtRW44Wlc1dXpoMG1WNXZpZ042M29pNkF6LURXQVhJTWZBazFGd1ZYVkgyT090TUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">the-rink.com</span><span class="news-date">Mar 3 &middot; 12:27 AM</span></div>
-<div class="news-title">ANALYSIS: Connor Murphy traded to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE9FVmFwOGZzeUFhZUhWWXIycjZVMXFxbFJSbGFVNGNjMW5MRjlvbTI3elMwX3Y1am8ybUZQdnRLb0VBZy1HNVpqODEzOGxyemNSNG1pVHZ6VC12ZWJhWnFXMDBUQVFEOUNreGdHQ2FiaWVXbnU4OVdiSWpjZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 12:14 AM</span></div>
-<div class="news-title">Oilers Trade: Edmonton Adds Blue Line Depth with Big Deal</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQMlBJUFJzbFNscjVWTFR0M3BJdnRHVGsyeDF3MmdON1pMdDhVTUJLV2lHTTJUQjhOOFY5RzNybUdZWlBtWFFkLWR3cDdLUzJmZ3djdV94OGwtMmRfM1ZYOXpNOFd4dFNmemgxUENJN2hEOFRkcHQ1ZXVUS0M4d2NJb19wWUd0TF9SbHFTRHEwOXdWNW03dHc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:04 AM</span></div>
-<div class="news-title">TALKING POINTS: Bowman speaks before Friday's Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOX0lDWHdPWnlyM01pdkNWQ3NpQ3NCVmpmQW0yMkU4N1IyU2pJakNneTRBXzA2a3VwN2JMY2x1cUxzMFBlZGl3LWpSaExvRnQyaDIxTlNJbWdBZUxxVkY3Ynh6YmhxNlJFVm9wNTRrWnU4emNHY3N0NEZ3M2RuZWJBbktpNDF6aXZiX3p3Z2FR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CBC</span><span class="news-date">Mar 2 &middot; 11:58 PM</span></div>
-<div class="news-title">Oilers add defenceman Connor Murphy with trade deadline looming</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNZ0hhYk5jcGoyTVZicldLc09rSVQtRmRrdDhwTW1jX3h0QzJHYTNoRUh5RDBSazQwZndPa1dIYW5wdFpUVmx4amp4REpkV3lSd2IyaVV2ZVB4d2lBV2V3bmZ3al82U3AtUk9jdXNHeWpVZXdwbFRIaXFGSGxDaEdIc0d1MmNKelVTNWJZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 11:50 PM</span></div>
-<div class="news-title">GameSense Play Of The Month 03.02.26</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPckRPNTFPOUZiWW9fUkR3YXVBMmRYcGkyblRsamNnbEhPUmdzTUhMTnNzMmVOb0JDZlM4VTQtektBUW95eDFSLUd0UXQ3NDY5WXpiUlJVY1A4Ym5XUDVwNkx1azN4YjFfeVVpYV8ycjVWd2RPaVZWanE2T05taDFKX0dR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 11:47 PM</span></div>
-<div class="news-title">Edmonton Oilers Acquire Connor Murphy</div></a></div></div>
+  <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
+<div class="sub-note">Data from ESPN</div>
+<div class="inj-tbl-wrap">
+<table class="nhl-tbl inj-tbl">
+<thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
+<tbody><tr>
+<td class="inj-name">Mattias Janmark</td>
+<td class="inj-pos">C</td>
+<td><span class="inj-badge inj-other">Injured Reserve</span></td>
+<td class="inj-return">Mar 24</td>
+<td class="inj-comment"></td>
+</tr></tbody>
+</table>
+</div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBlVk5pNVpNREFPelphaWVJVTVrbWg2MXVyNUtseGdJVHpuTUxFUGdidEtDU1dXbzZxNUtpUm5mN1NHU2hnTHF6eWZLMUJZUEJMZGV6bUtJRGh0emRORW1kZWQtNVRneDFxd3R4RTR4Yw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 6:55 PM</span></div>
+<div class="news-title">Here is when Connor Murphy will likely make Edmonton Oilers debut</div></a><a href="https://news.google.com/rss/articles/CBMikAJBVV95cUxNZUFjTjVaWEpXa21FQ0R5dmdRb3NyLVhRTFVWMGZZZm1oVWEtYjhSdjRmUDZMM3d1aUUtMFhDaGF3aXNDODFkZW9QY1JHN0VuR0xaXzV6WlJoN3BUZ0tkSXlBRTVoc1hWS2R4Nm1DTV9ZX3JMTXMwbXpLLTBiRHA3bGwyQ3NPMnNaX2hkWVJlMFNoZ2xBeUpHa1daWVp2VkVUcHpHcDA3Y3FQYmNmamR4NUpYcjE0eVQ2WG1LdVNiOF9SZnFUdWl3Z09vbVZNQW96MkRmN2xjVFNOTmRCVi13VUtQbEhRSWFDdzFxVGZIZG81dy1lWi1POEU1UDRVSDF1M0pfMGxPWFc3MXhHZ0Y4LQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">9News</span><span class="news-date">Mar 3 &middot; 6:54 PM</span></div>
+<div class="news-title">Ottawa Senators vs Edmonton Oilers Preview + Trade Deadline Chaos & Clickbait</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMFBUaUVHOHVLVGFFNXlzTlRKaHV3aHFWMzZUN01YUXhXTmsxRFVQUkFoeXFXV3ZCRjNjaTE3cGZmOHRmZU5Rd1UtWWlMRnh1NzMzQ05nVHFfODYwNjZmTzBvNEh0U3JJZnVSU1pIRFUwOGp0Rl83aDAwV3BxcGFnVm1jaFRVT2s0N0hF?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 6:52 PM</span></div>
+<div class="news-title">Edmonton Oilers Eyeing Trade for Versatile Maple Leafs Forward</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxNbVUwQzF0NkJYSFNGcWo4RHdXMnBZcjBUUW5KVk1yaS1BbjdUUk56ZU1DOUZWLWgxcGNNeVlnRHVOaVBLRDRweHItTTFNYlJUelI0c0d2Uy1OV1lhcVh1WnFYMHZrbDlOQUlhdzVDS1J3cTRjdko4Y0ZLSE14VDVZTjlTY2RIYXBsa29RekR4ZzVweGZabkNXVzdxXzRUeXE4SVN0MGpZbFIwNFVlRDZhOFRkem1lRHRUQ294cUZ2bmpZcFZHRUctLUtZM3VNSUhveE5UbGR6M1V5NElUV3pRMW5xRlZESldmSUN0cmNybERGeWRsX001YjAwZVNDVW50M1JyX2VqbEpldzY5Vk4yX2JJaG1aZGVTUVhnWHNYb3U?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 3 &middot; 6:42 PM</span></div>
+<div class="news-title">Edmonton Oilers Acquire Connor Murphy—Will This TRADE Ignite The NHL Trade Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPM2g4QkI2T25XbHE2TmxFdW1hR1NHckh6UDJhMktYckw5SEh4am9mUms4M1p6SldfSkM1UzB3X2JtRzdWNEpNcldlQV9Qd085d1cwdGp6UmZ5OTRsUl9KcmszcXBtMk1MRmYyN2RHQVBWN05VVXlWT3d2QWtqWFRKNFFKYzJMa2NWU0R0T0RPYTZoU2taQkpkanpzaG5vbFNvZHFMWlk5TVZvcElJbmJB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Athlon Sports</span><span class="news-date">Mar 3 &middot; 6:08 PM</span></div>
+<div class="news-title">Oilers Linked to Maple Leafs Player Amid Goalie Trade Speculation</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPTWxfMGJWTk9Ba084dm0tV3paQnE3MGtTcnlPMDRUYU9uSlZaNTJmd0tsX2JuN2xlVm4wUGw0V21TVFhOa1dkSDNIVEtuSm52UldsUHpUeUkzSWN5THJ0UVhkN3NZUkdlczhQd2w1azFKNE03U0dROThYRVRkalppeGlVcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:08 PM</span></div>
+<div class="news-title">PRE-RAW | Nurse 03.03.26</div></a><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxObnJwOTV6YjJtaUF5REF2VGpqaFZmd0lXcENmZW4ySlZqNHQ4ckRIRzZTdmlQTmpMZmpYYnEzM0pzSkM4czU2VFlPSmhXOHV3TDFTOGR6WUxWblRHRjNhTEpxaHcwbUM4WEZSSm5DLWYxenVhTldTZmlfUDRwbFMxMUNiekotQnI3SGpNVFYzaDM0WER1SHhRdFJIaDVCSjhtUWRCMGs1S1Z3Y2swTUduaDNyYTNFTUg5MTRBNw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:04 PM</span></div>
+<div class="news-title">Oilers rumors: Pierre LeBrun reveals ‘No. 1 priority’ after Connor Murphy trade</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNU25vUV9nOHJVajA1d3NEUTZCVHlLZ1JBa29Oa1Z4YkhTRUVQTmh2UGJVQi1ESjNvYVpTR0w5SFAzR0tGSXEwckVSOFd6WlFpNzB3MWFxTzFjUmYxeW1xb2ZnNlVYWG5STHZ4M3cxRFFZdVFGdzdadzFudi1qby1wVmxwY0FpVGtrTTZKbUhSTFZlVFpUX0RvVWZHOUExX2Fudl9PdmFhUU1KbUNLWVF5VU15MGNlOEQzOXJPQ19CQ19HbG5XWDlxcGxIQmFLSUxvX2xOci1INA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:01 PM</span></div>
+<div class="news-title">Senators-Oilers Preview: Equal In Team Points, But Worlds Apart In Playoff Standings</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQaUt1U1lyU0xFYVlKSEFxcWtyVGJ3SmZob2RmZkI5TzlBanVLSVN4VVJxVXFaOEhSTHlEdVB3XzJtUlotZzQ0dWpBck5QYm40V2dWa1A5MVdybHNrLVBTWWFyWTJCSzZVTHZGWEVkMFVRSTRNR2dFR2FLUTNoV1JyNEVHRGhiVXdjckFXRVlrd1NzOEpJbWd4eVlvc3RBdklHZnZ0S2RKTFNDb1A5clF3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 5:30 PM</span></div>
+<div class="news-title">Early Trading: LeBrun talks Pettersson, Thomas and Oilers as deadline approaches</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNM3ZFZHpIYkV6VWJBOTBEMEJ5S0g2SGMtUm1DRkRiSEt0RUlRZ3ZuRERHOTNuMFRFdVZjV2lwNlV6d2RSTU04THBRWGw2Y2s2V2k3SnFSZEkxOGNIcHNvaHJjbF9NUHE5LWtHUm1rSkt1RGJ3azdaMUZRaWp1aEhEWUZn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 5:13 PM</span></div>
+<div class="news-title">McDavid teaming up with McDonald's for nostalgic hockey-related promotion</div></a><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5FX0tNakI3cDA5eFEtR1hRZG5aRUF2SEJYZEdiTHVTUDBFQm40TnNsYXZ6dlZyeF9nOWJydTNQQnJtUUNVYk1NZW5lNTdCQkJPb0FiMXdaTnBlZDEydDF3NkZBVHRZdkJPQ29ZczhGMnk0S00?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 4:51 PM</span></div>
+<div class="news-title">NHL Insider Reveals Edmonton Oilers’ Bold Goalie Trade Plan for 2026</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPRFlEWjQ1Z1lXb1hTNmJVeUxyd3h4TS1UdXRSNnkxYXpJakxFazlnSE1EaVpjVTNpZUF4UHRLRmJEZ3o3WmVsRjBGOWZrUmlkemo1ZjlhM2tvV1ZTek5oQnI3dXBuMk56SE9RbDhqeTA3U1VCcTZIWmRsemlaREpDQ0FNS1Q3QzVDSThnSg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 4:49 PM</span></div>
+<div class="news-title">NHL Insider Reveals Edmonton Oilers’ Bold Goalie Trade Plan for 2026</div></a><a href="https://news.google.com/rss/articles/CBMiiwJBVV95cUxPdmdGV2ZMMGRUUERFRXdoZUFRb2dKX1Z3MWNGMG5HTnV5WllTQzd3YTJlR2ZURFNoUzdfUmJ3UkxIRENiSk45ek5ORE5NeFNiaTZ4aUZVUVFJb3MyX1lsYlpGR0ZNa2FSNXIxSjR0dnRnYUFlVTZQXzNoZjZZZFNrZ3I4alVJdkV1M0pZc3BaTFFDSGJFVWxxdGx3TWJCYUl3T1l3Y1lSTFZMMnBZSXN4dnhPY1NCQ3I0OE8yb2NYOTJsN2hnVEs5S3dHd04zekk0Y0NYSlYzMnoySVQ2VjVDLTI0ak9uN0tXZlUwQ2JPMWhUb3JkY0lWVWZLbXVyU3Nzbi11cWR5N0p4T0XSAZACQVVfeXFMTU5VVEJnY0JGUnY4dWY1QmRQa1VfRk1La04ybmNTYVhOcXVNRUlaX1R3WWo4Mkx5QjBSRkZVVTcwUW1uZWFrN2t5ZlY3bGw4MTI5eWZ4RU1QVDlDdmVNQlFrNU01a01vTDRzZWdDYjNZUi1ZTm4yazVKTUxBUDY5b1BtRDdsLXYxOUpCbmwxM21QaHJ0LTFPc0tpV25EVUhjSGVrTWF4MzdBcXh0ZWdJV2c1YnNQS2c3OUJpTElxdlZ0aHpmbFlRSkpCaFR3ZTJBUHRoaGZZN0lrWUNDeV9hbjBmT1pBZk1NUUVBOWZCSmRhOVN1eGlJcC1KOU43OHhqNW5jcFlYVnlSaUJHemg1aks?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
+<div class="news-title">What is Connor Murphy's net worth in 2026? A look at the Edmonton Oilers star's earnings and investments</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxObExDTlZyb2hRRUlDZTBubzNJSUNHdnFVV0h5YTFsVEljQlV0dkhQd0M3cHh2M3gyaXVIcnhsRWJ4VGVacWhXVEVnMTRHMHNXUkw5QS1aNTF4SF9FTENHQndpb1ROV19sdjJ2Q0FKdElqV3MzUlhxa0d5c2E3RDZta081NFVpMnVUMGlTUVZnbXhySkh2UlpQM0NQcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Oilers Nation</span><span class="news-date">Mar 3 &middot; 4:23 PM</span></div>
+<div class="news-title">Oilers Game Notes: Senators arrive in Edmonton for battle of teams who can’t get a save</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPY2tCTFFXSW4yQkItTDI1MFlBZUpVZndzWEhqRng1SmR6WURReDVsOUtfX3lGcFBoWTdYU0QwdWh3aV9Ba3JFZmRXMC1qV2pLTkt2RXhSUWJBNm9uUzV1NjdfU1RaNXpWbFl4bFBVOXdQQlBycDItNGZYSlJCYmJUdm1fMkI0R055MW9qZENpZXRPLUdLQmlNa0l2SU11VktaRjcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 4:18 PM</span></div>
+<div class="news-title">Senators vs Oilers NHL Prediction, Pick, Odds -- 3/3</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNaWdsYm9jZkFGWlVDUnFxMk01WlRmU242ejVSR1FjUnZXbm1NM3hHbTVYVWxFV015ckNaWGgtenFvbTA1Z0laZHdDV09rdzZvWWw5WFMwZFV6YzJHMVlrc0VqaW1oRXpUS2RseHhiU2lHNDlqekZYWWFJQnJDX2lab2JHeGR0MWtwZU5reEFrb3JUamZiRmxqUGR5aEp2T1F5UWF3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 4:05 PM</span></div>
+<div class="news-title">NHL Rumors: Oilers Not Done, Maple Leafs Changes, Matthews and Tkachuk</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQT1M5OF84Tl9fOXVJY01mR0huZzEtaTdhYW5XVVM0eEc3TXBsa0MyU2JIT0NwRjVZaFZVRDI2WTZIc014Zm9HTnRRaHJNSzd6aTNtSk1tYmI2ZGV6cmdPNUtXX051RWhpbWM4azRvX3RLR3BDaF9mN1RfVkc1YmVpeHhydkxDNktMT0dfRzBidzhONDdZYmt4SXBpUzZhNVhOcTFOVGwtX21URjZK?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Boston Hockey Now</span><span class="news-date">Mar 3 &middot; 3:56 PM</span></div>
+<div class="news-title">Daily Bean: Bruins Gameday; NHL Trade Rumors, Murphy Traded to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQUmZHOGhpNlA3aVdKSTlIQ3RzaDJXZ0pmcEdfUC1JdG8zS2d6S0NlTWZjRkhMeHdqUTVUWDBfNm1kSlQzbGVqb2xYNzhWQ1BOZ1VNRTNUV1V1d1J4VmhRRzhwTFhjSnVJZjVHdDZHTGoyQTJ2ZUdockx5SDRrTHQzR3AxUjVtRWlKd3hubVFQZUo?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 3:45 PM</span></div>
+<div class="news-title">Are the Maple Leafs and Oilers Working on a Nicolas Roy Trade?</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOUnBPdHVmQjd5elI4OTJEcWtWMkFYckxhSzRSVFhYNDdISTNxLW0zTU9FM1pQdVhMLTNfRGFXOUU4WVRBNWxKOHpQRWtyZXFLNE4yYW5FR3JhN3JmNlRaNFNiU2hTX21ZR3FtcUJKQlI3OVBYTGJTdDc2alFCdHVCc01oQjNNaG5adGtBa3NSQ2RMUDVkTkNZb2ZIU0k1UWlSbmlHempmVkl5aFUt?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Oil Rig</span><span class="news-date">Mar 3 &middot; 3:30 PM</span></div>
+<div class="news-title">Stan Bowman sheds light on Edmonton Oilers strategy ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQa2JKVUl5SWpPcGNmbUdaMjRFTnNJUE8wQ3VUalA1MFIyQks4dDZCMTg4cGpPNFF6WDJsRWkzTjZhV182S09ZalJhVVcyUWFDa1B6clZaTkxTQ3N1TXEtX0lSQ1Joby1zcnFzcF9QTkhsMTJPQlVhSHNiWHBKUUlVZWlGRlZwTG9yYmEwN3h0T0RGVmJrSjM4NFBDeUI5R1AxYy1BSnd1bnBhQms?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:28 PM</span></div>
+<div class="news-title">Pulse Check On Canadian NHL Teams: Has There Been Any Improvement?</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPTndaNzAyb0RuM2tlVERWZmpsNTNBYjNtbFQ1OHVjRWlTUWtvTGRYSjUyTm5fend5a1psbFhidElYSU1oWHJYdHR2TUdqcmdhUGRSemN1US1BY0tIRDEyY1BoWE9ZVmlRTXlQTTIxTk9aV1RpNVBGMlV0UVJLWDdUbmhPMXI1VmFURHdrODZwcnhneWVoeGQ3T2NB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 3:17 PM</span></div>
+<div class="news-title">Oilers Predicted to Trade Top Prospect Ahead of Deadline</div></a><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPazB1d0kzX3NXSHVWSnZFWTBzbEp6ZVlUYl83OHZqUkUyZnd6NW95Sy02dXlJTnktRHROSGZpSEQ1RW53aG5xaFVqOWI4aVVZNVdrWXhTUUIwZi1rdnlvXy1tajdaejJnaFAyNGZ4YV93TG1PY1dQcVJjRTBLN2YxRl9PSUVTaG5oS3ZtUVdES2pDMm9fNXdhY2pkMDFvN0dCVk9IV1VoTWV6eFRNUkdsMVVkNDBtZ0l5SHNfOA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:48 PM</span></div>
+<div class="news-title">Taking a Closer Look at the Connor Murphy Trade for the Oilers</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNLUJnSXF1UWUwdmNGc2EzSFlSWnBvMEV6Y0Z3Qkp3MUtMMklOaTdVMl9PMnZCRnBQaXRnY2FRN1FrVlROTXFQR3VaSWEySjFnY0JQMm5rZjR4Y2JwU2NCMXNVa3dqaWRNM0pyYndZY1VpR0ZXbUVVazRCU1dlcG9zTk1lV0YwSWV6Mjl2NHVEd1paUWFZN0lnSkNBczZTT3liZlByQjNKUlkxTnBhRFlBRm5B?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 2:14 PM</span></div>
+<div class="news-title">NHL Game Preview: Edmonton Oilers vs Ottawa Senators with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxPWThtUWw1ZXJCMjktVk1TYWtBZVRaVFgyQl82X1RuZUpIRmRFdmE4MWlhUmt6TTIwZWZfTjZ6OGdoVDR3a2Q2bXQxSXJLUWlqQmcwcDIxWUtweFp6RndieTRhSEdRbUVINV9GNmh1TDJrcTh6Vm92Uldoai1MdWlFVUVzUU5JdEJob3JWaXMwTFVPNEU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 1:55 PM</span></div>
+<div class="news-title">Oilers Must Convince Maple Leafs’ Ekman-Larsson To Waive NTC</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQQ0FJdnAzN2JCTDYybFdyaUJYZFpMUnk5R2dQb2xCckpNajFkS2tTTzN0aDd1Q3VpMGZteHlKdGNtcEdZcUZQcnBmNWtxbjNZbzVxTFpoc0pmTTJhTVBiSVFrQkIwbThiRjd1T1Z1b2praVVrbS02ZHN1bXpwNmdHX0x0Rml1elhvS2h3VG44TzdIWFRNY2hqd21zVGNCWW43M0RfajFfaXI0NWptaV82TGVDM21QRlpGZy1lM0NwbmhhZ20zSGc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 1:53 PM</span></div>
+<div class="news-title">All-Canadian Edition of NHL Predictions with Ottawa Senators at Edmonton Oilers</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/EdmontonOilers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/EdmontonOilers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -933,7 +980,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:59 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:05 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

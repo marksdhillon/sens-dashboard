@@ -42,12 +42,14 @@ input[name="tab"]{display:none}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{display:block}
 
@@ -207,6 +209,19 @@ a.pname:hover{color:var(--text-strong)}
 .empty-state{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}
 .empty-state span{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}
 
+/* Injuries */
+.inj-tbl-wrap{overflow-x:auto;border-radius:8px}
+.inj-tbl td{font-size:12px}
+.inj-name{font-weight:600;color:var(--text)}
+.inj-pos{color:var(--text-muted);font-size:11px}
+.inj-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;display:inline-block}
+.inj-out{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-ir{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-dtd{background:rgba(251,191,36,0.12);color:#fbbf24}
+.inj-other{background:var(--bg-surface);color:var(--text-secondary)}
+.inj-return{font-size:11px;color:var(--text-secondary)}
+.inj-comment{font-size:11px;color:var(--text-muted);max-width:200px}
+
 /* Footer */
 .footer{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
@@ -257,7 +272,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
       <div>
         <h1>Ottawa Senators</h1>
-        <div class="subtitle">Updated March 3, 2026 at 5:32 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:04 PM ET</div>
       </div>
     </div>
   </div>
@@ -277,6 +292,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
@@ -284,6 +300,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
   </div>
@@ -895,15 +912,53 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="12">12</td><td class="r" data-sort="2">2</td><td class="r" data-sort="3.35">3.35</td>
 <td class="r" data-sort="10">10</td><td class="r" data-sort="0.8330">.833</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2147">35:47</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQZzMyTFBJY0lwaUE0Zmp6UDVCYm5zQXZfM1NQcTIxemdXT0c0bEhMYld5b1NZUDlVSFhsTEhWR2VteDBtWjJHWm03ZGVlNWh0WW9mR240Y3JrT3N3NkZNSm1UX0VOa1NBMFZPRlN1TTV5cjF2ZjY3VVg2WkNVYklyN3hnLWpGUVhzMHc?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
+<div class="sub-note">Data from ESPN</div>
+<div class="inj-tbl-wrap">
+<table class="nhl-tbl inj-tbl">
+<thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
+<tbody><tr>
+<td class="inj-name">Nikolas Matinpalo</td>
+<td class="inj-pos">D</td>
+<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
+<td class="inj-return">Mar 3</td>
+<td class="inj-comment"></td>
+</tr><tr>
+<td class="inj-name">David Perron</td>
+<td class="inj-pos">LW</td>
+<td><span class="inj-badge inj-other">Injured Reserve</span></td>
+<td class="inj-return">Mar 14</td>
+<td class="inj-comment"></td>
+</tr></tbody>
+</table>
+</div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMijwJBVV95cUxPRFlYZW1rZ0ZleWpuamhCaFRaSFhaZWR2UVVTS0E1X1lNcjVPZ0lhVFZXaUh1SjA2ZEhnTEZYcXZMMTJmd0RfR0pNdHdBSEZOMENJVms0SllPUG9XQ25MVzdkcGZiNGpwZ1hHRndkRTFyZ0tLZ0lEMHhCd0Vab0Rmanl2V0x0S0hBZDRRLTJUUnJvb0E5bmZSdFhvS0lhNGI5SUVRSnFySVByX2xEd3N6eWUtem5DcDc3S2U5UVhLdE9oaV9YX2l2YjZ5UThsOTgteExKZlF1WUZUZ2RxMGttM0g4RVZvYjduZEdCWDk4c2w4R1dPSUwxdWtJZ29vbE1feUhmWldmWUZJZnBrSW53?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">KHOU</span><span class="news-date">Mar 3 &middot; 6:59 PM</span></div>
+<div class="news-title">Ottawa Senators vs Edmonton Oilers Preview + Trade Deadline Chaos & Clickbait</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPVjVCRU9pUTlNWkVYZ19LMTkxSWFEdHpqaDhTTlNXVnNEcnkxMVUzR1k2UUd4cHdRejUtdGhFNENMeHMyc1pBeUJVcE1OV0NLU2R1SmlVdEdxZTc4MEw2VUx6cGJNMktPZEktdm1OcGRjd2JscjhXQ21aMl9kQkVNc1hpYzM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo News Canada</span><span class="news-date">Mar 3 &middot; 6:08 PM</span></div>
+<div class="news-title">Silly season begins for Senators as baseless Brady Tkachuk trade rumours go viral</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNU25vUV9nOHJVajA1d3NEUTZCVHlLZ1JBa29Oa1Z4YkhTRUVQTmh2UGJVQi1ESjNvYVpTR0w5SFAzR0tGSXEwckVSOFd6WlFpNzB3MWFxTzFjUmYxeW1xb2ZnNlVYWG5STHZ4M3cxRFFZdVFGdzdadzFudi1qby1wVmxwY0FpVGtrTTZKbUhSTFZlVFpUX0RvVWZHOUExX2Fudl9PdmFhUU1KbUNLWVF5VU15MGNlOEQzOXJPQ19CQ19HbG5XWDlxcGxIQmFLSUxvX2xOci1INA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:01 PM</span></div>
+<div class="news-title">Senators-Oilers Preview: Equal In Team Points, But Worlds Apart In Playoff Standings</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNU29rVzctc01pNU8xNEtDMjl4d2ZFTTJvSUtjdXRpdF9lOHpmRTAwSlh4aFlGQ1VVMzVsdFBYbGdtNV9ydTA3N0pRZ0E0aHZWa0h1a0FyQkZfSHdrR3RvcGtEUTIxdDFxeFJrZVdaRnRnTEFQRkcwZV9XOVJDT0x3LU5mRzExSHVFT3Y0T1AwcDFoM3lzMFBtZ1RlYk1pWHRpdDM4UXRPWkJJX3VETVVnRzl3NnpQQlc3bUtVQ1N3Z1Y?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">sportscasting.com</span><span class="news-date">Mar 3 &middot; 5:22 PM</span></div>
+<div class="news-title">Brady Tkachuk Trade Rumors: Could the Stars Land Him in a Robertson Swap?</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPY2tCTFFXSW4yQkItTDI1MFlBZUpVZndzWEhqRng1SmR6WURReDVsOUtfX3lGcFBoWTdYU0QwdWh3aV9Ba3JFZmRXMC1qV2pLTkt2RXhSUWJBNm9uUzV1NjdfU1RaNXpWbFl4bFBVOXdQQlBycDItNGZYSlJCYmJUdm1fMkI0R055MW9qZENpZXRPLUdLQmlNa0l2SU11VktaRjcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 4:18 PM</span></div>
+<div class="news-title">Senators vs Oilers NHL Prediction, Pick, Odds -- 3/3</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNLUJnSXF1UWUwdmNGc2EzSFlSWnBvMEV6Y0Z3Qkp3MUtMMklOaTdVMl9PMnZCRnBQaXRnY2FRN1FrVlROTXFQR3VaSWEySjFnY0JQMm5rZjR4Y2JwU2NCMXNVa3dqaWRNM0pyYndZY1VpR0ZXbUVVazRCU1dlcG9zTk1lV0YwSWV6Mjl2NHVEd1paUWFZN0lnSkNBczZTT3liZlByQjNKUlkxTnBhRFlBRm5B?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 2:14 PM</span></div>
+<div class="news-title">NHL Game Preview: Edmonton Oilers vs Ottawa Senators with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQQ0FJdnAzN2JCTDYybFdyaUJYZFpMUnk5R2dQb2xCckpNajFkS2tTTzN0aDd1Q3VpMGZteHlKdGNtcEdZcUZQcnBmNWtxbjNZbzVxTFpoc0pmTTJhTVBiSVFrQkIwbThiRjd1T1Z1b2praVVrbS02ZHN1bXpwNmdHX0x0Rml1elhvS2h3VG44TzdIWFRNY2hqd21zVGNCWW43M0RfajFfaXI0NWptaV82TGVDM21QRlpGZy1lM0NwbmhhZ20zSGc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 1:53 PM</span></div>
+<div class="news-title">All-Canadian Edition of NHL Predictions with Ottawa Senators at Edmonton Oilers</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQUTNnQ0hzeUtnME1ob0ZOS0NEOWQtVnRVTjVZNFhzbVBiQ2gzdWFkSzh5UjcwMmNHeVczMF9rX3dHSWUwaGNlTGNNbzEwOUwyZTVmckhxakxJNEtHXzJ6SS1zc25GOExQbW9DYVVUZV9seUhhdzJGREttcG5RYVBhdjFMUUpFUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:55 AM</span></div>
-<div class="news-title">Jake Sanderson Media Availability</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQUTNnQ0hzeUtnME1ob0ZOS0NEOWQtVnRVTjVZNFhzbVBiQ2gzdWFkSzh5UjcwMmNHeVczMF9rX3dHSWUwaGNlTGNNbzEwOUwyZTVmckhxakxJNEtHXzJ6SS1zc25GOExQbW9DYVVUZV9seUhhdzJGREttcG5RYVBhdjFMUUpFUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:55 AM</span></div>
-<div class="news-title">Tim Stützle Media Availability</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPWXZEQ2xNUXMtZWtUdHdDZ1RvUk01aEUzSVlCdEIxVGhCMVh5NXBwRnpkYjBfbHExNGVuVlgxZXpXWDlLUDUxRUNTZnVJa2dCaGtvUVhKS2NMUkQwcVZ3cEZuTEk4RGJnbVhHbHAwVWN1XzUwZDdELWlPMWw2Ty1XcW1reVg4TWhsN3JuNU9lSDdsUXFOS3dLUndZOGw1cGd5dzRweA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Tim Stützle Media Availability</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE0tQmFaZXlhSWlyOUFBU2xQRmVRd0tyeVJkUURnbmdwbml2QWotb3dLYUQzTHBPUm1GZTV3clBKRnpUbnF1QXBBSWt4eEl0akwyanNyV1I1MDRJMm5EaHg2WWRUNHFZUmhRX1I2VjYyUG82UllxQ2VZaEpoT2w?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Ottawa Citizen</span><span class="news-date">Mar 3 &middot; 12:37 AM</span></div>
+<div class="news-title">Ottawa Senators will have to win out West to keep playoff hopes alive</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPWXZEQ2xNUXMtZWtUdHdDZ1RvUk01aEUzSVlCdEIxVGhCMVh5NXBwRnpkYjBfbHExNGVuVlgxZXpXWDlLUDUxRUNTZnVJa2dCaGtvUVhKS2NMUkQwcVZ3cEZuTEk4RGJnbVhHbHAwVWN1XzUwZDdELWlPMWw2Ty1XcW1reVg4TWhsN3JuNU9lSDdsUXFOS3dLUndZOGw1cGd5dzRweA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 12:01 AM</span></div>
 <div class="news-title">Senators muddy trade-deadline plans with thumping of Maple Leafs</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNcFVXdENOMjZFdDZaaU51VkxRTkJ3YjlCUTk0Q1RnVTR0MW0xWngyVS1ITUY5UjVaWTlPUjlmT3c1d0xJTXVUQ2pMNllTcWdFd09iVGJIVmxDR3hILTAzUU1jVnBVQS1HOVNVMlVVX0xzWnM1ZHJSX1ZnVHlWVlhZSTQ5Y1ZROUtYRGpWWmxPN0ZCcFhDMG1LUlV4UDRJbTlGQVhFbzJvQ1NBanhXQ2xSaW1pOG5KQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
-<div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQVk4zdnlwdzJBb242bUZMR0ZXZTVjMEhTbXdfLURNcjBybnN5aXFmaG9rTC05NTJlQzlJNXJJVnVXVnhVVnVCRU1SQ0lsZGluUmxKalNoTzlsR2RXVTdhS3lYS1VDTGcwaUpLZTd5aFdWMGlPWFVXN0ZYdUJBdlU0a2FIcFlMaElEMlJ6Nkt3cnJfWU5vNmhHbk1JdUtnUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPZGRyT1lXdFg4Uzd5Y0hxWGp6enFzLTVDR3FRU1V2S2ItNXdCWlAxSHk0cEdnWjBURHM4eFZfNkhPajN2SHBfUExSNXVaTXBPY1BrSEZkUWp1ckR1TGRlVUttcHZicnNLVFdaaHJNaHNvY0lxb1k1dExvZ25fS3VXWFJoT2NzRW1FWTV0c0xSX2EzcG9fSE9Z?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 11:35 PM</span></div>
+<div class="news-title">Sens Today: Stützle Back on The Practice Ice</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQVk4zdnlwdzJBb242bUZMR0ZXZTVjMEhTbXdfLURNcjBybnN5aXFmaG9rTC05NTJlQzlJNXJJVnVXVnhVVnVCRU1SQ0lsZGluUmxKalNoTzlsR2RXVTdhS3lYS1VDTGcwaUpLZTd5aFdWMGlPWFVXN0ZYdUJBdlU0a2FIcFlMaElEMlJ6Nkt3cnJfWU5vNmhHbk1JdUtnUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 11:22 PM</span></div>
 <div class="news-title">Stützle returns to practice as Senators hit the ice in Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ3g4YlZTUW1mQTlldjczTTF0LVlDVWYtZzRrb1NDOWw4c1RZLVNXVkNleEpDTVdZNTVTMVRaOE5DSS16OGJRR1lFaThJeFFNUXhyUGNuNC1NWmg0b19feWd0UTc4eVVCMi14eDdFRzdRRExHU1NwN3pwdU5pbXAycTRIY3pVUHpyRFdRR05SZm5iZm1aWTVuTUNfRlZkbEJ2akHSAacBQVVfeXFMTzh4c2xEbm9Tbk1IUERMTG5UUFV4Z1dCMTV0ZzRFV2VDbkNuTERaLVl1UWNjeHFaYUdCaUZDTllHZTZ0TGJoWERyMFVpcHJxaDYwS2tTZkdacDhTTGNVREFzSm9aNm5JT2xLbXhzanFrYm9rcmpmNFVTRWwxN1hYdVp0ZG1pZVVkbHpnVTlRY0pxX2htTXlacHRIM1V6NnctXzlGWldUQVk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 9:40 PM</span></div>
@@ -921,31 +976,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 2 &middot; 5:13 PM</span></div>
 <div class="news-title">NHL Rumours and Ottawa Senators Trade Deadline Plans at Forward</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNckNSMXFJMGJYSl9feDRyQnlWRFJfZGRLa1VCaXBQY3p6WXRRZUo5MkZTZ2EwWVVjeUdpZDdiM28za25Jd1k2TW9Oc3o3QnVHWE5WVkx0S1o0NXNxSjJvWTJOYy1hYlZpTXUzNlNuY0dPUnI1T05iOUdSQmRVWmJJZnZXTi1lWlloVWRPUXN5ZUFZOGNfTExySDR6QnJfQWlib3hRbG9RMWpfQ3lpNVNMLXk3VQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 2 &middot; 4:34 PM</span></div>
-<div class="news-title">Senators trade deadline preview: On the edge of going bold at trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQcXVRZ1Bxc3NHQThDZUxmT2F6TC1ST01TS2V0TF9hRU91Umk5RFROSGNpM05GeXJFeDJqZ1d3b19aZ2IzazJxTHJ0NlcxQjhRRk9PTGVDNm5KcHlYRlo4STlsQVZhWTJIcDQwbjRZNno0UWtUOTZMSGNpM2wyVmw5R0REUDduV2lHSUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 2 &middot; 3:57 PM</span></div>
-<div class="news-title">Brady Tkachuk Trade Rumors Get Strong Response From Elliotte Friedman</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQZXdkNG51UWFGOG41UklnZlcxTU9RSnA5eTUySTZJRnAwbjRaclBqVXJBZXhrNjNib2cxSTFTMXZZODlUelUydTA0bE5kMDdkWmh4WVRKVUFyWWV2TjNTWjFPNHZHRFRUTzdHZGJnQnVJQW8tdmp5VTZlZjVVUVdreVdpTjZseUl4NDItWkR2LVlvTHM5aVJxRm5GZGJCaGFYeG0xYy0xVl9qNVhxNlpCS25LMFo?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Senators trade deadline preview: On the edge of going bold at trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQZXdkNG51UWFGOG41UklnZlcxTU9RSnA5eTUySTZJRnAwbjRaclBqVXJBZXhrNjNib2cxSTFTMXZZODlUelUydTA0bE5kMDdkWmh4WVRKVUFyWWV2TjNTWjFPNHZHRFRUTzdHZGJnQnVJQW8tdmp5VTZlZjVVUVdreVdpTjZseUl4NDItWkR2LVlvTHM5aVJxRm5GZGJCaGFYeG0xYy0xVl9qNVhxNlpCS25LMFo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Athlon Sports</span><span class="news-date">Mar 2 &middot; 3:57 PM</span></div>
-<div class="news-title">Brady Tkachuk Trade Rumors Get Strong Response From Elliotte Friedman</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOa0tka1NfandSZy1zd0xCcUMxelZrUDVwYlNvbXRuYjI5V1dVUUtWLVZDODNub3U0TWhWTGdtd3NOdnZOUERROFUza0tfa1ZmU19weERvSzVFVXlZeTJseVRGVDlfeThDZ01VRjhsSEFBNG9YMXB3VnMxY1pPMW5LaGFjcm10YkdrUnMyWnlmd0FIRTBDZjN2aUxMM0lUZ1lEbmJ4SEh2c0R5RFZ5cTM5bkxqaTlxSURxNFI5UVBsVDktOWJhTW56V1lrbnJHREVoZHc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 3:35 PM</span></div>
-<div class="news-title">Former Senator Mark Stone Suffers Injury On Sunday As NHL Trade Deadline Looms</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNamQ2SFd4d3lDb3VDMUdSVDlFc0pPRWRBM2VLZXRSbVFFbExNQnFBX3lHMnBJRFo2WTUzc2c2NWFXdXBSZU9ZU011V2wxZEdMRm5nNGV6eUpvb1hhSmNhanNfV2dDRmZqWWozRWFMM21fU1FwLS1QdXNkUzkwQXg0cXFvaTlNZVg2aTVpZzdxdDhPMmpiTjYxZFZmNGsyM085Q3BHT1czUERHbC1hX2xJ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Brady Tkachuk Trade Rumors Get Strong Response From Elliotte Friedman</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNamQ2SFd4d3lDb3VDMUdSVDlFc0pPRWRBM2VLZXRSbVFFbExNQnFBX3lHMnBJRFo2WTUzc2c2NWFXdXBSZU9ZU011V2wxZEdMRm5nNGV6eUpvb1hhSmNhanNfV2dDRmZqWWozRWFMM21fU1FwLS1QdXNkUzkwQXg0cXFvaTlNZVg2aTVpZzdxdDhPMmpiTjYxZFZmNGsyM085Q3BHT1czUERHbC1hX2xJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 2 &middot; 2:32 PM</span></div>
 <div class="news-title">Report: Sens made bid, but Ottawa not on 2028 World Cup of Hockey host shortlist</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOM0xDVHJwYTlsQ3FmTTZwOUJxcFJZV0N5OXhjRDlQTU5PajY0Z1NlNk5rVUlQUW9GUkNqWlc3ZjRDaU1oOS1sOW5Yd09CajZNakthYl9RdXNKV0JJczJLTE9NdmtxdmFrUzE1T2c5U0xnRlZnem9QR1FJN2o4Yjgxai01MmI3MVQwOGFrQ2FFcEVkVWVUV3QtV2F3a0plU3k2MnJXSw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 1 &middot; 11:45 PM</span></div>
-<div class="news-title">Senators’ dream, nightmare scenario for 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPN0lHSGs5QjJaRlUtMzNlY0pNVjRNWkYxUVU0dXAyNlFjbW8zcGVNMXRKbG5OV3RfZUxBY3NINTFqLW5jay12UDVnbWM1cjUxY3pQMmtsdXRfb0ZCVUtiaEMyNUFwV1p5UHU3X1RvTmdiZlRQdGpHcmF1S3l1Wm9Ma2wxeHVzellWSWEyWUttLXR0R3Vrd3N0bVhydFlkV2NVLXh1MDNzQXl4QTJ6TE5qRHliUXBLTWwwazFXcnVn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 1 &middot; 9:40 PM</span></div>
-<div class="news-title">Senators Week Ahead: Schedule & Storylines – Trade Rumours, Giroux, Zub, Zetterlund and More</div></a><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOanN4aklsZVBxcHF5d2x3U09zdzF1NllER2g5dzljVWd3MFRCcVdWcEZqZU11VF83MDN2X1dYNjhvclJPdnBSX3BNZm1mNTE3Z2x6UnotNUE3clNhZlVCSFRaUVFHOWdCdTVwRjI1QVhRTGJjbDctd0VRdkJMdVZkczJXYnRTYlRTZEFjZnl5eG5OQmliNzFfUmNKa1kyamVaTEplUEc0NVpKVHBYcFVoVUwzQTBXaTNfZWgxcQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 1 &middot; 9:32 PM</span></div>
-<div class="news-title">Ex-Ottawa Senator D.J. Smith Returns To NHL Head Coaching Ranks</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxPWHNfZU4tSFRHRzVUN0FoMlVXM2JQRG83eVdaSEhOSTR5X3FsM3NlckZBdUVtdDUxa192TmhRZHJEckVTaGszdFZ4SWVsSFlCZGFiVV9wcE93eGpxZGlWY0hXWWpGZzZiOU54dllZZW81ZUM5ZVI4bzMtOVJUbjhqVzU1SmRacEhjWUVOU0pCUDZlX0psVkxMYVlqTnp5OTZPeDVsZHBMcE05VGRiWmJMRlg4dzhnaDNQUXpRZFNkTFJvQzZNWUR1T1ZqZFdfY2lqbmpiWnFhazFRQk5tRGY1aVpxT1dRdV9xVG9z?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 1 &middot; 8:08 PM</span></div>
-<div class="news-title">Auston Matthews Describes Senators' Beatdown Of Leafs As 'Fairly Embarrassing, To Be Honest With You'</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQbVBSYkpNaVlzQmxWSlFVY2FUbDJEN0xfaE9rRUlRckxHNU9oanhoaW5Ua3MzZlYyODV0MWJTNXRYVzRULXR3UW11OTJRWV9WbHdaQmhNVnIzQVdDcGJIVVNfZDIydG53N2NTUHhyVkxlVXVfcDR2QU41TkFqUnRCUDRTdEZzTWlEeXBNOUhmcklBVEd1WUNHbW9fR0syOFlZZWZtMllvLU5GRTdzOGRsYjJDSGVPNzlTTGVr?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CBC</span><span class="news-date">Mar 1 &middot; 6:57 PM</span></div>
-<div class="news-title">LA Kings fire coach Jim Hiller, name D.J. Smith as the interim replacement</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPWUNMd2g5dmViR2VzRThULTdfeXBNUmxUSkE5NXF1SFAzR2V4eVQ5THgyeFB1WFVvY25fbUJYMVlXTmVVbU4zN0wya3VoYl9BbDNXVk9ITUpZOVl6ejFpdVNjaGFGMTg1ZmVibEZVMjQ0U1d2Z21hdEN4OFFPNDNZTk9ZYlFVWDF0R3JadldhNG5SYXBxcEtyTl9XSGJjbjM2S0xCYzhra1lkR1VnRWJyUGN1V1ZBRWp3ejFtVFZ6SmdEY0V4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 1 &middot; 6:02 PM</span></div>
-<div class="news-title">How The Ottawa Senators Roster Has Been Influenced By The Gretzky Effect</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNa0ZGa3Z4RWVqZHRvZXpHeWVBbmhtc2NGbHNzYmhwUTVXbTQ0QTYzX2ltMmJlVHZMQXFqTlBJenZ6Zkgtdnl5Ry1sR3BOcXVKemVfa1dId3h5Wm8zQ2t6Q3ZkTHFFVWxBd3AzX1dObGR0ZzFjdHQ3NFlCX0Myc0V6bzRtNGtXdDZTcVV5a2NJUjFlMFMt?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 1 &middot; 1:31 PM</span></div>
-<div class="news-title">Why the Senators could — and should — be buying ahead of the NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPa1lHMFlOZWk2UXdnV2xJN0plQXlVRTc2dlRpX05YWnVsTFRIRzVHTFZ2ZnVPNmJsY0UyLWNDaUF2X3Z5N2xxUUd3TUpXbURSVVRkeUEya1B5SUJaelFkSjNYcUtmS0gwdEg3YlcwOW0zYmRzRldodkFHV2RLRGJGbjEwTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 1 &middot; 1:14 PM</span></div>
-<div class="news-title">3 Potential Trade Destinations for Blues' Jordan Binnington</div></a></div></div>
+<div class="news-title">Senators’ dream, nightmare scenario for 2026 NHL Trade Deadline</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/OttawaSenators</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -955,7 +992,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 5:32 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:04 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

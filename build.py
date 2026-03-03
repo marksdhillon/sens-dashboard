@@ -91,6 +91,118 @@ def fetch_scores():
         print(f"  WARNING: scores fetch failed: {e}")
         return {"currentDate": "", "prevDate": {"default": ""}, "nextDate": {"default": ""}, "games": []}
 
+def fetch_scores_for_date(date_str):
+    """Fetch NHL scores for a specific date (YYYY-MM-DD)."""
+    try:
+        data = fetch_json(f"{NHL_API}/score/{date_str}")
+        return data
+    except Exception as e:
+        print(f"  WARNING: scores fetch for {date_str} failed: {e}")
+        return {"currentDate": date_str, "games": []}
+
+# ESPN team abbreviation mapping (ESPN uses different abbrevs for some teams)
+ESPN_ABBREV_MAP = {
+    "OTT": "ott", "TOR": "tor", "MTL": "mtl", "BOS": "bos", "BUF": "buf",
+    "DET": "det", "FLA": "fla", "TBL": "tb", "CAR": "car", "CBJ": "cbj",
+    "NJD": "nj", "NYI": "nyi", "NYR": "nyr", "PHI": "phi", "PIT": "pit",
+    "WSH": "wsh", "CHI": "chi", "COL": "col", "DAL": "dal", "MIN": "min",
+    "NSH": "nsh", "STL": "stl", "WPG": "wpg", "ANA": "ana", "CGY": "cgy",
+    "EDM": "edm", "LAK": "la", "SEA": "sea", "SJS": "sj", "VAN": "van",
+    "VGK": "vgs", "UTA": "uta",
+}
+
+def fetch_espn_injuries():
+    """Fetch all NHL injuries from ESPN injuries page. Returns dict of team_abbrev -> list of injuries."""
+    url = "https://www.espn.com/nhl/injuries"
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            html = resp.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"  WARNING: ESPN injuries fetch failed: {e}")
+        return {}
+
+    # Build reverse map: espn abbrev -> our abbrev
+    reverse_map = {v: k for k, v in ESPN_ABBREV_MAP.items()}
+
+    injuries = {}  # our_abbrev -> [{"name": ..., "pos": ..., "est_return": ..., "status": ..., "comment": ...}]
+
+    import re as _re
+
+    # ESPN structure: team sections separated by injuries__teamName spans,
+    # each followed by a Table with Table__TR--sm rows containing Table__TD cells
+    # Split by team name headers
+    team_sections = _re.split(r'injuries__teamName[^"]*">', html)
+
+    for section in team_sections[1:]:  # skip text before first team
+        # Team name is at the start of this section
+        team_name_match = _re.match(r'([^<]+)<', section)
+        if not team_name_match:
+            continue
+        team_display = team_name_match.group(1).strip()
+
+        # Find team abbrev from link in this section
+        team_link = _re.search(r'/nhl/team/_/name/([a-z]+)', section)
+        if team_link:
+            espn_abbr = team_link.group(1)
+        else:
+            # Try matching team name to our team info
+            espn_abbr = None
+            for k, v in ESPN_ABBREV_MAP.items():
+                if TEAM_INFO.get(k, {}).get("name", "") == team_display:
+                    espn_abbr = v
+                    break
+            if not espn_abbr:
+                continue
+
+        our_abbr = reverse_map.get(espn_abbr)
+        if not our_abbr:
+            continue
+
+        team_injuries = []
+
+        # Find data rows (Table__TR--sm with data-idx attribute)
+        rows = _re.findall(r'<tr[^>]*Table__TR--sm[^>]*>(.*?)</tr>', section, _re.DOTALL)
+        for row in rows:
+            # Extract cells
+            cells = _re.findall(r'<td[^>]*>(.*?)</td>', row, _re.DOTALL)
+            if len(cells) < 4:
+                continue
+
+            # Name: inside AnchorLink
+            name_match = _re.search(r'AnchorLink[^>]*>([^<]+)<', cells[0])
+            if not name_match:
+                name_match = _re.search(r'>([^<]+)<', cells[0])
+            if not name_match:
+                continue
+            name = name_match.group(1).strip()
+            if not name or name == "NAME":
+                continue
+
+            # Clean cell text
+            def _clean(s):
+                return _re.sub(r'<[^>]+>', '', s).strip()
+
+            pos = _clean(cells[1]) if len(cells) > 1 else ""
+            est_return = _clean(cells[2]) if len(cells) > 2 else ""
+            status = _clean(cells[3]) if len(cells) > 3 else ""
+            comment = _clean(cells[4]) if len(cells) > 4 else ""
+
+            team_injuries.append({
+                "name": name,
+                "pos": pos,
+                "est_return": est_return,
+                "status": status,
+                "comment": comment,
+            })
+
+        if team_injuries:
+            injuries[our_abbr] = team_injuries
+
+    return injuries
+
 def fetch_game_details(game_id):
     """Fetch boxscore and scoring summary for a game."""
     details = {"boxscore": None, "scoring": None}
@@ -700,6 +812,46 @@ def build_news_html(articles):
 <div class="news-title">{a["title"]}</div></a>''')
     return f'<div class="news-list">{"".join(items)}</div>'
 
+def build_injuries_html(injuries):
+    """Build the injuries tab HTML. injuries is a list of dicts with name, pos, est_return, status, comment."""
+    if not injuries:
+        return '<div class="empty-state"><span>&#9989;</span>No reported injuries. Full health!</div>'
+
+    rows = []
+    for inj in injuries:
+        name = inj.get("name", "")
+        pos = inj.get("pos", "")
+        est_return = inj.get("est_return", "")
+        status = inj.get("status", "")
+        comment = inj.get("comment", "")
+
+        # Status badge color
+        if "out" in status.lower():
+            badge_cls = "inj-out"
+        elif "day" in status.lower() or "dtd" in status.lower():
+            badge_cls = "inj-dtd"
+        elif "ir" in status.lower():
+            badge_cls = "inj-ir"
+        else:
+            badge_cls = "inj-other"
+
+        rows.append(f'''<tr>
+<td class="inj-name">{name}</td>
+<td class="inj-pos">{pos}</td>
+<td><span class="inj-badge {badge_cls}">{status}</span></td>
+<td class="inj-return">{est_return}</td>
+<td class="inj-comment">{comment}</td>
+</tr>''')
+
+    return f'''<h3>Current Injuries</h3>
+<div class="sub-note">Data from ESPN</div>
+<div class="inj-tbl-wrap">
+<table class="nhl-tbl inj-tbl">
+<thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
+<tbody>{"".join(rows)}</tbody>
+</table>
+</div>'''
+
 ESPN_SLUGS = {
     "BOS": ("bos", "boston-bruins"), "BUF": ("buf", "buffalo-sabres"),
     "DET": ("det", "detroit-red-wings"), "FLA": ("fla", "florida-panthers"),
@@ -1043,7 +1195,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams):
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
@@ -1172,12 +1324,14 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{{display:block}}
 
@@ -1337,6 +1491,19 @@ a.pname:hover{{color:var(--text-strong)}}
 .empty-state{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}}
 .empty-state span{{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}}
 
+/* Injuries */
+.inj-tbl-wrap{{overflow-x:auto;border-radius:8px}}
+.inj-tbl td{{font-size:12px}}
+.inj-name{{font-weight:600;color:var(--text)}}
+.inj-pos{{color:var(--text-muted);font-size:11px}}
+.inj-badge{{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;display:inline-block}}
+.inj-out{{background:rgba(248,113,113,0.12);color:var(--red)}}
+.inj-ir{{background:rgba(248,113,113,0.12);color:var(--red)}}
+.inj-dtd{{background:rgba(251,191,36,0.12);color:#fbbf24}}
+.inj-other{{background:var(--bg-surface);color:var(--text-secondary)}}
+.inj-return{{font-size:11px;color:var(--text-secondary)}}
+.inj-comment{{font-size:11px;color:var(--text-muted);max-width:200px}}
+
 /* Footer */
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
@@ -1407,6 +1574,7 @@ body{{animation:fadeIn 0.15s ease}}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
@@ -1414,6 +1582,7 @@ body{{animation:fadeIn 0.15s ease}}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
   </div>
@@ -1421,6 +1590,7 @@ body{{animation:fadeIn 0.15s ease}}
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
+  <div class="panel" id="p-injuries">{injuries_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
     <div class="community-list">
@@ -1475,233 +1645,217 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
 
 # ── Scoreboard ────────────────────────────────────────────
 
-def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
-    """Generate a standalone scoreboard page showing today's NHL scores with expandable details."""
-    eastern = timezone(timedelta(hours=-5))
-    now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
+def _build_game_card(g, all_game_details, eastern):
+    """Build a single game card HTML. Returns the card HTML string."""
+    state = g.get("gameState", "")
+    game_id = g.get("id", 0)
+    away = g.get("awayTeam", {})
+    home = g.get("homeTeam", {})
+    away_abbrev = away.get("abbrev", "")
+    home_abbrev = home.get("abbrev", "")
+    away_score = away.get("score", 0)
+    home_score = home.get("score", 0)
+    away_name = away.get("placeName", {})
+    home_name = home.get("placeName", {})
+    if isinstance(away_name, dict):
+        away_name = away_name.get("default", away_abbrev)
+    if isinstance(home_name, dict):
+        home_name = home_name.get("default", home_abbrev)
+    away_full = TEAM_INFO.get(away_abbrev, {}).get("name", away_name)
+    home_full = TEAM_INFO.get(home_abbrev, {}).get("name", home_name)
 
-    games = scores_data.get("games", [])
-    current_date = scores_data.get("currentDate", "")
+    # Game status
+    period_desc = g.get("periodDescriptor", {})
+    period_type = period_desc.get("periodType", "REG")
+    period_num = period_desc.get("number", 0)
+    clock = g.get("clock", {})
+    time_remaining = clock.get("timeRemaining", "")
 
-    # Format display date
-    display_date = current_date
-    try:
-        d = datetime.strptime(current_date, "%Y-%m-%d")
-        display_date = d.strftime("%A, %B %-d, %Y")
-    except Exception:
-        pass
-
-    game_cards = []
-    for g in games:
-        state = g.get("gameState", "")
-        game_id = g.get("id", 0)
-        away = g.get("awayTeam", {})
-        home = g.get("homeTeam", {})
-        away_abbrev = away.get("abbrev", "")
-        home_abbrev = home.get("abbrev", "")
-        away_score = away.get("score", 0)
-        home_score = home.get("score", 0)
-        away_name = away.get("placeName", {})
-        home_name = home.get("placeName", {})
-        if isinstance(away_name, dict):
-            away_name = away_name.get("default", away_abbrev)
-        if isinstance(home_name, dict):
-            home_name = home_name.get("default", home_abbrev)
-        away_full = TEAM_INFO.get(away_abbrev, {}).get("name", away_name)
-        home_full = TEAM_INFO.get(home_abbrev, {}).get("name", home_name)
-
-        # Game status
-        period_desc = g.get("periodDescriptor", {})
-        period_type = period_desc.get("periodType", "REG")
-        period_num = period_desc.get("number", 0)
-        clock = g.get("clock", {})
-        time_remaining = clock.get("timeRemaining", "")
-
-        if state in ("FINAL", "OFF"):
-            if period_type == "OT":
-                status = "Final/OT"
-            elif period_type == "SO":
-                status = "Final/SO"
-            else:
-                status = "Final"
-            status_cls = "sb-final"
-        elif state == "LIVE" or state == "CRIT":
-            if period_type == "OT":
-                status = f"OT {time_remaining}"
-            elif period_type == "SO":
-                status = "Shootout"
-            else:
-                ordinals = {1: "1st", 2: "2nd", 3: "3rd"}
-                status = f"{ordinals.get(period_num, f'P{period_num}')} {time_remaining}"
-            status_cls = "sb-live"
-        elif state == "FUT" or state == "PRE":
-            start = g.get("startTimeUTC", "")
-            status = "Upcoming"
-            if start:
-                try:
-                    utc_dt = datetime.strptime(start, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-                    et_dt = utc_dt.astimezone(eastern)
-                    status = et_dt.strftime("%-I:%M %p ET")
-                except Exception:
-                    pass
-            status_cls = "sb-upcoming"
+    if state in ("FINAL", "OFF"):
+        if period_type == "OT":
+            status = "Final/OT"
+        elif period_type == "SO":
+            status = "Final/SO"
         else:
-            status = state
-            status_cls = ""
+            status = "Final"
+        status_cls = "sb-final"
+    elif state == "LIVE" or state == "CRIT":
+        if period_type == "OT":
+            status = f"OT {time_remaining}"
+        elif period_type == "SO":
+            status = "Shootout"
+        else:
+            ordinals = {1: "1st", 2: "2nd", 3: "3rd"}
+            status = f"{ordinals.get(period_num, f'P{period_num}')} {time_remaining}"
+        status_cls = "sb-live"
+    elif state == "FUT" or state == "PRE":
+        start = g.get("startTimeUTC", "")
+        status = "Upcoming"
+        if start:
+            try:
+                utc_dt = datetime.strptime(start, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                et_dt = utc_dt.astimezone(eastern)
+                status = et_dt.strftime("%-I:%M %p ET")
+            except Exception:
+                pass
+        status_cls = "sb-upcoming"
+    else:
+        status = state
+        status_cls = ""
 
-        # Winner highlighting
-        away_win = "sb-winner" if state in ("FINAL", "OFF") and away_score > home_score else ""
-        home_win = "sb-winner" if state in ("FINAL", "OFF") and home_score > away_score else ""
+    # Winner highlighting
+    away_win = "sb-winner" if state in ("FINAL", "OFF") and away_score > home_score else ""
+    home_win = "sb-winner" if state in ("FINAL", "OFF") and home_score > away_score else ""
 
-        # Goal scorers (compact, for the card)
-        goals = g.get("goals", [])
-        away_scorers = {}
-        home_scorers = {}
-        for gl in goals:
-            scorer = gl.get("name", {})
-            if isinstance(scorer, dict):
-                scorer = scorer.get("default", "")
-            team_abbr = gl.get("teamAbbrev", {})
-            if isinstance(team_abbr, dict):
-                team_abbr = team_abbr.get("default", "")
-            if team_abbr == away_abbrev:
-                away_scorers[scorer] = away_scorers.get(scorer, 0) + 1
-            elif team_abbr == home_abbrev:
-                home_scorers[scorer] = home_scorers.get(scorer, 0) + 1
+    # Goal scorers (compact, for the card)
+    goals = g.get("goals", [])
+    away_scorers = {}
+    home_scorers = {}
+    for gl in goals:
+        scorer = gl.get("name", {})
+        if isinstance(scorer, dict):
+            scorer = scorer.get("default", "")
+        team_abbr = gl.get("teamAbbrev", {})
+        if isinstance(team_abbr, dict):
+            team_abbr = team_abbr.get("default", "")
+        if team_abbr == away_abbrev:
+            away_scorers[scorer] = away_scorers.get(scorer, 0) + 1
+        elif team_abbr == home_abbrev:
+            home_scorers[scorer] = home_scorers.get(scorer, 0) + 1
 
-        away_goals_html = ""
-        home_goals_html = ""
-        for name, count in away_scorers.items():
-            c = f" ({count})" if count > 1 else ""
-            away_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
-        for name, count in home_scorers.items():
-            c = f" ({count})" if count > 1 else ""
-            home_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
+    away_goals_html = ""
+    home_goals_html = ""
+    for name, count in away_scorers.items():
+        c = f" ({count})" if count > 1 else ""
+        away_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
+    for name, count in home_scorers.items():
+        c = f" ({count})" if count > 1 else ""
+        home_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
 
-        # Team page links
-        away_href = "index.html" if away_abbrev == DEFAULT_TEAM else f"{away_abbrev}.html"
-        home_href = "index.html" if home_abbrev == DEFAULT_TEAM else f"{home_abbrev}.html"
+    # Team page links
+    away_href = "index.html" if away_abbrev == DEFAULT_TEAM else f"{away_abbrev}.html"
+    home_href = "index.html" if home_abbrev == DEFAULT_TEAM else f"{home_abbrev}.html"
 
-        # ── Expandable detail section ──
-        detail_html = ""
-        details = all_game_details.get(game_id)
-        if details and state not in ("FUT", "PRE"):
-            # Scoring summary by period
-            scoring_periods = details.get("scoring") or []
-            scoring_html = ""
-            for period in scoring_periods:
-                p_num = period.get("periodDescriptor", {}).get("number", 0)
-                p_type = period.get("periodDescriptor", {}).get("periodType", "REG")
-                if p_type == "OT":
-                    p_label = "OT"
-                elif p_type == "SO":
-                    p_label = "SO"
-                else:
-                    ordlabels = {1: "1st Period", 2: "2nd Period", 3: "3rd Period"}
-                    p_label = ordlabels.get(p_num, f"Period {p_num}")
+    # ── Expandable detail section ──
+    detail_html = ""
+    details = all_game_details.get(game_id)
+    if details and state not in ("FUT", "PRE"):
+        # Scoring summary by period
+        scoring_periods = details.get("scoring") or []
+        scoring_html = ""
+        for period in scoring_periods:
+            p_num = period.get("periodDescriptor", {}).get("number", 0)
+            p_type = period.get("periodDescriptor", {}).get("periodType", "REG")
+            if p_type == "OT":
+                p_label = "OT"
+            elif p_type == "SO":
+                p_label = "SO"
+            else:
+                ordlabels = {1: "1st Period", 2: "2nd Period", 3: "3rd Period"}
+                p_label = ordlabels.get(p_num, f"Period {p_num}")
 
-                goal_rows = ""
-                for goal in period.get("goals", []):
-                    g_time = goal.get("timeInPeriod", "")
-                    g_first = goal.get("firstName", {})
-                    g_last = goal.get("lastName", {})
-                    if isinstance(g_first, dict):
-                        g_first = g_first.get("default", "")
-                    if isinstance(g_last, dict):
-                        g_last = g_last.get("default", "")
-                    g_team = goal.get("teamAbbrev", {})
-                    if isinstance(g_team, dict):
-                        g_team = g_team.get("default", "")
-                    g_strength = goal.get("strength", "ev")
-                    strength_badge = ""
-                    if g_strength == "pp":
-                        strength_badge = '<span class="gd-badge gd-pp">PP</span>'
-                    elif g_strength == "sh":
-                        strength_badge = '<span class="gd-badge gd-sh">SH</span>'
-                    elif g_strength == "en":
-                        strength_badge = '<span class="gd-badge gd-en">EN</span>'
+            goal_rows = ""
+            for goal in period.get("goals", []):
+                g_time = goal.get("timeInPeriod", "")
+                g_first = goal.get("firstName", {})
+                g_last = goal.get("lastName", {})
+                if isinstance(g_first, dict):
+                    g_first = g_first.get("default", "")
+                if isinstance(g_last, dict):
+                    g_last = g_last.get("default", "")
+                g_team = goal.get("teamAbbrev", {})
+                if isinstance(g_team, dict):
+                    g_team = g_team.get("default", "")
+                g_strength = goal.get("strength", "ev")
+                strength_badge = ""
+                if g_strength == "pp":
+                    strength_badge = '<span class="gd-badge gd-pp">PP</span>'
+                elif g_strength == "sh":
+                    strength_badge = '<span class="gd-badge gd-sh">SH</span>'
+                elif g_strength == "en":
+                    strength_badge = '<span class="gd-badge gd-en">EN</span>'
 
-                    assists_list = goal.get("assists", [])
-                    assist_names = []
-                    for a in assists_list:
-                        a_first = a.get("firstName", {})
-                        a_last = a.get("lastName", {})
-                        if isinstance(a_first, dict):
-                            a_first = a_first.get("default", "")
-                        if isinstance(a_last, dict):
-                            a_last = a_last.get("default", "")
-                        assist_names.append(f"{a_first} {a_last}")
-                    assists_str = ", ".join(assist_names) if assist_names else "Unassisted"
+                assists_list = goal.get("assists", [])
+                assist_names = []
+                for a in assists_list:
+                    a_first = a.get("firstName", {})
+                    a_last = a.get("lastName", {})
+                    if isinstance(a_first, dict):
+                        a_first = a_first.get("default", "")
+                    if isinstance(a_last, dict):
+                        a_last = a_last.get("default", "")
+                    assist_names.append(f"{a_first} {a_last}")
+                assists_str = ", ".join(assist_names) if assist_names else "Unassisted"
 
-                    headshot = goal.get("headshot", "")
-                    headshot_img = f'<img src="{headshot}" class="gd-headshot">' if headshot else ""
+                headshot = goal.get("headshot", "")
+                headshot_img = f'<img src="{headshot}" class="gd-headshot">' if headshot else ""
 
-                    goal_rows += f'''<div class="gd-goal">
+                goal_rows += f'''<div class="gd-goal">
 <div class="gd-time">{g_time}</div>
 <div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/{g_team}_dark.svg" class="gd-team-logo"></div>
 {headshot_img}
 <div class="gd-goal-info"><div class="gd-scorer-name">{g_first} {g_last} {strength_badge}</div><div class="gd-assists">{assists_str}</div></div>
 </div>'''
 
-                if goal_rows:
-                    scoring_html += f'<div class="gd-period"><div class="gd-period-label">{p_label}</div>{goal_rows}</div>'
+            if goal_rows:
+                scoring_html += f'<div class="gd-period"><div class="gd-period-label">{p_label}</div>{goal_rows}</div>'
 
-            # Box score tables
-            boxscore = details.get("boxscore")
-            box_html = ""
-            if boxscore:
-                for side, side_label in [("awayTeam", away_abbrev), ("homeTeam", home_abbrev)]:
-                    team_data = boxscore.get(side, {})
-                    side_name = away_full if side == "awayTeam" else home_full
+        # Box score tables
+        boxscore = details.get("boxscore")
+        box_html = ""
+        if boxscore:
+            for side, side_label in [("awayTeam", away_abbrev), ("homeTeam", home_abbrev)]:
+                team_data = boxscore.get(side, {})
+                side_name = away_full if side == "awayTeam" else home_full
 
-                    # Skaters (forwards + defense)
-                    skaters = team_data.get("forwards", []) + team_data.get("defense", [])
-                    skater_rows = ""
-                    for p in sorted(skaters, key=lambda x: -(x.get("goals", 0)*10 + x.get("assists", 0)*5 + x.get("shots", 0))):
-                        pname = p.get("name", {})
-                        if isinstance(pname, dict):
-                            pname = pname.get("default", "")
-                        pos = p.get("position", "")
-                        g_count = p.get("goals", 0)
-                        a_count = p.get("assists", 0)
-                        pts = g_count + a_count
-                        pm = p.get("plusMinus", 0)
-                        pm_str = f"+{pm}" if pm > 0 else str(pm)
-                        sog = p.get("shots", 0)
-                        hits = p.get("hits", 0)
-                        blk = p.get("blockedShots", 0)
-                        toi = p.get("toi", "0:00")
-                        pts_cls = ' class="gd-pts-hl"' if pts > 0 else ""
-                        skater_rows += f"<tr><td>{pname}</td><td>{pos}</td><td{pts_cls}>{g_count}</td><td{pts_cls}>{a_count}</td><td{pts_cls}>{pts}</td><td>{pm_str}</td><td>{sog}</td><td>{hits}</td><td>{blk}</td><td>{toi}</td></tr>"
+                # Skaters (forwards + defense)
+                skaters = team_data.get("forwards", []) + team_data.get("defense", [])
+                skater_rows = ""
+                for p in sorted(skaters, key=lambda x: -(x.get("goals", 0)*10 + x.get("assists", 0)*5 + x.get("shots", 0))):
+                    pname = p.get("name", {})
+                    if isinstance(pname, dict):
+                        pname = pname.get("default", "")
+                    pos = p.get("position", "")
+                    g_count = p.get("goals", 0)
+                    a_count = p.get("assists", 0)
+                    pts = g_count + a_count
+                    pm = p.get("plusMinus", 0)
+                    pm_str = f"+{pm}" if pm > 0 else str(pm)
+                    sog = p.get("shots", 0)
+                    hits = p.get("hits", 0)
+                    blk = p.get("blockedShots", 0)
+                    toi = p.get("toi", "0:00")
+                    pts_cls = ' class="gd-pts-hl"' if pts > 0 else ""
+                    skater_rows += f"<tr><td>{pname}</td><td>{pos}</td><td{pts_cls}>{g_count}</td><td{pts_cls}>{a_count}</td><td{pts_cls}>{pts}</td><td>{pm_str}</td><td>{sog}</td><td>{hits}</td><td>{blk}</td><td>{toi}</td></tr>"
 
-                    # Goalies
-                    goalies = team_data.get("goalies", [])
-                    goalie_rows = ""
-                    for gk in goalies:
-                        gname = gk.get("name", {})
-                        if isinstance(gname, dict):
-                            gname = gname.get("default", "")
-                        sa = gk.get("saveShotsAgainst", "")
-                        if isinstance(sa, dict):
-                            sa = sa.get("default", "")
-                        svs = gk.get("saves", 0)
-                        sa_num = gk.get("shotsAgainst", 0)
-                        sv_pct = gk.get("savePctg", "")
-                        if sv_pct and isinstance(sv_pct, (int, float)):
-                            sv_pct = f"{sv_pct:.3f}"
-                        elif sv_pct is None:
-                            sv_pct = "-"
-                        toi = gk.get("toi", "0:00")
-                        goalie_rows += f"<tr><td>{gname}</td><td>{sa}</td><td>{sv_pct}</td><td>{toi}</td></tr>"
+                # Goalies
+                goalies = team_data.get("goalies", [])
+                goalie_rows = ""
+                for gk in goalies:
+                    gname = gk.get("name", {})
+                    if isinstance(gname, dict):
+                        gname = gname.get("default", "")
+                    sa = gk.get("saveShotsAgainst", "")
+                    if isinstance(sa, dict):
+                        sa = sa.get("default", "")
+                    svs = gk.get("saves", 0)
+                    sa_num = gk.get("shotsAgainst", 0)
+                    sv_pct = gk.get("savePctg", "")
+                    if sv_pct and isinstance(sv_pct, (int, float)):
+                        sv_pct = f"{sv_pct:.3f}"
+                    elif sv_pct is None:
+                        sv_pct = "-"
+                    toi = gk.get("toi", "0:00")
+                    goalie_rows += f"<tr><td>{gname}</td><td>{sa}</td><td>{sv_pct}</td><td>{toi}</td></tr>"
 
-                    box_html += f'''<div class="gd-box-team">
+                box_html += f'''<div class="gd-box-team">
 <div class="gd-box-team-name">{side_name}</div>
 <div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody>{skater_rows}</tbody></table></div>
 <div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody>{goalie_rows}</tbody></table></div>
 </div>'''
 
-            if scoring_html or box_html:
-                detail_html = f'''<div class="gd-data" id="gd-{game_id}" style="display:none">
+        if scoring_html or box_html:
+            detail_html = f'''<div class="gd-data" id="gd-{game_id}" style="display:none">
 <div class="gd-panel-header">
 <div class="gd-panel-teams">
 <img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" class="gd-panel-logo"><span>{away_full}</span>
@@ -1714,10 +1868,10 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 {f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
 </div>'''
 
-        has_detail = f' data-game="{game_id}"' if detail_html else ""
-        clickable_cls = " sb-clickable" if detail_html else ""
+    has_detail = f' data-game="{game_id}"' if detail_html else ""
+    clickable_cls = " sb-clickable" if detail_html else ""
 
-        game_cards.append(f'''<div class="sb-game{clickable_cls}"{has_detail if detail_html else ""}>
+    return f'''<div class="sb-game{clickable_cls}"{has_detail if detail_html else ""}>
 <div class="sb-status {status_cls}">{status}</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row {away_win}">
@@ -1732,14 +1886,64 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 </div>
 </div>
 {detail_html}
-</div>''')
+</div>'''
 
-    no_games = '<div class="sb-empty">No games scheduled today.</div>' if not game_cards else ""
-    games_html = "\n".join(game_cards)
+
+def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, switcher_opts):
+    """Generate a standalone scoreboard page with date navigation (7 days back + today + 7 days forward)."""
+    eastern = timezone(timedelta(hours=-5))
+    now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
+
+    # Build date strip buttons and per-day game sections
+    date_btns = []
+    day_sections = []
+    DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+    for date_str, scores_data in all_days_scores:
+        games = scores_data.get("games", [])
+        is_today = date_str == today_date_str
+        n_games = len(games)
+
+        # Format date for button
+        try:
+            d = datetime.strptime(date_str, "%Y-%m-%d")
+            day_name = DAY_NAMES[d.weekday()]
+            month_day = d.strftime("%b %-d")
+            display_full = d.strftime("%A, %B %-d, %Y")
+        except Exception:
+            day_name = ""
+            month_day = date_str
+            display_full = date_str
+
+        active_cls = " ds-active" if is_today else ""
+        today_dot = '<span class="ds-today-dot"></span>' if is_today else ""
+        count_badge = f'<span class="ds-count">{n_games}</span>' if n_games > 0 else '<span class="ds-count ds-none">0</span>'
+        date_btns.append(f'<button class="ds-btn{active_cls}" data-date="{date_str}" onclick="showDay(\'{date_str}\')">'
+                         f'<span class="ds-day">{day_name}</span>'
+                         f'<span class="ds-date">{month_day}</span>'
+                         f'{today_dot}{count_badge}</button>')
+
+        # Build game cards for this day
+        game_cards = []
+        for g in games:
+            game_cards.append(_build_game_card(g, all_game_details, eastern))
+
+        display_style = "" if is_today else ' style="display:none"'
+        if game_cards:
+            games_html = "\n".join(game_cards)
+        else:
+            games_html = '<div class="sb-empty">No games scheduled.</div>'
+
+        day_sections.append(f'<div class="sb-day" id="day-{date_str}"{display_style}>'
+                            f'<div class="sb-day-label">{display_full}</div>'
+                            f'{games_html}</div>')
+
+    date_strip_html = "\n".join(date_btns)
+    days_html = "\n".join(day_sections)
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>NHL Scoreboard — {display_date}</title>
+<title>NHL Scoreboard</title>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -1761,13 +1965,30 @@ a{{color:var(--text);text-decoration:none}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 
+/* Date strip */
+.date-strip-wrap{{max-width:700px;margin:0 auto;padding:16px 28px 0}}
+.date-strip{{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px}}
+.date-strip::-webkit-scrollbar{{display:none}}
+.ds-btn{{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 12px;border:1px solid transparent;background:transparent;border-radius:8px;cursor:pointer;transition:all 0.15s;min-width:56px;position:relative;flex-shrink:0}}
+.ds-btn:hover{{background:var(--bg-surface);border-color:var(--border)}}
+.ds-btn.ds-active{{background:var(--bg-surface);border-color:var(--border)}}
+.ds-day{{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.3px}}
+.ds-date{{font-size:12px;font-weight:600;color:var(--text-secondary)}}
+.ds-active .ds-day{{color:var(--text-secondary)}}
+.ds-active .ds-date{{color:var(--text-strong)}}
+.ds-today-dot{{width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:2px}}
+.ds-count{{font-size:9px;font-weight:600;color:var(--text-muted);margin-top:1px}}
+.ds-none{{opacity:0.4}}
+
 /* Scoreboard header */
-.sb-header{{max-width:700px;margin:0 auto;padding:24px 28px 0}}
+.sb-header{{max-width:700px;margin:0 auto;padding:20px 28px 0}}
 .sb-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
-.sb-date{{font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500}}
+
+/* Day label */
+.sb-day-label{{font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:12px}}
 
 /* Game grid */
-.sb-grid{{max-width:700px;margin:0 auto;padding:24px 28px 60px;display:flex;flex-direction:column;gap:8px}}
+.sb-grid{{max-width:700px;margin:0 auto;padding:16px 28px 60px;display:flex;flex-direction:column;gap:8px}}
 
 .sb-game{{background:var(--bg-surface);border-radius:10px;border:1px solid var(--border);overflow:hidden;transition:border-color 0.15s ease}}
 .sb-game:hover{{border-color:rgba(255,255,255,0.12)}}
@@ -1848,7 +2069,7 @@ a{{color:var(--text);text-decoration:none}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.sb-header{{padding:16px 16px 0}}.sb-logo{{width:26px;height:26px}}.sb-score{{font-size:20px}}.sb-team-name{{font-size:12px}}.sb-grid{{padding:12px 16px 40px;gap:6px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
+@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.date-strip-wrap{{padding:12px 16px 0}}.ds-btn{{padding:6px 8px;min-width:48px}}.sb-header{{padding:16px 16px 0}}.sb-logo{{width:26px;height:26px}}.sb-score{{font-size:20px}}.sb-team-name{{font-size:12px}}.sb-grid{{padding:12px 16px 40px;gap:6px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
 </style></head><body>
 
 <div class="topbar">
@@ -1872,12 +2093,16 @@ a{{color:var(--text);text-decoration:none}}
 
 <div class="sb-header">
   <h1>NHL Scoreboard</h1>
-  <div class="sb-date">{display_date}</div>
+</div>
+
+<div class="date-strip-wrap">
+  <div class="date-strip" id="dateStrip">
+    {date_strip_html}
+  </div>
 </div>
 
 <div class="sb-grid">
-{games_html}
-{no_games}
+{days_html}
 </div>
 
 <div class="footer">Data from NHL API<span class="footer-ts">Updated {now}</span></div>
@@ -1905,6 +2130,42 @@ a{{color:var(--text);text-decoration:none}}
     }});
   }});
 }})();
+
+// Date navigation
+function showDay(dateStr){{
+  document.querySelectorAll('.sb-day').forEach(function(el){{el.style.display='none'}});
+  document.querySelectorAll('.ds-btn').forEach(function(el){{el.classList.remove('ds-active')}});
+  var target=document.getElementById('day-'+dateStr);
+  if(target) target.style.display='';
+  var btn=document.querySelector('.ds-btn[data-date="'+dateStr+'"]');
+  if(btn) btn.classList.add('ds-active');
+}}
+
+// Scroll date strip to center today on load
+(function(){{
+  var strip=document.getElementById('dateStrip');
+  var active=strip.querySelector('.ds-active');
+  if(active && strip){{
+    var offset=active.offsetLeft-strip.offsetWidth/2+active.offsetWidth/2;
+    strip.scrollLeft=offset;
+  }}
+}})();
+
+// Keyboard nav: left/right arrows to switch days
+document.addEventListener('keydown',function(e){{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA') return;
+  if(e.key==='ArrowLeft'||e.key==='ArrowRight'){{
+    var btns=Array.from(document.querySelectorAll('.ds-btn'));
+    var idx=btns.findIndex(function(b){{return b.classList.contains('ds-active')}});
+    if(idx<0) return;
+    var next=e.key==='ArrowLeft'?idx-1:idx+1;
+    if(next>=0&&next<btns.length){{
+      showDay(btns[next].dataset.date);
+      btns[next].scrollIntoView({{behavior:'smooth',block:'nearest',inline:'center'}});
+    }}
+  }}
+}});
+
 function openPanel(gameId){{
   var src=document.getElementById('gd-'+gameId);
   if(!src) return;
@@ -1951,6 +2212,10 @@ def main():
     print("Fetching all team schedules...")
     all_schedules = fetch_all_schedules(all_teams)
     print(f"  {len(all_schedules)} team schedules fetched")
+
+    print("Fetching injuries from ESPN...")
+    all_injuries = fetch_espn_injuries()
+    print(f"  {len(all_injuries)} teams with injuries")
 
     # ── Per-team builds ───────────────────────────────────
     for team_abbrev in TEAM_INFO:
@@ -2048,7 +2313,8 @@ def main():
         projections_html = build_projections_html(team_entry, vs500, mp_odds, mp_stats, conf_teams)
         schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records_map, mp_stats, mp_odds, results)
         news_html = build_news_html(news_articles)
-        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams)
+        injuries_html = build_injuries_html(all_injuries.get(TEAM, []))
+        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
@@ -2059,12 +2325,28 @@ def main():
     # ── Scoreboard page ────────────────────────────────
     print(f"\n{'='*50}")
     print("Building scoreboard...")
-    scores_data = fetch_scores()
-    games = scores_data.get("games", [])
 
-    # Fetch game details (boxscore + scoring) for completed/live games
+    # Fetch today's scores first to get the current date
+    today_scores = fetch_scores()
+    today_date_str = today_scores.get("currentDate", datetime.now(timezone(timedelta(hours=-5))).strftime("%Y-%m-%d"))
+
+    # Fetch 15 days: 7 days back + today + 7 days ahead
+    from datetime import date as _date
+    today_date = datetime.strptime(today_date_str, "%Y-%m-%d").date()
+    all_days_scores = []  # list of (date_str, scores_data)
+
+    for offset in range(-7, 8):
+        d = today_date + timedelta(days=offset)
+        d_str = d.strftime("%Y-%m-%d")
+        if d_str == today_date_str:
+            all_days_scores.append((d_str, today_scores))
+        else:
+            print(f"  Fetching scores for {d_str}...")
+            all_days_scores.append((d_str, fetch_scores_for_date(d_str)))
+
+    # Fetch game details only for today's completed/live games
     all_game_details = {}
-    for g in games:
+    for g in today_scores.get("games", []):
         gid = g.get("id", 0)
         gstate = g.get("gameState", "")
         if gstate in ("FINAL", "OFF", "LIVE", "CRIT"):
@@ -2088,10 +2370,11 @@ def main():
             sb_switcher += f'<option value="{fn}">{t["name"]}</option>'
         sb_switcher += '</optgroup>'
 
-    scoreboard_html = build_scoreboard_html(scores_data, all_game_details, sb_switcher)
+    scoreboard_html = build_scoreboard_html(all_days_scores, today_date_str, all_game_details, sb_switcher)
     with open("scores.html", "w") as f:
         f.write(scoreboard_html)
-    print(f"  -> scores.html generated ({len(games)} games, {len(all_game_details)} with details)")
+    total_games = sum(len(sd.get("games", [])) for _, sd in all_days_scores)
+    print(f"  -> scores.html generated ({total_games} games across 15 days, {len(all_game_details)} with details)")
 
     print(f"\n{'='*50}")
     print("Done! All 32 team pages + scoreboard generated.")

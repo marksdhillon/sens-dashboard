@@ -42,12 +42,14 @@ input[name="tab"]{display:none}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{display:block}
 
@@ -207,6 +209,19 @@ a.pname:hover{color:var(--text-strong)}
 .empty-state{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}
 .empty-state span{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}
 
+/* Injuries */
+.inj-tbl-wrap{overflow-x:auto;border-radius:8px}
+.inj-tbl td{font-size:12px}
+.inj-name{font-weight:600;color:var(--text)}
+.inj-pos{color:var(--text-muted);font-size:11px}
+.inj-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;display:inline-block}
+.inj-out{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-ir{background:rgba(248,113,113,0.12);color:var(--red)}
+.inj-dtd{background:rgba(251,191,36,0.12);color:#fbbf24}
+.inj-other{background:var(--bg-surface);color:var(--text-secondary)}
+.inj-return{font-size:11px;color:var(--text-secondary)}
+.inj-comment{font-size:11px;color:var(--text-muted);max-width:200px}
+
 /* Footer */
 .footer{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
@@ -257,7 +272,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/COL_dark.svg" alt="Colorado Avalanche" class="team-logo">
       <div>
         <h1>Colorado Avalanche</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:05 PM ET</div>
       </div>
     </div>
   </div>
@@ -267,7 +282,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Record vs teams above .500"><span class="sl">vs .500+</span> <span class="sv">15-6-5</span></span>
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Goal Diff</span> <span class="sv">+77</span></span>
     <span class="stat-pill" title="Power play goals / power play shots — league rank out of 32"><span class="sl">PP%</span> <span class="sv">8.6% <small>(32nd)</small></span></span>
-    <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">88.8% <small>(6th)</small></span></span>
+    <span class="stat-pill" title="Penalty kill save % — league rank out of 32"><span class="sl">PK%</span> <span class="sv">88.4% <small>(6th)</small></span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">6-4-0</span></span>
   </div>
 </div>
@@ -277,6 +292,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
   <div class="tab-bar">
@@ -284,6 +300,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
   </div>
@@ -310,7 +327,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="sched-list"><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
 <div class="game-expand">
-  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>COL holds a 20-pt lead over ANA</li><li>ANA projected to make playoffs (93% odds)</li><li>High-scoring matchup — combined 7.2 goals/game avg</li></ul>
+  <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>COL holds a 20-pt lead over ANA</li><li>ANA projected to make playoffs (94% odds)</li><li>High-scoring matchup — combined 7.2 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>COL</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">40-10-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">89</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">22-4-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">18-6-5</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">6-4-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">225</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">148</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
 </div></details><details class="game-detail">
 <summary class="game-summary"><div class="game-left"><span class="game-date">Mar 6</span><span class="game-opp">@ Dallas</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W9</span></div><div class="game-right"><span class="game-meta">37-14-9 &middot; 83p</span><span class="game-loc loc-away">Away</span></div></summary>
@@ -433,12 +450,12 @@ body{animation:fadeIn 0.15s ease}
 <h3>Next Game Impact</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
-<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">118</td><td class="r">64.6%</td><td class="r">10.9%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">119</td><td class="r">65.1%</td><td class="r">11.7%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">118</td><td class="r">64.9%</td><td class="r">10.7%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">116</td><td class="r">64.1%</td><td class="r">10.8%</td></tr></tbody></table></div>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">118</td><td class="r">64.9%</td><td class="r">10.9%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">118</td><td class="r">65.4%</td><td class="r">10.4%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">117</td><td class="r">65.2%</td><td class="r">11.2%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">100.0%</td><td class="r ">+0.0%</td><td class="r">116</td><td class="r">64.3%</td><td class="r">10.9%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.1%</td><td class="r">32.4%</td><td class="r">19.8%</td><td class="r">10.9%</td><td class="r">111</td><td class="r">13.5%</td></tr><tr class="sens-row"><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.6%</td><td class="r">34.1%</td><td class="r">20.5%</td><td class="r">10.9%</td><td class="r">118</td><td class="r">85.3%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.3%</td><td class="r">21.9%</td><td class="r">12.0%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.5%</td><td class="r">45.4%</td><td class="r">21.2%</td><td class="r">8.6%</td><td class="r">3.6%</td><td class="r">96</td><td class="r">40.0%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">93.0%</td><td class="r">48.8%</td><td class="r">25.7%</td><td class="r">11.3%</td><td class="r">5.1%</td><td class="r">95</td><td class="r">37.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.6%</td><td class="r">35.7%</td><td class="r">17.5%</td><td class="r">7.8%</td><td class="r">3.6%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">73.2%</td><td class="r">33.4%</td><td class="r">15.5%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.6%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.8%</td><td class="r">35.8%</td><td class="r">18.9%</td><td class="r">8.9%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.2%</td><td class="r">9.9%</td><td class="r">3.4%</td><td class="r">1.0%</td><td class="r">0.4%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">27.8%</td><td class="r">10.6%</td><td class="r">4.3%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.9%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.1%</td><td class="r">9.5%</td><td class="r">3.7%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.5%</td><td class="r">2.1%</td><td class="r">0.8%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.6%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.2%</td><td class="r">80</td><td class="r">0.1%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.5%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class="sens-row"><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.8%</td><td class="r">34.2%</td><td class="r">20.6%</td><td class="r">10.9%</td><td class="r">118</td><td class="r">85.3%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.2%</td><td class="r">32.3%</td><td class="r">19.5%</td><td class="r">10.5%</td><td class="r">111</td><td class="r">13.6%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.4%</td><td class="r">21.7%</td><td class="r">12.1%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.6%</td><td class="r">45.4%</td><td class="r">21.5%</td><td class="r">8.6%</td><td class="r">3.7%</td><td class="r">96</td><td class="r">40.1%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">92.9%</td><td class="r">49.0%</td><td class="r">26.1%</td><td class="r">11.7%</td><td class="r">5.4%</td><td class="r">95</td><td class="r">37.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.4%</td><td class="r">35.6%</td><td class="r">17.3%</td><td class="r">7.6%</td><td class="r">3.3%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">72.8%</td><td class="r">33.5%</td><td class="r">15.5%</td><td class="r">6.3%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.6%</td><td class="r">35.5%</td><td class="r">18.4%</td><td class="r">8.6%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.6%</td><td class="r">10.1%</td><td class="r">3.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">27.7%</td><td class="r">10.6%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">0.9%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.6%</td><td class="r">9.2%</td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.6%</td><td class="r">2.1%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">80</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.5%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -456,9 +473,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="1">1</td><td class="r" data-sort="5">5</td>
 <td class="r" data-sort="266">266</td><td class="r" data-sort="15.4">15.4</td>
 <td class="r" data-sort="1332">22:12</td><td class="r" data-sort="51.5">51.5</td>
-<td class="r adv adv-pos" data-sort="13.9">+13.9</td>
+<td class="r adv adv-pos" data-sort="13.1">+13.1</td>
 <td class="r adv" data-sort="56.99999999999999">57.0</td>
-<td class="r adv" data-sort="1.92">1.92</td>
+<td class="r adv" data-sort="1.99">1.99</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="2">2</td>
 <td class="name-cell" data-sort="Martin Necas"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8480039.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Martin+Necas" target="_blank" rel="noopener" class="pname">Martin Necas</a></div></td>
@@ -472,9 +489,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="138">138</td><td class="r" data-sort="18.8">18.8</td>
 <td class="r" data-sort="1261">21:01</td><td class="r" data-sort="45.0">45.0</td>
-<td class="r adv adv-pos" data-sort="8.1">+8.1</td>
-<td class="r adv" data-sort="55.00000000000001">55.0</td>
-<td class="r adv" data-sort="1.34">1.34</td>
+<td class="r adv adv-pos" data-sort="7.7">+7.7</td>
+<td class="r adv" data-sort="56.00000000000001">56.0</td>
+<td class="r adv" data-sort="1.4">1.40</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="3">3</td>
 <td class="name-cell" data-sort="Cale Makar"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8480069.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Cale+Makar" target="_blank" rel="noopener" class="pname">Cale Makar</a></div></td>
@@ -488,9 +505,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="4">4</td>
 <td class="r" data-sort="160">160</td><td class="r" data-sort="10.6">10.6</td>
 <td class="r" data-sort="1503">25:03</td><td class="r" data-sort="0">--</td>
-<td class="r adv adv-pos" data-sort="3.0">+3.0</td>
+<td class="r adv adv-pos" data-sort="2.9">+2.9</td>
 <td class="r adv" data-sort="55.00000000000001">55.0</td>
-<td class="r adv" data-sort="1.22">1.22</td>
+<td class="r adv" data-sort="1.26">1.26</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="4">4</td>
 <td class="name-cell" data-sort="Brock Nelson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8475754.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brock+Nelson" target="_blank" rel="noopener" class="pname">Brock Nelson</a></div></td>
@@ -504,7 +521,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="7">7</td>
 <td class="r" data-sort="137">137</td><td class="r" data-sort="21.9">21.9</td>
 <td class="r" data-sort="1163">19:23</td><td class="r" data-sort="49.8">49.8</td>
-<td class="r adv adv-pos" data-sort="8.2">+8.2</td>
+<td class="r adv adv-pos" data-sort="7.7">+7.7</td>
 <td class="r adv" data-sort="60.0">60.0</td>
 <td class="r adv" data-sort="1.03">1.03</td>
 </tr><tr class="player-summary">
@@ -520,7 +537,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="138">138</td><td class="r" data-sort="13.8">13.8</td>
 <td class="r" data-sort="1123">18:43</td><td class="r" data-sort="16.7">16.7</td>
-<td class="r adv adv-neg" data-sort="-4.9">-4.9</td>
+<td class="r adv adv-neg" data-sort="-5.0">-5.0</td>
 <td class="r adv" data-sort="56.99999999999999">57.0</td>
 <td class="r adv" data-sort="0.94">0.94</td>
 </tr><tr class="player-summary alt">
@@ -536,9 +553,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="114">114</td><td class="r" data-sort="10.5">10.5</td>
 <td class="r" data-sort="1080">18:00</td><td class="r" data-sort="50.0">50.0</td>
-<td class="r adv adv-neg" data-sort="-2.9">-2.9</td>
+<td class="r adv adv-neg" data-sort="-3.0">-3.0</td>
 <td class="r adv" data-sort="61.0">61.0</td>
-<td class="r adv" data-sort="0.92">0.92</td>
+<td class="r adv" data-sort="0.93">0.93</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="7">7</td>
 <td class="name-cell" data-sort="Brent Burns"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8470613.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brent+Burns" target="_blank" rel="noopener" class="pname">Brent Burns</a></div></td>
@@ -552,9 +569,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="5">5</td>
 <td class="r" data-sort="127">127</td><td class="r" data-sort="7.1">7.1</td>
 <td class="r" data-sort="1162">19:22</td><td class="r" data-sort="0">--</td>
-<td class="r adv adv-pos" data-sort="4.1">+4.1</td>
+<td class="r adv adv-pos" data-sort="4.0">+4.0</td>
 <td class="r adv" data-sort="57.99999999999999">58.0</td>
-<td class="r adv" data-sort="0.75">0.75</td>
+<td class="r adv" data-sort="0.78">0.78</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="8">8</td>
 <td class="name-cell" data-sort="Gabriel Landeskog"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8476455.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Gabriel+Landeskog" target="_blank" rel="noopener" class="pname">Gabriel Landeskog</a></div></td>
@@ -568,9 +585,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="99">99</td><td class="r" data-sort="8.1">8.1</td>
 <td class="r" data-sort="975">16:15</td><td class="r" data-sort="62.2">62.2</td>
-<td class="r adv adv-neg" data-sort="-4.5">-4.5</td>
-<td class="r adv" data-sort="56.99999999999999">57.0</td>
-<td class="r adv" data-sort="0.73">0.73</td>
+<td class="r adv adv-neg" data-sort="-4.8">-4.8</td>
+<td class="r adv" data-sort="57.99999999999999">58.0</td>
+<td class="r adv" data-sort="0.81">0.81</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="9">9</td>
 <td class="name-cell" data-sort="Sam Malinski"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8484258.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Sam+Malinski" target="_blank" rel="noopener" class="pname">Sam Malinski</a></div></td>
@@ -586,7 +603,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="1013">16:53</td><td class="r" data-sort="0">--</td>
 <td class="r adv adv-neg" data-sort="-0.9">-0.9</td>
 <td class="r adv" data-sort="57.99999999999999">58.0</td>
-<td class="r adv" data-sort="0.81">0.81</td>
+<td class="r adv" data-sort="0.82">0.82</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="10">10</td>
 <td class="name-cell" data-sort="Josh Manson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8476312.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Josh+Manson" target="_blank" rel="noopener" class="pname">Josh Manson</a></div></td>
@@ -600,9 +617,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
 <td class="r" data-sort="92">92</td><td class="r" data-sort="5.4">5.4</td>
 <td class="r" data-sort="1085">18:05</td><td class="r" data-sort="0">--</td>
-<td class="r adv" data-sort="0.2">+0.2</td>
+<td class="r adv" data-sort="0.1">+0.1</td>
 <td class="r adv" data-sort="59.0">59.0</td>
-<td class="r adv" data-sort="0.72">0.72</td>
+<td class="r adv" data-sort="0.73">0.73</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="11">11</td>
 <td class="name-cell" data-sort="Victor Olofsson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8478109.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Victor+Olofsson" target="_blank" rel="noopener" class="pname">Victor Olofsson</a></div></td>
@@ -616,9 +633,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
 <td class="r" data-sort="110">110</td><td class="r" data-sort="10.0">10.0</td>
 <td class="r" data-sort="801">13:21</td><td class="r" data-sort="37.5">37.5</td>
-<td class="r adv adv-neg" data-sort="-0.6">-0.6</td>
-<td class="r adv" data-sort="57.99999999999999">58.0</td>
-<td class="r adv" data-sort="0.64">0.64</td>
+<td class="r adv adv-neg" data-sort="-0.8">-0.8</td>
+<td class="r adv" data-sort="56.99999999999999">57.0</td>
+<td class="r adv" data-sort="0.65">0.65</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="12">12</td>
 <td class="name-cell" data-sort="Parker Kelly"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8480448.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Parker+Kelly" target="_blank" rel="noopener" class="pname">Parker Kelly</a></div></td>
@@ -648,7 +665,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
 <td class="r" data-sort="132">132</td><td class="r" data-sort="5.3">5.3</td>
 <td class="r" data-sort="772">12:52</td><td class="r" data-sort="46.2">46.2</td>
-<td class="r adv adv-neg" data-sort="-8.1">-8.1</td>
+<td class="r adv adv-neg" data-sort="-8.5">-8.5</td>
 <td class="r adv" data-sort="62.0">62.0</td>
 <td class="r adv" data-sort="0.77">0.77</td>
 </tr><tr class="player-summary alt">
@@ -664,9 +681,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="69">69</td><td class="r" data-sort="11.6">11.6</td>
 <td class="r" data-sort="891">14:51</td><td class="r" data-sort="58.8">58.8</td>
-<td class="r adv adv-neg" data-sort="-2.1">-2.1</td>
+<td class="r adv adv-neg" data-sort="-2.2">-2.2</td>
 <td class="r adv" data-sort="56.99999999999999">57.0</td>
-<td class="r adv" data-sort="0.56">0.56</td>
+<td class="r adv" data-sort="0.57">0.57</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="15">15</td>
 <td class="name-cell" data-sort="Devon Toews"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8478038.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Devon+Toews" target="_blank" rel="noopener" class="pname">Devon Toews</a></div></td>
@@ -680,9 +697,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="78">78</td><td class="r" data-sort="2.6">2.6</td>
 <td class="r" data-sort="1343">22:23</td><td class="r" data-sort="0">--</td>
-<td class="r adv adv-neg" data-sort="-2.5">-2.5</td>
+<td class="r adv adv-neg" data-sort="-2.7">-2.7</td>
 <td class="r adv" data-sort="55.00000000000001">55.0</td>
-<td class="r adv" data-sort="0.61">0.61</td>
+<td class="r adv" data-sort="0.64">0.64</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="16">16</td>
 <td class="name-cell" data-sort="Gavin Brindley"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8484149.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Gavin+Brindley" target="_blank" rel="noopener" class="pname">Gavin Brindley</a></div></td>
@@ -842,7 +859,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="1048">17:28</td><td class="r" data-sort="0">--</td>
 <td class="r adv adv-neg" data-sort="-2.1">-2.1</td>
 <td class="r adv" data-sort="47.0">47.0</td>
-<td class="r adv" data-sort="1.77">1.77</td>
+<td class="r adv" data-sort="1.95">1.95</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="26">26</td>
 <td class="name-cell" data-sort="Taylor Makar"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8482953.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Taylor+Makar" target="_blank" rel="noopener" class="pname">Taylor Makar</a></div></td>
@@ -899,57 +916,77 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="104">104</td><td class="r" data-sort="8">8</td><td class="r" data-sort="2.03">2.03</td>
 <td class="r" data-sort="97">97</td><td class="r" data-sort="0.9330">.933</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="14194">236:34</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPM2F0eDNXMlFFc1BHTUVEd1pDbV9URFlxdEFJdzgtRkdRaWtuZ2xxdldQa0UycUx3QUM0RGh6RDl3SG01ZDFRem85YjBiNUhNZVl4NUdaN1ZyMW1QZ0tXT0xrUk9Yc3hPTWw1UW9Gb0tDZXk2ZUVvckM0T1phbC1IM2xR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:45 AM</span></div>
-<div class="news-title">Postgame - Landeskog (March 2)</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPMkRmd3FyYndVMW5pVU5KNjJWWHhJYmZZeXJqN2NQRVVLOFM3N1VYSDhfc01GRkpTelFDX1VhdzFhV2tEczBWd1hnN3lrQkVpLVBBQ2wzTGtGN3N4NjZYbTlDV3lDdmhhMGxBME53R0E0Z2JPMGJScEEyMXEzSXZEazRLTzFyYmk4UlR5SHJFNGdoTGR0YUdzZVFGMHdJOVZxaXR3YnQzQXZCMDB4WUNkb0xHaVFhTWJlVFhnWXM2N0V4Zw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Hockey</span><span class="news-date">Mar 3 &middot; 7:30 AM</span></div>
-<div class="news-title">Recap: Kings no match for Colorado as Avalanche win 4-2</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQMlFJcnVXTzMwV0RxZEVPTjBqSnA0VVpXSEROU2ZiY0hiSElCdHlNZHREVW03S2d1clBIM2gtdFBhdks1UFZ3bi1xQUtBUkVDMEhLbm1qS2Z2T0pUYVRPM3lvQnJNbmNLSUdtc19od3VWNXh0OUU0SGc3MFJRRjUySXI0NkRZOWZDZVZ1LXpOTmhLTjU4ODF4SWJNZm80cVJhQ0FhZG1Kd05YajdidHgyZ2ZzNHNueWJGQlFwbkFSY01qaFgy?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
+<div class="sub-note">Data from ESPN</div>
+<div class="inj-tbl-wrap">
+<table class="nhl-tbl inj-tbl">
+<thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
+<tbody><tr>
+<td class="inj-name">Artturi Lehkonen</td>
+<td class="inj-pos">LW</td>
+<td><span class="inj-badge inj-out">Out</span></td>
+<td class="inj-return">Mar 10</td>
+<td class="inj-comment"></td>
+</tr><tr>
+<td class="inj-name">Joel Kiviranta</td>
+<td class="inj-pos">LW</td>
+<td><span class="inj-badge inj-out">Out</span></td>
+<td class="inj-return">Mar 8</td>
+<td class="inj-comment">Feb 28: Kiviranta is in the concussion protocol, Corey Masisak of The Denver Post reports Saturday.</td>
+</tr></tbody>
+</table>
+</div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZDhGejJZMjRaLXFCNE55NEhkRU0ydFcxMUhFbm4wVXFvVXVoc2xwejJaSXBWbjFoSkdOMG9abUZTeUYxXzlOX3htTmFJSXYzbDN1aHplcUt2dV9mdjJoSVE5R1BjRWR5X0ROa3I5bWgwS0x6dmkxR0lsajFPQ3g3c3lUX1dZeFEzRko4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:51 PM</span></div>
+<div class="news-title">Avalanche at Ducks projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPWVMzcUk4TWZDRHlhanJYMWlZUEZIODU1R0VNeWFBT1lKdEd5SkRULTZPNVplUERBZURFQVhPTVpjLUNxSUZaSWRuSmpjRVhHeHNGbzE2YmRsYUwtNEZrYWZJZWd3QzdqQm5UbzVvVzlZVkdxaG5lZ3l2N3p0T1hmSy11aldDa3k0NUpwTlpUbk92NXBYZUJz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 6:48 PM</span></div>
+<div class="news-title">Avalanche GM Chris MacFarland on looming trade deadline: ‘We’re going to leave no stone unturned’</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOUzdqSGZvWVA4YV9lbTZZUExnOW51NzEwVFVWcFJsZHRVTWRIOUp1TVBYWGhwN3Z3eXZOcUNaRVNSeXNfZFNScWFNZEpNdUdtZVBvZG13QzYwNHBfazhaeXVJaE1zVmtCR2dpMWM1bGJkX2Vmc0NRc2k4d3NtUDhFY0UzRmVuXzMzY2NXLQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 6:35 PM</span></div>
+<div class="news-title">Avalanche Should Go All Out to Bring in Veteran Center</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSGRfdHE3YVhvOU10SzVFTFphVXRBczdTY2FyY1ZsaVQwazZ5VnVGV3M4WFRfTHU2RjBwSF9RTkhpR2xrRzRyZlhLMVBBSEVlczZmaVVpU2YxY1ZKQjdZek5hTDZ0Ullya01xX3hrclpLd1lmQUZqUTF3N2h2NEYwU19ENWFkM1RwSWxjTEJTSjIya1VidWpKYmlXdG5pWTlBd2NQN1RLbG5BWnM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:31 PM</span></div>
+<div class="news-title">Forward Polin Recalled from Colorado Eagles to Colorado Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQVm1ycl9kN05YbVNxMnNDdmU2TWF0NlFDUGdZbXREamhrQVZ4UmRBdlZienZMVTV5Rk8zUTNWR29tTTBZMUozOUY2V09OUUdXMmlGdjZGSUZxZHZNTy1KMHlibkl2cDBMTDVOSDlLT29pUnlvbko1aW53a3BVLUNsNHJMWHdEek50TWdhYkcyeGJQcVdTdUZBZlBfc3Zjd3h0d0JPTWpIMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 5:48 PM</span></div>
+<div class="news-title">Deen’s Daily: Kadri Reunion?; Oilers Bolster Blueline; Bobrovsky Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxQSm1QSFcwRE52Z0J1NEd1b2M3d1hROXl5dlBNYXBHcm1jSWVBTm4wM2tKbzZTOGs5MGUxNDRoRVIwWEZTR0lTMUM1XzgyWVhNVTBqaG1nMWNnVTdrTTBZSklqNTNybjdtM09UdUhaeDVESkp4QUEyT3pEZlRVbjlTSHc4M2p4WGl1TEZEbEc5T0VPUi1ZbFVQbmJRaHFiVy1nQnJORERpVXh5QjI5Slcya2x1RXZiNGlPS1ExcmVQUnFqWGpQbmxDUTNaYkNScDZLUGEybWEwamFzTlVxOTNQSVVNWkIwUEVBQTM5VEgtaU9Vd0NGMEN0WkQyNGRFUVczem85Q2RkUkrSAY4CQVVfeXFMUHVJd0oyTnlxdGpNaWNQZFZ2UlQybnVvMUZlbWg2cTR4ZFVIVUdqR0NOcWtlaFF1RHZ0OWtVLUxGNnR0WE54ckRUTF8zSmFYWU5CNlo3bE9ROWF3TFdJSllCajJ2cHBzNUlvWFJNYmtxSWFDc2RmVnZJNmJkN1Y3WUlhSllmYUtrSkRyZzJfOTBlZGZKdEFQd0dsTE9POHpNMDhmNTNMb25lRDByTmxkVWpYU2czMEd2SlNnSkhwM0RCWXVwd0hYTmxzQWRiQW1oQkRRaVRyUGIyNHJhQVkydGRrcXhIc1dzV1FMa2pVQ0Z6bjdOTnZnNVBGLVh4LThYVi1XTEw0THh5anJ3bVFB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 5:45 PM</span></div>
+<div class="news-title">Colorado Avalanche forward Artturi Lehkonen sidelined due to injury, expected to miss multiple games</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNb2paZm9CcjVSbE9rUDlLZjhaYkJDeXJFZDlvd2E3WTlOTzE1Tk1ka0k4QWNrUllhSFBueWdhSTBGUEZhWWYyY3BTYkpCRWhZaVlEV1lqX0E2eXpPeE1sTW1SWVdoUnpMVjVjbTRZVVBmQjlqeWJlNmhDMzJUX3FxbmV5WDBEbkhERU9fRjA5cXl2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:43 PM</span></div>
+<div class="news-title">Trade Buzz: Avalanche ‘deserve the help’ before Deadline, GM says</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPU2ZRVGFzNWF3bnp1OWZ4WllaOVZ5M0E1eGxkZks5N3pIb2luSTh5QmlJNVB1MEJCWVRZM0dyUl9XM0NwRUhOTWFENm1kMGtKLWlpS3dDMHFfaHpZSTB4b3VqdktZNjlKZkZqRHF4Yk1qUmR3djZ4eHgwSUZnUVR1SGhtdS11dG1uT1l1dWJmLXhtQk9YRmEtVE54ZHFtQWFrOXhCQ3NCWmpXZEl1RE5JLWY3dw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 4:41 PM</span></div>
+<div class="news-title">NHL Game Preview: Colorado Avalanche at Anaheim Ducks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPSmo5alJUc08tZzVqNVNZM0x1VXpLS0lVT0tqOVp0Y0hvcGNPRS1OT2tzeWdWdC0xT25BSmFqUld5NTlEYTBNb2dlemc3QUs1WjNzSFNBUk5TNEFBMFFGZGJrVE90cU1kNndTM25NWlR5OE5qazdDQUhaZGdQbjZzSVBtUnVsZExwbTVUc1puTV83dDNWcTFHcFlhcXFVSmNNVFBBWDJMZG40dGtsUjBkY3p4NjREbGlLVmdXQUdB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 4:31 PM</span></div>
+<div class="news-title">Artturi Lehkonen Set To Miss Time With Injury. Will Avalanche Take Action At Trade Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
+<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNRmVpdl9Lc212SWl2ck5vSGtkXzloc1ZfUk9aVWJybzllS2QzN01nOWFwaDRnR2s0aFFzRzdiNkRRbExGczhBa2dGXzN1YWwtNmg0dVNUb1YzLWZ5bVQ1RnJyWlB5VGhIZ2xuNEkydjhyY0o3cVlRTUI1Y1B2ekJmUDVCUmFjZ2hGNkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 4:13 PM</span></div>
+<div class="news-title">Calgary Flames mulling over final trade offers for Nazem Kadri</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONmw0TFlVN0FwYUVwOE5BVjhfTjg0RDZIQk1tTUhsWE1CdEJaNmxEb1Z2bFFwQjQtTzU5Z0puYVVjQkJFSVJwZHBzNVhuYU5KM2h2RU1SSy1mRzBobnJtZGF1dlhFVl9HaVRKb2Jqa1lZUzU4OHU2V1RfRHF5elRNenBrS0hmTzlqb21YRTU3ZXVWNlFRdmF5cE9SVFhDMXhmTThsclp1N3dELUo5aVJ6U0dYZWRidGRacDl1WTM3a1pCNDliNFhWbXdwYzBaSGFBVkFGalpyREhzMzY2RGtz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:01 PM</span></div>
+<div class="news-title">NHL Rumor Roundup: Latest On Flames' Kadri, Rangers' Trocheck, Panthers' Bobrovsky And Other Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQLUdXZFNJYm45NXl6c3FzUDNqd2g3TDNWVzM3OEQyY0hqTS05SjJBTHZvTFFkT01BYTlEWmtwSnRhcXh6MlBtdDY2U1Fna3RmMmljYlNtTW02QmE2clViQi0wQ3FTTEF3Wk5DRWlZWGNZaU9Pbk5CeHFZUkdTX2p1R0syWTUzcTVtN3N4eVQxajNUeUE0UTFoS1J5b0d2dElYdkxkQ2h5RjNWbm93Smg4VzNKelM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 3:02 PM</span></div>
+<div class="news-title">NHL Trade Deadline 2026: Girard Traded, Forward Help Coming? — Avalanche Trade Board 3.0</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNYUR2NGhOQnl5X0Zmb1J0TXRxNFNMcXh4SWFWbUwyVjNld2xTdFBRaWJXWGZkRVRZTTY5clB1TmYyS3NfNzNONDVfd1B0QU9GSnJsdGxqallEcjVhT2FiSE9Sa3hmZHJsU1hRbUFnb0tLbFRkZVN3bWlvRGlWT3NRbUoydXFOb3NKd0FuajhURmRYZ2VINFhxOFJjS0VxcGpuN0NSQlhGM3hkekE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 2:16 PM</span></div>
+<div class="news-title">Avalanche’s Artturi Lehkonen Leaves Game Injured, Will Miss Time</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOVC1wYndwQnQteWd3SE1keTNzcXV4ZmVqVWNJV0oxQ2dDNmpTbl9LRVowbl9ocWhYemVFLVE1YVZYMEVFMFhyZDJkaFI1LVVyV0NEUVV0akRwUjl5RXVramNtOW4yQ09GTzhLUzljUEV6cXBXVWFWRUdNREtOMm5DWl9zYktQZFZkalo2SzZPM0pEcS1GUkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 2:12 PM</span></div>
+<div class="news-title">Devon Toews’ late goal helps Avalanche fend off pesky Kings in 4-2 win</div></a><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFBSUU9mUGNGS2ZnV1c0TFp2c2V1aldpdS1DMVN2UmswS2M1VG9GTjBIWGlRLVktTnFIYWtDS2xPYmRzcHprbk13T19yWlZYeWFoaWo0dXgxRF9rLTQ1Mll5Qjh0eUs?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:05 PM</span></div>
+<div class="news-title">Devon Toews Scores Late Goal to Help Avalanche Defeat Kings 4-2</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9XQ3cwdnh0TWNxTC1WV2FmcW1TanZzM0xOTWYxTS1wRHhNMFJRTjRIRkJubVEyY3l3T3JFYmFHXzB1TGFRX0RsU2JYOFlmdEhHOXFMZ1RNMVppUDNXTUk5WW15ZXVsRzg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:05 PM</span></div>
+<div class="news-title">A Duel with the Ducks</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQb2dmM2VzVnBidDRZeDlRcVBUYmsxRWxrdjJOOFlEWWJmeVZRdTZVWGRrNElOX2FpZUlaelJHR1lERzZGNkFwWXZkWHRrSzU5TnpSb2Vob2lSeEJtSGNVbllnSUlUV21VbnRoTFRvWU9FUTR6cGpCX2ZFRlpJeDJiSGRiS2szNG9PSTZsV05FejlzandBVndhMmdtblZFcVdEWnhhUjJiNWpHaDI5TXpTaEFtTHhQMDdr?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 3 &middot; 11:29 AM</span></div>
+<div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPTmJIZTBCUFJKN2VOOUs5S0Zyd1E1SjlHVGs3MWZocGh0TnZ0aHZYWXZTMGxqT21ZeTh5Qm4zWEFITWkyX1RiRnNvNklySkp0ZnRZSUJpZGY5dDZab3dCWW1ISHJCbWdMbkwwTk04dGpxUTBqYzU1ZEZ6anBUMVZHa3pB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:05 AM</span></div>
+<div class="news-title">Postgame - Blackwood (March 2)</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQMlFJcnVXTzMwV0RxZEVPTjBqSnA0VVpXSEROU2ZiY0hiSElCdHlNZHREVW03S2d1clBIM2gtdFBhdks1UFZ3bi1xQUtBUkVDMEhLbm1qS2Z2T0pUYVRPM3lvQnJNbmNLSUdtc19od3VWNXh0OUU0SGc3MFJRRjUySXI0NkRZOWZDZVZ1LXpOTmhLTjU4ODF4SWJNZm80cVJhQ0FhZG1Kd05YajdidHgyZ2ZzNHNueWJGQlFwbkFSY01qaFgy?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 3 &middot; 7:17 AM</span></div>
 <div class="news-title">Avalanche’s trade deadline plans may have just changed after Artturi Lehkonen injury</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPN1h2RGdoOXNnNWhSM0hSdzRxU0NrekNQM1VHUTlFNGxCSEc0Y0xhbFp0QjE5ZU1pWndaTW93X2RwRXRnRTVLZzRld2F6U2M3MTF4ZnFrUmZMUjJIYVk2NkViMTFVRnppYkctVzJsdVJ0QmIybUUya1VrMTdiRGFrQXNudGl0aVdRUnhfZmt2aE5UVmlMZ1JVSS1iVms4VkdjWHJTVkEyRlFnckNrVDJOa2t1SHZhVEVaOHlUV09MUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 6:47 AM</span></div>
-<div class="news-title">Toews scores late winner as Avalanche beat Kings in Los Angeles’ first game under new coach</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdng4SzFBcnpLVG9UQXRMS0doWXY5VWxxYXItV1J5cFItQ2xmc3dKNVhIa0RlVW1IVGEzcE5aaUVDb09RcTI2LS04cHcxMXR2UVAyQzZpcnBJV2VIT3NPRWVQUk44TVdjYnlVdHgtOVA2aTNPeElIYjE1YXIyU0NvN2FSbjRrTnFBbmRDb2Nn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:39 AM</span></div>
-<div class="news-title">Toews breaks tie in 3rd, Avalanche deny Kings in Smith's 1st game as coach</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOaklSUUpVWTIxYlNneUVyWGxvejFWR0huQXBzZF9VYTFrRF9oV3g2RE1rdU11REN3RWU3bFVBME1nRWVjcUFPTFRTc25SVERrMERjVjFMdjVxOHpoanhBNS1HbFBxMTFtS0N5ZGY5aDFTdzZzQjNmQmNISzF6N1ByT2k3OFV4ektZVEJGSVhSU2ZabDBGS2hwcXhZVmpUNUxYMUM0MXJSRWY3b3N2VjlncA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Los Angeles Times</span><span class="news-date">Mar 3 &middot; 6:38 AM</span></div>
-<div class="news-title">Kings’ high-energy comeback falls short in loss to NHL-leading Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBndk5UYUYwUXR2WXgtZnNDalROZ3o4R3o4RU81QS1YLWVfZzBZUm40RTlqY05aQmpzdDFVbWRVTzJRd2N3ekpwZk5TUDRrOW1tczZnQlBiZWRYcGxYaUpmTHVpVGxpdHk3RnVDSWtZM205LVlqY05QcnBYSQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Sporting Tribune</span><span class="news-date">Mar 3 &middot; 6:31 AM</span></div>
-<div class="news-title">TST Images: Avalanche defeat Kings,4-2, in Los Angeles</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPNjZtZDQ1SEJXT3NrbDNpSFBJZjBHQWJiQVk3aTIxZ1dWa0Y5cTdwYXIxdmZDRExqNE1FdThRdmZBd3VHSV92Mnc4OGlYNzE1b3JxaG9XYXZDWUY2WHVOdk9ibFByclB4WFdRcll6TGZYZm1vc2N1R0M0UWdteGtnc3JoZ2R6SW9ySXMzRGJ0SW9GZ1Y2SExuaVpfUzNZb2NHS2hj?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Toews scores late winner as Avalanche beat Kings in Los Angeles’ first game under new coach</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPNjZtZDQ1SEJXT3NrbDNpSFBJZjBHQWJiQVk3aTIxZ1dWa0Y5cTdwYXIxdmZDRExqNE1FdThRdmZBd3VHSV92Mnc4OGlYNzE1b3JxaG9XYXZDWUY2WHVOdk9ibFByclB4WFdRcll6TGZYZm1vc2N1R0M0UWdteGtnc3JoZ2R6SW9ySXMzRGJ0SW9GZ1Y2SExuaVpfUzNZb2NHS2hj?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 6:29 AM</span></div>
-<div class="news-title">Avalanche ruin debut of Kings interim coach D.J. Smith</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxORmRLZFBFVHFLQUc0Zng4YWJlTWhZTTF1cWM3dFNPbVVOajIyNlhOV21QX2JaZi0tZDVLVktEWHFCTnZJZFVNMnlkNFFWYU81M3JpOHhaUzVEdFpFLVNqWW5mNVVZRHlaUll1bGpERzlrYm5hdERfaF9fWUxDQm1MdGtLYi04aWdYdGVZNDd0NTMyNURlbWc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Evrim Ağacı</span><span class="news-date">Mar 3 &middot; 6:25 AM</span></div>
-<div class="news-title">Avalanche Edge Kings In Tight NHL Showdown In Los Angeles</div></a><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFBSUU9mUGNGS2ZnV1c0TFp2c2V1aldpdS1DMVN2UmswS2M1VG9GTjBIWGlRLVktTnFIYWtDS2xPYmRzcHprbk13T19yWlZYeWFoaWo0dXgxRF9rLTQ1Mll5Qjh0eUs?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:25 AM</span></div>
-<div class="news-title">Devon Toews Scores Late Goal to Help Avalanche Defeat Kings 4-2</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQXzExLTNjM3NfUnFDRGxmQS1mMHI5bjg3UUQ0Q2kxQ3ZuaHhwYTNOZ1IwcWVkSGNid1dCNHprOGNOTzR4eE1kMXE4OXowZFRtYnUtbnhwck0tYjhTRXd0VEs0THFEbC1uYzFYXzZzc0FKX3dUTnNUb0VCYkxpdkFTM0hpbXJCSVBzMEJfWVM1bGRrZEt5NlpfOEFlb1FWQkE1anFpRG5MVXA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 5:49 AM</span></div>
-<div class="news-title">Stars crush Canucks for franchise-record 9th straight win</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPekQ3WEI2SmU4ZDRhOURfdzVXakEyVU9DekFxcGJYOXRZamRlNk9KdC1WYjFTT3hUM0VkV0haUmUza3dKd3RWQnAyaEFrdFBLREIycVpjeVZ1ZDU5UVM5V0h1VkFCQ3R0RkVLUnlEdDNxdDZQV2l0YlJTU3dBVFo2eFh3NF9RclFSS1c1V0dFQTE2c3BFYjRwbFZKV01WZXNScTRWZ2RwZkRaaEU4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 4:56 AM</span></div>
-<div class="news-title">Avalanche's Lehkonen suffers upper-body injury, will not return vs. Kings</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNc25fV3VNOGRHbWNRVG1MbmdldjJRb3JsODVNbl9FVDh3cmhZN0lCam5MOEFmQ3JMaTVmY1B3SXBmeGdkVGhaWmYzR3lXYUNuMEt1SEQxR25KUV81bmF1REV0SEtqZ0twSGhkTVhmejd0TGUzcEoyQmh0bW5YaFZQTDN1V0Z4V0N5dzE1RlZ0LThnSEoxcWJnTUJMT3EteExqaGNKQzc1bGhiZk9GMHhpWk1LQURaOVFUeE9Z?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche ruin debut of Kings interim coach D.J. Smith</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNc25fV3VNOGRHbWNRVG1MbmdldjJRb3JsODVNbl9FVDh3cmhZN0lCam5MOEFmQ3JMaTVmY1B3SXBmeGdkVGhaWmYzR3lXYUNuMEt1SEQxR25KUV81bmF1REV0SEtqZ0twSGhkTVhmejd0TGUzcEoyQmh0bW5YaFZQTDN1V0Z4V0N5dzE1RlZ0LThnSEoxcWJnTUJMT3EteExqaGNKQzc1bGhiZk9GMHhpWk1LQURaOVFUeE9Z?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:38 AM</span></div>
 <div class="news-title">Could Kiefer Sherwood Be the Avalanche’s Midseason Upgrade?</div></a><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE9XU3NvVUZoWnhLSWx3MXc2VV9uSjFwT3JfQzhELUZFd2lUS19la2F6MzIzd2hCMGdkNDZuUXRCd2hxQ2NyOWVDWHRoS2d2MVpsWGQ0alRtdDVDaUZwcXoybjZR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:37 AM</span></div>
-<div class="news-title">Weiss keeps focus on job as Colorado AHL assistant, not historic promotion</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQdHRSWWZJeHFMaFVWTUdveGJ0NUp3em5JQkxLaWRPcHF0ZlBGVzZTTVRVUjhrTkhEb3FXdlBKQVVRSS1kNUs5SWdHQ19FWjc4ZXAzYmhMLVVweWJlQVFGV2JjOHZVYlFyYUh4YU5fRHlJVDZ0TUJSeTl0WXhVQTlpOUpR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:35 AM</span></div>
-<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxORHZCNWJVODZuZ252bXNwWGVzMDZDREcyQmhYMzZFbW5RNG0yRVRiYW1rWlg4RmtJTHlmM21NWFA0QVdxU1hJcnV4TkJtd0lDbThiRkZacDFIQ1IzSldCRTFYY3hMdEFkSkFpalY4Wi1JUE5VM01HR2NvdWtQdzdGR3BDYlh5NV9fbDR6dFpFTm1SMENpM3c0Q0NnNWJOMnRCREFXTHhBOWZxblBlSWc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Hockey</span><span class="news-date">Mar 3 &middot; 2:30 AM</span></div>
-<div class="news-title">Open Thread: Colorado Avalanche vs. Los Angeles Kings (8:30 p.m.)</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcUQ1dnFoLTFnWkxqMzdoQkY3T1Z0bkJmVmxZOTc0a0ZTZXV5azFyWWFFamlOZ1FRNlVIRlVQb1g0TnNCaFROc0E5ZWlPci0zWWF0WHNVUUVsSUFkeVpHaW9HVWZGS1NQcW14YU9fTDFobG1NOWM4VUUwbGVHR3AtT2JpaXpUZDM0MTd6Y2k0d1lqUXZlRExpMjhDczBZeUxiYlA4NUpmS2ozSkxHUWZLcG8xeGVQVEo1MjlRdXZTM2FiQUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:04 AM</span></div>
-<div class="news-title">NHL 26 Simulation Predicts Tonight’s Avalanche vs. Kings Showdown</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaWFFWUx6VmlKVW9BQ1lZaFFOQlZBREVsSmdjQ2pqZEQxQnpEZzM3YnoxVERjYVdXYkVpc3pBZUtPZ2t2VmJPMnp5VXBHM1Y1ZDhWbU53a2x2RTFTRFh0VW13bVFUajhzd19MSTVUWG1GOWdrLUNLZjBNZlVpTWMyQ0R4UHUtYXFY?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 3 &middot; 1:47 AM</span></div>
-<div class="news-title">Could Avalanche circle back to Sherwood?</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOQTVMd2FwS2lraXhnT20yRHRvMTBmS1JYb2tCTHVpcUh5aVVsZGRocm9VQmgweVJ3dXEwLWRfaVgwNEpMOS1UbW5NcXZfcWdYam83bmR2QXRDRC1Zby1QTldyYmNzZUNCZVlSTUdmVU5jQkFMaXdLcjBwN2JxR19RU2dybDMwM2d2bzFzNEFFY2dnTmo4WUpXQnpiOXY4X1Uz0gGmAUFVX3lxTE5xTk9oTF9aTUpvR0VSb1cwSXJwVWJYM0lBMFdOdk11VTdFdU9xYzZEdE43ZTdHTjZVcDlSLW51SHhJTW5PUHZOdEFRRFBWVDMtUDNWYTh2Tl9SYzRCMVNHVVF4dk9hUXF3SWVwWVQyRVBJYmNvY1hidjRtWGV5a1JtQ3BXR09zcEZzdGVJbVNWR280MC0zTGhmSmtWX1B2RndLOFJJZXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Sports</span><span class="news-date">Mar 2 &middot; 11:04 PM</span></div>
-<div class="news-title">Colorado Avalanche tested with challenging schedule after Olympic break</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOT0xkZ1hYcTNOcmk5TG5YV3AyRm9nUzc4RWY1eUFZd2lIUnRzNG5SREQ5bExoOFRvLVU2cXFzYXp1aFZCbmFtbnlIbjFKbmNZUTlrWmJrNmVILTd1SThtT29JTjhOMFNGYU1jMUxoYmZyY1hVOWlXak5UVm5aNzNUcExvNGFTeDh6M0FpSmpxcU11UTBPVkJoRjNGWGhZWTYtTU5JemVyczJQS2gxdUxZczBNM2xWZ2dtejZsZUo5a3JJckp1VGZHeS1qTlh0bDZTOUpwWg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 11:04 PM</span></div>
-<div class="news-title">Colorado Avalanche vs Anaheim Ducks Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNQUtiN3VmLVFVR2JvYi12dnQxS29BRWFoX3YzTDUxcHFTdmxWTHQ0ZUlwb1ZmUGkyTGdJNVF0N2NuOHh1bDJINlJKT1ZIdDc4YU05Rm5pZXljbDZkS0VwWG85cl9YSVZtbFVrbExERkhNdEZ1aFNlSUIyYnQ3SVRNOWwxYnpuVnc3aE5BYXpycVlXcTNRZlFKRFQzS0xrYlpiSXFIckpFY21lUTU0YVpzUzdCZEtNRkJ6V2c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">DraftKings Network</span><span class="news-date">Mar 2 &middot; 11:03 PM</span></div>
-<div class="news-title">Colorado Avalanche vs. Los Angeles Kings prediction, pick for Monday 3/2/26</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxON3hwb0ZDTE81bzc5a0JCSFhLTGtmeGpsTTJWR2xMRkV6eUJLQXJVRm9jZW40V0VqZTQwYTJPUm1ranVUVzBuWGJyejAtdGxtV2R2TUl0ZDFGWWFZYkdBRGxONkNvaVpnT3A2T082YmF1NW5iVUU0TDFhZkdGejdtQXZsOTBmYkRLc2FlMzdUMkVsaWREOTZpYmZSZ29mWGNmUjg3TQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:46 PM</span></div>
-<div class="news-title">Game Preview: Avalanche Aim to Sweep Kings</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPam9mWXNlOGtEeHVEQTFrbm1rUHNfejFDejZHQVFVbm5zR0lMdDQ3QWszQzhPMFNDTWxYYms2Z2hFUDZ3TFk2RnFIV0tobFk1QzRnRmMzLUIxSjRTaERXa0JGUUlhMmljVDZqeXViaHRORHhZNklhSmYxTFdVOFFxaWtJZzZaOFlSMlhrQTMxelg3U1FqcllMa20tMzM2YmMzUlJsMnNleTlBeEJBcWNTejYyOXN4eFk2VGh2QXduTGtDZ3ZvNkRZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:12 PM</span></div>
-<div class="news-title">Kings Vs Avalanche Game Preview: Kenny Connors Makes His NHL Debut</div></a><a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxPMU1MazRjeTBBenRQS0JBWDFhSnZtNWg5bGREYjRpU0F0TDVIRThDaWdjQlVSdFlyTk82U2JkVTVoQmp3LW1aaVlTTndYeHFLeU42dERWSF9RNTktVExMTjhpQjlPaWxkanRxUE96cEZBZG5zRi1yZDh6Mi1vWHc4ZmVhZWtCQWlqOTh2bjhMd2tKVTI1Mk51ZURyV0tQVWJLN1NFeHhVVnhQMzQyN2NaY2RPekFsczExT21ZZ011ajJBMUM3Tm9uMU5GNm1paVBJYlpKMjVHTFBlNUhGVUw5VTBJSHE2Y0pZeDY4bEtBR2NqQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 10:00 PM</span></div>
-<div class="news-title">Wild have some big decisions to make ahead of NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMigAJBVV95cUxNTUYyRFVmX21YMUdNNm55NVBublAtMTJLMFIzcVBxZlptbHFjR2F4OHA2OExpbEdTSWxQZkI4S3JBSWJ4LWZmeTI0TWlKNmFxUG8xZEZSYTlPbWY5bUd0RjVzQzlmbXdUSDNfejNObkhQQ2xTUVhXUE55SEZzY1RBYnRybUZOX0lJa1FSWGh0ZG1yLWllZVBwQVI0NGhTZXA0SlRCcGtlVV9ZNnkzRzFBYnJlZ1dRU19FSzRrNnpoNlEzUEdaREdvbmswMW5VUmE2c2JFaUtPaUsxRmY3UEhsaU9zNDVXSjhhSk9aNnRSQUMtcmJwTmRuOE1ocDZPaEYt0gGGAkFVX3lxTE5FUHJ0bnkwLUxvMlU3Mm9RdDlYMjFWVVpEbUlSZ2RLeDlPLUdCLXNScGl3NnIzV3FoMkEwcXh6VjQyRU9LWUJQYWZtNUtJZUdzUXE2N0VIRmNxMlUzWGZpb0NmUVVlTWhpanh5cFRCM1VQdC1GRjhYQ3JOUUxzMk03eGd1eVluYlA5eF90ajBJZHJsQnNlb0VtSlN6YmJWOXFwZWliWXkwMGNSZnYyT0loTjBBc0QwajhCX2s1NHoxbk02YVBYRXI5VlZKQW15cVFzeHJIQmYwVXY5TWs5ejV1REJEa0ItNm50RzN6S3BjM3hIeEUzMzVWc3NQRThZSnBETVprVFE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 2 &middot; 9:35 PM</span></div>
-<div class="news-title">Colorado Avalanche Looks to Extend Lead While Los Angeles Kings Fight to Stay in Playoff Race</div></a></div></div>
+<div class="news-title">Weiss keeps focus on job as Colorado AHL assistant, not historic promotion</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/ColoradoAvalanche/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/ColoradoAvalanche</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -959,7 +996,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:05 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
