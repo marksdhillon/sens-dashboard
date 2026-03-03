@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="Columbus Blue Jackets" class="team-logo">
       <div>
         <h1>Columbus Blue Jackets</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -948,13 +953,13 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
 <div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ3g4YlZTUW1mQTlldjczTTF0LVlDVWYtZzRrb1NDOWw4c1RZLVNXVkNleEpDTVdZNTVTMVRaOE5DSS16OGJRR1lFaThJeFFNUXhyUGNuNC1NWmg0b19feWd0UTc4eVVCMi14eDdFRzdRRExHU1NwN3pwdU5pbXAycTRIY3pVUHpyRFdRR05SZm5iZm1aWTVuTUNfRlZkbEJ2akHSAacBQVVfeXFMTzh4c2xEbm9Tbk1IUERMTG5UUFV4Z1dCMTV0ZzRFV2VDbkNuTERaLVl1UWNjeHFaYUdCaUZDTllHZTZ0TGJoWERyMFVpcHJxaDYwS2tTZkdacDhTTGNVREFzSm9aNm5JT2xLbXhzanFrYm9rcmpmNFVTRWwxN1hYdVp0ZG1pZVVkbHpnVTlRY0pxX2htTXlacHRIM1V6NnctXzlGWldUQVk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 9:40 PM</span></div>
-<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNZjhKb29CSG5KMFo0RnVwV3ZGcnNGN3NjVkdkdTBfOTNfSkw1aFdsazJpY1hPOHhJLUEtR2kza0ljUWdiaEFzc295NDFDVzk1OVBZZWdmT0ZwVlpmT290UEhwMzRpdDdqTi1tay1ZcjhHZnp0azlrM0JRTzZjNFZIR2FCZXgxZEtwN1hoQjRLNms?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 9:20 PM</span></div>
-<div class="news-title">3 Bad Trends the Blue Jackets Have Shown Out of the Break</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOdVIzaFNYd2w4b3ljSktjLVpnM0xQSm1LNl9qUTg4SXRZYTJmTzQyRFhRM1BSazFuTVJzU1AtSlVOSnFsVy1PUGJPR05BOVJlbndYYll3aVRuNE14TWlBakppeVJQWDl4MEZKQVFVMDJrV055TGhqTThOTzFsSkhjUEp3a0RkTlBodmlaWll5NURRODVDZkdnOXRCZXJpbk02bHk5bEE2YnFUcC1UaEJXaFJ0b1hHdU1NTVRkN2hMa1FsYnJiYnhzc1FPNWYtWGM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOdVIzaFNYd2w4b3ljSktjLVpnM0xQSm1LNl9qUTg4SXRZYTJmTzQyRFhRM1BSazFuTVJzU1AtSlVOSnFsVy1PUGJPR05BOVJlbndYYll3aVRuNE14TWlBakppeVJQWDl4MEZKQVFVMDJrV055TGhqTThOTzFsSkhjUEp3a0RkTlBodmlaWll5NURRODVDZkdnOXRCZXJpbk02bHk5bEE2YnFUcC1UaEJXaFJ0b1hHdU1NTVRkN2hMa1FsYnJiYnhzc1FPNWYtWGM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 2 &middot; 8:25 PM</span></div>
 <div class="news-title">How to watch Blue Jackets vs. Rangers: TV channel and streaming options for March 2</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNTWlIY21oZmN4MUNvTkszVjlBdW14Q19NUTJFb0V3enhpOHJUOXExc1RKeDY3WngtSjJjUndNdC1Ta29POGJZQlJxa3NnZ1VlMGtBZnBuX1B0cmtTMm0yUFdOMWwwWGlVZzlWc3VjVmw4Y1JDTXFPODczTXlPYXotN0FVVlBPMml4QU9OMVYwN1k5VzRVMlZJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 7:40 PM</span></div>
-<div class="news-title">3 Keys for Blue Jackets to Get Back on Track Monday at Rangers</div></a></div></div>
+<div class="news-title">3 Keys for Blue Jackets to Get Back on Track Monday at Rangers</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE91eC1zTFRlT0NIN2hMYUdLNWlPQTIwemY1dUEzLUk4bm9QbHhaWndEZnRWbF9ZYk5xejE3OVpGRzY4R0c1eUdZdnJhUkJuaTEzdm1URXdCQ3lSSjZzdV93SERaVnVpcHNjOVlXUDYtQVNPdE9wbkhjag?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 6:36 PM</span></div>
+<div class="news-title">Pregame: Mike Sullivan</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/BlueJackets/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/BlueJackets</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -964,7 +969,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

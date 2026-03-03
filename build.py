@@ -1342,9 +1342,13 @@ a.pname:hover{{color:var(--text-strong)}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
+/* Page transition */
+@keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
+body{{animation:fadeIn 0.15s ease}}
+
 /* Top bar */
 .topbar{{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}}
-.topbar-inner{{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
+.topbar-inner{{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
 .topbar-left{{display:flex;align-items:center;gap:0}}
 .topbar-tab{{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}}.topbar-tab:hover{{color:var(--text-secondary)}}.topbar-tab.active{{color:var(--text-strong);font-weight:600}}.topbar-tab.active::after{{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}}
 .topbar-right{{display:flex;align-items:center;gap:6px}}
@@ -1360,6 +1364,7 @@ a.pname:hover{{color:var(--text-strong)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -1741,12 +1746,13 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 :root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--green:#34d399;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12);--panel-bg:#111113;--overlay:rgba(0,0,0,0.6)}}
 :root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#c8102e;--green:#059669;--red:#dc2626;--text-strong:rgba(0,0,0,0.92);--footer-link-deco:rgba(0,0,0,0.14);--panel-bg:#fff;--overlay:rgba(0,0,0,0.2)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
-body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}}
+@keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
+body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;animation:fadeIn 0.15s ease}}
 a{{color:var(--text);text-decoration:none}}
 
 /* Top bar */
 .topbar{{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}}
-.topbar-inner{{max-width:700px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
+.topbar-inner{{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
 .topbar-left{{display:flex;align-items:center;gap:0}}
 .topbar-tab{{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}}.topbar-tab:hover{{color:var(--text-secondary)}}.topbar-tab.active{{color:var(--text-strong);font-weight:600}}.topbar-tab.active::after{{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}}
 .topbar-right{{display:flex;align-items:center;gap:6px}}
@@ -1849,7 +1855,7 @@ a{{color:var(--text);text-decoration:none}}
   <div class="topbar-inner">
     <div class="topbar-left">
       <span class="topbar-tab active">Scores</span>
-      <a href="index.html" class="topbar-tab">Team Stats</a>
+      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Team Stats</a>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">

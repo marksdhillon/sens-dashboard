@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/DET_dark.svg" alt="Detroit Red Wings" class="team-logo">
       <div>
         <h1>Detroit Red Wings</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -860,9 +865,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Detroit Free Press</span><span class="news-date">Mar 2 &middot; 11:00 PM</span></div>
 <div class="news-title">Detroit Red Wings strum a sweet tune in 4-2 win in Nashville</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSDh6WUc0bmlNMi1UdzVpd1BTc3p6SHhWTnhYRTlCQ0xvNzhaeEdOblhSNno4aFVzWTFqOXhjdGQ5QURjdzBsYXpOdGo3QXZ3OXp5TTdHVXF6b1BUT0FVMnpBam15dXdwbHBYdWRxTDliWUpyOXhHZGNYS0JEemxUYzN3SEVTclVkLVdjbzEyLXA5b2FIU2lSelNKeTZqaXlGbmJRQUJaU191NnBOLVdvTUNUcXdRRzRaRXhXSTVqbjM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Detroit Free Press</span><span class="news-date">Mar 2 &middot; 10:57 PM</span></div>
-<div class="news-title">John Gibson injury update, Detroit Red Wings say goalie looks OK</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQd2FiTTE3T204UmJFSnN4M0dLbnpDTjJ1d1Utb2NjWDBJbWNvQ2lHMzdiTElFYUxwRHlsUWxZbksyV21xSmowbjhWMnNGQjdJRXZQUjRjREdEZHYxc1N4c2toRWZraGx5Y3kwQk8ya3otLS10XzJoN1cyRFJQa2pFRW80TVhUYzNSWENCZ213?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 2 &middot; 10:55 PM</span></div>
-<div class="news-title">Canucks wait on Myers, won’t retain on Pettersson</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPY3FFSlIteXpDam45Z1BJdHJUVUgwakJlQ1FVSDQxVnVlcW52cDhNdzZMdU1jRHFCMGdXNUYwVXVmMlJlLWRZWWR2WmZoakFPbXh1SWNqaDAxSHF5eUx0aDBNMHVIbkRYYVFZbklucFpyZ3hFNmZrRmJOdjdyYWxBVlphcjVzOWJCWDItdUh6X2s?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">John Gibson injury update, Detroit Red Wings say goalie looks OK</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPY3FFSlIteXpDam45Z1BJdHJUVUgwakJlQ1FVSDQxVnVlcW52cDhNdzZMdU1jRHFCMGdXNUYwVXVmMlJlLWRZWWR2WmZoakFPbXh1SWNqaDAxSHF5eUx0aDBNMHVIbkRYYVFZbklucFpyZ3hFNmZrRmJOdjdyYWxBVlphcjVzOWJCWDItdUh6X2s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 10:32 PM</span></div>
 <div class="news-title">Red Wings Place Erik Gustafsson On Waivers</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPSnBYa0VaRnJRUVYzWDA1dy1NMEJIdmJiODV2R0MycXFFUjRnMWRyUFRkSzZwbm5yVWRDV0lvTmdNdzdoaGZmYXFRQ3hUcDNkM1U2SnNTdjVGXzV0N08tcXVsSlVpaDd5a09MQzBaZERxU0VBUFFwM3kyRGdkVEZVenctQTRpTDFYT0NrZnhYNnFIeENNa1VSUzQtdmlKYUxhX214b1RhZkM1b1pCamNTWXpwTUlIc2h3VTJYZzZUYmVLdGpx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:02 PM</span></div>
@@ -880,7 +883,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 2 &middot; 8:27 PM</span></div>
 <div class="news-title">NHL trade rumors, updates on Vincent Trocheck, Elias Pettersson, more</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPTkRRbW9URkx4RThKWTJMZmJORnpYUjBmaV9tRmVPOEIwbmc0ZW4xc0RnMDJ6RVRBQzdxR2NuLU1NWk1iblFFYUU5dFRzYUt4OFg5VHBiczBsSlVRa1Y5dHQwaUZ6dGtrYUhTWXE2N0gwS0E2N1dqOGxwWEJYT0ljNUxwQ1A3SjA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 8:09 PM</span></div>
-<div class="news-title">Canucks moving Elias Pettersson before Friday's deadline</div></a></div></div>
+<div class="news-title">Canucks moving Elias Pettersson before Friday's deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOYk5KUFh1WjFlSnlBb0xRRHlkRjBSajJKekJWUnoxTUVLOFc5VW9PQ05fLVhqaUd1VFkzUThubjVkcTdyTnI2ejhkU2I2dHpIU2ZyX2tncXI1UXZhVVZCSU1jOUFxTEJLMGxISFA0WHNYb3EtVTl0dW9ubFpKYXIxa2lIdW1ST0J6dmZBOEI0ay1pUTA3TzlYYzd3bW80UUtWSU5GdFkwMlN3YkgxNWVF?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 8:08 PM</span></div>
+<div class="news-title">NHL Waivers: Wild Claim Robby Fabbri While Three Others Hit The Wire</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/DetroitRedWings/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/DetroitRedWings</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -890,7 +895,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" alt="Carolina Hurricanes" class="team-logo">
       <div>
         <h1>Carolina Hurricanes</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -879,11 +884,15 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="80">80</td><td class="r" data-sort="13">13</td><td class="r" data-sort="4.30">4.30</td>
 <td class="r" data-sort="67">67</td><td class="r" data-sort="0.8380">.838</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0:00</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNNGl6U1o2ZXBpV3BOeGxYVkQ1YWVRZGFkNUk0Y2NNdjhpTVpIQUhBam1RY2dGZ08tUkdpdDVfV0V2TzRkWFFRcnJSM3hLcGZHc1FkQW1Ib1p4OTZndzdFVWFYUWxJSklzOWwyZXMtM3BaTUw3cVdnM0ZQOExGY29xclUwMkRwRjJLV0FjajVMdlBQRkxKOXhuaHo2NDB2OGFuamVINTd2cw?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTTRESVhiTXVwMHY0dkpELW5YeTFyc25Qc0tKRjBobGwyYmZoWXF4YVFfaWlMTGRXdFlWQVNwRUFNb3dkT1dfdWZBVnFaeEhqUlpJRzI1VFpHT2FWZl9CS1V3V1RBUmw5ODJqS3dTSkxVdVB5R0IwVndZenFadmY4VE4yNWFEbS1sYmNhbXh6ejVXWHNMaFhsV2RFRVZNSENoU2pVakhDY1U0azlheEVhbzRvbVZtZmw5Z2R2NE1WUlhjZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Washington Post</span><span class="news-date">Mar 3 &middot; 7:49 AM</span></div>
+<div class="news-title">Daccord backstops Kraken to 2-1 win, ending 12-game point streak for Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNNGl6U1o2ZXBpV3BOeGxYVkQ1YWVRZGFkNUk0Y2NNdjhpTVpIQUhBam1RY2dGZ08tUkdpdDVfV0V2TzRkWFFRcnJSM3hLcGZHc1FkQW1Ib1p4OTZndzdFVWFYUWxJSklzOWwyZXMtM3BaTUw3cVdnM0ZQOExGY29xclUwMkRwRjJLV0FjajVMdlBQRkxKOXhuaHo2NDB2OGFuamVINTd2cw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:40 AM</span></div>
 <div class="news-title">Post-Game Instant Analysis: Carolina vs. Seattle</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaE5qZDJmZGx2bld6WHZXN3c2ZTliaDk0czhZZlpocjZ1bUhScEU5U1VsbUc5bHBRYmhMdUg1T2tMUUVSb0RGcXlzRHZGRzhJNUFseGJwYXhPU001aGlxcGF6LWZfZnlSRkFqaTl5WW80WUw2MWJyaUFmM1AzYTdFU0hQaDFpMG81Rkw0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:48 AM</span></div>
-<div class="news-title">Daccord’s 35 saves help Kraken end Hurricanes’ point streak at 12</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9haDZwTUppSnNjN0NhRG1DdjFESVk4bTloMGRvQ0RnblNmUmNfaUNGV05Gbl9OZXRxVGYtLU02Rnk5bG9vSWlYZVFMMVpaOG9qTy0xYW9RVGVwem54MDM2b1ZXaENLYmMzMC16Qnk4d1gxRG5NdmFDa3FKY0h0ams?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Daccord’s 35 saves help Kraken end Hurricanes’ point streak at 12</div></a><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFBjSzFCVkdEUUNuSjhkSXotaEl6bEswMlMwRHlNazNuN2RtdENuYkRIdGlVeVhXbjFFcU1vR3Z6OWU2aFBUUTh1dVg2OFdXT2dkU2xkSVJ1Y1RSWGVFblJZMmd1S1RrSmFEelE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:45 AM</span></div>
+<div class="news-title">POST-GAME SOUND | Lambert</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9haDZwTUppSnNjN0NhRG1DdjFESVk4bTloMGRvQ0RnblNmUmNfaUNGV05Gbl9OZXRxVGYtLU02Rnk5bG9vSWlYZVFMMVpaOG9qTy0xYW9RVGVwem54MDM2b1ZXaENLYmMzMC16Qnk4d1gxRG5NdmFDa3FKY0h0ams?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 6:43 AM</span></div>
 <div class="news-title">NHL Highlights: Kraken 2, Hurricanes 1</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNQzFvdE1WcV9CZjV3NEltcXJRN0luMHU3UThIUWNDaUZHeUJSLUhQQU5PY1BRSURHYmE5WWNhdE42Y3ZPZkNKS0dmcWhTREpUMnZMWjEzMHBVU0c3c3gyc1dxd21td1ZZWGxockRJN1dnSXBueF9SLWpSaGkxU181SkE5bjhpYnhTMlE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:10 AM</span></div>
@@ -913,9 +922,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 2 &middot; 8:27 PM</span></div>
 <div class="news-title">NHL trade rumors, updates on Vincent Trocheck, Elias Pettersson, more</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNUXZWbTFGa25ja194NzYySV9UNUpOQjZ2QnpSRkNLV0djT1NfbmVtX3ZTME54a2RIb1QxVFVSWlUzbElNS1pyM3pFVEduenpnX3pXUzlvanJSMnFvM1pBZXZmeGx6VUNkOU8tSEEtdjhrc0hTdjExbEFwN1ZLS0VIZjBQT1Vnd1J4WERuYXdB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:18 PM</span></div>
-<div class="news-title">Hurricanes at Kraken projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE9Ua05PQVg2QzJlLWhJVXBCV3FBNkJOdUlrYkZwSG52TngzeERhZzlsQjFoSF9ZVXhFLXhYM1ZpU1Y2MUdiZG1wWndXeFhYVFVNaHlsVzlzeXFvZ05nVDJta1M5ckRmZGJxamc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 7:32 PM</span></div>
-<div class="news-title">PRE-GAME SOUND | Lambert</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOTUVVaFJkWmRMa1lkaGNXUkJSZGdiMFZONzgtMGJGNC1BNDVVRlE4RFRVZE45TFZWUzM1eEVBdVR1X3BNd1NWclJoZXV3YWxwZFpkN3dzOTBBM25IZENUZEwyaW13cDg1NUppdnJUSFlkVXBnQ1pPZnVMakloNUh3OE5DTkFBZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Hurricanes at Kraken projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOTUVVaFJkWmRMa1lkaGNXUkJSZGdiMFZONzgtMGJGNC1BNDVVRlE4RFRVZE45TFZWUzM1eEVBdVR1X3BNd1NWclJoZXV3YWxwZFpkN3dzOTBBM25IZENUZEwyaW13cDg1NUppdnJUSFlkVXBnQ1pPZnVMakloNUh3OE5DTkFBZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 6:56 PM</span></div>
 <div class="news-title">Trocheck Confirms Teams That Are Off-Limits in New Interview</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOSmw1ZTAyUFJYRHVhU3gyeWp0UUN5OXNSZkUzZVp0dG1vVFdraC1IZmpMNVM4ajZxYVQ5MVc3MFFzVGNlemd6RWVaQVdGM2lVaU1nNDJtcVZuM01HTEtPSVdPdC1Oa0w1Y1REOGVGT1A0T1htSFZzVXFaUVQyVEVPSlBOVzMxQzFHbEhzSHk5QzJPZUp1cG1wc1Zn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 2 &middot; 5:55 PM</span></div>
@@ -927,9 +934,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 3:29 PM</span></div>
 <div class="news-title">NHL Rumor Roundup: Updates On Trocheck, Pettersson And More Notable Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxPLTh6YjZiY3pGRUhyV24zdTZMd25PNExZd21zTUdjbEdoalk5T3RWSHVrT3FPMjUzQjhiM3FDVDZVSzBYcm9zR1c2THlyY3JVQ2hXRXNoREVzaFlRcFp4RFhidHMtREtPVHhTZVNXaFNBMXNvVXJQWFZVdGVNTEdzeTFkbjBxTk5iTjlVSXhKMTRTMUNtUVNHeF8tRkVvd1pWclNuVkQ0ODRrbnZfaUk5QWZvYUM5YWJOcl9qczNzN2FDbkhQeldjcUh4bw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 2 &middot; 12:04 PM</span></div>
-<div class="news-title">REPORT: Hurricanes in Pursuit of Rangers Vincent Trocheck Ahead of NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPS28zalN6V3l4THd6YVJBb01ka2J5SVJjaDlyTFQ0ZTlFWU1mTWVZZnJsTE01amdJVHFzeWxQWlZPcF9HOE51bW1RRlhnMU84bmZGTngzWFhWNzZ6V2lRVkVEQlRlS2NKczRET01SZVFfamhMTV9OUldjREpQS2pmZk9FanBhcTZfSFpCX2JCdXpiSk93QzN4c0R1OV9LZ1RzQVdiVzJsQmNUaU9DRWNxZ0ROMk9IZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 2 &middot; 11:42 AM</span></div>
-<div class="news-title">NHL Game Preview: Carolina Hurricanes at Seattle Kraken with Line Combinations 03/02/2026</div></a></div></div>
+<div class="news-title">REPORT: Hurricanes in Pursuit of Rangers Vincent Trocheck Ahead of NHL Trade Deadline</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canes/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canes</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -939,7 +944,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

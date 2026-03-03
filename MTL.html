@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" alt="Montreal Canadiens" class="team-logo">
       <div>
         <h1>Montreal Canadiens</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -947,7 +952,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-title">Canadiens rumors: Where Montreal is looking to upgrade ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxObldPcUdiX1czU1FxRXVKU0VDRTE5R2NfN3IwTlBRSTF2dkh3d2FudGhFMk9VN1gwNHVQTV9kS3JmMHVUMXluN2U5TU1HWktsclBTLWtfdzExc296QXQ5NlhRVkQtUkpmZm56dXJ6cmthVHNLRmkxRl9LR0JLQnFGclhFaXBEUmtJT2dXRnpDQjR2NWUwYmJWNWFkUkotemhQRklRaWRZbjJEV0dhZXZoenpRT0tMVHlHU0YwT2VjQ3FzQTQtQktxRlUwT3pmRDRqaHFxSkRmZmlMQdIB3wFBVV95cUxPRUItZ2RmVXdYT3NmVE9LMXN3Y1FvSU50YTd0aEhpT2RuMnBnUE1KODhvZE5id1RHX01UcHczaU5BTFdHRE02RDhNejdERzRXYUhNUVg0X1V6RWVqMjJIUU5UV1BNMkJxVFRfNmRndWNsekZkUVZRenF3aTBSb1pzM3NrVzJtcUxOU3VMSHJtcXFNM0ZnYTVoQURhS0FoYjgtLTRCQklVMzFxMFJsRVk0Q0RJdVpJMFJOenZuV2RfcTl2d0txZWFZbEc0akw0QTVQbzF3NlFiQVNETGFfMFhZ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 2 &middot; 7:06 PM</span></div>
 <div class="news-title">Canadiens reportedly eye trade for 2x Stanley Cup champion within Atlantic Division to chase first title si...</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPYlJkMUZ4X1k0dG1OU3BSazJDNkM5LWRZMWxkU3pBdHZaa1FTSndwZzBadl93dXlUMWNIQVVPY3BpSmZwUkgySlQzZUVxQmpLdTJKZ3BLQkYwV1ZqUzIwQWFBdFlNYzRyT3dsUFN6M0ptNWhVTkNwOTZ3TmNzby1ZZ21BenczOFAzNVJuUw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 2 &middot; 5:23 PM</span></div>
+<div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 2 &middot; 5:51 PM</span></div>
 <div class="news-title">Sergei Bobrovsky Available? Oilers and Canadiens Exploring Blockbuster Goalie Trade</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxObGRQVi1Za2xRSGlUN2E2NUlPZjM5TUJfZGpLTkNLeGpWTWtuNGlOOXNILVhxSndqcXlEdDlPXzhrdFM2dDIxVDQ3RU1ncklYLUNJUV9xb2lTMXdrc0VrSVNZRVpyWGxTMWpfaFhhYlZTSGN1SlR6bVgzUktaTmNpV2p0TUJtRkpfOGJhOS1mTFYzdnJsVl9kMXdpbHF5TEJQcFcyZlpnOGNESGlrX0tEWFBkOVZIckdkWWlR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Montreal Gazette</span><span class="news-date">Mar 2 &middot; 5:05 PM</span></div>
 <div class="news-title">Todd: Cole Caufield's million-watt smile energizes Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOa2Y5bzJfd2tyNHZaeHpXcFdYNy0wQ2QyXzhBblA3Zm1JSVZMU0RXRHlQTWwwQW9ENkZEYjZVYmRCc1dON0M3M1FFb29Vb09wOTNQTV9iUXpxZy0wTlNVRzN2TmRNZDAtclBEV0ZKbTI1LW9jT2tld19vclNOOE55NjJDeG1ZOGV3dm50Rzc3eWlCOG9oaTlj?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -970,7 +975,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

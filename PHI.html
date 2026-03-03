@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" alt="Philadelphia Flyers" class="team-logo">
       <div>
         <h1>Philadelphia Flyers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:45 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -923,7 +928,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">PelhamToday.ca</span><span class="news-date">Mar 3 &middot; 12:33 AM</span></div>
 <div class="news-title">Philadelphia Flyers vs Toronto Maple Leafs Live 𝓢𝓽𝓻𝓮𝓪𝓶</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNTjBFa3pVSHhHX2w1bkVjcUtVN0VYdDNqWmVqR0lGNW5sLVhIc2tyeG11RVZtdFg4YmV0N3JxTjkyV01NZEJ5MlZLLXVRLTdHemdzdlJkaDg0YnplYi1oVkxXRmt1NFAzeW1RRUZQLUlYUURZZ0xHTV9ySEhJcHVrakNaSVN2SXFpNk94WE1DWFU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">CollingwoodToday.ca</span><span class="news-date">Mar 3 &middot; 12:33 AM</span></div>
-<div class="news-title">Philadelphia Flyers vs Toronto Maple Leafs Live 𝓢𝓽𝓻𝓮𝓪𝓶</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOaWg0bkdycXJqQnhRZFM0TlgzSC1pZFE4V1VLOTQtNjhoTERFSWhBV0Q4cjdvdlF5TWl0VUJVemJtUERTSmNQUTIzNG05aWpEajJIb2RXXzlrbEkwOUY4TERTd0Zya29wck9HN0VXSHJRUHpSRWdRdlFuWFlJQ0tCYjFHYXlfLVk2QUJiTDBVejlTdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Philadelphia Flyers vs Toronto Maple Leafs Live 𝓢𝓽𝓻𝓮𝓪𝓶</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNYWp4LVhicFJBdjdrbm1CMk5BUFZYSnhNYWxzcjJfR1B1dkFWdDktdGtLWjdhLU5RbzR3NGJNc2pqQW9PdnZhOHZsRTg3MTVRb2RNV3Y3MjBNX1ZBQU1ZLUFtejhaWFlVMldqd016OVozTmQyRzhMLWE3cWRBeTJPZnRDV0loMmFHekUw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">MidlandToday.ca</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
+<div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOaWg0bkdycXJqQnhRZFM0TlgzSC1pZFE4V1VLOTQtNjhoTERFSWhBV0Q4cjdvdlF5TWl0VUJVemJtUERTSmNQUTIzNG05aWpEajJIb2RXXzlrbEkwOUY4TERTd0Zya29wck9HN0VXSHJRUHpSRWdRdlFuWFlJQ0tCYjFHYXlfLVk2QUJiTDBVejlTdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">EloraFergusToday.com</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
 <div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPNTNkZFVPSk5ETTZBX1NsX1BpbkN4ZFZ6M2lvU0txOW0zZktPX1p2d2JUcEIycXpnd2U5ejlLR2d5c0hpSEgtTHJGOFkzRGR5em1sWklHeVpxeFdrc0lFTU5yOHZqc1VUcEI1ajhWSjJLejM0bnJ4TVBrQkF3RXpIa0ZuTkpOamxZNGxqbA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">BradfordToday.ca</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
@@ -935,8 +942,6 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">BurlingtonToday.com</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
 <div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQN2tZQkdkM0JRT2F1akV4TVJETDk0SEhyYzVIXzRESWdPMFc3U0U0bXBZbmRFVzFKMHRfek1HRW5LVUNLN1R1a0ZkLUlsUTZUSmM4WlV5NjM2QVZ2c29EcEFwRnZoUm1mRVFIc3Vyb21saU5GNnNHc3VUUmowdDhrUUs3VEFnSGVz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sault Michigan News</span><span class="news-date">Mar 3 &middot; 12:25 AM</span></div>
-<div class="news-title">TV-Channel!! Toronto Maple vs Philadelphia Flyers Live 𝖲𝗍𝗋𝖾𝖺𝗆 F r e e</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOY2pVLUF5UEpfeFpRY2JwaTd5Z1NTN3Y5N296SUNrSUpRdzBYcU13ckRqMDdsSzExdEZuTXNkQVVHY1lpU1ZHckxrdmx1Q3dGR29IMllSVlJWM205Yzc0Wm1kNVlTdWdjcm9aLW9EaC11N0xxNjlzbXFaSkdwQzdRY3FnNVhLN20ycGdYRA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Oakville News</span><span class="news-date">Mar 3 &middot; 12:25 AM</span></div>
 <div class="news-title">TV-Channel!! Toronto Maple vs Philadelphia Flyers Live 𝖲𝗍𝗋𝖾𝖺𝗆 F r e e</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNMHY1eU1sWTE1bnZ5Z084b3NpcDBiUFpNaEZvWXRTb1ZUdnV3OW9DQ0hPVjM5VDVYWjNrYWFrYS02bHdUM3NMU0huSGs4dlNHXzMxUjhEa2Z3QTc1c0ZYOXlia3BjY2JSbTRULWc4OUtuOGpZSlRsTkFNSnh0WlFkUmpoMWt5SWhjcVJQWHpHbkItU1NR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Vancouver Is Awesome</span><span class="news-date">Mar 3 &middot; 12:19 AM</span></div>
 <div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a></div></div>
@@ -949,7 +954,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:45 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

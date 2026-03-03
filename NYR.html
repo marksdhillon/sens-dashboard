@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" alt="New York Rangers" class="team-logo">
       <div>
         <h1>New York Rangers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:45 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -921,23 +926,21 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="147">147</td><td class="r" data-sort="20">20</td><td class="r" data-sort="4.13">4.13</td>
 <td class="r" data-sort="127">127</td><td class="r" data-sort="0.8640">.864</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="17439">290:39</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxONV9oeEY3VVBEN2ppSkNPWTBHMlEtQ0s1RUxnTlZqZi1mZ2FRRUpWOEp6cTdYTGVENDJmNzRpUldUNWczTHZQUWtybkFwcEh4UUdFUlRSMWFqSW0wRmZtQlFrcThGcHgtOXY0Qk1wWkFUd3BGcFdwdUFBa1dKQ1hWUzVpWjBVLW1UdGYxQmNteHI?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPQUxQTkdXMTM1N1RHclZoRy0xQmxNUTNNM19BVnQ3YUFfdUxWdFRPdVo5bkQxM1diZjJvckxMb1RNbEc5YVAtTGZxcmRNTWRLOTFwRENCa3FIREJhaXo2cE1XUEs3ZXRveWNfZ01EUGR2ZFhCci1uUUc4X1F0a01WTXQzalc5VkpKWWU2c096Y29WZGNaa1QtQnBqdGVqLVdBNzlmVHdnVmdpZ2s?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Kelowna Courier</span><span class="news-date">Mar 3 &middot; 6:55 AM</span></div>
+<div class="news-title">NHL roundup: Marchenko scores in overtime as Blue Jackets edge Rangers 5-4</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxONV9oeEY3VVBEN2ppSkNPWTBHMlEtQ0s1RUxnTlZqZi1mZ2FRRUpWOEp6cTdYTGVENDJmNzRpUldUNWczTHZQUWtybkFwcEh4UUdFUlRSMWFqSW0wRmZtQlFrcThGcHgtOXY0Qk1wWkFUd3BGcFdwdUFBa1dKQ1hWUzVpWjBVLW1UdGYxQmNteHI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:45 AM</span></div>
 <div class="news-title">Marchenko scores in OT, Blue Jackets top Rangers after blowing 4-goal lead in 3rd</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNRUttaFBFeEg4QjQ0V0Y5YUJSTnl4dVNYQkxqdDd0djRxcm5Qa3BDdWhqdXo2MXA3NnJ6d1phLWxodE1ieXhSR2YzN040Nnpud0tyWUZHaHNIQWMycTJoSFFuNzRLMXhrQmItYnZvWjM3VXNEWjB4VFFBYmREUXlPSUVyN2xZTzlENDJkcTNBSXNIb3d3X3M4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Larry Brown Sports</span><span class="news-date">Mar 3 &middot; 5:54 AM</span></div>
 <div class="news-title">Rangers star’s son had an all-time quote about his dad potentially getting traded</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOMVZqRVhKWGxyUmlHUTJMR0RvV3pVUUJ4a3VNM3VSd25RODlPcTlKRlZCUEJGcE0zMkZrbkE1Ymh0cUtZNTY4TDI4TjdPLXVRNmU2Sks4WkFlekNldDdneUw4dGdMYnJMUTJLa2VLWGE0NGFSeEdlZGY2UlUzUnh6bzNhM1NFb1k?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:45 AM</span></div>
-<div class="news-title">Rangers vs. Blue Jackets: Postgame Notes</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVXE4VTQxRHhiUlpadzlYMXRpQmt0bXFoYVB2RU5rcjBoRlhwcXN1Ry1kSlRSXzZVcGVoSzV4MEFNMjdHeGlfRUxEQnBWMEtkV0IzNWJhRl9oN0tmT0FPSTdNZGtKTXk1eHZCT3g3bDRSUzB3cGZKeHcwb2ZzZlU1QzJBZkVXdG1zVWxHSDEtYXEzQVRGb1VXeWJzS3RlekhhMGhLTGVZaGR4OVZhZ0xLb01ZQ3FPT2poWXpEcDJkdFg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 3:23 AM</span></div>
-<div class="news-title">Marchenko scores second goal in OT as Blue Jackets weather furious comeback to beat Rangers</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOS2pWQXF5cHVvazBLRndWSFhnRjhHVURLNXpnNU9Fc2g5ZDd3eEE5UGFDdnlEbXBOd2d0NHNpdkcxVEliUzg3U1NHWFRpczVteGFVLW9PTV9vOHNia2ZOQlh6czZqb0drd3l0cm82b1loSHhtdkFUQkZwYUV3R3dlRDlDanJkcTY1WlRDX2ZOdU13ZENtcE1NYzgtMUk5NUxyWGhhQmVFUXlPelpuRGlUTzlTNA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Rangers vs. Blue Jackets: Postgame Notes</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOS2pWQXF5cHVvazBLRndWSFhnRjhHVURLNXpnNU9Fc2g5ZDd3eEE5UGFDdnlEbXBOd2d0NHNpdkcxVEliUzg3U1NHWFRpczVteGFVLW9PTV9vOHNia2ZOQlh6czZqb0drd3l0cm82b1loSHhtdkFUQkZwYUV3R3dlRDlDanJkcTY1WlRDX2ZOdU13ZENtcE1NYzgtMUk5NUxyWGhhQmVFUXlPelpuRGlUTzlTNA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 3:18 AM</span></div>
 <div class="news-title">Blue Jackets blow four-goal lead, hold on for overtime win vs. Rangers</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTFBPTXRtNDZTV09PV2JZdHdRM2VpYV91MFp2TkhOcDRyQ0EweWVCMU1yMWFUbGp2VzZvZS1DUDRzYXhtd2JPcnpPM1hKUUExZ0NtWUxMZ2ZtbjdBR0ljcGZseFZvcVd5V0dkZHZIQlJMUmIwQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:00 AM</span></div>
 <div class="news-title">CBJ at NYR | Recap</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQd0FSY3ZCWTdsT0N4eVFnd2hsVHdqWk5FTnQtc2Y0Zmx5QmNTeUlNMW9nYURjX3lOSzB3MGFjOEZhZ05EUUxpWWt1Wi03NnVrX0pCY1N0ZWp0QlJhb0Q3bjk0ZkRqTUE4WnJkRm1FS1Y3ZEZKNlFuMnZGU0xVTkF4VFhKbFJvc3FIUGNiZ1hZcV9OaU9tdGxDMU1wbWRwejdjWWt1LTZLbHI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 1:40 AM</span></div>
-<div class="news-title">Maple Leafs could target Rangers' former first-round pick up for sale at deadline</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQVmF0ME8xWFZLQl94Mm9xSXNYVjVsUVhDWmp6MXpFZjFkaEtMa2lBWktYTlh2b0drVDc5aHN0dm15Z2p5c2Z0VVNnbHhCWHR4a19vLXEtWkJYZnl4TEZhY3IxTy1EeUFJVTUxdVdSR1o2MnJxYTEyX0FKMUYxSzdfNlFPVVRZUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 1:35 AM</span></div>
-<div class="news-title">Coach’s Challenge: CBJ @ NYR – 3:04 of the Second Period</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxQcm0wSW9rVENQRk1qRlFIQWlGeFRiVDlwRkF1RWhFcWxlTzktSE9hU0JpMmhCcExqdk5ETVFpLTl5LWZIWEEtWjVueENYS0RiZ2dUR1ZsNTRycVYwcUtVMHlHN2RKd1B6Q2JhTURxcG5UVnlkYXoyYUh4UmZrYWNsOHd2WFNUYVhWWTdqdmJhWVVpODBVam9NMklWSE14WFJUbldyVFlmcmp6MzBEMlJsWnRJdkhBeTJybXdPR2IwNXhkU3FaQjBRZGQ0Vm5lOHZmdE5lalRIbDdlazc3MVVfTjZIajNnczdVdF9PajVWblVyQ2EycllhU2Z2RmNGcmxQM3dSY1liZTBBMnFaZkRzSmtQNFYxbXcteXhiY21WSUnSAaYCQVVfeXFMTnRlNUtTQVVOZ085NThEbEF5TnJSZG5OdUVOMVFhY0g0SVlXbXI5YTVxelctVGFGbzJxZHBSdzNvRmVfdzA0aFVoVDJnVnlMZkV5Y1pBMHQ4d2JPVWtmUnNZSVlMeWg3eHg5ajFTcGZpRnphSEpfYlFkaDJRZTlRRkF2ZWtpWjRIWlFsb1hxUDdjMExhUDJiem5BVFMwX1VzTndXbVJTRzFZeTlma2Jiai1La3VjRFhRUWRHQXFEV3ZGQXVrUUViRmhBX3V4Qk5nSHdzOXpsRnZNRGxqT0xaZjFNOTVkZ19fekV2RDNxSkdBWWl4THNIcWp5cnUxbTJhNFVIRl9Jc1R0RmhxRU9XSWhtV1BzbXRjZTAwRGVhNXpiLS1qY3ln?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs could target Rangers' former first-round pick up for sale at deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxQcm0wSW9rVENQRk1qRlFIQWlGeFRiVDlwRkF1RWhFcWxlTzktSE9hU0JpMmhCcExqdk5ETVFpLTl5LWZIWEEtWjVueENYS0RiZ2dUR1ZsNTRycVYwcUtVMHlHN2RKd1B6Q2JhTURxcG5UVnlkYXoyYUh4UmZrYWNsOHd2WFNUYVhWWTdqdmJhWVVpODBVam9NMklWSE14WFJUbldyVFlmcmp6MzBEMlJsWnRJdkhBeTJybXdPR2IwNXhkU3FaQjBRZGQ0Vm5lOHZmdE5lalRIbDdlazc3MVVfTjZIajNnczdVdF9PajVWblVyQ2EycllhU2Z2RmNGcmxQM3dSY1liZTBBMnFaZkRzSmtQNFYxbXcteXhiY21WSUnSAaYCQVVfeXFMTnRlNUtTQVVOZ085NThEbEF5TnJSZG5OdUVOMVFhY0g0SVlXbXI5YTVxelctVGFGbzJxZHBSdzNvRmVfdzA0aFVoVDJnVnlMZkV5Y1pBMHQ4d2JPVWtmUnNZSVlMeWg3eHg5ajFTcGZpRnphSEpfYlFkaDJRZTlRRkF2ZWtpWjRIWlFsb1hxUDdjMExhUDJiem5BVFMwX1VzTndXbVJTRzFZeTlma2Jiai1La3VjRFhRUWRHQXFEV3ZGQXVrUUViRmhBX3V4Qk5nSHdzOXpsRnZNRGxqT0xaZjFNOTVkZ19fekV2RDNxSkdBWWl4THNIcWp5cnUxbTJhNFVIRl9Jc1R0RmhxRU9XSWhtV1BzbXRjZTAwRGVhNXpiLS1qY3ln?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 12:28 AM</span></div>
 <div class="news-title">NHL Trade Rumors: Vincent Trocheck makes feelings clear as New York Rangers weigh options amid Minnesota</div></a><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxNRm5JbkRUcHY1WE9GbjlxU0NGUXE5ZVE4eXhBWkEyVDNRbDRXNF9xY0R6aHRXenlqOUUwMWlyOHJ2ZUNyVkVzQUk1VUpGQlI0TW0tRy1GcFBLODNaWDJlTG5PLXFuQ25iSzh3R2RZMTl0T25Rd0xsXzUyd2ZsRGEzT1VtMGFEY1h0YmdsenVEenROSDdCeWtDbFIzZzVVczlsOWt1QU5udE1hRndQTEhYenFDOVNQelhpa2RjaW5zamwwM042NUYwcUZnNHhVb3JLX2Uw0gHYAUFVX3lxTFBlRmYwSmlMN3FJWmRfZVA4ZGhLTExoeTZHV1hUNTR1NHZzNk9kTkZMRnA5bFhXLUpfVWYtZnpKY1lZQVpmRlpCWEZ6TmZ6NzNncGtQTTJuTGRMOGRoTW1XeHFsM1I1ejhZNkJSTmRtV0dtcXJ6OWgwSVhEOFg0bTF2b01KcnlhZU95LTJnUGhBLVlMQjIxQ1JFY3BQX3MwejVrWEd5WjdGWWtSUjE3dF9nVk5QTEtMTW1TbENQNlBDUUc0RVY3UnRFZWEtNkpnM3d2Um1NR0Z4VA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 3 &middot; 12:25 AM</span></div>
@@ -971,7 +974,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">MiltonToday.ca</span><span class="news-date">Mar 3 &middot; 12:02 AM</span></div>
 <div class="news-title">wATCH NHL~ New York Islanders vs Columbus Blue live updates</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQUmR1dDFaSHk0Rk04RTM2TmVITjN3Q1FRMWVGLWtkajEtR1JsMVMtTkk5MDh1MGljdkkwTGZKelBEcHJCWWplRDBXeS0zTWg2RFZ4dEdkcG9qWGZGTkl2MldndmpqaUpEYTlQVUZwdktLU19hRUs3dUZEN21DSmRDQ1pqWXlPeG9QT3lr?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Guelph News</span><span class="news-date">Mar 3 &middot; 12:02 AM</span></div>
-<div class="news-title">wATCH NHL~ New York Islanders vs Columbus Blue live updates</div></a></div></div>
+<div class="news-title">wATCH NHL~ New York Islanders vs Columbus Blue live updates</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQNkVSTl9YTDlKd1hIUU9GMGlmUjBxZkppQ3FreXFBbFV5M2tIOWVWUDJNeXZOXy1IYjdoX0tkeWxKSGNRM2ZxTGx6QjJDd3Nvak8xQXl6RDhQWE95SWk2eld5Y205QnlUa0NMdWZ5ckZJU2w5QVpJRTBQUUQzUURiLU5FNnRHWkxocGtSQg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Oakville News</span><span class="news-date">Mar 3 &middot; 12:01 AM</span></div>
+<div class="news-title">New York Rangers vs Columbus Blue Jackets Live free NHL Hockey March 03, 2026</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/rangers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/rangers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -981,7 +986,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:45 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

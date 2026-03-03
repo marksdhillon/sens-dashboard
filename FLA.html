@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg" alt="Florida Panthers" class="team-logo">
       <div>
         <h1>Florida Panthers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -922,7 +927,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-title">If the Panthers sell at the trade deadline, who might be on the block?</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOTVgzTGpfUVMwVE5pRzVFY2VnNTBTNEpDWHBQbUU2Z2V0SjQyd05TcGxoZGVuZ0g1bzRkRzhNRlZqMTdJTDdDbDFvX1dGbVJwNUpwTWJQQ0hYZWJKTDJTdXFrR2l2cEZmVUpTaWwwQ2t4Tnpkdk9KWGJ5WjRwUU1kRUNxbndNeE9pazRmUHJ3TGU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 2 &middot; 6:13 PM</span></div>
 <div class="news-title">Florida Panthers Could Trade Sergei Bobrovsky, 5 Best Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPYlJkMUZ4X1k0dG1OU3BSazJDNkM5LWRZMWxkU3pBdHZaa1FTSndwZzBadl93dXlUMWNIQVVPY3BpSmZwUkgySlQzZUVxQmpLdTJKZ3BLQkYwV1ZqUzIwQWFBdFlNYzRyT3dsUFN6M0ptNWhVTkNwOTZ3TmNzby1ZZ21BenczOFAzNVJuUw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 2 &middot; 5:23 PM</span></div>
+<div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 2 &middot; 5:51 PM</span></div>
 <div class="news-title">Sergei Bobrovsky Available? Oilers and Canadiens Exploring Blockbuster Goalie Trade</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQRDFTUVRtdE1MZUNrcVhiQmgwYVpoNXM4c3ZSVGRnQ2hYZTJEODRaY2pGNFZRTm1YVVpPZVRibGh6NnpSM2pWS3hYT1JDbm93QWt1Vk14RURGQTVUTDhoc01PQm43VTFTX0x4WlA0WHpJbTU4N1RpT3JBVUtXSDBuZU50Q1RJTkJrODI3ekpEWkFoVWZjRHJCRTMyOHJHeEZ2cGNyZUF6a3p6QmhvdFJLNWZ2NG9ZUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Athlon Sports</span><span class="news-date">Mar 2 &middot; 5:15 PM</span></div>
 <div class="news-title">Florida Panthers: Time Is Running Out on Their Chances to Make the Stanley Cup Playoffs</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQeXZnaTJVMHF2T09rdEJXSGFaX3pUR0lBVXIwZ1plaVVuQ2ZTbnZwSzk0cHo4VDdqb3hkempJQjZSdkk5MXFhMWE0ZWFidW8tSXFGOFdXVWphLTRBcmlDLWJXZ3BfX3ZfN2xIRkZONnNpNkxGQTNZc2JYSUF6aEJRYWZESUdVSlBsMGVHXzh1bzlGM3llU3drOFlkcmRPUnp4VmhPbDhOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -959,7 +964,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

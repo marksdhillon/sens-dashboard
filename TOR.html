@@ -212,9 +212,13 @@ a.pname:hover{color:var(--text-strong)}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
+/* Page transition */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn 0.15s ease}
+
 /* Top bar */
 .topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.topbar-inner{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}
 .topbar-left{display:flex;align-items:center;gap:0}
 .topbar-tab{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}.topbar-tab:hover{color:var(--text-secondary)}.topbar-tab.active{color:var(--text-strong);font-weight:600}.topbar-tab.active::after{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}
 .topbar-right{display:flex;align-items:center;gap:6px}
@@ -230,6 +234,7 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
+<script>localStorage.setItem('lastTeamPage',location.pathname.split('/').pop()||'index.html')</script>
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
@@ -252,7 +257,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="Toronto Maple Leafs" class="team-logo">
       <div>
         <h1>Toronto Maple Leafs</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:44 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:58 AM ET</div>
       </div>
     </div>
   </div>
@@ -890,7 +895,9 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
 <td class="r" data-sort="5">5</td><td class="r" data-sort="1.0000">1.000</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="632">10:32</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQN0VpR3U5SWJxOUcxWmJ4NjdURzJkZmZGMkRUX2I2clZBbU1NSDlZQnNOWTFoQVBjSGxRemk2eFZhX19mUUdxcG95VTk3RXM0VEdwRk9neUV1bjJJemZ0dk5UanVGdXZQRVNXVnl5aXMwWTYzX1RHSExYQU1hZ1ZjSWd6aFUzMVgyaldSM1loUTZOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPYVFxZUdqSk1LMUFFWk5NeFdFdmJUT1B4YVRoWTVFZ3VTYk9jelhPQzVfS0F2Z3l6bmd2M3U3VzZkTFJIVUI4cFZKN2I4S0RQY0hLME9iTWthcXZvMTFJMU5JYVJydURqcEgzdXNEdTlXZE93X2FpeVBiOHplZ2NlZGw0VW1GRGVpNVNBcnJtOFVIUE1BdlJWUDdjdXF1aDVLZV9LMzBR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Penticton Herald</span><span class="news-date">Mar 3 &middot; 6:55 AM</span></div>
+<div class="news-title">NHL roundup: Marchenko scores in overtime as Blue Jackets edge Rangers 5-4</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQN0VpR3U5SWJxOUcxWmJ4NjdURzJkZmZGMkRUX2I2clZBbU1NSDlZQnNOWTFoQVBjSGxRemk2eFZhX19mUUdxcG95VTk3RXM0VEdwRk9neUV1bjJJemZ0dk5UanVGdXZQRVNXVnl5aXMwWTYzX1RHSExYQU1hZ1ZjSWd6aFUzMVgyaldSM1loUTZOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:48 AM</span></div>
 <div class="news-title">Cates, Flyers recover in shootout to hand Maple Leafs 4th straight loss</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbEpvd0I4c001a2U3Z2dTeXNqc1hReDMxMFhrU19JWFVnTGtBeTJkODBTLXBMb2lYTzkySFRRNnNia0FsYU1XWXVUNVh2NzRBWmJvQWMyRzdOUzkzZ1l1TjQxUThYbXBidXV1UFF5cGo1SmRieERBYTk5RTM3M3QzZTNaVVZYdm9YbENRTi0zZ09wY0taOGltY0xNZWk4TVBCQmd6Zk1acGdpQlk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 5:28 AM</span></div>
@@ -938,9 +945,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Sault Michigan News</span><span class="news-date">Mar 3 &middot; 12:16 AM</span></div>
 <div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQUTZrTThYd1pDRHhEbWE0UHczbnVDY0IwazdTbEN3RzBxOTFzMzJBYWtyVndCQkdFQ0RzWWw2TnVTVHpraTlXUFBab3FrNGVYUlREcmQ0X0hHZFZyWFdRa1RSdGZfOTd3c1VPT2NaeEVyaGNnck1EblFjYXljank5ZFFFTlM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Powell River Peak</span><span class="news-date">Mar 3 &middot; 12:16 AM</span></div>
-<div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOQVZadkJnSHRSczVkZWdTRGRqY1hIUzAwcmxTb0E5VEpMWGNyWlRwV1VlUW1JWUF1SzhFXzgxRDlrdjVBZnlfOThpTlZ4dWZFaVFKck5wUmQ3VW5GWnI0azJCSG15MUpnTU9aLVpWSXM4OHQ0MmJVakNrY3hkbEVobE1yLVhXZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">BayToday.ca</span><span class="news-date">Mar 3 &middot; 12:11 AM</span></div>
-<div class="news-title">Toronto Maple Leafs vs Philadelphia Flyers Live free NHL Hockey March 02, 2026</div></a></div></div>
+<div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/leafs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/leafs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -950,7 +955,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:44 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:58 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
