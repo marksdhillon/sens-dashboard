@@ -1778,8 +1778,8 @@ body{{animation:fadeIn 0.15s ease}}
   <div class="topbar-inner">
     <div class="topbar-left">
       <a href="scores.html" class="topbar-tab">Scores</a>
-      <span class="topbar-tab active">Team Stats</span>
-      <a href="leaders.html" class="topbar-tab">NHL Leaders</a>
+      <span class="topbar-tab active">Teams</span>
+      <a href="leaders.html" class="topbar-tab">Stats Leaders</a>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
@@ -2433,8 +2433,8 @@ a{{color:var(--text);text-decoration:none}}
   <div class="topbar-inner">
     <div class="topbar-left">
       <span class="topbar-tab active">Scores</span>
-      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Team Stats</a>
-      <a href="leaders.html" class="topbar-tab">NHL Leaders</a>
+      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Teams</a>
+      <a href="leaders.html" class="topbar-tab">Stats Leaders</a>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">
@@ -2562,7 +2562,7 @@ def build_leaders_page(skater_leaders, goalie_leaders, full_skaters, full_goalie
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>NHL Leaders</title>
+<title>Stats Leaders</title>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2643,8 +2643,8 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
   <div class="topbar-inner">
     <div class="topbar-left">
       <a href="scores.html" class="topbar-tab">Scores</a>
-      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Team Stats</a>
-      <span class="topbar-tab active">NHL Leaders</span>
+      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Teams</a>
+      <span class="topbar-tab active">Stats Leaders</span>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">
@@ -2660,7 +2660,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 </div>
 
 <div class="ld-header">
-  <h1>NHL Leaders</h1>
+  <h1>Stats Leaders</h1>
   <div class="view-toggle">
     <button class="view-btn vt-active" onclick="switchView(this,'view-leaders')">Leaders</button>
     <button class="view-btn" onclick="switchView(this,'view-fullstats')">Full Stats</button>
