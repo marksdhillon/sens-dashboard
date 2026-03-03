@@ -1342,20 +1342,39 @@ a.pname:hover{{color:var(--text-strong)}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-/* Team selector */
+/* Top bar */
+.topbar{{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}}
+.topbar-inner{{max-width:880px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
+.topbar-left{{display:flex;align-items:center;gap:0}}
+.topbar-tab{{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}}.topbar-tab:hover{{color:var(--text-secondary)}}.topbar-tab.active{{color:var(--text-strong);font-weight:600}}.topbar-tab.active::after{{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}}
+.topbar-right{{display:flex;align-items:center;gap:6px}}
 .team-select{{appearance:none;-webkit-appearance:none;background:transparent;color:var(--text-secondary);border:1px solid var(--border);border-radius:6px;padding:5px 26px 5px 10px;font-size:11px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.15s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}}
 .team-select:hover{{border-color:rgba(255,255,255,0.15);color:var(--text)}}
 .team-select:focus{{outline:none;border-color:var(--accent)}}
 .team-select optgroup{{font-weight:600;color:var(--text-muted)}}
 .team-select option{{background:var(--bg);color:var(--text)}}
-.scores-link{{font-size:11px;font-weight:500;color:var(--text-muted);padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all 0.15s ease;white-space:nowrap;text-decoration:none}}.scores-link:hover{{color:var(--text);border-color:rgba(255,255,255,0.15)}}
-.hdr-controls{{display:flex;align-items:center;gap:6px}}
 
 /* Theme toggle */
 .theme-toggle{{display:flex;gap:1px;padding:1px;border:1px solid var(--border);border-radius:6px}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 </style></head><body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="scores.html" class="topbar-tab">Scores</a>
+      <span class="topbar-tab active">Team Stats</span>
+    </div>
+    <div class="topbar-right">
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="header">
   <div class="hdr-top">
@@ -1364,14 +1383,6 @@ a.pname:hover{{color:var(--text-strong)}}
       <div>
         <h1>{team_name}</h1>
         <div class="subtitle">Updated {now}</div>
-      </div>
-    </div>
-    <div class="hdr-controls">
-      <a href="scores.html" class="scores-link">Scores</a>
-      <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
-      <div class="theme-toggle">
-        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -1733,15 +1744,21 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}}
 a{{color:var(--text);text-decoration:none}}
 
-/* Header */
-.sb-header{{max-width:700px;margin:0 auto;padding:32px 28px 0;display:flex;justify-content:space-between;align-items:flex-start}}
-.sb-header-left h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
-.sb-date{{font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500}}
-.sb-header-right{{display:flex;align-items:center;gap:6px;padding-top:2px}}
+/* Top bar */
+.topbar{{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}}
+.topbar-inner{{max-width:700px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
+.topbar-left{{display:flex;align-items:center;gap:0}}
+.topbar-tab{{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}}.topbar-tab:hover{{color:var(--text-secondary)}}.topbar-tab.active{{color:var(--text-strong);font-weight:600}}.topbar-tab.active::after{{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}}
+.topbar-right{{display:flex;align-items:center;gap:6px}}
 .team-select{{appearance:none;-webkit-appearance:none;background:transparent;color:var(--text-secondary);border:1px solid var(--border);border-radius:6px;padding:5px 26px 5px 10px;font-size:11px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.15s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}}.team-select:hover{{border-color:rgba(255,255,255,0.15);color:var(--text)}}.team-select:focus{{outline:none;border-color:var(--accent)}}.team-select optgroup{{font-weight:600;color:var(--text-muted)}}.team-select option{{background:var(--bg);color:var(--text)}}
 .theme-toggle{{display:flex;gap:1px;padding:1px;border:1px solid var(--border);border-radius:6px}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
+
+/* Scoreboard header */
+.sb-header{{max-width:700px;margin:0 auto;padding:24px 28px 0}}
+.sb-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
+.sb-date{{font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500}}
 
 /* Game grid */
 .sb-grid{{max-width:700px;margin:0 auto;padding:24px 28px 60px;display:flex;flex-direction:column;gap:8px}}
@@ -1825,24 +1842,31 @@ a{{color:var(--text);text-decoration:none}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.sb-header{{padding:20px 16px 0;flex-direction:column;gap:10px}}.sb-logo{{width:26px;height:26px}}.sb-score{{font-size:20px}}.sb-team-name{{font-size:12px}}.sb-grid{{padding:12px 16px 40px;gap:6px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
+@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.sb-header{{padding:16px 16px 0}}.sb-logo{{width:26px;height:26px}}.sb-score{{font-size:20px}}.sb-team-name{{font-size:12px}}.sb-grid{{padding:12px 16px 40px;gap:6px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
 </style></head><body>
 
-<div class="sb-header">
-  <div class="sb-header-left">
-    <h1>NHL Scoreboard</h1>
-    <div class="sb-date">{display_date}</div>
-  </div>
-  <div class="sb-header-right">
-    <select class="team-select" onchange="if(this.value)window.location.href=this.value">
-      <option value="">View Team...</option>
-      {switcher_opts}
-    </select>
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span class="topbar-tab active">Scores</span>
+      <a href="index.html" class="topbar-tab">Team Stats</a>
+    </div>
+    <div class="topbar-right">
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value">
+        <option value="">View Team...</option>
+        {switcher_opts}
+      </select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="sb-header">
+  <h1>NHL Scoreboard</h1>
+  <div class="sb-date">{display_date}</div>
 </div>
 
 <div class="sb-grid">
