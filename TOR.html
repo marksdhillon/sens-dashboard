@@ -42,6 +42,7 @@ input[name="tab"]{display:none}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-leaders:checked~.tab-bar label[for="tab-leaders"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
@@ -49,6 +50,7 @@ input[name="tab"]{display:none}
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-leaders:checked~#p-leaders,
 #tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{display:block}
@@ -222,6 +224,23 @@ a.pname:hover{color:var(--text-strong)}
 .inj-return{font-size:11px;color:var(--text-secondary)}
 .inj-comment{font-size:11px;color:var(--text-muted);max-width:200px}
 
+/* NHL Leaders */
+.ld-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ld-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:16px;overflow:hidden}
+.ld-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.ld-row{display:flex;align-items:center;gap:10px;padding:5px 0}
+.ld-row+.ld-row{border-top:1px solid var(--border)}
+.ld-hl{background:rgba(255,255,255,0.03);border-radius:4px;padding:5px 6px;margin:0 -6px}
+:root[data-theme="light"] .ld-hl{background:rgba(0,0,0,0.03)}
+.ld-rank{font-size:11px;font-weight:600;color:var(--text-muted);min-width:18px;text-align:right;font-variant-numeric:tabular-nums}
+.ld-headshot{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}
+.ld-info{flex:1;min-width:0;display:flex;flex-direction:column}
+.ld-name{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ld-team{font-size:10px;font-weight:500;color:var(--text-muted)}
+.ld-val{font-size:14px;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}
+.ld-hl .ld-name{color:var(--accent)}
+.ld-hl .ld-val{color:var(--accent)}
+
 /* Footer */
 .footer{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}
 .footer a{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}.footer a:hover{color:var(--text-secondary)}
@@ -272,7 +291,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="Toronto Maple Leafs" class="team-logo">
       <div>
         <h1>Toronto Maple Leafs</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:04 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:26 PM ET</div>
       </div>
     </div>
   </div>
@@ -292,6 +311,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-leaders">
   <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
@@ -300,6 +320,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-leaders">NHL Leaders</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
@@ -912,6 +933,390 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
 <td class="r" data-sort="5">5</td><td class="r" data-sort="1.0000">1.000</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="632">10:32</td></tr></tbody></table></div></div>
+  <div class="panel" id="p-leaders"><h3>Skating Leaders</h3>
+<div class="ld-grid">
+<div class="ld-card">
+<div class="ld-title">Points</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478402.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Connor McDavid</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">103</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477492.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nathan MacKinnon</span><span class="ld-team">COL</span></div>
+<span class="ld-val">99</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476453.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nikita Kucherov</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">95</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477934.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Leon Draisaitl</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">85</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8484801.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Macklin Celebrini</span><span class="ld-team">SJS</span></div>
+<span class="ld-val">83</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478864.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Kirill Kaprizov</span><span class="ld-team">MIN</span></div>
+<span class="ld-val">74</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477956.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">David Pastrnak</span><span class="ld-team">BOS</span></div>
+<span class="ld-val">72</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480039.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Martin Necas</span><span class="ld-team">COL</span></div>
+<span class="ld-val">71</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476460.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Mark Scheifele</span><span class="ld-team">WPG</span></div>
+<span class="ld-val">70</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480027.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Jason Robertson</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">70</span>
+</div>
+</div>
+<div class="ld-card">
+<div class="ld-title">Goals</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477492.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nathan MacKinnon</span><span class="ld-team">COL</span></div>
+<span class="ld-val">41</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8481540.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Cole Caufield</span><span class="ld-team">MTL</span></div>
+<span class="ld-val">35</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8481557.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Matt Boldy</span><span class="ld-team">MIN</span></div>
+<span class="ld-val">35</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478402.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Connor McDavid</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">35</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478864.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Kirill Kaprizov</span><span class="ld-team">MIN</span></div>
+<span class="ld-val">34</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480027.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Jason Robertson</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">34</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479987.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Morgan Geekie</span><span class="ld-team">BOS</span></div>
+<span class="ld-val">33</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8482740.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Wyatt Johnston</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">32</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479420.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Tage Thompson</span><span class="ld-team">BUF</span></div>
+<span class="ld-val">32</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477934.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Leon Draisaitl</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">31</span>
+</div>
+</div>
+<div class="ld-card">
+<div class="ld-title">Assists</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478402.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Connor McDavid</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">68</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476453.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nikita Kucherov</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">64</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477492.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nathan MacKinnon</span><span class="ld-team">COL</span></div>
+<span class="ld-val">58</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480800.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Quinn Hughes</span><span class="ld-team">VAN,MIN</span></div>
+<span class="ld-val">54</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477934.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Leon Draisaitl</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">54</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8484801.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Macklin Celebrini</span><span class="ld-team">SJS</span></div>
+<span class="ld-val">54</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480803.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Evan Bouchard</span><span class="ld-team">EDM</span></div>
+<span class="ld-val">52</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477956.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">David Pastrnak</span><span class="ld-team">BOS</span></div>
+<span class="ld-val">50</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480018.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nick Suzuki</span><span class="ld-team">MTL</span></div>
+<span class="ld-val">49</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8483457.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Lane Hutson</span><span class="ld-team">MTL</span></div>
+<span class="ld-val">49</span>
+</div>
+</div>
+<div class="ld-card">
+<div class="ld-title">Plus/Minus</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477492.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nathan MacKinnon</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+53</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480039.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Martin Necas</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+41</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8482655.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">J.J. Moser</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">+40</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476312.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Josh Manson</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+39</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478507.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">John Marino</span><span class="ld-team">UTA</span></div>
+<span class="ld-val">+36</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476453.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Nikita Kucherov</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">+32</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480069.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Cale Makar</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+32</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477476.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Artturi Lehkonen</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+31</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8484258.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Sam Malinski</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+31</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8470613.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Brent Burns</span><span class="ld-team">COL</span></div>
+<span class="ld-val">+30</span>
+</div>
+</div>
+</div>
+<h3 style="margin-top:32px">Goaltending Leaders</h3>
+<div class="ld-grid">
+<div class="ld-card">
+<div class="ld-title">Wins</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476883.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Andrei Vasilevskiy</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">28</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478872.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Karel Vejmelka</span><span class="ld-team">UTA</span></div>
+<span class="ld-val">28</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479979.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Jake Oettinger</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">25</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480843.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Lukas Dostal</span><span class="ld-team">ANA</span></div>
+<span class="ld-val">24</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8483548.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Brandon Bussi</span><span class="ld-team">CAR</span></div>
+<span class="ld-val">24</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476434.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">John Gibson</span><span class="ld-team">DET</span></div>
+<span class="ld-val">23</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478009.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Ilya Sorokin</span><span class="ld-team">NYI</span></div>
+<span class="ld-val">22</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480280.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Jeremy Swayman</span><span class="ld-team">BOS</span></div>
+<span class="ld-val">22</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8475683.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Sergei Bobrovsky</span><span class="ld-team">FLA</span></div>
+<span class="ld-val">22</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8477424.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Juuse Saros</span><span class="ld-team">NSH</span></div>
+<span class="ld-val">21</span>
+</div>
+</div>
+<div class="ld-card">
+<div class="ld-title">Goals Against Avg</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476883.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Andrei Vasilevskiy</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">2.22</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478406.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Mackenzie Blackwood</span><span class="ld-team">COL</span></div>
+<span class="ld-val">2.22</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8483548.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Brandon Bussi</span><span class="ld-team">CAR</span></div>
+<span class="ld-val">2.23</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8482445.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Devin Cooley</span><span class="ld-team">CGY</span></div>
+<span class="ld-val">2.24</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8475809.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Scott Wedgewood</span><span class="ld-team">COL</span></div>
+<span class="ld-val">2.29</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479193.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Casey DeSmith</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">2.31</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478435.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Dan Vladar</span><span class="ld-team">PHI</span></div>
+<span class="ld-val">2.40</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480313.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Logan Thompson</span><span class="ld-team">WSH</span></div>
+<span class="ld-val">2.40</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478009.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Ilya Sorokin</span><span class="ld-team">NYI</span></div>
+<span class="ld-val">2.47</span>
+</div><div class="ld-row">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8475831.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Philipp Grubauer</span><span class="ld-team">SEA</span></div>
+<span class="ld-val">2.50</span>
+</div>
+</div>
+<div class="ld-card">
+<div class="ld-title">Save Pct</div>
+<div class="ld-row">
+<span class="ld-rank">1</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8482445.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Devin Cooley</span><span class="ld-team">CGY</span></div>
+<span class="ld-val">0.923</span>
+</div><div class="ld-row">
+<span class="ld-rank">2</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8476883.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Andrei Vasilevskiy</span><span class="ld-team">TBL</span></div>
+<span class="ld-val">0.917</span>
+</div><div class="ld-row">
+<span class="ld-rank">3</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478406.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Mackenzie Blackwood</span><span class="ld-team">COL</span></div>
+<span class="ld-val">0.916</span>
+</div><div class="ld-row">
+<span class="ld-rank">4</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8478009.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Ilya Sorokin</span><span class="ld-team">NYI</span></div>
+<span class="ld-val">0.915</span>
+</div><div class="ld-row">
+<span class="ld-rank">5</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479312.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Alex Lyon</span><span class="ld-team">BUF</span></div>
+<span class="ld-val">0.914</span>
+</div><div class="ld-row">
+<span class="ld-rank">6</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8475831.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Philipp Grubauer</span><span class="ld-team">SEA</span></div>
+<span class="ld-val">0.914</span>
+</div><div class="ld-row">
+<span class="ld-rank">7</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8480313.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Logan Thompson</span><span class="ld-team">WSH</span></div>
+<span class="ld-val">0.913</span>
+</div><div class="ld-row">
+<span class="ld-rank">8</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8475809.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Scott Wedgewood</span><span class="ld-team">COL</span></div>
+<span class="ld-val">0.913</span>
+</div><div class="ld-row">
+<span class="ld-rank">9</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8479193.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Casey DeSmith</span><span class="ld-team">DAL</span></div>
+<span class="ld-val">0.913</span>
+</div><div class="ld-row ld-hl">
+<span class="ld-rank">10</span>
+<img src="https://cms.nhl.bamgrid.com/images/headshots/current/60x60/8483710.jpg" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">Dennis Hildeby</span><span class="ld-team">TOR</span></div>
+<span class="ld-val">0.912</span>
+</div>
+</div>
+</div></div>
   <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
 <div class="sub-note">Data from ESPN</div>
 <div class="inj-tbl-wrap">
@@ -926,7 +1331,13 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMFBUaUVHOHVLVGFFNXlzTlRKaHV3aHFWMzZUN01YUXhXTmsxRFVQUkFoeXFXV3ZCRjNjaTE3cGZmOHRmZU5Rd1UtWWlMRnh1NzMzQ05nVHFfODYwNjZmTzBvNEh0U3JJZnVSU1pIRFUwOGp0Rl83aDAwV3BxcGFnVm1jaFRVT2s0N0hF?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNbTU0WjloZGdram9JREd2THV4ZmdERHpZdk56U20tS1hPd0d2SVRtRGg4bjdBTFd2LTBGTUxnYTJIS1VfOFVuYVIzUE9yYTRtMUJrN3JHSVhTYXI2SWx3STNGRTVpc3JlbmhOc2l1anZ3bjlBTjBQMEhuWWlSbUlaLUxnSVJibllDMUVRWWJqSHJ2b1JLQ1pyYW9rZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Big Lead</span><span class="news-date">Mar 3 &middot; 7:13 PM</span></div>
+<div class="news-title">Maple Leafs’ trade deadline ‘win’ would be stockpiling picks, prospects</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxQTnlsdFF0TmJvdHh3Rl9HS2VJTm9qc3hCeGs4U2hOckIyZjBoY1ZWc0Z4WGNuWXZrbDAxMUFaSmJTT3RYTTNCX1BLYzJhejNWZFh0a0tYVnU4RVJuMjZkdkZsdHNXVExyQU1ibEhndi1PNGNiRE9WM3d4RmJDeEZHV3lseHpGNmdDNEFtN2dvaE9MTDZEN0J6a1gwdWE0clRBTW5ZTWc0cUZRRU1jaVNWOVJUV2cxV1I0em1RTHBDQnRLVlAtVVhoUzNvUG05cnMtTTVWeE1TMUZFUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 7:08 PM</span></div>
+<div class="news-title">Maple Leafs' looming goalie problem could mean Anthony Stolarz trade</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQMXJGcTN4MTVtZFN4OERqU3Ftdi1YT2RKNXlvdEZoR2NsWGJ1WGVUVWRNMXRuN3diVUw3OEtrdnhzQ2hxUHN2aUZJWHFtanhWNE1fSWtLUl9KbU5JYXV0OHlHLVVOdnkzb0Z2YnRVd01mOUxoUFM2MDBZcnFyX1A4a1NKeFlfbW9RNmZzSVB2cnRlS3JfU0lEQ1BB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 7:00 PM</span></div>
+<div class="news-title">Why the Maple Leafs can still rebuild without trading Auston Matthews</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMFBUaUVHOHVLVGFFNXlzTlRKaHV3aHFWMzZUN01YUXhXTmsxRFVQUkFoeXFXV3ZCRjNjaTE3cGZmOHRmZU5Rd1UtWWlMRnh1NzMzQ05nVHFfODYwNjZmTzBvNEh0U3JJZnVSU1pIRFUwOGp0Rl83aDAwV3BxcGFnVm1jaFRVT2s0N0hF?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 6:52 PM</span></div>
 <div class="news-title">Edmonton Oilers Eyeing Trade for Versatile Maple Leafs Forward</div></a><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxQb0NVdTVfUXFvN25kRnZzcXd6aTA4OHFuR25uaWxha2ljU0pzNjRZYnFMVzQtd0lSbmlqZFpQVXozSlZUNW9wWldyZTQ3UDVxcmNibTQzVXVZTlNueWdDU3laY2RVYkpBX0lSVm5oejYxNDhETWlpY2l5dG1BN2tTRjJnNnQ1cEliLWZhTDBxYlNhc1F1VS14ZnVYcG1rOHZlMi01ZFFmNUZvSXZIMWNJTVJsYkFQbnE3YjhuR0VBaWFSSzI3TnZkVEVtNUVGMENyZWtRMUozaVgxejg0cHFITQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 6:51 PM</span></div>
@@ -952,7 +1363,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 3 &middot; 5:39 PM</span></div>
 <div class="news-title">Former Maple Leafs player puts Toronto on high alert over Auston Matthews’ future with trade deadline looming</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPX1BzTlYtenFhdEx3VElNdkpoRG5GTVNWeWM3V2dKWXFxUDROWGRWVGpfLXJJSGZJQzMwTDFNd3dxUTJENDdFZ21UdmN5Snh1STdtX0dJLVlEdVdyZ1ZieWhyT19leGVmZHI5aldqYi1FaU5Zd3FXWGJWVzVTLUtoWlhqaDhPLUFYWXJILUpXV1RQWHhJT2JQV1QwWVZjc3pEZjlZ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 5:33 PM</span></div>
-<div class="news-title">SIMMONS: Stunning decline of Morgan Rielly is near-impossible to explain</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOVnhpb2VNbDdMSmpZRWp5RExUNTA3RlhVSEZONXlyWnd2S1JHN21KNXpFeXFjMWlNbWhYTjZHZHhCNkNYVG5zcTBRN1hMRmYtblc0SGFSeUZaVUdzcTVuZ0lXNUg3aENhcElzOXlUQTA5ZWNWUlhHYUNmbXY4M1R0ejlNek1WSXlqVl8yVktnNzRNaHZDX2VzZWNn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">SIMMONS: Stunning decline of Morgan Rielly is near-impossible to explain</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQdzNJVURHX09ZcUpQeXJVRllfcnRXZDRZeXRFZy1qOFBVVGxxdWJJaUlHa1BYbnl0WWpOQTFjVjhsWmVZc3dWUVdicG4zaTdhOUtYUm5JUXJSaXZKcGkyZllaRnVYZ0xMdHctSVpLZnVLaGI1ZThqREpBVk5nUVg3OURnbW1ERnV0anBWY3Nzd2pSdGVFc1A0SERZV2E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 5:14 PM</span></div>
+<div class="news-title">Five quotes that haunt the Maple Leafs as their season slips away</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOVnhpb2VNbDdMSmpZRWp5RExUNTA3RlhVSEZONXlyWnd2S1JHN21KNXpFeXFjMWlNbWhYTjZHZHhCNkNYVG5zcTBRN1hMRmYtblc0SGFSeUZaVUdzcTVuZ0lXNUg3aENhcElzOXlUQTA5ZWNWUlhHYUNmbXY4M1R0ejlNek1WSXlqVl8yVktnNzRNaHZDX2VzZWNn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 5:09 PM</span></div>
 <div class="news-title">Maple Leafs trade deadline preview: No choice but to sell</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQSy1lQW1HU1I5cGVEeVZIc2NHUjVtc0pHU1pMNFVxdWItRWRSa2N0NEJTRkgxdXVkV3FKX2Y3RTdyTXYwNGljdGlaWnc3MDZtNWxia2hOU0diM3M3djNKcDE5Q1J5UUVVOV91TjViQV9qRmVOQ3ZiaDQ5RW1GOG13eXpKMkxQb3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 4:57 PM</span></div>
@@ -968,15 +1381,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 4:05 PM</span></div>
 <div class="news-title">NHL Rumors: Oilers Not Done, Maple Leafs Changes, Matthews and Tkachuk</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPcHptLUlMX251UG9ub2UtUy1wYW53N3NPQThKNDd2MVlla3AtUjZ3WU52NG4xbjB2RDNnakZ3Z3c3TFZEX1N6QTl3SG04bVd0R1lhSmtUN0pKMmoyTGVyZE9IRFpmc3NMOUozQ2poTG9Tb2pmMUhGZEhTVVh0Q2sxSDZjTl9Cc1c2VmlvVjNtM1FBQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 4:02 PM</span></div>
-<div class="news-title">Will the Leafs Actually Trade Bobby McMann to Minnesota?</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNN0pLcmFtZzE4ODBDeVlpdlh0UWhGYk85RHhubGlxVml4N3hnSGhrbG5zLTZvdW5peHowQk5KdW16Tmx0UkVQUTVrN1NORGJ2a3VYOTRreWlRUUVBS09scHhyU2FveUY1NEt6U0s2UVZIR0Rxak15UDVEa3BndnRhZUtwdkp6eTFQallsRllQbmtRZHYxUERpMUx3S2wtNUpkbHZDM2NxWFhfYXNHRWlzaTlLZU1Pdw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Athlon Sports</span><span class="news-date">Mar 3 &middot; 3:50 PM</span></div>
-<div class="news-title">Toronto Maple Leafs: NHL Analyst Calls for Team to Be Sellers at the NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQZVM3bXRJai04X1JMSGw1enpyMDNaQV9lVWZHVGdVZEdZNXJ3TmppOEFaU3htMkNqUkh2SU44MnhGUFYwQ3FpLU5URmNTQzdrOGtoNldzTHhWdDNFdV9Jak53c28yRk14YnZUQ2V3RVhUWmdsY2VQOVM3eHd2Znc0MTUxRmZZNWM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 3:50 PM</span></div>
-<div class="news-title">Toronto Maple Leafs: NHL Analyst Calls for Team to Be Sellers at the NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQUmZHOGhpNlA3aVdKSTlIQ3RzaDJXZ0pmcEdfUC1JdG8zS2d6S0NlTWZjRkhMeHdqUTVUWDBfNm1kSlQzbGVqb2xYNzhWQ1BOZ1VNRTNUV1V1d1J4VmhRRzhwTFhjSnVJZjVHdDZHTGoyQTJ2ZUdockx5SDRrTHQzR3AxUjVtRWlKd3hubVFQZUo?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 3:45 PM</span></div>
-<div class="news-title">Are the Maple Leafs and Oilers Working on a Nicolas Roy Trade?</div></a><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTFA4MmhGRWJqZEl0dFFVdWoxeHhPY3hMVzRjdlZERGtIaHMyZFE0d2I1ZkFXTkhwS3VuR0RwUVRIZzJvZF84SnhfODJvWnhBdmRVem1kZ2VmaWRPRW1fWUNsYkJ5cUtjQ0RmT3JQRWt3NHMyUjBlUlFZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 3 &middot; 3:32 PM</span></div>
-<div class="news-title">Leafs Tank Tracker: A Brutal Monday & Tonight's Danger Zone</div></a></div></div>
+<div class="news-title">Will the Leafs Actually Trade Bobby McMann to Minnesota?</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/leafs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/leafs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -986,7 +1391,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:04 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:26 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

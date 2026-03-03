@@ -335,6 +335,58 @@ def fetch_nhl_goalie_summary():
     data = fetch_json(url)
     return {g["playerId"]: g for g in data.get("data", [])}
 
+def fetch_league_skater_leaders():
+    """Fetch top skaters league-wide for leader boards (points, goals, assists, +/-)."""
+    leaders = {}
+    sorts = {
+        "points": "points",
+        "goals": "goals",
+        "assists": "assists",
+        "plusMinus": "plusMinus",
+    }
+    for key, prop in sorts.items():
+        url = (
+            "https://api.nhle.com/stats/rest/en/skater/summary?"
+            "isAggregate=false&isGame=false"
+            f"&sort=%5B%7B%22property%22:%22{prop}%22,%22direction%22:%22DESC%22%7D%5D"
+            "&start=0&limit=10"
+            "&factCayenneExp=gamesPlayed%3E=1"
+            f"&cayenneExp=seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+        )
+        try:
+            data = fetch_json(url)
+            leaders[key] = data.get("data", [])
+        except Exception as e:
+            print(f"  WARNING: league skater leaders ({key}) failed: {e}")
+            leaders[key] = []
+    return leaders
+
+def fetch_league_goalie_leaders():
+    """Fetch top goalies league-wide for leader boards (wins, GAA, SV%)."""
+    leaders = {}
+    # GAA ascending (lower is better), others descending
+    configs = {
+        "wins": ("wins", "DESC"),
+        "gaa": ("goalsAgainstAverage", "ASC"),
+        "svPct": ("savePct", "DESC"),
+    }
+    for key, (prop, direction) in configs.items():
+        url = (
+            "https://api.nhle.com/stats/rest/en/goalie/summary?"
+            "isAggregate=false&isGame=false"
+            f"&sort=%5B%7B%22property%22:%22{prop}%22,%22direction%22:%22{direction}%22%7D%5D"
+            "&start=0&limit=10"
+            "&factCayenneExp=gamesPlayed%3E=10"
+            f"&cayenneExp=seasonId%3C={SEASON}%20and%20seasonId%3E={SEASON}%20and%20gameTypeId=2"
+        )
+        try:
+            data = fetch_json(url)
+            leaders[key] = data.get("data", [])
+        except Exception as e:
+            print(f"  WARNING: league goalie leaders ({key}) failed: {e}")
+            leaders[key] = []
+    return leaders
+
 def fetch_team_news():
     """Fetch recent team news/trade articles from Google News RSS."""
     team_name = TEAM_INFO.get(TEAM, {}).get("name", "Ottawa Senators")
@@ -852,6 +904,74 @@ def build_injuries_html(injuries):
 </table>
 </div>'''
 
+def build_leaders_html(skater_leaders, goalie_leaders):
+    """Build the NHL Leaders tab HTML with mini leaderboard cards."""
+
+    def _leader_card(title, players, stat_key, fmt_fn, is_goalie=False):
+        """Build a single leaderboard card."""
+        rows = []
+        for i, p in enumerate(players[:10]):
+            rank = i + 1
+            if is_goalie:
+                name = p.get("goalieFullName", "")
+                team = p.get("teamAbbrevs", "")
+            else:
+                name = p.get("skaterFullName", "")
+                team = p.get("teamAbbrevs", "")
+            val = fmt_fn(p.get(stat_key, 0))
+
+            # Highlight current team's players
+            hl = " ld-hl" if team == TEAM else ""
+            headshot_id = p.get("playerId", 0)
+            headshot = f"https://cms.nhl.bamgrid.com/images/headshots/current/60x60/{headshot_id}.jpg"
+
+            rows.append(f'''<div class="ld-row{hl}">
+<span class="ld-rank">{rank}</span>
+<img src="{headshot}" class="ld-headshot" onerror="this.style.display='none'">
+<div class="ld-info"><span class="ld-name">{name}</span><span class="ld-team">{team}</span></div>
+<span class="ld-val">{val}</span>
+</div>''')
+        return f'''<div class="ld-card">
+<div class="ld-title">{title}</div>
+{"".join(rows)}
+</div>'''
+
+    def _fmt_int(v):
+        return str(int(v)) if v is not None else "0"
+
+    def _fmt_pm(v):
+        v = int(v) if v is not None else 0
+        return f"+{v}" if v > 0 else str(v)
+
+    def _fmt_gaa(v):
+        return f"{v:.2f}" if v is not None else "0.00"
+
+    def _fmt_svpct(v):
+        return f"{v:.3f}" if v is not None else ".000"
+
+    cards = []
+    cards.append(_leader_card("Points", skater_leaders.get("points", []), "points", _fmt_int))
+    cards.append(_leader_card("Goals", skater_leaders.get("goals", []), "goals", _fmt_int))
+    cards.append(_leader_card("Assists", skater_leaders.get("assists", []), "assists", _fmt_int))
+    cards.append(_leader_card("Plus/Minus", skater_leaders.get("plusMinus", []), "plusMinus", _fmt_pm))
+    cards.append(_leader_card("Wins", goalie_leaders.get("wins", []), "wins", _fmt_int, is_goalie=True))
+    cards.append(_leader_card("Goals Against Avg", goalie_leaders.get("gaa", []), "goalsAgainstAverage", _fmt_gaa, is_goalie=True))
+    cards.append(_leader_card("Save Pct", goalie_leaders.get("svPct", []), "savePct", _fmt_svpct, is_goalie=True))
+
+    return f'''<h3>Skating Leaders</h3>
+<div class="ld-grid">
+{cards[0]}
+{cards[1]}
+{cards[2]}
+{cards[3]}
+</div>
+<h3 style="margin-top:32px">Goaltending Leaders</h3>
+<div class="ld-grid">
+{cards[4]}
+{cards[5]}
+{cards[6]}
+</div>'''
+
 ESPN_SLUGS = {
     "BOS": ("bos", "boston-bruins"), "BUF": ("buf", "buffalo-sabres"),
     "DET": ("det", "detroit-red-wings"), "FLA": ("fla", "florida-panthers"),
@@ -1195,7 +1315,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, leaders_html, vs500, mp_odds, deltas, mp_stats, all_teams):
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
@@ -1324,6 +1444,7 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
+#tab-leaders:checked~.tab-bar label[for="tab-leaders"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
@@ -1331,6 +1452,7 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
+#tab-leaders:checked~#p-leaders,
 #tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{{display:block}}
@@ -1504,6 +1626,23 @@ a.pname:hover{{color:var(--text-strong)}}
 .inj-return{{font-size:11px;color:var(--text-secondary)}}
 .inj-comment{{font-size:11px;color:var(--text-muted);max-width:200px}}
 
+/* NHL Leaders */
+.ld-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}
+.ld-card{{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:16px;overflow:hidden}}
+.ld-title{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
+.ld-row{{display:flex;align-items:center;gap:10px;padding:5px 0}}
+.ld-row+.ld-row{{border-top:1px solid var(--border)}}
+.ld-hl{{background:rgba(255,255,255,0.03);border-radius:4px;padding:5px 6px;margin:0 -6px}}
+:root[data-theme="light"] .ld-hl{{background:rgba(0,0,0,0.03)}}
+.ld-rank{{font-size:11px;font-weight:600;color:var(--text-muted);min-width:18px;text-align:right;font-variant-numeric:tabular-nums}}
+.ld-headshot{{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
+.ld-info{{flex:1;min-width:0;display:flex;flex-direction:column}}
+.ld-name{{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.ld-team{{font-size:10px;font-weight:500;color:var(--text-muted)}}
+.ld-val{{font-size:14px;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}}
+.ld-hl .ld-name{{color:var(--accent)}}
+.ld-hl .ld-val{{color:var(--accent)}}
+
 /* Footer */
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
@@ -1574,6 +1713,7 @@ body{{animation:fadeIn 0.15s ease}}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
+  <input type="radio" name="tab" id="tab-leaders">
   <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
@@ -1582,6 +1722,7 @@ body{{animation:fadeIn 0.15s ease}}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
+    <label for="tab-leaders">NHL Leaders</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
@@ -1590,6 +1731,7 @@ body{{animation:fadeIn 0.15s ease}}
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
+  <div class="panel" id="p-leaders">{leaders_html}</div>
   <div class="panel" id="p-injuries">{injuries_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
@@ -2217,6 +2359,14 @@ def main():
     all_injuries = fetch_espn_injuries()
     print(f"  {len(all_injuries)} teams with injuries")
 
+    print("Fetching league scoring leaders...")
+    skater_leaders = fetch_league_skater_leaders()
+    print(f"  Points: {len(skater_leaders.get('points', []))}, Goals: {len(skater_leaders.get('goals', []))}, Assists: {len(skater_leaders.get('assists', []))}, +/-: {len(skater_leaders.get('plusMinus', []))}")
+
+    print("Fetching league goalie leaders...")
+    goalie_leaders = fetch_league_goalie_leaders()
+    print(f"  Wins: {len(goalie_leaders.get('wins', []))}, GAA: {len(goalie_leaders.get('gaa', []))}, SV%: {len(goalie_leaders.get('svPct', []))}")
+
     # ── Per-team builds ───────────────────────────────────
     for team_abbrev in TEAM_INFO:
         TEAM = team_abbrev
@@ -2314,7 +2464,8 @@ def main():
         schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records_map, mp_stats, mp_odds, results)
         news_html = build_news_html(news_articles)
         injuries_html = build_injuries_html(all_injuries.get(TEAM, []))
-        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams)
+        leaders_html = build_leaders_html(skater_leaders, goalie_leaders)
+        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, leaders_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
