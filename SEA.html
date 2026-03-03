@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" alt="Seattle Kraken" class="team-logo">
       <div>
         <h1>Seattle Kraken</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:28 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -889,8 +943,8 @@ body{animation:fadeIn 0.15s ease}
 </div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQYkYxZ215WkZMZ3pTOGhOZzhMMHZZcG56TTg3clBfTDhUSVpIVTFIOHdwU1prWV9vLUtlZjljS2VJaTVWREhrQjZOMGY2ZUtIT2xtUWpXQUFUZkhTT0lQblJxSkdpdUdRUmJFZ3g4cnZEdjRDLTJpVjJmWHNiUUJVRjRmQjl1dDB5bEE2bGYwVTZSZG90WTJxdnZpWlR1Y0YycmljalA1OGNmRDNINC1xRzhrZEk5TUk4YUF5R3BCbw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Idaho State Journal</span><span class="news-date">Mar 3 &middot; 8:02 PM</span></div>
-<div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPd3NJVjVlRHdQSWZDLWhkZmh2RUhNblRFQWg1dU5oU2lzaG5pYzByVGV1ck5udmNYRUd3QVhvWEdsMHcxcXRSbHE1NWZDdm1YQ2xPWmhNeHZQaEdvTTBGbVhlb1g4RUdoZW00akRmSWNjZXplR2dzVko3QnA0Y0RaZmpzbENLN0Z0bzlGWV9KbzBpempkQUFmVA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Kelowna Capital News</span><span class="news-date">Mar 3 &middot; 7:44 PM</span></div>
+<div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQVWVXakg0NzdNekdSbDNZVFdpNFNEZ2lvdnYzOTVCTHJFS0IwU1ppUDJ4OEJSZEJQODBwaTNjY1ByNlpHNkNQX3BoMy1XNHJoWHdLZWFPN3dWUUpDdW9VZ0N3UThmX2NrN2FfR3cyOHBWZlhlZi1talVvNkZ3cnQzQnA0MV9NbmxPZ2Vab2pOcnNIQzgxQjVnY0xlcUk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Vernon Morning Star</span><span class="news-date">Mar 3 &middot; 7:47 PM</span></div>
 <div class="news-title">Seattle Kraken sign Penticton Vees forward Ryden Evers</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNWGtwQUhqbmhlUno3c21xQWRvS3hqNzNQWGpPdHBEdHVmWlpCMnFXUlRTYTdnQVBNNFA1Zk96Ym1KeU9hVWljazFEbmpOYlljNDZsLVlVZkFHbTFjVGVKaDdTN2pOeTJ3NjlxYkRMa25Kek1fRmFJam5CWjVyeC1aTHBucko?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:03 PM</span></div>
 <div class="news-title">Black Hockey History Night Recap</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1XMDU3ZEszNGZsZ3ZOeWtvbjRtbVRkUWJ1ZFJnYi1kazRiZjJ3UUVqbUl1VmpOalE2TW02TE1iSlBIaXpVdy1KOHJkc3l1MUhValVGZ1NSNlVaVDEtLU44azZDc0VaUjVNR1NEVnVWNkdVMVVJOGFUU2VYV19iSEE?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -908,7 +962,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Post-Game Instant Analysis: Carolina vs. Seattle</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOUWIzMzR2VnNrLXdlWFRGT1B3OEhES0JPT2JfREpmLWRDd0RKMFhUS29rZ2NGV2xiNWl3TDhadGlkbEpTSnNGMGt4UElLbUZvbEx1aXlyejZ4LTFZdHNtZE5nNzVoN3FJUGRtNWNSOFVFNG5UVm9HdDJ2anZZYXFKQVdVa1hGdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:15 AM</span></div>
 <div class="news-title">Postgame Quotes: Jordan Staal</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOYzY1TkJlOGlPbHFsaWFCSUNic3p4ZzE3eGJQZ1d2WGxoLXUzejg3RjJNVnVUdVlsVXZjcW9KaGtuUUJvNFdDNWtORFd6bnIyTERUZzM1Ulp1a0lCLThMNUJmS1NSeHIzYVI1RlZ1UVJzRFBlTmNoWDk3Z0FYdWEzR29BT2p1RjlpdEd5cTRjNUdJQkQwTnV6T3kwUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 3:00 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 3:00 AM</span></div>
 <div class="news-title">Kraken Not Planning To Trade Tolvanen, Pending UFAs</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTFBNeTF0T3p4cEpXUmE2ZkFZZk9EZ1pGc3FwUHFCMkxxUTJVMmx2V1JqTlRvLUxTV1RMRWxPZWgzTGZvRW05MkhBT2luRl91aHlXaEhxSW5hOUlMNkFacWN1SEpiUEw4SlZZcTRLV01wQVpqUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 1:43 AM</span></div>
 <div class="news-title">JT Brown Talks Hockey, Identity & Representation</div></a><a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxPVUs2Z1k2eGV3T1VaQTFSTGxwZ3l2UzF6SXVoc09uSU9DSHdsY1VlX2pmWUxjek1HRmc1UEZuVS1tdEluc3BMTTh3T1ZaWGxHVXZTYjBSMzVwRzRSMjJZMEdraWhOVlhsY2xIMWpZRGRvb3JhV0t2bjZ1TnNpTFY1R2o2UzczeW8yclRQQmc4NkR3dkxwaUMwQmJFeWtJS09va3NxX3hRS0xObFBjbGFuZklxMHhrQklOampFcEx2NVUydFRVV1FZVGRvU2tINkQ0?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -916,7 +970,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">How to watch the Seattle Kraken vs. the Carolina Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPNkl5V0Q0aE5oWXpQTG9ZVWprcFhvcGw4MTVFZEJYa3pHX3U3OUR6d21yNzRCTkFJcjN3MUZ5enViU2F2VkdmLUV3RXlKSVZCM1FNTU9vUjBiNTlMODRCcWZoQnluZlhCb0o3ZDZXeHdvNTVqOGxpNm1VcGVxZ05veFVlcFRWUTFlenBlSkNtNURrM0JSOFliVHRjOEZTRy1MUU5MUThfWFVMdm5WZDIyZ09sZlZPeVVVS2gtZ1FvNzJuY2pV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:31 PM</span></div>
 <div class="news-title">Gustav Olofsson On Waivers After Inking One-Year Deal With The Kraken</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQS2ZqQ1QtNVFFNWZEaTJ2NlE0SGFNNXpxVkxBemZCXzdtQ0lyeUk5V1RuT3hQUWtleTl0clgzLU9mYmd1T1lDYUZEREtHZWVFTHdMWmZsNWhuNm1IcFEtWVBjWEJRTkRvUVFBVDIxYWJGSGxPelpRT0xPQmFBQ3RDZm1MY1c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 9:19 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 9:19 PM</span></div>
 <div class="news-title">Kraken Sign, Waive Gustav Olofsson</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQVFlEZkZfaVlKalBRU1NGVmFFaDY4eG5ueEV5SzBpWVRQeVRacnd0NjRkb2NpTy03NTRWZk1aaEJzUXhrY2xLU2hUR0w0c2tiVl85eEI2Rk8xeUZ5ZUd3NUc4eFUzM0ZaeTgyVGxjaXljUUQ2YzJ1NzVtelpWUUFCdlA1VU1uOE5DRUROWGE5VEdJZlRsOUJrNGZ6cS1WRDJuVFJGaGdjMk1zRjE0RnEw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Canadian Hockey League</span><span class="news-date">Mar 2 &middot; 9:07 PM</span></div>
 <div class="news-title">Seattle Kraken prospect Miettinen named Tempo WHL Player of the Week, Fuelled by Co-op</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNUXZWbTFGa25ja194NzYySV9UNUpOQjZ2QnpSRkNLV0djT1NfbmVtX3ZTME54a2RIb1QxVFVSWlUzbElNS1pyM3pFVEduenpnX3pXUzlvanJSMnFvM1pBZXZmeGx6VUNkOU8tSEEtdjhrc0hTdjExbEFwN1ZLS0VIZjBQT1Vnd1J4WERuYXdB?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -947,7 +1001,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:28 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

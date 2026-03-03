@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/MIN_dark.svg" alt="Minnesota Wild" class="team-logo">
       <div>
         <h1>Minnesota Wild</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -934,8 +988,10 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPMFhISDNQMlphNjR1Z0RidFhIOEJia0NrV0VZOEpnT3lPRGlaeGlxNVhmUGRCS2s5UFpURWZXSkNKWmw3VjB4dFBNRmNlLXJWNzhwZ3F1TG1pR2k4M3d6UTYxUDAyODhkVGwtTEZYTEJCUk9FaVpsajk5aHF1ZlRjZ1FneWJ3ZlR4Nm95XzV5SXpGN1hIY3c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:15 PM</span></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPYlZyMUQyTzA2bEZuc1NqN3dpNXVsVk5XM3RhR1JfNERoUHNkUjBxME1TYVdrTzBiek9OLW52bmpfUlQzanBjNEI3QkJka1hIc3RpZ09aSUhtU1phbnRkZTVjYTI5THNJdHBNMzFKbnV2bGFRYXZNSHVTMHlHMHkyRjVXSERWcHBMYzZxb1BsSy1hTUdObzAtYkpWMVpPYzV5WC1XOGNNZUlJZDd3bFNFcVg1TUtYX1hhM2E1U1dnZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bleacher Report</span><span class="news-date">Mar 3 &middot; 8:26 PM</span></div>
+<div class="news-title">Wild's Stanley Cup Hopes Hinge on Trade for Vincent Trocheck Amid NHL Rumors at Deadline</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPMFhISDNQMlphNjR1Z0RidFhIOEJia0NrV0VZOEpnT3lPRGlaeGlxNVhmUGRCS2s5UFpURWZXSkNKWmw3VjB4dFBNRmNlLXJWNzhwZ3F1TG1pR2k4M3d6UTYxUDAyODhkVGwtTEZYTEJCUk9FaVpsajk5aHF1ZlRjZ1FneWJ3ZlR4Nm95XzV5SXpGN1hIY3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:16 PM</span></div>
 <div class="news-title">Projected Lineup: Wild vs Lightning</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQbU9MOE1iS2tfeWc1Y2lxSG1OYXdOWnJZaVl0c0R2dk5mcl9pbUtjVUY1WTZEcXhLZ2sxM1A1Zm5FWkY1NUMzZEdyVnNvQ1F0Z1JLbk9tRlFLUUoxM1pDQ0lOSXlJc1dNQVdhbG1oeC1YdnJmbW81c3Z4cmtjTE1QTU5B?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:03 PM</span></div>
 <div class="news-title">Fabbri Pregame vs. Tampa Bay 3/3</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQUnFNSGpxaTJGQzN4ZUhUOXBRQVJMN0Z1Z2Qyd3Q4aDZYaWhzM21abUJ6X29PWG96WW5fQXlDTlNhZmtLTERocE16aTJ0X3liTmRpX1J0dS1MSUpFS3VqUkFpMGhoMF9jT1ZtUm44SGhaZFVkdWIxZ1FTMGxVZFF4TzFEOEZiYkVDWi1sUmh3?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -971,7 +1027,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Schaefer leads 3 Stars of the Week</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxQcm0wSW9rVENQRk1qRlFIQWlGeFRiVDlwRkF1RWhFcWxlTzktSE9hU0JpMmhCcExqdk5ETVFpLTl5LWZIWEEtWjVueENYS0RiZ2dUR1ZsNTRycVYwcUtVMHlHN2RKd1B6Q2JhTURxcG5UVnlkYXoyYUh4UmZrYWNsOHd2WFNUYVhWWTdqdmJhWVVpODBVam9NMklWSE14WFJUbldyVFlmcmp6MzBEMlJsWnRJdkhBeTJybXdPR2IwNXhkU3FaQjBRZGQ0Vm5lOHZmdE5lalRIbDdlazc3MVVfTjZIajNnczdVdF9PajVWblVyQ2EycllhU2Z2RmNGcmxQM3dSY1liZTBBMnFaZkRzSmtQNFYxbXcteXhiY21WSUnSAaYCQVVfeXFMTnRlNUtTQVVOZ085NThEbEF5TnJSZG5OdUVOMVFhY0g0SVlXbXI5YTVxelctVGFGbzJxZHBSdzNvRmVfdzA0aFVoVDJnVnlMZkV5Y1pBMHQ4d2JPVWtmUnNZSVlMeWg3eHg5ajFTcGZpRnphSEpfYlFkaDJRZTlRRkF2ZWtpWjRIWlFsb1hxUDdjMExhUDJiem5BVFMwX1VzTndXbVJTRzFZeTlma2Jiai1La3VjRFhRUWRHQXFEV3ZGQXVrUUViRmhBX3V4Qk5nSHdzOXpsRnZNRGxqT0xaZjFNOTVkZ19fekV2RDNxSkdBWWl4THNIcWp5cnUxbTJhNFVIRl9Jc1R0RmhxRU9XSWhtV1BzbXRjZTAwRGVhNXpiLS1qY3ln?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 12:28 AM</span></div>
 <div class="news-title">NHL Trade Rumors: Vincent Trocheck makes feelings clear as New York Rangers weigh options amid Minnesota</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPcEFXZWpFRTVrTk9WVXlra3JBRFNZbHdfNlZLajlfSk1xVXg5cGl5QnBDZjdVOE5SZGVnT2lYX2xQQllJbzdKSjY1Y3NxLWRYQ3FVZjZjLVhPNlc5R3JQS2hiTFVuR1NzZjc3NUZwTTh0Z0FDNnBmZkZMSEpBNzB4MENyM19LNlFmSzlHNk1xOA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 11:55 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 11:55 PM</span></div>
 <div class="news-title">Minnesota Wild Place Marcus Foligno On IR</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQYi1CQ3doZmppQ0pGT2NvSFFxQ3R6ZG1kUTVVQVBZamxmUGdfTXdiaG8wRjJvbFpXbWZHY0R0MnRhbzRLSndPX1lFSUlsZVl1NTVyNGlCanYxV292WS1DQTFTeWVoLW9lUTZYdnV0anhJZGdseFQ0RENDME9ISVY2S0pvMnpyaVlHXy1VdWtTMTZpRG8?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Minnesota Sports Fan</span><span class="news-date">Mar 2 &middot; 11:38 PM</span></div>
 <div class="news-title">Minnesota Wild Claim Veteran; Waive Homegrown Forward</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQMlZrU1p1YUZHRDFqWjdwWGFFTjhidTFKdDAzRnI2clhjSkt6M1d4WWhHbS05M2ZJRkpWRklEUHpzY3pSbDZWZFRmTmItdzhqMExCVllLbld6Ql9NX0JvdHM1bXFadjd4ZTdXQnN6b1pUMmFsV0ZJNV9nRUU0cDFCOUNWWkl5WnNSa3FoNnRXZUJFNHdUd0FweXFvMFQwQQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -982,9 +1038,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Bring Me The News</span><span class="news-date">Mar 2 &middot; 9:48 PM</span></div>
 <div class="news-title">Wild claim former first-round forward, Foligno heads to IR</div></a><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1Bdk5aV01VNUN4d1FQTTQ3RGtXcm8zSlR1RldmYzNDNDhFN0tSSW51Z2JsTGFvNWM0ZXlLWVFFVC04UE5ZUDRvUXhlaFhvcDB1dmdNcmFNWmtGSHo2b3BGbFJucF8tN2tOZUJvYmV4M0VSNHhT?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Gone Puck Wild</span><span class="news-date">Mar 2 &middot; 9:33 PM</span></div>
-<div class="news-title">Steven Stamkos had some interesting comments about rumors he'd accept a trade to the Wild</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPUkpnX3l5RTZFQzA2cWZSbGZtTGVJTkJxU0JMZi1XcGN2dGpGREZYeXFpV2stbDFfU2dsUVFWdkpvRkNYX0JJbjlaRnBOZHhNbnhQekdrSmpGcHhoWHR1QTNqNG5nX0ZVQjRLRXk5SW5ZT3pIandfY05KdVp6ZHc5M1kyYnFjd25rdnJndXNBNWhoSGZYWTlUMC1QcXU0NkFOanRyRUo4WklwSEJWbmw0bHpB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 9:30 PM</span></div>
-<div class="news-title">Wild Week Ahead: Schedule & Storylines – Trade Deadline Looms and Marcus Foligno Injury</div></a></div></div>
+<div class="news-title">Steven Stamkos had some interesting comments about rumors he'd accept a trade to the Wild</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/wildhockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/wildhockey</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -994,7 +1048,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

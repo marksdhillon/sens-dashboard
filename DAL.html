@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg" alt="Dallas Stars" class="team-logo">
       <div>
         <h1>Dallas Stars</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -885,8 +939,8 @@ body{animation:fadeIn 0.15s ease}
 <tbody><tr>
 <td class="inj-name">Roope Hintz</td>
 <td class="inj-pos">C</td>
-<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
-<td class="inj-return">Mar 3</td>
+<td><span class="inj-badge inj-out">Out</span></td>
+<td class="inj-return">Mar 6</td>
 <td class="inj-comment"></td>
 </tr><tr>
 <td class="inj-name">Mikko Rantanen</td>
@@ -921,9 +975,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:00 PM</span></div>
 <div class="news-title">Dallas Stars set to host Noche Mexicana on March 10</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOb1VyZHBOQVVfazdhSExISXh3d1NqWHlBckhHYnBkckVkUTFhelVyT2QxdUFpUGN5UVVnU2xUNXlWVnhLSnZMTGFDQWZib1ZQN21wbThiZ05NTi14OTQ0Vm9jSzJXNVlnRFcwU1lyRS15dVlMSFBiaFBraEMzZkdxZURIM1VsWEM5cGNBVHZR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:47 PM</span></div>
-<div class="news-title">Line Combinations: Stars at Flames</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbG9TN0d2RDY1V1JvOGVneEtoVk1FT1RQSXBQcDB5SGtaWmI2M3BSeTRQQXY0MU1XSmdDRm5HYm1YYzdLLU05aTRNN2ZETXdaN3hGN28zM3FmTjFsWHhMMzBwekhYS2NKQnExdDJoY05fX3J5VFB2X0tDNkluSjhCa0VYZURycTA1cVlDamFXNmkzSnNxS1hlTmx3Nm5MSHVsVmJSMFZaX1FKYjEycV9pVTBwRjJMUmZm?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Line Combinations: Stars at Flames</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE8wdTBBc0dKTk9RVl9MQTYwemNfTnhzeks5OVJzUjd4RDFuc1ZoZGhxQmV0U0RQWWlqS2ZyWVFXVkgxX3ZhWDMyZm1YM2RCV2hsTUFxYWc0OHJMcmFnSDY2NzVKdXFRelJjVi04OXQ3SHc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:03 PM</span></div>
+<div class="news-title">NHL On Tap: U.S. gold medalists Hughes, Tkachuk face off when Devils host Panthers</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbG9TN0d2RDY1V1JvOGVneEtoVk1FT1RQSXBQcDB5SGtaWmI2M3BSeTRQQXY0MU1XSmdDRm5HYm1YYzdLLU05aTRNN2ZETXdaN3hGN28zM3FmTjFsWHhMMzBwekhYS2NKQnExdDJoY05fX3J5VFB2X0tDNkluSjhCa0VYZURycTA1cVlDamFXNmkzSnNxS1hlTmx3Nm5MSHVsVmJSMFZaX1FKYjEycV9pVTBwRjJMUmZm?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportscasting.com</span><span class="news-date">Mar 3 &middot; 4:00 PM</span></div>
-<div class="news-title">Nazem Kadri Trade Rumors: Canadiens Join Avalanche, Stars In Race for Flames Center</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQQndUd0FQZVRTUWl4anR5RVYwVzhvU3diQS1oRHlCTXpIX1RjQ19OQmVQaFRLalFXTXpZV295YThkc3RGa1YtLXJ1YzMzbk1COEM1bk0tekpmQlA1czlhQURJYTJzM1dNNVM4UG9uN3JKWGJyM3BrclJIQ2J2eC1FUFktaHNOM2xUVmFFTHNJdDRYRkotNlpxVUxsVzV4Sm1lWnBRVXk0XzJLeHlMYjBMZA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Nazem Kadri Trade Rumors: Canadiens Join Avalanche, Stars as Deadline Nears</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQQndUd0FQZVRTUWl4anR5RVYwVzhvU3diQS1oRHlCTXpIX1RjQ19OQmVQaFRLalFXTXpZV295YThkc3RGa1YtLXJ1YzMzbk1COEM1bk0tekpmQlA1czlhQURJYTJzM1dNNVM4UG9uN3JKWGJyM3BrclJIQ2J2eC1FUFktaHNOM2xUVmFFTHNJdDRYRkotNlpxVUxsVzV4Sm1lWnBRVXk0XzJLeHlMYjBMZA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 2:23 PM</span></div>
 <div class="news-title">Vancouver Canucks’ Skid Reaches Six After 6-1 Thumping by Stars</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQUWNoVHdFb0wzaWVvS1FyT2NOLVhObk1pbXdTenRfTDRvVEc2REJyVk52MkZId0dudG5taGFmT2UwRV9kRU5GckFyalBLck5fN1p3a21XOWh5RE5qUk1FdURFWU1PajBKMFl2cHhYNTRoY0EzUzlfaTdrOHJYRE9PTHlSZXQtQjNyMGp2MjRHb2pNYzRVeFNKSE1sSDdScUZsdmNBZmlaTEtqNzN2NnBCVUo0SjlMZVFHN2xmeE1iUVJUb0REb1dyZklMbTRVekU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 2:15 PM</span></div>
@@ -933,9 +989,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 12:19 PM</span></div>
 <div class="news-title">NHL Game Preview: Dallas Stars at Calgary Flames with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNcWFrVk52VmNPOFAyUUNqeVhKM1ZfVExzc1NhZkpLcXUxYnQ1MUdiZWVVZEFoY09GRzQzcmx1WkhNVTRFSFB5Tkp1SUNDNXJfMXoxR0g0cHUwS01IUFFoV1lvZlRXeW5EOGctZ21PQi1DMl9yNy1mZ2wxVmZJYVlhVm16RnRCb1l5Zm1RRXBiMHRPYjJqS2Y1Z2QzZzItX0E5NVg5UGJjSzJ4bUlwNW53bFhR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsgambler</span><span class="news-date">Mar 3 &middot; 9:25 AM</span></div>
-<div class="news-title">Dallas Stars vs Calgary Flames Prediction, Picks & Odds | 03 Mar 2026</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxNV3hGMTFlSVREenZHdDJkakszVlBqaEh2STdrcXpKdjZ3bFA0TjNuME52VTJzNGQ1TVBfVm5PZHhjUVJwQUROYWhTYkJ4ay15M0dSc3B2Wk9wNkFhSFZsYmV6WjViSjM2dm4xZ1NvMGtKYV9MZk1EbUZzeVk3MXg0UE1KTEh5Zw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:43 AM</span></div>
-<div class="news-title">Stars score 6 straight, defeat Canucks for franchise-record 9th win in row</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdXlvQ2ZfX1R2S1dJbDFrSHpzcGVvaGhGUGFCcGxxWFVlYWJ3NnBFbzg0V1hIQzktS3h3QXFLWG5VN3pVZkdGaG9lNFctVTBVSnQ4eEh1M0szR0c3UzF6Z09aTnRpQzFRZ0g1SEhxNVRCRi1KQm1lRnh6Mk9ydjNwR1I5NWFOc0JENW1jZDFHSTZIc29SelhOaGRJTm9XeklsRm1OWEoybm1TQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Dallas Stars vs Calgary Flames Prediction, Picks & Odds | 03 Mar 2026</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdXlvQ2ZfX1R2S1dJbDFrSHpzcGVvaGhGUGFCcGxxWFVlYWJ3NnBFbzg0V1hIQzktS3h3QXFLWG5VN3pVZkdGaG9lNFctVTBVSnQ4eEh1M0szR0c3UzF6Z09aTnRpQzFRZ0g1SEhxNVRCRi1KQm1lRnh6Mk9ydjNwR1I5NWFOc0JENW1jZDFHSTZIc29SelhOaGRJTm9XeklsRm1OWEoybm1TQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 8:14 AM</span></div>
 <div class="news-title">NHL roundup: Stars top Canucks for team-record 9th straight win</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNTkJpc2NpYnQwVHlIMDdDZnBkM3R0UFJrdjNFRWM2U08zdDUtaklSLXQwTUZ5d1ViNURGYkpveTVLMEVxWjJfNDRrbmk4eHYyblBPZnNKSnlDZGhvR0paVGhxZTJrODIzZ0s0X2pJNjJBaUlPRnZzRnNLR212aWRkVVcwTTFCdlA2VTBIdGoyVkVFVjhQc0pMcVdpbklyWUtZSkFuRkxIVEdxNmRtbVNHMVdUYzJpVVlYZXNZbXltSHN6dGxqUXc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 3 &middot; 7:10 AM</span></div>
@@ -969,7 +1023,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

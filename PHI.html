@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" alt="Philadelphia Flyers" class="team-logo">
       <div>
         <h1>Philadelphia Flyers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -925,7 +979,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="inj-pos">D</td>
 <td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
 <td class="inj-return">Mar 5</td>
-<td class="inj-comment"></td>
+<td class="inj-comment">Mar 3: Seeler (lower body) is slated to be a game-time decision for Thursday&#x27;s matchup against Utah, Jackie Spiegel of The Philadelphia Inquirer reports.</td>
 </tr><tr>
 <td class="inj-name">Travis Konecny</td>
 <td class="inj-pos">RW</td>
@@ -951,7 +1005,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
 <div class="news-title">NHL Rumours: Philadelphia Flyers Forward Generating Interest from Bruins</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9jQXJWeGVpNy1BZnpqdWFERDVib3dMdVlIMDBJcDdxUkFkSHhHR0psTUFBbXY4dEVtS29NVTJ2UEVwci1YaVRLc1dwdl9nSTFGT3VFSk5qR2dpaHlXM2hlbGdNZXkzTlZlVDVobVlURDR4RzNSQy13ZGNmVVI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
-<div class="news-title">3/3 Practice: Rick Tocchet</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbGl3bG9wTVV6aFZjYUVTOUEtT1dZZ0I3OF9YZ2Y4c1BiS19NNFBDSVp2ZzlwTzNfdXo3eF93QU1ES2Z2anFsOG9GS2UtSFU2cFdGckRaZUFiS3RKR1VYVEd3YnhYOXZyT28yMGU2dEVPYUswODBhcU04WkdDRm4tbkhhVE9SVnhlSWJjb1dHZkRkWjdsY2lZM3RKV3hLUXhGY1RLaS1Xam9XeHBHd1ZoNWhhRHlkc3RH?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">3/3 Practice: Rick Tocchet</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxOSVZzeHFUX081TjFnZUVySTRPZFIxTXI3b3J0VlRtN2FnZzE4S1l0anp6RVlNN1pkZ3R6Qng0VE5keFJFR0tld0xaaTB0NWRRUklwaVRkQXE1SC13UGIzVWQ0NDBwSVJwZzNrN3NGMURlTGtuMHhORnhISGx3dnd6eE93?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Octopus Thrower</span><span class="news-date">Mar 3 &middot; 7:17 PM</span></div>
+<div class="news-title">Another defenseman named in Red Wings trade talks</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbGl3bG9wTVV6aFZjYUVTOUEtT1dZZ0I3OF9YZ2Y4c1BiS19NNFBDSVp2ZzlwTzNfdXo3eF93QU1ES2Z2anFsOG9GS2UtSFU2cFdGckRaZUFiS3RKR1VYVEd3YnhYOXZyT28yMGU2dEVPYUswODBhcU04WkdDRm4tbkhhVE9SVnhlSWJjb1dHZkRkWjdsY2lZM3RKV3hLUXhGY1RLaS1Xam9XeHBHd1ZoNWhhRHlkc3RH?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportscasting.com</span><span class="news-date">Mar 3 &middot; 6:40 PM</span></div>
 <div class="news-title">Could The Flyers Trade Bobby Brink Or Rasmus Ristolainen Before The Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNQmdFSFZsTlltSURGWmF0S0hkZkk3X2Q2X1liXzZlOXNmS254Nzh2RXJwUnNBdTFDeWlMUHMtTUtsRGJaNE9GVEh1NjFRVjBSV2N6U2VWa09XSG5qRmUtU2k0YWRUdjkyWG5VdFc4YnNkUjFFTFNNRHI1ek9TTmJsMkJ4bUZnaDFpMWJXUUpqc2RtZC1MTmNzX2hQZVpKMjFoSTh4U1ZqUGJySEsySVhMMl9Gcw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 3 &middot; 5:30 PM</span></div>
@@ -987,17 +1043,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 4:07 AM</span></div>
 <div class="news-title">Maple Leafs fall to Flyers in shootout for fourth straight loss</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQQW13TGhZOEd1N3FNRDhfTEVtWktnWjVnU0ExZk1fYXhHZ1JTT3JOS2ZoM3hyMDNocVVLRTZZT0VQeTNDN0JqUGhzbG9uUVM4d1ZhMXJERlZqbm5yXzdqZER3Wmdfby1zOVZuSjFqcjBzMS1memVtRmNpa2h4QzdYSU84NTlMWEJNQ2ZXVg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:55 AM</span></div>
-<div class="news-title">Postgame RAV4: Flyers Get Two Vital Points in Toronto | Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZnBZU2o1ell4Z3BOTHVGc01aQ3k5ZG5NZ3liaWtxRDYzRW5SRW5sbUh2eWU3ZWlhTkJ5Ri11b1hQbDVjNnhGY3l6dmkwcDJlUnpucUZGMTlkTVRIMFAxamVQZG02dHlsMGU1Y09WSDN0V0QyNXYyZkxRdW80NDRFNXBXTVFsN1ZoOE5TNjM0TFY4aXJITUJtYy04NUsxNHAwNnk2d2Ewb3ZqeXN5RU5LQkItdUVmay12cHpKd0FJd0lXME9KWVBCYUVlU1RxbzhCR1BBdFZVMGlOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Postgame RAV4: Flyers Get Two Vital Points in Toronto | Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNWDA0Ym9RTlVQS0JtRzQ2UzdtNVZzVlFrTnBxWmwwLUczSnE4blNlQjgySW1LTEZfcmhnTGZQR2ZDeV94anV2TExzN2pnQmd0VFFIU1p2LVBCSkIwcmYzcGo1ald4OC1MT21DOXdxRFBEcS1MZW05M3V5dmV6M1lmcDFzRnhzcFFWYjJFUVEzelVBYXhETFE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 3:54 AM</span></div>
+<div class="news-title">Maple Leafs struggles continue with shootout loss to Flyers</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZnBZU2o1ell4Z3BOTHVGc01aQ3k5ZG5NZ3liaWtxRDYzRW5SRW5sbUh2eWU3ZWlhTkJ5Ri11b1hQbDVjNnhGY3l6dmkwcDJlUnpucUZGMTlkTVRIMFAxamVQZG02dHlsMGU1Y09WSDN0V0QyNXYyZkxRdW80NDRFNXBXTVFsN1ZoOE5TNjM0TFY4aXJITUJtYy04NUsxNHAwNnk2d2Ewb3ZqeXN5RU5LQkItdUVmay12cHpKd0FJd0lXME9KWVBCYUVlU1RxbzhCR1BBdFZVMGlOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 3:49 AM</span></div>
 <div class="news-title">Maple Leafs’ playoff hopes all but gone after shootout loss to Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNNFZicVp1RnlnUGZLbFVCVnNMdEVGcDFfdVRBWkphd19hSHNWTFUtSXRwVWw4NnljX0cwZjZKVUQydTdla3QzU3pEZUJNa3NBc2VLdEJGdW10ei1Hbk52V0o3bXl5Q21DaWFaOXQ5SXlwaUlwVTdvd1doSHlqTkh5WDNIUkR4OFJZcmctYnQwbm14Z2VKYVZIUEFGaUM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Philly Hockey Now</span><span class="news-date">Mar 3 &middot; 3:31 AM</span></div>
 <div class="news-title">Injured Flyers Outlast Maple Leafs for Shootout Win</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxPTkctLWxOaGR2YUQxcndiaFhSVTAtRllieEcyNWlVOTZGa3NrcnFOUC1ZWW1FRF8xMFFMMzd1VEI4XzNtajFMSUFsWE9FUWlMWnhRTW15RWp1TVFsMFJ4SjhYbmo4OVhDZkpiVERjMHlvMlhqa01pQVBTZFZWd1lmTUVUdHlZVGFMWU5LX054VFlLZmNmN3h0aEVYOEdTdHpIMmNUSFRRWTZYTEVtYk9yNnZ5OUJyaUxXR1FYNWdBcHZBTmlVaGlFSWRIdjFwUkRjVGswTFF5VEg4YlBCUDdqZjhjTUhyVGp6ODhHNGs0SmJSQ3ZfaWZGNE5MWFBJeHFEdThQZV96MUtmSEREUlQ2Q2wwTdIBmAJBVV95cUxOMVlWVm83MERSaUU5ZVhwbnZUbFQyNWFqMjFvdnJsVWxQZW5UekFBTFlRel93ZUpvLW12by1HSlJzeXJfYmdHbFVuTm1sak5lQ19GTHZQNmJaV1JHejJSRU42MnJ0WEFBNU9UbktFWTc4VnhRN1ZGMGdWeElYU3duRTJReXB1eWo5bGs4Tld3OExLc1hWaE1OZHNzYkpoTXJfOEZUWW1DS2owS2F3dHd4ZC10SG9PTnhZZmEzdFRpcVlONF9LZUIzZlFvT1hxVnN0ZjhJYWhSZTVOVUxRVFI4MXVfdi1fWDRQdUxTMkRWbHJ2UWQtZ0xBYldCZmtFdXRIMERjZTZtWkFzZnEtWUxZRG5mZUdBTHlJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:30 AM</span></div>
-<div class="news-title">Buffalo Sabres reportedly target Philadelphia Flyers defenseman Rasmus Ristolainen for playoff push in 20</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPQVVnaDF4Ul9pTno5VllaYm9xNkhtVUJSWjQ0TVlqTFpTbXlSQmtvSHpQRlpEUzVXVEVHMWZ3UjFvd3QtN1FiX0VMdWl2TlVYTE01SFJ2TWwwNlpkQklOUUxOXzF3YkZsS3YtWXZ2amg0b0JTQW1VUFlaZlVfOWNSMFRRUmFSUGR5N2lDbDdnT01LS3Fo?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 2:39 AM</span></div>
-<div class="news-title">Rasmus Ristolainen linked to the Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPQlZSbTVYTExKVVVHNmRJdTRUQ3c5SGg5SEJGTkpVZ3lMR0xXeDJPUzJWM3NsWU9vcWZyQVNDZFJDeTdLdENzMmRRY2VhVEtmOC03cHJmQjRGUmxyTTZsZUk3TlpCR0lXeTdQWG40Q1hlaFp3YjRidjhkd3VROGZCQ09TQVp4RGFIOEcxV1lxQzNXSVAwbEZsZlNZampPMC1VQjdCTUxR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 2:05 AM</span></div>
-<div class="news-title">Maple Leafs scratch Nick Robertson, Troy Stecher against Flyers</div></a></div></div>
+<div class="news-title">Buffalo Sabres reportedly target Philadelphia Flyers defenseman Rasmus Ristolainen for playoff push in 20</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/Flyers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/Flyers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1007,7 +1061,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" alt="San Jose Sharks" class="team-logo">
       <div>
         <h1>San Jose Sharks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:28 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -928,7 +982,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Canadiens To Battle Sharks For The First Of Two Duels In Two Weeks</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPbEJKLU5wR2ZWVlY1ekF0bU11YmFKYUF4THlkNmo4Y1VKclFYby1pYTBzQXo0U3VlejRfQ1cwcVg4dzhrMTNLaWNFaWt1TDlmYzB6R19TMXBRbDJXMEhHTThiNm5nYzgzLU9XYTZQWHlNUXlRampWUE9Nd0pWd1VkbmxGUVlYb2pYMEE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sharks Hockey Digest</span><span class="news-date">Mar 3 &middot; 8:13 PM</span></div>
 <div class="news-title">Sherwood Talks Status Of Sharks Potential Contract Extension</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTFBYUDIwRzJnX3NfT21XVUMxbVVCN0Z1UkNLcU5Ud1o1aFRpWTB3UEptM3dSWlBORVFCa2ROQ2RKb1UtRlM2QUtzc3JDUmJiM2x6VVVmLTdyWVA4d3M5ZV9OSVg0MXByaHpTVzNQam5BYjFBVXc0a2oydm9R?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:25 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:26 PM</span></div>
 <div class="news-title">Sharks Mic Check: Cole McKinney</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONmw0TFlVN0FwYUVwOE5BVjhfTjg0RDZIQk1tTUhsWE1CdEJaNmxEb1Z2bFFwQjQtTzU5Z0puYVVjQkJFSVJwZHBzNVhuYU5KM2h2RU1SSy1mRzBobnJtZGF1dlhFVl9HaVRKb2Jqa1lZUzU4OHU2V1RfRHF5elRNenBrS0hmTzlqb21YRTU3ZXVWNlFRdmF5cE9SVFhDMXhmTThsclp1N3dELUo5aVJ6U0dYZWRidGRacDl1WTM3a1pCNDliNFhWbXdwYzBaSGFBVkFGalpyREhzMzY2RGtz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:01 PM</span></div>
 <div class="news-title">NHL Rumor Roundup: Latest On Flames' Kadri, Rangers' Trocheck, Panthers' Bobrovsky And Other Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPcS1iR1kzaVlzVXB5ZkUxc2dvOHBmR1MwMGVXTk1XSFNzbzQxTXdheHRIWVZWMVVOanExbnFVMW42UFlGeTBqdGJUZzg0Ni1ULVplcjVScE1QdEREc2s5MEExWXJnYUVSVEMtREJQTGpvd08tZF85YVJMeXR5NHh4MWM2X0g4bFFmRlhaUjhfVHI1OEJpMmllWUVwUllfazl0dGU0cw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -941,24 +995,20 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsgambler</span><span class="news-date">Mar 3 &middot; 8:20 AM</span></div>
 <div class="news-title">Montreal Canadiens vs San Jose Sharks Prediction, Picks & Odds | 03 Mar 2026</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOaEhKbXFoT1BrTWhIU1VvR2JBY0Y5WnNsR2ZyX0RGcEtLYXhFWDEzbGVkV2RCcVpKeU9faHJ0amRaQm1nVWJVSndGRUFfS2E2YjJFdm04c1FucTZHTkJpM3pndkhsRU1IMGxXSzVjZjRWbjlURjlnVlVQQkZ5WTFuZl9LVHMwUFVQckcyWTZOUzFYN2x0T2FlNQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:19 AM</span></div>
-<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxQM1RiZUl5VVk4N1ZNRXNPaEo5anZsVTRXNVdnVFl2SEtlRGdVTjNHTmhaSGV5XzVXbGlId01sdjc4YkRPc0w2XzZ0SWxVRWlQQVdIazN2bk9LaDA3RnJzUWI0MFdFMkQxMDQ3dkRRSnhzcHVia3hVTkItQVgzc2pWeHIyd0hNU0dlVm5NRFpIRF9VYjZ3cnl2RERXcEw0Wnd0SDNlSGZDYVJHY1ZzMlAtTXVIU1Jvd19LVWhzcGFQU0FBaGY0TlhBN2hXd3lRWFZvYUVlVDEtQjEtblRuNHVLQ0UyUmhoT2pGQWFVWEhFRHZuaUVYVW1FNGR0MWE1aWV3QmZlVDR1THNYcXo2TmVWQWdkejlQNktobnI5WXphQUt2RWtnb0JaTg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KHOU</span><span class="news-date">Mar 3 &middot; 4:36 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqwJBVV95cUxQRldNS05sSXN4REE0WEpxUTNaZ1BaOU5PMUQ1TmE4YjBzWWUzMC1reUh4Nm16T1BfNDREaVZYbTlNWXkzOTA0NndpY0VGNHQwXzFZLUpwT0RBVTEtN2ktSUdQdGNqSWJ3MDZwMlJyLUVYRkVMSHhlUlJwN29CT2g2VWlLZzJoUkVnSDhGaDVwZGM1SVZpLXdManZtSWw4STFtcng0dHo5QklpOVZoUE9uRVhaQk9QVWhuZTJIM0xpQ0dEWXpSOTNpdVRUaWJXQmZ6VmFqNW5raDFTak0zbGtuWjY0Y2gwWkxsdDJqZno4NjdHRThzNy1KdU1BWlNqdU1yY0pSb2gyUXNQaU9wQmxKQVdCUGJQbzJMSXB3OXV3WnNiOW93X3ExZHp0Yw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqwJBVV95cUxQRldNS05sSXN4REE0WEpxUTNaZ1BaOU5PMUQ1TmE4YjBzWWUzMC1reUh4Nm16T1BfNDREaVZYbTlNWXkzOTA0NndpY0VGNHQwXzFZLUpwT0RBVTEtN2ktSUdQdGNqSWJ3MDZwMlJyLUVYRkVMSHhlUlJwN29CT2g2VWlLZzJoUkVnSDhGaDVwZGM1SVZpLXdManZtSWw4STFtcng0dHo5QklpOVZoUE9uRVhaQk9QVWhuZTJIM0xpQ0dEWXpSOTNpdVRUaWJXQmZ6VmFqNW5raDFTak0zbGtuWjY0Y2gwWkxsdDJqZno4NjdHRThzNy1KdU1BWlNqdU1yY0pSb2gyUXNQaU9wQmxKQVdCUGJQbzJMSXB3OXV3WnNiOW93X3ExZHp0Yw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 3 &middot; 4:34 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxOLTNnMVAyTGFIaURjUlRnM0ZxTTE2MXBMeC1SbnpQRC1QTkRwZ1JnNnFxUmNiM0Z2V0tBRHc4ODNPOFAtM3luSi1KeWJxWmd0VnBvNXdOQVBINTRpSUdJVHVUc21XWHpFNllxM0RhQ3hwclF2anJQOGwtQm93QlNLYnR1S1VJdUpEUm16Y3lueVJabW01blZTUGtsblFNMGw4NXRTblRCY2FIbEEyVDFyQUx4ZzJzd1gzS1JvbTItTFlSM24wdTZyV0drNVlYUkJreU5iS0pxQ01PWnZ1YkdnT3lsQ1NoUjRPNHNRam9RNmppcks3bVRDX1RHNm5GTE1TbzA2OWh2NUpFb3BReTJlODF2bGlMMzRnVFBvV1NOZHo4ZGFrT2piLQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KREM</span><span class="news-date">Mar 3 &middot; 4:28 AM</span></div>
+<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxQQVB5VVhJZi1ac3FMbWgtNjVXR3p6SjZ2WjV1eGF0T3lEZjBmcGF2UWRsUllETVdPSmFzanBzdm43eVRaczB2N21wTzlfOFU0MU9fSllJM2tpY09DNkR2cU9RWl9tdV9sU1VrMFRuZGQwQlZzeGQ0ZzdYeTRxdDFsSWZVU3hpMnpHQUF1VkEzMTZUVks5Tzg0aFUxMGNKTzVFcXg5N1U5YW9lVUdtdjdBOFJiYlY5Uk0yOG1DZGNKYld2di1nYWJPamFTSmozeXVUdjUwVGpnM3JtTE91X25wNldacjVkcjVPNUlFUTU3VE1ybWNyMzdFU0lRb0Q3QTdPbTZqdVZZRmMzdTU1clJLd3ZmbldTYUVSTlNJcjhEWjRKZGhld19XUWx3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">kens5.com</span><span class="news-date">Mar 3 &middot; 4:33 AM</span></div>
 <div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxPWFFQNE9ISUktYkY0eHU2SW9XUk01TFVlTDBqT0laZ25DenJRSWNGNmN2dDZxTXZtb1g4SXhhdFZVQXc4UGx4WENOaDVnNXFBODJjX1h1UmxMV2dpeFd4LTlMYUQyUTJOWVUxb2JBcHVSNXVlT3FudVNYbmlTWWV2MklGanhXSGdWY2dHdWYzLVkzU3oyTXBzWk5heFlFSWJqX3ZSZzVUY084dF9tdlU4azNfVVpnQkk5QjNEUzJTcUxWTDJIZHZ3dU9ENTRWS24taXdwa0dlczNWeDhxOTc3akY5aHZMZ2JvSlBKVmt0V0RDRXhXTkhHOFF1bXJsdldQMzJDeDZyZ3M5RUgwZ1NJUnRxRVhUOVd4S09Ba2MxSDhUdHEzd0ZmY0hrMjBURmvSAbQCQVVfeXFMTi1ndXlZQ0tPSXBHazl0eGlVSFFNcVVhZEZEdUVXRHgzeGdWMzEySkhOWnA1eU5OaG91bzVWME5ia0NpWG5KQmxxSFM1TDB5aE8wUEZqbE5nanM4OTFPUDBSVjEzekZpLS1lQXhtQlh0ZTdIU1MwNl9PVHFqN1RlZGRwTEItaFdrT1dLLXpNSGhZQzBQN1hFMmRQUE9pS2NCM1EtbWJRQm4yQ19JS0E2UndRRi14TzMxbmpyX1RHZExyTkdwcUNfRUtPREtXMjVGVEZSMUNOT3E0S2FZSF9HakJ2Y1Z4Z3lKSTZxdERucU41N21ucGJjcUlsUDVZVW1KWERaS3JZMC13NDVLVFVwamlCRmY0aXYta01qY2hOWDctdnpYSVdGcjY3OWVyR2VHRml0X1g?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:46 AM</span></div>
 <div class="news-title">San Jose Sharks consider trading Kiefer Sherwood again with $1.5 million cap hit after brief stint from V</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNZXJ1eUtKYVhXMmhLT2VzTzJmVWMyTGJjRlotWmpHQXFEWGJRVl83VzR2cjVFTlBVdUVCX1FvUzVmanBjZWc5b0xaT0ZDb3lIQzdpUm1jeW1ieHBQSmJFMl9CcGZiOGNwYWF5NzZVdzljaVBNWVlWVUxUVnhwdDdPTkhQUjNGX19fb3B3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 3:25 AM</span></div>
 <div class="news-title">NHL Trade Rumors: Sharks looking to flip Recent Acquisition</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQdHRSWWZJeHFMaFVWTUdveGJ0NUp3em5JQkxLaWRPcHF0ZlBGVzZTTVRVUjhrTkhEb3FXdlBKQVVRSS1kNUs5SWdHQ19FWjc4ZXAzYmhMLVVweWJlQVFGV2JjOHZVYlFyYUh4YU5fRHlJVDZ0TUJSeTl0WXhVQTlpOUpR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:35 AM</span></div>
-<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQX29yMVJBZFZLa1dLTFNDT3d3cTJodmptTTZtcE1TVm53YzNuUWVzZFh5N04tWk9NSGxMUFZCcmZfQnJGUDlBT2NMNVZkVUkxdUFoVUtkd0JtQzVXa2FoOXRjb3J2bTdhajByVXdGVGNBQ205Q0M5ZlJIc3RtZXJINS04aWsyU0EydW1DWFJsVjNkQ0ZjeU1tWmxWLVBZb0lna1lWS2d6WkdyUGtUOEtpV2k0andvbXozcmJKMmxaTl9laHNPUk1Z?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">National Today</span><span class="news-date">Mar 3 &middot; 2:31 AM</span></div>
-<div class="news-title">Sharks Weigh Surprising Kiefer Sherwood Trade Weeks After Canucks Deal</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNdVVmN09KX3Y5ck01R213WWJzSElfX1FPbndOR3ZfNWJSRGEwbFRiM0IzUV9qRHY5eXhLQmVMUzVJT0tvU0UyWmc2T1E2SHN4OVN3N3BLdmM4REdrMlVZY0Z2V2w0bkRfWXZ5LU5aWXJadGF1ZUlQWVZ4UUxNeUZ2TjVnbUZIa3pydzNRa2hKSmxIV19FU3pNZGlocnVvekx0TENUcHUtamlOWDgzSGZYMTY0Y2tRd1VRTVBqd04wWlYwcWh0MWZGbXRSSXltUENDbDFoOTRmeGxkVXY0Ym1oakNLUWkybm1rZXpV?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNdVVmN09KX3Y5ck01R213WWJzSElfX1FPbndOR3ZfNWJSRGEwbFRiM0IzUV9qRHY5eXhLQmVMUzVJT0tvU0UyWmc2T1E2SHN4OVN3N3BLdmM4REdrMlVZY0Z2V2w0bkRfWXZ5LU5aWXJadGF1ZUlQWVZ4UUxNeUZ2TjVnbUZIa3pydzNRa2hKSmxIV19FU3pNZGlocnVvekx0TENUcHUtamlOWDgzSGZYMTY0Y2tRd1VRTVBqd04wWlYwcWh0MWZGbXRSSXltUENDbDFoOTRmeGxkVXY0Ym1oakNLUWkybm1rZXpV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 2:11 AM</span></div>
 <div class="news-title">Sharks consider shocking Kiefer Sherwood trade 6 weeks after Canucks move</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPVkRFbTBCTnpPbzh2MjlpMWU0bzMwRXJZX2R1RjVwc1hPMEdwZmVWQmVxejV6bG1VWU1zbjZnT1RqSFdvTTlWSUl1X3JIM0VDTFpoZjRlU2RsZDFoMFZQa2tsSjFsQkFnX0ZETG1pS0lSc2R0bUFfUGg0dWVUVFJ1eElmbDhObmQ0VWlOX0l1aDNDVnNBaVJj?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 1:40 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 1:40 AM</span></div>
 <div class="news-title">San Jose Sharks Open To Trading Kiefer Sherwood</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdE1rMFFoYVN3OGJESmFWVURjM3R1Q1dvVW1OcXl2RUlBZDg3bmVPbklZNU9rcDVFOWFNakFnUDBwaEVtb24tNGFIMzVuUXUwQkFjMWxOUWVSTHRYSnNZYWJQdnJtM3JJdm9xdWZubWFfb0pBSzVWWlJETVM2MVlIeXpqQzJrVzk0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 11:57 PM</span></div>
 <div class="news-title">3 Under-The-Radar Trade Candidates For $2.5M or Less</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPbGt4a0F1VzhpVnhmZlRvdXo2eFJzTFUwSi0tNEk1TDQwNjNKSWZFYTdqb2hVY2dCbVRSa0NZWEFIeTVJbERzY1lCWHkzN245dkFySFZPWHlyNXlPbV9walBnajVWN3hjeDR3X2xBb2VpdTFja1JvcktMMFpDLTZ0ZDZNTE9MUVdRTHQyVQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -973,7 +1023,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 9:01 PM</span></div>
 <div class="news-title">Oilers GM Spreads The Blame For Struggling Defense Ahead Of NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQaHh3YzU2VEVyVkFGNHJlXzl0VTR1QU5JX2pmcUxkalFJNVU0akZxWGRtX1ZMeW5IbWtEb1hXenpZMWR4bkZGbVNMcUg3ckJPRmZHNEFvWGh2UmZVd1VFLTRkUDVrbnZnU0Q4dzMzUTFSUHItM2dOc0gyTWdMeWVsZ2x6Wk1hZDJXMTNPZWNpaVlPUjJsUWI5Q0dOZFhFNHhERmNSRVpvcklyRm5RUkxEWVN6UmZHNGhOZ0lHdGFnS19pVjFfVlJZ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 8:15 PM</span></div>
-<div class="news-title">Sharks Week Ahead: Schedule & Storylines – Trade Deadline, Snapping the Skid, Celebrini and More</div></a></div></div>
+<div class="news-title">Sharks Week Ahead: Schedule & Storylines – Trade Deadline, Snapping the Skid, Celebrini and More</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxONE9WcFlEQUR0VE5wWFRldkdzVzVjdjVrQzVTZWM2VjFoMm8tdlhnZVZqZjdEOVZhUUF6M1Jjd0dXaUlQdXFzLWxnNU5RbGJwX0dueDhySzJNeG5adFhlcG04dElZcWxzc1hSYVdpWXJXS3dtcHg0ZGRPa0lkR3dua09EeElMTndYSWNzT0YtRXQxQUVTSDlKRDFMdFIwQXc2RGhWUTd30gGrAUFVX3lxTE50VTFsQ2plbEhhWFhmN3d5TXdIRkJjQXphdlBteHotWmhHbkIzSDZJUF9KdW5fMGxNZUJqZ2JkZ1ZWRU5hcXgzUFFCVnNVRlFFcklVdU05T3NhaDYwWFA4WEYtOGZHeEFmekpXOTFEczJOeHdWbmVIV2h2bTd5NzlxdXdoaTdJS0JCSy01VFZ1SDFieFdhOWMxMTRkOFU3UjhOU2xOcUExMVc5VQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Mercury News</span><span class="news-date">Mar 2 &middot; 7:30 PM</span></div>
+<div class="news-title">Should Mike Grier pay up and keep Kiefer Sherwood, or is it better to part ways?</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQRjhoZGdXZ3NFNlN6TWJ2QXV4VUVaakRnRHlRT0tpQXZHVVdaUC1RdE1VSU5zblpuOG5RWldKb05rNUxFcUF4cl9YR1dWaWZKMUlRaUk5TWVTRnNBTWxGcnFaMUhGSkJCUExDVURic3RWdE9BTFR3MzhMdXVQb2RKc2lqTVFMWW9NMVVmc0paMWRQWXgxZDIxd2d0VVA5UnlVdE51TUw5aUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 4:30 PM</span></div>
+<div class="news-title">The most impactful NHL goalie trades of the salary cap era</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/SanJoseSharks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/SanJoseSharks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -983,7 +1037,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:28 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

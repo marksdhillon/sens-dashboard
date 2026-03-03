@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" alt="Los Angeles Kings" class="team-logo">
       <div>
         <h1>Los Angeles Kings</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:28 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -965,9 +1019,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">vancouverhockeydaily.com</span><span class="news-date">Mar 3 &middot; 6:36 PM</span></div>
 <div class="news-title">Blockbuster trade proposal sees Vancouver Canucks land former 20-goal scorer from Los Angeles Kings</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQQlpwYkxMTUNjV0JDazVPMW1kVUVSbkhNVUJFbk10dnVSLThTOGxZdVVzR0VmMGJXU2dNSW11NGdaV0pQYUdkQk4zazFaVUs0UTI0b2dfRTlwdS1PLWRrM3NiR3dxSG9nci1xNEdRVlM4dWN6VFROVy1jYmw0ZzM0OFZCNy15UGhxMEdsdFREWXk5TWxRMV83eXM3dw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">JAM'N 107.5</span><span class="news-date">Mar 3 &middot; 4:42 PM</span></div>
-<div class="news-title">Puka Nacua Sparks Dating Rumors With Influencer</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdmpjMEIwNkxSY05ZVFVSTEhRdUpsVW9aejZhSkpSUE1IV0xuMDBKckVUOG1LV1JoN21ldUMtcVREVEhkQTc4QXB6RnhzY0QwUzdtS1BzdThqTXhUd1NxYWRDZ0JRSEdxTUt1V2VFU2J2c0M3aHpZRktrZ3ZQb2hGR2Vvb0FyTkloSWVING13c09RLVJsUU0xNmVsbGFOUzhRMHluaHZB0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Puka Nacua Sparks Dating Rumors With Influencer</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
-<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOVC1wYndwQnQteWd3SE1keTNzcXV4ZmVqVWNJV0oxQ2dDNmpTbl9LRVowbl9ocWhYemVFLVE1YVZYMEVFMFhyZDJkaFI1LVVyV0NEUVV0akRwUjl5RXVramNtOW4yQ09GTzhLUzljUEV6cXBXVWFWRUdNREtOMm5DWl9zYktQZFZkalo2SzZPM0pEcS1GUkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOZXdqcGZsOGZKRG9TbkpQWTVwaU1kcEFwRXFXMHR2MlpPZG5xcVhlal90T1lQbzhKQ1REVzVYRDY4UEE0ckVPRXNKT2RHdnhsNHlwQjFwNmdlNzAyM1BsTC1YQmF3TXV2aFd1Y1FTb1N1SU9HalNVcGRreUF4TXhjUkZ2N3RGOXdUR05nZm51Qk13WW9RMmFkcHpWMVlzQ1ZxM1RkQndLa2dKNC15RGkzRzlJcDRrdTE4U1lKNmQ4Z2FGSm1tNWxMWjA3cWNQZHM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Windsor Star</span><span class="news-date">Mar 3 &middot; 2:31 PM</span></div>
+<div class="news-title">Former Spitfires player and coach D.J. Smith ready for another chance to be an NHL head coach with Kings</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOVC1wYndwQnQteWd3SE1keTNzcXV4ZmVqVWNJV0oxQ2dDNmpTbl9LRVowbl9ocWhYemVFLVE1YVZYMEVFMFhyZDJkaFI1LVVyV0NEUVV0akRwUjl5RXVramNtOW4yQ09GTzhLUzljUEV6cXBXVWFWRUdNREtOMm5DWl9zYktQZFZkalo2SzZPM0pEcS1GUkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 2:12 PM</span></div>
 <div class="news-title">Devon Toews’ late goal helps Avalanche fend off pesky Kings in 4-2 win</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPTmJIZTBCUFJKN2VOOUs5S0Zyd1E1SjlHVGs3MWZocGh0TnZ0aHZYWXZTMGxqT21ZeTh5Qm4zWEFITWkyX1RiRnNvNklySkp0ZnRZSUJpZGY5dDZab3dCWW1ISHJCbWdMbkwwTk04dGpxUTBqYzU1ZEZ6anBUMVZHa3pB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:05 AM</span></div>
@@ -990,22 +1046,20 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">UMass Hockey Alumnus Kenny Connors Makes NHL Debut With Los Angeles Kings</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcUQ1dnFoLTFnWkxqMzdoQkY3T1Z0bkJmVmxZOTc0a0ZTZXV5azFyWWFFamlOZ1FRNlVIRlVQb1g0TnNCaFROc0E5ZWlPci0zWWF0WHNVUUVsSUFkeVpHaW9HVWZGS1NQcW14YU9fTDFobG1NOWM4VUUwbGVHR3AtT2JpaXpUZDM0MTd6Y2k0d1lqUXZlRExpMjhDczBZeUxiYlA4NUpmS2ozSkxHUWZLcG8xeGVQVEo1MjlRdXZTM2FiQUE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:04 AM</span></div>
 <div class="news-title">NHL 26 Simulation Predicts Tonight’s Avalanche vs. Kings Showdown</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPVjhGM1NHc01tZmxMUXFQdV9PcUlHNUhDbGFsYlgwYm5QaS1PbFN6ZU1XcXo3SUpBckMzc0owR1VybmRLcEoxeHIxY254Ym5uN2J1N19UZVpTdnd5UkJqaG1wQnh4WEgwZ2RuTWFTeS1tZDBkV0hKbUJsWDlUeWxrUDJkRmIzRm9QVEdOYmZR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 12:46 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 12:46 AM</span></div>
 <div class="news-title">Los Angeles Kings Place Joel Armia On IR</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPdG9rSVhGLWpsc3daMFdJWnVIM0VOSW1IUVBENEZtS093dUpmN3pCVzRyZEw2Y2VPajVZU2JDM2w4UWNZcDhtSXI5dTVydkExbFBmNnVLSVhOdG1RSWQ5SFRfR1ZHTHNpZFVJRXFtNEttNzVPSFlBQnoxSGpSdlBFazN1d1BLLWJsaHpCZlRXT2FhdWVSSnRHTllHVHhDS1M1NXNz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 3 &middot; 12:15 AM</span></div>
 <div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxONHd6SGZfOUNuVjIzRGhMR1pIVDQzZGFrYU4tdmFpQjl4S0ZCdnZ5dnhyeVJYUHZ6anRkVTZIOEFUTjFvVHNsaXlmYnpGckZDdGdCTHlKcGxUQURNNDdWTWV4cUtfTFFycll4TndGb09leng1cmZieHRWLVl6c3d4WlZWQnA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 11:08 PM</span></div>
 <div class="news-title">LA Kings Announce Multiple Roster Moves | Los Angeles Kings</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOYVhqRE5nYWRMTm51by15YzIydXhtUHJnSmJ5T3dWYzNvQV9rdTRVaHpsOG9FQ3BpaUxjcG9tRHliWEdXZ2ZrUHdCVFVvdTllQ1NMdDk2cVlmUUtSWktWSVRkWndmQW5Eamd3a0o4azdSc21GQVlaSHNncGlKa2hON0J0c18wRFI5dkc4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 11:02 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 11:02 PM</span></div>
 <div class="news-title">Los Angeles Kings Recall Erik Portillo</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPTF80cnlFY0VRSWNkVWVrbHZwbVRhUWNPZDdReGRwdDQ3eUVGaW5HYWRIbU9jREJrVzBFWU1FTnNEWDR1dHRHWWVhc21jaURyaFFhNjhsUFFBWlFLX3JMZHlaR1FqTE56Y2V6WTE5MUk1OXNXZEpIS3otYk1jOXlVMzdMU1E4ZzZpNER1bC1aTEN0czVa?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 2 &middot; 10:51 PM</span></div>
-<div class="news-title">Matheson: Simply put, the Edmonton Oilers need more from Darnell Nurse</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxON3hwb0ZDTE81bzc5a0JCSFhLTGtmeGpsTTJWR2xMRkV6eUJLQXJVRm9jZW40V0VqZTQwYTJPUm1ranVUVzBuWGJyejAtdGxtV2R2TUl0ZDFGWWFZYkdBRGxONkNvaVpnT3A2T082YmF1NW5iVUU0TDFhZkdGejdtQXZsOTBmYkRLc2FlMzdUMkVsaWREOTZpYmZSZ29mWGNmUjg3TQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:46 PM</span></div>
-<div class="news-title">Game Preview: Avalanche Aim to Sweep Kings</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPam9mWXNlOGtEeHVEQTFrbm1rUHNfejFDejZHQVFVbm5zR0lMdDQ3QWszQzhPMFNDTWxYYms2Z2hFUDZ3TFk2RnFIV0tobFk1QzRnRmMzLUIxSjRTaERXa0JGUUlhMmljVDZqeXViaHRORHhZNklhSmYxTFdVOFFxaWtJZzZaOFlSMlhrQTMxelg3U1FqcllMa20tMzM2YmMzUlJsMnNleTlBeEJBcWNTejYyOXN4eFk2VGh2QXduTGtDZ3ZvNkRZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:12 PM</span></div>
-<div class="news-title">Kings Vs Avalanche Game Preview: Kenny Connors Makes His NHL Debut</div></a><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNTXhFMzlVdjNUN3QteTI5akpRQWhDOHlYTlkzTm9JVXlCZEl4T282dkZaU05YaDVlN2JVbmJQS1NwcTYzZmZBU0hJSzRqdURoT29seHZManhJNVNDSWxUelJvTnY3eVppcDVHeWhlVTV5azVXMERuUFRZdWVQQWtFdzJ3N2xfcjZCa0xIcDB3N0h3em5MRE5PeHJoSzBEUjlKdTc3SGt2bWJfWTVoOTIxdXR5My1BS0hHN05SWlc5XzlpWVIxZFU4MVhfOA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Matheson: Simply put, the Edmonton Oilers need more from Darnell Nurse</div></a><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNTXhFMzlVdjNUN3QteTI5akpRQWhDOHlYTlkzTm9JVXlCZEl4T282dkZaU05YaDVlN2JVbmJQS1NwcTYzZmZBU0hJSzRqdURoT29seHZManhJNVNDSWxUelJvTnY3eVppcDVHeWhlVTV5azVXMERuUFRZdWVQQWtFdzJ3N2xfcjZCa0xIcDB3N0h3em5MRE5PeHJoSzBEUjlKdTc3SGt2bWJfWTVoOTIxdXR5My1BS0hHN05SWlc5XzlpWVIxZFU4MVhfOA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 9:50 PM</span></div>
-<div class="news-title">Kings Week Ahead: Schedule & Storylines – Coaching Shakeup, Injury Setbacks, Trade Buzz and More</div></a></div></div>
+<div class="news-title">Kings Week Ahead: Schedule & Storylines – Coaching Shakeup, Injury Setbacks, Trade Buzz and More</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
+<div class="news-title">NHL On Tap: Smith to debut as Kings coach against Avalanche</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/losangeleskings/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/losangeleskings</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1015,7 +1069,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:28 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

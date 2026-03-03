@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" alt="St. Louis Blues" class="team-logo">
       <div>
         <h1>St. Louis Blues</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -907,7 +961,11 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQcWJBekdyT1dvdmkwLXVyZTFIM0RpRDU0c1RIQ085RXRTazI4Uzg4RXJlNlJpbGhFZUxJMGhGaV9nYmp5SXRtWmktajYzemluUXVoa3k3eFVYc09aSFlfTVRqdlJDTDJTeDJkdjZDdHA0ZmtQZDloaTc1TlFTZjh4Tl85bnZFMVJTY3RPZ2d3TjJCWjI5VVpSLWtfX3RHTkNkV1lIckw0aElJN0hrVmpJNlpqbWpiSUlGYVdTNmVB?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcXlGWGZ4UXBVUk5oYVJjeC1sUWJPRnI3Mm1BVzBVX1ZET1BMVGl4amFjbmhxdmYyWU8zTGpsazNpdVFRQklNNVNLMmpHRUcxaklhR2MwbmRmSkdROWhsTlZrQzZMVjlmY3VOcy1nM1gzV0VfRUxsc0swZnd4dHJycWRFTWJyLWZpNk1TYnV1WlZhbXFvNlBEclNjalZaeVJ3M3ZrS1hqRlBKeFM2UDBndG5qTlZJTTBXeWc4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:30 PM</span></div>
+<div class="news-title">Sabres & Blues Talking Potential Blockbuster Robert Thomas Trade</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUVJTSDEyMmhYU25HOTBKYkx6WTdIb2dsb05mQkd2UWZsZXVvQXRzSzMxY1FuNWxDdzR4eXJJNG5UcnZDb21vcVBBOFl6MDVZSGJaSzJfMy1paXNxUWJCcE4xVXV0ZUxCekpISlR6TGhpQWYzdWRUa29JVEFpd180Q3pvTjFLTWdQcDlKdDUyTDYyZVU5M3d6WXMwSHpDV2FsX1A5TlZxSXZWVEMtUnJkZVpONmxSY0F3VDFZN1p1YmE0eVk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 8:29 PM</span></div>
+<div class="news-title">Blues get major news on Jordan Binnington trade</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQcWJBekdyT1dvdmkwLXVyZTFIM0RpRDU0c1RIQ085RXRTazI4Uzg4RXJlNlJpbGhFZUxJMGhGaV9nYmp5SXRtWmktajYzemluUXVoa3k3eFVYc09aSFlfTVRqdlJDTDJTeDJkdjZDdHA0ZmtQZDloaTc1TlFTZjh4Tl85bnZFMVJTY3RPZ2d3TjJCWjI5VVpSLWtfX3RHTkNkV1lIckw0aElJN0hrVmpJNlpqbWpiSUlGYVdTNmVB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
 <div class="news-title">Buffalo Sabres Could Go All-In By Trading For Blues' Robert Thomas, Insiders Say</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOM3JIMDNFbjBqSXU0WHh3cXZ3NmpEajBsZjhXQldCVzlJd1VUZU9RUkNaODltRzZiRlNmZjZ3LXl1NUFYV2pKRlk0TUpjUTk3OURabGZZbXBBZHVuR3J4aF94TUJzblUxLTNzS0s5VkxhcWNqYmE4cE5TdDlBekxmZEtMeGtSQUN4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
@@ -917,11 +975,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 7:52 PM</span></div>
 <div class="news-title">Blues, Sabres Working on Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPYzljN2lmdkFXRENEeHFFV3RDRWJKNTRxT3NTXzRLaERpMnM3QWxuTEVhUFhvaHRGbFFUTXpTQnlKXzhzdVl4XzJROUFkZWItU1QzMVQ5cmhOX0JSa1BRMEd6ZnNGeFg5aVh6RUN3Z1NwSDZ4SkRHdTZiRDdzZXJLZjlmNjI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 3 &middot; 7:48 PM</span></div>
-<div class="news-title">BREAKING RUMOR: Sabres Nearing Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPUGZjX09tWG9xckVEdmtrdFlFSl9tV21rcENneWZsVGhNd09WR2k2NXBKSEgzX2c5THdYajlvWGFPT3VTYkxFcWt6eUJDNDFQVHpKM2YzVnoyZjJvd01MTnNwT1JBTk5fVWRfbE1fdnQ3b052TzdZUUtIemd1dUR5dmVUNHZzc3JuZmhVTDFB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">BREAKING RUMOR: Sabres Nearing Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMikgJBVV95cUxNZzg5ZENOMnpMenNmQ1NEbG9JVVUwRUNtdElBVmtxclpKR0Z6QVB5UWFtVlVzbjhIUGRwNHhoTHVsaXNBM3VpV25BZHlGYlFuemEtT3QyYVNaeTd1Ylh5anNnX09oV0xPMF9panJQQkZ0aGl0WlA1MlZpUm9KZzFKcFpLeVNMZ2Q3Z2lWSnF1TmhlM0Z4dldmaHFWSEhBY2NPRTVEVjFVVFoxSFRIcjdtc2FteVJMaEh2Z2Fab0Vid2lOeVl4VUdNaXNhaEJNTmZQaTZKZ2liVzZmdkgxNnExaTFzNXNuSUxnSVlZZ2cyOHhnaDdQMnVQUm9rM2FqLVpVZTdxcG1DN3V5a1JBVXl3UHln?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 7:47 PM</span></div>
+<div class="news-title">Brayden Schenn On Trade Talks Surrounding Blues: 'It's an uneasy time for everyone, especially the position we've put ourselves in'</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPUGZjX09tWG9xckVEdmtrdFlFSl9tV21rcENneWZsVGhNd09WR2k2NXBKSEgzX2c5THdYajlvWGFPT3VTYkxFcWt6eUJDNDFQVHpKM2YzVnoyZjJvd01MTnNwT1JBTk5fVWRfbE1fdnQ3b052TzdZUUtIemd1dUR5dmVUNHZzc3JuZmhVTDFB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 7:47 PM</span></div>
 <div class="news-title">Brayden Schenn On Trade Talks Surrounding Blues: 'It's an uneasy time for everyone, especially the position we've put ourselves in'</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQaFQzczlTeVJKd3Rwb2U4M2swS3dzV0tJeE5xNzdYSEdGbEQ0aGZhOHo1NUhEU3RYVmpDeFpibDEwb1VocjNERUdFOE8xbFBET2lUZmNyZXRRRFN3NGV2Q2FvUEgtX09TbEhMSUJ4Q3BaT1hsQjRJLUI5dnJYbDIxZnVBRXFiRUVXWXBwRnMtak94Qlo5MTRoeGRoeS1Ca0pVWld2NTVKdC1ybFB5WU5hcFBZbGpNVThGcnFHc2tvbWw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 7:47 PM</span></div>
-<div class="news-title">NHL rumors: Blues' Robert Thomas trade asking price is 'astronomical' as Sabres 'heat up' push</div></a><a href="https://news.google.com/rss/articles/CBMiRkFVX3lxTFBaZGV2QlEwamVHYWxBSTdLYVI0NkU5UkVZS3I1eGJrOHh6aUdwVmg2akc3NW9BSmpOTk5ITTJLOW1HZzhJREE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL rumors: Blues' Robert Thomas trade asking price is 'astronomical' as Sabres 'heat up' push</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPOWpCMDF0cnVLWEF1d0FfZTJ6VnNXMDRpRnNiRkhLdGFWa2R1Z1hPSjBUR3pjQ25kajhzV2lBOXBYcGVqSERVcXZZSHE2UmJ5NlQ5Yk1xTFVXdkNpWTZsUHlxTHVWeHJjY0RGR2hzRXNXclh1SWZuYnFCUDN5b3J2Z1VHSWdrd1BZdWJveFMyUVlHUEtidTdjZ05ITEc2bzhO?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
 <div class="news-title">Report: Thomas trade talks between Sabres, Blues heating up</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbEpCaFR2M0pPWER1UVFuNFZnTE51dTIxaDZURGVoTDcwd0RHYzloVnNUWEJYLU51S3pxTm5qMlFOSXpWX1AyRUh1TTRMaTZHblJ4cUh2RmNmMklGNGlwVkJOS1BXczBzYUlOcFlwY0hDQ2E0T3cxMUZ3TUFNS056TTRVeVViMFpz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 7:21 PM</span></div>
@@ -937,7 +997,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 5:33 PM</span></div>
 <div class="news-title">St. Louis Blues Could Trade Robert Thomas, 5 Best Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNM1B1UXFIV1U3b1ljZVBTR3ZNNlJzcXlJeTVtZ3lvQktYaXVXUHRSNE1zYWJrekxHdWpPVEpRZkFEOE5wNldWemlnNk9wVTk0MFZtQlNyYzVrSDA1WWZwQ2ZCaEc0ZGlzM216OVJ5YkpGMHE5dmpaUWZHbUhMdTNkSkZyTVlLNERvTU4xa3JTNVJGeEJ0R2k5YndjWEd1N3VEMW9Z?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:12 PM</span></div>
-<div class="news-title">EDGE stats: 5 players to watch before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNLUYyN2FSb1A4V2RRc3JjWUg2WDVsbGJ2ZW0yRHNid1dKY0tlNEJpVE54MHktNXRzZHhKZXZUZ3d4WUtpWXFGRldxTFZIbkpxZXJWN3kzTDAwNVl6d0dzTEpNTGVZZHFRQXU2Xzl2MTR5bzVjX19adHM4Ym9TbGFYTnhzWUJJUVZGbUpLUzRvR3M0eGU1SlREcU5R?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">EDGE stats: 5 players to watch before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
+<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNLUYyN2FSb1A4V2RRc3JjWUg2WDVsbGJ2ZW0yRHNid1dKY0tlNEJpVE54MHktNXRzZHhKZXZUZ3d4WUtpWXFGRldxTFZIbkpxZXJWN3kzTDAwNVl6d0dzTEpNTGVZZHFRQXU2Xzl2MTR5bzVjX19adHM4Ym9TbGFYTnhzWUJJUVZGbUpLUzRvR3M0eGU1SlREcU5R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 3 &middot; 4:29 PM</span></div>
 <div class="news-title">A successful Trade Deadline for the Blues looks like this</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQmdnNG1vd3p5VTNSNHVheVZrT2RWTXB0N1l6M1BXaUg2LURabE5VVUE4Q3puLVYtcmlXS0d2RF9CcmlCTlBOU252b0xKSHhRLS1ZTzhPOG10SW9YLS05RjZSQThQVGpQclBqRDBnal9hLVM0Tmt6S1VMNjhIOFVMb0lwUktScXVra0g5TGxualJYaF9EY1pZeVpXQVM1YVhhVFhqcUU4UWw1ci1ual9VdWJhLVE4UXpoUzRfaWdpaGlYQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 3 &middot; 3:53 PM</span></div>
@@ -949,15 +1011,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 3 &middot; 2:25 PM</span></div>
 <div class="news-title">Blues rumors: A new suitor emerges for Justin Faulk</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPUlI2cnJWMTVvYXVOME1MNUdwMHNTbGZMVVJfaWFwSmNhUGhaemNMTWVia0hnSlFRSmlJVzJFZTNMLWpnRWdGV0JLNVFzR3lqU01vMFRHUS04VThlYXJCdHpqbnIyU2EwUnVxSTdFS1NaUkxqZ0w4aENkenNVRFhPZW1PWlY3SElRc2RIeHh6RkNLbWlnbTRSQXJfcUdFNkxw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 3 &middot; 2:09 PM</span></div>
-<div class="news-title">Report reveals names Blues want in Thomas trade with Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPM01TdzlnZHU4NGNZSjJRSTVJRDRSUFNvdnIyZWFfVUtlQVlGSU5RbFpBZXA4NGprb0hrak1HR3NZdEZEYndsQnE5Yi1nWG5fX2hiS3dmUHY5MTRBV2k1N2NlUW5tYXlEM0k3bE1UZWIxLUdUVmlzQWs0V2pjV1Z0STFBV29QS1l5enoyeFJCdkQ2dGUxc3p2eGMtVEJSRjd5cTdWdzZ30gGrAUFVX3lxTFAzQXM3cUgtWXcyUExWel9GUFdaRDFMNklnWk05aWJ1YlJnLWtWSUhGT2hmRVhfcEpkUFhxOUxVRWRxUVlVY1c2XzFBbUJqSEhqWGRGWEg2aTVUdXVkZ1pUWmE4WF9CSm9kN0dnVWZOSEU3TV9KcWpodFhfbktkeFZfNWpaMmVhRUk3cFhoRmRkV2lrb3Y4NWg2M3Z2bEJjb3hPR2RrTWJLOTY0MA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 1:30 PM</span></div>
-<div class="news-title">NHL Rumors: Buffalo Sabres, Montreal Canadiens, and Trade Deadline Tiers</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPMkRydlR2LUYzUVM2MUJ5cFZjYl9NbUY1SEU1ak1tTFJVOEFTbmhRekNXTlJYV1NIOVBKZkt6Q2VPaWVTanhHTFpyYUQ1Y1MtQkYyVWJ3QzE0VTFhUU1sV0htQ2lrQlFCRFZBTU1BOU1nbHJKdUt2UkxnbmNqNTdjNTU4dlFxTEJDeW1aanZvdXpGMTZZSkt3ZHhlR1V1UHQ0cC1kMWZ3?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">sportscasting.com</span><span class="news-date">Mar 3 &middot; 1:15 PM</span></div>
-<div class="news-title">Robert Thomas Trade Rumors: Islanders, Bruins Lead Race for Blues Center</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxNdXM2UERjZVVtS252bXVrV2hGX1VXeUhldmZSZG1TeVJxZDdWclpsNmFPa2dpZXNPOUpvWEQ4MndfckppUS0wUGRSckg5MmtMRVkteDl5Si1MNHVicldDSFBzVjN3LW5YTXl5cHBHeE1OblN5MEREYlpYMjdGSU5yQk5BdE9mQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 1:03 PM</span></div>
-<div class="news-title">3 Potential Trade Destinations for Blues' Justin Faulk</div></a><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxNM0c0TW4tMlhTUHVHRTBrMXR2RDFJSlRfbnpMOHh4TmJrdExSR19VTHJXOE55OXg3QVRYcjV3amJxYzJVNHlTTEV4akNoOVAzWmhDSmo4Rm9MdUlLRWxuT0tMU2dFb0RPR2ZjYlFYOUZmRTdJR0xGU2hLbmpPMEF2TTB4UU03SEEtRHRZSXB3TmYzMGFCSWtpU2hNYjBxcXdxZHhpbzlZOENBVHVDQUswdDhLSkRrSVJmUDZEN3NJUllwSGhrNkN4VmlWbDV1Um9NWEt0OFNTa3A?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 12:56 PM</span></div>
-<div class="news-title">Jordan Binnington can't stop the Blues from trading him before NHL trade deadline</div></a></div></div>
+<div class="news-title">Report reveals names Blues want in Thomas trade with Canadiens</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/stlouisblues/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/stlouisblues</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -967,7 +1021,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

@@ -1543,7 +1543,62 @@ a:hover{{color:var(--text-strong)}}
 .pct-val{{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}}
 .pct-label{{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}}
 .delta{{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}}
-@media(max-width:500px){{.team-logo{{width:32px;height:32px}}.header h1{{font-size:16px}}.pct-val{{font-size:24px}}}}
+@media(max-width:600px){{
+.topbar-inner{{padding:0 12px}}
+.topbar-tab{{padding:12px 10px;font-size:11px}}
+.team-select{{font-size:10px;padding:4px 22px 4px 8px}}
+.header{{padding:20px 16px 0}}
+.team-logo{{width:32px;height:32px}}
+.header h1{{font-size:15px}}
+.hdr-left{{gap:10px}}
+.pct-val{{font-size:22px}}
+.pct-label{{font-size:8px}}
+.stat-row{{gap:4px;padding-bottom:16px}}
+.stat-pill{{padding:4px 8px;font-size:10px}}
+.stat-pill .sl{{font-size:8px}}
+.container{{padding:0 16px 40px}}
+.tab-bar{{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}}
+.tab-bar::-webkit-scrollbar{{display:none}}
+.tab-bar label{{padding:9px 11px;font-size:11px}}
+.kpi-row{{gap:6px;margin-bottom:20px}}
+.kpi{{min-width:70px;padding:12px 8px}}
+.kpi-val{{font-size:20px}}
+.kpi-label{{font-size:8px;margin-top:5px}}
+.nhl-tbl thead th{{padding:8px 5px;font-size:8px}}
+.nhl-tbl td{{padding:6px 5px;font-size:11px}}
+.stnd-tbl td{{padding:5px 4px;font-size:10px}}
+.stnd-tbl thead th{{padding:6px 4px;font-size:8px}}
+a.pname{{font-size:11px}}
+.hs{{width:24px;height:24px}}
+.name-cell{{padding-left:2px}}
+.name-flex{{gap:6px}}
+.sched-meta{{gap:6px}}
+.sm-card{{padding:12px 6px;min-width:60px}}
+.sm-val{{font-size:18px}}
+.sm-label{{font-size:8px;margin-top:5px}}
+.game-summary{{padding:10px 12px}}
+.game-left{{gap:8px}}
+.game-date{{font-size:10px;min-width:38px}}
+.game-opp{{font-size:12px}}
+.game-right{{gap:6px}}
+.game-meta{{font-size:10px}}
+.game-tag{{font-size:8px;padding:1px 5px;margin-left:4px}}
+.game-expand{{padding:12px}}
+.cmp-tbl{{font-size:11px}}
+.cmp-tbl thead th{{padding:6px 4px;font-size:9px}}
+.cmp-tbl td{{padding:5px 4px}}
+.matchup-notes li{{font-size:10px;padding:5px 10px}}
+.news-title{{font-size:12px}}
+.news-item{{padding:10px 12px}}
+.inj-tbl td{{font-size:11px}}
+.inj-comment{{max-width:120px}}
+.inj-badge{{font-size:9px;padding:2px 6px}}
+.odds-ring{{width:60px;height:60px}}
+.odds-ring svg{{width:60px;height:60px}}
+.odds-ring .ring-val{{font-size:14px}}
+.odds-ring .ring-label{{font-size:7px}}
+.footer{{padding:24px 16px}}
+}}
 
 .stat-row{{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}}
 .stat-pill{{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}}
@@ -1713,8 +1768,7 @@ a.pname:hover{{color:var(--text-strong)}}
 .cc-icon{{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}}
 .cc-head{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
 
-/* Mobile tabs */
-@media(max-width:680px){{.tab-bar{{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}}.tab-bar::-webkit-scrollbar{{display:none}}}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{{display:none}}
@@ -2426,7 +2480,43 @@ a{{color:var(--text);text-decoration:none}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.date-strip-wrap{{padding:12px 16px 0}}.ds-btn{{padding:6px 8px;min-width:48px}}.sb-header{{padding:16px 16px 0}}.sb-logo{{width:26px;height:26px}}.sb-score{{font-size:20px}}.sb-team-name{{font-size:12px}}.sb-grid{{padding:12px 16px 40px;gap:6px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
+@media(max-width:600px){{
+.topbar-inner{{padding:0 12px}}
+.topbar-tab{{padding:12px 10px;font-size:11px}}
+.team-select{{font-size:10px;padding:4px 22px 4px 8px}}
+.date-strip-wrap{{padding:12px 16px 0}}
+.ds-btn{{padding:6px 8px;min-width:48px}}
+.ds-day{{font-size:9px}}
+.ds-date{{font-size:11px}}
+.sb-header{{padding:16px 16px 0}}
+.sb-header h1{{font-size:16px}}
+.sb-logo{{width:26px;height:26px}}
+.sb-score{{font-size:20px}}
+.sb-team-name{{font-size:12px}}
+.sb-team-row{{padding:8px 12px;gap:10px}}
+.sb-grid{{padding:12px 16px 40px;gap:6px}}
+.sb-status{{padding:6px 12px;font-size:8px}}
+.sb-scorers{{gap:2px;margin-top:1px}}
+.sb-scorer{{font-size:9px}}
+.side-panel{{width:100%}}
+.panel-body{{padding:0 16px 24px}}
+.gd-panel-teams span{{font-size:12px}}
+.gd-panel-score{{font-size:20px}}
+.gd-tbl th{{padding:5px 4px;font-size:8px}}
+.gd-tbl td{{padding:4px 4px;font-size:10px}}
+.bx-tab{{padding:7px 10px;font-size:11px;gap:4px}}
+.bx-tab-logo{{width:16px;height:16px}}
+.pv-notes li{{font-size:10px;padding:4px 8px}}
+.cmp-tbl{{font-size:11px}}
+.cmp-tbl thead th{{padding:6px 4px;font-size:9px}}
+.cmp-tbl td{{padding:5px 4px}}
+.gd-goal{{gap:6px;padding:5px 0}}
+.gd-time{{font-size:10px;min-width:34px}}
+.gd-headshot{{width:22px;height:22px}}
+.gd-scorer-name{{font-size:11px}}
+.gd-assists{{font-size:9px}}
+.footer{{padding:24px 16px}}
+}}
 </style></head><body>
 
 <div class="topbar">
@@ -2636,7 +2726,33 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.ld-header{{padding:16px 16px 0}}.ld-content{{padding:12px 16px 40px}}.fs-tbl{{font-size:10px}}.fs-player{{min-width:140px}}}}
+@media(max-width:600px){{
+.topbar-inner{{padding:0 12px}}
+.topbar-tab{{padding:12px 10px;font-size:11px}}
+.team-select{{font-size:10px;padding:4px 22px 4px 8px}}
+.ld-header{{padding:16px 16px 0;gap:8px}}
+.ld-header h1{{font-size:16px}}
+.view-toggle{{flex-shrink:0}}
+.view-btn{{padding:5px 10px;font-size:10px}}
+.ld-content{{padding:12px 16px 40px}}
+.ld-grid{{grid-template-columns:1fr;gap:12px}}
+.ld-card{{padding:12px}}
+.ld-title{{font-size:10px;margin-bottom:10px;padding-bottom:6px}}
+.ld-headshot{{width:24px;height:24px}}
+.ld-name{{font-size:11px}}
+.ld-val{{font-size:13px}}
+.ld-rank{{font-size:10px}}
+.fs-toggle{{margin-bottom:12px}}
+.fs-tab{{padding:7px 10px;font-size:11px}}
+.fs-tbl{{font-size:10px}}
+.fs-tbl thead th{{padding:6px 5px;font-size:8px}}
+.fs-tbl td{{padding:5px 5px}}
+.fs-player{{min-width:130px;gap:6px}}
+.fs-headshot{{width:20px;height:20px}}
+.fs-name{{font-size:11px}}
+.fs-meta{{font-size:9px}}
+.footer{{padding:24px 16px}}
+}}
 </style></head><body>
 
 <div class="topbar">

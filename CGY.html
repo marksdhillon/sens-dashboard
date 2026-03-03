@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" alt="Calgary Flames" class="team-logo">
       <div>
         <h1>Calgary Flames</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:28 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -1010,9 +1064,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 3:02 PM</span></div>
 <div class="news-title">NHL Trade Deadline 2026: Girard Traded, Forward Help Coming? — Avalanche Trade Board 3.0</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPbzZGVzNGQmxvZGNNQXpXaVFZUHZRZ0lxcGNvQWRlNzV3b2NKdEVpbkpWRy0xd0VKc3RVVTBZc2ZXY3A3cWRheERkaS1MTzZDeEFIWnlNWUY0T3FDczYzcUQxbjJMbUJPRXRtdTNaQndFNU5TaTRGdno5U0hzOVBjdEo4bm50bjRhcHp4eHlvLVRud9IBlwFBVV95cUxPVk1vYVVXQU10ckhVUTg3cGlRM3RLd3Bvd1BqRmxwa25mUElPa0lwV0ZtRkxWUXQzR0p6cXBFTnNaMUtPUG5SQVFpa1MyaHozQThiMlJkVWc4VVVqNm9PMFlzYmxETUJwMWVUcEc3TnBLdDExblp1a3VFTXlwbmhwNE1jREk1MW5wY1p6LXR2U0JSZ3RiWlQw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 3:00 PM</span></div>
-<div class="news-title">NHL Rumors: Chicago Blackhawks, and the Calgary Flames</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOTnVJWWt6N0xFdTJBVWl4TFFIZDlhdW1KanhZdG4xM3ppd1JCYzBFdXU4cGYyeEdJLXFCWW93S2IwM0V1cGYwYV9OSlBxcktBYXR2WFRGZWFOY2t0Z1VMbmwyWkdERnY4c1piN2VvYmh4dWMwY1Z5cWh4a0VmWFdiRjRwc2JHWmRtT0RhMURJdVhDeEQ5X053T0NhVEFKM2hLVmpHVVRPWEVBUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Flames Nation</span><span class="news-date">Mar 3 &middot; 3:00 PM</span></div>
-<div class="news-title">The Flames’ likely trade chips ranked by potential return ahead of the NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNM041c1hnMmhwY01hZERDX0czTFM2T2hNcjRZSjhKTVlaemZkMmp6Z2JUZVpwSzJBSG9tSGEyZXg5cjl3VzFLb1FmQzFFRGhoMUI2TTNhMjRGRGdRSzVsbDVhb041TFdPRTVlcVFHS25lNVdxNGxSelZVWGcwbDFycjNFRV8xa1N5dHNLbXNTZ2ZFeVBxZk56b0FfZ2FYd19KR2pYVTMySG81bGlE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Chicago Blackhawks, and the Calgary Flames</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNM041c1hnMmhwY01hZERDX0czTFM2T2hNcjRZSjhKTVlaemZkMmp6Z2JUZVpwSzJBSG9tSGEyZXg5cjl3VzFLb1FmQzFFRGhoMUI2TTNhMjRGRGdRSzVsbDVhb041TFdPRTVlcVFHS25lNVdxNGxSelZVWGcwbDFycjNFRV8xa1N5dHNLbXNTZ2ZFeVBxZk56b0FfZ2FYd19KR2pYVTMySG81bGlE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 12:19 PM</span></div>
 <div class="news-title">NHL Game Preview: Dallas Stars at Calgary Flames with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNVE9xV3JZMng2dmVUcTJNVXpudDg3V1F4b0NsLVhKaWVUSXFRTm0yX3VRUFNXRGRhX01aLTNOdjJKTHRSYk1ucVlwVWlYUWZ6UWhtQkdUWnZ4THdQdUROcUpTc05TdEowUHd2VGkzZW95azAxdkh2bmdyVkFZMWt0eUxLdm1PSGQyQlFUa2luczNneUdZbjhKaWx4RXZvZjI1RDUxUDJjNkZZaVpIdVZ2QVpPTHd3aWkxX0lOenJZREExMEZD?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Insurance Business</span><span class="news-date">Mar 3 &middot; 12:04 PM</span></div>
@@ -1032,7 +1084,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Yahoo News Canada</span><span class="news-date">Mar 2 &middot; 7:02 PM</span></div>
 <div class="news-title">Flames Trade Deadline: Who could be moved</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNN2xpRUdhWXktaHVCSFZzYmYtRmlLV08wNlpaakNEampXdjVFaUwxSnctT0hDaUJ5VEJWVThiV3Y5TDF0emtZQjctaU0zUS1VQldCUW9PM25yeFNsWmpscmdvZkJqYWp6N04tM2xMS3pZaThFWTNoc2lGUExHbUFrNGNOd1FjZG5FcTloMlhBaFA1V21xcXY1OHdQZFZOaWQ3dHBaS2daS3hQTzc1ZkhJYkZUUkZZZFlDek5Tc2dabjZjN1RjT1d6YWRXcWtrRFc3MGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 7:00 PM</span></div>
-<div class="news-title">Avalanche Management at Flames‑Ducks Game Sparks Trade‑Deadline Speculation</div></a></div></div>
+<div class="news-title">Avalanche Management at Flames‑Ducks Game Sparks Trade‑Deadline Speculation</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQLVhWS2ZiTUl2blk5RkhuQnVoaktaQThxaTl4ZVUyV3hUbjc3Q2IyU1FGOXFBalRFUE5kV2t6YzZ6NDFiUUVJLWNMajdjMGRaOXQwcVFSblV1SXllUVE1T1pLQmFBeEN4aFpWZlFWeFJRVmJoS1BFWVVqRFJsZWh1VG9VR0VocjI5LUlFRWdVYTFPbWk3SlIzVzFSVkpZckJyclRYaks4clNIZkdBSDdXY0UtVmZuN1M5WGFBOVNiSk4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 2 &middot; 6:02 PM</span></div>
+<div class="news-title">Chris MacFarland may have just shown Avalanche’s hand in potential trade interest</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/CalgaryFlames/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/CalgaryFlames</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1042,7 +1096,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:28 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

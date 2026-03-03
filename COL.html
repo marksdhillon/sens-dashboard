@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/COL_dark.svg" alt="Colorado Avalanche" class="team-logo">
       <div>
         <h1>Colorado Avalanche</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -942,55 +996,55 @@ body{animation:fadeIn 0.15s ease}
 </div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNdm9mel9BT1VGMzJSREVOUG5HTTlZWFBRTmsyOEx2REZuM0cxcE00TjdhWHo2R3FKM0NiOXZZbWJyblBCbXRTLTZ0RlJhSkNZQldINXRLMURsLXNTT1VoRGhoM3ZBbDY3TWpMeWNuZU9sc2hCLWp3ZWx6UTFCcnRFQjJ4RUlCSXNnZlhYYVdqZVpGSnF1MTB2VE1rLWY4MkJmTXAtSm5uZDhoMnl4RktnRHRHb0pjcWZSS0NneFF3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 7:53 PM</span></div>
-<div class="news-title">Avalanche Game 60 at Anaheim Ducks: Last One Before Trade Deadline, Lines, Notes & How To Watch</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche Game 60 at Anaheim Ducks: Last One Before Trade Deadline, Lines, Notes & How To Watch</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOYXhIbXNDaFRCQzhhUDV0VklrZ2lfVXEwWVduTGs5aE1lUk9WMk1ETV9uMG1lNzRJN3Ayd2pBMm1IY3poZmJzY3B5RlV2alpMaUJic1ZfUG83aUZKS3FzakdCbDRQeGFXQ0UtdnNZR0E5ODRULUJNMUd5ci1lMzNTVWVKci1oamdTN0xaVmdrc0RLMEZFbkFDalh5b0xDeGM2ZWlRd1RIcDJzTktxMmp5M1I1Q1IxVWJlcUhnNjdCdXJodw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 7:44 PM</span></div>
+<div class="news-title">NHL Jack Adams Award Rankings: Can Penguins' Dan Muse Beat Avalanche's Jared Bednar?</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Bleacher Report</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
-<div class="news-title">Buying or Selling Latest Rumors 3 Days From 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPWVMzcUk4TWZDRHlhanJYMWlZUEZIODU1R0VNeWFBT1lKdEd5SkRULTZPNVplUERBZURFQVhPTVpjLUNxSUZaSWRuSmpjRVhHeHNGbzE2YmRsYUwtNEZrYWZJZWd3QzdqQm5UbzVvVzlZVkdxaG5lZ3l2N3p0T1hmSy11aldDa3k0NUpwTlpUbk92NXBYZUJz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Buying or Selling Latest Rumors 3 Days From 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZDhGejJZMjRaLXFCNE55NEhkRU0ydFcxMUhFbm4wVXFvVXVoc2xwejJaSXBWbjFoSkdOMG9abUZTeUYxXzlOX3htTmFJSXYzbDN1aHplcUt2dV9mdjJoSVE5R1BjRWR5X0ROa3I5bWgwS0x6dmkxR0lsajFPQ3g3c3lUX1dZeFEzRko4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:51 PM</span></div>
+<div class="news-title">Avalanche at Ducks projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPWVMzcUk4TWZDRHlhanJYMWlZUEZIODU1R0VNeWFBT1lKdEd5SkRULTZPNVplUERBZURFQVhPTVpjLUNxSUZaSWRuSmpjRVhHeHNGbzE2YmRsYUwtNEZrYWZJZWd3QzdqQm5UbzVvVzlZVkdxaG5lZ3l2N3p0T1hmSy11aldDa3k0NUpwTlpUbk92NXBYZUJz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 6:48 PM</span></div>
-<div class="news-title">Avalanche GM Chris MacFarland on looming trade deadline: ‘We’re going to leave no stone unturned’</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQVm1ycl9kN05YbVNxMnNDdmU2TWF0NlFDUGdZbXREamhrQVZ4UmRBdlZienZMVTV5Rk8zUTNWR29tTTBZMUozOUY2V09OUUdXMmlGdjZGSUZxZHZNTy1KMHlibkl2cDBMTDVOSDlLT29pUnlvbko1aW53a3BVLUNsNHJMWHdEek50TWdhYkcyeGJQcVdTdUZBZlBfc3Zjd3h0d0JPTWpIMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche GM Chris MacFarland on looming trade deadline: ‘We’re going to leave no stone unturned’</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOUzdqSGZvWVA4YV9lbTZZUExnOW51NzEwVFVWcFJsZHRVTWRIOUp1TVBYWGhwN3Z3eXZOcUNaRVNSeXNfZFNScWFNZEpNdUdtZVBvZG13QzYwNHBfazhaeXVJaE1zVmtCR2dpMWM1bGJkX2Vmc0NRc2k4d3NtUDhFY0UzRmVuXzMzY2NXLQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 6:35 PM</span></div>
+<div class="news-title">Avalanche Should Go All Out to Bring in Veteran Center</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSGRfdHE3YVhvOU10SzVFTFphVXRBczdTY2FyY1ZsaVQwazZ5VnVGV3M4WFRfTHU2RjBwSF9RTkhpR2xrRzRyZlhLMVBBSEVlczZmaVVpU2YxY1ZKQjdZek5hTDZ0Ullya01xX3hrclpLd1lmQUZqUTF3N2h2NEYwU19ENWFkM1RwSWxjTEJTSjIya1VidWpKYmlXdG5pWTlBd2NQN1RLbG5BWnM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:31 PM</span></div>
+<div class="news-title">Forward Polin Recalled from Colorado Eagles to Colorado Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQVm1ycl9kN05YbVNxMnNDdmU2TWF0NlFDUGdZbXREamhrQVZ4UmRBdlZienZMVTV5Rk8zUTNWR29tTTBZMUozOUY2V09OUUdXMmlGdjZGSUZxZHZNTy1KMHlibkl2cDBMTDVOSDlLT29pUnlvbko1aW53a3BVLUNsNHJMWHdEek50TWdhYkcyeGJQcVdTdUZBZlBfc3Zjd3h0d0JPTWpIMA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 6:02 PM</span></div>
-<div class="news-title">Deen’s Daily: Kadri Reunion?; Oilers Bolster Blueline; Bobrovsky Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNb2paZm9CcjVSbE9rUDlLZjhaYkJDeXJFZDlvd2E3WTlOTzE1Tk1ka0k4QWNrUllhSFBueWdhSTBGUEZhWWYyY3BTYkpCRWhZaVlEV1lqX0E2eXpPeE1sTW1SWVdoUnpMVjVjbTRZVVBmQjlqeWJlNmhDMzJUX3FxbmV5WDBEbkhERU9fRjA5cXl2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Deen’s Daily: Kadri Reunion?; Oilers Bolster Blueline; Bobrovsky Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxQSm1QSFcwRE52Z0J1NEd1b2M3d1hROXl5dlBNYXBHcm1jSWVBTm4wM2tKbzZTOGs5MGUxNDRoRVIwWEZTR0lTMUM1XzgyWVhNVTBqaG1nMWNnVTdrTTBZSklqNTNybjdtM09UdUhaeDVESkp4QUEyT3pEZlRVbjlTSHc4M2p4WGl1TEZEbEc5T0VPUi1ZbFVQbmJRaHFiVy1nQnJORERpVXh5QjI5Slcya2x1RXZiNGlPS1ExcmVQUnFqWGpQbmxDUTNaYkNScDZLUGEybWEwamFzTlVxOTNQSVVNWkIwUEVBQTM5VEgtaU9Vd0NGMEN0WkQyNGRFUVczem85Q2RkUkrSAY4CQVVfeXFMUHVJd0oyTnlxdGpNaWNQZFZ2UlQybnVvMUZlbWg2cTR4ZFVIVUdqR0NOcWtlaFF1RHZ0OWtVLUxGNnR0WE54ckRUTF8zSmFYWU5CNlo3bE9ROWF3TFdJSllCajJ2cHBzNUlvWFJNYmtxSWFDc2RmVnZJNmJkN1Y3WUlhSllmYUtrSkRyZzJfOTBlZGZKdEFQd0dsTE9POHpNMDhmNTNMb25lRDByTmxkVWpYU2czMEd2SlNnSkhwM0RCWXVwd0hYTmxzQWRiQW1oQkRRaVRyUGIyNHJhQVkydGRrcXhIc1dzV1FMa2pVQ0Z6bjdOTnZnNVBGLVh4LThYVi1XTEw0THh5anJ3bVFB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 5:45 PM</span></div>
+<div class="news-title">Colorado Avalanche forward Artturi Lehkonen sidelined due to injury, expected to miss multiple games</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNb2paZm9CcjVSbE9rUDlLZjhaYkJDeXJFZDlvd2E3WTlOTzE1Tk1ka0k4QWNrUllhSFBueWdhSTBGUEZhWWYyY3BTYkpCRWhZaVlEV1lqX0E2eXpPeE1sTW1SWVdoUnpMVjVjbTRZVVBmQjlqeWJlNmhDMzJUX3FxbmV5WDBEbkhERU9fRjA5cXl2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:43 PM</span></div>
-<div class="news-title">Trade Buzz: Avalanche ‘deserve the help’ before Deadline, GM says</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPSmo5alJUc08tZzVqNVNZM0x1VXpLS0lVT0tqOVp0Y0hvcGNPRS1OT2tzeWdWdC0xT25BSmFqUld5NTlEYTBNb2dlemc3QUs1WjNzSFNBUk5TNEFBMFFGZGJrVE90cU1kNndTM25NWlR5OE5qazdDQUhaZGdQbjZzSVBtUnVsZExwbTVUc1puTV83dDNWcTFHcFlhcXFVSmNNVFBBWDJMZG40dGtsUjBkY3p4NjREbGlLVmdXQUdB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Trade Buzz: Avalanche ‘deserve the help’ before Deadline, GM says</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPU2ZRVGFzNWF3bnp1OWZ4WllaOVZ5M0E1eGxkZks5N3pIb2luSTh5QmlJNVB1MEJCWVRZM0dyUl9XM0NwRUhOTWFENm1kMGtKLWlpS3dDMHFfaHpZSTB4b3VqdktZNjlKZkZqRHF4Yk1qUmR3djZ4eHgwSUZnUVR1SGhtdS11dG1uT1l1dWJmLXhtQk9YRmEtVE54ZHFtQWFrOXhCQ3NCWmpXZEl1RE5JLWY3dw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 4:41 PM</span></div>
+<div class="news-title">NHL Game Preview: Colorado Avalanche at Anaheim Ducks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPSmo5alJUc08tZzVqNVNZM0x1VXpLS0lVT0tqOVp0Y0hvcGNPRS1OT2tzeWdWdC0xT25BSmFqUld5NTlEYTBNb2dlemc3QUs1WjNzSFNBUk5TNEFBMFFGZGJrVE90cU1kNndTM25NWlR5OE5qazdDQUhaZGdQbjZzSVBtUnVsZExwbTVUc1puTV83dDNWcTFHcFlhcXFVSmNNVFBBWDJMZG40dGtsUjBkY3p4NjREbGlLVmdXQUdB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 4:31 PM</span></div>
 <div class="news-title">Artturi Lehkonen Set To Miss Time With Injury. Will Avalanche Take Action At Trade Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
 <div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONmw0TFlVN0FwYUVwOE5BVjhfTjg0RDZIQk1tTUhsWE1CdEJaNmxEb1Z2bFFwQjQtTzU5Z0puYVVjQkJFSVJwZHBzNVhuYU5KM2h2RU1SSy1mRzBobnJtZGF1dlhFVl9HaVRKb2Jqa1lZUzU4OHU2V1RfRHF5elRNenBrS0hmTzlqb21YRTU3ZXVWNlFRdmF5cE9SVFhDMXhmTThsclp1N3dELUo5aVJ6U0dYZWRidGRacDl1WTM3a1pCNDliNFhWbXdwYzBaSGFBVkFGalpyREhzMzY2RGtz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:01 PM</span></div>
-<div class="news-title">NHL Rumor Roundup: Latest On Flames' Kadri, Rangers' Trocheck, Panthers' Bobrovsky And Other Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQLUdXZFNJYm45NXl6c3FzUDNqd2g3TDNWVzM3OEQyY0hqTS05SjJBTHZvTFFkT01BYTlEWmtwSnRhcXh6MlBtdDY2U1Fna3RmMmljYlNtTW02QmE2clViQi0wQ3FTTEF3Wk5DRWlZWGNZaU9Pbk5CeHFZUkdTX2p1R0syWTUzcTVtN3N4eVQxajNUeUE0UTFoS1J5b0d2dElYdkxkQ2h5RjNWbm93Smg4VzNKelM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumor Roundup: Latest On Flames' Kadri, Rangers' Trocheck, Panthers' Bobrovsky And Other Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQVGdMM0QzRGliY0R0cHpCUU1aaEU3NUFnTHZwckw5S3hmUktVSC1SSVJieEFWME5QYzlxTkZjNUN5emFEaGVIMUJnSnBWYTB3VkwyZDFyUC1xVGpWbm1EYmo2OFY3UlFNdlNuMlIzczRkcVpjdlNiR2l2NjkxRGVid0xfanZ1YWs0WFZHZC1abU5CbC11VEFrVnJ1b0NsMDQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 3 &middot; 3:42 PM</span></div>
+<div class="news-title">Avalanche’s Artturi Lehkonen to ‘miss some time’ with injury</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQLUdXZFNJYm45NXl6c3FzUDNqd2g3TDNWVzM3OEQyY0hqTS05SjJBTHZvTFFkT01BYTlEWmtwSnRhcXh6MlBtdDY2U1Fna3RmMmljYlNtTW02QmE2clViQi0wQ3FTTEF3Wk5DRWlZWGNZaU9Pbk5CeHFZUkdTX2p1R0syWTUzcTVtN3N4eVQxajNUeUE0UTFoS1J5b0d2dElYdkxkQ2h5RjNWbm93Smg4VzNKelM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 3:02 PM</span></div>
-<div class="news-title">NHL Trade Deadline 2026: Girard Traded, Forward Help Coming? — Avalanche Trade Board 3.0</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Trade Deadline 2026: Girard Traded, Forward Help Coming? — Avalanche Trade Board 3.0</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOVC1wYndwQnQteWd3SE1keTNzcXV4ZmVqVWNJV0oxQ2dDNmpTbl9LRVowbl9ocWhYemVFLVE1YVZYMEVFMFhyZDJkaFI1LVVyV0NEUVV0akRwUjl5RXVramNtOW4yQ09GTzhLUzljUEV6cXBXVWFWRUdNREtOMm5DWl9zYktQZFZkalo2SzZPM0pEcS1GUkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 2:12 PM</span></div>
+<div class="news-title">Devon Toews’ late goal helps Avalanche fend off pesky Kings in 4-2 win</div></a><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFBSUU9mUGNGS2ZnV1c0TFp2c2V1aldpdS1DMVN2UmswS2M1VG9GTjBIWGlRLVktTnFIYWtDS2xPYmRzcHprbk13T19yWlZYeWFoaWo0dXgxRF9rLTQ1Mll5Qjh0eUs?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:05 PM</span></div>
+<div class="news-title">Devon Toews Scores Late Goal to Help Avalanche Defeat Kings 4-2</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9XQ3cwdnh0TWNxTC1WV2FmcW1TanZzM0xOTWYxTS1wRHhNMFJRTjRIRkJubVEyY3l3T3JFYmFHXzB1TGFRX0RsU2JYOFlmdEhHOXFMZ1RNMVppUDNXTUk5WW15ZXVsRzg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:05 PM</span></div>
+<div class="news-title">A Duel with the Ducks</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQb2dmM2VzVnBidDRZeDlRcVBUYmsxRWxrdjJOOFlEWWJmeVZRdTZVWGRrNElOX2FpZUlaelJHR1lERzZGNkFwWXZkWHRrSzU5TnpSb2Vob2lSeEJtSGNVbllnSUlUV21VbnRoTFRvWU9FUTR6cGpCX2ZFRlpJeDJiSGRiS2szNG9PSTZsV05FejlzandBVndhMmdtblZFcVdEWnhhUjJiNWpHaDI5TXpTaEFtTHhQMDdr?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 3 &middot; 11:29 AM</span></div>
+<div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQMlFJcnVXTzMwV0RxZEVPTjBqSnA0VVpXSEROU2ZiY0hiSElCdHlNZHREVW03S2d1clBIM2gtdFBhdks1UFZ3bi1xQUtBUkVDMEhLbm1qS2Z2T0pUYVRPM3lvQnJNbmNLSUdtc19od3VWNXh0OUU0SGc3MFJRRjUySXI0NkRZOWZDZVZ1LXpOTmhLTjU4ODF4SWJNZm80cVJhQ0FhZG1Kd05YajdidHgyZ2ZzNHNueWJGQlFwbkFSY01qaFgy?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdng4SzFBcnpLVG9UQXRMS0doWXY5VWxxYXItV1J5cFItQ2xmc3dKNVhIa0RlVW1IVGEzcE5aaUVDb09RcTI2LS04cHcxMXR2UVAyQzZpcnBJV2VIT3NPRWVQUk44TVdjYnlVdHgtOVA2aTNPeElIYjE1YXIyU0NvN2FSbjRrTnFBbmRDb2Nn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 9:42 AM</span></div>
+<div class="news-title">Smith's 1st game as Kings coach spoiled by Toews, Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPTmJIZTBCUFJKN2VOOUs5S0Zyd1E1SjlHVGs3MWZocGh0TnZ0aHZYWXZTMGxqT21ZeTh5Qm4zWEFITWkyX1RiRnNvNklySkp0ZnRZSUJpZGY5dDZab3dCWW1ISHJCbWdMbkwwTk04dGpxUTBqYzU1ZEZ6anBUMVZHa3pB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:05 AM</span></div>
+<div class="news-title">Postgame - Blackwood (March 2)</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQMlFJcnVXTzMwV0RxZEVPTjBqSnA0VVpXSEROU2ZiY0hiSElCdHlNZHREVW03S2d1clBIM2gtdFBhdks1UFZ3bi1xQUtBUkVDMEhLbm1qS2Z2T0pUYVRPM3lvQnJNbmNLSUdtc19od3VWNXh0OUU0SGc3MFJRRjUySXI0NkRZOWZDZVZ1LXpOTmhLTjU4ODF4SWJNZm80cVJhQ0FhZG1Kd05YajdidHgyZ2ZzNHNueWJGQlFwbkFSY01qaFgy?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 3 &middot; 7:17 AM</span></div>
-<div class="news-title">Avalanche’s trade deadline plans may have just changed after Artturi Lehkonen injury</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNc25fV3VNOGRHbWNRVG1MbmdldjJRb3JsODVNbl9FVDh3cmhZN0lCam5MOEFmQ3JMaTVmY1B3SXBmeGdkVGhaWmYzR3lXYUNuMEt1SEQxR25KUV81bmF1REV0SEtqZ0twSGhkTVhmejd0TGUzcEoyQmh0bW5YaFZQTDN1V0Z4V0N5dzE1RlZ0LThnSEoxcWJnTUJMT3EteExqaGNKQzc1bGhiZk9GMHhpWk1LQURaOVFUeE9Z?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:38 AM</span></div>
-<div class="news-title">Could Kiefer Sherwood Be the Avalanche’s Midseason Upgrade?</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQdHRSWWZJeHFMaFVWTUdveGJ0NUp3em5JQkxLaWRPcHF0ZlBGVzZTTVRVUjhrTkhEb3FXdlBKQVVRSS1kNUs5SWdHQ19FWjc4ZXAzYmhMLVVweWJlQVFGV2JjOHZVYlFyYUh4YU5fRHlJVDZ0TUJSeTl0WXhVQTlpOUpR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:35 AM</span></div>
-<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaWFFWUx6VmlKVW9BQ1lZaFFOQlZBREVsSmdjQ2pqZEQxQnpEZzM3YnoxVERjYVdXYkVpc3pBZUtPZ2t2VmJPMnp5VXBHM1Y1ZDhWbU53a2x2RTFTRFh0VW13bVFUajhzd19MSTVUWG1GOWdrLUNLZjBNZlVpTWMyQ0R4UHUtYXFY?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 3 &middot; 1:47 AM</span></div>
-<div class="news-title">Could Avalanche circle back to Sherwood?</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPM3pObnN0VkktaGdFTU5iR2x2eWU2N3c1TXY3amp3bm5rOVVGNXpsdHRnQXJnQ0NyMEl4OXFpb04tNl9sODBQMXFScVZ2ZDRHNXFybHkydTdJSzBHUHp4cHRTMEw1d0tvVGp3V254RTdsbkUweXI5RnJIcFFia3R0ckpKOE5GZVVaenJ2NU81aXdocWR0SWh5WXVULS1HTkxUN0cwTGpBMjZZbFBUU2lzQVFjb3ZvU3k0WnJJU1NFam8?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Las Vegas Review-Journal</span><span class="news-date">Mar 3 &middot; 12:12 AM</span></div>
-<div class="news-title">4 players Golden Knights could target before NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQTjlGWWs0bGdXQUE0OUp4TzNYSmtISkt2cnoxcjh2QWE1WFdLbU5fV2ppNE5PQjhPQ1BTWUFYcjBrMFZIYmNjYTVvZHJoN2p4RFZrQ3lmd2YwbUE3Y0xITHJTYTJHREc3Z1ZDZHBlNXpjRjBMcGowWFdfZmFPVGFJN29JUF9XSFd5TVEyWmZOTlZYbXg4R3Z5clkxN3dqTEJGbHoxWTYxWFN6X0FELXNhZmppcm04aGJhSlczTWJYSG5aSkU?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:12 PM</span></div>
-<div class="news-title">NHL Rumor Roundup: Updates On Trocheck, Pettersson And More Notable Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOQTVMd2FwS2lraXhnT20yRHRvMTBmS1JYb2tCTHVpcUh5aVVsZGRocm9VQmgweVJ3dXEwLWRfaVgwNEpMOS1UbW5NcXZfcWdYam83bmR2QXRDRC1Zby1QTldyYmNzZUNCZVlSTUdmVU5jQkFMaXdLcjBwN2JxR19RU2dybDMwM2d2bzFzNEFFY2dnTmo4WUpXQnpiOXY4X1Uz0gGmAUFVX3lxTE5xTk9oTF9aTUpvR0VSb1cwSXJwVWJYM0lBMFdOdk11VTdFdU9xYzZEdE43ZTdHTjZVcDlSLW51SHhJTW5PUHZOdEFRRFBWVDMtUDNWYTh2Tl9SYzRCMVNHVVF4dk9hUXF3SWVwWVQyRVBJYmNvY1hidjRtWGV5a1JtQ3BXR09zcEZzdGVJbVNWR280MC0zTGhmSmtWX1B2RndLOFJJZXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Sports</span><span class="news-date">Mar 2 &middot; 11:04 PM</span></div>
-<div class="news-title">Colorado Avalanche tested with challenging schedule after Olympic break</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNY3pMQmFIY0Q1T21ZdXNhX1VpM0dwY3N1Z09HUW5vNEhhcXBMQl9sUFJGS2pHQmR1RjJtWVNsV1JxQ3lQWHJvWkxUNF9LVlNxdENQLUxGU3JhOWN0a0NKZXdEX2FQMnZQOTJSTUYzbGU1ZDI3LVc1QWFMRUNWV3Z4NHRFRTBwLXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 9:29 PM</span></div>
-<div class="news-title">Report: One Major Obstacle Standing In The Way of a Kadri Return to Colorado</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
-<div class="news-title">NHL On Tap: Smith to debut as Kings coach against Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPUmFYRW5yVGJ3dFV3QTd1QlZxX2dsd3FhcGlhdmprbHN1UHN3VzBHdzFmVVpWeFU5Mm1TU3dmeGZIRV9Na3VRNGpUMHRzZFowTDFrNlVRd1JrZXRRU1ZPT2paVXlqRkhwTERiRjNNaFRHcVVXcmpmWG9NSXkyUUFyak1maFVxdzQtV09ER1hMcnM0ZTFNR2JCdEV1c3ZDakZCMWRNb19Fci1PRmFlWU8w?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 2 &middot; 8:17 PM</span></div>
-<div class="news-title">Kadri Back To Colorado? Talks Reportedly Picking Up Between Avalanche and Flames</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNN2xpRUdhWXktaHVCSFZzYmYtRmlLV08wNlpaakNEampXdjVFaUwxSnctT0hDaUJ5VEJWVThiV3Y5TDF0emtZQjctaU0zUS1VQldCUW9PM25yeFNsWmpscmdvZkJqYWp6N04tM2xMS3pZaThFWTNoc2lGUExHbUFrNGNOd1FjZG5FcTloMlhBaFA1V21xcXY1OHdQZFZOaWQ3dHBaS2daS3hQTzc1ZkhJYkZUUkZZZFlDek5Tc2dabjZjN1RjT1d6YWRXcWtrRFc3MGc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 7:00 PM</span></div>
-<div class="news-title">Avalanche Management at Flames‑Ducks Game Sparks Trade‑Deadline Speculation</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOTUVVaFJkWmRMa1lkaGNXUkJSZGdiMFZONzgtMGJGNC1BNDVVRlE4RFRVZE45TFZWUzM1eEVBdVR1X3BNd1NWclJoZXV3YWxwZFpkN3dzOTBBM25IZENUZEwyaW13cDg1NUppdnJUSFlkVXBnQ1pPZnVMakloNUh3OE5DTkFBZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 6:56 PM</span></div>
-<div class="news-title">Trocheck Confirms Teams That Are Off-Limits in New Interview</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQLVhWS2ZiTUl2blk5RkhuQnVoaktaQThxaTl4ZVUyV3hUbjc3Q2IyU1FGOXFBalRFUE5kV2t6YzZ6NDFiUUVJLWNMajdjMGRaOXQwcVFSblV1SXllUVE1T1pLQmFBeEN4aFpWZlFWeFJRVmJoS1BFWVVqRFJsZWh1VG9VR0VocjI5LUlFRWdVYTFPbWk3SlIzVzFSVkpZckJyclRYaks4clNIZkdBSDdXY0UtVmZuN1M5WGFBOVNiSk4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Mile High Sticking</span><span class="news-date">Mar 2 &middot; 6:02 PM</span></div>
-<div class="news-title">Chris MacFarland may have just shown Avalanche’s hand in potential trade interest</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5JLXZEejVLZEFwYXF4WEVRcV9fdWpWMDVSUGR4cnZDM0pIMUFjR3ppNkMtTzNOMHhyYS1aSzBpaWpDdFZ3U2hkMjdKb2xFa2pZS1BFbEIwc051b2tIT0JPbGVlRDlCSDV6M3ZlZDZxTlpJX1B5S2c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 5:15 PM</span></div>
-<div class="news-title">Avalanche’s Best Trade Deadline Assets</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQNU8zVGFGZTRDc0pSMXIyRmdFc2lfQXZzNFllckt4ZTZ3cDVGa3lLUVJKZ2thMlhRN0JUY250Wjc2YUpIQVlrRjYwMHZsLVYyNXJyRWFIcFBqd2ZXQV84ei14elpCY2hLNWRVZnVUVmtXeHVwYU5GMTM0SmNxeHdXY2Q0WTlNMHRhUWfSAY8BQVVfeXFMTk0wb25JMzlwM19zc1ExMTgxdE5RcnZMWk85ZkRIUjJkcmZvNUJlc3RIWk1TT3VfMWJfbTd4ckZ5b0E5UUNLQy16R0k0V2o0NVd4UzNTWDVETEFUWDluYVNWVmJwakxSb1VLN3VOdGRiaVdtY2pfOEpYWVZQejZCRVo0ZDY2WHMtSndMOGhTaU0?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 4:40 PM</span></div>
-<div class="news-title">NHL Rumors: How Big Can the Colorado Avalanche Go?</div></a></div></div>
+<div class="news-title">Avalanche’s trade deadline plans may have just changed after Artturi Lehkonen injury</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPN1h2RGdoOXNnNWhSM0hSdzRxU0NrekNQM1VHUTlFNGxCSEc0Y0xhbFp0QjE5ZU1pWndaTW93X2RwRXRnRTVLZzRld2F6U2M3MTF4ZnFrUmZMUjJIYVk2NkViMTFVRnppYkctVzJsdVJ0QmIybUUya1VrMTdiRGFrQXNudGl0aVdRUnhfZmt2aE5UVmlMZ1JVSS1iVms4VkdjWHJTVkEyRlFnckNrVDJOa2t1SHZhVEVaOHlUV09MUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 6:47 AM</span></div>
+<div class="news-title">Toews scores late winner as Avalanche beat Kings in Los Angeles’ first game under new coach</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/ColoradoAvalanche/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/ColoradoAvalanche</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1000,7 +1054,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

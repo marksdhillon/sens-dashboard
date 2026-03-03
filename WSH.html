@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="Washington Capitals" class="team-logo">
       <div>
         <h1>Washington Capitals</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -893,7 +947,9 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOWGhWbm85MGE2LUwtU3pQWnFfNHdWbE5xbXAxYy0zd0R5VkhLQ2RhMjJWWXpTVXd3OUpibE80bkdmRVFkengxTl8ySDhZc3E3OXd2ZTNyRWFyS3Y3ZnRDbXJjTEZDb2ptNWJtR0pPeGNRSG9XSGZSb0hhRzZBZFJJM0Z1anA?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQTzZvZy1hZmFSMk01eGxiNDY4SXdGcEd6UkgzVXFhYjdJSUVmMVlNeS1fT1Y4eHg4MFJSc2pGS29oVmZKckVVMGdxckZJUy0xeDU4T01QbjFvQnQ2TlE4Vlo1V3Jwcnl2N1Bub3ZOUEVZTnhEQ0xfeUVZdGlmaFA5a2RXMTBNVVZKbTdKNk9oaV91NEdLN3k1RA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:32 PM</span></div>
+<div class="news-title">SKATE SHAVINGS -- News and Notes from Caps Morning Skate</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOWGhWbm85MGE2LUwtU3pQWnFfNHdWbE5xbXAxYy0zd0R5VkhLQ2RhMjJWWXpTVXd3OUpibE80bkdmRVFkengxTl8ySDhZc3E3OXd2ZTNyRWFyS3Y3ZnRDbXJjTEZDb2ptNWJtR0pPeGNRSG9XSGZSb0hhRzZBZFJJM0Z1anA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:20 PM</span></div>
 <div class="news-title">Rinkside Update | Rasmus Sandin</div></a><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxPWWtCc1UxSVVDWF9wLU5vVnA2Vk5IbEpMZFA2ZzQtU2JFSEl2Y2IwcFFnRDBjblBBUF82eHBVWGRRNnlLaGxKVTZTMVY0X1R3SjRwbGFyX3kxZDVvZHNvZU9RX2JTZGVSUUhuWVZLR0dzS2FmaEhSX0pwcktOQXkyVDFXd0ctMVMzNDlSQ3hXN1NhUnozQ3p0UlJCUVd2WGRRWUkwZFlwbndZV3ppTXNpVXoyRW5aaTlJR3ZSSWw4UTBKWFFnUlhuYVBXYlFuNElaSjdOd3NtcGQ0MGFzQUE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:47 PM</span></div>
@@ -921,9 +977,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
 <div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxOZlgyaElIOXFSVEFQQUh0Q1FRZUl5dTRVU0gtSnJGY1QwdXFXT1c4TUI1aWFMaXQ2ZVFud3I4TnNrdzBBNG9aVTh1VEd2MXhJN2psVmQxT2JlVnlwUkRZRXVyVnY0X1ZuMzhnRV9sNllkckl5dG45bUxZWGt2eE5RcTU1UVViU1dPMzNDUjVobGFrajQ5NkFTUWtrT0dvc3AzN0xuM3hCZm5WY1M5WnR0OFNPc2lSZDFoZlNScWVvZlNtUHhVVTdZYlYyc0pNZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:22 PM</span></div>
-<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOalZZS0g1RUxpUEl4eW5uTWNJYlN1ODNGMGF1X3o4bHJlTXE0MFdFc3lBSzZQbUt2ckItQlNKMDZoNmducGJkMjhaZFg5MDJQem5yaXlWYXdzejRpYV94N1Z5Z3A0aWdNUXItY1c0RkxSSDFic0V0bVRad2YxaUNtREhrWFp2YU9nZlRNLWRtbmNGbXVKWUtzVkZUdXJJRnBnQ3k0M2IwMzhEVXQwOFpmaW9GWlM0bFZqSVkxcHBZR2UwUkhhVWYyUlRKT015TGJneG1oMg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 10:59 PM</span></div>
-<div class="news-title">Utah Mammoth vs Washington Capitals Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9HUlgtTktQZEFNbEFqMWpXZ29iX0NacTFjbFpfTV92dEhabS1XTnJXenBPcXBNSTh5WVhabWtWeFlYbEtqQ1g5M1diUFh1RWd4UzdwQVV0eGlNZXBYcHk2Ynk2WGpXVllCYVAxbUFJbF83c1FETUpzU0t3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9HUlgtTktQZEFNbEFqMWpXZ29iX0NacTFjbFpfTV92dEhabS1XTnJXenBPcXBNSTh5WVhabWtWeFlYbEtqQ1g5M1diUFh1RWd4UzdwQVV0eGlNZXBYcHk2Ynk2WGpXVllCYVAxbUFJbF83c1FETUpzU0t3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
 <div class="news-title">NHL Status Report: Stone day to day for Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxNVGVQakczZnFwbFRuMnJPVWpxb3dSNWhtSU9tNlpIQ0U4eFFQTEpHbGhjMEl1NUpHU01Pb3pYQmd3YXZDT0JZOUtOcHhXY05jMk56YTZlMWpVRjBnZDBGc0tzMk51cV85Tnp2Z0VMSTRKQVJoekllTWxlUXNIcGxMNTlMVG43dklwZUxqUUxudEVYNkkycDBWVlNwTjdpcWRBWThRLXc4a3ZUUmFpWjBRYWJON1g4S3VOVFZmZTdQWjJ6Tk04dFBxajdmSmE4S0E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 6:56 PM</span></div>
@@ -933,17 +987,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 1:54 AM</span></div>
 <div class="news-title">Capitals In For Big Week Ahead Of Trade Deadline As Approach Remains Up In Air</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZmxLSXQyeF9JMW1WV0R6eTQ1UTlfQlBpeGI5NlFka3N3cXFGa0RsTTdPMUdQVTlwNDUxNWNicW9ieEpkSHU1U2d1Wkp6UDVIRDRPUDQwS2FjYk8tZVBSUWhQTW9EOS1LTUJuanpSUjQydTBCd2NuT1ZHYjFTY0ZxSU85dXdOOGNLX2ZiaHRkWTVoaXFBZDBabG5TMFUwNU56UzNwd1MzTWpIbER0QjFMZl8tYnVUa1lNbENjN04wbS0wQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 1 &middot; 9:30 PM</span></div>
-<div class="news-title">Capitals Week Ahead: Schedule & Storylines – Trade Deadline, van Riemsdyk, Hutson and More</div></a><a href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxPalh5aHd5QWNVQmg4d0t0NklXeFFja2NTUF9fZGZwMjR0d2F0aDdZQWNTVkFIOExNM21ibHlTWWRXRHprUzN5NGtwcFlZU2QwcHZTalY5d25xVDZMcVVaUk5Hdm5GSDNjY1loa1VGQnNlM2dQc0ZBbHJ6cFlrMWQ3bXNsYlhxS2J5TE83aGw5c3luVmpyWERuZm9WcFFwMDBlcThVVTZ0ZkJLV1M5c3prMkowQ2ttWFRoR25BSWVLWGNfTGZkS0NzRzlpeU9fc05tNjRieWM5QVZ3MjlibE9hWW4xaVYzMHZnZkdVazFKMlBaUmNTM1NxRUx4QkRvREdtdkxUeEQ5SDhYV2lIUFctMUNTTkwwTjNPdmM5amFPbzRiQW1RN2VhS0hR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ABC10</span><span class="news-date">Mar 1 &middot; 5:45 PM</span></div>
-<div class="news-title">URGENT SHIFT: Washington Capitals Playoff Hopes HINGE on Trade Deadline Moves—Who Will Patrick Add?</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaHFFZEpfRGhJZlQ3MlpqZThCdVc4c3c3bjB0a3daWEVCMXBVTUFZcXNncl9jaTdpNnF6Y2llYTlod3dxdjF4eVllVzlDa0RhRDdrN1ZLaXNsSE5KTFREWWtjLURjaG8tUFZja2xpMGJmT25FNTFlaml4MTVyZjRXaXdjV1pzUTZILWk0?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 1 &middot; 1:26 PM</span></div>
-<div class="news-title">Canadiens encouraged with rebound win over Capitals</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE5nVDBhOUlrSWl3U05lSGdBLTZrNU1DWFd4bXAtZEYwejU4QjE5VlhNMjFlNzd6VmdROHp6OTFtUE9YZU51S2FjT2tLNXdGNG1rWFFoYloyNEFJckNKSVRTVjBKbWE0QVJDaG40?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Capitals Week Ahead: Schedule & Storylines – Trade Deadline, van Riemsdyk, Hutson and More</div></a><a href="https://news.google.com/rss/articles/CBMipwJBVV95cUxPWWhFR3lnM1BUT3RYUF9mVXkyTnVRWThqcWI2NDN0LUdVcE5BSVZ5cDI3QkpTeEpGMUtSRl9jVkRFRFZQSXlwZ2E0M1dycm5NTVZzT09kWHFycVBNaXJtYWxXQzRIMlhWVEpmYUhsajJSdmQ2eTlPa3RMa0tDeXpRSW53eGhVOXZ3cmVPUGdxWFVDYmMyanBxX3ExTWs3TnI3Zkw5Z2dCdEM4QXg1NEEzMjlLSU9lTE1EamdrUXBNQkVsMU5PWldXbGNSSURkem5nZ25rLXpGNGdzNkpIV0ViQmViQldGM3JNczRGNVIxSUh1Wm9KWnliUFl5SHRuSHJVUVZWT1dWZm85SGtrVVFXQ0ktSE5jUHROR3ZxQUFRSEFDNXpqUnFj?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">KGW</span><span class="news-date">Mar 1 &middot; 5:45 PM</span></div>
+<div class="news-title">URGENT SHIFT: Washington Capitals Playoff Hopes HINGE on Trade Deadline Moves—Who Will Patrick Add?</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQTzczdDFJNUJhekRPRmk1X3huWi15NXJXTkdCM2xtTFowU2FvVTFxZzdLZmJkcWlvRlEwalpodWtqN3BLcWQteFczTGUtbGlfeDJ2a2FJTldBUWpmZWhyOHNpRzJsQ0UtblVMd2lIajhrVjgwU0pIWC0wS0NfNGNGdGdlM1ozSFhOM3dELS1reEYwMUtzaHc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 4:55 AM</span></div>
+<div class="news-title">Caufield scores twice, Canadiens top Capitals to push point streak to 7</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE5nVDBhOUlrSWl3U05lSGdBLTZrNU1DWFd4bXAtZEYwejU4QjE5VlhNMjFlNzd6VmdROHp6OTFtUE9YZU51S2FjT2tLNXdGNG1rWFFoYloyNEFJckNKSVRTVjBKbWE0QVJDaG40?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 4:14 AM</span></div>
-<div class="news-title">Caps Fall in Montreal, 6-2</div></a><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTFAzV0hGQUh0VFNOemo3dVE5bmNndW13RnM1a2l3VzNpb1M5c05aWDZLMG9BRXBpMHp0akZXcUlFak42SHYyM0pSU0F4YkR3SjVZT3ZDZmFwMk1oNkxHT0FkNThsV05IUjdoMXBiaVo2WXgxLXBw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Caps Fall in Montreal, 6-2</div></a><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxPbjZPM1Z4NkVOVnlFUE02XzVUVm1iTy0yQVZKMnJodmNMeUFLVEtpTlZ2NHJoa043eFJ1eGx4Zk9uaW5MX3dLU0hVRFcxdUlyUmtYZlFYZUVkMHpPaWt4MXNIQjlNRGdyS1BYTHVrak9OcDNPdm95Y3EtakJXeUtmNHlxQW5xQTA3R0s2NFVZVF9JejAxRjlXbjhDRi1EMVpuMllldE1xYnItTWR2cEMyc29MRWxLMWxBeUo4NVloaFpmNU9CN00tWER1WVV0QkwyZUp0Ump2anY?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 1 &middot; 3:44 AM</span></div>
+<div class="news-title">Capitals almost have Cole Hutson — they just have to cut ties with this veteran first</div></a><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTFAzV0hGQUh0VFNOemo3dVE5bmNndW13RnM1a2l3VzNpb1M5c05aWDZLMG9BRXBpMHp0akZXcUlFak42SHYyM0pSU0F4YkR3SjVZT3ZDZmFwMk1oNkxHT0FkNThsV05IUjdoMXBiaVo2WXgxLXBw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 3:20 AM</span></div>
-<div class="news-title">WSH at MTL | Recap</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPd1g5NnpIMnJDMHFxNm1ZeERucDRCTHljQTFFY3E5Z2JROXhZSUt0R29ySEF2aWxack9SY2JoU3VtTXVQZHM0YnZzM3dLNWgteHl6TjdSQXZOS29lRTQwZzJmbHR1RWdVNk5ZcXRPM1paeWVOVEl6UFNnU3RPdG0wNGhwbFVDV3loYThJN0RZTm8?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 1 &middot; 3:20 AM</span></div>
-<div class="news-title">Caufield scores twice as Canadiens crush Capitals</div></a></div></div>
+<div class="news-title">WSH at MTL | Recap</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/caps/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/caps</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -953,7 +1007,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

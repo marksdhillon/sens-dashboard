@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" alt="Winnipeg Jets" class="team-logo">
       <div>
         <h1>Winnipeg Jets</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -953,9 +1007,9 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="54">54</td><td class="r" data-sort="0.8710">.871</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="8318">138:38</td></tr></tbody></table></div></div>
   <div class="panel" id="p-injuries"><div class="empty-state"><span>&#9989;</span>No reported injuries. Full health!</div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBmOWNmem82dFVhSUNzRVR0dXEyZF9RS0NMR0ZqUUlYZHVCNlRlbG9JT2NrcDMzM0RQNkhZNE04SmNSeTVxd3BMM2NqTEVCUFAyXzFNZVFrVTRzTHFLU2RsVnYwUkxmRXRwTHRQMEp3?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE1xZkhGSU5qWnVkOC1ham81YjhyYW9QcXNCZ3plNzJzbjQ4VlJRaHlFVG9GX2t1MHBQLTVXUUNUV0JVMTExaDdGcXZEQ2E1Tlg1WDJXWVVKZDlKS2tfemdFNXVKUFJWdHV4WVFR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:01 PM</span></div>
-<div class="news-title">Stanley | 26.03.03</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNMS1SUW55QzFKNld3N2hOZHhjZ3g4SkJkcDRDUzBpem5SaE9BTkM1aEhaOHl1V0E0cHhYVHNicERpX0NPNktoWmVVc291NG5HNTIzNmJrdWpQWGJYcjJkVWxza0ZSTmpSXzViR1ViVGJpMjdTcWl2SjdmZDhvajlRX2FLa0tXczF6V3dsNGJoQkxZX1dtY0JaUXdtX3ZhTFU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Toews | 26.03.03</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNMS1SUW55QzFKNld3N2hOZHhjZ3g4SkJkcDRDUzBpem5SaE9BTkM1aEhaOHl1V0E0cHhYVHNicERpX0NPNktoWmVVc291NG5HNTIzNmJrdWpQWGJYcjJkVWxza0ZSTmpSXzViR1ViVGJpMjdTcWl2SjdmZDhvajlRX2FLa0tXczF6V3dsNGJoQkxZX1dtY0JaUXdtX3ZhTFU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
 <div class="news-title">Jets trade deadline preview: Starting to plan for next season</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNbW5KdHh1UkV1Q3g5cUZpTkxUTnZWZUlPNHJzZVY1eUtlcWVZN3BCRXZnMGZxRy1iMFQ1WXRpeHIwUmQ4bjZTb0hvRFRwWEU4aFU0WDA2YzZRYUZsVEFPWWpVTG1VNE1HZGptVlI5Nk13Zm04VGRkWGg1b2VpZC1pNlRYaFVnWm9sT1hBVGE0X2x1UWhYbWotallITklpWEU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:01 PM</span></div>
@@ -963,9 +1017,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Illegal Curve Hockey</span><span class="news-date">Mar 3 &middot; 3:31 PM</span></div>
 <div class="news-title">Game 60: Winnipeg Jets vs Chicago Blackhawks pre-game report</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPS1U5NEZkQ0R0LWJxcFBPZVNUY3RFbjJyWTNqYWNjTHNUWl9POU5kYUlXZTVfOThFclg4aUc2QmQtQWpUa1U1ckRmNlV2ejdPTS12ZFhIa0R6dUJsVmRDT3ZqeGF4QU5PeVN5VnFkcUkxeVhXZGdvMElReDFQRXRGMzVB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Substack</span><span class="news-date">Mar 3 &middot; 3:20 PM</span></div>
-<div class="news-title">Jets’ Aggressive Sell-Off Could Spark Fast Retool & Week Ahead Schedule and Storylines</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQZ055YnRRQVcyczY5Q1VZaXlreWpobVRYcW53Zm5YbGZBWXU5UWtfYk5xY2tuNGF4UHc0WVcwSTJaUHQzSmE5Q1d0RUs5VkNCeG51cFhWdTM0U1dGQzNlbjNCbDMxZWUxdXJoTnh1aFJDNXFMakt0NzJESXN6dEo2TnJQRDV1N1NyMlNyazU0b3J4MW5pNkhlYw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Covers.com</span><span class="news-date">Mar 3 &middot; 3:19 PM</span></div>
-<div class="news-title">Blackhawks vs Jets Prediction, Picks & Odds for Tonight’s NHL Game</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYVh4dDNIUkFreVF6Yl9EeUpUSlF0anJ0XzNpQjByY21GTV90RVdHUktTUHB3eE45UjM0a0R2bk1OQVFwbnNfcUY3UmtjMkRXeTV3X2h0Wkk3TzlFWE05emNvU1hGUkVZdWNVSUwtTmMwNTdCMTJxQko1dC1Fd2hFWGdOcHQxY3lSaG5QQ1JLTTlpdUJFMFdqaDczNWJFeHFXeGVtSUNtUHZxQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Jets’ Aggressive Sell-Off Could Spark Fast Retool & Week Ahead Schedule and Storylines</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYVh4dDNIUkFreVF6Yl9EeUpUSlF0anJ0XzNpQjByY21GTV90RVdHUktTUHB3eE45UjM0a0R2bk1OQVFwbnNfcUY3UmtjMkRXeTV3X2h0Wkk3TzlFWE05emNvU1hGUkVZdWNVSUwtTmMwNTdCMTJxQko1dC1Fd2hFWGdOcHQxY3lSaG5QQ1JLTTlpdUJFMFdqaDczNWJFeHFXeGVtSUNtUHZxQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">jetswhiteout.com</span><span class="news-date">Mar 3 &middot; 1:25 PM</span></div>
 <div class="news-title">Mimic What Works: The Winnipeg Jets Need to Start the Tanking Process</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOMFhzNjdCRmRoU2VIaEJQd1BPOXFsRkNib0Q4QW1Obm1VeVJYWHdSYm50NFJFeFNrelBCY0thN2E0QkswUGNFdkM3NEtYRnNmZkk2dDkxRU00OUlWalJzOWZVQk9tVjBYbWpSRnhUMlZPQV9GOTJNUVZrTjRXZVROTEliS2NpS09pTmVTYmYwQUFMMlF6ZFNJX04wQVRDVWFVajRsX1R5NA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 1:19 PM</span></div>
@@ -1003,7 +1055,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Illegal Curve Hockey</span><span class="news-date">Mar 2 &middot; 12:30 PM</span></div>
 <div class="news-title">Winnipeg Jets Morning Papers: Today’s Hockey Headlines | Mar 2, 2026</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQd2ZTRWt6Zm82S2FsTGlndUJzV05fV3lkOFh4aXlTb0pkTG5FNWF0U3UtUmtvSG9yWEh2aFJHcHNnWU9NVmM0V21uSHJtdjFCamNoR2tyelA5R19PalZOUVZINUF3VGZQWV81X01MWVkwQi1aREFoaWhvMG5qZC1laFVKdlI3SFJZX1RBd1Vzay1OYm1RYWJV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 2 &middot; 12:00 PM</span></div>
-<div class="news-title">Winnipeg Jets 2026 trade deadline decisions: Who stays and who goes?</div></a></div></div>
+<div class="news-title">Winnipeg Jets 2026 trade deadline decisions: Who stays and who goes?</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMXlaR3loR2doT1hmeV9nNG9aRkpfTVhLV2cwVWl2ZUxrQWItM3poNGtaRVBOM1dTX0xYS3FrTHhDdW9pdmxRTS1EdEEwQjNqd0M0enRudF95QWdabFdWWjcwc1ppM01yUlpITWVVVEY2cDRmLVJjR1IxeUNiaUUyTzZ6QTlxbE9EU3A4RTFCdW9TNlJVX2ktUGdZUlAwbXMxQTM0UzJWMkhYZ9IBrwFBVV95cUxNRHplQUVhenlYZURrOEE1WElnT29EdXA0SVgtS0piYmVkZnVtVUVOV3FTSEZ1NkYwT1M5STZwdHJXbVhIZmRhSnBMWkM5YkQ2UnZCbEk0YTBRZDNmeDFSZ3ZzTGJ4VXRWMnM1SDFSLTgxejQ3X2Y2ZkRDZ1A4TGNVZUk1UkRxVzJMQ0h0aW9EM1N3YkV3UE1vamxPcWFyWFBKbkZYS1FfNGx2azJIS2VB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Rocky Mountain Outlook</span><span class="news-date">Mar 2 &middot; 5:24 AM</span></div>
+<div class="news-title">NHL roundup: Misa scores in OT as Sharks ground Jets 2-1</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/winnipegjets/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/winnipegjets</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1013,7 +1067,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

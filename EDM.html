@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/EDM_dark.svg" alt="Edmonton Oilers" class="team-logo">
       <div>
         <h1>Edmonton Oilers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:28 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -924,13 +978,21 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOeVNsT3RwVm1jaU9YRDhCVWUzLWVUeVE4TmhRNWhaWm04engwb21CT0FLNDBGakJWeksya1FWS3lKSWlYZHRrLUZkcXNXYjBGUWhMM1ZnaHJuN0NQNUpMbkE4bnZGT1JVWXZNSG1WYURvVlBNZVBnNzlrMUdvTmpoYzY5aXlCTUZNTVRvOQ?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPdmQyMlVqd2tLSnJsWWRaVTdtU2dfRlFHUHdPdXNkdjR1Y21oSVoyY1dvYzR2dTlMX2FfSmZwRjNWX2NTYUhsQ2d0ZkluN3MyMTRVclhMS0NkLWxnT25mTEhwYTZaT0xUVWJJbG1teGYxcUJOVzdRVE9ZWEl3MjIwcmRmc3c2dG9IbW5LMWxR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:32 PM</span></div>
+<div class="news-title">Senators begin western swing with visit to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPM2tmcFJ2R3VjRnBiUTZ2SndVY0lQbDkwR2ROQW5UdTl4VUNlQzcxbm94RUtMY2VPU18zNXVtbUROV2l3djlvYlotQUpVMlY0R3V0MXhDdGUxR2lTbFRfaGpobUhaQjM4NmRBZmxuTHE0dkpxZlRGdFdYZGtsWXBidXZNbm5LWEMzRXRuNEFkcHh6WjJhYkhXUU9IMlZDUXo4LV9LQ0Izb29xME9tbHBfTmZB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:27 PM</span></div>
+<div class="news-title">NHL Trade Deadline Central 2026: Trade Roundup, Analysis, Lists And More</div></a><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1pMmZhTEFpbFVETnpHRXI5cnhZWFVzTGc1bVlydTRaRHRSOW9tS1luNHE3YWhycXJLckZIakZlVTczRWJaNkFnZ1ZtYU5QVlFPQk5n?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 3 &middot; 8:22 PM</span></div>
+<div class="news-title">Nurse: 'I gotta step up' for Oilers to reach our goal</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOeVNsT3RwVm1jaU9YRDhCVWUzLWVUeVE4TmhRNWhaWm04engwb21CT0FLNDBGakJWeksya1FWS3lKSWlYZHRrLUZkcXNXYjBGUWhMM1ZnaHJuN0NQNUpMbkE4bnZGT1JVWXZNSG1WYURvVlBNZVBnNzlrMUdvTmpoYzY5aXlCTUZNTVRvOQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:14 PM</span></div>
 <div class="news-title">OILERS TODAY | Pre-Game vs OTT</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQZnd2RzJ5VENhNlZBWm5xM1RGdjV2THhwb2k5OTdJSS1ERnpJbWRkSEtLV1Y4WkhLYXNuaTN5ajJqSEg0UjRvdWtYYkhiQm1EUEVqeHFVY3pmdkMxOW5NN1c2RmpFSUxMMjYwWnU0TGp0U1BEVDA2b3pRd09obGI4bUQ3WHBRSXhLeG9uM3o4UGhoSDJUcGx0ekF0ZENyUmlNNGFleF84SDNHTU5aSDJiekdOYw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">CTV News</span><span class="news-date">Mar 3 &middot; 8:08 PM</span></div>
 <div class="news-title">New addition Murphy absent from Oilers lineup Tuesday vs. Senators</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQVTdoSDJGQ3NhSHlELUx6dkZadnUxN05QV2VmTF9OeTRFSXIyRnVhV1FkTTVFTk5DamVpOWFjMU1vQ2t2YTNsbk9vMVFra1BhLUFOWk94VWVaRUJ5UE9MczI3SC04MFdhR2EwRXhHc3RMTU5xSG12cTFkejJIQ2gya1BwNnBiX1dEak81WTJEU1lwUl9pNXMwam1YLV9CRGQ1c05jM3Z1LWU3d05sbkQ1WjlPMmhHeTg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 7:58 PM</span></div>
-<div class="news-title">Oilers Aren't Accepting Any Excuses For Recent Performance</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNa19Tal9RVDFoeWg4b2I3SEoyNXZkVFZxRUFGVmtuVlNaMFNTaWlkampiaWpSVG91Rmx4NlA4cjZxTDVxd0MxVTZaVGVMMWdGeU5zOGdLZW9ycDBEY0ZZc3FBNGYza20tU3QxZDVDQVl6NmV4YnZiVWxIWGJ6UkNhN1ExM3BURElGWU03akZqNHVRRFZNSmVNd05NVlFsY1FLVDVuck5FQl9jSEE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Oilers Aren't Accepting Any Excuses For Recent Performance</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOd0NFQ2ljZXNVcWx3WjdUZUVzbloxeGk5RlVPTnB2b3NteVczN0tHVUMwNFBNeXJZYTJmd3FOTHRUYi1nU29TWlVwb3prYk9BMlVEdWVpOGpRUjBUWWYtZ1I2QVJrV09oSVRNd2ZRaDItYzdiN0tfMzduYmtxZHY5UG9Ud3RJMGFEQzNOMzJn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 7:51 PM</span></div>
+<div class="news-title">Edmonton Oilers' Darnell Nurse: 'I'm minus 12 and have 20 points, I'm not happy at all'</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNa19Tal9RVDFoeWg4b2I3SEoyNXZkVFZxRUFGVmtuVlNaMFNTaWlkampiaWpSVG91Rmx4NlA4cjZxTDVxd0MxVTZaVGVMMWdGeU5zOGdLZW9ycDBEY0ZZc3FBNGYza20tU3QxZDVDQVl6NmV4YnZiVWxIWGJ6UkNhN1ExM3BURElGWU03akZqNHVRRFZNSmVNd05NVlFsY1FLVDVuck5FQl9jSEE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">noescinetodoloquereluce.com</span><span class="news-date">Mar 3 &middot; 7:41 PM</span></div>
 <div class="news-title">HWC Trading A4 Wayne Gretzky Signed Photo Print - Edmonton Oilers Autograph Picture For Ice Hockey Fans</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQamtaNkp5V1NVUlZLdFpiakhkbFpUZVRGYjAtU05lRWd0djczOTRVMzhGSmg3M1k0WXFWYkVOUUFsd250QUhNWUJhWVA0S1Y3MGdQYm8wN3YyNjFBTlJrR2lnMjVoWllCb0F4VEZ2S1dMd0s3ZDRlNUdmbkJoNThuSGhB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:18 PM</span></div>
@@ -950,7 +1012,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:04 PM</span></div>
 <div class="news-title">Oilers rumors: Pierre LeBrun reveals ‘No. 1 priority’ after Connor Murphy trade</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQaUt1U1lyU0xFYVlKSEFxcWtyVGJ3SmZob2RmZkI5TzlBanVLSVN4VVJxVXFaOEhSTHlEdVB3XzJtUlotZzQ0dWpBck5QYm40V2dWa1A5MVdybHNrLVBTWWFyWTJCSzZVTHZGWEVkMFVRSTRNR2dFR2FLUTNoV1JyNEVHRGhiVXdjckFXRVlrd1NzOEpJbWd4eVlvc3RBdklHZnZ0S2RKTFNDb1A5clF3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 5:30 PM</span></div>
-<div class="news-title">Early Trading: LeBrun talks Pettersson, Thomas and Oilers as deadline approaches</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNM3ZFZHpIYkV6VWJBOTBEMEJ5S0g2SGMtUm1DRkRiSEt0RUlRZ3ZuRERHOTNuMFRFdVZjV2lwNlV6d2RSTU04THBRWGw2Y2s2V2k3SnFSZEkxOGNIcHNvaHJjbF9NUHE5LWtHUm1rSkt1RGJ3azdaMUZRaWp1aEhEWUZn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Early Trading: LeBrun talks Pettersson, Oilers’ trade targets as deadline approaches</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNM3ZFZHpIYkV6VWJBOTBEMEJ5S0g2SGMtUm1DRkRiSEt0RUlRZ3ZuRERHOTNuMFRFdVZjV2lwNlV6d2RSTU04THBRWGw2Y2s2V2k3SnFSZEkxOGNIcHNvaHJjbF9NUHE5LWtHUm1rSkt1RGJ3azdaMUZRaWp1aEhEWUZn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 5:13 PM</span></div>
 <div class="news-title">McDavid teaming up with McDonald's for nostalgic hockey-related promotion</div></a><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5FX0tNakI3cDA5eFEtR1hRZG5aRUF2SEJYZEdiTHVTUDBFQm40TnNsYXZ6dlZyeF9nOWJydTNQQnJtUUNVYk1NZW5lNTdCQkJPb0FiMXdaTnBlZDEydDF3NkZBVHRZdkJPQ29ZczhGMnk0S00?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 4:51 PM</span></div>
@@ -966,15 +1028,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 4:05 PM</span></div>
 <div class="news-title">NHL Rumors: Oilers Not Done, Maple Leafs Changes, Matthews and Tkachuk</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQT1M5OF84Tl9fOXVJY01mR0huZzEtaTdhYW5XVVM0eEc3TXBsa0MyU2JIT0NwRjVZaFZVRDI2WTZIc014Zm9HTnRRaHJNSzd6aTNtSk1tYmI2ZGV6cmdPNUtXX051RWhpbWM4azRvX3RLR3BDaF9mN1RfVkc1YmVpeHhydkxDNktMT0dfRzBidzhONDdZYmt4SXBpUzZhNVhOcTFOVGwtX21URjZK?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Boston Hockey Now</span><span class="news-date">Mar 3 &middot; 3:56 PM</span></div>
-<div class="news-title">Daily Bean: Bruins Gameday; NHL Trade Rumors, Murphy Traded to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQUmZHOGhpNlA3aVdKSTlIQ3RzaDJXZ0pmcEdfUC1JdG8zS2d6S0NlTWZjRkhMeHdqUTVUWDBfNm1kSlQzbGVqb2xYNzhWQ1BOZ1VNRTNUV1V1d1J4VmhRRzhwTFhjSnVJZjVHdDZHTGoyQTJ2ZUdockx5SDRrTHQzR3AxUjVtRWlKd3hubVFQZUo?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 3:45 PM</span></div>
-<div class="news-title">Are the Maple Leafs and Oilers Working on a Nicolas Roy Trade?</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOUnBPdHVmQjd5elI4OTJEcWtWMkFYckxhSzRSVFhYNDdISTNxLW0zTU9FM1pQdVhMLTNfRGFXOUU4WVRBNWxKOHpQRWtyZXFLNE4yYW5FR3JhN3JmNlRaNFNiU2hTX21ZR3FtcUJKQlI3OVBYTGJTdDc2alFCdHVCc01oQjNNaG5adGtBa3NSQ2RMUDVkTkNZb2ZIU0k1UWlSbmlHempmVkl5aFUt?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Oil Rig</span><span class="news-date">Mar 3 &middot; 3:30 PM</span></div>
-<div class="news-title">Stan Bowman sheds light on Edmonton Oilers strategy ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQa2JKVUl5SWpPcGNmbUdaMjRFTnNJUE8wQ3VUalA1MFIyQks4dDZCMTg4cGpPNFF6WDJsRWkzTjZhV182S09ZalJhVVcyUWFDa1B6clZaTkxTQ3N1TXEtX0lSQ1Joby1zcnFzcF9QTkhsMTJPQlVhSHNiWHBKUUlVZWlGRlZwTG9yYmEwN3h0T0RGVmJrSjM4NFBDeUI5R1AxYy1BSnd1bnBhQms?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:27 PM</span></div>
-<div class="news-title">Pulse Check On Canadian NHL Teams: Has There Been Any Improvement?</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPTndaNzAyb0RuM2tlVERWZmpsNTNBYjNtbFQ1OHVjRWlTUWtvTGRYSjUyTm5fend5a1psbFhidElYSU1oWHJYdHR2TUdqcmdhUGRSemN1US1BY0tIRDEyY1BoWE9ZVmlRTXlQTTIxTk9aV1RpNVBGMlV0UVJLWDdUbmhPMXI1VmFURHdrODZwcnhneWVoeGQ3T2NB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 3:17 PM</span></div>
-<div class="news-title">Oilers Predicted to Trade Top Prospect Ahead of Deadline</div></a></div></div>
+<div class="news-title">Daily Bean: Bruins Gameday; NHL Trade Rumors, Murphy Traded to Edmonton</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/EdmontonOilers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/EdmontonOilers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -984,7 +1038,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:28 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

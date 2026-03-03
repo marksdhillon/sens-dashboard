@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="Columbus Blue Jackets" class="team-logo">
       <div>
         <h1>Columbus Blue Jackets</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:35 PM ET</div>
       </div>
     </div>
   </div>
@@ -945,7 +999,7 @@ body{animation:fadeIn 0.15s ease}
 </table>
 </div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQX1lNWXB6bWwyQXRDYnk1bE9ibVpIMXZzYkU1OHRfLTF1LVRUa2gwaFQ0SHJhVmVGNlduWGd2ckt4T3dhcW1CT25IRy11RHdUdG5CTEZEMTVWdE9CQzJpYlZkR09KWFhMWnFuRExyMjBDV2xPaXEtQ2dTazRQNGFfRXdXeEMzdWREVlgtSGlYVlA2b2FM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 6:10 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 6:10 PM</span></div>
 <div class="news-title">Trade Deadline Primer: Columbus Blue Jackets</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNVEJoSTRLdEpfejB3VEhlZVQwSk1lMUNKRlFDd05JUDV4dk95TzFOeGd6c3dkZThVanlkU3NqUzEwel9IOVAyMTZCUGJVakVqV0VZajZzMEtmdVhQT01IZFQ5c1pCVWpTcktkMDZqWlppZE43V1E0MUFYSV83SF9FdGRhVEY5TmtyTThYdHQyWWcwWnItZXVv?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:09 PM</span></div>
 <div class="news-title">Predators at Blue Jackets projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQZTdSZGJlUmZuZTFqSWlPQUhRc3FOTUZTalJQUWkxd2QzT3psdy1NZkdUWlJ6V1ZMV3dTZElUd3R3bUJHYjFEMW1vVVpLX2NlaXFubmp5QWcwaUZ5djlSQ2dIY1VSQTBOamdwWVdrMFEtRERTNnM2YmN3Tlh2T0tqVDg2X0ZhbjB6YXJNX19qb0tDckprT2ZyUg?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -969,7 +1023,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Marchenko saves Columbus Blue Jackets from embarassing loss in OT</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE40YzlpTkt0ZjJqMEViRElpbXprSmZ5cU1FSXlJbzkyVmN3N2hoX1RScWdkXzZLNDNSNW5kZE1WOEprNXFpelB0LVJVYmRYS3FHMjFiQnY0TG5TMk5OMFM0OS1kQmQ1cVJHTkI2eG1RR0tycXhTVzNMV0Vn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:05 AM</span></div>
 <div class="news-title">FOUND A WAY TO WIN 😤</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZnV3YThWRm5VU0FlQ0RtYTVqRUluYk1sSTN3UEVlMkMtZnFZMFdOekFQT3JGRXVHSlNFbDlZbHh1Ty10czVublRzdFlhZ1hDVnl2SGNuTGVFTURxQVpmUkhqcWhrQXJFZERGNUZfN20xREJDOFc5WFJVRTlRS2tGM0s3SS1yeWRv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 1:10 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 1:10 AM</span></div>
 <div class="news-title">Injury Notes: Werenski, Konecny, Gibson</div></a><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPZm9xOVBDMlUzcGJrS0tVcXRGVTl2Vy1XT3ZlZXpZSU1IRGlRNXRxQmpldG94Y0d0QXM2dG5DejJBdmw3X0VGWmQ3MWFZWEtKUmI2NlVwb2hHU3dZUmxVMVBxSExSZkhIUzRJbWxHTFc1ZDY4UnJtcEtBei1IaXZWbjBGWDVMZXpZSEF3Y1hCSTVZLXdJUE00Q3gwcm52SmZ3TkdJWWZpZ3NLYTZlNkdfeUxXc0hWcDh6a2x6VGpCZHF3R3pnUDZhNk1kR2IzNXVzWHVRNVFlTUh0MUQ5ZDgzQWlRckxSdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 12:14 AM</span></div>
 <div class="news-title">Why Zach Werenski isn't playing tonight for Blue Jackets with injury news</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxNbXNqSWpZamNRVGxqVGFYZUFFWHlydW5VUHFtWGNuVWgxZ196SWtEbzZxcEIyLUJNUzVSX1h6WWNEQ0UtclA2Ty1jSlpUeDVmYU1Pc2hkVmY1VUxOeGFhVGdEN3N2VEtMd1ZXRU9qZXBRc0o1NFdzakQyZzBnX0xrd3J2c0Vqdw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1004,7 +1058,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:35 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

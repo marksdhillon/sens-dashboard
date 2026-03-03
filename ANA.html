@@ -22,7 +22,62 @@ a:hover{color:var(--text-strong)}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
+@media(max-width:600px){
+.topbar-inner{padding:0 12px}
+.topbar-tab{padding:12px 10px;font-size:11px}
+.team-select{font-size:10px;padding:4px 22px 4px 8px}
+.header{padding:20px 16px 0}
+.team-logo{width:32px;height:32px}
+.header h1{font-size:15px}
+.hdr-left{gap:10px}
+.pct-val{font-size:22px}
+.pct-label{font-size:8px}
+.stat-row{gap:4px;padding-bottom:16px}
+.stat-pill{padding:4px 8px;font-size:10px}
+.stat-pill .sl{font-size:8px}
+.container{padding:0 16px 40px}
+.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar label{padding:9px 11px;font-size:11px}
+.kpi-row{gap:6px;margin-bottom:20px}
+.kpi{min-width:70px;padding:12px 8px}
+.kpi-val{font-size:20px}
+.kpi-label{font-size:8px;margin-top:5px}
+.nhl-tbl thead th{padding:8px 5px;font-size:8px}
+.nhl-tbl td{padding:6px 5px;font-size:11px}
+.stnd-tbl td{padding:5px 4px;font-size:10px}
+.stnd-tbl thead th{padding:6px 4px;font-size:8px}
+a.pname{font-size:11px}
+.hs{width:24px;height:24px}
+.name-cell{padding-left:2px}
+.name-flex{gap:6px}
+.sched-meta{gap:6px}
+.sm-card{padding:12px 6px;min-width:60px}
+.sm-val{font-size:18px}
+.sm-label{font-size:8px;margin-top:5px}
+.game-summary{padding:10px 12px}
+.game-left{gap:8px}
+.game-date{font-size:10px;min-width:38px}
+.game-opp{font-size:12px}
+.game-right{gap:6px}
+.game-meta{font-size:10px}
+.game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
+.game-expand{padding:12px}
+.cmp-tbl{font-size:11px}
+.cmp-tbl thead th{padding:6px 4px;font-size:9px}
+.cmp-tbl td{padding:5px 4px}
+.matchup-notes li{font-size:10px;padding:5px 10px}
+.news-title{font-size:12px}
+.news-item{padding:10px 12px}
+.inj-tbl td{font-size:11px}
+.inj-comment{max-width:120px}
+.inj-badge{font-size:9px;padding:2px 6px}
+.odds-ring{width:60px;height:60px}
+.odds-ring svg{width:60px;height:60px}
+.odds-ring .ring-val{font-size:14px}
+.odds-ring .ring-label{font-size:7px}
+.footer{padding:24px 16px}
+}
 
 .stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
 .stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
@@ -192,8 +247,7 @@ a.pname:hover{color:var(--text-strong)}
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 
-/* Mobile tabs */
-@media(max-width:680px){.tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}.tab-bar::-webkit-scrollbar{display:none}}
+/* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
@@ -276,7 +330,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/ANA_dark.svg" alt="Anaheim Ducks" class="team-logo">
       <div>
         <h1>Anaheim Ducks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 3:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 3:36 PM ET</div>
       </div>
     </div>
   </div>
@@ -884,17 +938,17 @@ body{animation:fadeIn 0.15s ease}
 <table class="nhl-tbl inj-tbl">
 <thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
 <tbody><tr>
-<td class="inj-name">Mikael Granlund</td>
-<td class="inj-pos">C</td>
-<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
-<td class="inj-return">Mar 3</td>
-<td class="inj-comment"></td>
-</tr><tr>
 <td class="inj-name">Troy Terry</td>
 <td class="inj-pos">RW</td>
-<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
+<td><span class="inj-badge inj-out">Out</span></td>
 <td class="inj-return">Mar 4</td>
-<td class="inj-comment"></td>
+<td class="inj-comment">Mar 3: Terry is still working his way back from an upper-body injury and will not be in the lineup for Tuesday&#x27;s home matchup against Colorado, Zach Cavanagh of The Sporting Tribune reports.</td>
+</tr><tr>
+<td class="inj-name">Mikael Granlund</td>
+<td class="inj-pos">C</td>
+<td><span class="inj-badge inj-out">Out</span></td>
+<td class="inj-return">Mar 4</td>
+<td class="inj-comment">Mar 3: Granlund (upper body) won&#x27;t play against Colorado on Tuesday, Zach Cavanagh of The Sporting Tribune reports.</td>
 </tr><tr>
 <td class="inj-name">Frank Vatrano</td>
 <td class="inj-pos">RW</td>
@@ -917,7 +971,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Game #60: Ducks vs. Avalanche Gameday Preview (03/03/26)</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZDhGejJZMjRaLXFCNE55NEhkRU0ydFcxMUhFbm4wVXFvVXVoc2xwejJaSXBWbjFoSkdOMG9abUZTeUYxXzlOX3htTmFJSXYzbDN1aHplcUt2dV9mdjJoSVE5R1BjRWR5X0ROa3I5bWgwS0x6dmkxR0lsajFPQ3g3c3lUX1dZeFEzRko4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:51 PM</span></div>
 <div class="news-title">Avalanche at Ducks projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNc1dNVmNYSTY0aGdSRlhMTnhGNXlOQl9CUU5Wa292STRMUkZuYW1Wd0ZSbXJLY0VYUHZ5MDlKU1BsdE5CZHJPWmlJdnNVWU81TzRIRm5aX1RQSFFMZVdhZ2w1THRRMXdzdnhSd0VDMWpfaVRCcE1GeHFFRGEwUkdBWEZ5aHUzZGFRV2c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 5:27 PM</span></div>
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 5:27 PM</span></div>
 <div class="news-title">Trade Deadline Primer: Anaheim Ducks</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPU2ZRVGFzNWF3bnp1OWZ4WllaOVZ5M0E1eGxkZks5N3pIb2luSTh5QmlJNVB1MEJCWVRZM0dyUl9XM0NwRUhOTWFENm1kMGtKLWlpS3dDMHFfaHpZSTB4b3VqdktZNjlKZkZqRHF4Yk1qUmR3djZ4eHgwSUZnUVR1SGhtdS11dG1uT1l1dWJmLXhtQk9YRmEtVE54ZHFtQWFrOXhCQ3NCWmpXZEl1RE5JLWY3dw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 4:41 PM</span></div>
 <div class="news-title">NHL Game Preview: Colorado Avalanche at Anaheim Ducks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxPQ3lDYW5uc0lCWTB3R3UtY3hjLTZmdUNCZFJXTDd2MGdtQ3F6ZWQwZUMzZHFMQUZ2QUg4ZWNqZjRVQTlxU2FQZml0akhxUEs4UTA2YVozR3RxNGdjUVpjQzRWQUNjZUhxb1RsMFVfUFhkcXB0ejB6anpsN01tU2RKUFVLdl96aVFuTTB4MTJJdU80QlVocmVKUWxSVml2RE1OQ3AyaHV3dlE1TXAyN2REbW05RWdHR29sMlpKV3dlTGtzUDkyYnNHUTlha1ZReWNGODh1ZkNmdUZMb0sycWNtZ3I4SFdrT0Q0SVZBa3hWV2rSAfYBQVVfeXFMT1g5b254Xy1PMkFpWk5sa2YyaHVmM3RIYktZMFFOWDA5emdaQklXVzFaa3NzYTVHUnBaSkZxYWNKZ1VtSUlkWG8wNkFuZXpqWWktV0hGY2tVa3VLTVI5RHVtcTdYbWl3VUNFcVJLQV9QeE1PWFNjOXpPdHZMdWJMUnU5a3NDWTdkc3IwRGw2V09VRkFkZ0dvX0Nmcy1sNkl4Y1VneUpJcl9JVUZFUHNEVFF3bGJaN0ZWOUlmcmJjdlpRR2liSlFqQk5vTUhfQ1J6T09NUWRmZkhGcWI4N0dBc2hIUzVYWVJSUXZoNVBCMkJnTEl3akVR?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -970,7 +1024,7 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:27 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 3:36 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
