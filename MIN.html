@@ -4,46 +4,46 @@
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--border-subtle:rgba(255,255,255,0.04);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#2e8540;--accent-soft:rgba(46,133,64,0.12);--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.015);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.04);--tag-dash:rgba(255,255,255,0.08);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--tab-hover-bg:rgba(255,255,255,0.03);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1)}
-:root[data-theme="light"]{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--border-subtle:rgba(0,0,0,0.05);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#277136;--accent-soft:rgba(46,133,64,0.08);--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.04);--tag-dash:rgba(0,0,0,0.12);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--tab-hover-bg:rgba(0,0,0,0.03);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.12)}
+:root,:root[data-theme="dark"]{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#2e8540;--accent-soft:rgba(46,133,64,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
+:root[data-theme="light"]{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--border-subtle:rgba(0,0,0,0.06);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#277136;--accent-soft:rgba(46,133,64,0.08);--green:#059669;--red:#dc2626;--card-shadow:0 0 0 1px rgba(0,0,0,0.06);--card-shadow-hover:0 0 0 1px rgba(0,0,0,0.12);--text-strong:rgba(0,0,0,0.92);--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.05);--tag-dash:rgba(0,0,0,0.14);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(0,0,0,0.04);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.14)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:'cv02','cv03','cv04','cv11'}
 a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
-.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.hdr-left{display:flex;align-items:center;gap:16px}
-.team-logo{width:44px;height:44px;opacity:0.95}
-.header h1{font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:0;color:var(--text-strong)}
-.header .subtitle{font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.header{max-width:880px;margin:0 auto;padding:32px 28px 0}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.hdr-left{display:flex;align-items:center;gap:14px}
+.team-logo{width:40px;height:40px;opacity:0.9}
+.header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
+.header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .hdr-pct{text-align:right}
-.pct-val{font-size:32px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
-.pct-label{display:block;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:8px;font-weight:500}
+.pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
+.pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
 .delta{display:inline-block;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
-@media(max-width:500px){.team-logo{width:36px;height:36px}.header h1{font-size:17px}.pct-val{font-size:26px}}
+@media(max-width:500px){.team-logo{width:32px;height:32px}.header h1{font-size:16px}.pct-val{font-size:24px}}
 
-.stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:0}
-.stat-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--bg-surface);border-radius:8px;font-size:12px;white-space:nowrap;transition:background 0.2s ease}
+.stat-row{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0}
+.stat-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:var(--bg-surface);border-radius:6px;font-size:11px;white-space:nowrap;transition:background 0.15s ease}
 .stat-pill:hover{background:var(--bg-elevated)}
-.stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.6px;font-weight:500}
+.stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:2px;margin-bottom:36px;padding:3px;background:var(--bg-surface);border-radius:10px;width:fit-content}
-.tab-bar label{padding:7px 16px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;border-radius:7px;transition:all 0.2s ease;white-space:nowrap}
-.tab-bar label:hover{color:var(--text-secondary);background:var(--tab-hover-bg)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab-bar label:hover{color:var(--text-secondary)}
 .panel{display:none}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
+#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
@@ -99,11 +99,11 @@ a.pname:hover{color:var(--text-strong)}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* KPI Row */
-.kpi-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
-.kpi{flex:1;min-width:90px;padding:20px 16px;background:var(--bg-surface);border-radius:12px;text-align:center;box-shadow:var(--card-shadow);transition:box-shadow 0.25s ease}
-.kpi:hover{box-shadow:var(--card-shadow-hover)}
-.kpi-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text-strong)}
-.kpi-label{font-size:10px;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:0.8px;font-weight:500}
+.kpi-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.kpi{flex:1;min-width:90px;padding:18px 14px;background:var(--bg-surface);border-radius:8px;text-align:center;border:1px solid var(--border);transition:border-color 0.15s ease}
+.kpi:hover{border-color:var(--border)}
+.kpi-val{font-size:26px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text-strong)}
+.kpi-label{font-size:9px;color:var(--text-muted);margin-top:7px;text-transform:uppercase;letter-spacing:0.8px;font-weight:500}
 
 /* Scenario impact */
 .sc-label{font-weight:600;white-space:nowrap;color:var(--text)}
@@ -112,19 +112,19 @@ a.pname:hover{color:var(--text-strong)}
 .footnote{margin-top:36px;font-size:11px;color:var(--text-muted)}
 
 /* Schedule */
-.sched-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-.sm-card{flex:1;min-width:70px;text-align:center;padding:18px 10px;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow)}
-.sm-val{font-size:24px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
-.sm-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:8px;font-weight:500}
+.sched-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.sm-card{flex:1;min-width:70px;text-align:center;padding:16px 10px;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border)}
+.sm-val{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
+.sm-label{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}
 .sched-list{display:flex;flex-direction:column;gap:4px}
-.game-detail{border-radius:12px;overflow:hidden}
-.game-tag{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
+.game-detail{border-radius:8px;overflow:hidden}
+.game-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
 .tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
 .tag-desperate{color:var(--amber);background:var(--amber-bg)}
 .tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
-.tag-hot{color:var(--text-strong);background:var(--accent);box-shadow:0 0 8px rgba(232,56,79,0.3)}
-.game-summary{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);transition:all 0.2s ease}
-.game-summary:hover{background:var(--bg-elevated);box-shadow:var(--card-shadow-hover)}
+.tag-hot{color:var(--text-strong);background:var(--accent)}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
+.game-summary:hover{background:var(--bg-elevated)}
 .game-summary::-webkit-details-marker{display:none}
 .game-summary::marker{display:none;content:""}
 .game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
@@ -136,7 +136,7 @@ a.pname:hover{color:var(--text-strong)}
 .game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
 .loc-home{background:var(--loc-home-bg);color:var(--green)}
 .loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
-.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:12px;border-bottom-right-radius:12px;padding:20px}
+.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .cmp-tbl thead th:first-child{text-align:left}
@@ -150,7 +150,7 @@ a.pname:hover{color:var(--text-strong)}
 
 /* News / Trade Rumors */
 .news-list{display:flex;flex-direction:column;gap:1px}
-.news-item{display:block;padding:14px 16px;border-radius:10px;text-decoration:none;transition:background 0.2s ease}
+.news-item{display:block;padding:12px 14px;border-radius:6px;text-decoration:none;transition:background 0.15s ease}
 .news-item:hover{background:var(--bg-hover);text-decoration:none}
 .news-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
 .news-source{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}
@@ -160,8 +160,8 @@ a.pname:hover{color:var(--text-strong)}
 /* Community */
 .community-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:560px){.community-list{grid-template-columns:1fr}}
-.community-card{display:block;padding:20px;background:var(--bg-surface);border-radius:12px;text-decoration:none;box-shadow:var(--card-shadow);transition:all 0.2s ease}
-.community-card:hover{background:var(--bg-elevated);box-shadow:var(--card-shadow-hover);text-decoration:none}
+.community-card{display:block;padding:18px;background:var(--bg-surface);border-radius:8px;text-decoration:none;border:1px solid var(--border);transition:all 0.15s ease}
+.community-card:hover{background:var(--bg-elevated);text-decoration:none}
 .cc-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
 .cc-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
 
@@ -182,7 +182,7 @@ a.pname:hover{color:var(--text-strong)}
 .odds-ring .ring-label{font-size:8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;font-weight:500}
 
 /* Standings card wrap */
-.stnd-card{background:var(--bg-surface);border-radius:12px;box-shadow:var(--card-shadow);padding:4px 0;margin-bottom:8px;overflow:hidden}
+.stnd-card{background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);padding:4px 0;margin-bottom:8px;overflow:hidden}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
@@ -195,13 +195,13 @@ a.pname:hover{color:var(--text-strong)}
 
 /* Standings sub-toggle */
 .stnd-toggle input[type="radio"]{display:none}
-.stnd-toggle-bar{display:flex;gap:2px;margin-bottom:24px;padding:3px;background:var(--bg-surface);border-radius:10px;width:fit-content}
-.stnd-toggle-bar label{padding:6px 14px;font-size:11px;font-weight:500;color:var(--text-muted);cursor:pointer;border-radius:7px;transition:all 0.2s ease;white-space:nowrap}
-.stnd-toggle-bar label:hover{color:var(--text-secondary);background:var(--tab-hover-bg)}
+.stnd-toggle-bar{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border);width:fit-content}
+.stnd-toggle-bar label{padding:8px 14px;font-size:11px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px}
+.stnd-toggle-bar label:hover{color:var(--text-secondary)}
 .sv-conf,.sv-wc{display:none}
 #sv-conf:checked~.sv-conf{display:block}
 #sv-wc:checked~.sv-wc{display:block}
-#sv-conf:checked~.stnd-toggle-bar label[for="sv-conf"],#sv-wc:checked~.stnd-toggle-bar label[for="sv-wc"]{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
+#sv-conf:checked~.stnd-toggle-bar label[for="sv-conf"],#sv-wc:checked~.stnd-toggle-bar label[for="sv-wc"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 
 /* Empty state */
 .empty-state{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}
@@ -213,18 +213,18 @@ a.pname:hover{color:var(--text-strong)}
 .footer-ts{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}
 
 /* Team selector */
-.team-select{appearance:none;-webkit-appearance:none;background:var(--bg-surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.2s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
-.team-select:hover{background-color:var(--bg-elevated);border-color:var(--border)}
-.team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
+.team-select{appearance:none;-webkit-appearance:none;background:transparent;color:var(--text-secondary);border:1px solid var(--border);border-radius:6px;padding:5px 26px 5px 10px;font-size:11px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.15s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.team-select:hover{border-color:rgba(255,255,255,0.15);color:var(--text)}
+.team-select:focus{outline:none;border-color:var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
-.hdr-controls{display:flex;align-items:center;gap:8px}
+.scores-link{font-size:11px;font-weight:500;color:var(--text-muted);padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all 0.15s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);border-color:rgba(255,255,255,0.15)}
+.hdr-controls{display:flex;align-items:center;gap:6px}
 
 /* Theme toggle */
-.theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
-.theme-btn{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}.theme-btn:hover{color:var(--text-secondary);background:var(--bg-hover)}
-.theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
+.theme-toggle{display:flex;gap:1px;padding:1px;border:1px solid var(--border);border-radius:6px}
+.theme-btn{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}.theme-btn:hover{color:var(--text-secondary)}
+.theme-btn.active{color:var(--text-strong);background:var(--bg-elevated)}
 </style></head><body>
 
 <div class="header">
@@ -233,7 +233,7 @@ a.pname:hover{color:var(--text-strong)}
       <img src="https://assets.nhle.com/logos/nhl/svg/MIN_dark.svg" alt="Minnesota Wild" class="team-logo">
       <div>
         <h1>Minnesota Wild</h1>
-        <div class="subtitle">Updated March 3, 2026 at 2:22 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:34 AM ET</div>
       </div>
     </div>
     <div class="hdr-controls">
@@ -412,7 +412,7 @@ a.pname:hover{color:var(--text-strong)}
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.5%</td><td class="r">32.5%</td><td class="r">19.7%</td><td class="r">10.6%</td><td class="r">111</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.2%</td><td class="r">33.6%</td><td class="r">20.3%</td><td class="r">10.7%</td><td class="r">118</td><td class="r">85.8%</td></tr><tr class="sens-row"><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.1%</td><td class="r">22.0%</td><td class="r">12.3%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.0%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.3%</td><td class="r">45.8%</td><td class="r">21.5%</td><td class="r">8.5%</td><td class="r">3.5%</td><td class="r">96</td><td class="r">39.9%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">93.0%</td><td class="r">49.2%</td><td class="r">26.0%</td><td class="r">11.7%</td><td class="r">5.4%</td><td class="r">95</td><td class="r">38.0%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.3%</td><td class="r">35.4%</td><td class="r">17.3%</td><td class="r">7.4%</td><td class="r">3.4%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">72.2%</td><td class="r">32.5%</td><td class="r">15.1%</td><td class="r">6.3%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.6%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.4%</td><td class="r">35.4%</td><td class="r">18.5%</td><td class="r">8.6%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.7%</td><td class="r">10.1%</td><td class="r">3.5%</td><td class="r">1.1%</td><td class="r">0.3%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">28.5%</td><td class="r">11.5%</td><td class="r">4.7%</td><td class="r">1.8%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">1.0%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.9%</td><td class="r">9.8%</td><td class="r">3.8%</td><td class="r">1.6%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.5%</td><td class="r">2.0%</td><td class="r">0.8%</td><td class="r">0.3%</td><td class="r">0.2%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">80</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">64.2%</td><td class="r">33.6%</td><td class="r">20.3%</td><td class="r">10.7%</td><td class="r">118</td><td class="r">85.8%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">58.5%</td><td class="r">32.5%</td><td class="r">19.7%</td><td class="r">10.6%</td><td class="r">111</td><td class="r">13.2%</td></tr><tr class="sens-row"><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">44.1%</td><td class="r">22.0%</td><td class="r">12.3%</td><td class="r">6.0%</td><td class="r">105</td><td class="r">1.0%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">93.3%</td><td class="r">45.8%</td><td class="r">21.5%</td><td class="r">8.5%</td><td class="r">3.5%</td><td class="r">96</td><td class="r">39.9%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">93.0%</td><td class="r">49.2%</td><td class="r">26.0%</td><td class="r">11.7%</td><td class="r">5.4%</td><td class="r">95</td><td class="r">38.0%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">77.3%</td><td class="r">35.4%</td><td class="r">17.3%</td><td class="r">7.4%</td><td class="r">3.4%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">72.2%</td><td class="r">32.5%</td><td class="r">15.1%</td><td class="r">6.3%</td><td class="r">2.6%</td><td class="r">91</td><td class="r">10.6%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">68.4%</td><td class="r">35.4%</td><td class="r">18.5%</td><td class="r">8.6%</td><td class="r">4.1%</td><td class="r">90</td><td class="r">8.9%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">30.7%</td><td class="r">10.1%</td><td class="r">3.5%</td><td class="r">1.1%</td><td class="r">0.3%</td><td class="r">86</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">28.5%</td><td class="r">11.5%</td><td class="r">4.7%</td><td class="r">1.8%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">1.0%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">26.9%</td><td class="r">9.8%</td><td class="r">3.8%</td><td class="r">1.6%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">5.5%</td><td class="r">2.0%</td><td class="r">0.8%</td><td class="r">0.3%</td><td class="r">0.2%</td><td class="r">81</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">3.6%</td><td class="r">1.5%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">80</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">64</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -931,9 +931,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 7:07 PM</span></div>
 <div class="news-title">Breaking: Minnesota Wild Acquire 10-Year Veteran Forward</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNMGhERlFQWFpORkVXVDdueVJyNUZzS3NzUnVSMjVPd2RMNlhYNy0tYTVMeXlhRk12S3RSeUVPRU1QQlFKZHUxN05zNXJyMHE0cjZEbGg4VnRoZEtsTUJ3UkJrT0xFTjM4VnFRMTlpc3d1SFBTWXRLWjZwZW1BZEpLdHZLdURmZk9hUHYtbmZqRVBUNVVmSTJqNU9CTndvaFJXR1JLemt3bTVlVWZ3WHpJR1ZUcHVXTlBXRWpsM1pXejJGa29Ca1diY1ZvZ3BlTVp5NWo3S0FHanlLUms?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 7:03 PM</span></div>
-<div class="news-title">Three NHL players placed on waivers for March 2</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOTUVVaFJkWmRMa1lkaGNXUkJSZGdiMFZONzgtMGJGNC1BNDVVRlE4RFRVZE45TFZWUzM1eEVBdVR1X3BNd1NWclJoZXV3YWxwZFpkN3dzOTBBM25IZENUZEwyaW13cDg1NUppdnJUSFlkVXBnQ1pPZnVMakloNUh3OE5DTkFBZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 6:56 PM</span></div>
-<div class="news-title">Trocheck Confirms Teams That Are Off-Limits in New Interview</div></a></div></div>
+<div class="news-title">Three NHL players placed on waivers for March 2</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPRVBNT3FKSTBUaUV4RXJ4Sm50QVlFWmxJSndmZDJxY0lMejg1SnAzTUF2NUZfRlFyRXNiVF9UZXZxMDZacmRjNW1nTmRDMS1WYXdWRjZIdVdMN1NoaUhja2pGVW4wOG12b19YeDVjd0tjNVd3UlVPWVhDNG4zUFNhQWphQWJHVmE4bWhtZWJQcnBaMmtrdHBKN0lETmV2U0RKRGtZbll2RjN2MG1EbU1rcQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bring Me The News</span><span class="news-date">Mar 2 &middot; 6:50 PM</span></div>
+<div class="news-title">Wild, Vincent Trocheck trade rumors buzzing ahead of Friday deadline</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/wildhockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/wildhockey</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -943,7 +943,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:22 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:34 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
