@@ -22,8 +22,10 @@ SEASON_SHORT = "2025"
 NHL_API = "https://api-web.nhle.com/v1"
 MONEYPUCK = "https://moneypuck.com/moneypuck"
 
-# Eastern Conference team config
-EAST_TEAM_INFO = {
+# All 32 NHL team configs
+TEAM_INFO = {
+    # --- Eastern Conference ---
+    # Atlantic
     "BOS": {"name": "Boston Bruins", "franchise_id": 6, "accent": "#e8b230", "subreddit": "BostonBruins", "div": "Atlantic"},
     "BUF": {"name": "Buffalo Sabres", "franchise_id": 19, "accent": "#6b9fff", "subreddit": "sabres", "div": "Atlantic"},
     "DET": {"name": "Detroit Red Wings", "franchise_id": 12, "accent": "#e8384f", "subreddit": "DetroitRedWings", "div": "Atlantic"},
@@ -32,6 +34,7 @@ EAST_TEAM_INFO = {
     "OTT": {"name": "Ottawa Senators", "franchise_id": 30, "accent": "#e8384f", "subreddit": "OttawaSenators", "div": "Atlantic"},
     "TBL": {"name": "Tampa Bay Lightning", "franchise_id": 31, "accent": "#6b9fff", "subreddit": "TampaBayLightning", "div": "Atlantic"},
     "TOR": {"name": "Toronto Maple Leafs", "franchise_id": 5, "accent": "#6b9fff", "subreddit": "leafs", "div": "Atlantic"},
+    # Metropolitan
     "CAR": {"name": "Carolina Hurricanes", "franchise_id": 26, "accent": "#e8384f", "subreddit": "canes", "div": "Metropolitan"},
     "CBJ": {"name": "Columbus Blue Jackets", "franchise_id": 36, "accent": "#6b9fff", "subreddit": "BlueJackets", "div": "Metropolitan"},
     "NJD": {"name": "New Jersey Devils", "franchise_id": 23, "accent": "#e8384f", "subreddit": "devils", "div": "Metropolitan"},
@@ -40,6 +43,25 @@ EAST_TEAM_INFO = {
     "PHI": {"name": "Philadelphia Flyers", "franchise_id": 16, "accent": "#f47d30", "subreddit": "Flyers", "div": "Metropolitan"},
     "PIT": {"name": "Pittsburgh Penguins", "franchise_id": 17, "accent": "#e8b230", "subreddit": "penguins", "div": "Metropolitan"},
     "WSH": {"name": "Washington Capitals", "franchise_id": 24, "accent": "#c8102e", "subreddit": "caps", "div": "Metropolitan"},
+    # --- Western Conference ---
+    # Central
+    "CHI": {"name": "Chicago Blackhawks", "franchise_id": 11, "accent": "#e8384f", "subreddit": "hawks", "div": "Central"},
+    "COL": {"name": "Colorado Avalanche", "franchise_id": 27, "accent": "#c84060", "subreddit": "ColoradoAvalanche", "div": "Central"},
+    "DAL": {"name": "Dallas Stars", "franchise_id": 15, "accent": "#00a651", "subreddit": "DallasStars", "div": "Central"},
+    "MIN": {"name": "Minnesota Wild", "franchise_id": 37, "accent": "#2e8540", "subreddit": "wildhockey", "div": "Central"},
+    "NSH": {"name": "Nashville Predators", "franchise_id": 34, "accent": "#ffb81c", "subreddit": "Predators", "div": "Central"},
+    "STL": {"name": "St. Louis Blues", "franchise_id": 18, "accent": "#4477ce", "subreddit": "stlouisblues", "div": "Central"},
+    "UTA": {"name": "Utah Hockey Club", "franchise_id": 28, "accent": "#69b3e7", "subreddit": "UtahHC", "div": "Central"},
+    "WPG": {"name": "Winnipeg Jets", "franchise_id": 35, "accent": "#6888b0", "subreddit": "winnipegjets", "div": "Central"},
+    # Pacific
+    "ANA": {"name": "Anaheim Ducks", "franchise_id": 32, "accent": "#f47d30", "subreddit": "AnaheimDucks", "div": "Pacific"},
+    "CGY": {"name": "Calgary Flames", "franchise_id": 21, "accent": "#d2001c", "subreddit": "CalgaryFlames", "div": "Pacific"},
+    "EDM": {"name": "Edmonton Oilers", "franchise_id": 25, "accent": "#ff6b2b", "subreddit": "EdmontonOilers", "div": "Pacific"},
+    "LAK": {"name": "Los Angeles Kings", "franchise_id": 14, "accent": "#a2aaad", "subreddit": "losangeleskings", "div": "Pacific"},
+    "SEA": {"name": "Seattle Kraken", "franchise_id": 39, "accent": "#68cfd1", "subreddit": "SeattleKraken", "div": "Pacific"},
+    "SJS": {"name": "San Jose Sharks", "franchise_id": 29, "accent": "#009aa6", "subreddit": "SanJoseSharks", "div": "Pacific"},
+    "VAN": {"name": "Vancouver Canucks", "franchise_id": 20, "accent": "#4080c4", "subreddit": "canucks", "div": "Pacific"},
+    "VGK": {"name": "Vegas Golden Knights", "franchise_id": 38, "accent": "#b4975a", "subreddit": "goldenknights", "div": "Pacific"},
 }
 
 def accent_rgba(hex_color, alpha):
@@ -150,7 +172,7 @@ def fetch_moneypuck_team_stats():
 
 def fetch_nhl_skater_summary():
     """Fetch full skater summary from NHL stats API (evGoals, evPoints, ppPoints, shPoints, etc.)."""
-    fid = EAST_TEAM_INFO.get(TEAM, {}).get("franchise_id", 30)
+    fid = TEAM_INFO.get(TEAM, {}).get("franchise_id", 30)
     url = (
         "https://api.nhle.com/stats/rest/en/skater/summary?"
         "isAggregate=false&isGame=false"
@@ -164,7 +186,7 @@ def fetch_nhl_skater_summary():
 
 def fetch_nhl_goalie_summary():
     """Fetch full goalie summary from NHL stats API (gamesStarted, timeOnIce, etc.)."""
-    fid = EAST_TEAM_INFO.get(TEAM, {}).get("franchise_id", 30)
+    fid = TEAM_INFO.get(TEAM, {}).get("franchise_id", 30)
     url = (
         "https://api.nhle.com/stats/rest/en/goalie/summary?"
         "isAggregate=false&isGame=false"
@@ -178,7 +200,7 @@ def fetch_nhl_goalie_summary():
 
 def fetch_team_news():
     """Fetch recent team news/trade articles from Google News RSS."""
-    team_name = EAST_TEAM_INFO.get(TEAM, {}).get("name", "Ottawa Senators")
+    team_name = TEAM_INFO.get(TEAM, {}).get("name", "Ottawa Senators")
     encoded = team_name.replace(" ", "+")
     queries = [
         f"%22{encoded}%22+trade",
@@ -327,6 +349,7 @@ def fmt_delta(current, previous, fmt="num", invert=False):
 def get_team_data(standings):
     sens = None
     east_teams = []
+    west_teams = []
     all_teams = []
     for team in standings.get("standings", []):
         abbrev = team.get("teamAbbrev", {})
@@ -361,9 +384,11 @@ def get_team_data(standings):
         all_teams.append(info)
         if info["conf"] == "Eastern":
             east_teams.append(info)
+        elif info["conf"] == "Western":
+            west_teams.append(info)
         if abbrev == TEAM:
             sens = info
-    return sens, east_teams, all_teams
+    return sens, east_teams, west_teams, all_teams
 
 def get_above500_teams(all_teams):
     return {t["abbrev"] for t in all_teams if t["gp"] > 0 and t["w"] / t["gp"] > 0.5}
@@ -454,10 +479,10 @@ def get_goalies(club_stats, nhl_goalie_summary):
     goalies.sort(key=lambda x: x["gp"], reverse=True)
     return goalies
 
-def fetch_all_east_schedules(east_teams):
-    """Fetch schedules for all Eastern teams once. Returns dict of abbrev -> schedule data."""
+def fetch_all_schedules(all_teams):
+    """Fetch schedules for all teams once. Returns dict of abbrev -> schedule data."""
     schedules = {}
-    for t in east_teams:
+    for t in all_teams:
         abbrev = t["abbrev"]
         try:
             schedules[abbrev] = fetch_json(f"{NHL_API}/club-schedule-season/{abbrev}/{SEASON}")
@@ -465,10 +490,10 @@ def fetch_all_east_schedules(east_teams):
             schedules[abbrev] = {"games": []}
     return schedules
 
-def compute_east_records(all_schedules, focus_team, east_teams, above500):
+def compute_conf_records(all_schedules, focus_team, conf_teams, above500):
     """Compute standings records from cached schedules for a given focus team."""
     records = {}
-    for t in east_teams:
+    for t in conf_teams:
         abbrev = t["abbrev"]
         data = all_schedules.get(abbrev, {"games": []})
         vs_focus = [0, 0, 0]
@@ -675,9 +700,14 @@ def espn_link(abbrev, display):
         return f'<a href="https://www.espn.com/nhl/team/_/name/{slug[0]}/{slug[1]}" target="_blank" rel="noopener" class="tcol-link">{display}</a>'
     return display
 
-def build_standings_section(east_teams, east_records):
-    atlantic = sorted([t for t in east_teams if t["div"] == "Atlantic"], key=lambda x: -x["pts"])
-    metro = sorted([t for t in east_teams if t["div"] == "Metropolitan"], key=lambda x: -x["pts"])
+def build_standings_section(conf_teams, conf_records, conf_name):
+    if conf_name == "Eastern":
+        div1_name, div2_name = "Atlantic", "Metropolitan"
+    else:
+        div1_name, div2_name = "Central", "Pacific"
+
+    div1 = sorted([t for t in conf_teams if t["div"] == div1_name], key=lambda x: -x["pts"])
+    div2 = sorted([t for t in conf_teams if t["div"] == div2_name], key=lambda x: -x["pts"])
 
     def fmt_rec(w, l, otl):
         return f"{w}-{l}-{otl}"
@@ -692,7 +722,7 @@ def build_standings_section(east_teams, east_records):
         l10 = fmt_rec(t["l10w"], t["l10l"], t["l10otl"])
         home = fmt_rec(t["homeW"], t["homeL"], t["homeOtl"])
         road = fmt_rec(t["roadW"], t["roadL"], t["roadOtl"])
-        er = east_records.get(t["abbrev"], {})
+        er = conf_records.get(t["abbrev"], {})
         vs_focus = fmt_rec(*er.get("vsFocus", (0, 0, 0)))
         vs_above = fmt_rec(*er.get("vsAbove", (0, 0, 0)))
         vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
@@ -706,7 +736,8 @@ def build_standings_section(east_teams, east_records):
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs {TEAM}</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div></div>'''
 
-    wc_all = sorted(atlantic[3:] + metro[3:], key=lambda x: -x["pts"])
+    # Wild Card view
+    wc_all = sorted(div1[3:] + div2[3:], key=lambda x: -x["pts"])
     wc_rows = []
     for i, t in enumerate(wc_all):
         is_sens = t["abbrev"] == TEAM
@@ -720,7 +751,7 @@ def build_standings_section(east_teams, east_records):
         l10 = fmt_rec(t["l10w"], t["l10l"], t["l10otl"])
         home = fmt_rec(t["homeW"], t["homeL"], t["homeOtl"])
         road = fmt_rec(t["roadW"], t["roadL"], t["roadOtl"])
-        er = east_records.get(t["abbrev"], {})
+        er = conf_records.get(t["abbrev"], {})
         vs_focus = fmt_rec(*er.get("vsFocus", (0, 0, 0)))
         vs_above = fmt_rec(*er.get("vsAbove", (0, 0, 0)))
         vs_below = fmt_rec(*er.get("vsBelow", (0, 0, 0)))
@@ -732,9 +763,18 @@ def build_standings_section(east_teams, east_records):
 <div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs {TEAM}</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(wc_rows)}</tbody></table></div></div>'''
-    return wc_html + div_table(atlantic, "Atlantic Division") + div_table(metro, "Metropolitan Division")
 
-def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
+    conf_view = div_table(div1, f"{div1_name} Division") + div_table(div2, f"{div2_name} Division")
+
+    return f'''<div class="stnd-toggle">
+<input type="radio" id="sv-conf" name="stnd-view" checked>
+<input type="radio" id="sv-wc" name="stnd-view">
+<div class="stnd-toggle-bar"><label for="sv-conf">Conference</label><label for="sv-wc">Wild Card</label></div>
+<div class="sv-conf">{conf_view}</div>
+<div class="sv-wc">{wc_html}</div>
+</div>'''
+
+def build_projections_html(sens, vs500, mp_odds, mp_stats, conf_teams):
     pts = sens["pts"]
     gp = sens["gp"]
     remaining = 82 - gp
@@ -780,20 +820,21 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
         po_cls = "sc-up" if d_po > 0 else "sc-down" if d_po < 0 else ""
         scenario_rows += f'''<tr><td class="sc-label">{sc["label"]}</td><td class="r">{sc["playoff"]*100:.1f}%</td><td class="r {po_cls}">{d_po*100:+.1f}%</td><td class="r">{sc["pts"]:.0f}</td><td class="r">{sc["r2"]*100:.1f}%</td><td class="r">{sc["cup"]*100:.1f}%</td></tr>'''
 
-    # Eastern Conference predictions table
-    east_abbrevs = {t["abbrev"] for t in east_teams}
-    east_odds = []
-    for abbrev in east_abbrevs:
+    # Conference predictions table
+    conf_abbrevs = {t["abbrev"] for t in conf_teams}
+    conf_name = conf_teams[0]["conf"] if conf_teams else "Eastern"
+    conf_odds = []
+    for abbrev in conf_abbrevs:
         team_data = mp_odds.get(abbrev, {}).get("ALL", {})
         if team_data:
-            east_odds.append({"team": abbrev, **team_data})
-    east_odds.sort(key=lambda x: -x.get("playoffPct", 0))
+            conf_odds.append({"team": abbrev, **team_data})
+    conf_odds.sort(key=lambda x: -x.get("playoffPct", 0))
 
-    east_rows = ""
-    for i, t in enumerate(east_odds):
+    conf_rows = ""
+    for i, t in enumerate(conf_odds):
         tc = t["team"]
         is_sens = "sens-row" if tc == TEAM else ""
-        east_rows += f'''<tr class="{is_sens}"><td class="rank">{i+1}</td><td class="tcol">{espn_link(tc, tc)}</td><td class="r">{t.get("playoffPct",0)*100:.1f}%</td><td class="r">{t.get("round2",0)*100:.1f}%</td><td class="r">{t.get("round3",0)*100:.1f}%</td><td class="r">{t.get("finals",0)*100:.1f}%</td><td class="r">{t.get("cupPct",0)*100:.1f}%</td><td class="r">{t.get("projPts",0):.0f}</td><td class="r">{t.get("divWinPct",0)*100:.1f}%</td></tr>'''
+        conf_rows += f'''<tr class="{is_sens}"><td class="rank">{i+1}</td><td class="tcol">{espn_link(tc, tc)}</td><td class="r">{t.get("playoffPct",0)*100:.1f}%</td><td class="r">{t.get("round2",0)*100:.1f}%</td><td class="r">{t.get("round3",0)*100:.1f}%</td><td class="r">{t.get("finals",0)*100:.1f}%</td><td class="r">{t.get("cupPct",0)*100:.1f}%</td><td class="r">{t.get("projPts",0):.0f}</td><td class="r">{t.get("divWinPct",0)*100:.1f}%</td></tr>'''
 
     ott_mp = mp_stats.get(TEAM, {})
     ott_mp_all = ott_mp.get("all", {})
@@ -814,10 +855,10 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, east_teams):
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
 <tbody>{scenario_rows}</tbody></table></div>
 
-<h3 style="margin-top:28px">Eastern Conference</h3>
+<h3 style="margin-top:28px">{conf_name} Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody>{east_rows}</tbody></table></div>
+<tbody>{conf_rows}</tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p>'''
 
@@ -977,8 +1018,8 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams, east_teams):
-    team_info = EAST_TEAM_INFO.get(TEAM, EAST_TEAM_INFO["OTT"])
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+    team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
     accent_soft_dark = accent_rgba(accent, 0.12)
@@ -986,22 +1027,23 @@ def generate_html(sens, roster_html, standings_html, projections_html, schedule_
     accent_soft_light = accent_rgba(accent, 0.08)
     subreddit = team_info["subreddit"]
 
-    # Build team switcher dropdown
-    atlantic = sorted([t for t in east_teams if t["div"] == "Atlantic"], key=lambda x: x["name"])
-    metro = sorted([t for t in east_teams if t["div"] == "Metropolitan"], key=lambda x: x["name"])
-    switcher_opts = '<optgroup label="Atlantic">'
-    for t in atlantic:
-        a = t["abbrev"]
-        fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
-        sel = " selected" if a == TEAM else ""
-        switcher_opts += f'<option value="{fn}"{sel}>{t["name"]}</option>'
-    switcher_opts += '</optgroup><optgroup label="Metropolitan">'
-    for t in metro:
-        a = t["abbrev"]
-        fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
-        sel = " selected" if a == TEAM else ""
-        switcher_opts += f'<option value="{fn}"{sel}>{t["name"]}</option>'
-    switcher_opts += '</optgroup>'
+    # Build team switcher dropdown (all 4 divisions)
+    div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
+    for t in all_teams:
+        for dname, dlist in div_groups:
+            if t["div"] == dname:
+                dlist.append(t)
+                break
+    switcher_opts = ''
+    for dname, dlist in div_groups:
+        dlist.sort(key=lambda x: x["name"])
+        switcher_opts += f'<optgroup label="{dname}">'
+        for t in dlist:
+            a = t["abbrev"]
+            fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
+            sel = " selected" if a == TEAM else ""
+            switcher_opts += f'<option value="{fn}"{sel}>{t["name"]}</option>'
+        switcher_opts += '</optgroup>'
 
     eastern = timezone(timedelta(hours=-5))
     now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
@@ -1257,6 +1299,16 @@ a.pname:hover{{color:var(--text-strong)}}
 /* Mobile tabs */
 @media(max-width:680px){{.tab-bar{{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:auto}}.tab-bar::-webkit-scrollbar{{display:none}}}}
 
+/* Standings sub-toggle */
+.stnd-toggle input[type="radio"]{{display:none}}
+.stnd-toggle-bar{{display:flex;gap:2px;margin-bottom:24px;padding:3px;background:var(--bg-surface);border-radius:10px;width:fit-content}}
+.stnd-toggle-bar label{{padding:6px 14px;font-size:11px;font-weight:500;color:var(--text-muted);cursor:pointer;border-radius:7px;transition:all 0.2s ease;white-space:nowrap}}
+.stnd-toggle-bar label:hover{{color:var(--text-secondary);background:var(--tab-hover-bg)}}
+.sv-conf,.sv-wc{{display:none}}
+#sv-conf:checked~.sv-conf{{display:block}}
+#sv-wc:checked~.sv-wc{{display:block}}
+#sv-conf:checked~.stnd-toggle-bar label[for="sv-conf"],#sv-wc:checked~.stnd-toggle-bar label[for="sv-wc"]{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
+
 /* Empty state */
 .empty-state{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:13px}}
 .empty-state span{{display:block;font-size:28px;margin-bottom:12px;opacity:0.4}}
@@ -1390,7 +1442,7 @@ def main():
     standings = fetch_standings()
     # Use DEFAULT_TEAM just to get team lists from standings
     TEAM = DEFAULT_TEAM
-    _, east_teams, all_teams = get_team_data(standings)
+    _, east_teams, west_teams, all_teams = get_team_data(standings)
     above500 = get_above500_teams(all_teams)
     team_records_map = get_team_records(all_teams)
 
@@ -1406,14 +1458,14 @@ def main():
     all_mp_players = fetch_all_moneypuck_players()
     print(f"  {len(all_mp_players)} teams loaded")
 
-    print("Fetching Eastern Conference team schedules...")
-    all_east_schedules = fetch_all_east_schedules(east_teams)
-    print(f"  {len(all_east_schedules)} team schedules fetched")
+    print("Fetching all team schedules...")
+    all_schedules = fetch_all_schedules(all_teams)
+    print(f"  {len(all_schedules)} team schedules fetched")
 
     # ── Per-team builds ───────────────────────────────────
-    for team_abbrev in EAST_TEAM_INFO:
+    for team_abbrev in TEAM_INFO:
         TEAM = team_abbrev
-        team_info = EAST_TEAM_INFO[TEAM]
+        team_info = TEAM_INFO[TEAM]
         team_name = team_info["name"]
         print(f"\n{'='*50}")
         print(f"Building {team_name} ({TEAM})...")
@@ -1424,6 +1476,10 @@ def main():
             print(f"  WARNING: {TEAM} not found in standings, skipping")
             continue
         print(f"  {team_entry['w']}-{team_entry['l']}-{team_entry['otl']} ({team_entry['pts']} pts)")
+
+        # Determine conference
+        conf_name = team_entry["conf"]
+        conf_teams = east_teams if conf_name == "Eastern" else west_teams
 
         # Fetch team-specific data
         print(f"  Fetching club stats...")
@@ -1447,7 +1503,7 @@ def main():
         print(f"  {len(skaters)} skaters, {len(goalies)} goalies")
 
         # Schedule from cached data
-        schedule_data = all_east_schedules.get(TEAM, {"games": []})
+        schedule_data = all_schedules.get(TEAM, {"games": []})
         remaining = get_remaining_schedule(schedule_data, above500)
         results = get_results(schedule_data)
         vs500 = compute_vs_above500(results, above500)
@@ -1456,8 +1512,8 @@ def main():
         # MoneyPuck player data (filtered from cached CSV)
         mp_players = all_mp_players.get(TEAM, {})
 
-        # Compute east records for this focus team
-        east_records = compute_east_records(all_east_schedules, TEAM, east_teams, above500)
+        # Compute conference records for this focus team
+        conf_records = compute_conf_records(all_schedules, TEAM, conf_teams, above500)
 
         # News
         print(f"  Fetching news...")
@@ -1498,11 +1554,11 @@ def main():
 
         # Build HTML
         roster_html = build_roster_html(skaters, goalies, mp_players)
-        standings_html = build_standings_section(east_teams, east_records)
-        projections_html = build_projections_html(team_entry, vs500, mp_odds, mp_stats, east_teams)
+        standings_html = build_standings_section(conf_teams, conf_records, conf_name)
+        projections_html = build_projections_html(team_entry, vs500, mp_odds, mp_stats, conf_teams)
         schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records_map, mp_stats, mp_odds, results)
         news_html = build_news_html(news_articles)
-        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams, east_teams)
+        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
@@ -1511,7 +1567,7 @@ def main():
         print(f"  -> {filename} generated")
 
     print(f"\n{'='*50}")
-    print("Done! All Eastern Conference team pages generated.")
+    print("Done! All 32 team pages generated.")
 
 if __name__ == "__main__":
     main()
