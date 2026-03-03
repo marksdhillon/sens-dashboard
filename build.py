@@ -1315,7 +1315,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, leaders_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+def generate_html(sens, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams):
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
@@ -1444,7 +1444,6 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~.tab-bar label[for="tab-standings"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
-#tab-leaders:checked~.tab-bar label[for="tab-leaders"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
 #tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
@@ -1452,7 +1451,6 @@ input[name="tab"]{{display:none}}
 #tab-standings:checked~#p-standings,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
-#tab-leaders:checked~#p-leaders,
 #tab-injuries:checked~#p-injuries,
 #tab-news:checked~#p-news,
 #tab-community:checked~#p-community{{display:block}}
@@ -1627,21 +1625,7 @@ a.pname:hover{{color:var(--text-strong)}}
 .inj-comment{{font-size:11px;color:var(--text-muted);max-width:200px}}
 
 /* NHL Leaders */
-.ld-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}
-.ld-card{{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:16px;overflow:hidden}}
-.ld-title{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
-.ld-row{{display:flex;align-items:center;gap:10px;padding:5px 0}}
-.ld-row+.ld-row{{border-top:1px solid var(--border)}}
-.ld-hl{{background:rgba(255,255,255,0.03);border-radius:4px;padding:5px 6px;margin:0 -6px}}
-:root[data-theme="light"] .ld-hl{{background:rgba(0,0,0,0.03)}}
-.ld-rank{{font-size:11px;font-weight:600;color:var(--text-muted);min-width:18px;text-align:right;font-variant-numeric:tabular-nums}}
-.ld-headshot{{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
-.ld-info{{flex:1;min-width:0;display:flex;flex-direction:column}}
-.ld-name{{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-.ld-team{{font-size:10px;font-weight:500;color:var(--text-muted)}}
-.ld-val{{font-size:14px;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}}
-.ld-hl .ld-name{{color:var(--accent)}}
-.ld-hl .ld-val{{color:var(--accent)}}
+
 
 /* Footer */
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:880px;margin:0 auto}}
@@ -1676,6 +1660,7 @@ body{{animation:fadeIn 0.15s ease}}
     <div class="topbar-left">
       <a href="scores.html" class="topbar-tab">Scores</a>
       <span class="topbar-tab active">Team Stats</span>
+      <a href="leaders.html" class="topbar-tab">NHL Leaders</a>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
@@ -1713,7 +1698,6 @@ body{{animation:fadeIn 0.15s ease}}
   <input type="radio" name="tab" id="tab-schedule">
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
-  <input type="radio" name="tab" id="tab-leaders">
   <input type="radio" name="tab" id="tab-injuries">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-community">
@@ -1722,7 +1706,6 @@ body{{animation:fadeIn 0.15s ease}}
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
-    <label for="tab-leaders">NHL Leaders</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-news">Trade Rumors</label>
     <label for="tab-community">Community</label>
@@ -1731,7 +1714,6 @@ body{{animation:fadeIn 0.15s ease}}
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
-  <div class="panel" id="p-leaders">{leaders_html}</div>
   <div class="panel" id="p-injuries">{injuries_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
   <div class="panel" id="p-community">
@@ -2236,6 +2218,7 @@ a{{color:var(--text);text-decoration:none}}
     <div class="topbar-left">
       <span class="topbar-tab active">Scores</span>
       <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Team Stats</a>
+      <a href="leaders.html" class="topbar-tab">NHL Leaders</a>
     </div>
     <div class="topbar-right">
       <select class="team-select" onchange="if(this.value)window.location.href=this.value">
@@ -2352,6 +2335,119 @@ function closePanel(){{
 document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel()}});
 </script>
 </body></html>'''
+
+def build_leaders_page(skater_leaders, goalie_leaders, switcher_opts):
+    """Generate a standalone NHL Leaders page."""
+    eastern = timezone(timedelta(hours=-5))
+    now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
+
+    leaders_html = build_leaders_html(skater_leaders, goalie_leaders)
+
+    return f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NHL Leaders</title>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--green:#34d399;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
+:root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#c8102e;--green:#059669;--red:#dc2626;--text-strong:rgba(0,0,0,0.92);--footer-link-deco:rgba(0,0,0,0.14)}}
+*{{margin:0;padding:0;box-sizing:border-box}}
+@keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
+body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;animation:fadeIn 0.15s ease}}
+a{{color:var(--text);text-decoration:none}}
+
+/* Top bar */
+.topbar{{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}}
+.topbar-inner{{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:44px}}
+.topbar-left{{display:flex;align-items:center;gap:0}}
+.topbar-tab{{font-size:12px;font-weight:500;color:var(--text-muted);padding:12px 14px;text-decoration:none;transition:color 0.15s;position:relative;height:44px;display:flex;align-items:center}}.topbar-tab:hover{{color:var(--text-secondary)}}.topbar-tab.active{{color:var(--text-strong);font-weight:600}}.topbar-tab.active::after{{content:"";position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--text-strong);border-radius:1px}}
+.topbar-right{{display:flex;align-items:center;gap:6px}}
+.team-select{{appearance:none;-webkit-appearance:none;background:transparent;color:var(--text-secondary);border:1px solid var(--border);border-radius:6px;padding:5px 26px 5px 10px;font-size:11px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.15s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}}.team-select:hover{{border-color:rgba(255,255,255,0.15);color:var(--text)}}.team-select:focus{{outline:none;border-color:var(--accent)}}.team-select optgroup{{font-weight:600;color:var(--text-muted)}}.team-select option{{background:var(--bg);color:var(--text)}}
+.theme-toggle{{display:flex;gap:1px;padding:1px;border:1px solid var(--border);border-radius:6px}}
+.theme-btn{{display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:5px;transition:all 0.15s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary)}}
+.theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
+
+/* Leaders page content */
+.ld-header{{max-width:1200px;margin:0 auto;padding:20px 28px 0}}
+.ld-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
+.ld-content{{max-width:1200px;margin:0 auto;padding:16px 28px 60px}}
+h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}}
+
+/* Leader cards */
+.ld-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}
+.ld-card{{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:16px;overflow:hidden}}
+.ld-title{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
+.ld-row{{display:flex;align-items:center;gap:10px;padding:5px 0}}
+.ld-row+.ld-row{{border-top:1px solid var(--border)}}
+.ld-hl{{background:rgba(255,255,255,0.03);border-radius:4px;padding:5px 6px;margin:0 -6px}}
+:root[data-theme="light"] .ld-hl{{background:rgba(0,0,0,0.03)}}
+.ld-rank{{font-size:11px;font-weight:600;color:var(--text-muted);min-width:18px;text-align:right;font-variant-numeric:tabular-nums}}
+.ld-headshot{{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
+.ld-info{{flex:1;min-width:0;display:flex;flex-direction:column}}
+.ld-name{{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.ld-team{{font-size:10px;font-weight:500;color:var(--text-muted)}}
+.ld-val{{font-size:14px;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}}
+.ld-hl .ld-name{{color:var(--accent)}}
+.ld-hl .ld-val{{color:var(--accent)}}
+
+.footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:1200px;margin:0 auto}}
+.footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
+.footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
+
+@media(max-width:500px){{.topbar-inner{{padding:0 16px}}.topbar-tab{{padding:12px 10px;font-size:11px}}.ld-header{{padding:16px 16px 0}}.ld-content{{padding:12px 16px 40px}}}}
+</style></head><body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="scores.html" class="topbar-tab">Scores</a>
+      <a href="index.html" class="topbar-tab" onclick="var p=localStorage.getItem('lastTeamPage');if(p){{window.location.href=p;return false}}">Team Stats</a>
+      <span class="topbar-tab active">NHL Leaders</span>
+    </div>
+    <div class="topbar-right">
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value">
+        <option value="">View Team...</option>
+        {switcher_opts}
+      </select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ld-header">
+  <h1>NHL Leaders</h1>
+</div>
+
+<div class="ld-content">
+  {leaders_html}
+</div>
+
+<div class="footer">
+  <span class="footer-ts">Updated {now}</span>
+</div>
+
+<script>
+(function(){{
+  var root=document.documentElement;
+  var btns=document.querySelectorAll('.theme-btn');
+  var saved=localStorage.getItem('theme')||'dark';
+  btns.forEach(function(b){{
+    if(b.dataset.theme===saved) b.classList.add('active');
+    b.addEventListener('click',function(){{
+      var t=b.dataset.theme;
+      root.setAttribute('data-theme',t);
+      localStorage.setItem('theme',t);
+      btns.forEach(function(x){{x.classList.remove('active')}});
+      b.classList.add('active');
+    }});
+  }});
+}})();
+</script>
+</body></html>'''
+
 
 # ── Main ──────────────────────────────────────────────────
 
@@ -2492,8 +2588,7 @@ def main():
         schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records_map, mp_stats, mp_odds, results)
         news_html = build_news_html(news_articles)
         injuries_html = build_injuries_html(all_injuries.get(TEAM, []))
-        leaders_html = build_leaders_html(skater_leaders, goalie_leaders)
-        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, leaders_html, vs500, mp_odds, deltas, mp_stats, all_teams)
+        html = generate_html(team_entry, roster_html, standings_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
@@ -2556,8 +2651,17 @@ def main():
     total_games = sum(len(sd.get("games", [])) for _, sd in all_days_scores)
     print(f"  -> scores.html generated ({total_games} games across 15 days, {len(all_game_details)} with details)")
 
+    # ── Leaders page ────────────────────────────────────
     print(f"\n{'='*50}")
-    print("Done! All 32 team pages + scoreboard generated.")
+    print("Building leaders page...")
+    TEAM = DEFAULT_TEAM  # Highlight default team's players
+    leaders_page_html = build_leaders_page(skater_leaders, goalie_leaders, sb_switcher)
+    with open("leaders.html", "w") as f:
+        f.write(leaders_page_html)
+    print("  -> leaders.html generated")
+
+    print(f"\n{'='*50}")
+    print("Done! All 32 team pages + scoreboard + leaders generated.")
 
 if __name__ == "__main__":
     main()
