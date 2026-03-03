@@ -91,6 +91,22 @@ def fetch_scores():
         print(f"  WARNING: scores fetch failed: {e}")
         return {"currentDate": "", "prevDate": {"default": ""}, "nextDate": {"default": ""}, "games": []}
 
+def fetch_game_details(game_id):
+    """Fetch boxscore and scoring summary for a game."""
+    details = {"boxscore": None, "scoring": None}
+    try:
+        landing = fetch_json(f"{NHL_API}/gamecenter/{game_id}/landing")
+        details["scoring"] = landing.get("summary", {}).get("scoring", [])
+    except Exception:
+        pass
+    try:
+        box = fetch_json(f"{NHL_API}/gamecenter/{game_id}/boxscore")
+        pstats = box.get("playerByGameStats", {})
+        details["boxscore"] = pstats
+    except Exception:
+        pass
+    return details
+
 def fetch_csv_rows(url):
     req = urllib.request.Request(url, headers={"User-Agent": "SensDashboard/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -1127,7 +1143,7 @@ a:hover{{color:var(--text-strong)}}
 
 /* Header */
 .top-bar{{display:none}}
-.header{{max-width:880px;margin:0 auto;padding:48px 28px 0}}
+.header{{max-width:880px;margin:0 auto;padding:20px 28px 0}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
 .team-logo{{width:44px;height:44px;opacity:0.95}}
@@ -1334,12 +1350,30 @@ a.pname:hover{{color:var(--text-strong)}}
 .team-select optgroup{{font-weight:600;color:var(--text-muted)}}
 .team-select option{{background:var(--bg);color:var(--text)}}
 
+/* Shared nav */
+.site-nav{{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}}
+.nav-left{{display:flex;align-items:center;gap:6px}}
+.nav-pill{{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}}.nav-pill:hover{{color:var(--text);background:var(--bg-elevated)}}.nav-pill.active{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
+.nav-right{{display:flex;align-items:center;gap:10px}}
+
 /* Theme toggle */
-.hdr-right{{display:flex;align-items:center;gap:10px}}
 .theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
 </style></head><body>
+
+<nav class="site-nav">
+  <div class="nav-left">
+    <a href="scores.html" class="nav-pill">Scores</a>
+    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
+  </div>
+  <div class="nav-right">
+    <div class="theme-toggle">
+      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</nav>
 
 <div class="top-bar"></div>
 <div class="header">
@@ -1349,13 +1383,6 @@ a.pname:hover{{color:var(--text-strong)}}
       <div>
         <h1>{team_name}</h1>
         <div class="subtitle">Updated {now}</div>
-      </div>
-    </div>
-    <div class="hdr-right">
-      <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
-      <div class="theme-toggle">
-        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -1443,19 +1470,13 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
 
 # ── Scoreboard ────────────────────────────────────────────
 
-def build_scoreboard_html(scores_data):
-    """Generate a standalone scoreboard page showing today's NHL scores."""
+def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
+    """Generate a standalone scoreboard page showing today's NHL scores with expandable details."""
     eastern = timezone(timedelta(hours=-5))
     now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
 
     games = scores_data.get("games", [])
     current_date = scores_data.get("currentDate", "")
-    prev_date = scores_data.get("prevDate", {})
-    next_date = scores_data.get("nextDate", {})
-    if isinstance(prev_date, dict):
-        prev_date = prev_date.get("default", "")
-    if isinstance(next_date, dict):
-        next_date = next_date.get("default", "")
 
     # Format display date
     display_date = current_date
@@ -1468,6 +1489,7 @@ def build_scoreboard_html(scores_data):
     game_cards = []
     for g in games:
         state = g.get("gameState", "")
+        game_id = g.get("id", 0)
         away = g.get("awayTeam", {})
         home = g.get("homeTeam", {})
         away_abbrev = away.get("abbrev", "")
@@ -1482,8 +1504,6 @@ def build_scoreboard_html(scores_data):
             home_name = home_name.get("default", home_abbrev)
         away_full = TEAM_INFO.get(away_abbrev, {}).get("name", away_name)
         home_full = TEAM_INFO.get(home_abbrev, {}).get("name", home_name)
-        away_accent = TEAM_INFO.get(away_abbrev, {}).get("accent", "#6b9fff")
-        home_accent = TEAM_INFO.get(home_abbrev, {}).get("accent", "#e8384f")
 
         # Game status
         period_desc = g.get("periodDescriptor", {})
@@ -1528,10 +1548,8 @@ def build_scoreboard_html(scores_data):
         away_win = "sb-winner" if state in ("FINAL", "OFF") and away_score > home_score else ""
         home_win = "sb-winner" if state in ("FINAL", "OFF") and home_score > away_score else ""
 
-        # Goal scorers
+        # Goal scorers (compact, for the card)
         goals = g.get("goals", [])
-        away_goals_html = ""
-        home_goals_html = ""
         away_scorers = {}
         home_scorers = {}
         for gl in goals:
@@ -1541,19 +1559,13 @@ def build_scoreboard_html(scores_data):
             team_abbr = gl.get("teamAbbrev", {})
             if isinstance(team_abbr, dict):
                 team_abbr = team_abbr.get("default", "")
-            period = gl.get("period", 0)
-            strength = gl.get("strength", "")
-            strength_tag = ""
-            if strength == "pp":
-                strength_tag = " (PP)"
-            elif strength == "sh":
-                strength_tag = " (SH)"
-
             if team_abbr == away_abbrev:
                 away_scorers[scorer] = away_scorers.get(scorer, 0) + 1
             elif team_abbr == home_abbrev:
                 home_scorers[scorer] = home_scorers.get(scorer, 0) + 1
 
+        away_goals_html = ""
+        home_goals_html = ""
         for name, count in away_scorers.items():
             c = f" ({count})" if count > 1 else ""
             away_goals_html += f'<span class="sb-scorer">{name}{c}</span>'
@@ -1564,6 +1576,135 @@ def build_scoreboard_html(scores_data):
         # Team page links
         away_href = "index.html" if away_abbrev == DEFAULT_TEAM else f"{away_abbrev}.html"
         home_href = "index.html" if home_abbrev == DEFAULT_TEAM else f"{home_abbrev}.html"
+
+        # ── Expandable detail section ──
+        detail_html = ""
+        details = all_game_details.get(game_id)
+        if details and state not in ("FUT", "PRE"):
+            # Scoring summary by period
+            scoring_periods = details.get("scoring") or []
+            scoring_html = ""
+            for period in scoring_periods:
+                p_num = period.get("periodDescriptor", {}).get("number", 0)
+                p_type = period.get("periodDescriptor", {}).get("periodType", "REG")
+                if p_type == "OT":
+                    p_label = "OT"
+                elif p_type == "SO":
+                    p_label = "SO"
+                else:
+                    ordlabels = {1: "1st Period", 2: "2nd Period", 3: "3rd Period"}
+                    p_label = ordlabels.get(p_num, f"Period {p_num}")
+
+                goal_rows = ""
+                for goal in period.get("goals", []):
+                    g_time = goal.get("timeInPeriod", "")
+                    g_first = goal.get("firstName", {})
+                    g_last = goal.get("lastName", {})
+                    if isinstance(g_first, dict):
+                        g_first = g_first.get("default", "")
+                    if isinstance(g_last, dict):
+                        g_last = g_last.get("default", "")
+                    g_team = goal.get("teamAbbrev", {})
+                    if isinstance(g_team, dict):
+                        g_team = g_team.get("default", "")
+                    g_strength = goal.get("strength", "ev")
+                    strength_badge = ""
+                    if g_strength == "pp":
+                        strength_badge = '<span class="gd-badge gd-pp">PP</span>'
+                    elif g_strength == "sh":
+                        strength_badge = '<span class="gd-badge gd-sh">SH</span>'
+                    elif g_strength == "en":
+                        strength_badge = '<span class="gd-badge gd-en">EN</span>'
+
+                    assists_list = goal.get("assists", [])
+                    assist_names = []
+                    for a in assists_list:
+                        a_first = a.get("firstName", {})
+                        a_last = a.get("lastName", {})
+                        if isinstance(a_first, dict):
+                            a_first = a_first.get("default", "")
+                        if isinstance(a_last, dict):
+                            a_last = a_last.get("default", "")
+                        assist_names.append(f"{a_first} {a_last}")
+                    assists_str = ", ".join(assist_names) if assist_names else "Unassisted"
+
+                    headshot = goal.get("headshot", "")
+                    headshot_img = f'<img src="{headshot}" class="gd-headshot">' if headshot else ""
+
+                    goal_rows += f'''<div class="gd-goal">
+<div class="gd-time">{g_time}</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/{g_team}_dark.svg" class="gd-team-logo"></div>
+{headshot_img}
+<div class="gd-goal-info"><div class="gd-scorer-name">{g_first} {g_last} {strength_badge}</div><div class="gd-assists">{assists_str}</div></div>
+</div>'''
+
+                if goal_rows:
+                    scoring_html += f'<div class="gd-period"><div class="gd-period-label">{p_label}</div>{goal_rows}</div>'
+
+            # Box score tables
+            boxscore = details.get("boxscore")
+            box_html = ""
+            if boxscore:
+                for side, side_label in [("awayTeam", away_abbrev), ("homeTeam", home_abbrev)]:
+                    team_data = boxscore.get(side, {})
+                    side_name = away_full if side == "awayTeam" else home_full
+
+                    # Skaters (forwards + defense)
+                    skaters = team_data.get("forwards", []) + team_data.get("defense", [])
+                    skater_rows = ""
+                    for p in sorted(skaters, key=lambda x: -(x.get("goals", 0)*10 + x.get("assists", 0)*5 + x.get("shots", 0))):
+                        pname = p.get("name", {})
+                        if isinstance(pname, dict):
+                            pname = pname.get("default", "")
+                        pos = p.get("position", "")
+                        g_count = p.get("goals", 0)
+                        a_count = p.get("assists", 0)
+                        pts = g_count + a_count
+                        pm = p.get("plusMinus", 0)
+                        pm_str = f"+{pm}" if pm > 0 else str(pm)
+                        sog = p.get("shots", 0)
+                        hits = p.get("hits", 0)
+                        blk = p.get("blockedShots", 0)
+                        toi = p.get("toi", "0:00")
+                        pts_cls = ' class="gd-pts-hl"' if pts > 0 else ""
+                        skater_rows += f"<tr><td>{pname}</td><td>{pos}</td><td{pts_cls}>{g_count}</td><td{pts_cls}>{a_count}</td><td{pts_cls}>{pts}</td><td>{pm_str}</td><td>{sog}</td><td>{hits}</td><td>{blk}</td><td>{toi}</td></tr>"
+
+                    # Goalies
+                    goalies = team_data.get("goalies", [])
+                    goalie_rows = ""
+                    for gk in goalies:
+                        gname = gk.get("name", {})
+                        if isinstance(gname, dict):
+                            gname = gname.get("default", "")
+                        sa = gk.get("saveShotsAgainst", "")
+                        if isinstance(sa, dict):
+                            sa = sa.get("default", "")
+                        svs = gk.get("saves", 0)
+                        sa_num = gk.get("shotsAgainst", 0)
+                        sv_pct = gk.get("savePctg", "")
+                        if sv_pct and isinstance(sv_pct, (int, float)):
+                            sv_pct = f"{sv_pct:.3f}"
+                        elif sv_pct is None:
+                            sv_pct = "-"
+                        toi = gk.get("toi", "0:00")
+                        goalie_rows += f"<tr><td>{gname}</td><td>{sa}</td><td>{sv_pct}</td><td>{toi}</td></tr>"
+
+                    box_html += f'''<div class="gd-box-team">
+<div class="gd-box-team-name">{side_name}</div>
+<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody>{skater_rows}</tbody></table></div>
+<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody>{goalie_rows}</tbody></table></div>
+</div>'''
+
+            if scoring_html or box_html:
+                detail_html = f'''<div class="gd-expand" id="gd-{game_id}">
+<div class="gd-toggle" onclick="this.parentElement.classList.toggle('open')">
+<span>Game Details</span><svg class="gd-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+</div>
+<div class="gd-content">
+{f'<div class="gd-section"><div class="gd-section-title">Scoring Summary</div>{scoring_html}</div>' if scoring_html else ''}
+{f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
+</div>
+</div>'''
 
         game_cards.append(f'''<div class="sb-game">
 <div class="sb-status {status_cls}">{status}</div>
@@ -1577,14 +1718,11 @@ def build_scoreboard_html(scores_data):
 <div class="sb-team-info"><div class="sb-team-name">{home_full}</div><div class="sb-scorers">{home_goals_html}</div></div>
 <div class="sb-score">{home_score if state not in ("FUT", "PRE") else ""}</div>
 </a>
+{detail_html}
 </div>''')
 
     no_games = '<div class="sb-empty">No games scheduled today.</div>' if not game_cards else ""
     games_html = "\n".join(game_cards)
-
-    # Navigation
-    prev_link = f'<a href="scores.html?date={prev_date}" class="sb-nav-link" onclick="return false;">&#8592; Prev</a>' if prev_date else ""
-    next_link = f'<a href="scores.html?date={next_date}" class="sb-nav-link" onclick="return false;">Next &#8594;</a>' if next_date else ""
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -1598,11 +1736,17 @@ def build_scoreboard_html(scores_data):
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}}
 a{{color:var(--text);text-decoration:none}}
 
-.sb-header{{max-width:700px;margin:0 auto;padding:48px 28px 0}}
-.sb-header-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}}
+/* Shared nav */
+.site-nav{{max-width:700px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}}
+.nav-left{{display:flex;align-items:center;gap:6px}}
+.nav-pill{{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}}.nav-pill:hover{{color:var(--text);background:var(--bg-elevated)}}.nav-pill.active{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
+.nav-right{{display:flex;align-items:center;gap:10px}}
+/* Team selector in nav */
+.team-select{{appearance:none;-webkit-appearance:none;background:var(--bg-surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.2s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}}.team-select:hover{{background-color:var(--bg-elevated)}}.team-select:focus{{outline:none;box-shadow:0 0 0 2px var(--accent)}}.team-select optgroup{{font-weight:600;color:var(--text-muted)}}.team-select option{{background:var(--bg);color:var(--text)}}
+
+.sb-header{{max-width:700px;margin:0 auto;padding:28px 28px 0}}
 .sb-header h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;color:var(--text-strong)}}
-.sb-date{{font-size:14px;color:var(--text-secondary);margin-bottom:28px;font-weight:500}}
-.sb-back{{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}}.sb-back:hover{{color:var(--text)}}
+.sb-date{{font-size:14px;color:var(--text-secondary);margin-bottom:28px;font-weight:500;margin-top:2px}}
 
 .sb-grid{{max-width:700px;margin:0 auto;padding:0 28px 60px;display:flex;flex-direction:column;gap:12px}}
 
@@ -1630,8 +1774,46 @@ a{{color:var(--text);text-decoration:none}}
 
 .sb-empty{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:14px}}
 
+/* Game detail expand */
+.gd-expand{{border-top:1px solid var(--border)}}
+.gd-toggle{{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-size:11px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;user-select:none}}.gd-toggle:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
+.gd-chevron{{transition:transform 0.2s ease}}
+.gd-expand.open .gd-chevron{{transform:rotate(180deg)}}
+.gd-content{{display:none;padding:0 16px 16px}}
+.gd-expand.open .gd-content{{display:block}}
+
+.gd-section{{margin-bottom:20px}}
+.gd-section:last-child{{margin-bottom:0}}
+.gd-section-title{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}}
+
+/* Scoring summary */
+.gd-period{{margin-bottom:16px}}
+.gd-period:last-child{{margin-bottom:0}}
+.gd-period-label{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-muted);margin-bottom:8px}}
+.gd-goal{{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)}}
+.gd-goal:last-child{{border-bottom:none}}
+.gd-time{{font-size:11px;font-weight:600;color:var(--text-secondary);font-variant-numeric:tabular-nums;min-width:40px}}
+.gd-logo{{flex-shrink:0}}.gd-team-logo{{width:20px;height:20px}}
+.gd-headshot{{width:28px;height:28px;border-radius:50%;flex-shrink:0}}
+.gd-goal-info{{flex:1;min-width:0}}
+.gd-scorer-name{{font-size:12px;font-weight:600;color:var(--text)}}
+.gd-assists{{font-size:10px;color:var(--text-muted);margin-top:1px}}
+.gd-badge{{font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:4px;vertical-align:middle}}
+.gd-pp{{background:rgba(251,191,36,0.15);color:#fbbf24}}
+.gd-sh{{background:rgba(52,211,153,0.15);color:var(--green)}}
+.gd-en{{background:rgba(152,152,160,0.15);color:var(--text-secondary)}}
+
+/* Box score tables */
+.gd-box-team{{margin-bottom:16px}}.gd-box-team:last-child{{margin-bottom:0}}
+.gd-box-team-name{{font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px}}
+.gd-tbl-wrap{{overflow-x:auto;margin-bottom:8px;border-radius:8px}}
+.gd-tbl{{width:100%;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}}
+.gd-tbl th{{padding:6px 6px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted);text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--bg-surface)}}
+.gd-tbl td{{padding:5px 6px;color:var(--text-secondary);white-space:nowrap;border-bottom:1px solid var(--border)}}
+.gd-tbl tbody tr:hover td{{background:var(--bg-hover)}}
+.gd-pts-hl{{color:var(--text-strong) !important;font-weight:600}}
+
 /* Theme toggle */
-.sb-controls{{display:flex;align-items:center;gap:10px}}
 .theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
 .theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
@@ -1640,23 +1822,28 @@ a{{color:var(--text);text-decoration:none}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.sb-logo{{width:28px;height:28px}}.sb-score{{font-size:22px}}.sb-team-name{{font-size:13px}}}}
+@media(max-width:500px){{.sb-logo{{width:28px;height:28px}}.sb-score{{font-size:22px}}.sb-team-name{{font-size:13px}}.site-nav{{padding:12px 16px 0}}.sb-header{{padding:16px 16px 0}}.sb-grid{{padding:0 16px 40px}}.gd-tbl{{font-size:10px}}}}
 </style></head><body>
 
-<div class="sb-header">
-  <div class="sb-header-top">
-    <div>
-      <h1>NHL Scoreboard</h1>
-      <div class="sb-date">{display_date}</div>
-    </div>
-    <div class="sb-controls">
-      <a href="index.html" class="sb-back">&#8592; Dashboard</a>
-      <div class="theme-toggle">
-        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
+<nav class="site-nav">
+  <div class="nav-left">
+    <a href="scores.html" class="nav-pill active">Scores</a>
+    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value">
+      <option value="">View Team...</option>
+      {switcher_opts}
+    </select>
+  </div>
+  <div class="nav-right">
+    <div class="theme-toggle">
+      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
+</nav>
+
+<div class="sb-header">
+  <h1>NHL Scoreboard</h1>
+  <div class="sb-date">{display_date}</div>
 </div>
 
 <div class="sb-grid">
@@ -1823,11 +2010,38 @@ def main():
     print(f"\n{'='*50}")
     print("Building scoreboard...")
     scores_data = fetch_scores()
-    scoreboard_html = build_scoreboard_html(scores_data)
+    games = scores_data.get("games", [])
+
+    # Fetch game details (boxscore + scoring) for completed/live games
+    all_game_details = {}
+    for g in games:
+        gid = g.get("id", 0)
+        gstate = g.get("gameState", "")
+        if gstate in ("FINAL", "OFF", "LIVE", "CRIT"):
+            print(f"  Fetching details for game {gid}...")
+            all_game_details[gid] = fetch_game_details(gid)
+
+    # Build team switcher for scoreboard nav
+    sb_div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
+    for t in all_teams:
+        for dname, dlist in sb_div_groups:
+            if t["div"] == dname:
+                dlist.append(t)
+                break
+    sb_switcher = ''
+    for dname, dlist in sb_div_groups:
+        dlist.sort(key=lambda x: x["name"])
+        sb_switcher += f'<optgroup label="{dname}">'
+        for t in dlist:
+            a = t["abbrev"]
+            fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
+            sb_switcher += f'<option value="{fn}">{t["name"]}</option>'
+        sb_switcher += '</optgroup>'
+
+    scoreboard_html = build_scoreboard_html(scores_data, all_game_details, sb_switcher)
     with open("scores.html", "w") as f:
         f.write(scoreboard_html)
-    game_count = len(scores_data.get("games", []))
-    print(f"  -> scores.html generated ({game_count} games)")
+    print(f"  -> scores.html generated ({len(games)} games, {len(all_game_details)} with details)")
 
     print(f"\n{'='*50}")
     print("Done! All 32 team pages + scoreboard generated.")
