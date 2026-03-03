@@ -1888,7 +1888,7 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
 
 # ── Scoreboard ────────────────────────────────────────────
 
-def _build_game_card(g, all_game_details, eastern):
+def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=None, mp_odds=None):
     """Build a single game card HTML. Returns the card HTML string."""
     state = g.get("gameState", "")
     game_id = g.get("id", 0)
@@ -2121,6 +2121,91 @@ def _build_game_card(g, all_game_details, eastern):
 {f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
 </div>'''
 
+    # ── Preview panel for upcoming games ──
+    if not detail_html and state in ("FUT", "PRE") and team_records:
+        away_rec = team_records.get(away_abbrev, {})
+        home_rec = team_records.get(home_abbrev, {})
+        fmt_r = lambda w, l, o: f"{w}-{l}-{o}"
+
+        a_record = fmt_r(away_rec.get("w",0), away_rec.get("l",0), away_rec.get("otl",0))
+        h_record = fmt_r(home_rec.get("w",0), home_rec.get("l",0), home_rec.get("otl",0))
+        a_pts = away_rec.get("pts", 0)
+        h_pts = home_rec.get("pts", 0)
+        a_home = fmt_r(away_rec.get("homeW",0), away_rec.get("homeL",0), away_rec.get("homeOtl",0))
+        h_home = fmt_r(home_rec.get("homeW",0), home_rec.get("homeL",0), home_rec.get("homeOtl",0))
+        a_away = fmt_r(away_rec.get("roadW",0), away_rec.get("roadL",0), away_rec.get("roadOtl",0))
+        h_away = fmt_r(home_rec.get("roadW",0), home_rec.get("roadL",0), home_rec.get("roadOtl",0))
+        a_l10 = fmt_r(away_rec.get("l10w",0), away_rec.get("l10l",0), away_rec.get("l10otl",0))
+        h_l10 = fmt_r(home_rec.get("l10w",0), home_rec.get("l10l",0), home_rec.get("l10otl",0))
+        a_gf = away_rec.get("gf", 0)
+        h_gf = home_rec.get("gf", 0)
+        a_ga = away_rec.get("ga", 0)
+        h_ga = home_rec.get("ga", 0)
+        a_gp = away_rec.get("gp", 1) or 1
+        h_gp = home_rec.get("gp", 1) or 1
+
+        def prow(label, v_a, v_h):
+            return f'<tr><td class="cmp-stat-l">{v_a}</td><td class="cmp-stat-label">{label}</td><td class="cmp-stat-r">{v_h}</td></tr>'
+
+        cmp_rows = (prow("Record", a_record, h_record) + prow("PTS", a_pts, h_pts)
+                    + prow("Home", a_home, h_home) + prow("Away", a_away, h_away)
+                    + prow("L10", a_l10, h_l10) + prow("GF", a_gf, h_gf) + prow("GA", a_ga, h_ga))
+
+        # Insights
+        notes = []
+        pts_gap = abs(a_pts - h_pts)
+        if pts_gap <= 3:
+            notes.append(f"Separated by only {pts_gap} pts — a direct rival")
+        elif a_pts > h_pts:
+            notes.append(f"{away_abbrev} holds a {pts_gap}-pt lead")
+        else:
+            notes.append(f"{home_abbrev} holds a {pts_gap}-pt lead")
+
+        if mp_odds:
+            for abbr, label in [(away_abbrev, away_abbrev), (home_abbrev, home_abbrev)]:
+                po = mp_odds.get(abbr, {}).get("ALL", {}).get("playoffPct", 0)
+                if po >= 0.95:
+                    notes.append(f"{label} is a virtual lock for playoffs ({po*100:.0f}%)")
+                elif po >= 0.6:
+                    notes.append(f"{label} projected for playoffs ({po*100:.0f}%)")
+                elif po >= 0.2:
+                    notes.append(f"{label} on the bubble ({po*100:.0f}%)")
+                elif po > 0:
+                    notes.append(f"{label} fading — {po*100:.0f}% playoff odds")
+
+        a_gfpg = round(a_gf / a_gp, 1)
+        h_gfpg = round(h_gf / h_gp, 1)
+        combined = round(a_gfpg + h_gfpg, 1)
+        if combined >= 6.6:
+            notes.append(f"High-scoring matchup — combined {combined} goals/game avg")
+        elif combined <= 5.2:
+            notes.append(f"Low-scoring matchup — combined {combined} goals/game avg")
+
+        for abbr, rec in [(away_abbrev, away_rec), (home_abbrev, home_rec)]:
+            l10w = rec.get("l10w", 0)
+            l10_str = fmt_r(rec.get("l10w",0), rec.get("l10l",0), rec.get("l10otl",0))
+            if l10w >= 7:
+                notes.append(f"{abbr} is hot — {l10_str} in last 10")
+            elif l10w <= 3:
+                notes.append(f"{abbr} is cold — {l10_str} in last 10")
+
+        notes_html = "".join(f'<li>{n}</li>' for n in notes[:5])
+
+        detail_html = f'''<div class="gd-data" id="gd-{game_id}" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" class="gd-panel-logo"><span>{away_full}</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" class="gd-panel-logo"><span>{home_full}</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">{status}</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes">{notes_html}</ul>
+<table class="cmp-tbl"><thead><tr><th>{away_abbrev}</th><th></th><th>{home_abbrev}</th></tr></thead><tbody>{cmp_rows}</tbody></table>
+</div>
+</div>'''
+
     has_detail = f' data-game="{game_id}"' if detail_html else ""
     clickable_cls = " sb-clickable" if detail_html else ""
 
@@ -2142,7 +2227,7 @@ def _build_game_card(g, all_game_details, eastern):
 </div>'''
 
 
-def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, switcher_opts):
+def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, switcher_opts, team_records=None, mp_stats=None, mp_odds=None):
     """Generate a standalone scoreboard page with date navigation (7 days back + today + 7 days forward)."""
     eastern = timezone(timedelta(hours=-5))
     now = datetime.now(eastern).strftime("%B %-d, %Y at %-I:%M %p ET")
@@ -2179,7 +2264,7 @@ def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, swi
         # Build game cards for this day
         game_cards = []
         for g in games:
-            game_cards.append(_build_game_card(g, all_game_details, eastern))
+            game_cards.append(_build_game_card(g, all_game_details, eastern, team_records, mp_stats, mp_odds))
 
         display_style = "" if is_today else ' style="display:none"'
         if game_cards:
@@ -2324,6 +2409,18 @@ a{{color:var(--text);text-decoration:none}}
 .gd-tbl td{{padding:5px 6px;color:var(--text-secondary);white-space:nowrap;border-bottom:1px solid var(--border)}}
 .gd-tbl tbody tr:hover td{{background:var(--bg-hover)}}
 .gd-pts-hl{{color:var(--text-strong) !important;font-weight:600}}
+
+/* Game preview comparison */
+.pv-notes{{list-style:none;padding:0;margin:0 0 16px;font-size:11px;color:var(--text-secondary);line-height:1.5}}
+.pv-notes li{{padding:5px 10px;background:var(--bg-surface);border-radius:6px;margin-bottom:3px;font-weight:500}}
+.cmp-tbl{{width:100%;border-collapse:collapse;font-size:12px}}
+.cmp-tbl thead th{{font-size:10px;font-weight:600;padding:8px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px}}
+.cmp-tbl thead th:first-child{{text-align:left}}
+.cmp-tbl thead th:last-child{{text-align:right}}
+.cmp-tbl td{{padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)}}
+.cmp-stat-l{{font-weight:600;text-align:left;color:var(--text)}}
+.cmp-stat-label{{text-align:center;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:500}}
+.cmp-stat-r{{font-weight:600;text-align:right;color:var(--text)}}
 
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:700px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
@@ -2816,7 +2913,7 @@ def main():
             sb_switcher += f'<option value="{fn}">{t["name"]}</option>'
         sb_switcher += '</optgroup>'
 
-    scoreboard_html = build_scoreboard_html(all_days_scores, today_date_str, all_game_details, sb_switcher)
+    scoreboard_html = build_scoreboard_html(all_days_scores, today_date_str, all_game_details, sb_switcher, team_records_map, mp_stats, mp_odds)
     with open("scores.html", "w") as f:
         f.write(scoreboard_html)
     total_games = sum(len(sd.get("games", [])) for _, sd in all_days_scores)
