@@ -1142,8 +1142,7 @@ a{{color:var(--text);text-decoration:none}}
 a:hover{{color:var(--text-strong)}}
 
 /* Header */
-.top-bar{{display:none}}
-.header{{max-width:880px;margin:0 auto;padding:20px 28px 0}}
+.header{{max-width:880px;margin:0 auto;padding:40px 28px 0}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}}
 .hdr-left{{display:flex;align-items:center;gap:16px}}
 .team-logo{{width:44px;height:44px;opacity:0.95}}
@@ -1349,12 +1348,8 @@ a.pname:hover{{color:var(--text-strong)}}
 .team-select:focus{{outline:none;box-shadow:0 0 0 2px var(--accent)}}
 .team-select optgroup{{font-weight:600;color:var(--text-muted)}}
 .team-select option{{background:var(--bg);color:var(--text)}}
-
-/* Shared nav */
-.site-nav{{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}}
-.nav-left{{display:flex;align-items:center;gap:6px}}
-.nav-pill{{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}}.nav-pill:hover{{color:var(--text);background:var(--bg-elevated)}}.nav-pill.active{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
-.nav-right{{display:flex;align-items:center;gap:10px}}
+.scores-link{{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}}.scores-link:hover{{color:var(--text);background:var(--bg-elevated)}}
+.hdr-controls{{display:flex;align-items:center;gap:8px}}
 
 /* Theme toggle */
 .theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
@@ -1362,20 +1357,6 @@ a.pname:hover{{color:var(--text-strong)}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
@@ -1383,6 +1364,14 @@ a.pname:hover{{color:var(--text-strong)}}
       <div>
         <h1>{team_name}</h1>
         <div class="subtitle">Updated {now}</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value">{switcher_opts}</select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -1696,28 +1685,36 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 </div>'''
 
             if scoring_html or box_html:
-                detail_html = f'''<div class="gd-expand" id="gd-{game_id}">
-<div class="gd-toggle" onclick="this.parentElement.classList.toggle('open')">
-<span>Game Details</span><svg class="gd-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+                detail_html = f'''<div class="gd-data" id="gd-{game_id}" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" class="gd-panel-logo"><span>{away_full}</span>
+<span class="gd-panel-vs">vs</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" class="gd-panel-logo"><span>{home_full}</span>
 </div>
-<div class="gd-content">
+<div class="gd-panel-score">{away_score} — {home_score}<span class="gd-panel-status">{status}</span></div>
+</div>
 {f'<div class="gd-section"><div class="gd-section-title">Scoring Summary</div>{scoring_html}</div>' if scoring_html else ''}
 {f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
-</div>
 </div>'''
 
-        game_cards.append(f'''<div class="sb-game">
+        has_detail = f' data-game="{game_id}"' if detail_html else ""
+        clickable_cls = " sb-clickable" if detail_html else ""
+
+        game_cards.append(f'''<div class="sb-game{clickable_cls}"{has_detail if detail_html else ""}>
 <div class="sb-status {status_cls}">{status}</div>
-<a href="{away_href}" class="sb-team {away_win}">
-<img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" alt="{away_abbrev}" class="sb-logo">
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row {away_win}">
+<a href="{away_href}" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" alt="{away_abbrev}" class="sb-logo"></a>
 <div class="sb-team-info"><div class="sb-team-name">{away_full}</div><div class="sb-scorers">{away_goals_html}</div></div>
 <div class="sb-score">{away_score if state not in ("FUT", "PRE") else ""}</div>
-</a>
-<a href="{home_href}" class="sb-team {home_win}">
-<img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" alt="{home_abbrev}" class="sb-logo">
+</div>
+<div class="sb-team-row {home_win}">
+<a href="{home_href}" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" alt="{home_abbrev}" class="sb-logo"></a>
 <div class="sb-team-info"><div class="sb-team-name">{home_full}</div><div class="sb-scorers">{home_goals_html}</div></div>
 <div class="sb-score">{home_score if state not in ("FUT", "PRE") else ""}</div>
-</a>
+</div>
+</div>
 {detail_html}
 </div>''')
 
@@ -1730,28 +1727,29 @@ def build_scoreboard_html(scores_data, all_game_details, switcher_opts):
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8384f;--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1)}}
-:root[data-theme="light"]{{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#c8102e;--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--footer-link-deco:rgba(0,0,0,0.12)}}
+:root,:root[data-theme="dark"]{{--bg:#101012;--bg-surface:rgba(255,255,255,0.03);--bg-elevated:rgba(255,255,255,0.05);--bg-hover:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.06);--text:#e8e8ec;--text-secondary:#9898a0;--text-muted:#56565e;--accent:#e8384f;--green:#34d399;--red:#fb7185;--card-shadow:0 1px 2px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08);--text-strong:#fff;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.1);--panel-bg:#18181b;--overlay:rgba(0,0,0,0.5)}}
+:root[data-theme="light"]{{--bg:#f8f8fa;--bg-surface:rgba(0,0,0,0.025);--bg-elevated:rgba(0,0,0,0.04);--bg-hover:rgba(0,0,0,0.05);--border:rgba(0,0,0,0.08);--text:#1a1a1e;--text-secondary:#6b6b73;--text-muted:#a0a0a8;--accent:#c8102e;--green:#059669;--red:#e11d48;--card-shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);--card-shadow-hover:0 4px 12px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);--text-strong:#000;--tab-active-shadow:0 1px 3px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);--footer-link-deco:rgba(0,0,0,0.12);--panel-bg:#fff;--overlay:rgba(0,0,0,0.25)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}}
 a{{color:var(--text);text-decoration:none}}
 
-/* Shared nav */
-.site-nav{{max-width:700px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}}
-.nav-left{{display:flex;align-items:center;gap:6px}}
-.nav-pill{{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}}.nav-pill:hover{{color:var(--text);background:var(--bg-elevated)}}.nav-pill.active{{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
-.nav-right{{display:flex;align-items:center;gap:10px}}
-/* Team selector in nav */
+/* Header */
+.sb-header{{max-width:700px;margin:0 auto;padding:40px 28px 0;display:flex;justify-content:space-between;align-items:flex-start}}
+.sb-header-left h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;color:var(--text-strong)}}
+.sb-date{{font-size:13px;color:var(--text-secondary);margin-top:2px;font-weight:500}}
+.sb-header-right{{display:flex;align-items:center;gap:8px;padding-top:2px}}
 .team-select{{appearance:none;-webkit-appearance:none;background:var(--bg-surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;transition:all 0.2s ease;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239898a0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}}.team-select:hover{{background-color:var(--bg-elevated)}}.team-select:focus{{outline:none;box-shadow:0 0 0 2px var(--accent)}}.team-select optgroup{{font-weight:600;color:var(--text-muted)}}.team-select option{{background:var(--bg);color:var(--text)}}
+.theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
+.theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
+.theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
 
-.sb-header{{max-width:700px;margin:0 auto;padding:28px 28px 0}}
-.sb-header h1{{font-size:20px;font-weight:600;letter-spacing:-0.4px;color:var(--text-strong)}}
-.sb-date{{font-size:14px;color:var(--text-secondary);margin-bottom:28px;font-weight:500;margin-top:2px}}
-
-.sb-grid{{max-width:700px;margin:0 auto;padding:0 28px 60px;display:flex;flex-direction:column;gap:12px}}
+/* Game grid */
+.sb-grid{{max-width:700px;margin:0 auto;padding:28px 28px 60px;display:flex;flex-direction:column;gap:12px}}
 
 .sb-game{{background:var(--bg-surface);border-radius:14px;box-shadow:var(--card-shadow);overflow:hidden;transition:box-shadow 0.2s ease}}
 .sb-game:hover{{box-shadow:var(--card-shadow-hover)}}
+.sb-clickable{{cursor:pointer}}
+.sb-clickable .sb-matchup:hover{{background:var(--bg-hover)}}
 
 .sb-status{{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border)}}
 .sb-live{{color:var(--red);animation:pulse 2s ease-in-out infinite}}
@@ -1759,10 +1757,11 @@ a{{color:var(--text);text-decoration:none}}
 .sb-upcoming{{color:var(--text-secondary)}}
 @keyframes pulse{{0%,100%{{opacity:1}}50%{{opacity:0.5}}}}
 
-.sb-team{{display:flex;align-items:center;padding:12px 16px;gap:12px;text-decoration:none;color:var(--text);transition:background 0.15s}}
-.sb-team:hover{{background:var(--bg-hover)}}
-.sb-team+.sb-team{{border-top:1px solid var(--border)}}
-.sb-logo{{width:36px;height:36px;flex-shrink:0}}
+.sb-matchup{{transition:background 0.15s}}
+.sb-team-row{{display:flex;align-items:center;padding:12px 16px;gap:12px;color:var(--text)}}
+.sb-team-row+.sb-team-row{{border-top:1px solid var(--border)}}
+.sb-team-link{{flex-shrink:0;line-height:0}}.sb-team-link:hover{{opacity:0.8}}
+.sb-logo{{width:36px;height:36px}}
 .sb-team-info{{flex:1;min-width:0}}
 .sb-team-name{{font-size:14px;font-weight:600;color:var(--text-secondary)}}
 .sb-winner .sb-team-name{{color:var(--text-strong)}}
@@ -1774,19 +1773,29 @@ a{{color:var(--text);text-decoration:none}}
 
 .sb-empty{{text-align:center;padding:48px 20px;color:var(--text-muted);font-size:14px}}
 
-/* Game detail expand */
-.gd-expand{{border-top:1px solid var(--border)}}
-.gd-toggle{{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-size:11px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;user-select:none}}.gd-toggle:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
-.gd-chevron{{transition:transform 0.2s ease}}
-.gd-expand.open .gd-chevron{{transform:rotate(180deg)}}
-.gd-content{{display:none;padding:0 16px 16px}}
-.gd-expand.open .gd-content{{display:block}}
+/* Side panel */
+.panel-overlay{{position:fixed;inset:0;background:var(--overlay);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.25s ease}}
+.panel-overlay.open{{opacity:1;pointer-events:auto}}
+.side-panel{{position:fixed;top:0;right:0;bottom:0;width:min(520px,90vw);background:var(--panel-bg);z-index:101;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,0.3)}}
+.side-panel.open{{transform:translateX(0)}}
+.panel-close{{position:sticky;top:0;display:flex;justify-content:flex-end;padding:16px 20px 8px;background:var(--panel-bg);z-index:1}}
+.panel-close-btn{{width:32px;height:32px;border:none;background:var(--bg-surface);color:var(--text-muted);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s}}.panel-close-btn:hover{{background:var(--bg-elevated);color:var(--text)}}
+.panel-body{{padding:0 24px 32px}}
 
-.gd-section{{margin-bottom:20px}}
+/* Panel header */
+.gd-panel-header{{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}}
+.gd-panel-teams{{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}}
+.gd-panel-logo{{width:24px;height:24px}}
+.gd-panel-teams span{{font-size:13px;font-weight:600;color:var(--text)}}
+.gd-panel-vs{{color:var(--text-muted);font-weight:400;font-size:11px}}
+.gd-panel-score{{font-size:24px;font-weight:700;letter-spacing:-0.5px;color:var(--text-strong);font-variant-numeric:tabular-nums}}
+.gd-panel-status{{font-size:11px;font-weight:500;color:var(--text-muted);margin-left:8px;text-transform:uppercase;letter-spacing:0.5px}}
+
+/* Game detail sections */
+.gd-section{{margin-bottom:24px}}
 .gd-section:last-child{{margin-bottom:0}}
 .gd-section-title{{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}}
 
-/* Scoring summary */
 .gd-period{{margin-bottom:16px}}
 .gd-period:last-child{{margin-bottom:0}}
 .gd-period-label{{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-muted);margin-bottom:8px}}
@@ -1803,7 +1812,6 @@ a{{color:var(--text);text-decoration:none}}
 .gd-sh{{background:rgba(52,211,153,0.15);color:var(--green)}}
 .gd-en{{background:rgba(152,152,160,0.15);color:var(--text-secondary)}}
 
-/* Box score tables */
 .gd-box-team{{margin-bottom:16px}}.gd-box-team:last-child{{margin-bottom:0}}
 .gd-box-team-name{{font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px}}
 .gd-tbl-wrap{{overflow-x:auto;margin-bottom:8px;border-radius:8px}}
@@ -1813,37 +1821,28 @@ a{{color:var(--text);text-decoration:none}}
 .gd-tbl tbody tr:hover td{{background:var(--bg-hover)}}
 .gd-pts-hl{{color:var(--text-strong) !important;font-weight:600}}
 
-/* Theme toggle */
-.theme-toggle{{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}}
-.theme-btn{{display:flex;align-items:center;justify-content:center;width:28px;height:26px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-radius:6px;transition:all 0.2s ease;padding:0}}.theme-btn:hover{{color:var(--text-secondary);background:var(--bg-hover)}}
-.theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}}
-
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:700px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
 .footer-ts{{display:block;margin-top:6px;font-size:10px;color:var(--text-muted);opacity:0.7}}
 
-@media(max-width:500px){{.sb-logo{{width:28px;height:28px}}.sb-score{{font-size:22px}}.sb-team-name{{font-size:13px}}.site-nav{{padding:12px 16px 0}}.sb-header{{padding:16px 16px 0}}.sb-grid{{padding:0 16px 40px}}.gd-tbl{{font-size:10px}}}}
+@media(max-width:500px){{.sb-header{{padding:24px 16px 0;flex-direction:column;gap:12px}}.sb-logo{{width:28px;height:28px}}.sb-score{{font-size:22px}}.sb-team-name{{font-size:13px}}.sb-grid{{padding:16px 16px 40px}}.gd-tbl{{font-size:10px}}.side-panel{{width:100vw}}}}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill active">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value">
+<div class="sb-header">
+  <div class="sb-header-left">
+    <h1>NHL Scoreboard</h1>
+    <div class="sb-date">{display_date}</div>
+  </div>
+  <div class="sb-header-right">
+    <select class="team-select" onchange="if(this.value)window.location.href=this.value">
       <option value="">View Team...</option>
       {switcher_opts}
     </select>
-  </div>
-  <div class="nav-right">
     <div class="theme-toggle">
       <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
       <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
-</nav>
-
-<div class="sb-header">
-  <h1>NHL Scoreboard</h1>
-  <div class="sb-date">{display_date}</div>
 </div>
 
 <div class="sb-grid">
@@ -1852,6 +1851,13 @@ a{{color:var(--text);text-decoration:none}}
 </div>
 
 <div class="footer">Data from NHL API<span class="footer-ts">Updated {now}</span></div>
+
+<!-- Side panel -->
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
+<div class="side-panel" id="sidePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="panelBody"></div>
+</div>
 
 <script>
 (function(){{
@@ -1869,6 +1875,20 @@ a{{color:var(--text);text-decoration:none}}
     }});
   }});
 }})();
+function openPanel(gameId){{
+  var src=document.getElementById('gd-'+gameId);
+  if(!src) return;
+  document.getElementById('panelBody').innerHTML=src.innerHTML;
+  document.getElementById('sidePanel').classList.add('open');
+  document.getElementById('panelOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}}
+function closePanel(){{
+  document.getElementById('sidePanel').classList.remove('open');
+  document.getElementById('panelOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}}
+document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel()}});
 </script>
 </body></html>'''
 

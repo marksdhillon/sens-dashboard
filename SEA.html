@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html" selected>Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" alt="Seattle Kraken" class="team-logo">
       <div>
         <h1>Seattle Kraken</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:53 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:23 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html" selected>Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -847,11 +836,15 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Connecticut Post</span><span class="news-date">Mar 3 &middot; 6:34 AM</span></div>
 <div class="news-title">Daccord backstops Kraken to 2-1 win, ending 12-game point streak for Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxPaFJtc0hNRVNTUGFSZ2hacnZqMVNmY3ZQM0JKZ1VTUHpIVW02WjdneUNlRXZ1ajE1WEJhUkNyREY0NENocXRIbUtrWnE0dV9DeVdjaG1HdEw2WlYzc3RNOUkyMXd2QkI1X21kdjNjTWxCQzVKVlNPWVVyZG81TkFGTE13eHNaTG03QUJBRFJFUVNBZFZ3by1LeHRteXdRbVFZZ3pZOER4RHdxQjJPYkFOb2tIQ0Vva1l2WnR5ZWJ2WFNMV2JGQWZEVk1PTU1mZDdITDhUQmFKR3NrRkYxZmlITWlYalBoN1Z6Mnc0YnE4c2s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Killeen Daily Herald</span><span class="news-date">Mar 3 &middot; 6:13 AM</span></div>
-<div class="news-title">Daccord backstops Kraken to 2-1 win, ending 12-game point streak for Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNRzJGOGYxSV9vXzVfbklDMWd1V0VZajdySV9IMFJUM3lKOXpPVklreEdHcVMwUTFCMGt6VTFkcVlocnV4X2JCVTVDTGpQVUhZUnRQUklSUnRQbFRzaTNHeHpYS05rZWUtazBhWlJBQlJNc1ZCNnBoMDNOMGkyT3EzMGpMOGV2c2dsdWN2TEU0bC1iMU13M2s0VS01QkdYSng3QlRNTnNLOGx2ekl4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Daccord backstops Kraken to 2-1 win, ending 12-game point streak for Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNQzFvdE1WcV9CZjV3NEltcXJRN0luMHU3UThIUWNDaUZHeUJSLUhQQU5PY1BRSURHYmE5WWNhdE42Y3ZPZkNKS0dmcWhTREpUMnZMWjEzMHBVU0c3c3gyc1dxd21td1ZZWGxockRJN1dnSXBueF9SLWpSaGkxU181SkE5bjhpYnhTMlE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:10 AM</span></div>
+<div class="news-title">Postgame Quotes: Rod Brind'Amour</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNRzJGOGYxSV9vXzVfbklDMWd1V0VZajdySV9IMFJUM3lKOXpPVklreEdHcVMwUTFCMGt6VTFkcVlocnV4X2JCVTVDTGpQVUhZUnRQUklSUnRQbFRzaTNHeHpYS05rZWUtazBhWlJBQlJNc1ZCNnBoMDNOMGkyT3EzMGpMOGV2c2dsdWN2TEU0bC1iMU13M2s0VS01QkdYSng3QlRNTnNLOGx2ekl4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 5:58 AM</span></div>
 <div class="news-title">Joey Daccord, Kraken snap Hurricanes' 12-game point streak</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaE5qZDJmZGx2bld6WHZXN3c2ZTliaDk0czhZZlpocjZ1bUhScEU5U1VsbUc5bHBRYmhMdUg1T2tMUUVSb0RGcXlzRHZGRzhJNUFseGJwYXhPU001aGlxcGF6LWZfZnlSRkFqaTl5WW80WUw2MWJyaUFmM1AzYTdFU0hQaDFpMG81Rkw0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:57 AM</span></div>
-<div class="news-title">Daccord’s 35 saves help Kraken end Hurricanes’ point streak at 12</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5Qb1haa0ZBTGFuazhPSGdXRHVQdWR6bGl1OEVBMG9Hclh4RUoyWExNZHVQWEl4RHgwakoxYldmanFNNWZtRkVBLU0xX0FzV1VWVVdkMVNBcWV4dllkREctRVBDRFpYLVFpOUotanRDbFU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Daccord’s 35 saves help Kraken end Hurricanes’ point streak at 12</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOTGpTR2V3X3g4a0FqNXg3VkhudnQ3b3J5UFF0OUthQzZhd29QYVM2V3dTYVVONzRmRkRzaFpjMFBDNi1KR2RQcVdHZWx5WkFqTXlZWC16bTE5UUhJSkZEY3RDWXg3M21tVHlnQUc0bmNhekU1QmtSVm1sV1gyRjBVRHpXSlRfWHY1UDluMmQ2bHR5R0t3ZWx2cVFSdkplcThmR29SNExkWm1EdXRrUmc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Herald Journal</span><span class="news-date">Mar 3 &middot; 5:56 AM</span></div>
+<div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5Qb1haa0ZBTGFuazhPSGdXRHVQdWR6bGl1OEVBMG9Hclh4RUoyWExNZHVQWEl4RHgwakoxYldmanFNNWZtRkVBLU0xX0FzV1VWVVdkMVNBcWV4dllkREctRVBDRFpYLVFpOUotanRDbFU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:50 AM</span></div>
 <div class="news-title">CAR at SEA | Recap</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxObW5rWTZSakh1eG5vUEtPUHFWZl82Qll5YmR6UGN4TkxveGlKOFJUeURoTEEyZ2g1Y0JKbE5rakdUenAwdUVuV0RtYXM4OVdpMl9CTWwwRUVTQkY2eDJaN00xWG5fQko4SEJTMVZHTWNwNVB1YnFOcHpzeWpFQXpEVEtqQU9sYk1RREFmeXBTNEVIWmtwXzNEM3BVam5WZFZW?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:40 AM</span></div>
@@ -887,11 +880,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 6:55 PM</span></div>
 <div class="news-title">Kraken sign Gustav Olofsson to one-year, two-way contract</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOejZlUmhMTnVTM1gxc3I1VmFwUFFrLUx4VDFPbHRtdklQSmRrUTBORFg1NWw0cmtOQVIxSFFBdFJVQ2hjYUlkMWs3Ynp3Z3BncFdxUDlTUVlQdkx5eEN2OG5UXzlUeXJTQTdYRWN6UEJRcFRxME0yWmNaUTNYb20zVjRXOA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 5:05 PM</span></div>
-<div class="news-title">Kraken News & Rumors: Evers, Kartye, Milestones & More</div></a><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5oMnFuTTlxeU9lTnVPcUdnMjYydHpkWFV1SGZaa28xY0xWSEs1TTF5dUVVdzRjSDVDdDBnUnBfU3hXU1ZEWnFxc0QwNlBKV19sS2V6c3VsLUw3cG1VbEF0Q1o0T0JtMjFxTzJieWxUNk41NGM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 4:35 PM</span></div>
-<div class="news-title">Seattle Kraken’s 3 Stars of February</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQUjVBejZWa2wtVlFDVnY1cTNoQmdWMzcyX2dWOEo2ZmxSc0J1NzVkcVo3WnBleWdyell0dGNLZ2ZUWjk1SGZMTzM4ODhxZmFsdHlLcEJfcER0cnJEX3NZbzRFR09MdXhyam1tMFBYdEVXeU4wS1VpbUZpYW1iNlhkeDB0Vk1rRy1aTWZaa05VeEVWeU9yNER0UHRoZUI1cVRzZ0ZXSQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 2 &middot; 3:16 PM</span></div>
-<div class="news-title">Elias Pettersson’s benching, the fragile Canucks and the rise of Landon DuPont</div></a></div></div>
+<div class="news-title">Kraken News & Rumors: Evers, Kartye, Milestones & More</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/SeattleKraken/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/SeattleKraken</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -901,7 +890,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:53 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:23 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

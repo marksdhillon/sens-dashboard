@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html" selected>Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" alt="Philadelphia Flyers" class="team-logo">
       <div>
         <h1>Philadelphia Flyers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:52 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:22 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html" selected>Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -889,7 +878,9 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="47">47</td><td class="r" data-sort="8">8</td><td class="r" data-sort="4.00">4.00</td>
 <td class="r" data-sort="39">39</td><td class="r" data-sort="0.8300">.830</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="7201">120:01</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE8xMlVyTUQ2aHdlUlBBSEVQTm5WRVhoWUxGN2RHb0U2NS1PUzdxMXlNRl8tOFhucVY2OFNkbHRDbmhxeUZkNFVCbmhjckxUdjdXMW90VWpMbnV0aGM?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQN0VpR3U5SWJxOUcxWmJ4NjdURzJkZmZGMkRUX2I2clZBbU1NSDlZQnNOWTFoQVBjSGxRemk2eFZhX19mUUdxcG95VTk3RXM0VEdwRk9neUV1bjJJemZ0dk5UanVGdXZQRVNXVnl5aXMwWTYzX1RHSExYQU1hZ1ZjSWd6aFUzMVgyaldSM1loUTZOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:48 AM</span></div>
+<div class="news-title">Cates, Flyers recover in shootout to hand Maple Leafs 4th straight loss</div></a><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE8xMlVyTUQ2aHdlUlBBSEVQTm5WRVhoWUxGN2RHb0U2NS1PUzdxMXlNRl8tOFhucVY2OFNkbHRDbmhxeUZkNFVCbmhjckxUdjdXMW90VWpMbnV0aGM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 3 &middot; 4:19 AM</span></div>
 <div class="news-title">Philadelphia Flyers vs. Toronto Maple Leafs | March 2, 2026 | NHL | Hockey | Recap</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPWkVSOXVHZ2VqcWFmZVlucXlFbkZPVnJ6M3ZwRnRSaWRoWmRZdk83NkhhN3dmUzBtZzlhSENNZFMwSWdoakZIc2lrR2s5NGI4aFFBM2FPRE9yaUJwTU1rTkxHRTVuTVZjM08xeFFlWkl5U2hkNF9hc0JmeWdaaVB0ZmVQSXJCQWs4TXhFcEVPa3hPRjF1U0ZKTktNdDZCMEdTWDdObEoyRVdoRE83RTd3VEtqS0drOFR6TW5tNldzb0k1NE5jR1JzdjlzZkxaZ1VxMjlKatIB3AFBVV95cUxQQXRzU2lwcVR6R213T201R0Y0N3lfa2V2dk5yMjhjQjdEbGR2dURyVnN2dVJpbWxWTTY2Ry1sd1NHNnM0aGw3VmNDalhYSm41TVg4TFphNW15TzI3dGZxbnJWeUg1ZVZfQWJodlA5UmFFNVJYYUdiM1Z4SkJzZDZ6OE4yWFJjLTc0bXdCVkgyMWtSeS1aQVhxeER4NVVwTWFfdk40YnU4OTRrOXI0ZTZKUVJSMWRmNERWMDdETU12a2lBU1pWTFpkODRqeEViQ0lxeTByd19uZkhScnYz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NBC Sports Philadelphia</span><span class="news-date">Mar 3 &middot; 4:08 AM</span></div>
@@ -901,9 +892,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 3:54 AM</span></div>
 <div class="news-title">Maple Leafs struggles continue with shootout loss to Flyers</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZnBZU2o1ell4Z3BOTHVGc01aQ3k5ZG5NZ3liaWtxRDYzRW5SRW5sbUh2eWU3ZWlhTkJ5Ri11b1hQbDVjNnhGY3l6dmkwcDJlUnpucUZGMTlkTVRIMFAxamVQZG02dHlsMGU1Y09WSDN0V0QyNXYyZkxRdW80NDRFNXBXTVFsN1ZoOE5TNjM0TFY4aXJITUJtYy04NUsxNHAwNnk2d2Ewb3ZqeXN5RU5LQkItdUVmay12cHpKd0FJd0lXME9KWVBCYUVlU1RxbzhCR1BBdFZVMGlOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 3:49 AM</span></div>
-<div class="news-title">Maple Leafs’ playoff hopes all but gone after shootout loss to Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQN0VpR3U5SWJxOUcxWmJ4NjdURzJkZmZGMkRUX2I2clZBbU1NSDlZQnNOWTFoQVBjSGxRemk2eFZhX19mUUdxcG95VTk3RXM0VEdwRk9neUV1bjJJemZ0dk5UanVGdXZQRVNXVnl5aXMwWTYzX1RHSExYQU1hZ1ZjSWd6aFUzMVgyaldSM1loUTZOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:45 AM</span></div>
-<div class="news-title">Cates, Flyers recover in shootout to hand Maple Leafs 4th straight loss</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOS3oxMVg4ZWJTVl9ic1ZXN21KVlRpN3dlZ3lMSTF1UjNTNG9sZXlMTXRHaFlXckFVRC1WcEtBNVFoaUNvbG0xa0pSMHlDY3ZGeklYTDh0NGtCLTFiWjV5bU1WcV9lOXpuZWZHQmRzWjZOTXhDWmg3NE9qQUFZSGZxWm1naEVRcGp6MEpON01Ra2lhbVJZTmxKNl9Mdm96eWZS?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs’ playoff hopes all but gone after shootout loss to Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOS3oxMVg4ZWJTVl9ic1ZXN21KVlRpN3dlZ3lMSTF1UjNTNG9sZXlMTXRHaFlXckFVRC1WcEtBNVFoaUNvbG0xa0pSMHlDY3ZGeklYTDh0NGtCLTFiWjV5bU1WcV9lOXpuZWZHQmRzWjZOTXhDWmg3NE9qQUFZSGZxWm1naEVRcGp6MEpON01Ra2lhbVJZTmxKNl9Mdm96eWZS?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 3:41 AM</span></div>
 <div class="news-title">Dan Vladar, Flyers hold off Maple Leafs in shootout</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxPTkctLWxOaGR2YUQxcndiaFhSVTAtRllieEcyNWlVOTZGa3NrcnFOUC1ZWW1FRF8xMFFMMzd1VEI4XzNtajFMSUFsWE9FUWlMWnhRTW15RWp1TVFsMFJ4SjhYbmo4OVhDZkpiVERjMHlvMlhqa01pQVBTZFZWd1lmTUVUdHlZVGFMWU5LX054VFlLZmNmN3h0aEVYOEdTdHpIMmNUSFRRWTZYTEVtYk9yNnZ5OUJyaUxXR1FYNWdBcHZBTmlVaGlFSWRIdjFwUkRjVGswTFF5VEg4YlBCUDdqZjhjTUhyVGp6ODhHNGs0SmJSQ3ZfaWZGNE5MWFBJeHFEdThQZV96MUtmSEREUlQ2Q2wwTdIBmAJBVV95cUxOMVlWVm83MERSaUU5ZVhwbnZUbFQyNWFqMjFvdnJsVWxQZW5UekFBTFlRel93ZUpvLW12by1HSlJzeXJfYmdHbFVuTm1sak5lQ19GTHZQNmJaV1JHejJSRU42MnJ0WEFBNU9UbktFWTc4VnhRN1ZGMGdWeElYU3duRTJReXB1eWo5bGs4Tld3OExLc1hWaE1OZHNzYkpoTXJfOEZUWW1DS2owS2F3dHd4ZC10SG9PTnhZZmEzdFRpcVlONF9LZUIzZlFvT1hxVnN0ZjhJYWhSZTVOVUxRVFI4MXVfdi1fWDRQdUxTMkRWbHJ2UWQtZ0xBYldCZmtFdXRIMERjZTZtWkFzZnEtWUxZRG5mZUdBTHlJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:30 AM</span></div>
@@ -933,12 +922,12 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">BarrieToday.com</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
 <div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQR3l1N2xQeGM0Wl9lbEJXUXFqNUg5eDJ4RV9reGU2cjl0R2M4cUxuN0otMHhUcTFpNjFhNTVBdzEycE9zcmFSYWtFeXFzXzdRMHotQ0RBa3VlSGpkVmNEZjg5d1daMEZDR3RQVFdHR2RobVZsa2pRNjRmZHJJVG12ckF5MnNDVFdyNWplaklldDU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">BurlingtonToday.com</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
-<div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPdUNfZWpoR0k2WHdvbG92NUZJZS1VaGd4bC1KMHQyLUNUNFhyN01hRGhIbGdqSGJQdDRIS3JCNmhIMl83ZU9VSUhWM2M2S0Y1dktGU2o3NGxhVzdFOWdCUjh1b0lfMmpDTnU2LTY4em1ZM2wxbUQ5WGVsYVY2cXlTWXhITlphWF8tNFE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">MiltonToday.ca</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
 <div class="news-title">Way To Watch" Toronto vs Philadelphia Live 𝖲𝗍𝗋𝖾𝖺𝗆 On Tv</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQN2tZQkdkM0JRT2F1akV4TVJETDk0SEhyYzVIXzRESWdPMFc3U0U0bXBZbmRFVzFKMHRfek1HRW5LVUNLN1R1a0ZkLUlsUTZUSmM4WlV5NjM2QVZ2c29EcEFwRnZoUm1mRVFIc3Vyb21saU5GNnNHc3VUUmowdDhrUUs3VEFnSGVz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sault Michigan News</span><span class="news-date">Mar 3 &middot; 12:25 AM</span></div>
 <div class="news-title">TV-Channel!! Toronto Maple vs Philadelphia Flyers Live 𝖲𝗍𝗋𝖾𝖺𝗆 F r e e</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNMHY1eU1sWTE1bnZ5Z084b3NpcDBiUFpNaEZvWXRTb1ZUdnV3OW9DQ0hPVjM5VDVYWjNrYWFrYS02bHdUM3NMU0huSGs4dlNHXzMxUjhEa2Z3QTc1c0ZYOXlia3BjY2JSbTRULWc4OUtuOGpZSlRsTkFNSnh0WlFkUmpoMWt5SWhjcVJQWHpHbkItU1NR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Vancouver Is Awesome</span><span class="news-date">Mar 3 &middot; 12:19 AM</span></div>
+<div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQb1VTYVRjeVVOVFlUeWUzYXJuSlRaeUNMWDAyQTlKOWNoWmZnc1NwOV8tVUQ1S3dLbzBwbnZDT1Z5Tk9ETFpuNGp3Z3JSTGVyakN0SXJfNDMtNnFJM3RfVkNXWk1QelZUd1lpcENWVHJUOTc0bWQ0MmY0eGdaTUtSOWxCamViV0lXdHhsVTBR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Coast Reporter</span><span class="news-date">Mar 3 &middot; 12:16 AM</span></div>
 <div class="news-title">wATCH NHL~ Toronto Maple vs Philadelphia Flyers live updates</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
@@ -949,7 +938,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:52 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:22 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

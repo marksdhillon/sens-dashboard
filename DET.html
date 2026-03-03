@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html" selected>Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/DET_dark.svg" alt="Detroit Red Wings" class="team-logo">
       <div>
         <h1>Detroit Red Wings</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:51 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:21 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html" selected>Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -830,7 +819,9 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="673">673</td><td class="r" data-sort="73">73</td><td class="r" data-sort="3.04">3.04</td>
 <td class="r" data-sort="600">600</td><td class="r" data-sort="0.8920">.892</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="86540">1442:20</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxNZks5dE1YRWdUaVJ3QXo2bWNNNkhCNkVmMmRtMnJoUnlWc2tOZ2hQNFBkQThYWXNrSEYwUGhzcUVIQVBpd0dzOGdkc2VSTThZbU1qS3k0T19CMFQwTVR4MlJTZGtRek1HUFdIZDJGQl91dXhTdlpPaXRaY05qS3NrNG9ESldDSlJiNmlBeTI2aTZtQXNKTkpMczhCZ1d4Q0JOeU8xbTkwUXVQdGptOFNmVjRvTW9kUUNTUVZLbnVEejR2Y082VGhFOFExZlYyOTVWMzFyTE5zUVZjbW55dXdHN0tXenV6TWt3R2ZMY2FXWDFrLWZyMVhrQ3lEbjhFY2RXb3d6NkJjd0hWY09pc0JnQXpaRdIBmAJBVV95cUxORkt4LUVFU1k2Q2dyc0Jfdnp5YnJUeTU3TDhKWW84WTJHQnliREhPel9SWjdjX3g4VUxMYVVlQWp4YXNhWWpOT1ZRM2d3MmZoaU5Mdkg1VEh6QUVDNFZBVEZrSUpzeVRiQkl4MTVDV2R5VVNWTXlKR3k4WWtGNENvMHN2MEh1dlhmQldPVmJrMEhBaWdGdGthRlprV1FEVGZZQzNoWlFJUDJHMEFfU0tjZDB5dUhLZWZfM3RfMTJJVktqbXBjRHlvaG5IS1NLd19Dd0F6a1VXNGd5MDFrV0hoNmtRS2pudEs0Vl8zOU5zRjVFMXp1SFNPczQ4dGxPX20zSkFGQnJiZGNjbTJIX201RkM0RWVlb0N1?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNTTM0MklvUDctR0c0dTBZYTZZWFhrYUtqMi1ISHA0dWtkMlFxWDg3d2s2M0RKVGM4TC16RjdUbGl3ZFZvUDJ2b091dnB2WDFDdzBOOTdGWi1KaXBmc2gyZkRRc0U5Ykd1b094dWVmcnFtX2RlX1lMcEE4Rm9lZkF0U29ZdFd0eGFHY1RJR0ZGNTZuUmhGZFhLS1VwZ0dSYWVES0k0UngyQS10REpCTUN2amdMTDFnTEJT?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 3:55 AM</span></div>
+<div class="news-title">Canucks rumors: When Elliotte Friedman expects Tyler Myers trade to happen</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxNZks5dE1YRWdUaVJ3QXo2bWNNNkhCNkVmMmRtMnJoUnlWc2tOZ2hQNFBkQThYWXNrSEYwUGhzcUVIQVBpd0dzOGdkc2VSTThZbU1qS3k0T19CMFQwTVR4MlJTZGtRek1HUFdIZDJGQl91dXhTdlpPaXRaY05qS3NrNG9ESldDSlJiNmlBeTI2aTZtQXNKTkpMczhCZ1d4Q0JOeU8xbTkwUXVQdGptOFNmVjRvTW9kUUNTUVZLbnVEejR2Y082VGhFOFExZlYyOTVWMzFyTE5zUVZjbW55dXdHN0tXenV6TWt3R2ZMY2FXWDFrLWZyMVhrQ3lEbjhFY2RXb3d6NkJjd0hWY09pc0JnQXpaRdIBmAJBVV95cUxORkt4LUVFU1k2Q2dyc0Jfdnp5YnJUeTU3TDhKWW84WTJHQnliREhPel9SWjdjX3g4VUxMYVVlQWp4YXNhWWpOT1ZRM2d3MmZoaU5Mdkg1VEh6QUVDNFZBVEZrSUpzeVRiQkl4MTVDV2R5VVNWTXlKR3k4WWtGNENvMHN2MEh1dlhmQldPVmJrMEhBaWdGdGthRlprV1FEVGZZQzNoWlFJUDJHMEFfU0tjZDB5dUhLZWZfM3RfMTJJVktqbXBjRHlvaG5IS1NLd19Dd0F6a1VXNGd5MDFrV0hoNmtRS2pudEs0Vl8zOU5zRjVFMXp1SFNPczQ4dGxPX20zSkFGQnJiZGNjbTJIX201RkM0RWVlb0N1?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:35 AM</span></div>
 <div class="news-title">Detroit Red Wings goalie John Gibson exits NHL match against Nashville Predators with minor shoulder inju</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE01WFItU0JqWEVtMXNSdFdla3E0RkFWQlJnTEZHQjdpbG1wYlhlNmJzUlNHS3VrdDFwelo1TnJyRTRaNGhkRHJIVHZaaDhOX3hkTWxfNkQyX1huVXBTNVl6WHh3QVMyVk1kZXprbmlGY3pES2lNWGNzaE1aTQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:53 AM</span></div>
@@ -870,9 +861,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 9:46 PM</span></div>
 <div class="news-title">Nashville Predators Fall To Detroit Red Wings On Controversial Goal | Recap</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQUlB6VjRIT09lRXB3cW9RdG1oLWJiOXJ3WmpnbVM0T1hiNlVrbVdpbV85SXRwNU1pUGNWeFF5SEdjeG9rQjVjTTRZUFdsQTVpcE9Pal92eVlZaGZKaW04bzFXYTlsdUlwRkhablQ5UkRFS1hvcm5INU5VT1JENHVXT3hlS2Rxcko5SV9hdXEwTjRRWkh6dWNz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Evrim Ağacı</span><span class="news-date">Mar 2 &middot; 9:21 PM</span></div>
-<div class="news-title">Red Wings And Predators Clash In Rare NHL Matinee Showdown</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOcHJ0bVU1QjQxaVMyM1FJd2pvV3lQUFk2U2ZYT08taVBGb1BxckJvMDR1eXdRRzBEdkFoLU12SG9UT0JkRTZ4UFFJTWZwcG90TXloY2NkNndybUZEX2VmUE5rX2hUZ0prczFUTnlEOTh1SXR5Q0FVWDFlTjVjTFF0WDZVb0hWeHBJSm80SGhmMUVrbHFNT1RB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 2 &middot; 8:54 PM</span></div>
-<div class="news-title">Red Wings goalie John Gibson injured against Predators</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Red Wings And Predators Clash In Rare NHL Matinee Showdown</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
 <div class="news-title">NHL On Tap: Smith to debut as Kings coach against Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOMkVqSVRlNFFkV3pNTFJ1TnZlcTRPS0ZOOUdMcjZTd3dCY29TMUo2UDdVQkpFNnR2WkN0MlVnYXhxeGNWeXpvRktWTzRpT1RtTktGdlhPcVRwd1pSLU1RbDRtM0hvY2s2Sm5pdEhENE1lV2VER2ZDVHdYbm11Zi1CUTB0UU5ZMzZpZm5ROFJNaHN3RTlrbHFUbWZ3ZGZEVlVLMzhMRXhyWFY0OUNIV1FwUlF1T2VzdWc1?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 8:30 PM</span></div>
@@ -890,7 +879,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:51 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:21 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

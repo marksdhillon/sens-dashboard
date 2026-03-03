@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html" selected>Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg" alt="Dallas Stars" class="team-logo">
       <div>
         <h1>Dallas Stars</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:52 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:22 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html" selected>Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -851,7 +840,9 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="572">572</td><td class="r" data-sort="50">50</td><td class="r" data-sort="2.31">2.31</td>
 <td class="r" data-sort="522">522</td><td class="r" data-sort="0.9130">.913</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="77989">1299:49</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFBBdmhhalYtaGxUaXdZdlBiNlNvSm9JaWEtMGtpT1Ayd2FZbjdmWmd2N2NITW9sVktLZkcxbUlwZUp3Ml9oUWhvdDJ4eG1DUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOZXJYdEhwQmtpbmdpVGhoXzVZaGNOdFVXcHBwQlNraUhYbXFhc3NxdmFTelJjQkhUa0dqN0tYeGdOeTZ4Nm50R29NNzVLWWNna0V5QXFiR2VTMHBWUXp1YUsxU0hXTmJPdHRSNktwSXpBSUJGTkJvOVU1aGd4X3pfNjJUTmJrQjhnanRweFplVF9YbU44Yi1QOFhFekpzdGZteE1ORmdfUGd5WGNDS29STFpwTlhuRjZaTm4xQ0tuVUh0ZUhzdXFBV09nN3VXUGZESUNJbXNwN1BiN2hGZnc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsbook Wire</span><span class="news-date">Mar 3 &middot; 6:52 AM</span></div>
+<div class="news-title">Dallas Stars vs. Calgary Flames odds, tips and betting trends - March 3, 2026</div></a><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFBBdmhhalYtaGxUaXdZdlBiNlNvSm9JaWEtMGtpT1Ayd2FZbjdmWmd2N2NITW9sVktLZkcxbUlwZUp3Ml9oUWhvdDJ4eG1DUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 3 &middot; 6:00 AM</span></div>
 <div class="news-title">Stars hammer Canucks for franchise-record 9th straight win</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxNV3hGMTFlSVREenZHdDJkakszVlBqaEh2STdrcXpKdjZ3bFA0TjNuME52VTJzNGQ1TVBfVm5PZHhjUVJwQUROYWhTYkJ4ay15M0dSc3B2Wk9wNkFhSFZsYmV6WjViSjM2dm4xZ1NvMGtKYV9MZk1EbUZzeVk3MXg0UE1KTEh5Zw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:54 AM</span></div>
@@ -863,17 +854,15 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">CBS Sports</span><span class="news-date">Mar 3 &middot; 5:48 AM</span></div>
 <div class="news-title">Dallas Stars vs. Vancouver Canucks - NHL Game Recap - March 2, 2026</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQVXhVanJlaHpVZVFIek1zMUNZMnY1SW9MV1p4cGx0dFlzUXRfc2hLVzJ2c2JzTUtjejIxNWVSLXdyWnVkSi1aTlQyanE4N0RlMV9uTjVQcFJ0VGdrdDluRXVILTVOZDFoVU5xQWtITnBjd0VKYVFUVVgzYjVsdVAtV0hwY3ZzaElRQUVFbGF1d2ZfZVFWQmo2ZFBNOUNsS3JERUhMYUI4VHpNZWhSdG5TWDY0aXJTaDg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 5:47 AM</span></div>
-<div class="news-title">Stars extend win streak to franchise-high nine games with victory over Canucks</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPeGRjaTl1MDFHSHpncklfX0t6UENZd3ZhaEZjS1FoZzJFdW1pOXBveUdRWVEtR1kwMjBQY2FPNXkyZG5QZzhwZXRWVk13NGJpZGVFZEJPV0RmYXAxbVo1dHIzb2dXaWZmUFVUZ2ZrWXMzQldoSDd3QmVTUkZWYnhGaDg1V1gweDlGUDMwajhsM0VVWV9OMUpzcHJWYjg2NHJnZ0NSclEtNkRSVFB1?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Blackout Dallas</span><span class="news-date">Mar 3 &middot; 5:45 AM</span></div>
-<div class="news-title">The Dallas Stars flat-out decimate the Vancouver Canucks to reach a milestone win</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOZ3JocGpqSVF5NU13WnZnSWo5clhEbm5DS1dkUmNIQjBpUnJLSDdiU0ozQXhkVXN4RTlDd2RtdXdveF9KYnlQdl9TWk9SOGdJclpuWHJSTXdWd1ExdklPLTFZOHFURDFhTl80cnpOZG56ZkxuM2J3bFJ3dzhwN2NCT3Bkb2hFS1d2RTl2YkxhX2JlcVlPam9zQjJZbHZDUWFUMVVsV1V1Q2tkRXJwMXJlMWJmQ0w?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">DLLS Sports</span><span class="news-date">Mar 3 &middot; 5:43 AM</span></div>
-<div class="news-title">Dallas Stars game notes: Franchise record broken, hard hockey, & bizarre bounces in win at Canucks</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNZ3o4MDVDZld1OGRhV3A5RkRJWUd6aFdnb2k0QVl5bUNGUncwMDY5c2FSazg4M0tZNkp1dTVvdmdqcEo4YzdJRl8wWVZvOW03YzY1MXhQXzdCSWpvM2hfVm05amNhdzdGUW01TEd0UldTZlVWYTNIaEt0Q00zUHlWc2lIT1RtaXlURlZkV004bnJiUkY4djA2cg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Stars extend win streak to franchise-high nine games with victory over Canucks</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNZ3o4MDVDZld1OGRhV3A5RkRJWUd6aFdnb2k0QVl5bUNGUncwMDY5c2FSazg4M0tZNkp1dTVvdmdqcEo4YzdJRl8wWVZvOW03YzY1MXhQXzdCSWpvM2hfVm05amNhdzdGUW01TEd0UldTZlVWYTNIaEt0Q00zUHlWc2lIT1RtaXlURlZkV004bnJiUkY4djA2cg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Chilliwack Progress</span><span class="news-date">Mar 3 &middot; 5:36 AM</span></div>
 <div class="news-title">Bichsel nets 2 as Dallas Stars thump slumping Canucks 6-1</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOUVR0N0xwbDRMeTBnZmtBa2t6UklmRGpsLUwxQlphX052emhZSzhGY3QzNXI4dVpoUDhfdGVWdEhDWkxoQjM3ZzNWbmhETER6TWt5QUp3ZFFnYlpqVWxHOW9fSXV6R3FYMkg2ZkZrWFQ4RkVIMDVLV3EtM1FpLXRQeXdNREVoUmZoNTlJOXZTX2pzekgwelFtcUNaVFNfdV9UbXc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 4:34 AM</span></div>
 <div class="news-title">Stars’ dream, nightmare scenario for 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNeWZRbE91dWFIUUZtby1GbHUyWEJndi1lNk03eGsxaVhUV2pvSHpuZnRyWlBlYmdjRG1NVFI1SU1WWnZuRkh1SlpzZGZUTmFZeUJlUDhoMjNsbjZTRVlZSVVEcGxEZm5haFNvUkdUMUgxMUQyZXdWaXZMY1ZDeUt5YVlVVndqX0E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:24 AM</span></div>
-<div class="news-title">Evander Kane with a Goal vs. Dallas Stars</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNdG95MnlSaEd2bjdvbHQzUHF3QkZubmhIcXpmNW9vRnA5VktSWnZmOTRjbmdHWDBUVGY4aks3TENBZ2VoQU9tM3NTS25MYmxyN2g3U0NZRnY3YzFwX3RJVWRLZnp6Rm9LUXdnSDB0TW9HM1puNkxuUHkxUDRuc24xMGd4b1NYREVBd1ZYZVBUNmpLYllfdjBhLQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Evander Kane with a Goal vs. Dallas Stars</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE8yR2gzS2tQUWlsem50cDhzVkpvRDJPSmdrQXpQNFdDX3UzeXdZdDlmUEFjcmVfVk1QdUNfTmFuVVJLX2pqc2xUMUFQWEFxT0ZQaWxEQnBQQ0gzaTJPMEpWQ09DaFk4bnYwZjBLLU9LR2liVm1sY3ZtNGZNQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 11:00 PM</span></div>
+<div class="news-title">DAL@VAN Pregame: Sam Steel</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNdG95MnlSaEd2bjdvbHQzUHF3QkZubmhIcXpmNW9vRnA5VktSWnZmOTRjbmdHWDBUVGY4aks3TENBZ2VoQU9tM3NTS25MYmxyN2g3U0NZRnY3YzFwX3RJVWRLZnp6Rm9LUXdnSDB0TW9HM1puNkxuUHkxUDRuc24xMGd4b1NYREVBd1ZYZVBUNmpLYllfdjBhLQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">CoStar</span><span class="news-date">Mar 2 &middot; 10:34 PM</span></div>
 <div class="news-title">News | NHL's Dallas Stars weigh future game day real estate</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOYkFfdC1ZREc2X09BR0NMQnlreUpfUUJ3Y3JYSFFYRUNzS080dy1FZ2I0c09iYjJaSGk3eHVGMjk0ZUdFN3dFY0loUTBfRTdCal9KdTVyd1lCeEE3Y1RUUmw1TTB5N01FLWtneXc2a0FzekY5aUVsZlFfc3doR0YxczMtUWZkeWRR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 10:18 PM</span></div>
@@ -881,9 +870,7 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Blackout Dallas</span><span class="news-date">Mar 2 &middot; 9:48 PM</span></div>
 <div class="news-title">Jim Nill misses out on a bargain steal trade from within the Central Division</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ3g4YlZTUW1mQTlldjczTTF0LVlDVWYtZzRrb1NDOWw4c1RZLVNXVkNleEpDTVdZNTVTMVRaOE5DSS16OGJRR1lFaThJeFFNUXhyUGNuNC1NWmg0b19feWd0UTc4eVVCMi14eDdFRzdRRExHU1NwN3pwdU5pbXAycTRIY3pVUHpyRFdRR05SZm5iZm1aWTVuTUNfRlZkbEJ2akHSAacBQVVfeXFMTzh4c2xEbm9Tbk1IUERMTG5UUFV4Z1dCMTV0ZzRFV2VDbkNuTERaLVl1UWNjeHFaYUdCaUZDTllHZTZ0TGJoWERyMFVpcHJxaDYwS2tTZkdacDhTTGNVREFzSm9aNm5JT2xLbXhzanFrYm9rcmpmNFVTRWwxN1hYdVp0ZG1pZVVkbHpnVTlRY0pxX2htTXlacHRIM1V6NnctXzlGWldUQVk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 9:40 PM</span></div>
-<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNRUxSRVIxVVBsNlM0SGtaeVROSzNFRmtCanhBWVZUcm81QTNGUlYzRmRpZXp0c0d2cUE4ejVZTXc1QTlSTmFITEtNTy1iUEN6TC16aHB4YS1RVFEwdGxGUWszOGJpaVhpejNSNEgzWmRSRWdkVndjbmlsNnR2TU5uZ2pPQmRtY0Vla24wS3laR2xmcnl5TGc4cG1qNFFMUXM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">DraftKings Network</span><span class="news-date">Mar 2 &middot; 9:06 PM</span></div>
-<div class="news-title">NHL Best Bets: Top player prop picks for Monday 3/2/26</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdnJ0Y1ZGRzZtR1A0Mm83aDhISXp4VmtmNnVEVE40dGRkQkhFa1kyX1J0emd4aE04LUtwN3owSXZaQ0xLQ0pUUXZQVGRUanFDSTcyWWxDazFYMk9FS3J4T2txSzItWEprby1ZOWtQaUdEa1RoVHB1c1VYSEFDTkk5SVRhQjFuZ1pMTkpNMm9CN0NHT2hZemdQVGU0VU1RellW?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdnJ0Y1ZGRzZtR1A0Mm83aDhISXp4VmtmNnVEVE40dGRkQkhFa1kyX1J0emd4aE04LUtwN3owSXZaQ0xLQ0pUUXZQVGRUanFDSTcyWWxDazFYMk9FS3J4T2txSzItWEprby1ZOWtQaUdEa1RoVHB1c1VYSEFDTkk5SVRhQjFuZ1pMTkpNMm9CN0NHT2hZemdQVGU0VU1RellW?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 2 &middot; 9:02 PM</span></div>
 <div class="news-title">Canucks Live UPDATE: Tyler Myers skates but won't play | Call an Uber, trade rumours have players exiting</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
@@ -901,7 +888,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 2 &middot; 5:42 PM</span></div>
 <div class="news-title">Jim Nill gets real on why Stars won't spend during the NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOQ19HZW5sN29EQ3dnQUcwblg1VFpHeTB4UEpSOTEtNVhuVERocWFhanFxNjdQR3lsS1pMWC1ROU5xQkxVc2dfZVl6TUFDX3lYNzMyRjdXaWhxcXhNSEVwRjlmMTJMZ0N3UmJVZkx5bWYxQWdsQWRvOEpOOVlkajZ4cFBNQnp1eWtmRFRCVnAwRENNZVlkaFk1ZVVNOG14YjFLN3NiUmFGQXVPWXcwXzRMTg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 2 &middot; 2:27 PM</span></div>
-<div class="news-title">NHL Game Preview: Vancouver Canucks vs. Dallas Stars with Line Combinations | 03/02/2026</div></a></div></div>
+<div class="news-title">NHL Game Preview: Vancouver Canucks vs. Dallas Stars with Line Combinations | 03/02/2026</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPeFZvRFd2Nm5Nd29GN1RWX3JYUkhTS2xTNjRHV1lqYWVqRWR5a2tZN1gzZTBFbHpHZTJsYVlWamdtOHR2d1N1SkdMNXdJc0o0bjNfam5MZXhSOXprbXMtTmJyTmpGMHEyTFNXWXVKZzBKSy1CQ2I4S3pORndBcldrbG9zb3dWVlNEbTBWUmtsZVl5S2FOTHVoSWU3NWFmSk1sVjkxRGVSQmJjeG8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 2 &middot; 2:06 PM</span></div>
+<div class="news-title">Canucks Preview: Three players to watch against soaring, shooting Stars</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/DallasStars/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/DallasStars</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -911,7 +900,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:52 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:22 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

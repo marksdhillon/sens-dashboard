@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html" selected>Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" alt="Los Angeles Kings" class="team-logo">
       <div>
         <h1>Los Angeles Kings</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:53 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:22 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html" selected>Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -875,17 +864,15 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="0">0</td><td class="r" data-sort="3514">58:34</td></tr></tbody></table></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPN1h2RGdoOXNnNWhSM0hSdzRxU0NrekNQM1VHUTlFNGxCSEc0Y0xhbFp0QjE5ZU1pWndaTW93X2RwRXRnRTVLZzRld2F6U2M3MTF4ZnFrUmZMUjJIYVk2NkViMTFVRnppYkctVzJsdVJ0QmIybUUya1VrMTdiRGFrQXNudGl0aVdRUnhfZmt2aE5UVmlMZ1JVSS1iVms4VkdjWHJTVkEyRlFnckNrVDJOa2t1SHZhVEVaOHlUV09MUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 6:47 AM</span></div>
-<div class="news-title">Toews scores late winner as Avalanche beat Kings in Los Angeles’ first game under new coach</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdng4SzFBcnpLVG9UQXRMS0doWXY5VWxxYXItV1J5cFItQ2xmc3dKNVhIa0RlVW1IVGEzcE5aaUVDb09RcTI2LS04cHcxMXR2UVAyQzZpcnBJV2VIT3NPRWVQUk44TVdjYnlVdHgtOVA2aTNPeElIYjE1YXIyU0NvN2FSbjRrTnFBbmRDb2Nn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:38 AM</span></div>
-<div class="news-title">Toews breaks tie in 3rd, Avalanche deny Kings in Smith's 1st game as coach</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOaklSUUpVWTIxYlNneUVyWGxvejFWR0huQXBzZF9VYTFrRF9oV3g2RE1rdU11REN3RWU3bFVBME1nRWVjcUFPTFRTc25SVERrMERjVjFMdjVxOHpoanhBNS1HbFBxMTFtS0N5ZGY5aDFTdzZzQjNmQmNISzF6N1ByT2k3OFV4ektZVEJGSVhSU2ZabDBGS2hwcXhZVmpUNUxYMUM0MXJSRWY3b3N2VjlncA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Los Angeles Times</span><span class="news-date">Mar 3 &middot; 6:38 AM</span></div>
-<div class="news-title">Kings’ high-energy comeback falls short in loss to NHL-leading Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBndk5UYUYwUXR2WXgtZnNDalROZ3o4R3o4RU81QS1YLWVfZzBZUm40RTlqY05aQmpzdDFVbWRVTzJRd2N3ekpwZk5TUDRrOW1tczZnQlBiZWRYcGxYaUpmTHVpVGxpdHk3RnVDSWtZM205LVlqY05QcnBYSQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Toews scores late winner as Avalanche beat Kings in Los Angeles’ first game under new coach</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPMFRrU0IzMDlWSmhROGFWV0pkNEtHTDlvZXFVZDNkb0dRd2k4Z05pME9QY3hVNVZHRWJCRGlnaVJtWVd6T3M3YldsTGxJbGNMdERKSEc2V1JMX0Q2WlBfM25aSml1TU9iY2FZYlhUSjFEZkdMVExFRks2X3cwRzYwZk04dmswN0Q3SG1PRHU5VkgxWmlHMFFETVJ2Zw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:41 AM</span></div>
+<div class="news-title">Martin Necas with a Powerplay Goal vs. Los Angeles Kings</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdng4SzFBcnpLVG9UQXRMS0doWXY5VWxxYXItV1J5cFItQ2xmc3dKNVhIa0RlVW1IVGEzcE5aaUVDb09RcTI2LS04cHcxMXR2UVAyQzZpcnBJV2VIT3NPRWVQUk44TVdjYnlVdHgtOVA2aTNPeElIYjE1YXIyU0NvN2FSbjRrTnFBbmRDb2Nn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:39 AM</span></div>
+<div class="news-title">Toews breaks tie in 3rd, Avalanche deny Kings in Smith's 1st game as coach</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBndk5UYUYwUXR2WXgtZnNDalROZ3o4R3o4RU81QS1YLWVfZzBZUm40RTlqY05aQmpzdDFVbWRVTzJRd2N3ekpwZk5TUDRrOW1tczZnQlBiZWRYcGxYaUpmTHVpVGxpdHk3RnVDSWtZM205LVlqY05QcnBYSQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Sporting Tribune</span><span class="news-date">Mar 3 &middot; 6:31 AM</span></div>
 <div class="news-title">TST Images: Avalanche defeat Kings,4-2, in Los Angeles</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxORmRLZFBFVHFLQUc0Zng4YWJlTWhZTTF1cWM3dFNPbVVOajIyNlhOV21QX2JaZi0tZDVLVktEWHFCTnZJZFVNMnlkNFFWYU81M3JpOHhaUzVEdFpFLVNqWW5mNVVZRHlaUll1bGpERzlrYm5hdERfaF9fWUxDQm1MdGtLYi04aWdYdGVZNDd0NTMyNURlbWc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Evrim Ağacı</span><span class="news-date">Mar 3 &middot; 6:25 AM</span></div>
-<div class="news-title">Avalanche Edge Kings In Tight NHL Showdown In Los Angeles</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNUHQxaG93akF4V2ZFaDNWS0FjUjZBOEJmdUlrX1N3aTNGc1ROZnRoTkkyc0dEd0xBLTJ5SzcyZzRfcHBHQ2N0VjhDWFRZYzBXOVR3M0JsT2xIMVBBcHIwcHM4WllmdTJJLVU5VnZxVHZvU1M2czMzRXQteGRFc0hheWVn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 6:22 AM</span></div>
-<div class="news-title">Los Angeles Kings vs. Colorado Avalanche - Game Highlights</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOTmNVNlM1VWprNzNVdmFoSkw0d2syQUNRVXNib0R3SmVoTkwwa1NfNmpVQ3FqUlMzbFUwR1BiWkVESHRVX0d0Y3BUeTNYN1NkektHUk4yYi1JS0luSjVSZG5BaF9jNnJvbW1hLU5sYmY0ZkJmRU5hU3hNM0dDRzBaZ0VYMWVKS19tZFl0WDBkLVhXS3pWYUdaeWV3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche Edge Kings In Tight NHL Showdown In Los Angeles</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOTmNVNlM1VWprNzNVdmFoSkw0d2syQUNRVXNib0R3SmVoTkwwa1NfNmpVQ3FqUlMzbFUwR1BiWkVESHRVX0d0Y3BUeTNYN1NkektHUk4yYi1JS0luSjVSZG5BaF9jNnJvbW1hLU5sYmY0ZkJmRU5hU3hNM0dDRzBaZ0VYMWVKS19tZFl0WDBkLVhXS3pWYUdaeWV3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 5:41 AM</span></div>
 <div class="news-title">1 player Kings must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQWS1HdDNXTlpCM0NuYkVJeGFwYzctLW5LdzZYMzRmZjRfa0lmUFcwbXB1OHFlR2oydHZoU2VBcHRCSWtzSF9xNGIzQURYampKWEp4d0VoZE5IQjgwSFF4SzRyM0RyaVgwNjhkUFkyMmJic2NLVlpac092UUdVc194bFBLay1QNUlnMjBGRm9SeW5IbnBnNy1VdlVvSjJDMDhXTzB0UA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Sporting Tribune</span><span class="news-date">Mar 3 &middot; 4:31 AM</span></div>
@@ -913,17 +900,19 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 2 &middot; 10:51 PM</span></div>
 <div class="news-title">Matheson: Simply put, the Edmonton Oilers need more from Darnell Nurse</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxON3hwb0ZDTE81bzc5a0JCSFhLTGtmeGpsTTJWR2xMRkV6eUJLQXJVRm9jZW40V0VqZTQwYTJPUm1ranVUVzBuWGJyejAtdGxtV2R2TUl0ZDFGWWFZYkdBRGxONkNvaVpnT3A2T082YmF1NW5iVUU0TDFhZkdGejdtQXZsOTBmYkRLc2FlMzdUMkVsaWREOTZpYmZSZ29mWGNmUjg3TQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:46 PM</span></div>
-<div class="news-title">Game Preview: Avalanche Aim to Sweep Kings</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPam9mWXNlOGtEeHVEQTFrbm1rUHNfejFDejZHQVFVbm5zR0lMdDQ3QWszQzhPMFNDTWxYYms2Z2hFUDZ3TFk2RnFIV0tobFk1QzRnRmMzLUIxSjRTaERXa0JGUUlhMmljVDZqeXViaHRORHhZNklhSmYxTFdVOFFxaWtJZzZaOFlSMlhrQTMxelg3U1FqcllMa20tMzM2YmMzUlJsMnNleTlBeEJBcWNTejYyOXN4eFk2VGh2QXduTGtDZ3ZvNkRZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:12 PM</span></div>
-<div class="news-title">Kings Vs Avalanche Game Preview: Kenny Connors Makes His NHL Debut</div></a><a href="https://news.google.com/rss/articles/CBMigAJBVV95cUxNTUYyRFVmX21YMUdNNm55NVBublAtMTJLMFIzcVBxZlptbHFjR2F4OHA2OExpbEdTSWxQZkI4S3JBSWJ4LWZmeTI0TWlKNmFxUG8xZEZSYTlPbWY5bUd0RjVzQzlmbXdUSDNfejNObkhQQ2xTUVhXUE55SEZzY1RBYnRybUZOX0lJa1FSWGh0ZG1yLWllZVBwQVI0NGhTZXA0SlRCcGtlVV9ZNnkzRzFBYnJlZ1dRU19FSzRrNnpoNlEzUEdaREdvbmswMW5VUmE2c2JFaUtPaUsxRmY3UEhsaU9zNDVXSjhhSk9aNnRSQUMtcmJwTmRuOE1ocDZPaEYt0gGGAkFVX3lxTE5FUHJ0bnkwLUxvMlU3Mm9RdDlYMjFWVVpEbUlSZ2RLeDlPLUdCLXNScGl3NnIzV3FoMkEwcXh6VjQyRU9LWUJQYWZtNUtJZUdzUXE2N0VIRmNxMlUzWGZpb0NmUVVlTWhpanh5cFRCM1VQdC1GRjhYQ3JOUUxzMk03eGd1eVluYlA5eF90ajBJZHJsQnNlb0VtSlN6YmJWOXFwZWliWXkwMGNSZnYyT0loTjBBc0QwajhCX2s1NHoxbk02YVBYRXI5VlZKQW15cVFzeHJIQmYwVXY5TWs5ejV1REJEa0ItNm50RzN6S3BjM3hIeEUzMzVWc3NQRThZSnBETVprVFE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Game Preview: Avalanche Aim to Sweep Kings</div></a><a href="https://news.google.com/rss/articles/CBMigAJBVV95cUxNTUYyRFVmX21YMUdNNm55NVBublAtMTJLMFIzcVBxZlptbHFjR2F4OHA2OExpbEdTSWxQZkI4S3JBSWJ4LWZmeTI0TWlKNmFxUG8xZEZSYTlPbWY5bUd0RjVzQzlmbXdUSDNfejNObkhQQ2xTUVhXUE55SEZzY1RBYnRybUZOX0lJa1FSWGh0ZG1yLWllZVBwQVI0NGhTZXA0SlRCcGtlVV9ZNnkzRzFBYnJlZ1dRU19FSzRrNnpoNlEzUEdaREdvbmswMW5VUmE2c2JFaUtPaUsxRmY3UEhsaU9zNDVXSjhhSk9aNnRSQUMtcmJwTmRuOE1ocDZPaEYt0gGGAkFVX3lxTE5FUHJ0bnkwLUxvMlU3Mm9RdDlYMjFWVVpEbUlSZ2RLeDlPLUdCLXNScGl3NnIzV3FoMkEwcXh6VjQyRU9LWUJQYWZtNUtJZUdzUXE2N0VIRmNxMlUzWGZpb0NmUVVlTWhpanh5cFRCM1VQdC1GRjhYQ3JOUUxzMk03eGd1eVluYlA5eF90ajBJZHJsQnNlb0VtSlN6YmJWOXFwZWliWXkwMGNSZnYyT0loTjBBc0QwajhCX2s1NHoxbk02YVBYRXI5VlZKQW15cVFzeHJIQmYwVXY5TWs5ejV1REJEa0ItNm50RzN6S3BjM3hIeEUzMzVWc3NQRThZSnBETVprVFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 2 &middot; 9:35 PM</span></div>
 <div class="news-title">Colorado Avalanche Looks to Extend Lead While Los Angeles Kings Fight to Stay in Playoff Race</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPRG1yaGtfVTJPelk1Y2NlN2JWcVVCR0lNMEwta0hrU0dOYndiUk5pQmNuNW1xY1ozWHR6SkctQ01zcmI1bThSQnlmM0l0Ni1DUmZBRXhESHJqN0hjMkh6TWdGYTEzLVpnTWxodVdoYXNueHZ5Q0RsSTZsLWVmR3dzZF9Id1dQUlRUalBhRm9YNzlZMlBhSEYzV2k0aUwwQWpwQk1FQy1R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 9:30 PM</span></div>
 <div class="news-title">The Hockey News Big Show: Breaking Down The Kings' Coaching Change</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZMXVDWlVqaGpXWWFnV2NBM2d4elhjRzZSTi1pUF9wRGFCRmVORTByaUxOSW1ySmkwOWhLb3RNeVNtblc2M2ZMc2ZjZkNWTnBUUVhDSGY2MG41V28yRkYtXzJDSmFvWlM5RVd2VUxwaDM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
-<div class="news-title">NHL On Tap: Smith to debut as Kings coach against Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNN2tjWERPci1uem1EejdLRmpFUG11a3dld2txb19hTHE1YnFDclBOMXpiLXZsUHRQZWxIVzJkcjJ0MFRGUi1yX3RlQnEyRlNZcnphTVI4M2hRbTJkSnBmNGRXZl82NDRSMzV1QmJkaWxycWhXX0h5Ui1RWHFZb3U3c2JQVTdlQ2kzUi1UakN2UUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 7:58 PM</span></div>
-<div class="news-title">Avalanche at Kings projected lineups</div></a></div></div>
+<div class="news-title">NHL On Tap: Smith to debut as Kings coach against Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNOXJhOExEVGdrUi1pd0N5eVItZl9lUlIyWWFaclBHZUR6azBab3VxdUJSRi1KTTFPR1o4TU1LZjF0OWY0bDdaZVhUVkFPT2lKaTlJUk92VndGRFhuMGZqazFjazZlN0FTc1ItbTlvV00wOGFsQ1VXdlFoX2wzaTROR0FlS1pNQ25PVWZqWFRfQm9kaGljUlplZktWa0ViSGtLR3VKWHJKUzVpR3NxT3JaTXhnbUtBSG9VeVFrdEZ3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 7:32 PM</span></div>
+<div class="news-title">The Kings Young Talent Could Benefit From The Coaching Change</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxQb0FncHhkVE1wNlc0LXJqZ0o2ZFFWNjFrM0RpTlVKdzVmcDN0bUNVV18zakoxNDlwU014SGpUVEppLXlhaXRxVGN1Y3c4UkNaZ1gxOUQ1RW8zR0s4d01kSEw1YlNoRjA0VmM3TDIzYW05eU5hOGZqMDkzTmx5VzEySnQxTEVVOFdxUFZWQjlSUGZmMkRqNUlIMWtBMEhYMk5mYTBUdXVoVVRRYTVOY3RwVklVT1g1RFlyOXV5U1BXUTUzUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 5:32 PM</span></div>
+<div class="news-title">Los Angeles Kings GM Ken Holland Reveals NHL Trade Deadline Plan</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTFBSc0JsUzFaaE5hSXQwWDVvckhfUld2Z1RTMFJLX0Q4c2hDY2E1WThsS0ZzNFg4RGVKeGhqV1NJZi15TkNjZzZKNGd1cE5GUkdESTM3WDhBZFJwSFVkQ0hIUzkxSElyb0NDMVZURkplRGYyTlpEOGFEX0lZNVFaZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 2 &middot; 5:32 PM</span></div>
+<div class="news-title">Los Angeles Kings GM Ken Holland Reveals NHL Trade Deadline Plan</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/losangeleskings/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/losangeleskings</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -933,7 +922,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:53 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:22 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

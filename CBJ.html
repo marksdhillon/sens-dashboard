@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html" selected>Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="Columbus Blue Jackets" class="team-logo">
       <div>
         <h1>Columbus Blue Jackets</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:52 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:22 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html" selected>Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -904,17 +893,15 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="672">672</td><td class="r" data-sort="76">76</td><td class="r" data-sort="3.49">3.49</td>
 <td class="r" data-sort="596">596</td><td class="r" data-sort="0.8870">.887</td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="78441">1307:21</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVEswNWMyOW1uX0lfUWU4bFFpc194NHdDdklvVHYtNmg1amVTQ3pfWUxVcDdVbTl6QmhCSHZQMUxPLUMyUUlLc3UtZ1JJcm9MS3Q4YUx0X2QyZDZtRVZZMlFLTG52SmR6Nmw1QjRHSW5QT2xtUzk0amhsNnBfWlhGUjAtSlNYQ0NfMHRnb3ZCNFpTYVRRRDFnQy1JdW1UVlV1Ri1aSnRpWUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:48 AM</span></div>
-<div class="news-title">Marchenko scores in OT, Blue Jackets top Rangers after blowing 4-goal lead in 3rd</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxOWW1Lb2FOWEdmUy1zRXM1LW41YUQweTBfWngwVVd1NGd6cy1uM0hma3RPLVVOMmQ0WXlIbzlGZjdYdWhROWdSVmdrZzU1VXE2OFpjdmZDZHFOR2tlUkduYldaelVOM25FYTlpNmFpVjkzcFNXbWRXNG1JLWhib3dBZkZ5bjNnNEY2ZURQMzZ3aXF2VldwMWYyWmtmREdmbHo3SThHUkJxRmlOR3FCb2cwSUttY1MtWlJzVmhObUxmbEhjajRa?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxOWW1Lb2FOWEdmUy1zRXM1LW41YUQweTBfWngwVVd1NGd6cy1uM0hma3RPLVVOMmQ0WXlIbzlGZjdYdWhROWdSVmdrZzU1VXE2OFpjdmZDZHFOR2tlUkduYldaelVOM25FYTlpNmFpVjkzcFNXbWRXNG1JLWhib3dBZkZ5bjNnNEY2ZURQMzZ3aXF2VldwMWYyWmtmREdmbHo3SThHUkJxRmlOR3FCb2cwSUttY1MtWlJzVmhObUxmbEhjajRa?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NBC Sports</span><span class="news-date">Mar 3 &middot; 4:37 AM</span></div>
 <div class="news-title">Oilers acquire defenseman Connor Murphy from the Blackhawks ahead of the NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE40YzlpTkt0ZjJqMEViRElpbXprSmZ5cU1FSXlJbzkyVmN3N2hoX1RScWdkXzZLNDNSNW5kZE1WOEprNXFpelB0LVJVYmRYS3FHMjFiQnY0TG5TMk5OMFM0OS1kQmQ1cVJHTkI2eG1RR0tycXhTVzNMV0Vn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:05 AM</span></div>
-<div class="news-title">FOUND A WAY TO WIN 😤</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE90cXJJZUVJZjVXX3UzeWxNdndfMWYzRmRSU0pJWnA3ZTlCV0N6X0Z3NmJ0RzhsRFdGanFjNUpPNDByX3hrZ2dTWHl4SWJ6X0p2TlRiNWZEXzVYU19NTmotekZhTXVKYjg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">FOUND A WAY TO WIN 😤</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPVkdKRkNhNTJiMEcxZUgyUFdiQWRzNzZDUEo5R0xaX3RXbmJRaGJOUk85NW1wUzZzTWlYUjN1X29NWEY5c1l6VFA4aWxjaTRlc2xEZDNlOG5pX0xYdnlIWXVhcEtBSDJmajVmMlFsY3pfRzRmVEN4eDZ0OGtXbWYwMVQ1VzV2SU05V2JjaldDa2ZBTlk1ZWhMbw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 3:34 AM</span></div>
+<div class="news-title">Marchenko scores OT winner as Blue Jackets beat Rangers</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE90cXJJZUVJZjVXX3UzeWxNdndfMWYzRmRSU0pJWnA3ZTlCV0N6X0Z3NmJ0RzhsRFdGanFjNUpPNDByX3hrZ2dTWHl4SWJ6X0p2TlRiNWZEXzVYU19NTmotekZhTXVKYjg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:26 AM</span></div>
-<div class="news-title">CBJ at NYR | Recap</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOcVFDZ3FjdFBXVUVSbGdKdHJVWFkxNk5LS3k2TEZ6SW1wbExfaHNFZGFMVXpDTGg3bFpDdGR6N2FtWjVNNEVLRFJRNnZVRXlmOG9JZWJZazB2OXBmTXljT09yUnZHdWNFM08xYlFrcW42dHgzY0wzSURtbkVQZFU5c19yLUxOZmxJUVlvaHJoWXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:26 AM</span></div>
-<div class="news-title">CBJ at NYR | Condensed Game</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVXE4VTQxRHhiUlpadzlYMXRpQmt0bXFoYVB2RU5rcjBoRlhwcXN1Ry1kSlRSXzZVcGVoSzV4MEFNMjdHeGlfRUxEQnBWMEtkV0IzNWJhRl9oN0tmT0FPSTdNZGtKTXk1eHZCT3g3bDRSUzB3cGZKeHcwb2ZzZlU1QzJBZkVXdG1zVWxHSDEtYXEzQVRGb1VXeWJzS3RlekhhMGhLTGVZaGR4OVZhZ0xLb01ZQ3FPT2poWXpEcDJkdFg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">CBJ at NYR | Recap</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVXE4VTQxRHhiUlpadzlYMXRpQmt0bXFoYVB2RU5rcjBoRlhwcXN1Ry1kSlRSXzZVcGVoSzV4MEFNMjdHeGlfRUxEQnBWMEtkV0IzNWJhRl9oN0tmT0FPSTdNZGtKTXk1eHZCT3g3bDRSUzB3cGZKeHcwb2ZzZlU1QzJBZkVXdG1zVWxHSDEtYXEzQVRGb1VXeWJzS3RlekhhMGhLTGVZaGR4OVZhZ0xLb01ZQ3FPT2poWXpEcDJkdFg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 3:23 AM</span></div>
 <div class="news-title">Marchenko scores second goal in OT as Blue Jackets weather furious comeback to beat Rangers</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOS2pWQXF5cHVvazBLRndWSFhnRjhHVURLNXpnNU9Fc2g5ZDd3eEE5UGFDdnlEbXBOd2d0NHNpdkcxVEliUzg3U1NHWFRpczVteGFVLW9PTV9vOHNia2ZOQlh6czZqb0drd3l0cm82b1loSHhtdkFUQkZwYUV3R3dlRDlDanJkcTY1WlRDX2ZOdU13ZENtcE1NYzgtMUk5NUxyWGhhQmVFUXlPelpuRGlUTzlTNA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 3:18 AM</span></div>
@@ -954,7 +941,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 2 &middot; 7:40 PM</span></div>
 <div class="news-title">3 Keys for Blue Jackets to Get Back on Track Monday at Rangers</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE91eC1zTFRlT0NIN2hMYUdLNWlPQTIwemY1dUEzLUk4bm9QbHhaWndEZnRWbF9ZYk5xejE3OVpGRzY4R0c1eUdZdnJhUkJuaTEzdm1URXdCQ3lSSjZzdV93SERaVnVpcHNjOVlXUDYtQVNPdE9wbkhjag?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 6:36 PM</span></div>
-<div class="news-title">Pregame: Mike Sullivan</div></a></div></div>
+<div class="news-title">Pregame: Mike Sullivan</div></a><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxORnNKRzQzWU1MTEE3WFlYZ19IXzVsUy1hZGthdkM0R0dURy13a1VER2dLdWM0VlpHZjlQanpzRlpsUTluMFI4Y1hiS21LVzFwdk93UURlck16UjVlNldEZkdnYVdSM0dLYm01dS1VN21mZXQ4Z0FBa1djWURLU3NFaVBUeWNMc2IyRmhCUjh2U003UEZiSFdrTkRwRUFDVElNVkJ3SGpURGpjNnNiSFN2QmRrLXBmZWc1bTdjRmRQUVVhVkQwWUI2cUVlRURpWW1iUVdYVWh0YW5NaEtqaDFHdHR0SzNsYkp1SjZ4Yg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Columbus Dispatch</span><span class="news-date">Mar 2 &middot; 6:16 PM</span></div>
+<div class="news-title">Blue Jackets coach hopes to spark Kent Johnson</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/BlueJackets/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/BlueJackets</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -964,7 +953,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:52 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:22 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

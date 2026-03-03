@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html" selected>Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" alt="Vancouver Canucks" class="team-logo">
       <div>
         <h1>Vancouver Canucks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:53 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:23 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html">Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html" selected>Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -959,23 +948,23 @@ a.pname:hover{color:var(--text-strong)}
 <td class="r" data-sort="40">40</td><td class="r" data-sort="7">7</td><td class="r" data-sort="7.39">7.39</td>
 <td class="r" data-sort="33">33</td><td class="r" data-sort="0.8250">.825</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="3409">56:49</td></tr></tbody></table></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQRTd2WVc0TERQSnd5Z241NlpWd2NYSHRiM0NwLVBVYlJiRkF0eF9aNHlLemRYMFFaQ2QxZGZyNmVhb1AzM3lZTklER0Vob2xrVnZfQ3l5eGFJYTk0ZHhUa2trN3FTN1VNLWxEVGRlTFlDeXpuRjNuNzUtRUdmbnYyUWlncHlmcHV4X3R0TkFWQWMtR2JyUHRpTnNkMnVCSmxZRUhEUGJ3cFM2ZkNWdzVyNV9jMkdfa01LcmdzNVVJZGdtOVJnbXRYcg?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNTkJpc2NpYnQwVHlIMDdDZnBkM3R0UFJrdjNFRWM2U08zdDUtaklSLXQwTUZ5d1ViNURGYkpveTVLMEVxWjJfNDRrbmk4eHYyblBPZnNKSnlDZGhvR0paVGhxZTJrODIzZ0s0X2pJNjJBaUlPRnZzRnNLR212aWRkVVcwTTFCdlA2VTBIdGoyVkVFVjhQc0pMcVdpbklyWUtZSkFuRkxIVEdxNmRtbVNHMVdUYzJpVVlYZXNZbXltSHN6dGxqUXc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 3 &middot; 7:07 AM</span></div>
+<div class="news-title">Canucks Player Grades: Danger signs ignored in 6-1 thumping by Stars</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFBvUHNUVjJkeExXbkdjeHNLQXY0SDRsZFd0TFdGTWNQWktraldRcmtuVTlIZTMzcjFHcTlQRnN6ZURzaHJRWnVBaEwyNEFYMTFrUGVuQzBQVnNUdkFocnNJWXNvZjVaQmdCYzFxbVIxbW9GVVBjUXY1N2loRnM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 6:35 AM</span></div>
+<div class="news-title">Canucks' Joseph exits game vs. Stars</div></a><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQRTd2WVc0TERQSnd5Z241NlpWd2NYSHRiM0NwLVBVYlJiRkF0eF9aNHlLemRYMFFaQ2QxZGZyNmVhb1AzM3lZTklER0Vob2xrVnZfQ3l5eGFJYTk0ZHhUa2trN3FTN1VNLWxEVGRlTFlDeXpuRjNuNzUtRUdmbnYyUWlncHlmcHV4X3R0TkFWQWMtR2JyUHRpTnNkMnVCSmxZRUhEUGJ3cFM2ZkNWdzVyNV9jMkdfa01LcmdzNVVJZGdtOVJnbXRYcg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">巴士的報</span><span class="news-date">Mar 3 &middot; 5:56 AM</span></div>
-<div class="news-title">Stars beat Canucks 6-1 to extend winning streak to a franchise-record 9 games</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxNV3hGMTFlSVREenZHdDJkakszVlBqaEh2STdrcXpKdjZ3bFA0TjNuME52VTJzNGQ1TVBfVm5PZHhjUVJwQUROYWhTYkJ4ay15M0dSc3B2Wk9wNkFhSFZsYmV6WjViSjM2dm4xZ1NvMGtKYV9MZk1EbUZzeVk3MXg0UE1KTEh5Zw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:54 AM</span></div>
-<div class="news-title">Stars score 6 straight, defeat Canucks for franchise-record 9th win in row</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNNUhEN2Z4TXBUNzdneklqNkRuYURsUWN6eko5dExYM2RhTnk3eG1kSWdOanJQS0YtX0Mwek5NZGNFMGhDcWlGUEZGVW00cTJ2T3NoZzJBMFhxeEEzMVRpU1NCNi00anV1NXNSMkExeGI0Ql9PdXp5eGhoaG00Wl9ZVnhseEVONExwV2pfTmlaU29nMnNrVUFfVm9fWmM3b1g3Z1FGLUQ2RldSUVlWUnd4S0cxNlJybHF3QkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Stars beat Canucks 6-1 to extend winning streak to a franchise-record 9 games</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNNUhEN2Z4TXBUNzdneklqNkRuYURsUWN6eko5dExYM2RhTnk3eG1kSWdOanJQS0YtX0Mwek5NZGNFMGhDcWlGUEZGVW00cTJ2T3NoZzJBMFhxeEEzMVRpU1NCNi00anV1NXNSMkExeGI0Ql9PdXp5eGhoaG00Wl9ZVnhseEVONExwV2pfTmlaU29nMnNrVUFfVm9fWmM3b1g3Z1FGLUQ2RldSUVlWUnd4S0cxNlJybHF3QkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 5:49 AM</span></div>
 <div class="news-title">Stars extend win streak to franchise-high nine games with blowout victory over Canucks</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE9TcVBLVkRGYXlwYlFVcm1Ra1J3cklWZmFDa21LMFVTTGZJdm10OVBoQk1GT3JFNjZVQUl1MjRDLXQ5RTEtejJjNTJNeDJBWC1MTExmV3RuQ3dPd2Q5VmlvSXdxV3JIUl9GMGdXSUZoaFlKd01fa2Mwcw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">CBS Sports</span><span class="news-date">Mar 3 &middot; 5:48 AM</span></div>
-<div class="news-title">Dallas Stars vs. Vancouver Canucks - NHL Game Recap - March 2, 2026</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNTkJpc2NpYnQwVHlIMDdDZnBkM3R0UFJrdjNFRWM2U08zdDUtaklSLXQwTUZ5d1ViNURGYkpveTVLMEVxWjJfNDRrbmk4eHYyblBPZnNKSnlDZGhvR0paVGhxZTJrODIzZ0s0X2pJNjJBaUlPRnZzRnNLR212aWRkVVcwTTFCdlA2VTBIdGoyVkVFVjhQc0pMcVdpbklyWUtZSkFuRkxIVEdxNmRtbVNHMVdUYzJpVVlYZXNZbXltSHN6dGxqUXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 3 &middot; 5:47 AM</span></div>
-<div class="news-title">Canucks Player Grades: Danger signs ignored in 6-1 thumping by Stars</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQN0o0YUFZVTZtV3MtNnYwVmhUN0p4ZFp0ajhIeERUZ0lwaVU0N3M5S2ZrNW5vY3VWal9tUkk1VUtBMWtJRnFVRHNHRmVxZEJINmRYRm5Edzdqd29ITmdMSUNub1duQ0xBTl9IM1otbG10VlR5a2ltWV90T3dibTVDNDJINk5aSzhyTFBLT05KclRCbGQxNWJQMmdRNjM5ckxmM3c5MEdkU2lCQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Dallas Stars vs. Vancouver Canucks - NHL Game Recap - March 2, 2026</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQN0o0YUFZVTZtV3MtNnYwVmhUN0p4ZFp0ajhIeERUZ0lwaVU0N3M5S2ZrNW5vY3VWal9tUkk1VUtBMWtJRnFVRHNHRmVxZEJINmRYRm5Edzdqd29ITmdMSUNub1duQ0xBTl9IM1otbG10VlR5a2ltWV90T3dibTVDNDJINk5aSzhyTFBLT05KclRCbGQxNWJQMmdRNjM5ckxmM3c5MEdkU2lCQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Vancouver Island Free Daily</span><span class="news-date">Mar 3 &middot; 5:36 AM</span></div>
-<div class="news-title">Bichsel nets 2 as Dallas Stars thump slumping Canucks 6-1</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPZTZrWG9GZFNsaTZOUFhVMDZVd1VqemxXRTNLSTBKMGdmQ1N3NS04M3M3d2FyVHhzRUxjbGczQ2ktZjBjMmV1bExCZlUwN3ZGaTU1b2VTZ0tfUU9VT011dE12Wm1DYzI1LXZ5LWpTR3JkS2pleDhlVGt2QmRzd3hNUExfM2ZPYjVmeVA3dk53?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:56 AM</span></div>
-<div class="news-title">Lian Bichsel with a Goal vs. Vancouver Canucks</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNSTBXbDEtaWpVUjhDZ0Zrc3dMZXlHR1R6cHY0OVB5LWhFUVdVbWh1anBLSHZWOTVNbkl3VC1TRnRSN1BCaVZmTERQRVNka2lDcGZIODRPRkVKLWVpR0I3UVB2UEx6OFhoYTBteXlFSHNjTG4wRHFDVloxZlM1OWI2LXV6djVrakYtSkhFMUlOSG1PVGJWZGMzN0t5Z3JIV2xCUzAyUjJOMjZoVDYtRk9pUkJR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Bichsel nets 2 as Dallas Stars thump slumping Canucks 6-1</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNSTBXbDEtaWpVUjhDZ0Zrc3dMZXlHR1R6cHY0OVB5LWhFUVdVbWh1anBLSHZWOTVNbkl3VC1TRnRSN1BCaVZmTERQRVNka2lDcGZIODRPRkVKLWVpR0I3UVB2UEx6OFhoYTBteXlFSHNjTG4wRHFDVloxZlM1OWI2LXV6djVrakYtSkhFMUlOSG1PVGJWZGMzN0t5Z3JIV2xCUzAyUjJOMjZoVDYtRk9pUkJR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 4:49 AM</span></div>
-<div class="news-title">Oilers insider says Edmonton could make two more trades: 'I do not believe the Oilers are done'</div></a><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxQclhRcXJGWFNpdVQ0U2lEOV9MTnNaT2hwTk93RnZ5MDlXSVllSnhkRV9NQWoweWphVjFUUzlhS2E4QUtjeGNhRjFhMEtMUXlqcGhQZ1I5Nmw4blAyanA1MmJEd05ESUtrZlVYRGl1UEpXRktkcjJORkRPcnhGSkVId0s3OERLNFdkNFFXYURvZFdIaFJvUGtPV01Od3dCei1fMWtqZmlUMTNnb3lIaGFIb1lvdGdDaENqZGVMb2lnVUJjTDl3M3R2THFwMm1YWno4RHZzM0pRY1NtU2E4Ym5rTFZ1TQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Oilers insider says Edmonton could make two more trades: 'I do not believe the Oilers are done'</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQUmpON3ZXYk5JbkpHNEtsUVdZUG9fdU9xckkzV0k0bU93QUtvNndWazc4Zy11ZHNQOWhxVXBuakNlRUtIN1NVNjdTVVFuZm8yZ2ZpX190WEJHb1R6NDYxTzdLWGl5NDkxSWlZaHNIVkM5bGFiRVRWYWxPSlFWb0pucldRX0RuWHJVUTR4MkktSXZDdzdyNUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:22 AM</span></div>
+<div class="news-title">Lian Bichsel with a Goal vs. Vancouver Canucks</div></a><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxQclhRcXJGWFNpdVQ0U2lEOV9MTnNaT2hwTk93RnZ5MDlXSVllSnhkRV9NQWoweWphVjFUUzlhS2E4QUtjeGNhRjFhMEtMUXlqcGhQZ1I5Nmw4blAyanA1MmJEd05ESUtrZlVYRGl1UEpXRktkcjJORkRPcnhGSkVId0s3OERLNFdkNFFXYURvZFdIaFJvUGtPV01Od3dCei1fMWtqZmlUMTNnb3lIaGFIb1lvdGdDaENqZGVMb2lnVUJjTDl3M3R2THFwMm1YWno4RHZzM0pRY1NtU2E4Ym5rTFZ1TQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:16 AM</span></div>
 <div class="news-title">Islanders & Canucks Scouting One Another Ahead of NHL Trade Deadline: Two Potential Targets</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPLTI3SWV1QVE0RHp4bkhVSEV6R2c3ekhPdTJMZktieWxqSWJvRkFDczBDYWhvRWFrRDhROWh5eFNLNnpoYUlLd2x5LWV3eTVtY0Rfdkt0VXRIS3YtYjFaQnRyMjFncnVsT0VKeS10akF3bC1DWlBBUEJSeXVJSDhjUnRWOA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 4:14 AM</span></div>
@@ -1003,13 +992,13 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 2 &middot; 10:55 PM</span></div>
 <div class="news-title">Canucks wait on Myers, won’t retain on Pettersson</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOR1JRbnpMa1lCbzA3Y0NYTmh3dUd5N2xIajZGM3llYml1OG9naV8xWEgzRDcybVhXOXpfUW40RTF6V2hXcXZjX0VNV0RfdlhWRUticXZwWlBadHJjRXdaLWZ3VXp0ZUhTQzJGQTJYdXExcGlVS1h3ZnVCdVVLV0huaFdrb3cxOWszLVhDcVIzVmpOUjVueFV4NHI0UWJNYzdRUmFZX1RmRG56Z0RzVW5YbjYwaWlDSF9hMFNCVUxtQkE0NWF6YmZyQUtDUVE2UlNiQktoVzAzc2JjZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 10:30 PM</span></div>
-<div class="news-title">How Year-Round Daylight Time Could Impact The Vancouver Canucks’ On-Ice Performance</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOYkFfdC1ZREc2X09BR0NMQnlreUpfUUJ3Y3JYSFFYRUNzS080dy1FZ2I0c09iYjJaSGk3eHVGMjk0ZUdFN3dFY0loUTBfRTdCal9KdTVyd1lCeEE3Y1RUUmw1TTB5N01FLWtneXc2a0FzekY5aUVsZlFfc3doR0YxczMtUWZkeWRR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">How Year-Round Daylight Time Could Impact The Vancouver Canucks’ On-Ice Performance</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNWTFDb2ZTU19VN296RU50X2JmdUZVV3VOaTNLR09LQXlrVGYxaVI5Y1dZalpjMGMxYy1xM0ZPRHpHNU0ydGNweDYwaHhQd21YYkMtell5M1lnUThZbldmWDVzNzNJUlpQSzhKMm55T0ZCTkl1RU4yaVdVZE9ROHNwTXNxTU1ybGZVeENWbzM5VUJKZnlGekktVmVQa1FHMFBK?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 2 &middot; 10:23 PM</span></div>
+<div class="news-title">Canucks' Elias Pettersson: 'I haven’t lived up to expectations of the contract'</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOYkFfdC1ZREc2X09BR0NMQnlreUpfUUJ3Y3JYSFFYRUNzS080dy1FZ2I0c09iYjJaSGk3eHVGMjk0ZUdFN3dFY0loUTBfRTdCal9KdTVyd1lCeEE3Y1RUUmw1TTB5N01FLWtneXc2a0FzekY5aUVsZlFfc3doR0YxczMtUWZkeWRR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 10:18 PM</span></div>
 <div class="news-title">Stars at Canucks projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTFAtdl84U182SDhKZ0NGeVJxTklQTTRnbUZ0LWZvNlBpb2FfR0lxb1pnTm9zVHY5TllSZkd4bVJPaHFBc1d4WFp0SlJZcmNwcmdQMktvOVRUckRFLU5RX2hYZkRMRUNwT0tpaEw2blMtSUxVZjhjdUhN?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 2 &middot; 9:59 PM</span></div>
-<div class="news-title">Canucks' Pettersson spars with Vancouver media again: 'Ask yourself'</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPaktXSWdGQkFZRU5vV3V6NDlVNE9vX0o5Z3libGk2QWFoVVN6REs1ZkxITlFLZzJoRnhadDdZR2ZSMV9leUpOSHNHMmZHS2xQSUphNXhlZWt2bWVFNE50UWYtNFhHT1VGTDJxSGFMdHU4a1dMX3VqQWdTMUFHcU1iYTNONko4bGx0Rjk0ZzNmX0x1c2xIalFVNUY2VlZyekM3cmh4TjZjMEhYTTIzVG9pa0t0YnVMVE5oampRdTd0MEh3dXJ0SFE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 2 &middot; 9:08 PM</span></div>
-<div class="news-title">Bruins in on Garland and Boeser; ‘plenty of competition’ for Garland: report</div></a></div></div>
+<div class="news-title">Canucks' Pettersson spars with Vancouver media again: 'Ask yourself'</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canucks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canucks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1019,7 +1008,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:53 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:23 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

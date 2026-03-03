@@ -12,8 +12,7 @@ a{color:var(--text);text-decoration:none}
 a:hover{color:var(--text-strong)}
 
 /* Header */
-.top-bar{display:none}
-.header{max-width:880px;margin:0 auto;padding:20px 28px 0}
+.header{max-width:880px;margin:0 auto;padding:40px 28px 0}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .team-logo{width:44px;height:44px;opacity:0.95}
@@ -219,12 +218,8 @@ a.pname:hover{color:var(--text-strong)}
 .team-select:focus{outline:none;box-shadow:0 0 0 2px var(--accent)}
 .team-select optgroup{font-weight:600;color:var(--text-muted)}
 .team-select option{background:var(--bg);color:var(--text)}
-
-/* Shared nav */
-.site-nav{max-width:880px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}
-.nav-left{display:flex;align-items:center;gap:6px}
-.nav-pill{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 14px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none;cursor:pointer;border:none;font-family:inherit}.nav-pill:hover{color:var(--text);background:var(--bg-elevated)}.nav-pill.active{color:var(--text-strong);font-weight:600;background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.scores-link{font-size:12px;font-weight:500;color:var(--text-muted);padding:6px 12px;background:var(--bg-surface);border-radius:8px;transition:all 0.2s ease;white-space:nowrap;text-decoration:none}.scores-link:hover{color:var(--text);background:var(--bg-elevated)}
+.hdr-controls{display:flex;align-items:center;gap:8px}
 
 /* Theme toggle */
 .theme-toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface);border-radius:8px}
@@ -232,27 +227,21 @@ a.pname:hover{color:var(--text-strong)}
 .theme-btn.active{color:var(--text-strong);background:var(--bg-elevated);box-shadow:var(--tab-active-shadow)}
 </style></head><body>
 
-<nav class="site-nav">
-  <div class="nav-left">
-    <a href="scores.html" class="nav-pill">Scores</a>
-    <select class="team-select nav-pill" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html" selected>Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
-  </div>
-  <div class="nav-right">
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</nav>
-
-<div class="top-bar"></div>
 <div class="header">
   <div class="hdr-top">
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" alt="Boston Bruins" class="team-logo">
       <div>
         <h1>Boston Bruins</h1>
-        <div class="subtitle">Updated March 3, 2026 at 1:51 AM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 2:21 AM ET</div>
+      </div>
+    </div>
+    <div class="hdr-controls">
+      <a href="scores.html" class="scores-link">Scores</a>
+      <select class="team-select" onchange="if(this.value)window.location.href=this.value"><optgroup label="Atlantic"><option value="BOS.html" selected>Boston Bruins</option><option value="BUF.html">Buffalo Sabres</option><option value="DET.html">Detroit Red Wings</option><option value="FLA.html">Florida Panthers</option><option value="MTL.html">Montréal Canadiens</option><option value="index.html">Ottawa Senators</option><option value="TBL.html">Tampa Bay Lightning</option><option value="TOR.html">Toronto Maple Leafs</option></optgroup><optgroup label="Metropolitan"><option value="CAR.html">Carolina Hurricanes</option><option value="CBJ.html">Columbus Blue Jackets</option><option value="NJD.html">New Jersey Devils</option><option value="NYI.html">New York Islanders</option><option value="NYR.html">New York Rangers</option><option value="PHI.html">Philadelphia Flyers</option><option value="PIT.html">Pittsburgh Penguins</option><option value="WSH.html">Washington Capitals</option></optgroup><optgroup label="Central"><option value="CHI.html">Chicago Blackhawks</option><option value="COL.html">Colorado Avalanche</option><option value="DAL.html">Dallas Stars</option><option value="MIN.html">Minnesota Wild</option><option value="NSH.html">Nashville Predators</option><option value="STL.html">St. Louis Blues</option><option value="UTA.html">Utah Mammoth</option><option value="WPG.html">Winnipeg Jets</option></optgroup><optgroup label="Pacific"><option value="ANA.html">Anaheim Ducks</option><option value="CGY.html">Calgary Flames</option><option value="EDM.html">Edmonton Oilers</option><option value="LAK.html">Los Angeles Kings</option><option value="SJS.html">San Jose Sharks</option><option value="SEA.html">Seattle Kraken</option><option value="VAN.html">Vancouver Canucks</option><option value="VGK.html">Vegas Golden Knights</option></optgroup></select>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" title="Light" aria-label="Light theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <button class="theme-btn" data-theme="dark" title="Dark" aria-label="Dark theme"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8.5A5.5 5.5 0 017 3a6 6 0 00.2-1.5A6 6 0 1013.5 9a5 5 0 01-.5-.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
@@ -924,7 +913,9 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">Boston.com</span><span class="news-date">Mar 2 &middot; 9:11 PM</span></div>
 <div class="news-title">5 takeaways from Don Sweeney’s Bruins press conference before trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPaktXSWdGQkFZRU5vV3V6NDlVNE9vX0o5Z3libGk2QWFoVVN6REs1ZkxITlFLZzJoRnhadDdZR2ZSMV9leUpOSHNHMmZHS2xQSUphNXhlZWt2bWVFNE50UWYtNFhHT1VGTDJxSGFMdHU4a1dMX3VqQWdTMUFHcU1iYTNONko4bGx0Rjk0ZzNmX0x1c2xIalFVNUY2VlZyekM3cmh4TjZjMEhYTTIzVG9pa0t0YnVMVE5oampRdTd0MEh3dXJ0SFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 2 &middot; 9:08 PM</span></div>
-<div class="news-title">Bruins in on Garland and Boeser; ‘plenty of competition’ for Garland: report</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPNzJYWnNxY256X2xlVFRkSGVUSTRPUTU4UVhKUV81THhuRVdMbzRiQ1VHeXNtczZTVXBRSXN3RmxDT2dLbGJXNVdEM1NfbUdaMmp5OWh3N2NyVDhUME9ONXZOOVpiR1hOaUFiNVVVVmo3NG1WdkxkZllvbExQQ19QT0VuOEgzcGVqSTZCU0gxSWtHTldGUlBVcUk1X1laVDZ4Sk5tQWJYR1BUS1hUdV9PV2JvMVRYaU1XTUHSAb8BQVVfeXFMT3l0Zl85QXo0ZzhKMmtOWUZuaWdzRndTQU9nUWdnbXBDUmpISlY2ZEdvRE9QbWtxZmtLQTdibFUxSnVpcnZ2RG5CWFdSNFlEZUFVcmpEcUM1MGtHbm9TcXR0Y2ZfSkpRREtYRFNuM29RVjhmTGJwdFY4YmxlZ3NpUm5ySVhseXRQclJ4ZU8zRHhTcmZTbGN0eHNQZ0FuQ0dFRmZXYkhpTFp4NXlVYzYyTG53QnVIUkZuNG5xelhITUk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Bruins in on Garland and Boeser; ‘plenty of competition’ for Garland: report</div></a><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxOdHBFTGVUczR0RWZtcUhjX2N0dTRVdV92Q055M2ZkcXphOXZyWHY1SEkyU0NFV1V5TGpMZDY5MXZqTTd2M0dBYnVLb3Q0Q3RmdktSTGtMa0NKcFUydDVDdWhhZjNhSzB6MDRza3h3c0dPU01FWDVIR284WGsyZ1dIYzhDdTRCcDB1cTNsNVhfYXYtYl9GUTZiOXRKZXJGaUFDdkhENUVxdEVNa3JpWjU1WnB2ZFFzLXBSNGVuMElndTBmOGp3S052Ylk2dlJMZU1IMHB30gHbAUFVX3lxTE1HcEdaMFJ1VVhKbHR0TjRaX1hxOHFRVXdqdlEtUF94NEVPX3RBdDFOODloTnI4aFExaXhtdFRjNE9URmJQczY4b0RObFRfN1NPT3BjUzNJLWFvR0VNNzBHTFZUQVU5UmNmZzE0NE81a2hsbURKYVpQNkI4YXVuMzlMbkc1c2NIVVpkXy1QRDEzWGVvcUlJcktsdTJqOUlmUFd1Sy1hVWhzYmFDRDc5N29vUFUwLXJqMzRLeGFJWHBJQU5fT3duaVo1akhrLVY5d3ROWkNqSFIya202WQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NBC Sports Boston</span><span class="news-date">Mar 2 &middot; 8:40 PM</span></div>
+<div class="news-title">Sweeney says Bruins won't be ‘as aggressive' at the trade deadline this year</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPNzJYWnNxY256X2xlVFRkSGVUSTRPUTU4UVhKUV81THhuRVdMbzRiQ1VHeXNtczZTVXBRSXN3RmxDT2dLbGJXNVdEM1NfbUdaMmp5OWh3N2NyVDhUME9ONXZOOVpiR1hOaUFiNVVVVmo3NG1WdkxkZllvbExQQ19QT0VuOEgzcGVqSTZCU0gxSWtHTldGUlBVcUk1X1laVDZ4Sk5tQWJYR1BUS1hUdV9PV2JvMVRYaU1XTUHSAb8BQVVfeXFMT3l0Zl85QXo0ZzhKMmtOWUZuaWdzRndTQU9nUWdnbXBDUmpISlY2ZEdvRE9QbWtxZmtLQTdibFUxSnVpcnZ2RG5CWFdSNFlEZUFVcmpEcUM1MGtHbm9TcXR0Y2ZfSkpRREtYRFNuM29RVjhmTGJwdFY4YmxlZ3NpUm5ySVhseXRQclJ4ZU8zRHhTcmZTbGN0eHNQZ0FuQ0dFRmZXYkhpTFp4NXlVYzYyTG53QnVIUkZuNG5xelhITUk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 2 &middot; 7:53 PM</span></div>
 <div class="news-title">Bruins put on notice with blunt statement from Don Sweeney ahead of 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxPeUo5a1g4Y2pkOFlnZ3VLbDV3V1ZKeHRic0U5bHFGcFJ1akV6Ulg2SHp2d2dnMm8xNlBub09DTERwWU9QbmdQQlQtejJsaHZPSzR1RzFRU2ZWZ0ZQYmhqZUUzdkF4OERQcWdhc1FSaFI4YUppQzVNT3VncEx5ZFhia2tHR1YxajNWazE5UlQyRUE4NXhHNHRYMHNZaUhVWU5YdGphOHV3ckV1VVl3UHJJT3ZPWHdiaE10Mk1FS2lsNEFXTmhPb1Q1SlpQdTVzS19JaXgtNnpCaHJWdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">National Today</span><span class="news-date">Mar 2 &middot; 7:39 PM</span></div>
@@ -934,17 +925,15 @@ a.pname:hover{color:var(--text-strong)}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 7:22 PM</span></div>
 <div class="news-title">Bruins GM not willing to pay 'exorbitant' price before Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPUG9PNkxPXzQyZm9FYWVmM2JtRmRSUHlWclhmdDFzTnZobHBudF80Y3FIMFJpRUZNMXE1YTM5RG1Yc3BWeTY0WUE5TENFbHZuNXVxdFpkdDBZcW9HQ2pUeFBBdVJSTjZFSlNhNHE3STNzeDBNdk9uVGM4MVltYVVNVkVENGxGZ3U1TTJmWl80M3ZnQ0xJcnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Boston Herald</span><span class="news-date">Mar 2 &middot; 7:10 PM</span></div>
-<div class="news-title">Don Sweeney weighs Bruins’ options ahead of NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNdTFmTC1rNUxBRmgtR0RFY0F2VG9PNVdiRXRJVm5tV056QnJxbzJTUUZGNkZ5TjljcHBlMFBYUXVBZGVrVHhtcjhkN1pCMnBKVzQ5VkFPZ2tDR010VF9LZmdhdlZvd1ktOFNBODR3aUtCYUJPU2pLeGFvdGd1U01KOWJNd2h4LXJEUzFxSVN6X29iX1RLcnVjUmFB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Don Sweeney weighs Bruins’ options ahead of NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxPM2h6ZUg1R0RGQi0xNjNZV3M1blVQNEN4R2lMdmZmb3BNdlhLaTlXMmJSSl9OMEF0c2luUThlS2h5VWJ2X20yRThwdmd3SlluWk92QTh1ZndqajBvVDVJVEhTUWlSVEhKSV85bmlQdFllX3Y5S3BrWjA0UXphdEp2Yy1iZnhfRXQ3Umo4VExJTFZtcmVFVEdZZ0I5anhpNk01emJ5S1dTM1NFUUNYbWlaNUNaUTdkOHc0Nm9DblFvZ2I0ZkN4R0tWdEFJTmJuS2JpRHfSAdIBQVVfeXFMTzNoemVINUdERkItMTYzWVdzNW5VUDRDeEdpTHZmZm9wTXZYS2k5VzJiUkpfTjBBdHNpblE4ZUtoeVVidl9tMkU4cHZnd0pZblpPdkE4dWZ3amowb1Q1SVRIU1FpUlRISklfOW5pUHRZZV92OUtwa1owNFF6YXRKdmMtYmZ4X0V0N1JqOFRMSUxWbXJlRVRHWWdCOWp4aTZNNXpieUtXUzNTRVFDWG1pWjVDWlE3ZDh3NDZvQ25Rb2diNGZDeEdLVnRBSU5ibktiaUR3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">MassLive.com</span><span class="news-date">Mar 2 &middot; 7:06 PM</span></div>
+<div class="news-title">Bruins GM clarifies prospect’s standing in the organization amid trade rumors</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNdTFmTC1rNUxBRmgtR0RFY0F2VG9PNVdiRXRJVm5tV056QnJxbzJTUUZGNkZ5TjljcHBlMFBYUXVBZGVrVHhtcjhkN1pCMnBKVzQ5VkFPZ2tDR010VF9LZmdhdlZvd1ktOFNBODR3aUtCYUJPU2pLeGFvdGd1U01KOWJNd2h4LXJEUzFxSVN6X29iX1RLcnVjUmFB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 7:00 PM</span></div>
 <div class="news-title">Practice Report: Sweeney, Pastrnak Preview Bruins Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPVUw0cl9ObVRJTGpkVExrdWlnV2wwdVE3TE00VGtkQzBzY3BJSkRfbHR2bkRwMzhkOWJzMkFXdkE3UldINkFBdDlkdjZVMGh2b2U4ZXMyeVY4bnBYSEJPSmVjN3BZX0piT1ZVcUlESl93enhCUmFsNmg2aUZlQlJ6aXdkemtWMjNNRUJDY3VDNmZQMjFwUk8yQ2hDVTRlSGdveGpZQkIxZVRUb1JQVHI4OWNTNnhHV1Q4WFVXRG9ubTl5TllWelVyQ3JQcHHSAdQBQVVfeXFMTjEzUEZhSGRjRTF6ZTkyeEtsM3Zhby1tQVVpR1UxTmRNYno4YnBWX2lva1diT0dISGVYTVVNUXNVV0hBQ0sySi1YYnpKNWRubjFvNmtKa0FCZEJheWV1YjBINkV1X3lpQnRIUjZaZ1M4aUstYko5X2tUQnFMTVAxOHJmcWl0MkNRenBULXVKMVNVOU5zZENpTjhYOVlIR2k3MVdSd1hjcTIyQ1dncnpselJCRUJsTzl6TkYyanVlSU1pckJHeXo1QTJ3U1VKVDRodHcyR0w?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NBC Sports Boston</span><span class="news-date">Mar 2 &middot; 6:55 PM</span></div>
 <div class="news-title">David Pastrnak says Bruins are in good spot to add at trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9meFVONkdkZ1czQzJ1d0lITHFzRW04SVJsVlBrNkNVRklsajdDeDkzdGZGUXdvNk1keWs4Y3U1WGlPandfbkZuN0I3dG5IS3kzTU53czhtV2x6cV9ueFF6Qzc4NjVYek9zLVU1Y1FTMm1SX0lkOHlOZmh3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Stadium Rant</span><span class="news-date">Mar 2 &middot; 6:54 PM</span></div>
-<div class="news-title">Should The Bruins Trade For Robert Thomas?</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNbWZsMXNuVXgxOUtTYWEzZHFiSG5OSldTeXplemRzbHd2cHpjUzZxRk1KSEwtNnJlUFE5clM5bmRuODFncXNZUkNYMEwzTllvVHRQLUtrdzRzZ2l1SkJrN0RuaWVSeFFJcVloQzR0a3drc0E2ZnlRRzBWOWRyWTEzeEprWnJrUEk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 6:26 PM</span></div>
-<div class="news-title">Bruins 'Firmly in the Mix' On 2 Canucks Players</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE1SY0ZqUkxKVkFHX1RBYjhXU0VBUTNZRE1acGx4Tk1kNXRyTGNrWF9oT0NPaWhFMnBZa1pVdmg1VFRLcDkybHBvRlpTbENoTE9INE1rTkwwZzRzV2FQUndFZjYyV3RvY0JMbkNMXzV4eERBc0dtc0NLRw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 6:25 PM</span></div>
-<div class="news-title">Press Room: Don Sweeney</div></a></div></div>
+<div class="news-title">Should The Bruins Trade For Robert Thomas?</div></a></div></div>
   <div class="panel" id="p-community">
     <div class="community-list">
       <a href="https://www.reddit.com/r/BostonBruins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/BostonBruins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -954,7 +943,7 @@ a.pname:hover{color:var(--text-strong)}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 1:51 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 2:21 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
