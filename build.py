@@ -2158,13 +2158,17 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
   var team='{TEAM}';
   function nhlFetch(url){{
     var e=encodeURIComponent(url);
-    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){{
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    }}).catch(function(){{
-      return fetch('https://corsproxy.io/?'+e).then(function(r){{
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
+    function tryProxy(base){{
+      return fetch(base+e).then(function(r){{if(!r.ok)throw new Error(r.status);return r.json();}});
+    }}
+    // Race both proxies — resolve with whichever responds first successfully
+    return new Promise(function(resolve,reject){{
+      var done=false,errs=0;
+      var proxies=['https://api.allorigins.win/raw?url=','https://corsproxy.io/?'];
+      proxies.forEach(function(base){{
+        tryProxy(base)
+          .then(function(d){{if(!done){{done=true;resolve(d);}}}} )
+          .catch(function(){{if(++errs===proxies.length&&!done)reject(new Error('all proxies failed'));}});
       }});
     }});
   }}
@@ -2927,13 +2931,17 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   // NHL API doesn't send CORS headers, so we need a proxy for browser fetches
   function nhlFetch(url){{
     var e=encodeURIComponent(url);
-    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){{
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    }}).catch(function(){{
-      return fetch('https://corsproxy.io/?'+e).then(function(r){{
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
+    function tryProxy(base){{
+      return fetch(base+e).then(function(r){{if(!r.ok)throw new Error(r.status);return r.json();}});
+    }}
+    // Race both proxies — resolve with whichever responds first successfully
+    return new Promise(function(resolve,reject){{
+      var done=false,errs=0;
+      var proxies=['https://api.allorigins.win/raw?url=','https://corsproxy.io/?'];
+      proxies.forEach(function(base){{
+        tryProxy(base)
+          .then(function(d){{if(!done){{done=true;resolve(d);}}}} )
+          .catch(function(){{if(++errs===proxies.length&&!done)reject(new Error('all proxies failed'));}});
       }});
     }});
   }}
