@@ -1910,7 +1910,7 @@ body{{animation:fadeIn 0.15s ease}}
   </div>
   <div class="stat-row">
     <a href="standings.html" class="stat-pill pill-accent" title="{ordinal(conf_rank)} in {team_conf} Conference, {ordinal(div_rank)} in {team_div} Division"><span class="sl">Conf</span> <span class="sv">{ordinal(conf_rank)}</span></a>
-    <a href="standings.html" class="stat-pill" title="{ordinal(div_rank)} in {team_div}"><span class="sl">{team_div[:3].upper()}</span> <span class="sv">{ordinal(div_rank)}</span></a>
+    <a href="standings.html" class="stat-pill" title="{ordinal(div_rank)} in {team_div} Division"><span class="sl">{team_div}</span> <span class="sv">{ordinal(div_rank)}</span></a>
     <span class="stat-pill" title="MoneyPuck playoff probability"><span class="sl">Playoffs</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
