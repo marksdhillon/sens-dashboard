@@ -2429,7 +2429,7 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
 <span class="gd-panel-vs">vs</span>
 <img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" class="gd-panel-logo"><span>{home_full}</span>
 </div>
-<div class="gd-panel-score">{away_score} — {home_score}<span class="gd-panel-status">{status}</span></div>
+<div class="gd-panel-score"><span class="gd-panel-score-val">{away_score} — {home_score}</span><span class="gd-panel-status">{status}</span></div>
 </div>
 {f'<div class="gd-section"><div class="gd-section-title">Scoring Summary</div>{scoring_html}</div>' if scoring_html else ''}
 {f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
@@ -3008,7 +3008,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               if(rows[0])rows[0].className='sb-team-row'+(aScore>hScore?' sb-winner':'');
               if(rows[1])rows[1].className='sb-team-row'+(hScore>aScore?' sb-winner':'');
               var dp=document.getElementById('gd-'+gid);
-              if(dp){{var ps=dp.querySelector('.gd-panel-score');if(ps)ps.innerHTML=aScore+' \u2014 '+hScore+'<span class="gd-panel-status">'+txt+'</span>';}}
+              if(dp){{var sv=dp.querySelector('.gd-panel-score-val');var pst=dp.querySelector('.gd-panel-status');if(sv)sv.textContent=aScore+' \u2014 '+hScore;if(pst)pst.textContent=txt;}}
             }} else if(st==='LIVE'||st==='CRIT'){{
               hasLive=true;
               var ords={{1:'1st',2:'2nd',3:'3rd'}};
@@ -3017,9 +3017,9 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               statusEl.textContent=txt;
               if(rows[0])rows[0].className='sb-team-row';
               if(rows[1])rows[1].className='sb-team-row';
-              liveClocks[gid]={{secs:parseClockSecs(tr),fetchedAt:Date.now(),pNum:pNum,pType:pType,inIntermission:!!(clk.inIntermission)}};
+              liveClocks[gid]={{secs:clk.secondsRemaining!=null?clk.secondsRemaining:parseClockSecs(tr),pNum:pNum,pType:pType,inIntermission:!!(clk.inIntermission),running:!!(clk.running)}};
               var dp=document.getElementById('gd-'+gid);
-              if(dp){{var ps=dp.querySelector('.gd-panel-score');if(ps)ps.innerHTML=aS+' \u2014 '+hS+'<span class="gd-panel-status">'+txt+'</span>';}}
+              if(dp){{var sv=dp.querySelector('.gd-panel-score-val');var pst=dp.querySelector('.gd-panel-status');if(sv)sv.textContent=aS+' \u2014 '+hS;if(pst)pst.textContent=txt;}}
 
             }} else if(st==='FUT'||st==='PRE'){{
               hasFut=true;
@@ -3063,21 +3063,20 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   var pollInterval=hasLiveNow?15000:60000;
   var pollTimer=setInterval(refreshScores,pollInterval);
 
-  // 1-second ticker: counts down live clocks between API polls
+  // 1-second ticker: counts down live clocks — pauses when clock.running is false (stoppages)
   setInterval(function(){{
     for(var gid in liveClocks){{
       var c=liveClocks[gid];
-      if(c.inIntermission) continue;
+      if(c.inIntermission||!c.running) continue;
       var card=document.querySelector('[data-gid="'+gid+'"]');
       if(!card) continue;
       var st=card.getAttribute('data-state');
       if(st!=='LIVE'&&st!=='CRIT'){{delete liveClocks[gid];continue;}}
-      var elapsed=Math.floor((Date.now()-c.fetchedAt)/1000);
-      var remaining=Math.max(0,c.secs-elapsed);
+      c.secs=Math.max(0,c.secs-1);
       var statusEl=card.querySelector('.sb-status');
       if(!statusEl) continue;
       var ords={{1:'1st',2:'2nd',3:'3rd'}};
-      var txt=c.pType==='OT'?'OT '+fmtSecs(remaining):c.pType==='SO'?'Shootout':(ords[c.pNum]||'P'+c.pNum)+' '+fmtSecs(remaining);
+      var txt=c.pType==='OT'?'OT '+fmtSecs(c.secs):c.pType==='SO'?'Shootout':(ords[c.pNum]||'P'+c.pNum)+' '+fmtSecs(c.secs);
       statusEl.textContent=txt;
       var dp=document.getElementById('gd-'+gid);
       if(dp){{var pst=dp.querySelector('.gd-panel-status');if(pst)pst.textContent=txt;}}
