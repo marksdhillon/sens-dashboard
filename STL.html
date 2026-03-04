@@ -150,6 +150,7 @@ a.pname:hover{color:var(--text-strong)}
 .adv-pos{color:var(--green);font-weight:600}
 .adv-neg{color:var(--red);font-weight:600}
 .adv-hdr{background:var(--bg) !important}
+.bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
 .cutoff td{border-bottom:2px dashed var(--text-muted)}
 .rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
@@ -361,7 +362,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" alt="St. Louis Blues" class="team-logo">
       <div>
         <h1>St. Louis Blues <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:51 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:58 PM ET</div>
       </div>
     </div>
   </div>
@@ -575,12 +576,11 @@ body{animation:fadeIn 0.15s ease}
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
-<thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Player age">Age</th><th class="r sort-th" data-col="4" title="Games played this season">GP</th><th class="r sort-th" data-col="5" title="Goals scored">G</th><th class="r sort-th" data-col="6" title="Assists">A</th><th class="r sort-th" data-col="7" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="8" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="9" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="10" title="Points per game played">P/GP</th><th class="r sort-th" data-col="11" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="12" title="Even-strength points">EVP</th><th class="r sort-th" data-col="13" title="Power-play goals">PPG</th><th class="r sort-th" data-col="14" title="Power-play points">PPP</th><th class="r sort-th" data-col="15" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="16" title="Short-handed points">SHP</th><th class="r sort-th" data-col="17" title="Overtime goals">OTG</th><th class="r sort-th" data-col="18" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="19" title="Shots on goal">S</th><th class="r sort-th" data-col="20" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="21" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="22" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="23" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="24" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="25" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th></tr></thead>
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Games played this season">GP</th><th class="r sort-th" data-col="4" title="Goals scored">G</th><th class="r sort-th" data-col="5" title="Assists">A</th><th class="r sort-th" data-col="6" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="7" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="8" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="9" title="Points per game played">P/GP</th><th class="r sort-th" data-col="10" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="11" title="Even-strength points">EVP</th><th class="r sort-th" data-col="12" title="Power-play goals">PPG</th><th class="r sort-th" data-col="13" title="Power-play points">PPP</th><th class="r sort-th" data-col="14" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="15" title="Short-handed points">SHP</th><th class="r sort-th" data-col="16" title="Overtime goals">OTG</th><th class="r sort-th" data-col="17" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="18" title="Shots on goal">S</th><th class="r sort-th" data-col="19" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="20" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="21" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="22" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="23" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="24" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th><th class="r sort-th" data-col="25" title="Player age">Age</th><th class="r sort-th" data-col="26" title="Date of birth">Birthday</th><th class="r sort-th" data-col="27" title="Birth city and country">From</th></tr></thead>
 <tbody><tr class="player-summary">
 <td class="rank" data-sort="1">1</td>
 <td class="name-cell" data-sort="Pavel Buchnevich"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8477402.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Pavel+Buchnevich" target="_blank" rel="noopener" class="pname">Pavel Buchnevich</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="30">30</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="14">14</td><td class="r" data-sort="24">24</td>
 <td class="r pts-col" data-sort="38">38</td><td class="r" data-sort="-12">-12</td>
 <td class="r" data-sort="18">18</td><td class="r" data-sort="0.63">0.63</td>
@@ -593,11 +593,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-0.6">-0.6</td>
 <td class="r adv" data-sort="49.0">49.0</td>
 <td class="r adv" data-sort="0.57">0.57</td>
+<td class="r" data-sort="30">30</td>
+<td class="r bio-col" data-sort="Apr 17, 1995">Apr 17, 1995</td>
+<td class="r bio-col" data-sort="Cherepovets, RUS">Cherepovets, RUS</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="2">2</td>
 <td class="name-cell" data-sort="Robert Thomas"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8480023.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Robert+Thomas" target="_blank" rel="noopener" class="pname">Robert Thomas</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="26">26</td>
 <td class="r" data-sort="43">43</td><td class="r" data-sort="12">12</td><td class="r" data-sort="23">23</td>
 <td class="r pts-col" data-sort="35">35</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.81">0.81</td>
@@ -610,11 +612,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="4.1">+4.1</td>
 <td class="r adv" data-sort="52.0">52.0</td>
 <td class="r adv" data-sort="0.73">0.73</td>
+<td class="r" data-sort="26">26</td>
+<td class="r bio-col" data-sort="Jul 2, 1999">Jul 2, 1999</td>
+<td class="r bio-col" data-sort="Aurora, ON, CAN">Aurora, ON, CAN</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="3">3</td>
 <td class="name-cell" data-sort="Jordan Kyrou"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8479385.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jordan+Kyrou" target="_blank" rel="noopener" class="pname">Jordan Kyrou</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="27">27</td>
 <td class="r" data-sort="50">50</td><td class="r" data-sort="14">14</td><td class="r" data-sort="19">19</td>
 <td class="r pts-col" data-sort="33">33</td><td class="r" data-sort="-6">-6</td>
 <td class="r" data-sort="4">4</td><td class="r" data-sort="0.66">0.66</td>
@@ -627,11 +631,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="1.2">+1.2</td>
 <td class="r adv" data-sort="60.0">60.0</td>
 <td class="r adv" data-sort="0.79">0.79</td>
+<td class="r" data-sort="27">27</td>
+<td class="r bio-col" data-sort="May 5, 1998">May 5, 1998</td>
+<td class="r bio-col" data-sort="Toronto, ON, CAN">Toronto, ON, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="4">4</td>
 <td class="name-cell" data-sort="Justin Faulk"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8475753.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Justin+Faulk" target="_blank" rel="noopener" class="pname">Justin Faulk</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="33">33</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="11">11</td><td class="r" data-sort="21">21</td>
 <td class="r pts-col" data-sort="32">32</td><td class="r" data-sort="-3">-3</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="0.53">0.53</td>
@@ -644,11 +650,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="4.6">+4.6</td>
 <td class="r adv" data-sort="46.0">46.0</td>
 <td class="r adv" data-sort="0.48">0.48</td>
+<td class="r" data-sort="33">33</td>
+<td class="r bio-col" data-sort="Mar 20, 1992">Mar 20, 1992</td>
+<td class="r bio-col" data-sort="South St. Paul, MN, USA">South St. Paul, MN, USA</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="5">5</td>
 <td class="name-cell" data-sort="Brayden Schenn"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8475170.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brayden+Schenn" target="_blank" rel="noopener" class="pname">Brayden Schenn</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="34">34</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="12">12</td><td class="r" data-sort="13">13</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="-25">-25</td>
 <td class="r" data-sort="49">49</td><td class="r" data-sort="0.42">0.42</td>
@@ -661,11 +669,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-1.4">-1.4</td>
 <td class="r adv" data-sort="50.0">50.0</td>
 <td class="r adv" data-sort="0.32">0.32</td>
+<td class="r" data-sort="34">34</td>
+<td class="r bio-col" data-sort="Aug 22, 1991">Aug 22, 1991</td>
+<td class="r bio-col" data-sort="Saskatoon, SK, CAN">Saskatoon, SK, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="6">6</td>
 <td class="name-cell" data-sort="Jake Neighbours"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8482089.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jake+Neighbours" target="_blank" rel="noopener" class="pname">Jake Neighbours</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="23">23</td>
 <td class="r" data-sort="47">47</td><td class="r" data-sort="14">14</td><td class="r" data-sort="11">11</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="-9">-9</td>
 <td class="r" data-sort="26">26</td><td class="r" data-sort="0.53">0.53</td>
@@ -678,11 +688,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="4.0">+4.0</td>
 <td class="r adv" data-sort="50.0">50.0</td>
 <td class="r adv" data-sort="0.44">0.44</td>
+<td class="r" data-sort="23">23</td>
+<td class="r bio-col" data-sort="Mar 29, 2002">Mar 29, 2002</td>
+<td class="r bio-col" data-sort="Calgary, AB, CAN">Calgary, AB, CAN</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="7">7</td>
 <td class="name-cell" data-sort="Jimmy Snuggerud"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8483516.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jimmy+Snuggerud" target="_blank" rel="noopener" class="pname">Jimmy Snuggerud</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="21">21</td>
 <td class="r" data-sort="48">48</td><td class="r" data-sort="10">10</td><td class="r" data-sort="15">15</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="-4">-4</td>
 <td class="r" data-sort="10">10</td><td class="r" data-sort="0.52">0.52</td>
@@ -695,11 +707,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.0">-2.0</td>
 <td class="r adv" data-sort="46.0">46.0</td>
 <td class="r adv" data-sort="0.47">0.47</td>
+<td class="r" data-sort="21">21</td>
+<td class="r bio-col" data-sort="Jun 1, 2004">Jun 1, 2004</td>
+<td class="r bio-col" data-sort="Minneapolis, MN, USA">Minneapolis, MN, USA</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="8">8</td>
 <td class="name-cell" data-sort="Dylan Holloway"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8482077.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Dylan+Holloway" target="_blank" rel="noopener" class="pname">Dylan Holloway</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="24">24</td>
 <td class="r" data-sort="37">37</td><td class="r" data-sort="11">11</td><td class="r" data-sort="10">10</td>
 <td class="r pts-col" data-sort="21">21</td><td class="r" data-sort="-9">-9</td>
 <td class="r" data-sort="11">11</td><td class="r" data-sort="0.57">0.57</td>
@@ -712,11 +726,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="3.1">+3.1</td>
 <td class="r adv" data-sort="53.0">53.0</td>
 <td class="r adv" data-sort="0.61">0.61</td>
+<td class="r" data-sort="24">24</td>
+<td class="r bio-col" data-sort="Sep 23, 2001">Sep 23, 2001</td>
+<td class="r bio-col" data-sort="Calgary, AB, CAN">Calgary, AB, CAN</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="9">9</td>
 <td class="name-cell" data-sort="Pius Suter"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8480459.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Pius+Suter" target="_blank" rel="noopener" class="pname">Pius Suter</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="29">29</td>
 <td class="r" data-sort="43">43</td><td class="r" data-sort="8">8</td><td class="r" data-sort="11">11</td>
 <td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="12">12</td><td class="r" data-sort="0.44">0.44</td>
@@ -729,11 +745,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.3">-2.3</td>
 <td class="r adv" data-sort="52.0">52.0</td>
 <td class="r adv" data-sort="0.44">0.44</td>
+<td class="r" data-sort="29">29</td>
+<td class="r bio-col" data-sort="May 24, 1996">May 24, 1996</td>
+<td class="r bio-col" data-sort="Zurich, CHE">Zurich, CHE</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="10">10</td>
 <td class="name-cell" data-sort="Philip Broberg"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8481598.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Philip+Broberg" target="_blank" rel="noopener" class="pname">Philip Broberg</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="24">24</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="3">3</td><td class="r" data-sort="16">16</td>
 <td class="r pts-col" data-sort="19">19</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="10">10</td><td class="r" data-sort="0.32">0.32</td>
@@ -746,11 +764,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.0">-2.0</td>
 <td class="r adv" data-sort="51.0">51.0</td>
 <td class="r adv" data-sort="0.26">0.26</td>
+<td class="r" data-sort="24">24</td>
+<td class="r bio-col" data-sort="Jun 25, 2001">Jun 25, 2001</td>
+<td class="r bio-col" data-sort="Orebro, SWE">Orebro, SWE</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="11">11</td>
 <td class="name-cell" data-sort="Cam Fowler"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8475764.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Cam+Fowler" target="_blank" rel="noopener" class="pname">Cam Fowler</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="34">34</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="1">1</td><td class="r" data-sort="17">17</td>
 <td class="r pts-col" data-sort="18">18</td><td class="r" data-sort="-20">-20</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.30">0.30</td>
@@ -763,11 +783,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.3">-2.3</td>
 <td class="r adv" data-sort="46.0">46.0</td>
 <td class="r adv" data-sort="0.24">0.24</td>
+<td class="r" data-sort="34">34</td>
+<td class="r bio-col" data-sort="Dec 5, 1991">Dec 5, 1991</td>
+<td class="r bio-col" data-sort="Windsor, ON, CAN">Windsor, ON, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="12">12</td>
 <td class="name-cell" data-sort="Dalibor Dvorsky"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8484164.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Dalibor+Dvorsky" target="_blank" rel="noopener" class="pname">Dalibor Dvorsky</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="20">20</td>
 <td class="r" data-sort="50">50</td><td class="r" data-sort="9">9</td><td class="r" data-sort="6">6</td>
 <td class="r pts-col" data-sort="15">15</td><td class="r" data-sort="-5">-5</td>
 <td class="r" data-sort="18">18</td><td class="r" data-sort="0.30">0.30</td>
@@ -780,11 +802,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="1.4">+1.4</td>
 <td class="r adv" data-sort="43.0">43.0</td>
 <td class="r adv" data-sort="0.19">0.19</td>
+<td class="r" data-sort="20">20</td>
+<td class="r bio-col" data-sort="Jun 15, 2005">Jun 15, 2005</td>
+<td class="r bio-col" data-sort="Zvolen, SVK">Zvolen, SVK</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="13">13</td>
 <td class="name-cell" data-sort="Colton Parayko"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8476892.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Colton+Parayko" target="_blank" rel="noopener" class="pname">Colton Parayko</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="32">32</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="1">1</td><td class="r" data-sort="13">13</td>
 <td class="r pts-col" data-sort="14">14</td><td class="r" data-sort="-14">-14</td>
 <td class="r" data-sort="16">16</td><td class="r" data-sort="0.24">0.24</td>
@@ -797,11 +821,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.5">-2.5</td>
 <td class="r adv" data-sort="51.0">51.0</td>
 <td class="r adv" data-sort="0.15">0.15</td>
+<td class="r" data-sort="32">32</td>
+<td class="r bio-col" data-sort="May 12, 1993">May 12, 1993</td>
+<td class="r bio-col" data-sort="St. Albert, AB, CAN">St. Albert, AB, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="14">14</td>
 <td class="name-cell" data-sort="Oskar Sundqvist"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8476897.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Oskar+Sundqvist" target="_blank" rel="noopener" class="pname">Oskar Sundqvist</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="31">31</td>
 <td class="r" data-sort="44">44</td><td class="r" data-sort="4">4</td><td class="r" data-sort="10">10</td>
 <td class="r pts-col" data-sort="14">14</td><td class="r" data-sort="-17">-17</td>
 <td class="r" data-sort="16">16</td><td class="r" data-sort="0.32">0.32</td>
@@ -814,11 +840,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="-0.1">-0.1</td>
 <td class="r adv" data-sort="37.0">37.0</td>
 <td class="r adv" data-sort="0.01">0.01</td>
+<td class="r" data-sort="31">31</td>
+<td class="r bio-col" data-sort="Mar 23, 1994">Mar 23, 1994</td>
+<td class="r bio-col" data-sort="Boden, SWE">Boden, SWE</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="15">15</td>
 <td class="name-cell" data-sort="Tyler Tucker"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8481006.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Tyler+Tucker" target="_blank" rel="noopener" class="pname">Tyler Tucker</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="26">26</td>
 <td class="r" data-sort="55">55</td><td class="r" data-sort="3">3</td><td class="r" data-sort="10">10</td>
 <td class="r pts-col" data-sort="13">13</td><td class="r" data-sort="-4">-4</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="0.24">0.24</td>
@@ -831,11 +859,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0.5">+0.5</td>
 <td class="r adv" data-sort="49.0">49.0</td>
 <td class="r adv" data-sort="0.26">0.26</td>
+<td class="r" data-sort="26">26</td>
+<td class="r bio-col" data-sort="Mar 1, 2000">Mar 1, 2000</td>
+<td class="r bio-col" data-sort="Thunder Bay, ON, CAN">Thunder Bay, ON, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="16">16</td>
 <td class="name-cell" data-sort="Nathan Walker"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8477573.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Nathan+Walker" target="_blank" rel="noopener" class="pname">Nathan Walker</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="32">32</td>
 <td class="r" data-sort="39">39</td><td class="r" data-sort="4">4</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="11">11</td><td class="r" data-sort="-4">-4</td>
 <td class="r" data-sort="24">24</td><td class="r" data-sort="0.28">0.28</td>
@@ -848,11 +878,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-0.6">-0.6</td>
 <td class="r adv" data-sort="50.0">50.0</td>
 <td class="r adv" data-sort="0.19">0.19</td>
+<td class="r" data-sort="32">32</td>
+<td class="r bio-col" data-sort="Feb 7, 1994">Feb 7, 1994</td>
+<td class="r bio-col" data-sort="Cardiff, GBR">Cardiff, GBR</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="17">17</td>
 <td class="name-cell" data-sort="Mathieu Joseph"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8478472.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Mathieu+Joseph" target="_blank" rel="noopener" class="pname">Mathieu Joseph</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="0"></td>
 <td class="r" data-sort="39">39</td><td class="r" data-sort="2">2</td><td class="r" data-sort="9">9</td>
 <td class="r pts-col" data-sort="11">11</td><td class="r" data-sort="-5">-5</td>
 <td class="r" data-sort="4">4</td><td class="r" data-sort="0.28">0.28</td>
@@ -865,11 +897,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.2">-2.2</td>
 <td class="r adv" data-sort="50.0">50.0</td>
 <td class="r adv" data-sort="0.24">0.24</td>
+<td class="r" data-sort="0"></td>
+<td class="r bio-col" data-sort=""></td>
+<td class="r bio-col" data-sort=""></td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="18">18</td>
 <td class="name-cell" data-sort="Jonatan Berggren"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8481013.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jonatan+Berggren" target="_blank" rel="noopener" class="pname">Jonatan Berggren</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="25">25</td>
 <td class="r" data-sort="22">22</td><td class="r" data-sort="5">5</td><td class="r" data-sort="5">5</td>
 <td class="r pts-col" data-sort="10">10</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.45">0.45</td>
@@ -882,11 +916,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0.2">+0.2</td>
 <td class="r adv" data-sort="47.0">47.0</td>
 <td class="r adv" data-sort="0.77">0.77</td>
+<td class="r" data-sort="25">25</td>
+<td class="r bio-col" data-sort="Jul 16, 2000">Jul 16, 2000</td>
+<td class="r bio-col" data-sort="Uppsala, SWE">Uppsala, SWE</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="19">19</td>
 <td class="name-cell" data-sort="Otto Stenberg"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8484230.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Otto+Stenberg" target="_blank" rel="noopener" class="pname">Otto Stenberg</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="0"></td>
 <td class="r" data-sort="18">18</td><td class="r" data-sort="1">1</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="8">8</td><td class="r" data-sort="4">+4</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.44">0.44</td>
@@ -899,11 +935,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-1.7">-1.7</td>
 <td class="r adv" data-sort="44.0">44.0</td>
 <td class="r adv" data-sort="0.3">0.30</td>
+<td class="r" data-sort="0"></td>
+<td class="r bio-col" data-sort=""></td>
+<td class="r bio-col" data-sort=""></td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="20">20</td>
 <td class="name-cell" data-sort="Alexey Toropchenko"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8480281.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Alexey+Toropchenko" target="_blank" rel="noopener" class="pname">Alexey Toropchenko</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="26">26</td>
 <td class="r" data-sort="44">44</td><td class="r" data-sort="3">3</td><td class="r" data-sort="4">4</td>
 <td class="r pts-col" data-sort="7">7</td><td class="r" data-sort="-10">-10</td>
 <td class="r" data-sort="24">24</td><td class="r" data-sort="0.16">0.16</td>
@@ -916,11 +954,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.2">-2.2</td>
 <td class="r adv" data-sort="42.0">42.0</td>
 <td class="r adv" data-sort="0.01">0.01</td>
+<td class="r" data-sort="26">26</td>
+<td class="r bio-col" data-sort="Jun 25, 1999">Jun 25, 1999</td>
+<td class="r bio-col" data-sort="Moscow, RUS">Moscow, RUS</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="21">21</td>
 <td class="name-cell" data-sort="Logan Mailloux"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8482733.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Logan+Mailloux" target="_blank" rel="noopener" class="pname">Logan Mailloux</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="22">22</td>
 <td class="r" data-sort="45">45</td><td class="r" data-sort="2">2</td><td class="r" data-sort="2">2</td>
 <td class="r pts-col" data-sort="4">4</td><td class="r" data-sort="-19">-19</td>
 <td class="r" data-sort="33">33</td><td class="r" data-sort="0.09">0.09</td>
@@ -933,11 +973,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0.3">+0.3</td>
 <td class="r adv" data-sort="46.0">46.0</td>
 <td class="r adv" data-sort="0.06">0.06</td>
+<td class="r" data-sort="22">22</td>
+<td class="r bio-col" data-sort="Apr 15, 2003">Apr 15, 2003</td>
+<td class="r bio-col" data-sort="Belle River, ON, CAN">Belle River, ON, CAN</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="22">22</td>
 <td class="name-cell" data-sort="Matthew Kessel"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8482516.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Matthew+Kessel" target="_blank" rel="noopener" class="pname">Matthew Kessel</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="25">25</td>
 <td class="r" data-sort="24">24</td><td class="r" data-sort="2">2</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="3">3</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="6">6</td><td class="r" data-sort="0.12">0.12</td>
@@ -950,11 +992,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="1.2">+1.2</td>
 <td class="r adv" data-sort="47.0">47.0</td>
 <td class="r adv" data-sort="0.15">0.15</td>
+<td class="r" data-sort="25">25</td>
+<td class="r bio-col" data-sort="Jun 23, 2000">Jun 23, 2000</td>
+<td class="r bio-col" data-sort="Bloomfield Hills, MI, USA">Bloomfield Hills, MI, USA</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="23">23</td>
 <td class="name-cell" data-sort="Hugh McGing"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8481070.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Hugh+McGing" target="_blank" rel="noopener" class="pname">Hugh McGing</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="0"></td>
 <td class="r" data-sort="3">3</td><td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="2">2</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.67">0.67</td>
@@ -967,11 +1011,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-pos" data-sort="0.7">+0.7</td>
 <td class="r adv" data-sort="28.999999999999996">29.0</td>
 <td class="r adv" data-sort="0.46">0.46</td>
+<td class="r" data-sort="0"></td>
+<td class="r bio-col" data-sort=""></td>
+<td class="r bio-col" data-sort=""></td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="24">24</td>
 <td class="name-cell" data-sort="Jack Finley"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8482090.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jack+Finley" target="_blank" rel="noopener" class="pname">Jack Finley</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="23">23</td>
 <td class="r" data-sort="3">3</td><td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="4">4</td><td class="r" data-sort="0.33">0.33</td>
@@ -984,11 +1030,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv adv-neg" data-sort="-2.0">-2.0</td>
 <td class="r adv" data-sort="55.00000000000001">55.0</td>
 <td class="r adv" data-sort="0.77">0.77</td>
+<td class="r" data-sort="23">23</td>
+<td class="r bio-col" data-sort="Sep 2, 2002">Sep 2, 2002</td>
+<td class="r bio-col" data-sort="St. Louis, MO, USA">St. Louis, MO, USA</td>
 </tr><tr class="player-summary">
 <td class="rank" data-sort="25">25</td>
 <td class="name-cell" data-sort="Hunter Skinner"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8481715.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Hunter+Skinner" target="_blank" rel="noopener" class="pname">Hunter Skinner</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="0"></td>
 <td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="1">+1</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
@@ -1001,11 +1049,13 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="0">--</td>
 <td class="r adv" data-sort="36.0">36.0</td>
 <td class="r adv" data-sort="0">--</td>
+<td class="r" data-sort="0"></td>
+<td class="r bio-col" data-sort=""></td>
+<td class="r bio-col" data-sort=""></td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="26">26</td>
 <td class="name-cell" data-sort="Aleksanteri Kaskimaki"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8483463.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Aleksanteri+Kaskimaki" target="_blank" rel="noopener" class="pname">Aleksanteri Kaskimaki</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
-<td class="r" data-sort="0"></td>
 <td class="r" data-sort="5">5</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="-6">-6</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.00">0.00</td>
@@ -1018,26 +1068,33 @@ body{animation:fadeIn 0.15s ease}
 <td class="r adv" data-sort="-0.2">-0.2</td>
 <td class="r adv" data-sort="27.0">27.0</td>
 <td class="r adv" data-sort="-0.14">-0.14</td>
+<td class="r" data-sort="0"></td>
+<td class="r bio-col" data-sort=""></td>
+<td class="r bio-col" data-sort=""></td>
 </tr></tbody></table></div>
 
 <h3 style="margin-top:32px">Goaltenders</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
-<thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Player age">Age</th><th class="r sort-th" data-col="3" title="Games played">GP</th><th class="r sort-th" data-col="4" title="Games started">GS</th><th class="r sort-th" data-col="5" title="Wins">W</th><th class="r sort-th" data-col="6" title="Losses">L</th><th class="r sort-th" data-col="7" title="Overtime losses">OT</th><th class="r sort-th" data-col="8" title="Shots against">SA</th><th class="r sort-th" data-col="9" title="Goals against">GA</th><th class="r sort-th" data-col="10" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="11" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="12" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="13" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="14" title="Total time on ice">TOI</th></tr></thead>
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Games played">GP</th><th class="r sort-th" data-col="3" title="Games started">GS</th><th class="r sort-th" data-col="4" title="Wins">W</th><th class="r sort-th" data-col="5" title="Losses">L</th><th class="r sort-th" data-col="6" title="Overtime losses">OT</th><th class="r sort-th" data-col="7" title="Shots against">SA</th><th class="r sort-th" data-col="8" title="Goals against">GA</th><th class="r sort-th" data-col="9" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="10" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="11" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="12" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="13" title="Total time on ice">TOI</th><th class="r sort-th" data-col="14" title="Player age">Age</th><th class="r sort-th" data-col="15" title="Date of birth">Birthday</th><th class="r sort-th" data-col="16" title="Birth city and country">From</th></tr></thead>
 <tbody><tr class="goalie-row"><td class="rank" data-sort="1">1</td>
 <td class="name-cell" data-sort="Jordan Binnington"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8476412.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jordan+Binnington" target="_blank" rel="noopener" class="pname">Jordan Binnington</a></div></td>
-<td class="r" data-sort="32">32</td>
 <td class="r" data-sort="33">33</td><td class="r" data-sort="31">31</td>
 <td class="r" data-sort="8">8</td><td class="r" data-sort="18">18</td><td class="r" data-sort="6">6</td>
 <td class="r" data-sort="826">826</td><td class="r" data-sort="110">110</td><td class="r" data-sort="3.60">3.60</td>
 <td class="r" data-sort="716">716</td><td class="r" data-sort="0.8670">.867</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="109848">1830:48</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="2">2</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="109848">1830:48</td>
+<td class="r" data-sort="32">32</td>
+<td class="r bio-col" data-sort="Jul 11, 1993">Jul 11, 1993</td>
+<td class="r bio-col" data-sort="Richmond Hill, ON, CAN">Richmond Hill, ON, CAN</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="2">2</td>
 <td class="name-cell" data-sort="Joel Hofer"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8480981.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Joel+Hofer" target="_blank" rel="noopener" class="pname">Joel Hofer</a></div></td>
-<td class="r" data-sort="25">25</td>
 <td class="r" data-sort="32">32</td><td class="r" data-sort="29">29</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="11">11</td><td class="r" data-sort="3">3</td>
 <td class="r" data-sort="819">819</td><td class="r" data-sort="83">83</td><td class="r" data-sort="2.81">2.81</td>
 <td class="r" data-sort="736">736</td><td class="r" data-sort="0.8990">.899</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="106435">1773:55</td></tr></tbody></table></div></div>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="106435">1773:55</td>
+<td class="r" data-sort="25">25</td>
+<td class="r bio-col" data-sort="Jul 30, 2000">Jul 30, 2000</td>
+<td class="r bio-col" data-sort="Winnipeg, MB, CAN">Winnipeg, MB, CAN</td></tr></tbody></table></div></div>
   <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
 <div class="sub-note">Data from ESPN</div>
 <div class="inj-tbl-wrap">
@@ -1118,7 +1175,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxPS0RnQndiRXFoc2ZKZ3dZMmx3TmRLUGtHdlJ6SGZmalBFRG05Wm9jRTFlUTB5ejJ6V2wtRWk5d2UwWU9DdmFCaVlocXNmWlRuM2x2bTN2OENzQmJHZGhxOVAyRC1HRWRtWkN6ejdMYXpTY1hRTW9lWDFTYUtBV250eXZqUFowZ3Jka1pXUmRqei1pcF9zM09LNUlPSy11MXdkTmxPUkphTHRHRlRGenhERHQybTR4ZVA0bk1nZlQtSzdBWFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 1:42 AM</span></div>
 <div class="news-title">Should The Senators Make A Pitch For Blues Goalie Jordan Binnington?</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNbV9LV0wzQWJVVGx2ckZsanBOd0hJeHdFT3hRUHMzN2IzTjlkT1RhTUlwVjctNDV1S2RVN1hUd0VNaVNZWC1kdTZ0ZXVNeU1PZTIzMU53SGpuWGFNVDFBWnROZDRxanRnWmJJTHluUHJrMmpqaUNyTnlyUEJtaGRBdTVsR0tSSndRdVhQc2NDNDF4NWl6WlB4S3dBQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 1:20 AM</span></div>
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 1:28 AM</span></div>
 <div class="news-title">Robert Thomas to Sabres? Breaking down what a trade could look like with Blues</div></a><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1NVzBOMnVGbkZFX0k1UlRGRk4xYlRzQ0hWNlRDYURpTGFGaEpTUjY2Z0tKbkZZSmpadXVsQ2x6VDFDZS1jRVZndUxPbDVfcWgtazVwbEtZbHBVV0k0dmNtY1hPMWNvNjlXWGJGbWV3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:05 AM</span></div>
 <div class="news-title">Preview: Blues vs. Kraken</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPQndjek54WlRjbkUzek5vV25IODltV0g0bUpLVlA0aHBGSV8xSDFlT0o0YVBaSzFPRDJROHowdTNyTkdTeTJIbElGdW9hMWNQWGlJYjZwZkcwSHpkblRRaXBMbFdVSGRnb3Y2VDROMUQwYi1EYmNxdWs2czZIdDFjc2Jnd0ZoMTQ0YnJMOGhqTEY0TTZVY0lUSFFVMHZEaWhJeVZweUZ0cw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1145,19 +1202,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 9:32 PM</span></div>
 <div class="news-title">Are the Habs About to Land Robert Thomas?</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPWmpsVWtCa1kxb1NaaURHLXhkdzFyaE5vLUpZWDdjNThXdi10RTc1RFM3dkxibEpRWjVrV2dJX0tmWWs1WEd4UzRHc3lRMEdSYS1FTmZISjFOYWFrX1EyYnhPS1o5ajFqQlNyQXQwbEI3WVo5eG0tSlRQZVNhOHFCOFBQVEllNlVVQXE0aTFPX1c2YWZTdzNoLVI5RmtOUUJ6dE9OV09YenhvU19CVS1zVFRBblVRQUtBaWdoWWMzWk8tc2VI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 3 &middot; 9:10 PM</span></div>
-<div class="news-title">Canadiens rumours: Elliotte Friedman casts doubt on Montreal's Robert Thomas trade dream</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNcGQ1RUNrMjAyaVFJRmhRVEhRM05UTlBKS1NCMThMRmpQb3NWUjFtSFUxSnRXRWM3US1yc1I4UEpvZkh0VDgzM25lcGU2eFF6b0Q2TjVDVmJ5Vi1HMmEwaGRBYUtzcUNoejBkRmMwTy1BWWdOcGQzT0pZWVlMV1BHUEJ3MWlCQUhyZFRMQmt4QmpnNFVYNWE2Ti1ZS3hjZHdJbm5RcWN0cEx5SVhPSDhRWlUtNy1aRXp1VlI4NHIxY2w2eWcxWElKU0ZYNWRhdkxjbXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 9:06 PM</span></div>
-<div class="news-title">Sabres Emerge In Blues' Robert Thomas Sweepstakes; Talkings Reportedly 'Heating Up'</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQWmY4T0lJQzY0VFlQRDllSlRydTdSQktyZmNpZlExR3lMeGUwZ1BhZV9hOHRKdl82MmpUUU1yalFoekZwSkRSTXFFZjBiREkwanpiWFdWdlhWa3hwS2Y4VjcwMDQyamFwS0xCOVRKU2ZlVk5kYWQ0VmFsRzhlM2lVTkh1cS1RbUxoUldjV0lVQV8xNTZFb2ZrLWx1Y2J6ZXc1bmNkQXVHbUtnWVJHd1IwUHNBcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Canadiens rumours: Elliotte Friedman casts doubt on Montreal's Robert Thomas trade dream</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQWmY4T0lJQzY0VFlQRDllSlRydTdSQktyZmNpZlExR3lMeGUwZ1BhZV9hOHRKdl82MmpUUU1yalFoekZwSkRSTXFFZjBiREkwanpiWFdWdlhWa3hwS2Y4VjcwMDQyamFwS0xCOVRKU2ZlVk5kYWQ0VmFsRzhlM2lVTkh1cS1RbUxoUldjV0lVQV8xNTZFb2ZrLWx1Y2J6ZXc1bmNkQXVHbUtnWVJHd1IwUHNBcw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Octopus Thrower</span><span class="news-date">Mar 3 &middot; 9:04 PM</span></div>
 <div class="news-title">Red Wings rumors: Detroit watching rival's talks for Robert Thomas heat up</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPNGFTVDZvSkJDc3g5dlhwOHdxVDZiY29DS3hHU3kyS29ISjF6XzhwU3hpOGRnbWktTHVlNGNfbmg4QVEwSE03a29OMUtRTDIyT1JOaWhzcHFRWWpCeWJ1MUZJUkNuNmtPTVNIZ0NiVUIxaEJVbnlKSzhtZUJLWUFZX1BvUW9YbXM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 8:59 PM</span></div>
 <div class="news-title">Sabres Emerge In Blues' Robert Thomas Sweepstakes; Talkings Reportedly 'Heating Up'</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPYzljN2lmdkFXRENEeHFFV3RDRWJKNTRxT3NTXzRLaERpMnM3QWxuTEVhUFhvaHRGbFFUTXpTQnlKXzhzdVl4XzJROUFkZWItU1QzMVQ5cmhOX0JSa1BRMEd6ZnNGeFg5aVh6RUN3Z1NwSDZ4SkRHdTZiRDdzZXJLZjlmNjI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 3 &middot; 8:48 PM</span></div>
-<div class="news-title">BREAKING RUMOR: Sabres Nearing Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcXlGWGZ4UXBVUk5oYVJjeC1sUWJPRnI3Mm1BVzBVX1ZET1BMVGl4amFjbmhxdmYyWU8zTGpsazNpdVFRQklNNVNLMmpHRUcxaklhR2MwbmRmSkdROWhsTlZrQzZMVjlmY3VOcy1nM1gzV0VfRUxsc0swZnd4dHJycWRFTWJyLWZpNk1TYnV1WlZhbXFvNlBEclNjalZaeVJ3M3ZrS1hqRlBKeFM2UDBndG5qTlZJTTBXeWc4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:30 PM</span></div>
-<div class="news-title">Sabres & Blues Talking Potential Blockbuster Robert Thomas Trade</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUVJTSDEyMmhYU25HOTBKYkx6WTdIb2dsb05mQkd2UWZsZXVvQXRzSzMxY1FuNWxDdzR4eXJJNG5UcnZDb21vcVBBOFl6MDVZSGJaSzJfMy1paXNxUWJCcE4xVXV0ZUxCekpISlR6TGhpQWYzdWRUa29JVEFpd180Q3pvTjFLTWdQcDlKdDUyTDYyZVU5M3d6WXMwSHpDV2FsX1A5TlZxSXZWVEMtUnJkZVpONmxSY0F3VDFZN1p1YmE0eVk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">BREAKING RUMOR: Sabres Nearing Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUVJTSDEyMmhYU25HOTBKYkx6WTdIb2dsb05mQkd2UWZsZXVvQXRzSzMxY1FuNWxDdzR4eXJJNG5UcnZDb21vcVBBOFl6MDVZSGJaSzJfMy1paXNxUWJCcE4xVXV0ZUxCekpISlR6TGhpQWYzdWRUa29JVEFpd180Q3pvTjFLTWdQcDlKdDUyTDYyZVU5M3d6WXMwSHpDV2FsX1A5TlZxSXZWVEMtUnJkZVpONmxSY0F3VDFZN1p1YmE0eVk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 8:29 PM</span></div>
-<div class="news-title">Blues get major news on Jordan Binnington trade</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPbU1KNWdSd3NlNE1VeTJOR3VBd3pieERWRjg4d3d2VkZURU90d2JONFBkOTlqVVRxQXBBQXdVVGoxeGxkNWh6SzVoVTIxOGV5YXdSeHFLQ3RjODFhZmE0dU1FVXlQMTk3WnAwcUNNS2VmcEFIVGN3dk40dDBQSk83V285dWNLS18xV3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Blues get major news on Jordan Binnington trade</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcXlGWGZ4UXBVUk5oYVJjeC1sUWJPRnI3Mm1BVzBVX1ZET1BMVGl4amFjbmhxdmYyWU8zTGpsazNpdVFRQklNNVNLMmpHRUcxaklhR2MwbmRmSkdROWhsTlZrQzZMVjlmY3VOcy1nM1gzV0VfRUxsc0swZnd4dHJycWRFTWJyLWZpNk1TYnV1WlZhbXFvNlBEclNjalZaeVJ3M3ZrS1hqRlBKeFM2UDBndG5qTlZJTTBXeWc4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:27 PM</span></div>
+<div class="news-title">Sabres & Blues Talking Potential Blockbuster Robert Thomas Trade</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPbU1KNWdSd3NlNE1VeTJOR3VBd3pieERWRjg4d3d2VkZURU90d2JONFBkOTlqVVRxQXBBQXdVVGoxeGxkNWh6SzVoVTIxOGV5YXdSeHFLQ3RjODFhZmE0dU1FVXlQMTk3WnAwcUNNS2VmcEFIVGN3dk40dDBQSk83V285dWNLS18xV3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 8:16 PM</span></div>
 <div class="news-title">St. Louis Blues Could Trade Robert Thomas, 5 Best Landing Spots</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPbWFkNzRfejJ5bk90NEQ1YmpYXzdOOFNXbXg0UUxVUWpGVnhDRlJxeW5tenp6TEFlSk5yU25VUFNYRFRaUkZyT2lEd1ktWlJER1pFbWpDeWNXWXFQUGh5NVZZek11eGw2N3Q2aVhIOTlvNE9XVUpSYll0UFVfYjk2MG5GU09CWmo3a0hXeURuZzkyWUFDX2c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 8:12 PM</span></div>
@@ -1165,7 +1220,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
 <div class="news-title">Buffalo Sabres Could Go All-In By Trading For Blues' Robert Thomas, Insiders Say</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOM3JIMDNFbjBqSXU0WHh3cXZ3NmpEajBsZjhXQldCVzlJd1VUZU9RUkNaODltRzZiRlNmZjZ3LXl1NUFYV2pKRlk0TUpjUTk3OURabGZZbXBBZHVuR3J4aF94TUJzblUxLTNzS0s5VkxhcWNqYmE4cE5TdDlBekxmZEtMeGtSQUN4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
-<div class="news-title">Buffalo Sabres Could Go All-In By Trading For Blues' Robert Thomas, Insiders Say</div></a></div></div>
+<div class="news-title">Buffalo Sabres Could Go All-In By Trading For Blues' Robert Thomas, Insiders Say</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOaVlRZy1oaFpvUG9PemsyRDloZW95YUJEdWNhZGtNM2hMN1FLNk9rZUNTUFh3am1kQTJoODlKRDBWbFJKMFRfcHJMQjNsQ0xZREVJRFh3aDlCNzloNFR5ckVzZWdoWnhoRUpOblBNc3o4c2pzMUdxZkVBM1AwMW5ISW1CZEY3NVBjM1RqWTNpX3hrQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 3 &middot; 7:56 PM</span></div>
+<div class="news-title">Trade talks are heating up between Blues and Sabres</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/stlouisblues/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/stlouisblues</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1178,7 +1235,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:51 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:58 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

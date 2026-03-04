@@ -233,15 +233,22 @@ def fetch_club_stats():
     return fetch_json(f"{NHL_API}/club-stats/{TEAM}/now")
 
 def fetch_roster_birthdates():
-    """Fetch roster to get birthDate for each player. Returns {playerId: 'YYYY-MM-DD'}."""
+    """Fetch roster to get birth info for each player. Returns {playerId: {birthDate, birthCity, birthCountry, birthStateProvince}}."""
     data = fetch_json(f"{NHL_API}/roster/{TEAM}/{SEASON}")
     bd_map = {}
     for group in ("forwards", "defensemen", "goalies"):
         for p in data.get(group, []):
             pid = p.get("id", 0)
             bd = p.get("birthDate", "")
-            if pid and bd:
-                bd_map[pid] = bd
+            if pid:
+                city = p.get("birthCity", {})
+                if isinstance(city, dict):
+                    city = city.get("default", "")
+                country = p.get("birthCountry", "")
+                prov = p.get("birthStateProvince", {})
+                if isinstance(prov, dict):
+                    prov = prov.get("default", "")
+                bd_map[pid] = {"birthDate": bd, "birthCity": city, "birthCountry": country, "birthStateProvince": prov}
     return bd_map
 
 def fetch_schedule():
@@ -654,9 +661,11 @@ def get_skaters(club_stats, nhl_summary, bd_map=None):
         toi_min = int(toi_sec // 60)
         toi_s = int(toi_sec % 60)
 
-        # Age from roster birthDate
-        bd = bd_map.get(pid, "")
+        # Birth info from roster
+        bio = bd_map.get(pid, {})
+        bd = bio.get("birthDate", "") if isinstance(bio, dict) else bio
         age = ""
+        bd_display = ""
         if bd:
             try:
                 from datetime import date as _date
@@ -664,14 +673,25 @@ def get_skaters(club_stats, nhl_summary, bd_map=None):
                 born = _date(int(by), int(bm), int(bday))
                 today = _date.today()
                 age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+                bd_display = born.strftime("%b %-d, %Y")
             except Exception:
                 age = ""
+        birth_city = bio.get("birthCity", "") if isinstance(bio, dict) else ""
+        birth_country = bio.get("birthCountry", "") if isinstance(bio, dict) else ""
+        birth_prov = bio.get("birthStateProvince", "") if isinstance(bio, dict) else ""
+        birthplace = birth_city
+        if birth_prov:
+            birthplace += f", {birth_prov}" if birthplace else birth_prov
+        if birth_country:
+            birthplace += f", {birth_country}" if birthplace else birth_country
 
         skaters.append({
             "name": f"{first} {last}",
             "pos": ns.get("positionCode", s.get("positionCode", "")),
             "headshot": headshot,
             "age": age,
+            "birthDate": bd_display,
+            "birthPlace": birthplace,
             "gp": gp,
             "g": goals,
             "a": assists,
@@ -713,9 +733,11 @@ def get_goalies(club_stats, nhl_goalie_summary, bd_map=None):
         toi_m = int((toi_total % 3600) // 60)
         toi_str = f"{toi_h * 60 + toi_m}:{int(toi_total % 60):02d}" if toi_total else "0:00"
 
-        # Age from roster birthDate
-        bd = bd_map.get(pid, "")
+        # Birth info from roster
+        bio = bd_map.get(pid, {})
+        bd = bio.get("birthDate", "") if isinstance(bio, dict) else bio
         g_age = ""
+        bd_display = ""
         if bd:
             try:
                 from datetime import date as _date
@@ -723,13 +745,24 @@ def get_goalies(club_stats, nhl_goalie_summary, bd_map=None):
                 born = _date(int(by), int(bm), int(bday))
                 today = _date.today()
                 g_age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+                bd_display = born.strftime("%b %-d, %Y")
             except Exception:
                 g_age = ""
+        birth_city = bio.get("birthCity", "") if isinstance(bio, dict) else ""
+        birth_country = bio.get("birthCountry", "") if isinstance(bio, dict) else ""
+        birth_prov = bio.get("birthStateProvince", "") if isinstance(bio, dict) else ""
+        birthplace = birth_city
+        if birth_prov:
+            birthplace += f", {birth_prov}" if birthplace else birth_prov
+        if birth_country:
+            birthplace += f", {birth_country}" if birthplace else birth_country
 
         goalies.append({
             "name": f"{first} {last}",
             "headshot": g.get("headshot", ""),
             "age": g_age,
+            "birthDate": bd_display,
+            "birthPlace": birthplace,
             "gp": ns.get("gamesPlayed", g.get("gamesPlayed", 0)),
             "gs": ns.get("gamesStarted", 0),
             "w": ns.get("wins", g.get("wins", 0)),
@@ -894,7 +927,6 @@ def build_roster_html(skaters, goalies, mp_players):
 <td class="rank" data-sort="{i+1}">{i+1}</td>
 <td class="name-cell" data-sort="{s["name"]}"><div class="name-flex">{img}<a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={s["name"].replace(" ", "+")}" target="_blank" rel="noopener" class="pname">{s["name"]}</a></div></td>
 <td class="r pos-col" data-sort="{s["pos"]}">{s["pos"]}</td>
-<td class="r" data-sort="{s["age"] if s["age"] != "" else 0}">{s["age"]}</td>
 <td class="r" data-sort="{s["gp"]}">{s["gp"]}</td><td class="r" data-sort="{s["g"]}">{s["g"]}</td><td class="r" data-sort="{s["a"]}">{s["a"]}</td>
 <td class="r pts-col" data-sort="{s["pts"]}">{s["pts"]}</td><td class="r" data-sort="{s["pm"]}">{pm_str}</td>
 <td class="r" data-sort="{s["pim"]}">{s["pim"]}</td><td class="r" data-sort="{s["ppg"]:.2f}">{s["ppg"]:.2f}</td>
@@ -907,6 +939,9 @@ def build_roster_html(skaters, goalies, mp_players):
 <td class="r adv{gxg_cls}" data-sort="{gxg_sort}">{gxg_str}</td>
 <td class="r adv" data-sort="{xgf_sort}">{xgf_str}</td>
 <td class="r adv" data-sort="{gs_sort}">{gs_str}</td>
+<td class="r" data-sort="{s["age"] if s["age"] != "" else 0}">{s["age"]}</td>
+<td class="r bio-col" data-sort="{s["birthDate"]}">{s["birthDate"]}</td>
+<td class="r bio-col" data-sort="{s["birthPlace"]}">{s["birthPlace"]}</td>
 </tr>''')
 
     goalie_rows = []
@@ -918,20 +953,22 @@ def build_roster_html(skaters, goalies, mp_players):
         g_toi_sec = int(toi_parts[0]) * 60 + int(toi_parts[1]) if len(toi_parts) == 2 else 0
         goalie_rows.append(f'''<tr class="goalie-row{alt}"><td class="rank" data-sort="{i+1}">{i+1}</td>
 <td class="name-cell" data-sort="{g["name"]}"><div class="name-flex">{img}<a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={g["name"].replace(" ", "+")}" target="_blank" rel="noopener" class="pname">{g["name"]}</a></div></td>
-<td class="r" data-sort="{g["age"] if g["age"] != "" else 0}">{g["age"]}</td>
 <td class="r" data-sort="{g["gp"]}">{g["gp"]}</td><td class="r" data-sort="{g["gs"]}">{g["gs"]}</td>
 <td class="r" data-sort="{g["w"]}">{g["w"]}</td><td class="r" data-sort="{g["l"]}">{g["l"]}</td><td class="r" data-sort="{g["otl"]}">{g["otl"]}</td>
 <td class="r" data-sort="{g["sa"]}">{g["sa"]}</td><td class="r" data-sort="{g["ga"]}">{g["ga"]}</td><td class="r" data-sort="{g["gaa"]:.2f}">{g["gaa"]:.2f}</td>
 <td class="r" data-sort="{g["sv"]}">{g["sv"]}</td><td class="r" data-sort="{g["svPct"]:.4f}">{svp}</td>
-<td class="r" data-sort="{g["so"]}">{g["so"]}</td><td class="r" data-sort="{g_toi_sec}">{g["toi"]}</td></tr>''')
+<td class="r" data-sort="{g["so"]}">{g["so"]}</td><td class="r" data-sort="{g_toi_sec}">{g["toi"]}</td>
+<td class="r" data-sort="{g["age"] if g["age"] != "" else 0}">{g["age"]}</td>
+<td class="r bio-col" data-sort="{g["birthDate"]}">{g["birthDate"]}</td>
+<td class="r bio-col" data-sort="{g["birthPlace"]}">{g["birthPlace"]}</td></tr>''')
 
     return f'''<div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
-<thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Player age">Age</th><th class="r sort-th" data-col="4" title="Games played this season">GP</th><th class="r sort-th" data-col="5" title="Goals scored">G</th><th class="r sort-th" data-col="6" title="Assists">A</th><th class="r sort-th" data-col="7" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="8" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="9" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="10" title="Points per game played">P/GP</th><th class="r sort-th" data-col="11" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="12" title="Even-strength points">EVP</th><th class="r sort-th" data-col="13" title="Power-play goals">PPG</th><th class="r sort-th" data-col="14" title="Power-play points">PPP</th><th class="r sort-th" data-col="15" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="16" title="Short-handed points">SHP</th><th class="r sort-th" data-col="17" title="Overtime goals">OTG</th><th class="r sort-th" data-col="18" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="19" title="Shots on goal">S</th><th class="r sort-th" data-col="20" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="21" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="22" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="23" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="24" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="25" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th></tr></thead>
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Games played this season">GP</th><th class="r sort-th" data-col="4" title="Goals scored">G</th><th class="r sort-th" data-col="5" title="Assists">A</th><th class="r sort-th" data-col="6" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="7" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="8" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="9" title="Points per game played">P/GP</th><th class="r sort-th" data-col="10" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="11" title="Even-strength points">EVP</th><th class="r sort-th" data-col="12" title="Power-play goals">PPG</th><th class="r sort-th" data-col="13" title="Power-play points">PPP</th><th class="r sort-th" data-col="14" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="15" title="Short-handed points">SHP</th><th class="r sort-th" data-col="16" title="Overtime goals">OTG</th><th class="r sort-th" data-col="17" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="18" title="Shots on goal">S</th><th class="r sort-th" data-col="19" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="20" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="21" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="22" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="23" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="24" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th><th class="r sort-th" data-col="25" title="Player age">Age</th><th class="r sort-th" data-col="26" title="Date of birth">Birthday</th><th class="r sort-th" data-col="27" title="Birth city and country">From</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div>
 
 <h3 style="margin-top:32px">Goaltenders</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable" id="goalie-tbl">
-<thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Player age">Age</th><th class="r sort-th" data-col="3" title="Games played">GP</th><th class="r sort-th" data-col="4" title="Games started">GS</th><th class="r sort-th" data-col="5" title="Wins">W</th><th class="r sort-th" data-col="6" title="Losses">L</th><th class="r sort-th" data-col="7" title="Overtime losses">OT</th><th class="r sort-th" data-col="8" title="Shots against">SA</th><th class="r sort-th" data-col="9" title="Goals against">GA</th><th class="r sort-th" data-col="10" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="11" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="12" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="13" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="14" title="Total time on ice">TOI</th></tr></thead>
+<thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Games played">GP</th><th class="r sort-th" data-col="3" title="Games started">GS</th><th class="r sort-th" data-col="4" title="Wins">W</th><th class="r sort-th" data-col="5" title="Losses">L</th><th class="r sort-th" data-col="6" title="Overtime losses">OT</th><th class="r sort-th" data-col="7" title="Shots against">SA</th><th class="r sort-th" data-col="8" title="Goals against">GA</th><th class="r sort-th" data-col="9" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="10" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="11" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="12" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="13" title="Total time on ice">TOI</th><th class="r sort-th" data-col="14" title="Player age">Age</th><th class="r sort-th" data-col="15" title="Date of birth">Birthday</th><th class="r sort-th" data-col="16" title="Birth city and country">From</th></tr></thead>
 <tbody>{"".join(goalie_rows)}</tbody></table></div>'''
 
 def build_news_html(articles):
@@ -1796,6 +1833,7 @@ a.pname:hover{{color:var(--text-strong)}}
 .adv-pos{{color:var(--green);font-weight:600}}
 .adv-neg{{color:var(--red);font-weight:600}}
 .adv-hdr{{background:var(--bg) !important}}
+.bio-col{{white-space:nowrap;font-size:11px;color:var(--text-muted)}}
 .sens-row td{{background:var(--accent-soft)}}.sens-row td:first-child{{font-weight:700;color:var(--accent)}}
 .cutoff td{{border-bottom:2px dashed var(--text-muted)}}
 .rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
