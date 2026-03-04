@@ -1597,9 +1597,7 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
     subreddit = team_info["subreddit"]
     hfboards_url = team_info.get("hfboards", "https://forums.hfboards.com/")
     spotrac_slug = team_info.get("spotrac", "")
-    capfriendly_slug = team_info.get("capfriendly", "")
     spotrac_url = f"https://www.spotrac.com/nhl/{spotrac_slug}/yearly" if spotrac_slug else ""
-    capfriendly_url = f"https://www.capfriendly.com/teams/{capfriendly_slug}" if capfriendly_slug else ""
 
     # Build team switcher dropdown (all 4 divisions)
     div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
@@ -2107,10 +2105,9 @@ body{{animation:fadeIn 0.15s ease}}
   </div>
   <div class="panel" id="p-cap">
     <h3>{team_name} — Salary Cap</h3>
-    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac. Click to open in a new tab.</p>
     <div class="community-list">
       <a href="{spotrac_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — {team_name}</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
-      <a href="{capfriendly_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — {team_name}</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
   </div>
 </div>
