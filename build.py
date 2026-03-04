@@ -2637,19 +2637,19 @@ a{{color:var(--text);text-decoration:none}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 
 /* Date strip */
-.date-strip-wrap{{max-width:700px;margin:0 auto;padding:16px 28px 0}}
-.date-strip{{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px}}
+.date-strip-wrap{{max-width:700px;margin:0 auto;padding:16px 0 0}}
+.date-strip{{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:6px 20px 10px;scroll-snap-type:x proximity}}
 .date-strip::-webkit-scrollbar{{display:none}}
-.ds-btn{{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 12px;border:1px solid transparent;background:transparent;border-radius:8px;cursor:pointer;transition:all 0.15s;min-width:56px;position:relative;flex-shrink:0}}
+.ds-btn{{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 13px;border:1px solid transparent;background:transparent;border-radius:10px;cursor:pointer;transition:all 0.15s;min-width:58px;position:relative;flex-shrink:0;scroll-snap-align:start}}
 .ds-btn:hover{{background:var(--bg-surface);border-color:var(--border)}}
-.ds-btn.ds-active{{background:var(--bg-surface);border-color:var(--border)}}
-.ds-day{{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.3px}}
-.ds-date{{font-size:12px;font-weight:600;color:var(--text-secondary)}}
-.ds-active .ds-day{{color:var(--text-secondary)}}
+.ds-btn.ds-active{{background:var(--bg-elevated);border-color:var(--border)}}
+.ds-day{{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.4px}}
+.ds-date{{font-size:13px;font-weight:600;color:var(--text-secondary)}}
+.ds-active .ds-day{{color:var(--accent)}}
 .ds-active .ds-date{{color:var(--text-strong)}}
 .ds-today-dot{{width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:2px}}
-.ds-count{{font-size:9px;font-weight:600;color:var(--text-muted);margin-top:1px}}
-.ds-none{{opacity:0.4}}
+.ds-count{{font-size:9px;font-weight:600;color:var(--text-muted);margin-top:2px}}
+.ds-none{{opacity:0.35}}
 
 /* Scoreboard header */
 .sb-header{{max-width:700px;margin:0 auto;padding:20px 28px 0}}
@@ -2763,10 +2763,11 @@ a{{color:var(--text);text-decoration:none}}
 .topbar-inner{{padding:0 12px}}
 .topbar-tab{{padding:12px 10px;font-size:11px}}
 .team-select{{font-size:10px;padding:4px 22px 4px 8px}}
-.date-strip-wrap{{padding:12px 16px 0}}
-.ds-btn{{padding:6px 8px;min-width:48px}}
+.date-strip-wrap{{padding:12px 0 0}}
+.date-strip{{padding:4px 14px 8px}}
+.ds-btn{{padding:7px 10px;min-width:50px}}
 .ds-day{{font-size:9px}}
-.ds-date{{font-size:11px}}
+.ds-date{{font-size:12px}}
 .sb-header{{padding:16px 16px 0}}
 .sb-header h1{{font-size:16px}}
 .sb-logo{{width:26px;height:26px}}
