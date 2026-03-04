@@ -2678,8 +2678,9 @@ a{{color:var(--text);text-decoration:none}}
 .ds-none{{opacity:0.35}}
 
 /* Scoreboard header */
-.sb-header{{max-width:700px;margin:0 auto;padding:20px 28px 0}}
+.sb-header{{max-width:700px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between}}
 .sb-header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;color:var(--text-strong)}}
+.today-btn{{font-size:11px;font-weight:600;font-family:inherit;padding:5px 12px;border:1px solid var(--border);background:var(--bg-surface);color:var(--text-secondary);border-radius:20px;cursor:pointer;transition:all 0.15s;letter-spacing:0.01em}}.today-btn:hover{{background:var(--bg-elevated);border-color:var(--border);color:var(--text)}}
 
 /* Day label */
 .sb-day{{display:flex;flex-direction:column;gap:8px}}
@@ -2848,6 +2849,7 @@ a{{color:var(--text);text-decoration:none}}
 
 <div class="sb-header">
   <h1>NHL Scoreboard</h1>
+  <button class="today-btn" onclick="jumpToToday()">Today</button>
 </div>
 
 <div class="date-strip-wrap">
@@ -2902,6 +2904,14 @@ function showDay(dateStr){{
   if(target) target.style.display='';
   var btn=document.querySelector('.ds-btn[data-date="'+dateStr+'"]');
   if(btn) btn.classList.add('ds-active');
+}}
+
+function jumpToToday(){{
+  var d=new Date();
+  var todayStr=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  var btn=document.querySelector('.ds-btn[data-date="'+todayStr+'"]');
+  if(!btn){{var dot=document.querySelector('.ds-today-dot');if(dot)btn=dot.closest('.ds-btn');}}
+  if(btn){{showDay(btn.dataset.date);btn.scrollIntoView({{behavior:'smooth',block:'nearest',inline:'center'}});}}
 }}
 
 // Scroll date strip to center today on load

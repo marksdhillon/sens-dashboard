@@ -6,6 +6,8 @@ on:
     - cron: '0 0,3,6 * * *'
     # Post-game catch-all at 10 AM UTC (5 AM ET) for late west coast games
     - cron: '0 10 * * *'
+    # New-day refresh at 11 AM UTC (3 AM PT) so today's schedule is current
+    - cron: '0 11 * * *'
     # Afternoon pre-game at 9 PM UTC (4 PM ET)
     - cron: '0 21 * * *'
   # Manual trigger
