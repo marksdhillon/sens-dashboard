@@ -18,10 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
-.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
-.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
-@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
+.live-badge:hover .live-info{color:var(--text)}
+.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
+.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
+@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
+.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -361,8 +364,9 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" alt="New York Islanders" class="team-logo">
       <div>
-        <h1>New York Islanders <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 11:59 PM ET</div>
+        <h1>New York Islanders</h1>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:06 AM ET</div>
       </div>
     </div>
   </div>
@@ -1157,8 +1161,8 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Marshall Warren to Bridgeport (AHL). Activated G Ilya Sorokin from injured reserve. Assigned G Marcus Hogberg to Bridgeport.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxNV1Fyd0xURVVYbmlTRlVxSmx5SHBZUlM1YmowVnR2amZQNmhPZUNqWjhjMVVQbFh6OFBDMC1aZ2hZaHRGV3plZFlQZHlZY2pMa0tiSDlmVVZFbHluLWxkRDZUbFZKYWFzX1FiY3YtYVlqWUpVZFQydXBwYWJLWXdaZHpzdFNVTUtuVGdQVWotZXlTNTg4cklqekFFd1FZZEFfTzN2YWFCSHFNbUU0UEZOc1hJWW9JTjUtbk5tRTVlVFl6d25Ec1RSMmt1bWsybFZBdm1CaHJTVzRtWlZab2JPckxzMktjRWdWNnhoc1NGZGwtS2hSUG9qSjN3dEYwTkFYdWxRc1J6ZEJvU3dGcmFsMUJFbG5NN1pOOVVXQ2dlWU9vM1o4ZmVYaFp3?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KGW</span><span class="news-date">Mar 4 &middot; 4:32 AM</span></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMirgJBVV95cUxPVjRqOHZjcXNlZXZ1eVppUDc3ejdfbDRYTDlDT3pXSFVlZjZvYUU2cHNfZFRmTE9HU2FrTWJSS2Vac0RiV25yaU9EbGd6dWN5TU5sN042cVE1dTFRdE03OFZrMGVfOWpIQldSZGNINnd4OFJ3c1VuQ3JKcHRpanBQaTJIUy1SZWlYd0lHdzFPb3JnZm5lZ3M0WkljSWI2VzRnWG56VVpSc0FGVXViZUlKNEpWeVM0NkRUeWsxQWVnQVlnOEJwZi11ZmFfa0c2RThjaGVxMDl0a2dFNFNyUEktNHByUmx6X0ZwdnRDU25JdVlONFAtRG1sZEdhQjc4YW9ockllSi14THpxTDFSdHFlc25oMVRBUkR1SkFEMWZueFpnZ2tJV1dGb0dNUmZGUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">WZZM13.com</span><span class="news-date">Mar 4 &middot; 4:32 AM</span></div>
 <div class="news-title">ISLANDERS STRATEGY: Will They TRADE Big for Elias Pettersson or Jordan Kyrou Before Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNUTFVeVgwRF95TjJPamhBUjVHbWZRN1FhUDU1TWg5eS1tWk1McFE4aTlra3FsSE1aRk82ekJpcWRUWXh1eXpFZVFVbG5LTFlLVmRCTzhGc3JUaW55QVJaOFI3bG1BWGNqQklaa21lX2tLQW8zSjhGa3RsVGtnYmNSbDYtSmJJVFJGNERiVWprbG5DX19YSnNYY2pudzJpWU0zVHhaWkZScGtXbW40SjdteUVOcXVwRnJJS1pnQy1GNEZnZjF0dE4wbXdyYkZyMTFZVzExbGZCUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 3:08 AM</span></div>
 <div class="news-title">Bruins trying to beat Islanders to trade for $6 million Canucks forward</div></a><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxNbHAyY2tody1oUEZEeURtcEg0WkVnVGRrTG11b25mRWxycVVyNTk5MHRPdFA0MXVVWnVEWnkxUGxKVjVNUDBFdGFsSHFHWUZuRDRaRU1DbHdpYlU2LWlhMmJ5QTdSOWNkNTdMdVFxbUtLM2xDaXJrMGxkUThFMGFEcnFabnFvdHh1bHUzVGdLbGt0QVlkUkk0NW5xRzBRMkNoS0xJdkhJT2J5dm9Jc2tYeHYtTEZRWW9oSEZhYVJaenozRGJkODhzZ3U4RXB1SjZRQ09vUmVmRF8zSGVQOHVCRk1XOXc1dENlemJ4cg?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1197,7 +1201,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 7:25 PM</span></div>
 <div class="news-title">Islanders’ 5-on-5 Struggles Continue to Limit Stanley Cup Potential</div></a><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBEQnl4UkVRc2JKWTE5Z29NRnhLMVYwa0dpZDRiOG5rUFRPcE5XTUlqMTlTdVItS2FnNk9FbkVfalpWNzd6ZUczdXdMbnhaWFV5Sm8zZVBvTVNKSjJEVmJOSmFRZWl3OVEwaFAwZ2J3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:21 PM</span></div>
-<div class="news-title">Alex Jefferies’ Path to Pro</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxON2wycmpVTkg2TFRGenprSjluZ3VuVmRJY3luQTc0b0NrSVBlNVhjSXFzYjlEcklleXc3R3lSZk50ZG5YNFFUb19kcmdjMGdpSUFPWjFVXzdyQ0Q2WXRCRG55cENKYmx5ZGdRdE9kU2trT3NlN19wcVhQRFhZQzdIREhEYno?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Alex Jefferies’ Path to Pro</div></a><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOM0NXUGRzTWFYbGJJWnhNbDRpQkpoRVpIei1uaGo5NUhwdHZTN011UWJjcmgyekVuSGxQUURpcTNzRF9oUHBBVFBaQllNaWo0YWdJbDVITkhFSm9hUkNOcV9kRnVna0FndXc4N1FYYmxxMjdPTjMtb2RETGdhdFAwM25FYWNGUTd6MWRhU0Z6cjEyVlNYLXYxR2FOY1FMRWs4Wnp3VXAyR3ZES0RZMGJZeWtKQXRWSVNZbjE4ZXcwbnVZWklrb1l1ckd6aDZEVG1tQ1dTdUVR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:22 PM</span></div>
+<div class="news-title">Islanders Sought Dmitri Voronkov In Noah Dobson Trade Talks — Could They Revisit?</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxON2wycmpVTkg2TFRGenprSjluZ3VuVmRJY3luQTc0b0NrSVBlNVhjSXFzYjlEcklleXc3R3lSZk50ZG5YNFFUb19kcmdjMGdpSUFPWjFVXzdyQ0Q2WXRCRG55cENKYmx5ZGdRdE9kU2trT3NlN19wcVhQRFhZQzdIREhEYno?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:46 PM</span></div>
 <div class="news-title">NHL Rumors: New Team Emerging for Blues' Jordan Kyrou</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQOUNYVWpmbHpTNGk2SEQ3UXpCSy05Q01nNnhwSURPS3pjY2kwYnBrSWEyVGdFb2RpMzRmRlRzR0RTWU1uVGVsNGpfWDdiazFYZ0c3V09pWEh5VjRVeGp3WjRGRllPMWdlcTF0Z2VYY3hjQm1UMmFKeTZ3NEJsM18tUy15NFVRN3M1SG92ckpId1ltczhtUllIN1lDUHNsTlk2QlNDTjNrYnNSQXVQYWRR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NY Sports Day</span><span class="news-date">Mar 3 &middot; 12:03 PM</span></div>
@@ -1205,9 +1211,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
 <div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNSk1KQmZpV05MYWRDRElTRGNoM25ReFN4YWRmdEREc1d0YTNNdncxdjJFdmh5S3lGZ1JWWUM4YUtoREhzcWpsTGhBb0ZNMXdoakwzcW9OZjFzYVpsamZUekVlMTBTX25HckJHYkRhVlgxM3h4bGExU2M5ekZlbDQxTU91dXdUWW80a0tldg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Newsday</span><span class="news-date">Mar 3 &middot; 10:46 AM</span></div>
-<div class="news-title">Top 10 Islanders trade deadline deals</div></a><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxQclhRcXJGWFNpdVQ0U2lEOV9MTnNaT2hwTk93RnZ5MDlXSVllSnhkRV9NQWoweWphVjFUUzlhS2E4QUtjeGNhRjFhMEtMUXlqcGhQZ1I5Nmw4blAyanA1MmJEd05ESUtrZlVYRGl1UEpXRktkcjJORkRPcnhGSkVId0s3OERLNFdkNFFXYURvZFdIaFJvUGtPV01Od3dCei1fMWtqZmlUMTNnb3lIaGFIb1lvdGdDaENqZGVMb2lnVUJjTDl3M3R2THFwMm1YWno4RHZzM0pRY1NtU2E4Ym5rTFZ1TQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:16 AM</span></div>
-<div class="news-title">Islanders & Canucks Scouting One Another Ahead of NHL Trade Deadline: Two Potential Targets</div></a></div></div>
+<div class="news-title">Top 10 Islanders trade deadline deals</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/NewYorkIslanders/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/NewYorkIslanders</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1220,7 +1224,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:59 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:06 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1308,11 +1312,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
               var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
               var per=g.periodDescriptor||{};
+              var clk=g.clock||{};
               var pn=per.number||0;
-              var tr=g.clock&&g.clock.timeRemaining||'';
+              var tr=clk.timeRemaining||'';
               var ords={1:'1st',2:'2nd',3:'3rd'};
-              var pstr=(ords[pn]||'OT')+' '+tr;
-              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
+              var info=document.getElementById('live-info');
+              if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
+              badge.href='scores.html#game-'+g.id;
               badge.style.display='inline-flex';
             }
             return;

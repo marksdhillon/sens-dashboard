@@ -18,10 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
-.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
-.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
-@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
+.live-badge:hover .live-info{color:var(--text)}
+.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
+.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
+@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
+.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -361,8 +364,9 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="Toronto Maple Leafs" class="team-logo">
       <div>
-        <h1>Toronto Maple Leafs <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 11:59 PM ET</div>
+        <h1>Toronto Maple Leafs</h1>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:05 AM ET</div>
       </div>
     </div>
   </div>
@@ -1265,7 +1269,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:59 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:05 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1353,11 +1357,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
               var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
               var per=g.periodDescriptor||{};
+              var clk=g.clock||{};
               var pn=per.number||0;
-              var tr=g.clock&&g.clock.timeRemaining||'';
+              var tr=clk.timeRemaining||'';
               var ords={1:'1st',2:'2nd',3:'3rd'};
-              var pstr=(ords[pn]||'OT')+' '+tr;
-              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
+              var info=document.getElementById('live-info');
+              if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
+              badge.href='scores.html#game-'+g.id;
               badge.style.display='inline-flex';
             }
             return;
