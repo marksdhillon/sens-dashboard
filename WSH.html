@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="Washington Capitals" class="team-logo">
       <div>
         <h1>Washington Capitals</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:06 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -1153,9 +1153,13 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-ir">IR</span>
 <span class="tx-desc">Recalled F Brett Leason from Hershey (AHL). Placed F Aliaksei Protas on injured reserve.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFB4d2s4UDg5Rjh3ZjZiN0ZtT2xvTUVPSVVTNlMtTGpMWWs0S1ZyTDU5bWdaZkNGSm9BUmt4N3ZqS29pbVQtS3c0OHU3cUliYjlHM2xHWjMwaDRxVXl3cmF6YUFCNXVtMXV5YkE?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipwJBVV95cUxOaGNWSkg2Q3p6eFJSeE9uSWdWaEJ6eENyZzRrS2oyN2M0ekRCMTNCYS0zMkRWTWJBaDJRUk9oWnczbmJoRmFmT3lHTXRHaVJ4Tm11WHpVemlkX2tPbGEtRjlLZm5HYlpzUlFxWkJaWlpXQnBqOVNFSGY2Vk1vNEZYazVIYWEwLWFuakI2WjMwNkFfQW83Yk0yMmZKRXNOblNwMmg1aUNEbk9sTlBweWF2OXlZdDFscTAya3FxbGpnVUdJWHhhT3pUN3JHRy1KRTFyR3RJRDlIMUpDTGFsTU5CblRPNGVCaWRIZkZnclljUk9ROWFzU3RLS2Q0RmpTX3doTzdpemc3M1Ytc0hLNEpDSmtaZ1FPNkowUGZEbWlUUWRoUjZhXzF3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">9News</span><span class="news-date">Mar 4 &middot; 4:56 AM</span></div>
+<div class="news-title">CARLSON SHOCK: Washington Capitals’ John Carlson TRADE Rumors SURGE, Should the Franchise Move On?</div></a><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFB4d2s4UDg5Rjh3ZjZiN0ZtT2xvTUVPSVVTNlMtTGpMWWs0S1ZyTDU5bWdaZkNGSm9BUmt4N3ZqS29pbVQtS3c0OHU3cUliYjlHM2xHWjMwaDRxVXl3cmF6YUFCNXVtMXV5YkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:52 AM</span></div>
-<div class="news-title">Caps Fall to Mammoth, 3-2</div></a><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE1LRDBCWVVxV1VpbWJXdW5pVFV1MHlqU2R1dE5sV1BGVUZ0b0dnRVZoRHJWVm9ndUItQVB5WXNqTzdZeldseTJvSWRXNWNMZW94clBibzFPSEdrZ1QwYXRQa3d4el9DTjFzM3c0Z0pwQzZjM0h4UHJv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Caps Fall to Mammoth, 3-2</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQWWN6U1owQ2cwcWtPMUNGSl94clFmT3hubnZVcDFKNHVtckFCRlBySEthVmRESFBpRTdyUjlXaUt6OW5iTkxsOUt6bi1yeGVHR01FOGUybjY5WW5MNEFpdDVvTE5wTlVFM2FKS2gtcGhJclg0N3dFZEV6M2tPNHB2LXBwOFJNOGJmdTBXTmVaNjBvV0VlR3V1ZDR1OWJhSGs3bDBz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Beaumont Enterprise</span><span class="news-date">Mar 4 &middot; 4:07 AM</span></div>
+<div class="news-title">Mammoth hold off Capitals 3-2, dropping Washington 4 points back of a playoff spot</div></a><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE1LRDBCWVVxV1VpbWJXdW5pVFV1MHlqU2R1dE5sV1BGVUZ0b0dnRVZoRHJWVm9ndUItQVB5WXNqTzdZeldseTJvSWRXNWNMZW94clBibzFPSEdrZ1QwYXRQa3d4el9DTjFzM3c0Z0pwQzZjM0h4UHJv?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
 <div class="news-title">Tom Wilson | Postgame</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBubzlUVWdPSlZZS1VYcFMyTHRqVl9ITjMyVWs5eFYzVjZVNWUwZVBhalpkNzNxcGdadi1DNHBtNnh4ZUZKUXNESnlESS1CYmZURHFOSndPYlQwbEJaYzVIRzFud09zaDQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
@@ -1163,12 +1167,8 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">RMNB</span><span class="news-date">Mar 4 &middot; 3:03 AM</span></div>
 <div class="news-title">Capitals reportedly receiving calls from teams to gauge John Carlson’s availability ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQcHBiN1lNLUNrRzlzdUFOUGdIQS1Zam9yYUh4N2o0YW9PYWRRMnNWR1FZV3RDZXNsTWFfOG9uSFZnOFJYQ2JFeWFSUlRmNDlMVTRwbDYwZkFVbUgtc21IMmY1X0pRVTdVNlNxWm5COEp2RWo1ajNIZDE5UDlYcHlXLVpKc3l3bHFO?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:59 AM</span></div>
-<div class="news-title">Mammoth open 5-game road trip with win against Capitals</div></a><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE16bWc2QzNDTC0wWGl3eVh2ankzUkhma1ZPM0U0UDV0WFVFLVd3V0Z4QkZLb1hSZE9KMEtaRk5ITk51U0xrQWNxOFB0OFJaNjRmenRnSE80YW1Udw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 2:46 AM</span></div>
-<div class="news-title">Mammoth 3-2 Capitals (Mar 3, 2026) Game Recap</div></a><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNYzR2aDExN2E1ZkNWU1JUWGNjMzd5NEVIdXc5Z3AzLUhSekpVaE1GbEhMeFJNSDNkbDhiRzJmN2lYR2JtT2RZbV9vZ094TndVNTRIeDlmNFBjRzdjeXpHUGZLNUR5Uktyb3ZyYlBkbjYtLVRGUkxySWhDR2hDWGN1Q1psbUlrM0s5ZGp2NDNNNk5KWjlmdlZYMkNOaDdUdzBHcWM0TU85LWJOdG5XNUl3VENCbHVkdnlwa09NRGR6NmlFVnBNd29VUnlaVWRVekprX2xEMTdLeG5EMGc5Z1hFclJYNWtKNDRydGtEUHFEZ25YNzdm?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Mammoth open 5-game road trip with win against Capitals</div></a><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNYzR2aDExN2E1ZkNWU1JUWGNjMzd5NEVIdXc5Z3AzLUhSekpVaE1GbEhMeFJNSDNkbDhiRzJmN2lYR2JtT2RZbV9vZ094TndVNTRIeDlmNFBjRzdjeXpHUGZLNUR5Uktyb3ZyYlBkbjYtLVRGUkxySWhDR2hDWGN1Q1psbUlrM0s5ZGp2NDNNNk5KWjlmdlZYMkNOaDdUdzBHcWM0TU85LWJOdG5XNUl3VENCbHVkdnlwa09NRGR6NmlFVnBNd29VUnlaVWRVekprX2xEMTdLeG5EMGc5Z1hFclJYNWtKNDRydGtEUHFEZ25YNzdm?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Killeen Daily Herald</span><span class="news-date">Mar 4 &middot; 2:44 AM</span></div>
-<div class="news-title">Mammoth hold off Capitals 3-2, dropping Washington 4 points back of a playoff spot</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxOLTBxRlNORlFiaVFUWjNpdjRMZVNmTUlUN0lpVWNuVFRLWDM4dUxWNTNOWm1XdHgzQm93VHZhX1R5NUY1dG1kLTBTTHNpdFRnYjRTZWxsQVdFQ2NkSDF1NF9hSmtjQXA1Mi03enhfTkYtSU9hV2JPYkVpQkFldmp0R0xWVTJqT1hSWEdRQnJpQWpfWVR0c29hbm1FelRlQWMwT3N5dzlHaEdEb0dQaTFvVkxnOXZOUnlwZHNZcjBtel94aXhmeDlTdU1mUDd1YXlRVnZmSXJYN0xmTDd2M2hPamxsb0RxQTMzaDlBODljUFBnS3pwYThrZ2Vodng4VmJRUDh4QUtKZHZDVmo3SV91RTVxVnpsY2MtVFpaQkNlMFk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Winchester Star</span><span class="news-date">Mar 4 &middot; 2:44 AM</span></div>
 <div class="news-title">Mammoth hold off Capitals 3-2, dropping Washington 4 points back of a playoff spot</div></a><a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxPRzllSG45NHRkQlViYmZqX0pjMWNVN0Y4WXZycjZBaDZPdEtnVncyZk51d0YwV2xEazAwNVJ4TU9YQmhXTnNMQVc4bVBZaVJkX05wU2F2ckdFalJ0M1RhR2puV0Y1QXAxcHRJejVGT2kyaG9jNUJiM1NXOE1jbWZ3czBBN2xvMEhXc0dPcFdMbFN0OVI0YW12M2hxRG1zSjRUYWZ0b3ZSMDdaNHk3akptRUJVcmlmbnFQSU5mMUd3Z3lsQ0RCR21PWnV1eDNtTDRCeE4wTjNaclpnN1Ruamt3VUlaa2lOd3QwY0otUGtNWU52THdINDZBckpCbHlnemIwYUNhMnp2OGcwd3U2?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">oskaloosa.com</span><span class="news-date">Mar 4 &middot; 2:44 AM</span></div>
 <div class="news-title">Mammoth hold off Capitals 3-2, dropping Washington 4 points back of a playoff spot</div></a><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBzZTNEU1o4bnh5TzZnd2hNQ0RaNW5HZXB1STJOTW03dThOQlRGemVTa1JIYWhwYVNZR1ZjeFI1eWpEekkzTkt3SGMzcGtOdzlrM3VfdWI2MEVXbjVEQXNObUUyM19kT3ZlbGl2dU1oUQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1199,11 +1199,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 12:16 AM</span></div>
 <div class="news-title">NHL Rumours: Future of Washington Capitals Defenceman</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNcFVXdENOMjZFdDZaaU51VkxRTkJ3YjlCUTk0Q1RnVTR0MW0xWngyVS1ITUY5UjVaWTlPUjlmT3c1d0xJTXVUQ2pMNllTcWdFd09iVGJIVmxDR3hILTAzUU1jVnBVQS1HOVNVMlVVX0xzWnM1ZHJSX1ZnVHlWVlhZSTQ5Y1ZROUtYRGpWWmxPN0ZCcFhDMG1LUlV4UDRJbTlGQVhFbzJvQ1NBanhXQ2xSaW1pOG5KQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
+<div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOLThhWmxsUko5SWxIWVpqd3ZCVHJnclJPSE10Zm45bXJiU2EzeVlZa0hvZTJIQnRwSUplbHI4WWVLRFk5Sm5Jb216cXI0NzRlckV5LS1SRkl4ZV9CRDJ0VE1UZ3RtQUJqX1NobVNUcWFLQk1OVDNIV1BDUnFnc25Cd3BFVFhGNGc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
 <div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxOZlgyaElIOXFSVEFQQUh0Q1FRZUl5dTRVU0gtSnJGY1QwdXFXT1c4TUI1aWFMaXQ2ZVFud3I4TnNrdzBBNG9aVTh1VEd2MXhJN2psVmQxT2JlVnlwUkRZRXVyVnY0X1ZuMzhnRV9sNllkckl5dG45bUxZWGt2eE5RcTU1UVViU1dPMzNDUjVobGFrajQ5NkFTUWtrT0dvc3AzN0xuM3hCZm5WY1M5WnR0OFNPc2lSZDFoZlNScWVvZlNtUHhVVTdZYlYyc0pNZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:22 PM</span></div>
-<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOalZZS0g1RUxpUEl4eW5uTWNJYlN1ODNGMGF1X3o4bHJlTXE0MFdFc3lBSzZQbUt2ckItQlNKMDZoNmducGJkMjhaZFg5MDJQem5yaXlWYXdzejRpYV94N1Z5Z3A0aWdNUXItY1c0RkxSSDFic0V0bVRad2YxaUNtREhrWFp2YU9nZlRNLWRtbmNGbXVKWUtzVkZUdXJJRnBnQ3k0M2IwMzhEVXQwOFpmaW9GWlM0bFZqSVkxcHBZR2UwUkhhVWYyUlRKT015TGJneG1oMg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 10:59 PM</span></div>
-<div class="news-title">Utah Mammoth vs Washington Capitals Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a></div></div>
+<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/caps/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/caps</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1216,7 +1216,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:06 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:17 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1311,7 +1311,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;

@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" alt="Philadelphia Flyers" class="team-logo">
       <div>
         <h1>Philadelphia Flyers</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:06 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -435,12 +435,12 @@ body{animation:fadeIn 0.15s ease}
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 2 pts — a direct rival</li><li>WSH is fading — only 18% playoff odds</li></ul>
   <table class="cmp-tbl"><thead><tr><th>PHI</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">28-21-11</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-7</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">14-9-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-11-3</td></tr><tr><td class="cmp-stat-l">14-12-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">4-4-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">177</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">188</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">189</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-4')">
-<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">36-16-10 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-4" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 12</span><span class="gp-matchup">PHI @ Minnesota</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>PHI leads season series 1-0-0</li><li>MIN holds a 13-pt lead over PHI</li><li>MIN is a virtual lock for playoffs (100%)</li><li>MIN is hot — 7-2-1 in last 10</li></ul>
-  <table class="cmp-tbl"><thead><tr><th>PHI</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">28-21-11</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-16-10</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">14-9-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-7-7</td></tr><tr><td class="cmp-stat-l">14-12-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-9-3</td></tr><tr><td class="cmp-stat-l">4-4-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">177</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">204</td></tr><tr><td class="cmp-stat-l">188</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
+  <ul class="matchup-notes"><li>PHI leads season series 1-0-0</li><li>MIN holds a 15-pt lead over PHI</li><li>MIN is a virtual lock for playoffs (100%)</li><li>MIN is hot — 7-2-1 in last 10</li></ul>
+  <table class="cmp-tbl"><thead><tr><th>PHI</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">28-21-11</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">36-16-10</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">14-9-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-7-7</td></tr><tr><td class="cmp-stat-l">14-12-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-9-3</td></tr><tr><td class="cmp-stat-l">4-4-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">177</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">188</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">180</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-5')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">vs Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-21-8 &middot; 70p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
@@ -1301,7 +1301,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:06 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:17 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1396,7 +1396,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;

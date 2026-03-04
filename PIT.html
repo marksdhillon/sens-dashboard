@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" alt="Pittsburgh Penguins" class="team-logo">
       <div>
         <h1>Pittsburgh Penguins</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:06 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -512,12 +512,12 @@ body{animation:fadeIn 0.15s ease}
   <ul class="matchup-notes"><li>PIT leads season series 2-0-0</li><li>Separated by only 1 pts — a direct rival</li><li>DET projected to make playoffs (82% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-16-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-20-6</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">16-8-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-10-4</td></tr><tr><td class="cmp-stat-l">6-2-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">204</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">175</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">183</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-15')">
-<div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-17-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-15" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 2</span><span class="gp-matchup">PIT @ Tampa Bay</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>TBL holds a 5-pt lead over PIT</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.0 goals/game avg</li></ul>
-  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-16-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">16-8-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">6-2-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">204</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">175</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
+  <table class="cmp-tbl"><thead><tr><th>PIT</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-16-13</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-17-4</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">15-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">16-8-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-7-4</td></tr><tr><td class="cmp-stat-l">6-2-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">204</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">210</td></tr><tr><td class="cmp-stat-l">175</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">158</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-16')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-28-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
@@ -1382,13 +1382,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
 <div class="news-title">PIT at BOS | Recap</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE1zSnV6RFpIWm5TR2NqOWs3VTJHdGlEVllEcVlQMHExekI1VERTa3R5M0dXdTNES1RHQVZBbHlzYnFfYUp1SnNQaG9KRDhvX29NZzhzRDJldXU0bmtPRnNBa2hiSk04cElYU3IzRFhoQ2VQZjlaQ1ZGVUJnQm5XQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
-<div class="news-title">Post Game: Skinner (3.3.26)</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQQy04aUNtbXVVZHJHdEFuV00tMi0yOFoyWlEzWVVxTXh2R0RxcDN5cTlKNmEtYlRJRUxRYTI1d1dqRHhFRE1RR2hucWphSWdIWnlFOWVaWjZvb0FEZm81ZE9Fcm9sRmZUbndHTUpXVXhwWVJBN1EtejBhZ0JTbEdRa3p4cXlPbVNrWHJvVGk4MV9iekpkRnVMVUl4cnA3cG9YVmc1dDhR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 3:04 AM</span></div>
-<div class="news-title">Bruins beat Penguins as Khusnutdinov, Mittelstadt score 50 seconds apart</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOVlF1UWkwcEZKQldudVhVSnFKOFJTXzRLdkFHeGIxbHlIRUQ4WHd0WDV3aTF2NEtSV180ajlWTUxZVndFQ3hRSHFPWFdraUUxUlN5cWZNVndSYUxjQkVvRVI0UjVYYVBOV3E0aUlFZTFDVkdSV2VGWmsycVBuSmpiTnk1NVRhY3RmUExQWkp2eUpIMWkwVGROY3pJd2lWNzlYWmpVSFpaQnZ6dVo2OWQtdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Post Game: Skinner (3.3.26)</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOVlF1UWkwcEZKQldudVhVSnFKOFJTXzRLdkFHeGIxbHlIRUQ4WHd0WDV3aTF2NEtSV180ajlWTUxZVndFQ3hRSHFPWFdraUUxUlN5cWZNVndSYUxjQkVvRVI0UjVYYVBOV3E0aUlFZTFDVkdSV2VGWmsycVBuSmpiTnk1NVRhY3RmUExQWkp2eUpIMWkwVGROY3pJd2lWNzlYWmpVSFpaQnZ6dVo2OWQtdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 4 &middot; 2:54 AM</span></div>
-<div class="news-title">Gold medalist Jeremy Swayman shines in net as Bruins nip Penguins</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPdG9rSVhGLWpsc3daMFdJWnVIM0VOSW1IUVBENEZtS093dUpmN3pCVzRyZEw2Y2VPajVZU2JDM2w4UWNZcDhtSXI5dTVydkExbFBmNnVLSVhOdG1RSWQ5SFRfR1ZHTHNpZFVJRXFtNEttNzVPSFlBQnoxSGpSdlBFazN1d1BLLWJsaHpCZlRXT2FhdWVSSnRHTllHVHhDS1M1NXNz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Gold medalist Jeremy Swayman shines in net as Bruins nip Penguins</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPSkdmT3RJT2hfN3RSRkx0WkxyQThPZk8xYXl0YkQ0U3JqaGYxMG5pU29VbWZHLVdkblBFYy1UTkFqNkhLb3k0RzZpbWN4Rnh5cjUwNTE3RHBwQkFlYVU5NHB1MjJnOUZ6NkFJanQwME9OVEg3X1RsclNpYUQxaEVRb2RRdlFmWWtDY3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:52 AM</span></div>
+<div class="news-title">Swayman makes 34 saves, Bruins halt Penguins point streak at 5</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPdG9rSVhGLWpsc3daMFdJWnVIM0VOSW1IUVBENEZtS093dUpmN3pCVzRyZEw2Y2VPajVZU2JDM2w4UWNZcDhtSXI5dTVydkExbFBmNnVLSVhOdG1RSWQ5SFRfR1ZHTHNpZFVJRXFtNEttNzVPSFlBQnoxSGpSdlBFazN1d1BLLWJsaHpCZlRXT2FhdWVSSnRHTllHVHhDS1M1NXNz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 4 &middot; 2:28 AM</span></div>
-<div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQcWtmRWV4X3pLV3VoZlBGbk9JQVBjWTUzUTNYYXZwMDBidVNzdnFqdEZnN1RaZVBOLXc3MFA0MEhBRHdSWTJCYmR0TWRXdkNiNkgyejFTU25UNzE5RnF2WDdSQlEta0xFdjZXdmVfRlBaTVROclZRT2MwQU1ra1JIYlFDMjBKT1NPd2UtMVFCUVFGZkpuV2UxYVM1SFc3Q05GLXIzWlBENE1ZMWQya0w0TlhrOE5ERHhSN1QzQThtZnU2bUs4eEZyUG1vYklfSlU4QWNYSUgtX3VuVnVuWExYSTVDSXpxQlVzZEZxUkVGQXQ2SkRNRkxfbUNRcmppU210WVIxc1FJZkttdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNb2paZm9CcjVSbE9rUDlLZjhaYkJDeXJFZDlvd2E3WTlOTzE1Tk1ka0k4QWNrUllhSFBueWdhSTBGUEZhWWYyY3BTYkpCRWhZaVlEV1lqX0E2eXpPeE1sTW1SWVdoUnpMVjVjbTRZVVBmQjlqeWJlNmhDMzJUX3FxbmV5WDBEbkhERU9fRjA5cXl2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:41 AM</span></div>
+<div class="news-title">Trade Buzz: Avalanche ‘deserve the help’ before Deadline, GM says</div></a><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQcWtmRWV4X3pLV3VoZlBGbk9JQVBjWTUzUTNYYXZwMDBidVNzdnFqdEZnN1RaZVBOLXc3MFA0MEhBRHdSWTJCYmR0TWRXdkNiNkgyejFTU25UNzE5RnF2WDdSQlEta0xFdjZXdmVfRlBaTVROclZRT2MwQU1ra1JIYlFDMjBKT1NPd2UtMVFCUVFGZkpuV2UxYVM1SFc3Q05GLXIzWlBENE1ZMWQya0w0TlhrOE5ERHhSN1QzQThtZnU2bUs4eEZyUG1vYklfSlU4QWNYSUgtX3VuVnVuWExYSTVDSXpxQlVzZEZxUkVGQXQ2SkRNRkxfbUNRcmppU210WVIxc1FJZkttdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">13newsnow.com</span><span class="news-date">Mar 3 &middot; 11:12 PM</span></div>
 <div class="news-title">Bruins vs. Penguins Preview: Peeke Showcase For Potential Trade?</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxQRUs1RUxfZG9fQi1ZdFVXX1dEa3VXZEdWT2N4YUJyUTVxbTVJeHl3UG5rNjhWUXd5dnFkb1ZpNU55c2xYZnhaSDhWTVpwdWx0ZEJFZXlCZHI0MXlHMUQyUlNUcm5iRTdtQjRpcG1fTl92NlhKcmJWaGdZNUxNdkt5bjZGb3dRcDJHX3pDUGw0aW5wZFNCUWg5RFBlZnRvb3dxdWtDNjZOWlZMQV81VTVKdHg1em54a0FSVFNiWG9udEg5cTBpcV94RHBTblZlT3Vicnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 8:54 PM</span></div>
@@ -1420,9 +1422,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Oil On Whyte</span><span class="news-date">Mar 3 &middot; 12:00 PM</span></div>
 <div class="news-title">Pittsburgh having second thoughts on Stuart Skinner after December trade with Oilers</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOeDAwbFczUFFpS1Eyc3BsaU5oa2RJejdGdmNlQVp5M0I5N04tRHNCS2hFLXo2WndxdnRhYjZZVkxqT3lZbEQ5czVHNUpJNllPdzVQZi1JdkhUbWJfWWpucm93LTdUekI3TlpCa1Ztd05mWThvMDc1cTV4cnRtRlc1QktRUEI3UXM4Qk9TVWNJbTNTNFQtbGp6R1JSdzFrRGJEYTJSN1d0bGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:05 AM</span></div>
-<div class="news-title">Penguins' Prospect Named AHL Player Of The Month</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQV0o1OE1zSUswN3dzcWNTa1p4ZUVyMzBaY1F0SkxCb2VaZ0RzUXJxdXM3WEVad3lfZlo0U1NITTM3QlY2V3U1ZjRVcER4aEQyTG52Q2hCUmJNZ2ZJdEg4ZkNmeUxLMlNlUWNGTXMtc29kdk1GUGJZelFVNnFHT3ZCQ19tazExREszbnQ0cjFYMFUyaVdzei1oRlNERXNCOUUza0pWNS1WSFN1R25ScWc1amFjWkp6Qkx6SGF3LVV2RzRrWldrZ2d0TGV4Tm54OXM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:19 AM</span></div>
-<div class="news-title">Is It Worth It To Move Stuart Skinner Before Friday's NHL Trade Deadline?</div></a></div></div>
+<div class="news-title">Penguins' Prospect Named AHL Player Of The Month</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/penguins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/penguins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1435,7 +1435,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:06 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:17 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1530,7 +1530,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;

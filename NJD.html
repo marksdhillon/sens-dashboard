@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" alt="New Jersey Devils" class="team-logo">
       <div>
         <h1>New Jersey Devils</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:05 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -1287,7 +1287,11 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-ir">IR</span>
 <span class="tx-desc">Activated D Simon Nemec from injured reserve.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQSHp2LXNGWmk0ckFITG5Xb0RVeHgzZjUzRXpYY29JUTU5RjJDc2FaR25ZTXdTSzhhMnFjV1Q1Q0FGYzdXQnVqVkxMbWQ4b2JvbFlqU0o2SnRUMEl2WUNWTDE0Sl9sdWhUY2VxZm02bk5jcENJY2RfQTd5Vnp3dXF3bjNjNDJmb25vQ2h2aFMwS2s0MWFZU1E?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQSlRxVlZnbTJPdWdkeVR2UEZRd09SNEQ0Z1U5UlRzWTBSejhJaGJCMkhRcDI3cTZFNEgtZXlBSkVpUWwyTzBxTXZQMEtGR2I3dGN4TzZnS3dyV05PdmdETTdHbXNCN3V1RFQ1SzdYUW1mSFhhMVBvaDlWT1JzdjNLQVNPNVhDeDE1Z0JnRWUwem4xcTVDN3o1RjFhZGhlUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:10 AM</span></div>
+<div class="news-title">Devils Out to Rattle the Leafs | PREVIEW</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWkwbDFzUTdZOWZLWUlndFpTUWNGQVc5ekZ2YlY1aHhQcU9CYVZnY3BRWmtHNVVLSDBuRllYNG1NaFdnVFVBeVAxQ1liNllKNDZBUk1EeFc1cWVsR2taaFAzZVp2blM0WFdhcGw0NkltUkxJX1hwZ0tiTUJ1UHdKang1SGpySzRVakVv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:49 AM</span></div>
+<div class="news-title">Hamilton’s 2 points help Devils defeat struggling Panthers</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQSHp2LXNGWmk0ckFITG5Xb0RVeHgzZjUzRXpYY29JUTU5RjJDc2FaR25ZTXdTSzhhMnFjV1Q1Q0FGYzdXQnVqVkxMbWQ4b2JvbFlqU0o2SnRUMEl2WUNWTDE0Sl9sdWhUY2VxZm02bk5jcENJY2RfQTd5Vnp3dXF3bjNjNDJmb25vQ2h2aFMwS2s0MWFZU1E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 4 &middot; 4:20 AM</span></div>
 <div class="news-title">1 player Devils must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOcnd1b2tNRE05cFRSdUVmV2xpVjV2U1Jyay0xSktCSUtUdHI1Ri05N3lUSkF6eloxWVZfakZYRk1kaHRMdFQwRmw5RGw5Yl8zUmpwQmVlM3FjWXMwcXotWkZWbDNUeGpqT1VzQks5bWhvaTJxVWZfODJTZnhGYWRnbHczMjV5U0JGcW9sUnZWU0lLdlI4QU9pZEFZSEFaUExJVVcxWEctVXQ0QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 4 &middot; 3:54 AM</span></div>
@@ -1297,11 +1301,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 4 &middot; 3:08 AM</span></div>
 <div class="news-title">Devils dim Panthers playoff hopes in dominating victory</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFB5UkMxbmtlUVVRM1A1NWpSUUp6Znh4UGQzc2hrR0RyWTR1dko1WVdKaU5oQ0RfR0JWd2NhWHNsNkloeE8wWWsxakFJODVSSjdiYXlXVU9ZR3pReEIxVi1JYXZNWXpCbEdDMG52dFdKazFreEFPTko0RFlHTUc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:01 AM</span></div>
-<div class="news-title">Markstrom | POST-RAW 3.3.26</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPb2hsWllEMTVhMDBYWFIxdVpoX0c1aUdnV3VueVNqaW1McVRBX1JWRDYteUhwV3dFd09yUWo0RG5lRGk4VzViY01ibFdXdXBobmtSNWNsRDVNNzZiNnQxcmFCb1lKREhtaHZEQTdsbjgzWHE2Vy1PTVJESy1VTEd3NjkzQUJrVVBOd1FFWEZCUkhhck1yZkVKQkZjSl81Slk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CT Insider</span><span class="news-date">Mar 4 &middot; 3:00 AM</span></div>
-<div class="news-title">Jack Hughes and the Devils deal the Panthers' playoff hopes another blow by beating them 5-1</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWkwbDFzUTdZOWZLWUlndFpTUWNGQVc5ekZ2YlY1aHhQcU9CYVZnY3BRWmtHNVVLSDBuRllYNG1NaFdnVFVBeVAxQ1liNllKNDZBUk1EeFc1cWVsR2taaFAzZVp2blM0WFdhcGw0NkltUkxJX1hwZ0tiTUJ1UHdKang1SGpySzRVakVv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:59 AM</span></div>
-<div class="news-title">Hamilton’s 2 points help Devils defeat struggling Panthers</div></a><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE1scDJoVzlVUW0zTGNCYUxCbkdrMDZmZkdPcWRUQWM2Ykd2RUVGNGpnV2UyM21ERXpmMGFhU3dzMUsxVlBmWVBIbHpacDR2VFFYS2I2bGpHWWpLUkt0dWxYd3hOYw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Markstrom | POST-RAW 3.3.26</div></a><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1tY3dpb0RQYnFqby0wVndsV3BSSWo3bkZYMHcyNHM3WGI4ZG5lZHp5bnhJTEp3U3hKNnNNUUhCbzFzc2Q5V2JUZm5mOUdCd0dlclY4LW1xTUw4akk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 2:44 AM</span></div>
+<div class="news-title">Devils 5-1 Panthers (Mar 3, 2026) Game Recap</div></a><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE1scDJoVzlVUW0zTGNCYUxCbkdrMDZmZkdPcWRUQWM2Ykd2RUVGNGpnV2UyM21ERXpmMGFhU3dzMUsxVlBmWVBIbHpacDR2VFFYS2I2bGpHWWpLUkt0dWxYd3hOYw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:41 AM</span></div>
 <div class="news-title">Devils' Offense Tames the Champs | GAME STORY</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQUlhfYUEtVjRQYTg2QnphRFU5ODN3ZzY3NEZ2bkt0eGYzZEUxcW1laVhyZEk1d3M2Z0pjVFBKY2RBdmxwbFBNWkV2dmNWc01YOXpVS1dQV3VJbjRQakFWMWNhZm5OcmJIZk1qTDh1UkdDczV0eGhWVFk0bFl0R01wVmdWR3pHd1AwZk0xZ3VWTmJMNFdjYW52Q2pDdkJoSjdCcUkyc2ZMOVNidk0tSEEwTnNIT3A2UktHSnFQc3Nn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Globe and Mail</span><span class="news-date">Mar 4 &middot; 1:01 AM</span></div>
@@ -1335,9 +1337,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 4:39 PM</span></div>
 <div class="news-title">Surprising Team Emerging In Dougie Hamilton Trade Talks</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNejFSNl9kUDczbnNCTzBzQlpoWkFNLWhfVVV2ajNTUDJYNFNQTlBZZUJlVHZ4R3N1eHBhOGc2UEhhdnR4a3hkVnFhcFZ2Z05FRUFuLXI1ZTN4QnI5NzVFYldkX2pyN1BGQUk4TUdsMkVtRk9HSklFTERsR2F6VjZiSjdua05FR0dGUmlSeU9BMEh5TFNvblZqUm5JM2xqdi1USklNRHRTOWppTUlkQ2JVUTl4S0s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 3 &middot; 4:20 PM</span></div>
-<div class="news-title">Game Preview #61: New Jersey Devils vs. Florida Panthers</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPeGp3OTNTOU1ZNDlER1I2OHFjTHhqV3laMlJRT0dqajJqWjN0ZkNKSFNTYzlXLVJjaHBWeU56ekhUbnJrN0x0WnRuSXk4U0FMcXJpSmZiXzlPMUNvRmxXSnEtenc4UzZlZVc5Z18xTmpuTHRBb3lCWnlPQ1k2RUgzZVFCN3hTRS1UUXYtV1RQRmhrdzk2dU56VDduZDgwZDJIMzI3WWVnUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 4:09 PM</span></div>
-<div class="news-title">Panthers vs Devils NHL Prediction, Pick, Odds -- 3/3</div></a></div></div>
+<div class="news-title">Game Preview #61: New Jersey Devils vs. Florida Panthers</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/devils/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/devils</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1350,7 +1350,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:05 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:17 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1445,7 +1445,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;

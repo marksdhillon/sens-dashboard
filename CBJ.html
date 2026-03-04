@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="Columbus Blue Jackets" class="team-logo">
       <div>
         <h1>Columbus Blue Jackets</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:05 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -428,12 +428,12 @@ body{animation:fadeIn 0.15s ease}
   <ul class="matchup-notes"><li>CBJ leads season series 1-0-0</li><li>CBJ holds a 8-pt lead over LAK</li><li>LAK is on the bubble (28% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>CBJ</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-21-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">70</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-8-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">15-13-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">8-1-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">192</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">191</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-3')">
-<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-17-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-3" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">CBJ @ Tampa Bay</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>CBJ leads season series 2-0-0</li><li>TBL holds a 10-pt lead over CBJ</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
-  <table class="cmp-tbl"><thead><tr><th>CBJ</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-21-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">70</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-8-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">15-13-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">8-1-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">192</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">191</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
+  <table class="cmp-tbl"><thead><tr><th>CBJ</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-21-8</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-17-4</td></tr><tr><td class="cmp-stat-l">70</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-8-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">15-13-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-7-4</td></tr><tr><td class="cmp-stat-l">8-1-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">192</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">210</td></tr><tr><td class="cmp-stat-l">191</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">158</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-4')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-28-3 &middot; 63p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
@@ -1221,8 +1221,8 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">NHL highlights of Columbus Blue Jackets, Nashville Predators game</div></a><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxOVXRZbnVVel9UcDhVSWxaZi1HVDFJd2UyRkVjNVExcmJqMWdhbUpnakhWRElPT2ktNnFUOXc4b3ZONnE4TWdnODU1Sno5UU5FOTN0V0dmTjhUWk1lWC16elJiOWlQdDFvSjgtRmh1TG9yLV9jM2N5d3U1ejIwcUJYcFFpWVlnMDRfWVA3UkZlS1hVMUJXc3ZmbURITXIzWko2NUdkbm9BemVjOXM5ZXNfVC1Wa1pQRmZfVG0yX1hRbm9kRkxkYUQxVTBKMHRMdF9MNGU3QnlZbHNHaFBCMURpakw3RzVvZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 12:35 AM</span></div>
 <div class="news-title">Blue Jackets' move seems like Boone Jenner trade, except news says otherwise</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxPZllwYmNES2w5ZHlIS0c5QUM0ck0yWUVaaFJUeWdtZUg3dEt4Z3RXamRIMXRWNHE0QXBYNHN5aXF1Z1pwRFJLSE9JVWxIUlVtMDg3c2VEUExzc0hqZm81dkxYRVhjZlhsVEpJTTh1ZUtuTWpBUkk3cWJHTzA2bzFpWWo3UVBCelVMN2NiRFozeWRjakhrRC1YRkZJSENnbk55T1UwQXJtLUtxVnFkWEtpcVJVNjlLQmtVTXdYMVg0cDRUTlg2eEcwNTNWSk1DWGR1aFNGWWRwa2xRWm5LTVA0?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Columbus Dispatch</span><span class="news-date">Mar 3 &middot; 11:49 PM</span></div>
-<div class="news-title">Zach Werenski, Boone Jenner out with illness vs Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOUzhFaXFKSDV6MlRJUERCQmZ2UVZLZkRzckZ1aVNYUkpUblZBVU84MVVvLTJXblVrSzdqWVhqeGNpZC01d0JTdU5vYmZob3A5WFVJb0xqeGFoNnpUZExEU3ZmeVplR1UyY3B5OVhjcTZtc0pqMjZFMGZPNEczM2NzeXcyUmZ1VzN1V0RLQTNjaw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Columbus Dispatch</span><span class="news-date">Mar 4 &middot; 12:11 AM</span></div>
+<div class="news-title">Zach Werenski, Boone Jenner out vs Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOUzhFaXFKSDV6MlRJUERCQmZ2UVZLZkRzckZ1aVNYUkpUblZBVU84MVVvLTJXblVrSzdqWVhqeGNpZC01d0JTdU5vYmZob3A5WFVJb0xqeGFoNnpUZExEU3ZmeVplR1UyY3B5OVhjcTZtc0pqMjZFMGZPNEczM2NzeXcyUmZ1VzN1V0RLQTNjaw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 10:15 PM</span></div>
 <div class="news-title">Blue Jackets’ News & Notes: Werenski, Defensive Pairs & More</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOcFZDN3ZXbEY3YlRZcXJDMWd6OTRJTGRXU2NqY1ZPRWpJRFZZRVVzcW1fdi1DTHFucS1vdW9sWWxkRGRsN3F3Q3FuNF9qRUhwWkJLcjl6Z0dXMlpza2lkaWhyNnExUGI5Um9CUXI2ODdmbGVxdHVjcE9ESmY4QXBWaUZ3dkFub0llZEpsRXN1NFQyRDFV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 10:04 PM</span></div>
@@ -1265,7 +1265,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:05 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:17 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1360,7 +1360,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;

@@ -18,13 +18,13 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
-.live-badge{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}
-.live-badge:hover .live-info{color:var(--text)}
-.live-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}
-.live-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}
-@keyframes liveRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
-.live-word{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}
-.live-info{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}
+.live-badge:hover{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}
+@keyframes liveDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.45}}
+.live-word{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}
+.live-sep{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}
+.live-info{font-size:12px;font-weight:500;color:var(--text-secondary)}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -365,8 +365,8 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" alt="Buffalo Sabres" class="team-logo">
       <div>
         <h1>Buffalo Sabres</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 12:05 AM ET</div>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
+        <div class="subtitle">Updated March 4, 2026 at 12:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -421,12 +421,12 @@ body{animation:fadeIn 0.15s ease}
   <ul class="matchup-notes"><li>BUF leads season series 1-0-0</li><li>BUF holds a 16-pt lead over NSH</li><li>NSH is on the bubble (21% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-26-8</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-5</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">210</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-2')">
-<div class="game-summary"><div class="game-left"><span class="game-date">Mar 8</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 8</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-17-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-2" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 8</span><span class="gp-matchup">BUF vs Tampa Bay</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>Separated by only 2 pts — a direct rival</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.0 goals/game avg</li></ul>
-  <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
+  <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-17-4</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-7-4</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">210</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">158</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-3')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
@@ -519,12 +519,12 @@ body{animation:fadeIn 0.15s ease}
   <ul class="matchup-notes"><li>BUF leads season series 1-0-0</li><li>BUF holds a 9-pt lead over WSH</li><li>WSH is fading — only 18% playoff odds</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-7</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-11-3</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">189</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-16')">
-<div class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-17-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-16" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 6</span><span class="gp-matchup">BUF vs Tampa Bay</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>Separated by only 2 pts — a direct rival</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 7.0 goals/game avg</li></ul>
-  <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
+  <table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">36-19-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-17-4</td></tr><tr><td class="cmp-stat-l">78</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">18-8-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-7-4</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">210</td></tr><tr><td class="cmp-stat-l">183</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">158</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-17')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">@ New York</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-29-8 &middot; 54p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
@@ -1241,11 +1241,11 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Zachary Jones to Rochester (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxOZXBCYzh6ODN2eXJKeHZ1elNvR1dqSVplZm9jam1qOFZkZEJpMU1SYjN3TkJJR3hLamt3bHJhekZQemdVd1ZFXzN1Q2pSVVBpcklSZzlzSGtBa1NxUHhHbzQ4LTRsdlBBRlZsRkY3MkFWdnFRT2EtaWFFV2dMdWo5NVJka0sxM1ItVExKWUpzbHVBdHpWTk94YV81ZVVpZw?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOOUMwRDhzU1NIc1dpM0NUbW1RTFgtX0tkZUhpY2pHS3libmNzbjEzRmJWVGlsZndaNDNybWlCWnJidmx0MkdHTDZuVTNIcFRXdHN3TkdsR3JlQUNyUGJxampETk9HS2tQT252T25Ta2R0X0pLWHJLRE9HNE4yalREX3ZIWjFJWHRJWi1CSTY5OVFIYXFQTTJTN21BMTlOQnd2VzdHS2MwSWxjX1d2bVB4TTVQY0tQbFVOLUR6ZU02NXA1SElvYkE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Flashscore.com</span><span class="news-date">Mar 4 &middot; 5:15 AM</span></div>
+<div class="news-title">Winnipeg Jets prevail in overtime as Buffalo Sabres win again</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxOZXBCYzh6ODN2eXJKeHZ1elNvR1dqSVplZm9jam1qOFZkZEJpMU1SYjN3TkJJR3hLamt3bHJhekZQemdVd1ZFXzN1Q2pSVVBpcklSZzlzSGtBa1NxUHhHbzQ4LTRsdlBBRlZsRkY3MkFWdnFRT2EtaWFFV2dMdWo5NVJka0sxM1ItVExKWUpzbHVBdHpWTk94YV81ZVVpZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:55 AM</span></div>
-<div class="news-title">‘What an awesome night’ | Pregame honors set up game-winning goal for Thompson</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxPN0ZhcFdiNU9qajJ0Q2FWWVd3Qm5UQjg2OS1YSHQteFh6XzRZa1BRLTBaUGdITjQ5aEZqSGNHMHRhZzJWNWdsWkVaSGo1ZTVvOE4yUk9RYmtGUUc5NlJhejRzbmRRUnZxSTFTaG1Jemo5RjBkcVpiTGx2MlJWU29GQUszWk9jdjBYb1lmOS1nRkJ0MGIxdno2WlBoTnQ3Y2NqWGhSQmlQbVE3eHdEdktrUnM3eUpxOEN6d3pEYjhwQXVrdElzN1RldFFQczB2amNGdVhva0F4cFBkZV9IdWwxY242MFBxd2J6MGY3RlplbjZHT2FVQlZNMmFLMm1kbEpUMmh2YS13Yy12SDFtWmZvWk5wUkwtMl9STy1pYU13ek4?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Rutland Herald</span><span class="news-date">Mar 4 &middot; 4:46 AM</span></div>
-<div class="news-title">Tage Thompson scores decisive goal to cap night Sabres honor their US gold medal-winning Olympian</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5CYUpsbnVWVHd6QTM5aVlxbHlLd1NObkJKTlRzcGMtajM0SzlDbVNubVN2TGxoeWUzRFE0cHNPdlNockhhR3E0Rm45REhfMG94SzJvVks1THBST0hHWVhyY0RvVURhaUlhSFQzUWVPZTZQSjV2MFE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">‘What an awesome night’ | Pregame honors set up game-winning goal for Thompson</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5CYUpsbnVWVHd6QTM5aVlxbHlLd1NObkJKTlRzcGMtajM0SzlDbVNubVN2TGxoeWUzRFE0cHNPdlNockhhR3E0Rm45REhfMG94SzJvVks1THBST0hHWVhyY0RvVURhaUlhSFQzUWVPZTZQSjV2MFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:45 AM</span></div>
 <div class="news-title">Final moments vs. VGK</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPeGszR1NhdU5UdnFIMmxISktvZ28wVUdRd2xZWkh4dlVOdEZ4VkJTNGhiQXJjTjV2cmw4WDNVQ3lGeGFaQnA2UmJMcUNJS2RVcXRPT0EzelRUQUZZTVUxYUdONUZ4Mk55MXhTdzdCd3YzNkVZSnJiZDNqUS1xeXFKbW5WU05uRGs4cm54eQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:06 AM</span></div>
@@ -1261,7 +1261,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 2:06 AM</span></div>
 <div class="news-title">Sabres honor gold medalists Thompson, ex-captain Eichel</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFBqTVllczBja2VGZ0hMOXl5M3pyVU16T1lDVWM1bUlKS0VIUlhveEZ3RUc2RW9oaXZCa3BjS0IzRGp1aWVjMEZzNmR5cHZLcGxFM0xtYThDa3JkdzRmRUFFUS1lcF8yRE5veVF0Tm1jazA4dkNIZEI2Q1I4U2fSAYIBQVVfeXFMTXJ2MDZyMXpkT2NvRGFxbzZtLW9OMHBQRUR4ZzIwbFpsSlk0eXpJR1Q2VnpxV0VPUlpwMThCZHBuOWF5VzBaZnFIbm9iU1M0X0RSS1JPWU1RYm5meDgxS29WVy1pbDFTSmtTSGdzN2s5QWlnSmNyNnItNURpeWtWRkxOQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 4 &middot; 2:04 AM</span></div>
-<div class="news-title">NHL Rumors: The Latest on Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQd2VLcVgzUVF3eUppRXkwamdLLTlFUUwxZWgxeURSODNLTmhyNS15c3JtY1RDRHJqcVdydTlVa1BPNEhCU3F3SzdNWWx3Yy1ITG80V19Vd3VveVlZaFV5YkFDQm5Md0ZhNDVOWGhtVFNlSlBVYW8xSUROWUVoZ2RvVm92LVJyYzF0TFdlYU9JdHdOZHAyeF9uNmtkU1VfbmdFN3M5OXEydXJrd2diN3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: The Latest on Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNNWEwYTI2bHVZaU9YNEFWRWZwaDI2ekYwYVNpZy1XLVM5N2dyTVRpdWxoV0N3WE9xeWlXSWNVRl91elZJMnRCYmdyTjVDbF9NS0tjcFQ1eEV3V1lJNm9LbWE3YzZ6MEp3ckJYUnRtZ2FxMWk3dEhaOWQ0YVJQbzRaWEZYWEtELV93cUt6QU9IVDRRN3JhalRURU1GdXhOZEY0TEl2NTNDN3JyT3k4YzFGLVhRMGlwbFRWb1JZSTFLLTc5NjgtQ2c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 1:54 AM</span></div>
+<div class="news-title">Sabres honour U.S. Olympian Tage Thompson, with ex-captain Jack Eichel even getting a cheer</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQd2VLcVgzUVF3eUppRXkwamdLLTlFUUwxZWgxeURSODNLTmhyNS15c3JtY1RDRHJqcVdydTlVa1BPNEhCU3F3SzdNWWx3Yy1ITG80V19Vd3VveVlZaFV5YkFDQm5Md0ZhNDVOWGhtVFNlSlBVYW8xSUROWUVoZ2RvVm92LVJyYzF0TFdlYU9JdHdOZHAyeF9uNmtkU1VfbmdFN3M5OXEydXJrd2diN3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 1:51 AM</span></div>
 <div class="news-title">Sabres honor US Olympian Thompson, with ex-captain Eichel even getting a cheer</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMzNkYUFhcmpBT1htM0VSMjFKSnJENEx3bXoxWlZ2Wms0NXdsV1RzcVZwdzAwU1cwYTZ3dE1QUkU2YnBOaFJ4LTB1WFRVbTV1cjBCZUtLMVIzV2dyS3YtZTVUaGZ5dVdRVjBrUWxqRmpCendNM1VxLWxoaEVDRFNUS19qQTUtTjU3UUdWWlVOTlhkOGdEY2kxRDlDR3kwcFFtVmpqTEhiMjU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:29 AM</span></div>
@@ -1289,9 +1291,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 9:57 PM</span></div>
 <div class="news-title">Sabres rumors: The player not expected to be in possible Robert Thomas trade with Blues</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNT1psYnZmYUU4Z0RTamV5QnByNU84MmpBNU5JaXkxMWJqaXdJZmNWdUpvNFdXaDBhY0ZEZVJLNlR0cGh2eFF1akdmWklTSlp3Vmh0b1k2RGhjdVJ4S0lKeEV4YWppMGhWYjNDczZKZGVnOF9vRjFycnp5Z3NybzhYdmlhNzl0QkZiNGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 9:56 PM</span></div>
-<div class="news-title">Sabres rumors: The player not expected to be in possible Robert Thomas trade with Blues</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNcGQ1RUNrMjAyaVFJRmhRVEhRM05UTlBKS1NCMThMRmpQb3NWUjFtSFUxSnRXRWM3US1yc1I4UEpvZkh0VDgzM25lcGU2eFF6b0Q2TjVDVmJ5Vi1HMmEwaGRBYUtzcUNoejBkRmMwTy1BWWdOcGQzT0pZWVlMV1BHUEJ3MWlCQUhyZFRMQmt4QmpnNFVYNWE2Ti1ZS3hjZHdJbm5RcWN0cEx5SVhPSDhRWlUtNy1aRXp1VlI4NHIxY2w2eWcxWElKU0ZYNWRhdkxjbXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 9:06 PM</span></div>
-<div class="news-title">Sabres Emerge In Blues' Robert Thomas Sweepstakes; Talkings Reportedly 'Heating Up'</div></a></div></div>
+<div class="news-title">Sabres rumors: The player not expected to be in possible Robert Thomas trade with Blues</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/sabres/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/sabres</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1304,7 +1304,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:05 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 12:16 AM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1399,7 +1399,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'–'+hs+' '+home+' · '+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }
             return;
