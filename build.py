@@ -1686,11 +1686,11 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{team_name} — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:{accent};--accent-soft:{accent_soft_dark};--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}}
-:root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--border-subtle:rgba(0,0,0,0.06);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:{accent_light};--accent-soft:{accent_soft_light};--green:#059669;--red:#dc2626;--card-shadow:0 0 0 1px rgba(0,0,0,0.06);--card-shadow-hover:0 0 0 1px rgba(0,0,0,0.12);--text-strong:rgba(0,0,0,0.92);--ring-bg:rgba(0,0,0,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(0,0,0,0.05);--tag-dash:rgba(0,0,0,0.14);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(5,150,105,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(0,0,0,0.04);--hs-bg:rgba(0,0,0,0.06);--footer-link-deco:rgba(0,0,0,0.14)}}
+:root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:{accent};--accent-soft:{accent_soft_dark};--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}}
+:root[data-theme="light"]{{--bg:#fdf8f2;--bg-surface:rgba(0,0,0,0.04);--bg-elevated:rgba(0,0,0,0.055);--bg-hover:rgba(0,0,0,0.06);--border:rgba(26,26,24,0.1);--border-subtle:rgba(26,26,24,0.06);--text:#1a1a18;--text-secondary:rgba(26,26,24,0.55);--text-muted:rgba(26,26,24,0.38);--accent:{accent_light};--accent-soft:{accent_soft_light};--green:#00a67e;--red:#e03131;--card-shadow:0 0 0 1px rgba(26,26,24,0.06);--card-shadow-hover:0 0 0 1px rgba(26,26,24,0.12);--text-strong:#1a1a18;--ring-bg:rgba(26,26,24,0.06);--alt-row:rgba(0,0,0,0.02);--matchup-bg:rgba(0,0,0,0.025);--tag-bg:rgba(26,26,24,0.05);--tag-dash:rgba(26,26,24,0.14);--amber:#92400e;--amber-bg:rgba(251,191,36,0.12);--loc-home-bg:rgba(0,166,126,0.08);--loc-away-bg:rgba(0,0,0,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(0,0,0,0.04);--hs-bg:rgba(26,26,24,0.06);--footer-link-deco:rgba(26,26,24,0.14)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:'cv02','cv03','cv04','cv11'}}
 a{{color:var(--text);text-decoration:none}}
@@ -2151,7 +2151,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){{
   }}
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'dark';
+  var saved=localStorage.getItem('theme')||'light';
   swapLogos(saved);
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
@@ -2641,11 +2641,11 @@ def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, swi
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Scoreboard</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--green:#34d399;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12);--panel-bg:#111113;--overlay:rgba(0,0,0,0.6)}}
-:root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#c8102e;--green:#059669;--red:#dc2626;--text-strong:rgba(0,0,0,0.92);--footer-link-deco:rgba(0,0,0,0.14);--panel-bg:#fff;--overlay:rgba(0,0,0,0.2)}}
+:root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12);--panel-bg:#1e1c20;--overlay:rgba(0,0,0,0.6)}}
+:root[data-theme="light"]{{--bg:#fdf8f2;--bg-surface:rgba(0,0,0,0.04);--bg-elevated:rgba(0,0,0,0.055);--bg-hover:rgba(0,0,0,0.06);--border:rgba(26,26,24,0.1);--text:#1a1a18;--text-secondary:rgba(26,26,24,0.55);--text-muted:rgba(26,26,24,0.38);--accent:#00a67e;--green:#00a67e;--red:#e03131;--text-strong:#1a1a18;--footer-link-deco:rgba(26,26,24,0.14);--panel-bg:#fdf8f2;--overlay:rgba(0,0,0,0.2)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 @keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;animation:fadeIn 0.15s ease}}
@@ -2881,7 +2881,7 @@ a{{color:var(--text);text-decoration:none}}
   }}
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'dark';
+  var saved=localStorage.getItem('theme')||'light';
   swapLogos(saved);
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
@@ -3182,11 +3182,11 @@ def build_leaders_page(skater_leaders, goalie_leaders, full_skaters, full_goalie
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Stats</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--green:#34d399;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
-:root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#c8102e;--green:#059669;--red:#dc2626;--text-strong:rgba(0,0,0,0.92);--footer-link-deco:rgba(0,0,0,0.14)}}
+:root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
+:root[data-theme="light"]{{--bg:#fdf8f2;--bg-surface:rgba(0,0,0,0.04);--bg-elevated:rgba(0,0,0,0.055);--bg-hover:rgba(0,0,0,0.06);--border:rgba(26,26,24,0.1);--text:#1a1a18;--text-secondary:rgba(26,26,24,0.55);--text-muted:rgba(26,26,24,0.38);--accent:#00a67e;--green:#00a67e;--red:#e03131;--text-strong:#1a1a18;--footer-link-deco:rgba(26,26,24,0.14)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 @keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;animation:fadeIn 0.15s ease}}
@@ -3331,7 +3331,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 (function(){{
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'dark';
+  var saved=localStorage.getItem('theme')||'light';
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
     b.addEventListener('click',function(){{
@@ -3460,11 +3460,11 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Standings</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root,:root[data-theme="dark"]{{--bg:#0a0a0b;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.85);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--green:#34d399;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
-:root[data-theme="light"]{{--bg:#fbfbfc;--bg-surface:rgba(0,0,0,0.03);--bg-elevated:rgba(0,0,0,0.05);--bg-hover:rgba(0,0,0,0.06);--border:rgba(0,0,0,0.1);--text:rgba(0,0,0,0.8);--text-secondary:rgba(0,0,0,0.5);--text-muted:rgba(0,0,0,0.3);--accent:#c8102e;--green:#059669;--red:#dc2626;--text-strong:rgba(0,0,0,0.92);--footer-link-deco:rgba(0,0,0,0.14)}}
+:root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
+:root[data-theme="light"]{{--bg:#fdf8f2;--bg-surface:rgba(0,0,0,0.04);--bg-elevated:rgba(0,0,0,0.055);--bg-hover:rgba(0,0,0,0.06);--border:rgba(26,26,24,0.1);--text:#1a1a18;--text-secondary:rgba(26,26,24,0.55);--text-muted:rgba(26,26,24,0.38);--accent:#00a67e;--green:#00a67e;--red:#e03131;--text-strong:#1a1a18;--footer-link-deco:rgba(26,26,24,0.14)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 @keyframes fadeIn{{from{{opacity:0}}to{{opacity:1}}}}
 body{{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;animation:fadeIn 0.15s ease}}
@@ -3571,7 +3571,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 (function(){{
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'dark';
+  var saved=localStorage.getItem('theme')||'light';
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
     b.addEventListener('click',function(){{
