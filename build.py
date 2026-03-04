@@ -2156,16 +2156,16 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
 <script>
 (function(){{
   var team='{TEAM}';
-  var PROXIES=['https://corsproxy.io/?','https://api.allorigins.win/raw?url='];
-  var pIdx=0;
   function nhlFetch(url){{
-    var pu=PROXIES[pIdx]+encodeURIComponent(url);
-    return fetch(pu).then(function(r){{
+    var e=encodeURIComponent(url);
+    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){{
       if(!r.ok) throw new Error(r.status);
       return r.json();
-    }}).catch(function(err){{
-      if(pIdx<PROXIES.length-1){{pIdx++;return fetch(PROXIES[pIdx]+encodeURIComponent(url)).then(function(r){{return r.json()}})}}
-      throw err;
+    }}).catch(function(){{
+      return fetch('https://corsproxy.io/?'+e).then(function(r){{
+        if(!r.ok) throw new Error(r.status);
+        return r.json();
+      }});
     }});
   }}
   function checkLive(){{
@@ -2912,21 +2912,16 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   var allFinal=false;
 
   // NHL API doesn't send CORS headers, so we need a proxy for browser fetches
-  var PROXIES=['https://corsproxy.io/?','https://api.allorigins.win/raw?url='];
-  var proxyIdx=0;
   function nhlFetch(url){{
-    var proxyUrl=PROXIES[proxyIdx]+encodeURIComponent(url);
-    return fetch(proxyUrl).then(function(r){{
+    var e=encodeURIComponent(url);
+    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){{
       if(!r.ok) throw new Error(r.status);
       return r.json();
-    }}).catch(function(err){{
-      // Try next proxy
-      if(proxyIdx<PROXIES.length-1){{
-        proxyIdx++;
-        var fallbackUrl=PROXIES[proxyIdx]+encodeURIComponent(url);
-        return fetch(fallbackUrl).then(function(r){{return r.json()}});
-      }}
-      throw err;
+    }}).catch(function(){{
+      return fetch('https://corsproxy.io/?'+e).then(function(r){{
+        if(!r.ok) throw new Error(r.status);
+        return r.json();
+      }});
     }});
   }}
 
