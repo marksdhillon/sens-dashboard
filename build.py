@@ -1075,7 +1075,7 @@ def build_leaders_html(skater_leaders, goalie_leaders):
             rows.append(f'''<div class="ld-row{hl}">
 <span class="ld-rank">{rank}</span>
 <img src="{headshot}" class="ld-headshot" onerror="this.style.display='none'">
-<div class="ld-info"><span class="ld-name">{name}</span><span class="ld-team">{team}</span></div>
+<div class="ld-info"><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={name.replace(" ", "+")}" target="_blank" rel="noopener" class="ld-name">{name}</a><span class="ld-team">{team}</span></div>
 <span class="ld-val">{val}</span>
 </div>''')
         return f'''<div class="ld-card">
@@ -1151,7 +1151,7 @@ def build_full_stats_html(full_skaters, full_goalies):
 
         skater_rows += f'''<tr>
 <td class="fs-rank">{rank}</td>
-<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="{team_href}" class="fs-name">{name}</a><span class="fs-meta">{team} · {pos}</span></td>
+<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={name.replace(" ", "+")}" target="_blank" rel="noopener" class="fs-name">{name}</a><span class="fs-meta"><a href="{team_href}" class="fs-team-link">{team}</a> · {pos}</span></td>
 <td>{gp}</td><td class="fs-hl">{g}</td><td class="fs-hl">{a}</td><td class="fs-pts">{pts}</td>
 <td>{pm_str}</td><td>{pim}</td><td>{ppg}</td><td>{ppa}</td>
 <td>{sog}</td><td>{spct_str}</td><td>{toi_str}</td><td>{gwg}</td>
@@ -1182,7 +1182,7 @@ def build_full_stats_html(full_skaters, full_goalies):
 
         goalie_rows += f'''<tr>
 <td class="fs-rank">{rank}</td>
-<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="{team_href}" class="fs-name">{name}</a><span class="fs-meta">{team}</span></td>
+<td class="fs-player"><img src="{headshot}" class="fs-headshot" onerror="this.style.display='none'"><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name={name.replace(" ", "+")}" target="_blank" rel="noopener" class="fs-name">{name}</a><span class="fs-meta"><a href="{team_href}" class="fs-team-link">{team}</a></span></td>
 <td>{gp}</td><td>{gs}</td><td class="fs-hl">{w}</td><td>{l}</td><td>{otl}</td>
 <td>{ga}</td><td class="fs-pts">{gaa_str}</td><td>{sa}</td><td>{sv}</td><td class="fs-pts">{svpct_str}</td><td>{so}</td>
 </tr>'''
@@ -2969,7 +2969,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .ld-rank{{font-size:11px;font-weight:600;color:var(--text-muted);min-width:18px;text-align:right;font-variant-numeric:tabular-nums}}
 .ld-headshot{{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
 .ld-info{{flex:1;min-width:0;display:flex;flex-direction:column}}
-.ld-name{{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.ld-name{{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;display:block}}.ld-name:hover{{color:var(--accent)}}
 .ld-team{{font-size:10px;font-weight:500;color:var(--text-muted)}}
 .ld-val{{font-size:14px;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}}
 .ld-hl .ld-name{{color:var(--accent)}}
@@ -2992,6 +2992,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .fs-player-h{{min-width:180px}}
 .fs-headshot{{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--bg-elevated)}}
 .fs-name{{font-size:12px;font-weight:600;color:var(--text);text-decoration:none}}.fs-name:hover{{color:var(--accent)}}
+.fs-team-link{{color:var(--text-muted);text-decoration:none}}.fs-team-link:hover{{color:var(--text-secondary)}}
 .fs-meta{{font-size:10px;color:var(--text-muted);margin-left:4px}}
 .fs-hl{{font-weight:600;color:var(--text)}}
 .fs-pts{{font-weight:700;color:var(--text-strong)}}
