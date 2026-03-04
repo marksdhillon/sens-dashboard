@@ -2645,7 +2645,7 @@ a{{color:var(--text);text-decoration:none}}
 .theme-btn.active{{color:var(--text-strong);background:var(--bg-elevated)}}
 
 /* Date strip */
-.date-strip-wrap{{max-width:700px;margin:0 auto;padding:16px 0 0}}
+.date-strip-wrap{{max-width:700px;margin:0 auto;padding:16px 0 0;-webkit-mask-image:linear-gradient(to right,transparent,black 28px,black calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,black 28px,black calc(100% - 28px),transparent)}}
 .date-strip{{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:6px 20px 10px;scroll-snap-type:x proximity}}
 .date-strip::-webkit-scrollbar{{display:none}}
 .ds-btn{{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 13px;border:1px solid transparent;background:transparent;border-radius:10px;cursor:pointer;transition:all 0.15s;min-width:58px;position:relative;flex-shrink:0;scroll-snap-align:start}}
