@@ -1701,13 +1701,13 @@ a:hover{{color:var(--text-strong)}}
 .team-logo{{width:40px;height:40px;opacity:0.9}}
 .header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}}
 .header .subtitle{{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}}
-.live-badge{{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:5px;padding:0;background:none;border-radius:0;letter-spacing:normal}}
-.live-badge:hover .live-info{{color:var(--text)}}
-.live-dot{{position:relative;width:7px;height:7px;border-radius:50%;background:#ff3b30;flex-shrink:0}}
-.live-dot::after{{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid #ff3b30;animation:liveRing 1.8s ease-out infinite}}
-@keyframes liveRing{{0%{{opacity:0.8;transform:scale(1)}}100%{{opacity:0;transform:scale(2.4)}}}}
-.live-word{{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#ff3b30}}
-.live-info{{font-size:12px;font-weight:400;color:var(--text-secondary);transition:color 0.2s}}
+.live-badge{{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}}
+.live-badge:hover{{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}}
+.live-dot{{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}}
+@keyframes liveDot{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(0.55);opacity:0.45}}}}
+.live-word{{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#ff3b30}}
+.live-sep{{width:1px;height:11px;background:rgba(255,59,48,0.22);flex-shrink:0}}
+.live-info{{font-size:12px;font-weight:500;color:var(--text-secondary)}}
 .hdr-pct{{text-align:right}}
 .pct-val{{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}}
 .pct-label{{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}}
@@ -2048,7 +2048,7 @@ body{{animation:fadeIn 0.15s ease}}
       <img src="https://assets.nhle.com/logos/nhl/svg/{TEAM}_dark.svg" alt="{team_name}" class="team-logo">
       <div>
         <h1>{team_name}</h1>
-        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-info" id="live-info"></span></a>
+        <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
         <div class="subtitle">Updated {now}</div>
       </div>
     </div>
@@ -2196,7 +2196,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
               var pstr=clk.inIntermission?'End of '+(ords[pn]||'P'+pn):per.periodType==='OT'?'OT '+tr:per.periodType==='SO'?'Shootout':(ords[pn]||'P'+pn)+' '+tr;
               var info=document.getElementById('live-info');
               if(info)info.textContent=away+' '+as+'\u2013'+hs+' '+home+'\u00a0\u00b7\u00a0'+pstr;
-              badge.href='scores.html#game-'+g.id;
+              badge.href='scores.html?game='+g.id;
               badge.style.display='inline-flex';
             }}
             return;
@@ -3105,19 +3105,21 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   // Also refresh immediately on page load (data may be stale from build)
   refreshScores();
 
-  // Scroll to a specific game if URL contains #game-{id}
+  // Open a specific game panel if URL contains ?game={id}
   (function(){{
-    var hash=window.location.hash;
-    if(hash&&hash.indexOf('#game-')===0){{
-      var target=document.getElementById(hash.slice(1));
-      if(target){{
-        setTimeout(function(){{
+    var params=new URLSearchParams(window.location.search);
+    var gameId=params.get('game');
+    if(gameId){{
+      setTimeout(function(){{
+        var target=document.getElementById('game-'+gameId);
+        if(target){{
           target.scrollIntoView({{behavior:'smooth',block:'center'}});
           target.style.transition='box-shadow 0.4s ease';
           target.style.boxShadow='0 0 0 2px rgba(255,59,48,0.55),0 0 20px rgba(255,59,48,0.12)';
           setTimeout(function(){{target.style.boxShadow='';target.style.transition='';}},2200);
-        }},400);
-      }}
+        }}
+        if(typeof openPanel==='function')openPanel(gameId);
+      }},600);
     }}
   }})();
 }})();
