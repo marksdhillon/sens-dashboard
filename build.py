@@ -2237,12 +2237,15 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
             status = "Final"
         status_cls = "sb-final"
     elif state == "LIVE" or state == "CRIT":
-        if period_type == "OT":
+        ordinals = {1: "1st", 2: "2nd", 3: "3rd"}
+        in_intermission = clock.get("inIntermission", False)
+        if in_intermission:
+            status = f"End of {ordinals.get(period_num, f'P{period_num}')}"
+        elif period_type == "OT":
             status = f"OT {time_remaining}"
         elif period_type == "SO":
             status = "Shootout"
         else:
-            ordinals = {1: "1st", 2: "2nd", 3: "3rd"}
             status = f"{ordinals.get(period_num, f'P{period_num}')} {time_remaining}"
         status_cls = "sb-live"
     elif state == "FUT" or state == "PRE":
@@ -3012,7 +3015,8 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
             }} else if(st==='LIVE'||st==='CRIT'){{
               hasLive=true;
               var ords={{1:'1st',2:'2nd',3:'3rd'}};
-              var txt=pType==='OT'?'OT '+tr:pType==='SO'?'Shootout':(ords[pNum]||'P'+pNum)+' '+tr;
+              var inInt=!!(clk.inIntermission);
+              var txt=inInt?'End of '+(ords[pNum]||'P'+pNum):pType==='OT'?'OT '+tr:pType==='SO'?'Shootout':(ords[pNum]||'P'+pNum)+' '+tr;
               statusEl.className='sb-status sb-live';
               statusEl.textContent=txt;
               if(rows[0])rows[0].className='sb-team-row';
