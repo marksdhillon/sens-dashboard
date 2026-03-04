@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Edmonton Oilers</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:08 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">20</div><div class="sm-label">Games Left</div></div>
@@ -578,7 +568,7 @@ body{animation:fadeIn 0.15s ease}
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -1135,18 +1125,6 @@ body{animation:fadeIn 0.15s ease}
 <table class="nhl-tbl inj-tbl sortable">
 <thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
 <tbody><tr>
-<td class="inj-name">Jake Walman</td>
-<td class="inj-pos">D</td>
-<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
-<td class="inj-return">Mar 6</td>
-<td class="inj-comment">Mar 4: Walman sustained an undisclosed injury Tuesday versus the Senators, but it isn&#x27;t expected to be serious, Ryan Rishaug of TSN reports.</td>
-</tr><tr>
-<td class="inj-name">Curtis Lazar</td>
-<td class="inj-pos">C</td>
-<td><span class="inj-badge inj-out">Out</span></td>
-<td class="inj-return">Mar 10</td>
-<td class="inj-comment">Mar 4: Lazar sustained an undisclosed injury Tuesday versus the Senators and will miss at least one week, Ryan Rishaug of TSN reports.</td>
-</tr><tr>
 <td class="inj-name">Mattias Janmark</td>
 <td class="inj-pos">C</td>
 <td><span class="inj-badge inj-other">Injured Reserve</span></td>
@@ -1208,9 +1186,7 @@ body{animation:fadeIn 0.15s ease}
 </div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPS0QyNzJKbWVqVmYwVWxfS1FLdWlJSUtDUFBBbzRlSEdGZXVMQ2hrTUZFc2xjSHVtVHlRam8wMUVWQWJUblN2dEQyS3hfdVZOc2lLWGtCUFdXbGI2dVg4QWZadjBBZnpJZzBLZDhmNnJ1R1g2akUzYjdUY3pCbm9TWFNGYWh6RFk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:45 AM</span></div>
-<div class="news-title">Draisaitl gets 5 points, Oilers rally late for OT win against Senators</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPM2tmcFJ2R3VjRnBiUTZ2SndVY0lQbDkwR2ROQW5UdTl4VUNlQzcxbm94RUtMY2VPU18zNXVtbUROV2l3djlvYlotQUpVMlY0R3V0MXhDdGUxR2lTbFRfaGpobUhaQjM4NmRBZmxuTHE0dkpxZlRGdFdYZGtsWXBidXZNbm5LWEMzRXRuNEFkcHh6WjJhYkhXUU9IMlZDUXo4LV9LQ0Izb29xME9tbHBfTmZB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 6:38 AM</span></div>
-<div class="news-title">NHL Trade Deadline Central 2026: Trade Tracker, Analysis, Lists And More</div></a><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxQZGhpWHREOVZEdndfb2d6U1BPNFo5NEhGWmFOMUJYbExCQk8tYlQwWmh1X3luRXF3YzJWZE1mZzdUaDh4NnAwNy1yQnlOaVdrbVdGRmRCRnRpZWY0OURYN0tZV3hWdG90Tm85dmViMlp0cUtLZnVMYTRLZ05EbTdpRW5MbWVDMjF6SnFka2d3R3UxSGt4Q2FtMmM2VWM3X0N1NElad3ZTWUVJODRUZVZTNVd2cngxSzc5dkFLNlp5bG5jSmFmZFlMRWR3bFFqLUMxa0lZT3hMWVBSdDFERFpFRHNzSmxmNFBneUFBVA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Draisaitl gets 5 points, Oilers rally late for OT win against Senators</div></a><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxQZGhpWHREOVZEdndfb2d6U1BPNFo5NEhGWmFOMUJYbExCQk8tYlQwWmh1X3luRXF3YzJWZE1mZzdUaDh4NnAwNy1yQnlOaVdrbVdGRmRCRnRpZWY0OURYN0tZV3hWdG90Tm85dmViMlp0cUtLZnVMYTRLZ05EbTdpRW5MbWVDMjF6SnFka2d3R3UxSGt4Q2FtMmM2VWM3X0N1NElad3ZTWUVJODRUZVZTNVd2cngxSzc5dkFLNlp5bG5jSmFmZFlMRWR3bFFqLUMxa0lZT3hMWVBSdDFERFpFRHNzSmxmNFBneUFBVA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 6:38 AM</span></div>
 <div class="news-title">"We Don't Have Huge Smiles On Our Faces:" Oilers Positive, Yet Realistic About What Win Over Sens Mean</div></a><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxQOWV2YTRUWXllMjFSdzRrM0YzVXBnTkZ0SVg3ZWU5NThuN0FZa1YxMXBhUmpCZm9vd25OU0tETGFpR3Izc3gzV09aM0tmX2VyTlk5NGtnSVp6MVJOMDhndkQ2c3pTclk0V3g2eVNfREdFYjl1NDVFMUhvWkZjZHRTR1lLQVpNeGpCOFFxY0hxVDVPUnNBYWVNQ1V5T3J5YzEzMExhTm5FS21CdW1KOFE1VTNTZGZHSGtYY0IwTnpDVXhEbnFuN3ptLWtEaFhIZktKOXRIbHRyMXJlbWNrN0FhUzFNVUltRTI4Z0poY2xZTGE5a2U0a3lSMGJJQUpZMDQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 4 &middot; 6:32 AM</span></div>
@@ -1223,7 +1199,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Murphy eager to jump into defensive role with Oilers</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQUlFHSUtWT2hIaWdIZV9ocW1lRFQ0SWhDMEtFU01tbTNRZ2JUS1pHemJjWHdPSS1CM2V2ZGZaQmtQYkNmR3ZiZFN1VVFnQThBQnlMR0loZGt6VkN2a3dYVzRTR3RVeGlrX2ZtWlFNMmo1VW50djlpb3VjVnNMQUYtWDQtYkVHdzFfLWZpaE5XZm52Q2gxWml5b0RR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:33 AM</span></div>
 <div class="news-title">Lazar, Walman both pick up injuries in Oilers’ win over Senators</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPQ2xyM3B2UHliZjRyWDZhVl9CSGdwVHpGQVlSclpVRmlMWk5fNklncUdSUGdMSTloT3BJVFcySG92WnRWYVpmbmY1b0FoM2RPS2JKN1RvU0lYeGRQU3JYcnFDZV9QYk0xc0p0d2hkX1l5eDRDTzFIYnVlVDh1QWRmLXJMcFNhTHFKNG9TcWJWVkE5R2xRTnhXTDJXX093bXFSWTdrZzVQUDVjdVFQVWw1aFVSbUEwbVZyd1ZCcTZDUlkydw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:27 AM</span></div>
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:26 AM</span></div>
 <div class="news-title">Connor Murphy Embraces Oilers Pressure: “Winning Is the Top Priority”</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPMTgwYndKZDdMcmxDTndoSmJDVXE5c2tRVE12c2IxVXl5R1lWS09KQ2hJeXZITmhwTWh1bG02Q2pQdWxUQXZYSk5sa1hKemtoUjVwc3lmbFdVYmttcmNxZXlZSUJNaEltTWpJT0NuSC1pdThzVVdhVVRtQXVNS1VrMW4xNnBRQXVWUTZSaE8wcWdFM1B4UzRMbnd6Y0VMLUM5QVNIbkxzRDNFc0FJRlVF?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">巴士的報</span><span class="news-date">Mar 4 &middot; 5:13 AM</span></div>
 <div class="news-title">Draisaitl, Bouchard lead Oilers to 5-4 OT win over Senators</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5pZG43UGRiSzNfOGp3OUVZejM5c2FmQ1c2QjE5ZElnbXFROFhmLXRHNTVXajJlQlkzQU9CM1pFaGJnejZaZ2dwb29KTkhOOWVQYUg0YWNqcDJwbVE4OUc5VC1rM3AzZ1F5SHhZeXhZdUQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1256,7 +1232,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 10:18 PM</span></div>
 <div class="news-title">With Mangiapane clearing waivers Oilers may be on the hunt for a third-line centre</div></a><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOQ1hVRm1LaFdWZHFsblA4QUlnNWVRNy1NZmdIN2tMX2tuNmVVV0ZTaTJKWTBzV05PS2luMVpfOWttb0UyZUtyaHlyeHFTUEhZalp1ZElUS2I4cHY3bHB1dXpKQ0trZkhBdVVBUFVWbVFaRTd3SU9Qbm1lOHg2TEZEa2ZYWGFYX3BkbC12dmlVRHVlUHMzRVdhYWJITWtpTkMycXE4Ul9iOWZkTEozOGJsc0JxWDc0TWZma1NweDBPVUhvbWdJb29mRndDUlloTHBTQjJLVG0xNE0zLV9YRTVtRmlCM0FEellzNUlfVGZB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 3 &middot; 10:04 PM</span></div>
-<div class="news-title">Mangiapane plays just one AHL shift, a sure sign he's coming back to NHL. But where?</div></a></div></div>
+<div class="news-title">Mangiapane plays just one AHL shift, a sure sign he's coming back to NHL. But where?</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxObExDTlZyb2hRRUlDZTBubzNJSUNHdnFVV0h5YTFsVEljQlV0dkhQd0M3cHh2M3gyaXVIcnhsRWJ4VGVacWhXVEVnMTRHMHNXUkw5QS1aNTF4SF9FTENHQndpb1ROV19sdjJ2Q0FKdElqV3MzUlhxa0d5c2E3RDZta081NFVpMnVUMGlTUVZnbXhySkh2UlpQM0NQcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Oilers Nation</span><span class="news-date">Mar 3 &middot; 9:51 PM</span></div>
+<div class="news-title">Oilers Game Notes: Senators arrive in Edmonton for battle of teams who can’t get a save</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/EdmontonOilers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/EdmontonOilers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1264,23 +1242,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Edmonton Oilers — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/oilers" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/edmonton-oilers/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Edmonton Oilers — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/edmonton-oilers/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Edmonton Oilers</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/oilers" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Edmonton Oilers</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Edmonton Oilers Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/oilers" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1288,7 +1255,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:08 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:17 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1354,24 +1321,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/oilers';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='EDM';

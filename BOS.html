@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Boston Bruins</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:07 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:15 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1294,23 +1284,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Boston Bruins — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/bruins" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/boston-bruins/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Boston Bruins — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/boston-bruins/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Boston Bruins</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/bruins" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Boston Bruins</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Boston Bruins Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/bruins" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1318,7 +1297,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:07 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:15 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1384,24 +1363,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/bruins';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='BOS';

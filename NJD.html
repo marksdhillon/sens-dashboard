@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>New Jersey Devils</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:07 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">21</div><div class="sm-label">Games Left</div></div>
@@ -1327,7 +1317,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:41 AM</span></div>
 <div class="news-title">Devils' Offense Tames the Champs | GAME STORY</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQUlhfYUEtVjRQYTg2QnphRFU5ODN3ZzY3NEZ2bkt0eGYzZEUxcW1laVhyZEk1d3M2Z0pjVFBKY2RBdmxwbFBNWkV2dmNWc01YOXpVS1dQV3VJbjRQakFWMWNhZm5OcmJIZk1qTDh1UkdDczV0eGhWVFk0bFl0R01wVmdWR3pHd1AwZk0xZ3VWTmJMNFdjYW52Q2pDdkJoSjdCcUkyc2ZMOVNidk0tSEEwTnNIT3A2UktHSnFQc3Nn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Globe and Mail</span><span class="news-date">Mar 4 &middot; 1:01 AM</span></div>
-<div class="news-title">Jack Hughes rejoins Devils after TV tour as U.S. Olympic hockey hero</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbkRCQUxoNzdkUWZGQklMQy1aLTYtcEJpLUNqaEs2eTRZdV80elZ4WkZmVS1jb0I1eVBIRndqcndGRG5Rd2VxcVppZWFFOW8wb2I5bm4ycEcza053RFZvazNwXzlZRmllME9waXpfdGlFYWNYSXdLX05wRU5PbmhPWERuWXRIeG9CWjREM1M0ZUtrYm1LT1NpZWxDZmU0b280cFRrZVVEWFFlN0U?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Jack Hughes rejoins Devils after TV tour as U.S. Olympic hockey hero</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPRG0yZHR5WWE2R2lkVmVHUS1fbkVxb1N4NWQ0YnZScFNyc2NTT1dwOWRpR2VMQ2JWb3JLdlFHYWx4bHAtRXVrUlBlZFBLdlRFcXNDWE8zQV9XNUZqeTJmd3dyN3VoZVlBLWtURlZ6eGtyd3RzbG9TMzA2SWprMmZFZXBnRDNvRUNoMTlfSFI1V2RPZGZjRkN4SURMWnhEaVN3ZWNn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 12:02 AM</span></div>
+<div class="news-title">Nick Bjugstad Prepares For Milestone Game</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbkRCQUxoNzdkUWZGQklMQy1aLTYtcEJpLUNqaEs2eTRZdV80elZ4WkZmVS1jb0I1eVBIRndqcndGRG5Rd2VxcVppZWFFOW8wb2I5bm4ycEcza053RFZvazNwXzlZRmllME9waXpfdGlFYWNYSXdLX05wRU5PbmhPWERuWXRIeG9CWjREM1M0ZUtrYm1LT1NpZWxDZmU0b280cFRrZVVEWFFlN0U?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:18 PM</span></div>
 <div class="news-title">Game Preview: Florida Panthers At New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNWmpGYXBUaUtrRFdvVHRmc2Fqd3NpVm1hdUlRY1JHbW1CSkp6Y2JIRDJUWmZRSy1ZeWNvZUpna1J0Vzd3VkZ5ZXBVRW9udmlILU9vdV9ENkZScVpNbTdibFhua1llcWtuZFdSMEVPSHo5TlhSODducDJMdzFmdEQwUmNBb0NISlljVXVEQi1NenVjQ1VDQTNjN1dIUkplSUE1OThuUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 3 &middot; 11:00 PM</span></div>
@@ -1351,9 +1343,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 5:51 PM</span></div>
 <div class="news-title">New Jersey Devils ECHL Team Are Having A Tremendous Season</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNTjU3eFVqVWNtRFJKcXc3TS1XYkZ4a0ZCQnJpRUZ1a3NidU1MYjNKdFA1anNVNUZfd2NjNGpoLUxPODNSczNhcGxDTEhEUWk3RXR1MTFOSWlLd2RCaFVabVVNRllma3hxalVmNHMwMmZYUTRKNENibXRHakdZdDJtbVlMeGhuTG9xdGVONFF2OHR4Mk5sT1ZyMHJwYXFQakZDNW1ESTBzSjFTQUNrZDFKYzQzb2dxV1BsTnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:32 PM</span></div>
-<div class="news-title">Tomas Nosek To Make Season Debut For Panthers In New Jersey</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNUHdhVFljVm1nak44RWVIOUZkNnNpbGhieGZyVjRlbGFEV05YLWZRZ1Z0a1ZJTUI0dWI0QjN5b0JHZ3NvcTM4MUNTT0tZZ24wM1piNGhXTmY3cUVkVlU5a19NSmYwN01Fc1dZX1VVaV9YTmRzbGlPdUQwUS1ZRGFxdQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 4:39 PM</span></div>
-<div class="news-title">Surprising Team Emerging In Dougie Hamilton Trade Talks</div></a></div></div>
+<div class="news-title">Tomas Nosek To Make Season Debut For Panthers In New Jersey</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/devils/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/devils</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1361,23 +1351,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">New Jersey Devils — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/devils" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/new-jersey-devils/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>New Jersey Devils — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/new-jersey-devils/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — New Jersey Devils</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/devils" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — New Jersey Devils</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="New Jersey Devils Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/devils" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1385,7 +1364,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:07 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:16 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1451,24 +1430,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/devils';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='NJD';

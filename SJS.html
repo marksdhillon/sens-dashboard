@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>San Jose Sharks</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:08 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:17 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -599,7 +589,7 @@ body{animation:fadeIn 0.15s ease}
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class="sens-row"><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class="sens-row"><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -1205,19 +1195,17 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Signed F Alexander Wennberg to a three-year contract extension.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNY0NlTEo0MjQ5R1VtemZweUFSZTN0UVRKbTBLajV0Q1ZGZW5UMm1yTlhEVUNtQ3ZFMUpMcTRySDZuN1B2TWpLWmVNdk9uR0FuN3lSdHV2NGdCS0ViQkJTUDI1RHMxbEZmTmNoZ3pVblpwQWkzb0dvY1h4Rk9BR3ZSYWxMaS0xam5LUHc5aFZIZk4?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTWNSNm1DVXZ2NTE0M25QaXdLUEQ1V2JIUUhId2taekhZSF9oNVZtN3ZvYTlKOGVRUWRuX0l2T1lrM1JYbVR5Z2x0djl3c292enJXclhDc0NScXpWdWk1dHNudmVJc0YtT3FheHA2QXR1SUlEMjA5RzU5U2RnaWVBellkOFdQMWxSUUJR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:56 AM</span></div>
+<div class="news-title">Celebrini has 4 points, Sharks recover late after blowing 3-goal lead to Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNY0NlTEo0MjQ5R1VtemZweUFSZTN0UVRKbTBLajV0Q1ZGZW5UMm1yTlhEVUNtQ3ZFMUpMcTRySDZuN1B2TWpLWmVNdk9uR0FuN3lSdHV2NGdCS0ViQkJTUDI1RHMxbEZmTmNoZ3pVblpwQWkzb0dvY1h4Rk9BR3ZSYWxMaS0xam5LUHc5aFZIZk4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:42 AM</span></div>
 <div class="news-title">MTL at SJS | Condensed Game</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQU0zbXFhZ3play1LMHRqVEJDVFpXdmNnWFNySEdUSEszVENBM3dLNXJWaF9OOW5sejlZMThSMFR0Q0k2VGk2a2MzaEtIalhsSVF3YnNyc1Zib1NvaGVzYm5oeHVUOWNlWWVVRS1YNlcycGoxdnJfSHg0YUQ5ODU5Y280T01iUkk4bWlaSE1KanlFUWJwRkpOVlJVMkgtYmU2LVlqZlZBZ2w?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 6:34 AM</span></div>
-<div class="news-title">Celebrini nets four points, Sherwood scores winner as San Jose Sharks tip Montreal Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTWNSNm1DVXZ2NTE0M25QaXdLUEQ1V2JIUUhId2taekhZSF9oNVZtN3ZvYTlKOGVRUWRuX0l2T1lrM1JYbVR5Z2x0djl3c292enJXclhDc0NScXpWdWk1dHNudmVJc0YtT3FheHA2QXR1SUlEMjA5RzU5U2RnaWVBellkOFdQMWxSUUJR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:19 AM</span></div>
-<div class="news-title">Celebrini scores 30th goal, Sharks hold on to edge Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPcGFvNnpmVVRCdzE0cVRYVWxWaHZZcUhEd2VmMnpjYl9PUXV0QlppTXBUMTZlQWc4d05GN2hEWDF3WTZnZHhOUVNFYmdFbnRZdHhDdjlRdjNrZXhwZ25uODcyY3BNZHJ1bzc3NVo0ZUdqOE0wclNRTXA1eFo2N2tSVFBNZXlvRVdCWkFSSDRKbDMxb3JkSWY4YUl1ZklWYVJ6OGVxQWt4clBUTkFmU1d3eTVmemIxckZBeG5kQllvTQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Celebrini nets four points, Sherwood scores winner as San Jose Sharks tip Montreal Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPcGFvNnpmVVRCdzE0cVRYVWxWaHZZcUhEd2VmMnpjYl9PUXV0QlppTXBUMTZlQWc4d05GN2hEWDF3WTZnZHhOUVNFYmdFbnRZdHhDdjlRdjNrZXhwZ25uODcyY3BNZHJ1bzc3NVo0ZUdqOE0wclNRTXA1eFo2N2tSVFBNZXlvRVdCWkFSSDRKbDMxb3JkSWY4YUl1ZklWYVJ6OGVxQWt4clBUTkFmU1d3eTVmemIxckZBeG5kQllvTQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Santa Cruz Sentinel</span><span class="news-date">Mar 4 &middot; 6:11 AM</span></div>
 <div class="news-title">Celebrini, Sherwood come up large as Sharks earn thrilling win over Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNV0tTNTg3UTR1Y19ncGlYb3B3Z0tGRVBiZy1uLW1aTWxGbEZHeWNuRGdlRkpRZGNFNEpPaEFrLUgwck8zSmNGZ3p6d1VSUXlhS2VxTnhxODYxOEFzU3NkZmZ4QnRWMW1RdUdvdzZJMjZKNUZqWWtVckM0NGFaYkVaZDAyel9SWEU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 5:44 AM</span></div>
-<div class="news-title">RECAP: Sherwood Nets Winner to Thwart Canadiens Comeback, Sharks Win 7-5</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNVG5Nb2ZHRjFZdkR0MU5fXzRrMjF1MU5LdmtwUEVvdzhfM0RRd1RscXY2N1ExdUFrbW8za1Z6dGlTc0NyampCUDhIV0tndjhNbEY5aHdzSnhUS0xYLW1XZEtoeUliU0tOYlJZMS0yTGlHNnVWdktvcldGbGlWUDNhZHZLckR4Vlk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 5:40 AM</span></div>
-<div class="news-title">Kiefer Sherwood with a Powerplay Goal vs. Montréal Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQYVdjSUJXTzREbGx6bWFfc1JKOVNnWXJTbjJJeExiVE8wd2syTzQ5UFBDTmtxR2N4UHRIZGUyeFdwcmdZTGZ5d3d3SVZtal9tOFhFSXNPS3RvWXhHM25zLXZTcDMwYmZtQ0huNlZzVGpEUWJDekktUjZmWlJOZXA4NmJYdkJQeU5kM0J0MFVWTzY5VThEbFp2elhGSWRENV9lNUZrQk9mdjhHMmk4SzRkVUFPTEM0aUhZUm9MOTV6cHl1ZXVZMnc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">RECAP: Sherwood Nets Winner to Thwart Canadiens Comeback, Sharks Win 7-5</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQYVdjSUJXTzREbGx6bWFfc1JKOVNnWXJTbjJJeExiVE8wd2syTzQ5UFBDTmtxR2N4UHRIZGUyeFdwcmdZTGZ5d3d3SVZtal9tOFhFSXNPS3RvWXhHM25zLXZTcDMwYmZtQ0huNlZzVGpEUWJDekktUjZmWlJOZXA4NmJYdkJQeU5kM0J0MFVWTzY5VThEbFp2elhGSWRENV9lNUZrQk9mdjhHMmk4SzRkVUFPTEM0aUhZUm9MOTV6cHl1ZXVZMnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Montreal Gazette</span><span class="news-date">Mar 4 &middot; 5:24 AM</span></div>
 <div class="news-title">Liveblog replay: Habs erase three-goal deficit, but lose 7-5 to Sharks</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOT0EtZDV3WGJxRTViOEI4X095M09HVkVEZld0SXBXeXctV0ROeS01aUlCX3VzbS1wdHIzRDRzYXUwUnJTNEV5LWFsWElzYVdMQXdwVktQcDhFQlVjSnJYWG9kMzBNaFM3SjJJU01jN2V2b09pV0pyaGVoTFJZYjNZZEY5aXhtUHF4aXJoNUZXYUVlZHNLdGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:30 AM</span></div>
@@ -1243,7 +1231,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">San Jose Hockey Now</span><span class="news-date">Mar 3 &middot; 9:30 PM</span></div>
 <div class="news-title">Preview/Lines #59: Sherwood Wants To Stay With Sharks</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPbEJKLU5wR2ZWVlY1ekF0bU11YmFKYUF4THlkNmo4Y1VKclFYby1pYTBzQXo0U3VlejRfQ1cwcVg4dzhrMTNLaWNFaWt1TDlmYzB6R19TMXBRbDJXMEhHTThiNm5nYzgzLU9XYTZQWHlNUXlRampWUE9Nd0pWd1VkbmxGUVlYb2pYMEE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sharks Hockey Digest</span><span class="news-date">Mar 3 &middot; 8:13 PM</span></div>
-<div class="news-title">Sherwood Talks Status Of Sharks Potential Contract Extension</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPcS1iR1kzaVlzVXB5ZkUxc2dvOHBmR1MwMGVXTk1XSFNzbzQxTXdheHRIWVZWMVVOanExbnFVMW42UFlGeTBqdGJUZzg0Ni1ULVplcjVScE1QdEREc2s5MEExWXJnYUVSVEMtREJQTGpvd08tZF85YVJMeXR5NHh4MWM2X0g4bFFmRlhaUjhfVHI1OEJpMmllWUVwUllfazl0dGU0cw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Sherwood Talks Status Of Sharks Potential Contract Extension</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOSnFEbTlSRlNSVmJlUkFvNVlIU3lHTlNJYW1DVVBjZFF0bzJuRDFhVGtLODhEcVhVZDlKc2Q0a2ZkMG5pZWd5OEwwT21oSTdYcFR0ZzAzOXpJSzMzVGNMTExVLWwwYjE1N3F6cnlTa1M0YWFaeGRTR1pDcG9idjNxS1ZYcnZqZEgzenliUENB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:04 PM</span></div>
+<div class="news-title">Canadiens at Sharks projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPcS1iR1kzaVlzVXB5ZkUxc2dvOHBmR1MwMGVXTk1XSFNzbzQxTXdheHRIWVZWMVVOanExbnFVMW42UFlGeTBqdGJUZzg0Ni1ULVplcjVScE1QdEREc2s5MEExWXJnYUVSVEMtREJQTGpvd08tZF85YVJMeXR5NHh4MWM2X0g4bFFmRlhaUjhfVHI1OEJpMmllWUVwUllfazl0dGU0cw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:00 PM</span></div>
 <div class="news-title">'NHL Goal Chase' picks for upcoming games</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPTEI1WnVVdXRFVUtGb05pUkNrSVBUTERuRmptbURRZmhpNkIweXlJZmI1YWJ1cE1wUVExUndDMW1FY3Y2dlI2SERsU3RDNnR4UTE2STkxVVpsVVhMcmZNVU56SXI0SkFJYnVvb0hNdlgtaEhvWVpkYUkwRnQ4WXFabGV0Z0EyWTBKRl9oWjY3RQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 1:33 PM</span></div>
@@ -1251,11 +1241,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 11:49 AM</span></div>
 <div class="news-title">NHL Game Preview: Montreal Canadiens at San Jose Sharks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOaEhKbXFoT1BrTWhIU1VvR2JBY0Y5WnNsR2ZyX0RGcEtLYXhFWDEzbGVkV2RCcVpKeU9faHJ0amRaQm1nVWJVSndGRUFfS2E2YjJFdm04c1FucTZHTkJpM3pndkhsRU1IMGxXSzVjZjRWbjlURjlnVlVQQkZ5WTFuZl9LVHMwUFVQckcyWTZOUzFYN2x0T2FlNQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:19 AM</span></div>
-<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqwJBVV95cUxQRldNS05sSXN4REE0WEpxUTNaZ1BaOU5PMUQ1TmE4YjBzWWUzMC1reUh4Nm16T1BfNDREaVZYbTlNWXkzOTA0NndpY0VGNHQwXzFZLUpwT0RBVTEtN2ktSUdQdGNqSWJ3MDZwMlJyLUVYRkVMSHhlUlJwN29CT2g2VWlLZzJoUkVnSDhGaDVwZGM1SVZpLXdManZtSWw4STFtcng0dHo5QklpOVZoUE9uRVhaQk9QVWhuZTJIM0xpQ0dEWXpSOTNpdVRUaWJXQmZ6VmFqNW5raDFTak0zbGtuWjY0Y2gwWkxsdDJqZno4NjdHRThzNy1KdU1BWlNqdU1yY0pSb2gyUXNQaU9wQmxKQVdCUGJQbzJMSXB3OXV3WnNiOW93X3ExZHp0Yw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 3 &middot; 4:34 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxQQVB5VVhJZi1ac3FMbWgtNjVXR3p6SjZ2WjV1eGF0T3lEZjBmcGF2UWRsUllETVdPSmFzanBzdm43eVRaczB2N21wTzlfOFU0MU9fSllJM2tpY09DNkR2cU9RWl9tdV9sU1VrMFRuZGQwQlZzeGQ0ZzdYeTRxdDFsSWZVU3hpMnpHQUF1VkEzMTZUVks5Tzg0aFUxMGNKTzVFcXg5N1U5YW9lVUdtdjdBOFJiYlY5Uk0yOG1DZGNKYld2di1nYWJPamFTSmozeXVUdjUwVGpnM3JtTE91X25wNldacjVkcjVPNUlFUTU3VE1ybWNyMzdFU0lRb0Q3QTdPbTZqdVZZRmMzdTU1clJLd3ZmbldTYUVSTlNJcjhEWjRKZGhld19XUWx3?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">kens5.com</span><span class="news-date">Mar 3 &middot; 4:33 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a></div></div>
+<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxQSFJDcFFmZ2xXZ19aWDg3SzI0MS1yZmVqUHc1elVyTUVwcDBQVnA0ekpWUnNVM1FBRXFUWkdZeUlNR090bmRLcTRGTjBqYktKancxVkdfYmU5OUhqUl9QazJ4cmhMWFhLc2RMUkhiZGFwdjNIUm1mSUhDVVpuSDl4Z0loY0tTbE1PVDRORVExQzc3OU5neEl1VDZoajRWWWwyYWc5bXdJVmkwWUpyRlNrV2RKRTNLWGJ4MVdQZUsxOC1ZdmN6MEVjZkFLT1dSTU9EbTNYeFhqMDE1dm1OcnZwYVUyREtSNGxDM0gtUGlqN1FSWE4zV291ZWVaV2haSkJzRnJQbm5PNHJ3dUU4bE1PQWp6c3FmZF9fMWphVUozSEdWTENfOWlUR3o3QmNFYWs?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">13newsnow.com</span><span class="news-date">Mar 3 &middot; 4:28 AM</span></div>
+<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxPWFFQNE9ISUktYkY0eHU2SW9XUk01TFVlTDBqT0laZ25DenJRSWNGNmN2dDZxTXZtb1g4SXhhdFZVQXc4UGx4WENOaDVnNXFBODJjX1h1UmxMV2dpeFd4LTlMYUQyUTJOWVUxb2JBcHVSNXVlT3FudVNYbmlTWWV2MklGanhXSGdWY2dHdWYzLVkzU3oyTXBzWk5heFlFSWJqX3ZSZzVUY084dF9tdlU4azNfVVpnQkk5QjNEUzJTcUxWTDJIZHZ3dU9ENTRWS24taXdwa0dlczNWeDhxOTc3akY5aHZMZ2JvSlBKVmt0V0RDRXhXTkhHOFF1bXJsdldQMzJDeDZyZ3M5RUgwZ1NJUnRxRVhUOVd4S09Ba2MxSDhUdHEzd0ZmY0hrMjBURmvSAbQCQVVfeXFMTi1ndXlZQ0tPSXBHazl0eGlVSFFNcVVhZEZEdUVXRHgzeGdWMzEySkhOWnA1eU5OaG91bzVWME5ia0NpWG5KQmxxSFM1TDB5aE8wUEZqbE5nanM4OTFPUDBSVjEzekZpLS1lQXhtQlh0ZTdIU1MwNl9PVHFqN1RlZGRwTEItaFdrT1dLLXpNSGhZQzBQN1hFMmRQUE9pS2NCM1EtbWJRQm4yQ19JS0E2UndRRi14TzMxbmpyX1RHZExyTkdwcUNfRUtPREtXMjVGVEZSMUNOT3E0S2FZSF9HakJ2Y1Z4Z3lKSTZxdERucU41N21ucGJjcUlsUDVZVW1KWERaS3JZMC13NDVLVFVwamlCRmY0aXYta01qY2hOWDctdnpYSVdGcjY3OWVyR2VHRml0X1g?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:46 AM</span></div>
+<div class="news-title">San Jose Sharks consider trading Kiefer Sherwood again with $1.5 million cap hit after brief stint from V</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/SanJoseSharks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/SanJoseSharks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1263,23 +1253,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">San Jose Sharks — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/sharks" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/san-jose-sharks/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>San Jose Sharks — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/san-jose-sharks/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — San Jose Sharks</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/sharks" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — San Jose Sharks</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="San Jose Sharks Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/sharks" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1287,7 +1266,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:08 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:17 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1353,24 +1332,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/sharks';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='SJS';

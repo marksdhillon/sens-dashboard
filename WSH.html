@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Washington Capitals</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:08 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">19</div><div class="sm-label">Games Left</div></div>
@@ -1175,6 +1165,8 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 6:17 AM</span></div>
 <div class="news-title">NHL: Mammoth 3, Capitals 2</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxNS0FrV3FKU2JDTkpIOVNNRUtHSUpVRXNoelg0NGgxMUgzR1l3bThzSFFDZGRROEFibmxWaGpVVmwxZDlFLUZlNHE5VmxiaGhTLWVLNGZrc21mYTY4VHhBbXM5TEwteVlJa3VvMldTM3BUajJ1RUJsUWY4NDhaVDF2MFE3Z1g4WXNYU1pSdks0ZUlLMGgybUZwV0pHYTlvU2FzV2poa2JRMUtCc29wb3NhNDJCTFdTcWJRRUgwZFBIQ09iMEgtUHRoblVMR1JxUHpTTVU1S3pPajNfY2lrdXdyclFqMWMtbW5xREpJS2p2al9MaENfQ29fNXZabHZsSXhGS1o0M1NkaWxwN3VGYTBMZXB5SFBmZHF5N3RXb1Vad3ZyRWR4Q0t6SQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">12News</span><span class="news-date">Mar 4 &middot; 4:56 AM</span></div>
+<div class="news-title">CARLSON SHOCK: Washington Capitals’ John Carlson TRADE Rumors SURGE, Should the Franchise Move On?</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxPNFhxa3lkQTl6bkh4WnFOemdpYVVZNGxubWxGOHpXUUNZNS1uQkU2THRfY0Y1OGFzVDZRbVV0ZFB0OTRQZXNVTWd3b2dtNmd4ZlJ5cTJJdjk2QlV5bjdLSEVXTnQxd3RNZXhfbnY5T3h5QVdJck10Y3d0R3hQb1NPX0tRaUV0VjhneUtNTXlIOGU3bDVmb0hQeVJrcEcxQ3JuazBYRUN1T3RpbjVBeHpuUVVma1NtQkI1QUNRbVVxREZwMEUwSy13Y09hb0pDSVE4VXVDcDZ3UHNRNWJxM3F2QV9jMFhGUHo1bUp6RDBMZ085ckkybTVsRTRnMTctd002WXBGMFpER2xlWm5mREI1dkMtam9sWEZ3dWdMMFFUUEZlWlJGRE5lZA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">WZZM13.com</span><span class="news-date">Mar 4 &middot; 4:56 AM</span></div>
 <div class="news-title">CARLSON SHOCK: Washington Capitals’ John Carlson TRADE Rumors SURGE, Should the Franchise Move On?</div></a><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFB4d2s4UDg5Rjh3ZjZiN0ZtT2xvTUVPSVVTNlMtTGpMWWs0S1ZyTDU5bWdaZkNGSm9BUmt4N3ZqS29pbVQtS3c0OHU3cUliYjlHM2xHWjMwaDRxVXl3cmF6YUFCNXVtMXV5YkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:55 AM</span></div>
 <div class="news-title">Caps Fall to Mammoth, 3-2</div></a><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxPNFNIV09hVzRSZ0ZxZTh0eFRkRjNPbGc5NGowV3VmX284MC1NdlA1bnlvclNOWnpUZFhJTVN5LW9xdktHTUJhZ0k3b1dUVUtDa2tObFAxZ0pzSFh1bk5RMWhGdDBBVm42dHhtYmp3MUxGSHFINXpKNTdxdG9uT2dueVJ1a1ZmUnUxRTY4Um5HUWtHcmxndHh2OFBUTGhNTmtTRkFXUXpvM1MtTU8xU3VBMGNMdzRuRjNlaWhKMWxNaDdiMVhOdjdubWlmWEc4dEpXMms0TVpINTZVM0FlUXc3cNIB5gFBVV95cUxQbzNjXzlycVk0QjJKR3U5V3o4NGItMExQTU1NY3VmMmIyNmQ0dENhbjdySU5uVUhXa19LQ21oSGUzcC1OUVNsRk9PQ2tHVnYyNHprWlh4RURKOElKOElrSENwSHhsVlFxdkJES2k3b0c5eXlxQjlTYXp0UWFMX0QzMk1NWGRuSjltdEVNV3I3NHpKM0N0Q3BMdnhIU2ZUcFlkTzdtNUFpNUlnRG9aNjJ4eUhYLTNScHA2RWlzRGc1S1hxX1lVamZtRE41ekRORV9leThDTk1FNkxXbXFROWkzNjU4YjBYZw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1217,9 +1209,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 2 &middot; 11:59 PM</span></div>
 <div class="news-title">NHL Trade Deadline: Why The Capitals, Blue Jackets And Senators Should Buy</div></a><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxOZlgyaElIOXFSVEFQQUh0Q1FRZUl5dTRVU0gtSnJGY1QwdXFXT1c4TUI1aWFMaXQ2ZVFud3I4TnNrdzBBNG9aVTh1VEd2MXhJN2psVmQxT2JlVnlwUkRZRXVyVnY0X1ZuMzhnRV9sNllkckl5dG45bUxZWGt2eE5RcTU1UVViU1dPMzNDUjVobGFrajQ5NkFTUWtrT0dvc3AzN0xuM3hCZm5WY1M5WnR0OFNPc2lSZDFoZlNScWVvZlNtUHhVVTdZYlYyc0pNZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 11:22 PM</span></div>
-<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOalZZS0g1RUxpUEl4eW5uTWNJYlN1ODNGMGF1X3o4bHJlTXE0MFdFc3lBSzZQbUt2ckItQlNKMDZoNmducGJkMjhaZFg5MDJQem5yaXlWYXdzejRpYV94N1Z5Z3A0aWdNUXItY1c0RkxSSDFic0V0bVRad2YxaUNtREhrWFp2YU9nZlRNLWRtbmNGbXVKWUtzVkZUdXJJRnBnQ3k0M2IwMzhEVXQwOFpmaW9GWlM0bFZqSVkxcHBZR2UwUkhhVWYyUlRKT015TGJneG1oMg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 10:59 PM</span></div>
-<div class="news-title">Utah Mammoth vs Washington Capitals Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a></div></div>
+<div class="news-title">Capitals Injury Update: Carlson Back With Group, But Return Remains Up In AIr</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/caps/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/caps</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1227,23 +1217,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Washington Capitals — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/capitals" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/washington-capitals/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Washington Capitals — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/washington-capitals/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Washington Capitals</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/capitals" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Washington Capitals</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Washington Capitals Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/capitals" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1251,7 +1230,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:08 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:16 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1317,24 +1296,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/capitals';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='WSH';

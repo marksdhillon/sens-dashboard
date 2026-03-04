@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Chicago Blackhawks</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:08 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">21</div><div class="sm-label">Games Left</div></div>
@@ -585,7 +575,7 @@ body{animation:fadeIn 0.15s ease}
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">41.7%</td><td class="r">20.0%</td><td class="r">10.9%</td><td class="r">5.3%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.2%</td><td class="r">35.3%</td><td class="r">21.6%</td><td class="r">11.8%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.9%</td><td class="r">33.5%</td><td class="r">21.1%</td><td class="r">11.9%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">91.0%</td><td class="r">44.1%</td><td class="r">20.6%</td><td class="r">8.2%</td><td class="r">3.4%</td><td class="r">95</td><td class="r">35.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">90.2%</td><td class="r">47.6%</td><td class="r">25.1%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">94</td><td class="r">34.4%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">83.5%</td><td class="r">38.3%</td><td class="r">19.1%</td><td class="r">8.1%</td><td class="r">3.5%</td><td class="r">92</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.9%</td><td class="r">38.3%</td><td class="r">20.1%</td><td class="r">9.1%</td><td class="r">4.3%</td><td class="r">91</td><td class="r">13.3%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">70.2%</td><td class="r">31.6%</td><td class="r">14.5%</td><td class="r">5.7%</td><td class="r">2.3%</td><td class="r">91</td><td class="r">12.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">36.7%</td><td class="r">11.6%</td><td class="r">4.0%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.0%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.6%</td><td class="r">10.2%</td><td class="r">4.2%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">19.4%</td><td class="r">6.6%</td><td class="r">2.5%</td><td class="r">1.1%</td><td class="r">0.4%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.4%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.7%</td><td class="r">0.6%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -1148,8 +1138,8 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned F Dominic Toninato to Rockford (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOSGtQV0M0SHhQMXY2bTBTNUlBSGNLQ21YaDVUY3o0TnY4TlF2M195SmgxWmxHbV9yT1l4WFNTLTNsamc2bTh2T2NKREFDMi1Ec3pIQVV2R2t6UzNiSlZiVDEzWUtQMm55X1VLVm1WV1p0QUhIZldNRnpPSXdIQTY0bE9IRWdVc2RMQmRkcGNJUmJlQWxsNjNuR0xveGFIQ0E?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:16 AM</span></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaW5wcDJQcHNyeGQ3SFhPWlRRQURMVk1ZelE2SndMTFhjNnNOU194ZldSUnBvTVAxeGk1MlN6TjFxM3F0OUtZdkpLNDJlb1hQRTBqdHpnZXktSFpVQkJaV2FjeERCVHhfUlk3VGotZ0Z0OXh4Qm1NWEdRcGxhaW14WkhWdXAwcUh4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:45 AM</span></div>
 <div class="news-title">Jets tie it in final minute, top Blackhawks on Scheifele OT goal</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNMkx2Mm9YUjBJMG5nRXh6SjhkNjBaSnJKSnRfMU5iVWhrQjdGa2pUeE0wSVZ6bWRpVmJOUmd1TVpQd3FJRHVuci16U2FYR2E1aFVtVUd5ZkloUDFJS3J4Wmpmd0FQbUVkQ1BXczZnYW5DQmNrdFdieV9MUXcyT1FNLWE3dU8taEFSbHVHX0lvZlNsOFl6UjMzSFhESWM1Tmw2WjJUa2tsRkllR0x5TDE1UzE1dTI5cjhvQ3UzYzJYOGx3eGFuUE5FNzRHUGdKMUNHdG5pbUpfSHhyMEU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:13 AM</span></div>
 <div class="news-title">"He's Earned It": Jeff Blashill Confirms Connor Bedard Will Wear "A" For Rest Of Season</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPTTltWDN3ekV2b1lLYjUtajFOWkMwbHVXNllzbzZiRU9DWTRhU0dWdjQxc25Ga21fd1dEejAzQ09kM09jMmNRdXJnNWswTjVFd0g0UlF4YjVxdnR0X0pwV0FkZnFhZGREZzkzMDQ4SmFlQWMzeHJUT0tzZGY5cUZfWkVybXZhNTlOLTZfaGVFNWdVa0ZGLXFnaTloRjFGVjZpSUE?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1162,7 +1152,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Chicago Tribune</span><span class="news-date">Mar 4 &middot; 4:37 AM</span></div>
 <div class="news-title">Chicago Blackhawks lose the lead late and fall 3-2 in overtime to the Winnipeg Jets</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQamFnUXRQcUJpS3VtR19kTkg5anBkT1hoMENjUEpvclZ5TjlvWjlUX0RLbkswM24tZlU3X29aNExjYWRJenJUTG5TNFFzV1VIQkw1VTF0NElDdTRNXzgxdDlGa3RzNHNYWnVEUnVGVW4yVnJTN1NPcjJxZDBpT2pyN0NXMkFIUjJaWXc3SnlCVlFlMlhpeHVYS25GOF9pSkZqMjdQWVk2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 4 &middot; 4:25 AM</span></div>
-<div class="news-title">Jets' overtime run continues with win over Blackhawks</div></a><a href="https://news.google.com/rss/articles/CBMipgJBVV95cUxOY3hDN09WQjViMTRIUHlLcDJNMFJPN1Fxd0hYODRTQWlkYzNoSHhUdXJ4NUhTd1U5Y0JoajFpZTZuZkwzSU9vT2M2S1JkSGV5UnpLUG5hcE9raVhrWmVVRkVtRTIwT2RsRGkzRjlyS1hSNWtWRi1QTE5XekVrUzRKckMxb0h3eHBXYTlEdkRieVlaMXpHelVvVHh0RGNIOWZ1Ym13QmRhNXpqV3RBbWFHeTJ1LXFvbkp4YVZhc0FLTm1XRGFidVdtU29EZUtRZHhEdzY0U0RySTdNSV9ZNGs5d3UtcFYwSmp1VnRyekJNem9mVGgtSWhOY1R4bmZ2amh2TG1LQTBHYWYzS1Z4eDExclQ3NFJNbk5WOGtLRjc3MEJyeXhHbnc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Jets' overtime run continues with win over Blackhawks</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPMzJ6Nm9GZ0lHWEFlWWEyaVhYYjM1SU1hU1Q1Xy1aUGtjaG80SVlFcHpDaHFaY0JFVnUyd0UxSUxLRUlUbzNCSExQbnJIWnkwQnJ0OUNyMk8xQll1bVREUllIZ2Y5MWRKYkxHZW50QnhiSmdmVXZHXzNUeGV6WnpKZm02N1VxY1ZsdDFXZ0JjcldNZkl0RV9MakdPYkIwaEpjN3Q4S1hCbTJacFlhVUpn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 4:14 AM</span></div>
+<div class="news-title">Scheifele completes Jets’ late rally with OT winner in decision over Blackhawks</div></a><a href="https://news.google.com/rss/articles/CBMipgJBVV95cUxOY3hDN09WQjViMTRIUHlLcDJNMFJPN1Fxd0hYODRTQWlkYzNoSHhUdXJ4NUhTd1U5Y0JoajFpZTZuZkwzSU9vT2M2S1JkSGV5UnpLUG5hcE9raVhrWmVVRkVtRTIwT2RsRGkzRjlyS1hSNWtWRi1QTE5XekVrUzRKckMxb0h3eHBXYTlEdkRieVlaMXpHelVvVHh0RGNIOWZ1Ym13QmRhNXpqV3RBbWFHeTJ1LXFvbkp4YVZhc0FLTm1XRGFidVdtU29EZUtRZHhEdzY0U0RySTdNSV9ZNGs5d3UtcFYwSmp1VnRyekJNem9mVGgtSWhOY1R4bmZ2amh2TG1LQTBHYWYzS1Z4eDExclQ3NFJNbk5WOGtLRjc3MEJyeXhHbnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters Connect</span><span class="news-date">Mar 4 &middot; 2:02 AM</span></div>
 <div class="news-title">NHL: Chicago Blackhawks at Winnipeg Jets</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQWXpGNms2Q1VlcmY2UXdsQkcwTWQ4Zk9pZ05OdUQtcnFuX21qTjZnTGxMbzlBMFRIclc3VmtCcTZKeGFDRDFvSXZVQ2NWTDhPZ0VESy1idlJlNW5DaGNNNnhiblRiTFNGSHdiWVJuSFpVc3kwYThuLWVFanFwNk85Q2t2cE5hRV9WcGNkaE9mSzExelE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:45 AM</span></div>
@@ -1188,17 +1180,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Chicago Hockey Now</span><span class="news-date">Mar 3 &middot; 6:21 PM</span></div>
 <div class="news-title">Blackhawks Recall Defenseman From AHL Following Murphy Trade</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBmZlRITEV3UUZLUXlUdUFlWWZMUjZweFI3TllacVRkOVlqQ3JFV3VQa0NzX1dubm1tOHFTdURwSW1uSnplMzlhdkZEOWVjdGJEV3dNUExMem1VbkxVdkRNWEppNGw0WnVIdk5Zb1N5a2hJbDFrMUV1eE1Rcw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Arctic Ice Hockey</span><span class="news-date">Mar 3 &middot; 6:16 PM</span></div>
-<div class="news-title">GM #60: Chicago Blackhawks @ Winnipeg Jets</div></a><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxNaUtfejRrbTk0TFFKTGJiYnlNN0JFTEJka1V3OENRVVFhVnNNOVdCeGdvMUhLWnFKUUZhOHVMeGJibVF2WXp3dEloRThvckhOQ1RrX3h5Vnptd3pHbk1EeUpWZG5jaGxmWDNEZndNSnd0aXBjTTVRY1IwUXZqa216clZWWVRXZmxLTnIzNUpSUlJPdUpsR3FMLWlzVXBYR2VKQW45TU1jN3p4ZFlJcklWMzNNTVNTNUIybzJsdG5YUWhES1h6T080WXhmb0hZODg4cTdldTRhTlJ3UVV2ZG1Ram9hY1hiQi1sRFBMeVVYalAwcjRpeXkzbVBLSzBaQzFHalM5X25oVENmVmZFeUJaU3JVMzdDdHI0NFVwUXdVVDI?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">13WMAZ</span><span class="news-date">Mar 3 &middot; 5:40 PM</span></div>
+<div class="news-title">GM #60: Chicago Blackhawks @ Winnipeg Jets</div></a><a href="https://news.google.com/rss/articles/CBMinwJBVV95cUxNdEY5MDVFQjhQUl9QOEdoSjFRT0RQaVRkNWt3UGNzNi04TktjV05ZYS0ybV9vTERsZEttbVFBTXk4TVV4b3NDX3RSbTRBdS12YXIyYS1KaUlqVlp1bmZIM2otM3BrQWROLU5ySjY1b1VnSDItd0lxbmRIdVlGNVBELWpNbzA3VktlbEUxcHB4dE95OGNweWtiMElaUllJQlMxbDduT3NHOFpFUDRxd180bzFidm1IdVYxd3F4aFRLTndvT19ma2xERHZVY3NZa3FYampxV0VwSmVKc2k2V21jNDhXeXdJckgxWEpGNlZoX0MwZzZDQjROb293aHBjYy05dl9VX2ZoQlVxNkZGbG9kcUY2SXBXWm1XQXN6a2xuUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">9News</span><span class="news-date">Mar 3 &middot; 5:40 PM</span></div>
 <div class="news-title">Chicago Blackhawks TRADE Connor Murphy To Oilers | Where Do Mikheyev & Dickinson Land?</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNcS1LMUFRcWJvT0M3OF9tT19SazZveHpvRklwS3A1NzB5U19wODg1b09xTWZkT0t1c0JuZGhDLXJ6RG81ZS1NV2VQeGJHZERhRV9fcHhMa1d5X0o5bGhsYUZlaGdUcVZwQ05BS1l5Sk9ja0tsVlR0bmVFYm1Wbm96a0tRWFVHRDFJOG04RjhEbVRzSmpjVXc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:05 PM</span></div>
 <div class="news-title">RELEASE: Defenseman Ethan Del Mastro Recalled from Rockford IceHogs</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOd09mYklGTHp5VkUwWHpTV0dtS0FlMHJQQVZLaVQyQ3Z5NlhTR1FPUXpsMFdRX3ZCS28tNW9nOWhkOTltSDR6YlJuNlVKZTFzWEJvYXZ4NG9qQzYxZ2ROVjN1SkltazB1OGlIWThTQ2doOG00NzhhUXMtWjcyUF9CSUYzZk9ZSGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Blackhawk Up</span><span class="news-date">Mar 3 &middot; 5:00 PM</span></div>
 <div class="news-title">How does the Connor Murphy trade shake up the Blackhawks defense?</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQZG1nUmZMR3h2YU9LdjlmcmhOVFlLbTh0VGxObHloWlhETzJHUVhfVjNZUFd2ZFR3dVVTWmUxRmZxck5MQkxXYXVJR3R0MzllRGdYRHZ3bE5ITWdrZTFGMmE0UU8yVDllb3ZWcm9RWWZ4SVdYczduUGZEQmlLSnM1Nklvd2FtZy1tQU1LbWY2REpsT3BBYnhoZHl3NURwOVFHRUhoVFJxWjV4Zi1tQVF4V1p3SllTZ0VIVFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Chicago Hockey Now</span><span class="news-date">Mar 3 &middot; 3:06 PM</span></div>
-<div class="news-title">Jack’s Daily: Murphy Traded; Davidson’s Scouting Trip; MacKinnon Nearing 100</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPbzZGVzNGQmxvZGNNQXpXaVFZUHZRZ0lxcGNvQWRlNzV3b2NKdEVpbkpWRy0xd0VKc3RVVTBZc2ZXY3A3cWRheERkaS1MTzZDeEFIWnlNWUY0T3FDczYzcUQxbjJMbUJPRXRtdTNaQndFNU5TaTRGdno5U0hzOVBjdEo4bm50bjRhcHp4eHlvLVRud9IBlwFBVV95cUxPVk1vYVVXQU10ckhVUTg3cGlRM3RLd3Bvd1BqRmxwa25mUElPa0lwV0ZtRkxWUXQzR0p6cXBFTnNaMUtPUG5SQVFpa1MyaHozQThiMlJkVWc4VVVqNm9PMFlzYmxETUJwMWVUcEc3TnBLdDExblp1a3VFTXlwbmhwNE1jREk1MW5wY1p6LXR2U0JSZ3RiWlQw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 3:00 PM</span></div>
-<div class="news-title">NHL Rumors: Chicago Blackhawks, and the Calgary Flames</div></a></div></div>
+<div class="news-title">Jack’s Daily: Murphy Traded; Davidson’s Scouting Trip; MacKinnon Nearing 100</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/hawks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/hawks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1206,23 +1196,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Chicago Blackhawks — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/blackhawks" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/chicago-blackhawks/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Chicago Blackhawks — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/chicago-blackhawks/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Chicago Blackhawks</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/blackhawks" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Chicago Blackhawks</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Chicago Blackhawks Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/blackhawks" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1230,7 +1209,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:08 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:16 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1296,24 +1275,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/blackhawks';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='CHI';

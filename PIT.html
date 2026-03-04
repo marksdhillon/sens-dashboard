@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Pittsburgh Penguins</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:08 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1388,13 +1378,13 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-ir">IR</span>
 <span class="tx-desc">Placed F Rutger McGroarty on injured reserve.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQUVVReU9iVjFwUGVvMHFCMHlaZ1g3cVRuTjRkOGMxRmU1cUVGcEg4RnhNWkhYZFhqZkdSbko4ZVVWcFJ6b1EwM0hVbTFxVUdURmNwUXNlZHQ2Q1M1Y2sta0k2ZTBlWHBCVXdvVVF0N21oTVpuX05BUUwzcXdKc0RlMjRqWm81R1dFNnBNdWhVVmlBZkVuSU9pNW9aMjFMZlhjX0VyaHFHUV9TR1FXdmdPM2Q4bUZyYUZXd2JWblppY0hfc0k?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1jeW0tUlI4eGxuajZoQmZWaHh6RTU0S0t5RVFCT25VSG5pWm5Xc25WOHBHUUNkZnpPZzRYYmJ3QVlQOWxJaFVLcWEyb2tkLWMyRmdMWWFuU1J4aHB4TTgzaHlFRFgwbkp2d0lpZFl1TURSZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:38 AM</span></div>
+<div class="news-title">NHL: Penguins 1, Bruins 2</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQUVVReU9iVjFwUGVvMHFCMHlaZ1g3cVRuTjRkOGMxRmU1cUVGcEg4RnhNWkhYZFhqZkdSbko4ZVVWcFJ6b1EwM0hVbTFxVUdURmNwUXNlZHQ2Q1M1Y2sta0k2ZTBlWHBCVXdvVVF0N21oTVpuX05BUUwzcXdKc0RlMjRqWm81R1dFNnBNdWhVVmlBZkVuSU9pNW9aMjFMZlhjX0VyaHFHUV9TR1FXdmdPM2Q4bUZyYUZXd2JWblppY0hfc0k?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Flashscore UK</span><span class="news-date">Mar 4 &middot; 4:05 AM</span></div>
 <div class="news-title">Tampa Bay Lightning v Pittsburgh Penguins 02/04/2026, Player stats</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE45R0xJRnBqcWJOb29WWDFEMU44NHJrUzVpZ0gzOHBXZlRBYWl5aXd4am1JMHRHVXpyeUxGOHI1VGF5Rk02c1pWeGZwQ0FXSTB6M3BQMTRteUVKR2RwY1hPWWpJSU1Ueng1WmVuc29YcV9WbUtyLVBJekJJaw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:25 AM</span></div>
-<div class="news-title">Musings: Penguins Start Slow in Boston</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5LNGFBVEhKa3VUUEI0V3VtYmg4Zm1MVmxKUkdvV09SYXVwYTFYWU9xWDFoQ2NfTXptc1hFUU8tUGp2MTBibG5uaTJnTGVRczRNa21MUGNsTWFTWmpVMEJMMV9zLWlCUkk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
-<div class="news-title">PIT at BOS | Recap</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE1zSnV6RFpIWm5TR2NqOWs3VTJHdGlEVllEcVlQMHExekI1VERTa3R5M0dXdTNES1RHQVZBbHlzYnFfYUp1SnNQaG9KRDhvX29NZzhzRDJldXU0bmtPRnNBa2hiSk04cElYU3IzRFhoQ2VQZjlaQ1ZGVUJnQm5XQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Musings: Penguins Start Slow in Boston</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE1zSnV6RFpIWm5TR2NqOWs3VTJHdGlEVllEcVlQMHExekI1VERTa3R5M0dXdTNES1RHQVZBbHlzYnFfYUp1SnNQaG9KRDhvX29NZzhzRDJldXU0bmtPRnNBa2hiSk04cElYU3IzRFhoQ2VQZjlaQ1ZGVUJnQm5XQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
 <div class="news-title">Post Game: Skinner (3.3.26)</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQQy04aUNtbXVVZHJHdEFuV00tMi0yOFoyWlEzWVVxTXh2R0RxcDN5cTlKNmEtYlRJRUxRYTI1d1dqRHhFRE1RR2hucWphSWdIWnlFOWVaWjZvb0FEZm81ZE9Fcm9sRmZUbndHTUpXVXhwWVJBN1EtejBhZ0JTbEdRa3p4cXlPbVNrWHJvVGk4MV9iekpkRnVMVUl4cnA3cG9YVmc1dDhR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 3:04 AM</span></div>
@@ -1404,13 +1394,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 2:52 AM</span></div>
 <div class="news-title">Swayman makes 34 saves, Bruins halt Penguins point streak at 5</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPdG9rSVhGLWpsc3daMFdJWnVIM0VOSW1IUVBENEZtS093dUpmN3pCVzRyZEw2Y2VPajVZU2JDM2w4UWNZcDhtSXI5dTVydkExbFBmNnVLSVhOdG1RSWQ5SFRfR1ZHTHNpZFVJRXFtNEttNzVPSFlBQnoxSGpSdlBFazN1d1BLLWJsaHpCZlRXT2FhdWVSSnRHTllHVHhDS1M1NXNz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 4 &middot; 2:28 AM</span></div>
-<div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNb2paZm9CcjVSbE9rUDlLZjhaYkJDeXJFZDlvd2E3WTlOTzE1Tk1ka0k4QWNrUllhSFBueWdhSTBGUEZhWWYyY3BTYkpCRWhZaVlEV1lqX0E2eXpPeE1sTW1SWVdoUnpMVjVjbTRZVVBmQjlqeWJlNmhDMzJUX3FxbmV5WDBEbkhERU9fRjA5cXl2QQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:41 AM</span></div>
-<div class="news-title">Trade Buzz: Avalanche ‘deserve the help’ before Deadline, GM says</div></a><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxQU3ZxSzJFVXlxN1J6OWx6WFFPRXNzWDlGWjBSVENQYk51X1VrdHJ3c3J2N2pGOEhIeExLRVU4TjFMc1I2UDlvY0FhSWl5RS1LNERhWW0xTXhxZ1ZmMmZNdjBGM2lDZ2ZUM2VxZkx2dEt3ZGpLZVU0cjhRUTJibGNEdGNIZnotLWJfUEpBSS1jS3I1YTBqSVJKb0h4RlV5VUlUVWgzZlhUVzh3ZnYxNmlXZGY4UDd5ZXlpVDRFYzFxZXk4N0VESWI4SFVVMkNfdkdVQjY3Uk93?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Boston Sports Journal</span><span class="news-date">Mar 4 &middot; 12:03 AM</span></div>
-<div class="news-title">Final: Bruins 2, Penguins 1 - Swayman stops 34 shots in win</div></a><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQcWtmRWV4X3pLV3VoZlBGbk9JQVBjWTUzUTNYYXZwMDBidVNzdnFqdEZnN1RaZVBOLXc3MFA0MEhBRHdSWTJCYmR0TWRXdkNiNkgyejFTU25UNzE5RnF2WDdSQlEta0xFdjZXdmVfRlBaTVROclZRT2MwQU1ra1JIYlFDMjBKT1NPd2UtMVFCUVFGZkpuV2UxYVM1SFc3Q05GLXIzWlBENE1ZMWQya0w0TlhrOE5ERHhSN1QzQThtZnU2bUs4eEZyUG1vYklfSlU4QWNYSUgtX3VuVnVuWExYSTVDSXpxQlVzZEZxUkVGQXQ2SkRNRkxfbUNRcmppU210WVIxc1FJZkttdw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">13newsnow.com</span><span class="news-date">Mar 3 &middot; 11:12 PM</span></div>
-<div class="news-title">Bruins vs. Penguins Preview: Peeke Showcase For Potential Trade?</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxQRUs1RUxfZG9fQi1ZdFVXX1dEa3VXZEdWT2N4YUJyUTVxbTVJeHl3UG5rNjhWUXd5dnFkb1ZpNU55c2xYZnhaSDhWTVpwdWx0ZEJFZXlCZHI0MXlHMUQyUlNUcm5iRTdtQjRpcG1fTl92NlhKcmJWaGdZNUxNdkt5bjZGb3dRcDJHX3pDUGw0aW5wZFNCUWg5RFBlZnRvb3dxdWtDNjZOWlZMQV81VTVKdHg1em54a0FSVFNiWG9udEg5cTBpcV94RHBTblZlT3Vicnc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxQRUs1RUxfZG9fQi1ZdFVXX1dEa3VXZEdWT2N4YUJyUTVxbTVJeHl3UG5rNjhWUXd5dnFkb1ZpNU55c2xYZnhaSDhWTVpwdWx0ZEJFZXlCZHI0MXlHMUQyUlNUcm5iRTdtQjRpcG1fTl92NlhKcmJWaGdZNUxNdkt5bjZGb3dRcDJHX3pDUGw0aW5wZFNCUWg5RFBlZnRvb3dxdWtDNjZOWlZMQV81VTVKdHg1em54a0FSVFNiWG9udEg5cTBpcV94RHBTblZlT3Vicnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 8:54 PM</span></div>
 <div class="news-title">Penguins' projected Vincent Trocheck trade comes at a big cost</div></a><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOYXhIbXNDaFRCQzhhUDV0VklrZ2lfVXEwWVduTGs5aE1lUk9WMk1ETV9uMG1lNzRJN3Ayd2pBMm1IY3poZmJzY3B5RlV2alpMaUJic1ZfUG83aUZKS3FzakdCbDRQeGFXQ0UtdnNZR0E5ODRULUJNMUd5ci1lMzNTVWVKci1oamdTN0xaVmdrc0RLMEZFbkFDalh5b0xDeGM2ZWlRd1RIcDJzTktxMmp5M1I1Q1IxVWJlcUhnNjdCdXJodw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 7:44 PM</span></div>
@@ -1438,7 +1422,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:19 AM</span></div>
 <div class="news-title">Is It Worth It To Move Stuart Skinner Before Friday's NHL Trade Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPRHFIbWdySThCUVQtX3hYdzVGMmhXTHB1TnR1eHltRW1VMnp5dEZMclJzb3JvUTdwcjJfbHVFaFFtc0ZWUEszRm1WSE10SWJRZU9XcVhBenBzek5DeDg2dVJ4elJIQ2l0MzNmTXMtdDhjd2cyYzBaX0I4UHA1NEhieTFCV1JRQl84akt3ODRsX0FXU0N2Wl9JWnljUnZ3eTFmQS1hV2gyTEJfeTYteVVNMGVMbW55VzUtZ1BF?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:38 AM</span></div>
-<div class="news-title">6 Penguins' Storylines To Watch During Trade Deadline Week</div></a></div></div>
+<div class="news-title">6 Penguins' Storylines To Watch During Trade Deadline Week</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQV3VOeVcwYmgwVnBQZHZ5dUoxSTF0RGVsYzRZZ04tTlJCU3NvWFM0NkhJZzltMWt1eFY0dVFUQ0JzS1Z3T1NNUHVremxBMHU5RVNULXppamhrdml5ZS0tcHRtVW5hZ09aX1hqYlN1SmhsQk53NE9ZTW1DOVpFZmFOcGdsV3ZVd0pWeUtyeFl1T1BtWGFLVDZGb3Y0RlRrNDB4MExN?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pittsburgh Hockey Now</span><span class="news-date">Mar 2 &middot; 7:33 PM</span></div>
+<div class="news-title">Penguins Blog: Trade Deadline Strategy? Playoff Push Numbers</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxNS1dxaTExTHBhMGdVdmhUc3h5YzJpN1RZWW5FVjBVVlVFZTRITmdOajRucGpVMFAzQmhKM1F1OGdoVzg3N1pyQVBzV2VhaDF3SU9XNzZ1ZW9DYXQxaWFwZ3ZwU3NGd182M2ZoSlZvdWNMUlI4MzFhSVU4aGlFaXM1TXdDSl8tcElxMXpVSThMYW5XekxoV3dpbGZXVnc0RmdfX25NVFUyeVdfT1NvdUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 6:30 PM</span></div>
+<div class="news-title">Penguins’ Arturs Silovs continues to show he’s the real deal</div></a><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxPU19heWJtU0Y1bFVFNy03aTE5Y3RDb0N1Uzd3T2JhOFktaFpuU2tnZXhSYUFFZGpoekxMNVNXcEpZV2wxNGM5SXdhSEk2ZHJvUXg2OFlIZVRUQzFIcDJ0ZHZvZzJRVjA3VmIxRWRSVWZtLVNjZjNaRWN4c0gtWGpWbDZoV1dqRlhtTUt3RUZnMEtObUF1dzljbUpIcE5xOURpU21KQnY5LVhWRV9ZbWQxOGRfeE8zU2VQR19hSk5XQ2J2eUtDZ1h0RGZMaF9BUG8wWlBya05pa1QyeEpVWkVRNTJ2dDlkbXR3dWJfWmNEMVBac28?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">vancouverhockeydaily.com</span><span class="news-date">Mar 2 &middot; 6:07 PM</span></div>
+<div class="news-title">Vancouver Canucks' completed trade with the Pittsburgh Penguins proves GM Patrik Allvin made a big mistake</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/penguins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/penguins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1446,23 +1436,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Pittsburgh Penguins — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/penguins" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/pittsburgh-penguins/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Pittsburgh Penguins — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/pittsburgh-penguins/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Pittsburgh Penguins</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/penguins" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Pittsburgh Penguins</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Pittsburgh Penguins Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/penguins" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1470,7 +1449,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:08 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:16 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1536,24 +1515,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/penguins';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='PIT';

@@ -283,17 +283,7 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
-/* Salary Cap */
-.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
-.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
-.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
-.cap-link-icon{width:16px;height:16px;border-radius:3px}
-.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
-.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
-.cap-frame{width:100%;height:700px;border:none;display:block}
-.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
-.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -380,7 +370,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Tampa Bay Lightning</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 2:07 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:16 AM ET</div>
       </div>
     </div>
   </div>
@@ -412,9 +402,9 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -1290,16 +1280,12 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-desc">Signed D Charle-Edouard D’Astous to a one-year, one-way contract extension.</span>
 </div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSVZWMUs4Rno3MzFRYVVGOXZwT3I2eUgxaUY4cVRLNXVpQXRfTnRJNGNiUDlYQ3pubGc2dWdNSnNLczVuR0RUdHBGSW1WQ2F1NWdtY3R1YV81TjNmeTM4c2ZubXVvY05LM09QX0g2RktKM2RaY2hlSEVSLWszaC1iaC1mZlZtYWEzdVow?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:45 AM</span></div>
-<div class="news-title">Kaprizov breaks Wild record for goals in win against Lightning</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE94aGo2RC00S0ZrMW1pNVZDZmF3RmFMUzZLazB0UW1iTUZPb2ZlOFN6dE44Q044QmFjQnp1NEMxc0JCWXpCdGh3QXVILUFCZlNadDg1RVpmUFRXamNIdGcwc2E5S0stc0hSRDJuTU53ZGE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:37 AM</span></div>
-<div class="news-title">NHL: Lightning 1, Wild 5</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOU0ZzVHdqb0lzZGl0OVNFVU1HN1B4Yy1PSnpGOWNpT191QVdhV0JWWDZtbUdyVTVzU1VOLTg5Wko1WkdTS09KaGZwVENlcXZUb3ZtRnFDczByWGxEYjdSNDY1Y2RlN29Ka3NzREVOWkdoMXpRTk0ySlg0dVB6RzVBVFNRSE0ySXVNcDNNaEhOVTVsb3Viazg4eldiRVZOUGYwbXdudWUySEdRTE5pY1BFSVZVTG00ZHlONnc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:46 AM</span></div>
+<div class="news-title">Kaprizov breaks Wild record for goals in win against Lightning</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOU0ZzVHdqb0lzZGl0OVNFVU1HN1B4Yy1PSnpGOWNpT191QVdhV0JWWDZtbUdyVTVzU1VOLTg5Wko1WkdTS09KaGZwVENlcXZUb3ZtRnFDczByWGxEYjdSNDY1Y2RlN29Ka3NzREVOWkdoMXpRTk0ySlg0dVB6RzVBVFNRSE0ySXVNcDNNaEhOVTVsb3Viazg4eldiRVZOUGYwbXdudWUySEdRTE5pY1BFSVZVTG00ZHlONnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 4 &middot; 5:37 AM</span></div>
 <div class="news-title">Kirill Kaprizov sets all-time Wild goals record in win over Lightning</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOWVpEelRqeEpvS0k4aGxxZjM3T0wzeHktQWs4RndsczZVdVVDc0x5TlJFVG8wRWg4YXd4X1o5OW1RS25RbUw0NVFheXdCUkU3R1ZpSXhTN1FNTVZEVzFsZG0ybWt5TTM2LURENEZLZnBEWFYtZ1NGblpHblNDcTYxb29LUWpIa1ltcklMWXZIbkFtWHIySFgzSklSRi04WlY0RWRJYkJfQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:35 AM</span></div>
-<div class="news-title">Kaprizov breaks franchise career goals record in Wild win over Lightning</div></a><a href="https://news.google.com/rss/articles/CBMi-AFBVV95cUxNTlpYVGVIMEplcHRSd2JvNGQ2MnJtYWEzQUJEMHllc1NJZGxTZ3hmWTQ4MlVzdERvaVF5eEJkWjFxM0dtVFlBWjBuYzZuRzV2REZmeTR2S0E5NzZKeGhyb29zZUtfdUFpSHRBTVh5OGswRmZkNF9Kam93aGU4RFZpcS1pamIzM3pzMFJrOUdwOXFqa3RZbE5xWW55LS0yckttUHl4aFFWaHc4cU90cHlVU3ZtVHY0Y3hWVlhxUV9BcnZ6bGVXaU04TWpDUHA4WW1yYlFIbldtRmpBZ0ZpN3lTcDFSQVNOeVJxUm4ybTk1VloybE9ZS21LXw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Toronto Star</span><span class="news-date">Mar 4 &middot; 5:28 AM</span></div>
-<div class="news-title">Kaprizov breaks franchise career goals record in Wild’s 5-1 win over Lightning</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQR0NIRUk1NWpXeUtfVFdXdmQwLXlPZ09vMTB2UjVlSlBLcXM2U01pcllsOUtOaE16TzU5dFlxYWtUTFNyUnJqZHduTzRJWnNZbmNybUxhaEZ1MXFhVlZENDBvd3NkTzR6R3FDMDRXSzQtMVJQZ3ZBWTFleVl4VFZ5TjVUckJfaTgzQnYwTEo3bkFqclI5SVZ3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Kaprizov breaks franchise career goals record in Wild win over Lightning</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQR0NIRUk1NWpXeUtfVFdXdmQwLXlPZ09vMTB2UjVlSlBLcXM2U01pcllsOUtOaE16TzU5dFlxYWtUTFNyUnJqZHduTzRJWnNZbmNybUxhaEZ1MXFhVlZENDBvd3NkTzR6R3FDMDRXSzQtMVJQZ3ZBWTFleVl4VFZ5TjVUckJfaTgzQnYwTEo3bkFqclI5SVZ3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:25 AM</span></div>
 <div class="news-title">Recap: Wild 5, Lightning 1</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNUzU3VzVQYmxpZmVGZUNuS25WN1ptZXA5eS0wMk12enhEMVdxV2NPZHprUnJnc1JPUXFDcHFCYnpCNW9ha3FoWlhCSWNJaV94U0lsc09ZQk9nVkxiNGU5ZEZxVzF5dlhwX1dkR0lEaHotWDItUG5WaFZfVnl0cnNBOVZaeVJBTndTbzB4ZXl4SklYek5PZ0NXOVFHZlN4ME9O?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">InForum</span><span class="news-date">Mar 4 &middot; 5:23 AM</span></div>
@@ -1321,9 +1307,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 3:10 AM</span></div>
 <div class="news-title">Wild trade tracker: Did Guerin pay too steep a price for forward depth in McCarron deal? - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOSjZDQXU3QTd6QmxfTEF2RTU3U3otZmxpcmtKZGxReDJXTG8yLVNvNVZxSy1EeERhSHhySFpkclhWLUJNS21idmdaOGtMWnlBTk9NM18tZzZERDBlVGk5R1dFUHFkRkNRRE9Mc2RSWDdmNnJEd0ZTNlVVRFd5RXZIdzF0dTdXVUJoMF9CQTlPUnB4RmNCY25qSDlpWW0tX3d0OHUwb05BdUtGeER6a1NFWWlwQXg1V0lLRGRrelZwZFo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 2:56 AM</span></div>
-<div class="news-title">Lightning Linked to Predators Forward Ahead of Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNUUF4MGRXUTkxQlp2RGVHU2ZCUnNpYW5aUEctbEhodGF0WVF5NENjXzdXN3J2UFNrWHhlVjFUS2pRN2czUkgwck52bXgyYVBjNzJRQk10U05XWUxlYUFMU0I4eXh6UlJfMzRiM2VSNkg3cUZJaTFZa0pJVmhzajhlQmhGVXRvaUJSdlk0YU93?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 2:26 AM</span></div>
-<div class="news-title">Lightning rumors: Tampa Bay targeting Predators depth forward ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPbEhQZmtDSHZPNWV1dXZndXlxejV2Y3JXMzNKdDVRMlI3aEROLTRLZG1JQy1leTFqR25ieUhMaTRrMXR2dk9salhJamVKNEV3Yzh6WWpUQWRMVDRMSUZXQXFlQzNXX2V4WTdCTVF6dDQyblpuN0x6WXI4c2JZSDZWanllM1lMSUJ4dHdKU3U0MXMwQXA3MWhpekJ6ckFIeGFiMEU1ZWh2MFpMX1RSMXlEd05sS0w?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Lightning Linked to Predators Forward Ahead of Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPbEhQZmtDSHZPNWV1dXZndXlxejV2Y3JXMzNKdDVRMlI3aEROLTRLZG1JQy1leTFqR25ieUhMaTRrMXR2dk9salhJamVKNEV3Yzh6WWpUQWRMVDRMSUZXQXFlQzNXX2V4WTdCTVF6dDQyblpuN0x6WXI4c2JZSDZWanllM1lMSUJ4dHdKU3U0MXMwQXA3MWhpekJ6ckFIeGFiMEU1ZWh2MFpMX1RSMXlEd05sS0w?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 4 &middot; 2:26 AM</span></div>
 <div class="news-title">Lightning rumors: Tampa Bay targeting Predators depth forward ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPMFhISDNQMlphNjR1Z0RidFhIOEJia0NrV0VZOEpnT3lPRGlaeGlxNVhmUGRCS2s5UFpURWZXSkNKWmw3VjB4dFBNRmNlLXJWNzhwZ3F1TG1pR2k4M3d6UTYxUDAyODhkVGwtTEZYTEJCUk9FaVpsajk5aHF1ZlRjZ1FneWJ3ZlR4Nm95XzV5SXpGN1hIY3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 9:59 PM</span></div>
@@ -1339,7 +1323,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:08 PM</span></div>
 <div class="news-title">Lightning recall forward Conor Geekie from AHL Syracuse</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPSk95Zmgxa2g4a1dQZnhOZ0k5Mk1NVjhvcWN1cm9EMW12X0FHNEJsQTRDblhpVEVZVDlhelpENnptOXBIS05Ib0RuTmViUE1xeXpZYmpqUXRQZzFQLUh6R1p0b255MFZGQUJpOW1neWg2Rkd5M25EUEo0MVkycWlncExJSmhFVC1ST2RqWms3bG16Qy11WWtPNlVucFZMTFJKS2c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 2:58 PM</span></div>
-<div class="news-title">Watch Lightning vs Wild Tonight: TV, Stream & Odds</div></a></div></div>
+<div class="news-title">Watch Lightning vs Wild Tonight: TV, Stream & Odds</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPRWhyaHhoOVV2VFhzc1B0OXJfMHJUeTRIYXNILUdHbXF1NGhVMzlaeTlZaDZDTy0zT05BZzd0MC1CSUp6Z0h5dTVCSEp6ZU5nOHVxOGV0T0s0aFJTREM4dVU1ODM1Y1VOcHY0Z0dtOFNvMTdnaFFWVGFLYWczMWJLRENUaTBwUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 2:40 PM</span></div>
+<div class="news-title">Bolts Best Player of the Month: Jake Guentzel</div></a><a href="https://news.google.com/rss/articles/CBMisgJBVV95cUxPNl96M1JQUGQxbGxhTzlQdnVlV282dThPYWFIQ1BkVTJSenBNbThWUkpUbGJOSWl2SkpLUzMwaUNpNGhNWi00YzRhSzBLak9HYWNMMEJueXFPRTFQMldNcGRpc1dHRW5xTG1rU2JfRE0yQm03NU1meHR4TURvbXZ6THEwaXBCQmEyUG5tczh0QWhYZXVfcHVVaGVnOVRYMHNwMEtKTTRJNDhQSC1fME5LUGpRZmJSdWhjQkJOVkNQejh2NUFIQWlveTJyUTRQUEVGQVk2QkVHS0VyNGhfQ2tkUkZzWV9qZDdoUW5ubmVIMzlqYklMNDN1dnlmWmFobHVCdUU0amtDQmpzcEEtWFhUQnZqT2QzS2VTWDVNcUMyaTA1dTM3VjNxcmZ2YWFSUFV0VUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">KHOU</span><span class="news-date">Mar 3 &middot; 2:15 PM</span></div>
+<div class="news-title">Do the Tampa Bay Lightning NEED a Forward at the NHL Trade Deadline After New Round of Injuries?</div></a><a href="https://news.google.com/rss/articles/CBMiuAJBVV95cUxQQ3dacXBOUm5DaVVqdWdfSlRrWlcycXg3Z1ZGMElCQlNUc0FwNzQ2aHdEZkJDdDNSc2V0WTFhZ2FIUlhoM3p2Y3lEQVUyQWlGR25HTHVlZGdpaUtFNS02c21jdWlMVzQtdWxDOTFVQ2pYRFlWYVZ4OV9LS2ZiWUZrSjJMWXdreWRRWmlLUWI0NV9HX0pfeWFxanRHa0IycHZOeVlxcTBVQmVhZjdtYjFEVWYza3Bab1VvUTNxRnpBaUFEbnBZTHl4TXZfUkVrQ0Fqd05DOXExa2l0a29UaFhNSjBnRDYxUVZzWElKOU5vUTNyWVVQSlVsZ3RtUHJSb2ExTEVnbnh3Rmo1RWppWndqZWF6M3IxdWRQUmliRW0wdXVNbUpwY0luTGxWbUFXVncwRUlhRUtXMmk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">weareiowa.com</span><span class="news-date">Mar 3 &middot; 2:10 PM</span></div>
+<div class="news-title">Do the Tampa Bay Lightning NEED a Forward at the NHL Trade Deadline After New Round of Injuries?</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/TampaBayLightning/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/TampaBayLightning</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1347,23 +1337,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">Tampa Bay Lightning — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="https://www.capfriendly.com/teams/lightning" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="https://www.spotrac.com/nhl/tampa-bay-lightning/yearly" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>Tampa Bay Lightning — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="https://www.spotrac.com/nhl/tampa-bay-lightning/yearly" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — Tampa Bay Lightning</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="https://www.capfriendly.com/teams/lightning" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — Tampa Bay Lightning</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="Tampa Bay Lightning Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/lightning" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1371,7 +1350,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:07 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:16 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1437,24 +1416,7 @@ function closeGamePanel(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='https://www.capfriendly.com/teams/lightning';
-  }
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
-})();
-</script>
+
 <script>
 (function(){
   var team='TBL';

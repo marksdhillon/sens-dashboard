@@ -1970,17 +1970,7 @@ a.pname:hover{{color:var(--text-strong)}}
 .tx-other{{background:rgba(160,160,160,0.15);color:var(--text-muted)}}
 .tx-desc{{font-size:12px;color:var(--text-secondary);line-height:1.5}}
 
-/* Salary Cap */
-.cap-header{{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}}
-.cap-source-links{{display:flex;gap:8px;flex-wrap:wrap}}
-.cap-link{{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}}
-.cap-link:hover{{background:var(--bg-elevated);color:var(--text);text-decoration:none}}
-.cap-link-icon{{width:16px;height:16px;border-radius:3px}}
-.cap-link svg{{width:12px;height:12px;opacity:0.5;flex-shrink:0}}
-.cap-frame-wrap{{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}}
-.cap-frame{{width:100%;height:700px;border:none;display:block}}
-.cap-frame-fallback{{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}}
-.cap-frame-fallback h4{{color:var(--text-secondary);margin-bottom:8px;font-size:14px}}
+/* Salary Cap — no additional CSS needed, reuses .community-card styles */
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -2099,9 +2089,9 @@ body{{animation:fadeIn 0.15s ease}}
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
     <label for="tab-transactions">Transactions</label>
+    <label for="tab-cap">Salary Cap</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
-    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
@@ -2116,23 +2106,12 @@ body{{animation:fadeIn 0.15s ease}}
     </div>
   </div>
   <div class="panel" id="p-cap">
-    <div class="cap-header">
-      <h3 style="margin-bottom:0">{team_name} — Salary Cap</h3>
-      <div class="cap-source-links">
-        <a href="{capfriendly_url}" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-        <a href="{spotrac_url}" target="_blank" rel="noopener" class="cap-link">
-          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
-        </a>
-      </div>
+    <h3>{team_name} — Salary Cap</h3>
+    <p class="sub-note">Multi-year contract breakdowns via Spotrac and CapFriendly. Click to open in a new tab.</p>
+    <div class="community-list">
+      <a href="{spotrac_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=64" alt="" class="cc-icon"><div class="cc-name">Spotrac — {team_name}</div></div><div class="cc-desc">Year-by-year cap hits, contract breakdowns, dead cap, and future commitments.</div></a>
+      <a href="{capfriendly_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=64" alt="" class="cc-icon"><div class="cc-name">CapFriendly — {team_name}</div></div><div class="cc-desc">Full roster cap hits, LTIR tracking, cap space projections, and contract details.</div></a>
     </div>
-    <div class="cap-frame-wrap">
-      <iframe class="cap-frame" id="cap-iframe" src="" title="{team_name} Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-    </div>
-    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="{capfriendly_url}" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -2206,24 +2185,7 @@ function closeGamePanel(){{
 }}
 document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePanel()}});
 </script>
-<script>
-// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
-(function(){{
-  var capLoaded=false;
-  var capInput=document.getElementById('tab-cap');
-  if(!capInput) return;
-  function loadCap(){{
-    if(capLoaded) return;
-    capLoaded=true;
-    var iframe=document.getElementById('cap-iframe');
-    if(iframe) iframe.src='{capfriendly_url}';
-  }}
-  capInput.addEventListener('change',loadCap);
-  // Also handle label click in case browser fires label click without change
-  var capLabel=document.querySelector('label[for="tab-cap"]');
-  if(capLabel) capLabel.addEventListener('click',function(){{setTimeout(loadCap,50)}});
-}})();
-</script>
+
 <script>
 (function(){{
   var team='{TEAM}';
