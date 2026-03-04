@@ -1698,7 +1698,7 @@ a:hover{{color:var(--text-strong)}}
 .header{{max-width:880px;margin:0 auto;padding:32px 28px 0}}
 .hdr-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}}
 .hdr-left{{display:flex;align-items:center;gap:14px}}
-.team-logo{{width:40px;height:40px;opacity:0.9}}
+.team-logo{{width:40px;height:40px;opacity:0.9}}[data-theme="light"] .team-logo,[data-theme="light"] .gd-team-logo{{filter:brightness(0) opacity(0.85)}}
 .header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}}
 .header .subtitle{{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}}
 .live-badge{{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin:10px 0 8px;transition:background 0.2s,border-color 0.2s}}
@@ -2677,7 +2677,7 @@ a{{color:var(--text);text-decoration:none}}
 .sb-team-row{{display:flex;align-items:center;padding:10px 14px;gap:12px;color:var(--text)}}
 .sb-team-row+.sb-team-row{{border-top:1px solid var(--border)}}
 .sb-team-link{{flex-shrink:0;line-height:0}}.sb-team-link:hover{{opacity:0.8}}
-.sb-logo{{width:32px;height:32px}}
+.sb-logo{{width:32px;height:32px}}[data-theme="light"] .sb-logo,[data-theme="light"] .gd-team-logo{{filter:brightness(0) opacity(0.85)}}
 .sb-team-info{{flex:1;min-width:0}}
 .sb-team-name{{font-size:13px;font-weight:600;color:var(--text-secondary)}}
 .sb-winner .sb-team-name{{color:var(--text-strong)}}
