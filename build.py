@@ -1410,10 +1410,10 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, conf_teams):
     diff_sign = "+" if proj_diff >= 0 else ""
     diff_color = "var(--green)" if proj_diff >= 0 else "var(--red)"
     return f'''<div class="kpi-row">
-  <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target</div></div>
+  <div class="kpi"><div class="kpi-val">{target}</div><div class="kpi-label">Playoff Target Pts</div></div>
   <div class="kpi"><div class="kpi-val">{proj_pts:.0f} <span style="font-size:16px;color:{diff_color}">({diff_sign}{proj_diff:.0f})</span></div><div class="kpi-label">Projected Pts</div></div>
-  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Pts</div></div>
-  <div class="kpi"><div class="kpi-val">{needed}</div><div class="kpi-label">Pts Still Needed</div></div>
+  <div class="kpi"><div class="kpi-val">{playoff_pct*100:.0f}%</div><div class="kpi-label">Playoff Odds</div></div>
+  <div class="kpi"><div class="kpi-val">{pts}</div><div class="kpi-label">Current Points</div></div>
 </div>
 
 <h3>Next Game Impact</h3>
