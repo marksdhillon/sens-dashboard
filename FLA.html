@@ -107,14 +107,16 @@ input[name="tab"]{display:none}
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"],
+#tab-cap:checked~.tab-bar label[for="tab-cap"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
 #tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-forums:checked~#p-forums{display:block}
+#tab-forums:checked~#p-forums,
+#tab-cap:checked~#p-cap{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -281,6 +283,18 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
+/* Salary Cap */
+.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
+.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
+.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
+.cap-link-icon{width:16px;height:16px;border-radius:3px}
+.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
+.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
+.cap-frame{width:100%;height:700px;border:none;display:block}
+.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
+.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+
 /* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
@@ -366,7 +380,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Florida Panthers</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 1:34 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:04 AM ET</div>
       </div>
     </div>
   </div>
@@ -391,6 +405,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-forums">
+  <input type="radio" name="tab" id="tab-cap">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
@@ -399,6 +414,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-transactions">Transactions</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
+    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">21</div><div class="sm-label">Games Left</div></div>
@@ -418,14 +434,14 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-1" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 6</span><span class="gp-matchup">FLA @ Detroit</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (81% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (82% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-20-6</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-10-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">183</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-2')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs Detroit</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-20-6 &middot; 76p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-2" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">FLA vs Detroit</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (81% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (82% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-20-6</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-10-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">183</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-3')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">vs Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-21-8 &middot; 70p</span><span class="game-loc loc-home">Home</span></div></div>
@@ -439,7 +455,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-4" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 15</span><span class="gp-matchup">FLA @ Seattle</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>SEA projected to make playoffs (71% odds)</li><li>SEA is hot — 7-3-0 in last 10</li></ul>
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>SEA projected to make playoffs (70% odds)</li><li>SEA is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>SEA</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-9-5</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-13-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">171</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">176</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-5')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">@ Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -453,7 +469,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-6" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 19</span><span class="gp-matchup">FLA @ Edmonton</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>EDM holds a 5-pt lead over FLA</li><li>EDM projected to make playoffs (75% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>EDM holds a 5-pt lead over FLA</li><li>EDM projected to make playoffs (74% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-24-8</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">68</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-4</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-14-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">220</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">210</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-7')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 20</span><span class="game-opp">@ Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-29-7 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -467,7 +483,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-8" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 24</span><span class="gp-matchup">FLA vs Seattle</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>SEA projected to make playoffs (71% odds)</li><li>SEA is hot — 7-3-0 in last 10</li></ul>
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>SEA projected to make playoffs (70% odds)</li><li>SEA is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>SEA</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-9-5</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-13-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">171</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">176</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-9')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">vs Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">36-16-10 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></div>
@@ -495,14 +511,14 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-12" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 31</span><span class="gp-matchup">FLA vs Ottawa</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>OTT holds a 4-pt lead over FLA</li><li>OTT is on the bubble (39% playoff odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>OTT holds a 4-pt lead over FLA</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">201</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-13')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Boston</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">34-21-5 &middot; 73p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-13" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 2</span><span class="gp-matchup">FLA vs Boston</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>BOS holds a 10-pt lead over FLA</li><li>BOS projected to make playoffs (62% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>BOS holds a 10-pt lead over FLA</li><li>BOS projected to make playoffs (63% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>BOS</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">34-21-5</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">73</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-1</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-1-3</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">202</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-14')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">@ Pittsburgh</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-16-13 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -523,14 +539,14 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-16" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 7</span><span class="gp-matchup">FLA @ Montréal</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>FLA trails season series 0-1-1</li><li>MTL holds a 12-pt lead over FLA</li><li>MTL projected to make playoffs (85% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA trails season series 0-1-1</li><li>MTL holds a 12-pt lead over FLA</li><li>MTL projected to make playoffs (79% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-18-9</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-7-7</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-3-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">213</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-17')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-9 &middot; 67p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-17" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 9</span><span class="gp-matchup">FLA @ Ottawa</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>OTT holds a 4-pt lead over FLA</li><li>OTT is on the bubble (39% playoff odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA leads season series 2-0-0</li><li>OTT holds a 4-pt lead over FLA</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">201</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-18')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ Toronto</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-24-10 &middot; 64p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -551,7 +567,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-20" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 15</span><span class="gp-matchup">FLA vs Detroit</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (81% odds)</li></ul>
+  <ul class="matchup-notes"><li>FLA trails season series 0-1-0</li><li>DET holds a 13-pt lead over FLA</li><li>DET projected to make playoffs (82% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>FLA</th><th></th><th>DET</th></tr></thead><tbody><tr><td class="cmp-stat-l">30-28-3</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-20-6</td></tr><tr><td class="cmp-stat-l">63</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-14-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">14-14-0</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-10-4</td></tr><tr><td class="cmp-stat-l">2-8-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">186</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">205</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">183</td></tr></tbody></table>
 </div></div></div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
@@ -564,12 +580,12 @@ body{animation:fadeIn 0.15s ease}
 <h3>Next Game Impact</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
-<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">4.4%</td><td class="r sc-up">+1.4%</td><td class="r">88</td><td class="r">2.0%</td><td class="r">0.2%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">4.7%</td><td class="r sc-up">+1.7%</td><td class="r">88</td><td class="r">2.2%</td><td class="r">0.2%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">2.5%</td><td class="r sc-down">-0.5%</td><td class="r">87</td><td class="r">1.5%</td><td class="r">0.2%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">1.5%</td><td class="r sc-down">-1.5%</td><td class="r">86</td><td class="r">0.7%</td><td class="r">0.1%</td></tr></tbody></table></div>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">5.1%</td><td class="r sc-up">+1.9%</td><td class="r">88</td><td class="r">2.4%</td><td class="r">0.4%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">3.8%</td><td class="r sc-up">+0.6%</td><td class="r">88</td><td class="r">1.7%</td><td class="r">0.2%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">2.7%</td><td class="r sc-down">-0.4%</td><td class="r">87</td><td class="r">1.2%</td><td class="r">0.3%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">1.5%</td><td class="r sc-down">-1.7%</td><td class="r">86</td><td class="r">0.7%</td><td class="r">0.1%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Eastern Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">CAR</a></td><td class="r">99.9%</td><td class="r">63.3%</td><td class="r">40.4%</td><td class="r">22.6%</td><td class="r">13.0%</td><td class="r">110</td><td class="r">90.4%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">TBL</a></td><td class="r">99.7%</td><td class="r">62.1%</td><td class="r">39.1%</td><td class="r">21.8%</td><td class="r">12.2%</td><td class="r">109</td><td class="r">76.9%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">BUF</a></td><td class="r">91.8%</td><td class="r">39.6%</td><td class="r">15.8%</td><td class="r">6.6%</td><td class="r">2.8%</td><td class="r">102</td><td class="r">10.4%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">PIT</a></td><td class="r">85.7%</td><td class="r">47.1%</td><td class="r">21.4%</td><td class="r">10.7%</td><td class="r">5.2%</td><td class="r">100</td><td class="r">6.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">MTL</a></td><td class="r">84.9%</td><td class="r">37.1%</td><td class="r">15.6%</td><td class="r">6.7%</td><td class="r">3.0%</td><td class="r">101</td><td class="r">6.5%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">DET</a></td><td class="r">81.4%</td><td class="r">37.2%</td><td class="r">16.7%</td><td class="r">7.4%</td><td class="r">3.5%</td><td class="r">100</td><td class="r">4.3%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">NYI</a></td><td class="r">74.7%</td><td class="r">30.1%</td><td class="r">10.7%</td><td class="r">4.2%</td><td class="r">1.6%</td><td class="r">98</td><td class="r">2.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">BOS</a></td><td class="r">61.9%</td><td class="r">25.5%</td><td class="r">11.1%</td><td class="r">5.0%</td><td class="r">2.2%</td><td class="r">97</td><td class="r">1.5%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">CBJ</a></td><td class="r">45.8%</td><td class="r">21.3%</td><td class="r">9.3%</td><td class="r">4.4%</td><td class="r">2.1%</td><td class="r">95</td><td class="r">0.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">OTT</a></td><td class="r">39.4%</td><td class="r">20.7%</td><td class="r">12.3%</td><td class="r">7.1%</td><td class="r">3.9%</td><td class="r">95</td><td class="r">0.4%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">WSH</a></td><td class="r">18.6%</td><td class="r">9.5%</td><td class="r">4.8%</td><td class="r">2.5%</td><td class="r">1.2%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">PHI</a></td><td class="r">11.4%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">FLA</a></td><td class="r">3.0%</td><td class="r">1.5%</td><td class="r">0.8%</td><td class="r">0.4%</td><td class="r">0.2%</td><td class="r">87</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">NJD</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">TOR</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">NYR</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">CAR</a></td><td class="r">99.9%</td><td class="r">63.6%</td><td class="r">40.0%</td><td class="r">22.8%</td><td class="r">13.0%</td><td class="r">110</td><td class="r">90.1%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">TBL</a></td><td class="r">99.7%</td><td class="r">62.4%</td><td class="r">39.3%</td><td class="r">21.6%</td><td class="r">12.0%</td><td class="r">109</td><td class="r">78.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">BUF</a></td><td class="r">92.0%</td><td class="r">39.7%</td><td class="r">16.0%</td><td class="r">6.5%</td><td class="r">2.7%</td><td class="r">102</td><td class="r">11.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">PIT</a></td><td class="r">86.1%</td><td class="r">47.8%</td><td class="r">21.8%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">100</td><td class="r">6.7%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">DET</a></td><td class="r">82.4%</td><td class="r">37.4%</td><td class="r">16.7%</td><td class="r">7.7%</td><td class="r">3.5%</td><td class="r">100</td><td class="r">4.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">MTL</a></td><td class="r">79.2%</td><td class="r">34.0%</td><td class="r">14.7%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">100</td><td class="r">4.2%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">NYI</a></td><td class="r">75.3%</td><td class="r">29.9%</td><td class="r">10.9%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">98</td><td class="r">2.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">BOS</a></td><td class="r">62.8%</td><td class="r">26.2%</td><td class="r">11.4%</td><td class="r">4.9%</td><td class="r">2.2%</td><td class="r">97</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">CBJ</a></td><td class="r">46.1%</td><td class="r">21.7%</td><td class="r">9.6%</td><td class="r">4.4%</td><td class="r">2.0%</td><td class="r">95</td><td class="r">0.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">OTT</a></td><td class="r">41.1%</td><td class="r">21.3%</td><td class="r">12.3%</td><td class="r">7.0%</td><td class="r">3.9%</td><td class="r">95</td><td class="r">0.3%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">WSH</a></td><td class="r">19.1%</td><td class="r">9.4%</td><td class="r">4.8%</td><td class="r">2.5%</td><td class="r">1.3%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">PHI</a></td><td class="r">11.5%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class="sens-row"><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">FLA</a></td><td class="r">3.2%</td><td class="r">1.5%</td><td class="r">0.9%</td><td class="r">0.5%</td><td class="r">0.2%</td><td class="r">87</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">TOR</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">NJD</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">NYR</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -1214,27 +1230,25 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled D Tobias Björnfot from Charlotte (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE4xRDh6bjNZZThEeHJXS2hseTIzejVaX0RtaXZZN19XcnlyamdiMTZuSFg3YWY5VzUyQ0xqQUdOUFBxT28yY19KU2s4RnQxYzY4Y2tiWGJYRHVvaTdjNXBBekJISDd2UQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:17 AM</span></div>
-<div class="news-title">QUICK RECAP: Devils 5, Panthers 1</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE81SlBFSmZvczU0YnptVlY1ZDVEX2NYazlBRVRCSk5ZaVJUcV9Lek1FaFZVWURaUTZKRWxKYzVaSDVZTmNhRS1PYXdiejF6bVRHdHZkdklQSW45RmZ3QWxZSzFZaUNMa3RPNjAybEk2YnlsMkc3MW5VaVpKQ256R3c?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWkwbDFzUTdZOWZLWUlndFpTUWNGQVc5ekZ2YlY1aHhQcU9CYVZnY3BRWmtHNVVLSDBuRllYNG1NaFdnVFVBeVAxQ1liNllKNDZBUk1EeFc1cWVsR2taaFAzZVp2blM0WFdhcGw0NkltUkxJX1hwZ0tiTUJ1UHdKang1SGpySzRVakVv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:49 AM</span></div>
+<div class="news-title">Hamilton’s 2 points help Devils defeat struggling Panthers</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE81SlBFSmZvczU0YnptVlY1ZDVEX2NYazlBRVRCSk5ZaVJUcV9Lek1FaFZVWURaUTZKRWxKYzVaSDVZTmNhRS1PYXdiejF6bVRHdHZkdklQSW45RmZ3QWxZSzFZaUNMa3RPNjAybEk2YnlsMkc3MW5VaVpKQ256R3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:03 AM</span></div>
 <div class="news-title">FLA at NJD: Nosek (Postgame)</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE9wWDZxa2x6RHhWU3R6cURIUmpuN2xySkgtZmxUbEowNk51TGNzdEdibGgzR2x6MkFOY3RIcUVfSDJ3dHVPQmc0Njk3T1gtcmlvZTFNRFZEdVNyOC1yWDNObWpEam9NOXVVeUtJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:38 AM</span></div>
 <div class="news-title">RECAP: Devils 5, Panthers 1</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOUUJWWm9Hd2Q5M3FXeXpNWndsNDBVbnFPUnBJeGpjdDZJMFR6R2RZU29Bems2OVBlYms1MU1TZ1NleHl0T2lGWmx2TkhsQXZQZzhiNW9VM2toT2FzcFFRWXNPQWJQaWdZR1Rfb3lJeElhUzZoTUtNdWFuT3NFNlEwbDZCbkRCdmxyeVg4TFZRLWF5bG9pZHZRMURnbEhnUk5pNlFyWGZKdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 4 &middot; 3:08 AM</span></div>
-<div class="news-title">Devils dim Panthers playoff hopes in dominating victory</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOWVdjaEJLOUJHczJNd3hDT21RWHcwU2JLaXhvY3JyZDVwWTg1X0Q0c3VteUtqRU93RGh4TXFKcFNxbG02S1FDVE9vSUk4ZVNZTGVCM3lXZUx2eTMyR21pbkViUUtMUWl2d1ZuWHVNZnNESVhFTWtyV3NJYTU4Xy1YbFl2anJ6R3puVDBJeC1SMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Devils dim Panthers playoff hopes in dominating victory</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNclRIaThwT2RHdTR1MmRGWnI3Um9qRnFzYjhOcmJHc2t1eHZ0LVhjYVQxQmNValhoRy1fR1NqODR5a2pyaEhkSXlScVlWRXRMLTBGNVMwZzRDUHhjblhWSXJxSl9lZXNOOHhVZTg0X2x5OURQLWtwajR2blZHeHN0RXVDVlB6aHlCYUlxdG5SN0gzaXBVUC13?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 3:03 AM</span></div>
+<div class="news-title">Hughes, Devils deal Panthers' playoff hopes another blow</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOWVdjaEJLOUJHczJNd3hDT21RWHcwU2JLaXhvY3JyZDVwWTg1X0Q0c3VteUtqRU93RGh4TXFKcFNxbG02S1FDVE9vSUk4ZVNZTGVCM3lXZUx2eTMyR21pbkViUUtMUWl2d1ZuWHVNZnNESVhFTWtyV3NJYTU4Xy1YbFl2anJ6R3puVDBJeC1SMA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 3:01 AM</span></div>
-<div class="news-title">Jack Hughes, Devils deal Panthers’ playoff hopes another blow</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWkwbDFzUTdZOWZLWUlndFpTUWNGQVc5ekZ2YlY1aHhQcU9CYVZnY3BRWmtHNVVLSDBuRllYNG1NaFdnVFVBeVAxQ1liNllKNDZBUk1EeFc1cWVsR2taaFAzZVp2blM0WFdhcGw0NkltUkxJX1hwZ0tiTUJ1UHdKang1SGpySzRVakVv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:00 AM</span></div>
-<div class="news-title">Hamilton’s 2 points help Devils defeat struggling Panthers</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPNnpveXdfOG0yS2diUkhmV053c1E5a3pGVDFYVnlEMHRyMWZPSmVBSkY5MXQ4WUE1bHBRUk5oV0lXbVAxN2pMMUJsNXZvUVp1U2dJZUxjR1BGNGNnYnFhMmx4WjMxM0JDbzdCMWlWeVhyM0ZRdWdFcERFSEpOSFlRM194LTIyV3FtRjJaZ3ZJaFpCc2JpNHpONnN6WGVseFRUeGRfRmFsNFFvdGtLNlNhUFY4bGlVdFpUazcyVS1JNA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Jack Hughes, Devils deal Panthers’ playoff hopes another blow</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPNnpveXdfOG0yS2diUkhmV053c1E5a3pGVDFYVnlEMHRyMWZPSmVBSkY5MXQ4WUE1bHBRUk5oV0lXbVAxN2pMMUJsNXZvUVp1U2dJZUxjR1BGNGNnYnFhMmx4WjMxM0JDbzdCMWlWeVhyM0ZRdWdFcERFSEpOSFlRM194LTIyV3FtRjJaZ3ZJaFpCc2JpNHpONnN6WGVseFRUeGRfRmFsNFFvdGtLNlNhUFY4bGlVdFpUazcyVS1JNA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 2:44 AM</span></div>
 <div class="news-title">Panthers Dropped 5-1 in New Jersey, Suffering Third Straight Defeat</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPRG0yZHR5WWE2R2lkVmVHUS1fbkVxb1N4NWQ0YnZScFNyc2NTT1dwOWRpR2VMQ2JWb3JLdlFHYWx4bHAtRXVrUlBlZFBLdlRFcXNDWE8zQV9XNUZqeTJmd3dyN3VoZVlBLWtURlZ6eGtyd3RzbG9TMzA2SWprMmZFZXBnRDNvRUNoMTlfSFI1V2RPZGZjRkN4SURMWnhEaVN3ZWNn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 12:02 AM</span></div>
 <div class="news-title">Nick Bjugstad Prepares For Milestone Game</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbkRCQUxoNzdkUWZGQklMQy1aLTYtcEJpLUNqaEs2eTRZdV80elZ4WkZmVS1jb0I1eVBIRndqcndGRG5Rd2VxcVppZWFFOW8wb2I5bm4ycEcza053RFZvazNwXzlZRmllME9waXpfdGlFYWNYSXdLX05wRU5PbmhPWERuWXRIeG9CWjREM1M0ZUtrYm1LT1NpZWxDZmU0b280cFRrZVVEWFFlN0U?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:18 PM</span></div>
-<div class="news-title">Game Preview: Florida Panthers At New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85ZGNYY3dCbXpyQTgwd3I5c19XUFVqMWRnZ1BLdmdpa2RfM2Y3b01KRzF3bk9OeEtHcVdoX0xjdDd4aTR2SXFyRUxxbTlCZGJtLWQ4NFVUZFhWTkc5OEd3QnUwdGZTRUVacVMzSkVYNEREN2NGSGRrSlBn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:47 PM</span></div>
-<div class="news-title">NHL Status Report: Stone out for Golden Knights against Sabres, still day to day</div></a><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE52dl9kM0Y4V3pUeFpJb0hsRWIyTmdhZGFEN1EyX05vWXEyUXZHMVRoUThwZlJJbTZvX0xNMFA5cWhhNlZZYzNpVnEza2txSkxvcjRjWGd4M0ZxbXVPX211QU9iS3lsZlRj?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Game Preview: Florida Panthers At New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE52dl9kM0Y4V3pUeFpJb0hsRWIyTmdhZGFEN1EyX05vWXEyUXZHMVRoUThwZlJJbTZvX0xNMFA5cWhhNlZZYzNpVnEza2txSkxvcjRjWGd4M0ZxbXVPX211QU9iS3lsZlRj?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Transport Topics</span><span class="news-date">Mar 3 &middot; 9:15 PM</span></div>
 <div class="news-title">ParkPro Adds Truck Parking at NHL’s Florida Panthers Arena</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPNUNUY0cwcEhXcjZ6RjFRXzhObk83UG05RUFFUjV1X21uS2EtVU1OalFaVmN5amY0eWpYRG1uV01iaGhXMXNvZUk4VklBM0dSV1hVR1Y4cF9YdWpqeGg5THluVTRtSDI1cFhFZ3RqSUtRd0FsUEIzaXk5NDdPN0JPSGZoNU1fNXNQekE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:22 PM</span></div>
@@ -1264,12 +1278,33 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 11:20 PM</span></div>
 <div class="news-title">NHL Rumors: Florida Panthers Have Several Directions To Choose</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOZjBfLXlVMmR6aFVkRzBNV2x1c19YaVBCX1ZZYVRVMktpa1g1WXBVOVZweVRoaGZKTnI4SGxhNldBbDZzMTFpREhGYVJvWFd2VnpGSlBLUVFPQzVWUEZ6MEwyZEI1MGVVX3pMTlBtaE1NXzFiUFpKSVUxbHJsU3c3eGhVWlV0MDNnQjFMLUxFY3lneFM0R0FGWDhZNjN3UUtWbS1V?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 2 &middot; 11:14 PM</span></div>
-<div class="news-title">Blues' Robby Fabbri, Panthers' Luke Kunin Placed On Waivers</div></a></div></div>
+<div class="news-title">Blues' Robby Fabbri, Panthers' Luke Kunin Placed On Waivers</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbkVPYjlmcFFDTTh5di1vTjFibmw5clBtU0xFbWRMVzAxVHh0OExaQ1BKZzNRajhRNnVSWUJSOFdGSmdXRDFmQ2c5RWpsZU9YLXJhdTJVeU5XaENMTWVpdW5mZE5rVDBxUjE0M0FBM2k0eUQwMUs0YWx2YUhseEFPUHl3NlFKR3c3c183cWJ0MnZiUkszQVJ5aXY0eWpRaVlKNTZQS01jYVhfSU5wTTBCZ3JSQVVYY21pQVM40gHAAUFVX3lxTE91Z3pZaEFrX0tPekx1NkVKWk5YTFluM0FxVDNwcXZ2eDVad0RzWmZFdzA0ckRneXVTWUk5QW5NV2pRcTMzaU12TGo5VGl5MmFBaDlxZEU1WmktZGVTZlRGOThLVDAyc3IwUzB1ckZVMF9lZEFaQ0Zsdzd6WUhDSGhOZkNPOGo5TV9GdHNrU0JPSDE2d09CUmlPeU1uMWdqbUxuN2hISHpUMVA1TkVEX24zeE9ZVF9tc2ZsZER1VXVpZg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 2 &middot; 10:38 PM</span></div>
+<div class="news-title">NHL insider predicts Sergei Bobrovsky’s next move amid trade rumors involving Panthers goalie</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/FloridaPanthers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/FloridaPanthers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
       <a href="https://forums.hfboards.com/forums/florida-panthers.28/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Florida Panthers</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
+  </div>
+  <div class="panel" id="p-cap">
+    <div class="cap-header">
+      <h3 style="margin-bottom:0">Florida Panthers — Salary Cap</h3>
+      <div class="cap-source-links">
+        <a href="https://www.capfriendly.com/teams/panthers" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+        <a href="https://www.spotrac.com/nhl/florida-panthers/yearly" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cap-frame-wrap">
+      <iframe class="cap-frame" id="cap-iframe" src="" title="Florida Panthers Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    </div>
+    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/panthers" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1277,7 +1312,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 1:34 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:04 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1342,6 +1377,24 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
+(function(){
+  var capLoaded=false;
+  var capInput=document.getElementById('tab-cap');
+  if(!capInput) return;
+  function loadCap(){
+    if(capLoaded) return;
+    capLoaded=true;
+    var iframe=document.getElementById('cap-iframe');
+    if(iframe) iframe.src='https://www.capfriendly.com/teams/panthers';
+  }
+  capInput.addEventListener('change',loadCap);
+  // Also handle label click in case browser fires label click without change
+  var capLabel=document.querySelector('label[for="tab-cap"]');
+  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
+})();
 </script>
 <script>
 (function(){

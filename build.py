@@ -26,42 +26,42 @@ MONEYPUCK = "https://moneypuck.com/moneypuck"
 TEAM_INFO = {
     # --- Eastern Conference ---
     # Atlantic
-    "BOS": {"name": "Boston Bruins", "franchise_id": 6, "accent": "#e8b230", "subreddit": "BostonBruins", "div": "Atlantic", "espn_id": 1, "hfboards": "https://forums.hfboards.com/forums/boston-bruins.15/"},
-    "BUF": {"name": "Buffalo Sabres", "franchise_id": 19, "accent": "#6b9fff", "subreddit": "sabres", "div": "Atlantic", "espn_id": 2, "hfboards": "https://forums.hfboards.com/forums/buffalo-sabres.18/"},
-    "DET": {"name": "Detroit Red Wings", "franchise_id": 12, "accent": "#e8384f", "subreddit": "DetroitRedWings", "div": "Atlantic", "espn_id": 5, "hfboards": "https://forums.hfboards.com/forums/detroit-red-wings.34/"},
-    "FLA": {"name": "Florida Panthers", "franchise_id": 33, "accent": "#c8102e", "subreddit": "FloridaPanthers", "div": "Atlantic", "espn_id": 26, "hfboards": "https://forums.hfboards.com/forums/florida-panthers.28/"},
-    "MTL": {"name": "Montreal Canadiens", "franchise_id": 1, "accent": "#d42e42", "subreddit": "Habs", "div": "Atlantic", "espn_id": 10, "hfboards": "https://forums.hfboards.com/forums/montreal-canadiens.16/"},
-    "OTT": {"name": "Ottawa Senators", "franchise_id": 30, "accent": "#e8384f", "subreddit": "OttawaSenators", "div": "Atlantic", "espn_id": 14, "hfboards": "https://forums.hfboards.com/forums/ottawa-senators.19/"},
-    "TBL": {"name": "Tampa Bay Lightning", "franchise_id": 31, "accent": "#6b9fff", "subreddit": "TampaBayLightning", "div": "Atlantic", "espn_id": 20, "hfboards": "https://forums.hfboards.com/forums/tampa-bay-lightning.27/"},
-    "TOR": {"name": "Toronto Maple Leafs", "franchise_id": 5, "accent": "#6b9fff", "subreddit": "leafs", "div": "Atlantic", "espn_id": 21, "hfboards": "https://forums.hfboards.com/forums/toronto-maple-leafs.17/"},
+    "BOS": {"name": "Boston Bruins", "franchise_id": 6, "accent": "#e8b230", "subreddit": "BostonBruins", "div": "Atlantic", "espn_id": 1, "hfboards": "https://forums.hfboards.com/forums/boston-bruins.15/", "spotrac": "boston-bruins", "capfriendly": "bruins"},
+    "BUF": {"name": "Buffalo Sabres", "franchise_id": 19, "accent": "#6b9fff", "subreddit": "sabres", "div": "Atlantic", "espn_id": 2, "hfboards": "https://forums.hfboards.com/forums/buffalo-sabres.18/", "spotrac": "buffalo-sabres", "capfriendly": "sabres"},
+    "DET": {"name": "Detroit Red Wings", "franchise_id": 12, "accent": "#e8384f", "subreddit": "DetroitRedWings", "div": "Atlantic", "espn_id": 5, "hfboards": "https://forums.hfboards.com/forums/detroit-red-wings.34/", "spotrac": "detroit-red-wings", "capfriendly": "redwings"},
+    "FLA": {"name": "Florida Panthers", "franchise_id": 33, "accent": "#c8102e", "subreddit": "FloridaPanthers", "div": "Atlantic", "espn_id": 26, "hfboards": "https://forums.hfboards.com/forums/florida-panthers.28/", "spotrac": "florida-panthers", "capfriendly": "panthers"},
+    "MTL": {"name": "Montreal Canadiens", "franchise_id": 1, "accent": "#d42e42", "subreddit": "Habs", "div": "Atlantic", "espn_id": 10, "hfboards": "https://forums.hfboards.com/forums/montreal-canadiens.16/", "spotrac": "montreal-canadiens", "capfriendly": "canadiens"},
+    "OTT": {"name": "Ottawa Senators", "franchise_id": 30, "accent": "#e8384f", "subreddit": "OttawaSenators", "div": "Atlantic", "espn_id": 14, "hfboards": "https://forums.hfboards.com/forums/ottawa-senators.19/", "spotrac": "ottawa-senators", "capfriendly": "senators"},
+    "TBL": {"name": "Tampa Bay Lightning", "franchise_id": 31, "accent": "#6b9fff", "subreddit": "TampaBayLightning", "div": "Atlantic", "espn_id": 20, "hfboards": "https://forums.hfboards.com/forums/tampa-bay-lightning.27/", "spotrac": "tampa-bay-lightning", "capfriendly": "lightning"},
+    "TOR": {"name": "Toronto Maple Leafs", "franchise_id": 5, "accent": "#6b9fff", "subreddit": "leafs", "div": "Atlantic", "espn_id": 21, "hfboards": "https://forums.hfboards.com/forums/toronto-maple-leafs.17/", "spotrac": "toronto-maple-leafs", "capfriendly": "mapleleafs"},
     # Metropolitan
-    "CAR": {"name": "Carolina Hurricanes", "franchise_id": 26, "accent": "#e8384f", "subreddit": "canes", "div": "Metropolitan", "espn_id": 7, "hfboards": "https://forums.hfboards.com/forums/carolina-hurricanes.26/"},
-    "CBJ": {"name": "Columbus Blue Jackets", "franchise_id": 36, "accent": "#6b9fff", "subreddit": "BlueJackets", "div": "Metropolitan", "espn_id": 29, "hfboards": "https://forums.hfboards.com/forums/columbus-blue-jackets.31/"},
-    "NJD": {"name": "New Jersey Devils", "franchise_id": 23, "accent": "#e8384f", "subreddit": "devils", "div": "Metropolitan", "espn_id": 11, "hfboards": "https://forums.hfboards.com/forums/new-jersey-devils.20/"},
-    "NYI": {"name": "New York Islanders", "franchise_id": 22, "accent": "#f47d30", "subreddit": "NewYorkIslanders", "div": "Metropolitan", "espn_id": 12, "hfboards": "https://forums.hfboards.com/forums/new-york-islanders.22/"},
-    "NYR": {"name": "New York Rangers", "franchise_id": 10, "accent": "#6b9fff", "subreddit": "rangers", "div": "Metropolitan", "espn_id": 13, "hfboards": "https://forums.hfboards.com/forums/new-york-rangers.24/"},
-    "PHI": {"name": "Philadelphia Flyers", "franchise_id": 16, "accent": "#f47d30", "subreddit": "Flyers", "div": "Metropolitan", "espn_id": 15, "hfboards": "https://forums.hfboards.com/forums/philadelphia-flyers.21/"},
-    "PIT": {"name": "Pittsburgh Penguins", "franchise_id": 17, "accent": "#e8b230", "subreddit": "penguins", "div": "Metropolitan", "espn_id": 16, "hfboards": "https://forums.hfboards.com/forums/pittsburgh-penguins.23/"},
-    "WSH": {"name": "Washington Capitals", "franchise_id": 24, "accent": "#c8102e", "subreddit": "caps", "div": "Metropolitan", "espn_id": 23, "hfboards": "https://forums.hfboards.com/forums/washington-capitals.25/"},
+    "CAR": {"name": "Carolina Hurricanes", "franchise_id": 26, "accent": "#e8384f", "subreddit": "canes", "div": "Metropolitan", "espn_id": 7, "hfboards": "https://forums.hfboards.com/forums/carolina-hurricanes.26/", "spotrac": "carolina-hurricanes", "capfriendly": "hurricanes"},
+    "CBJ": {"name": "Columbus Blue Jackets", "franchise_id": 36, "accent": "#6b9fff", "subreddit": "BlueJackets", "div": "Metropolitan", "espn_id": 29, "hfboards": "https://forums.hfboards.com/forums/columbus-blue-jackets.31/", "spotrac": "columbus-blue-jackets", "capfriendly": "bluejackets"},
+    "NJD": {"name": "New Jersey Devils", "franchise_id": 23, "accent": "#e8384f", "subreddit": "devils", "div": "Metropolitan", "espn_id": 11, "hfboards": "https://forums.hfboards.com/forums/new-jersey-devils.20/", "spotrac": "new-jersey-devils", "capfriendly": "devils"},
+    "NYI": {"name": "New York Islanders", "franchise_id": 22, "accent": "#f47d30", "subreddit": "NewYorkIslanders", "div": "Metropolitan", "espn_id": 12, "hfboards": "https://forums.hfboards.com/forums/new-york-islanders.22/", "spotrac": "new-york-islanders", "capfriendly": "islanders"},
+    "NYR": {"name": "New York Rangers", "franchise_id": 10, "accent": "#6b9fff", "subreddit": "rangers", "div": "Metropolitan", "espn_id": 13, "hfboards": "https://forums.hfboards.com/forums/new-york-rangers.24/", "spotrac": "new-york-rangers", "capfriendly": "rangers"},
+    "PHI": {"name": "Philadelphia Flyers", "franchise_id": 16, "accent": "#f47d30", "subreddit": "Flyers", "div": "Metropolitan", "espn_id": 15, "hfboards": "https://forums.hfboards.com/forums/philadelphia-flyers.21/", "spotrac": "philadelphia-flyers", "capfriendly": "flyers"},
+    "PIT": {"name": "Pittsburgh Penguins", "franchise_id": 17, "accent": "#e8b230", "subreddit": "penguins", "div": "Metropolitan", "espn_id": 16, "hfboards": "https://forums.hfboards.com/forums/pittsburgh-penguins.23/", "spotrac": "pittsburgh-penguins", "capfriendly": "penguins"},
+    "WSH": {"name": "Washington Capitals", "franchise_id": 24, "accent": "#c8102e", "subreddit": "caps", "div": "Metropolitan", "espn_id": 23, "hfboards": "https://forums.hfboards.com/forums/washington-capitals.25/", "spotrac": "washington-capitals", "capfriendly": "capitals"},
     # --- Western Conference ---
     # Central
-    "CHI": {"name": "Chicago Blackhawks", "franchise_id": 11, "accent": "#e8384f", "subreddit": "hawks", "div": "Central", "espn_id": 4, "hfboards": "https://forums.hfboards.com/forums/chicago-blackhawks.30/"},
-    "COL": {"name": "Colorado Avalanche", "franchise_id": 27, "accent": "#c84060", "subreddit": "ColoradoAvalanche", "div": "Central", "espn_id": 17, "hfboards": "https://forums.hfboards.com/forums/colorado-avalanche.35/"},
-    "DAL": {"name": "Dallas Stars", "franchise_id": 15, "accent": "#00a651", "subreddit": "DallasStars", "div": "Central", "espn_id": 9, "hfboards": "https://forums.hfboards.com/forums/dallas-stars.44/"},
-    "MIN": {"name": "Minnesota Wild", "franchise_id": 37, "accent": "#2e8540", "subreddit": "wildhockey", "div": "Central", "espn_id": 30, "hfboards": "https://forums.hfboards.com/forums/minnesota-wild.39/"},
-    "NSH": {"name": "Nashville Predators", "franchise_id": 34, "accent": "#ffb81c", "subreddit": "Predators", "div": "Central", "espn_id": 27, "hfboards": "https://forums.hfboards.com/forums/nashville-predators.33/"},
-    "STL": {"name": "St. Louis Blues", "franchise_id": 18, "accent": "#4477ce", "subreddit": "stlouisblues", "div": "Central", "espn_id": 19, "hfboards": "https://forums.hfboards.com/forums/st-louis-blues.32/"},
-    "UTA": {"name": "Utah Hockey Club", "franchise_id": 28, "accent": "#69b3e7", "subreddit": "UtahHC", "div": "Central", "espn_id": 129764, "hfboards": "https://forums.hfboards.com/forums/utah-mammoth.287/"},
-    "WPG": {"name": "Winnipeg Jets", "franchise_id": 35, "accent": "#6888b0", "subreddit": "winnipegjets", "div": "Central", "espn_id": 28, "hfboards": "https://forums.hfboards.com/forums/winnipeg-jets.29/"},
+    "CHI": {"name": "Chicago Blackhawks", "franchise_id": 11, "accent": "#e8384f", "subreddit": "hawks", "div": "Central", "espn_id": 4, "hfboards": "https://forums.hfboards.com/forums/chicago-blackhawks.30/", "spotrac": "chicago-blackhawks", "capfriendly": "blackhawks"},
+    "COL": {"name": "Colorado Avalanche", "franchise_id": 27, "accent": "#c84060", "subreddit": "ColoradoAvalanche", "div": "Central", "espn_id": 17, "hfboards": "https://forums.hfboards.com/forums/colorado-avalanche.35/", "spotrac": "colorado-avalanche", "capfriendly": "avalanche"},
+    "DAL": {"name": "Dallas Stars", "franchise_id": 15, "accent": "#00a651", "subreddit": "DallasStars", "div": "Central", "espn_id": 9, "hfboards": "https://forums.hfboards.com/forums/dallas-stars.44/", "spotrac": "dallas-stars", "capfriendly": "stars"},
+    "MIN": {"name": "Minnesota Wild", "franchise_id": 37, "accent": "#2e8540", "subreddit": "wildhockey", "div": "Central", "espn_id": 30, "hfboards": "https://forums.hfboards.com/forums/minnesota-wild.39/", "spotrac": "minnesota-wild", "capfriendly": "wild"},
+    "NSH": {"name": "Nashville Predators", "franchise_id": 34, "accent": "#ffb81c", "subreddit": "Predators", "div": "Central", "espn_id": 27, "hfboards": "https://forums.hfboards.com/forums/nashville-predators.33/", "spotrac": "nashville-predators", "capfriendly": "predators"},
+    "STL": {"name": "St. Louis Blues", "franchise_id": 18, "accent": "#4477ce", "subreddit": "stlouisblues", "div": "Central", "espn_id": 19, "hfboards": "https://forums.hfboards.com/forums/st-louis-blues.32/", "spotrac": "st-louis-blues", "capfriendly": "blues"},
+    "UTA": {"name": "Utah Hockey Club", "franchise_id": 28, "accent": "#69b3e7", "subreddit": "UtahHC", "div": "Central", "espn_id": 129764, "hfboards": "https://forums.hfboards.com/forums/utah-mammoth.287/", "spotrac": "utah-hockey-club", "capfriendly": "utahhockeyclub"},
+    "WPG": {"name": "Winnipeg Jets", "franchise_id": 35, "accent": "#6888b0", "subreddit": "winnipegjets", "div": "Central", "espn_id": 28, "hfboards": "https://forums.hfboards.com/forums/winnipeg-jets.29/", "spotrac": "winnipeg-jets", "capfriendly": "jets"},
     # Pacific
-    "ANA": {"name": "Anaheim Ducks", "franchise_id": 32, "accent": "#f47d30", "subreddit": "AnaheimDucks", "div": "Pacific", "espn_id": 25, "hfboards": "https://forums.hfboards.com/forums/anaheim-ducks.41/"},
-    "CGY": {"name": "Calgary Flames", "franchise_id": 21, "accent": "#d2001c", "subreddit": "CalgaryFlames", "div": "Pacific", "espn_id": 3, "hfboards": "https://forums.hfboards.com/forums/calgary-flames.37/"},
-    "EDM": {"name": "Edmonton Oilers", "franchise_id": 25, "accent": "#ff6b2b", "subreddit": "EdmontonOilers", "div": "Pacific", "espn_id": 6, "hfboards": "https://forums.hfboards.com/forums/edmonton-oilers.38/"},
-    "LAK": {"name": "Los Angeles Kings", "franchise_id": 14, "accent": "#a2aaad", "subreddit": "losangeleskings", "div": "Pacific", "espn_id": 8, "hfboards": "https://forums.hfboards.com/forums/los-angeles-kings.42/"},
-    "SEA": {"name": "Seattle Kraken", "franchise_id": 39, "accent": "#68cfd1", "subreddit": "SeattleKraken", "div": "Pacific", "espn_id": 124292, "hfboards": "https://forums.hfboards.com/forums/seattle-kraken.275/"},
-    "SJS": {"name": "San Jose Sharks", "franchise_id": 29, "accent": "#009aa6", "subreddit": "SanJoseSharks", "div": "Pacific", "espn_id": 18, "hfboards": "https://forums.hfboards.com/forums/san-jose-sharks.43/"},
-    "VAN": {"name": "Vancouver Canucks", "franchise_id": 20, "accent": "#4080c4", "subreddit": "canucks", "div": "Pacific", "espn_id": 22, "hfboards": "https://forums.hfboards.com/forums/vancouver-canucks.36/"},
-    "VGK": {"name": "Vegas Golden Knights", "franchise_id": 38, "accent": "#b4975a", "subreddit": "goldenknights", "div": "Pacific", "espn_id": 37, "hfboards": "https://forums.hfboards.com/forums/vegas-golden-knights.257/"},
+    "ANA": {"name": "Anaheim Ducks", "franchise_id": 32, "accent": "#f47d30", "subreddit": "AnaheimDucks", "div": "Pacific", "espn_id": 25, "hfboards": "https://forums.hfboards.com/forums/anaheim-ducks.41/", "spotrac": "anaheim-ducks", "capfriendly": "ducks"},
+    "CGY": {"name": "Calgary Flames", "franchise_id": 21, "accent": "#d2001c", "subreddit": "CalgaryFlames", "div": "Pacific", "espn_id": 3, "hfboards": "https://forums.hfboards.com/forums/calgary-flames.37/", "spotrac": "calgary-flames", "capfriendly": "flames"},
+    "EDM": {"name": "Edmonton Oilers", "franchise_id": 25, "accent": "#ff6b2b", "subreddit": "EdmontonOilers", "div": "Pacific", "espn_id": 6, "hfboards": "https://forums.hfboards.com/forums/edmonton-oilers.38/", "spotrac": "edmonton-oilers", "capfriendly": "oilers"},
+    "LAK": {"name": "Los Angeles Kings", "franchise_id": 14, "accent": "#a2aaad", "subreddit": "losangeleskings", "div": "Pacific", "espn_id": 8, "hfboards": "https://forums.hfboards.com/forums/los-angeles-kings.42/", "spotrac": "los-angeles-kings", "capfriendly": "kings"},
+    "SEA": {"name": "Seattle Kraken", "franchise_id": 39, "accent": "#68cfd1", "subreddit": "SeattleKraken", "div": "Pacific", "espn_id": 124292, "hfboards": "https://forums.hfboards.com/forums/seattle-kraken.275/", "spotrac": "seattle-kraken", "capfriendly": "kraken"},
+    "SJS": {"name": "San Jose Sharks", "franchise_id": 29, "accent": "#009aa6", "subreddit": "SanJoseSharks", "div": "Pacific", "espn_id": 18, "hfboards": "https://forums.hfboards.com/forums/san-jose-sharks.43/", "spotrac": "san-jose-sharks", "capfriendly": "sharks"},
+    "VAN": {"name": "Vancouver Canucks", "franchise_id": 20, "accent": "#4080c4", "subreddit": "canucks", "div": "Pacific", "espn_id": 22, "hfboards": "https://forums.hfboards.com/forums/vancouver-canucks.36/", "spotrac": "vancouver-canucks", "capfriendly": "canucks"},
+    "VGK": {"name": "Vegas Golden Knights", "franchise_id": 38, "accent": "#b4975a", "subreddit": "goldenknights", "div": "Pacific", "espn_id": 37, "hfboards": "https://forums.hfboards.com/forums/vegas-golden-knights.257/", "spotrac": "vegas-golden-knights", "capfriendly": "goldenknights"},
 }
 
 def accent_rgba(hex_color, alpha):
@@ -1596,6 +1596,10 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
     accent_soft_light = accent_rgba(accent, 0.08)
     subreddit = team_info["subreddit"]
     hfboards_url = team_info.get("hfboards", "https://forums.hfboards.com/")
+    spotrac_slug = team_info.get("spotrac", "")
+    capfriendly_slug = team_info.get("capfriendly", "")
+    spotrac_url = f"https://www.spotrac.com/nhl/{spotrac_slug}/yearly" if spotrac_slug else ""
+    capfriendly_url = f"https://www.capfriendly.com/teams/{capfriendly_slug}" if capfriendly_slug else ""
 
     # Build team switcher dropdown (all 4 divisions)
     div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
@@ -1790,14 +1794,16 @@ input[name="tab"]{{display:none}}
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-forums:checked~.tab-bar label[for="tab-forums"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
+#tab-forums:checked~.tab-bar label[for="tab-forums"],
+#tab-cap:checked~.tab-bar label[for="tab-cap"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
 #tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-forums:checked~#p-forums{{display:block}}
+#tab-forums:checked~#p-forums,
+#tab-cap:checked~#p-cap{{display:block}}
 
 /* Typography */
 h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}}
@@ -1964,6 +1970,18 @@ a.pname:hover{{color:var(--text-strong)}}
 .tx-other{{background:rgba(160,160,160,0.15);color:var(--text-muted)}}
 .tx-desc{{font-size:12px;color:var(--text-secondary);line-height:1.5}}
 
+/* Salary Cap */
+.cap-header{{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}}
+.cap-source-links{{display:flex;gap:8px;flex-wrap:wrap}}
+.cap-link{{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}}
+.cap-link:hover{{background:var(--bg-elevated);color:var(--text);text-decoration:none}}
+.cap-link-icon{{width:16px;height:16px;border-radius:3px}}
+.cap-link svg{{width:12px;height:12px;opacity:0.5;flex-shrink:0}}
+.cap-frame-wrap{{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}}
+.cap-frame{{width:100%;height:700px;border:none;display:block}}
+.cap-frame-fallback{{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}}
+.cap-frame-fallback h4{{color:var(--text-secondary);margin-bottom:8px;font-size:14px}}
+
 /* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
@@ -2074,6 +2092,7 @@ body{{animation:fadeIn 0.15s ease}}
   <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-forums">
+  <input type="radio" name="tab" id="tab-cap">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
@@ -2082,6 +2101,7 @@ body{{animation:fadeIn 0.15s ease}}
     <label for="tab-transactions">Transactions</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
+    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
@@ -2094,6 +2114,25 @@ body{{animation:fadeIn 0.15s ease}}
       <a href="https://www.reddit.com/r/{subreddit}/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/{subreddit}</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
       <a href="{hfboards_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — {team_name}</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
+  </div>
+  <div class="panel" id="p-cap">
+    <div class="cap-header">
+      <h3 style="margin-bottom:0">{team_name} — Salary Cap</h3>
+      <div class="cap-source-links">
+        <a href="{capfriendly_url}" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+        <a href="{spotrac_url}" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cap-frame-wrap">
+      <iframe class="cap-frame" id="cap-iframe" src="" title="{team_name} Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    </div>
+    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="{capfriendly_url}" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -2166,6 +2205,24 @@ function closeGamePanel(){{
   document.body.style.overflow='';
 }}
 document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePanel()}});
+</script>
+<script>
+// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
+(function(){{
+  var capLoaded=false;
+  var capInput=document.getElementById('tab-cap');
+  if(!capInput) return;
+  function loadCap(){{
+    if(capLoaded) return;
+    capLoaded=true;
+    var iframe=document.getElementById('cap-iframe');
+    if(iframe) iframe.src='{capfriendly_url}';
+  }}
+  capInput.addEventListener('change',loadCap);
+  // Also handle label click in case browser fires label click without change
+  var capLabel=document.querySelector('label[for="tab-cap"]');
+  if(capLabel) capLabel.addEventListener('click',function(){{setTimeout(loadCap,50)}});
+}})();
 </script>
 <script>
 (function(){{

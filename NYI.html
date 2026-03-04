@@ -107,14 +107,16 @@ input[name="tab"]{display:none}
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
 #tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"],
+#tab-cap:checked~.tab-bar label[for="tab-cap"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
 #tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-forums:checked~#p-forums{display:block}
+#tab-forums:checked~#p-forums,
+#tab-cap:checked~#p-cap{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -281,6 +283,18 @@ a.pname:hover{color:var(--text-strong)}
 .tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
 .tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
+/* Salary Cap */
+.cap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.cap-source-links{display:flex;gap:8px;flex-wrap:wrap}
+.cap-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:all 0.15s ease}
+.cap-link:hover{background:var(--bg-elevated);color:var(--text);text-decoration:none}
+.cap-link-icon{width:16px;height:16px;border-radius:3px}
+.cap-link svg{width:12px;height:12px;opacity:0.5;flex-shrink:0}
+.cap-frame-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-surface)}
+.cap-frame{width:100%;height:700px;border:none;display:block}
+.cap-frame-fallback{display:none;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:13px}
+.cap-frame-fallback h4{color:var(--text-secondary);margin-bottom:8px;font-size:14px}
+
 /* Mobile tabs — handled in 600px breakpoint above */
 
 /* Standings sub-toggle */
@@ -366,7 +380,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>New York Islanders</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 1:34 AM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 2:05 AM ET</div>
       </div>
     </div>
   </div>
@@ -391,6 +405,7 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
   <input type="radio" name="tab" id="tab-forums">
+  <input type="radio" name="tab" id="tab-cap">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
@@ -399,6 +414,7 @@ body{animation:fadeIn 0.15s ease}
     <label for="tab-transactions">Transactions</label>
     <label for="tab-news">News</label>
     <label for="tab-forums">Forums</label>
+    <label for="tab-cap">Salary Cap</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">21</div><div class="sm-label">Games Left</div></div>
@@ -411,21 +427,21 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-0" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 4</span><span class="gp-matchup">NYI @ Anaheim</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 6-pt lead over ANA</li><li>ANA projected to make playoffs (93% odds)</li><li>ANA is hot — 7-3-0 in last 10</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 6-pt lead over ANA</li><li>ANA projected to make playoffs (91% odds)</li><li>ANA is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-24-3</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-9-1</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">211</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-1')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-1" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 5</span><span class="gp-matchup">NYI @ Los Angeles</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>First meeting of the season</li><li>NYI holds a 13-pt lead over LAK</li><li>LAK is on the bubble (28% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>NYI holds a 13-pt lead over LAK</li><li>LAK is on the bubble (27% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-2')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">30-25-4 &middot; 64p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-2" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 7</span><span class="gp-matchup">NYI @ San Jose</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 11-pt lead over SJS</li><li>SJS is on the bubble (31% playoff odds)</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 11-pt lead over SJS</li><li>SJS is on the bubble (37% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-25-4</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">64</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-3</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-4-1</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">186</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-3')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -439,7 +455,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-4" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 13</span><span class="gp-matchup">NYI vs Los Angeles</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>First meeting of the season</li><li>NYI holds a 13-pt lead over LAK</li><li>LAK is on the bubble (28% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
+  <ul class="matchup-notes"><li>First meeting of the season</li><li>NYI holds a 13-pt lead over LAK</li><li>LAK is on the bubble (27% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-5')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">vs Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-29-7 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></div>
@@ -460,14 +476,14 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-7" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 19</span><span class="gp-matchup">NYI @ Ottawa</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 8-pt lead over OTT</li><li>OTT is on the bubble (39% playoff odds)</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 8-pt lead over OTT</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-4</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">201</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-8')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-18-9 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-8" style="display:none">
   <div class="gp-header"><span class="gp-date">Mar 21</span><span class="gp-matchup">NYI @ Montréal</span><span class="gp-loc">Away</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>MTL projected to make playoffs (85% odds)</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>MTL projected to make playoffs (79% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-18-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-7-7</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-3-2</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">213</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-9')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Mar 22</span><span class="game-opp">vs Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-21-8 &middot; 70p</span><span class="game-loc loc-home">Home</span></div></div>
@@ -516,7 +532,7 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-15" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 3</span><span class="gp-matchup">NYI vs Philadelphia</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>Season series: 1-0-2</li><li>NYI holds a 8-pt lead over PHI</li><li>PHI is fading — only 11% playoff odds</li></ul>
+  <ul class="matchup-notes"><li>Season series: 1-0-2</li><li>NYI holds a 8-pt lead over PHI</li><li>PHI is fading — only 12% playoff odds</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>PHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-21-11</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-9-7</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-12-4</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-16')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">@ Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></div>
@@ -537,14 +553,14 @@ body{animation:fadeIn 0.15s ease}
 </div>
 <div class="game-detail-data" id="sg-18" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 11</span><span class="gp-matchup">NYI vs Ottawa</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 8-pt lead over OTT</li><li>OTT is on the bubble (39% playoff odds)</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>NYI holds a 8-pt lead over OTT</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-4</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">201</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-19')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 12</span><span class="game-opp">vs Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-18-9 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
 </div>
 <div class="game-detail-data" id="sg-19" style="display:none">
   <div class="gp-header"><span class="gp-date">Apr 12</span><span class="gp-matchup">NYI vs Montréal</span><span class="gp-loc">Home</span></div>
-  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>MTL projected to make playoffs (85% odds)</li></ul>
+  <ul class="matchup-notes"><li>NYI leads season series 1-0-0</li><li>Separated by only 0 pts — a direct rival</li><li>MTL projected to make playoffs (79% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>NYI</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">35-21-5</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-18-9</td></tr><tr><td class="cmp-stat-l">75</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">17-10-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">18-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-7-7</td></tr><tr><td class="cmp-stat-l">8-2-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-3-2</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">213</td></tr><tr><td class="cmp-stat-l">172</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
 </div><div class="game-card" onclick="openGamePanel('sg-20')">
 <div class="game-summary"><div class="game-left"><span class="game-date">Apr 14</span><span class="game-opp">vs Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></div>
@@ -564,12 +580,12 @@ body{animation:fadeIn 0.15s ease}
 <h3>Next Game Impact</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
-<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">80.8%</td><td class="r sc-up">+6.1%</td><td class="r">99</td><td class="r">32.9%</td><td class="r">1.7%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">80.5%</td><td class="r sc-up">+5.8%</td><td class="r">99</td><td class="r">32.0%</td><td class="r">1.9%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">73.5%</td><td class="r sc-down">-1.1%</td><td class="r">98</td><td class="r">29.3%</td><td class="r">1.4%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">67.5%</td><td class="r sc-down">-7.2%</td><td class="r">97</td><td class="r">27.1%</td><td class="r">1.6%</td></tr></tbody></table></div>
+<tbody><tr><td class="sc-label">Win (REG)</td><td class="r">81.3%</td><td class="r sc-up">+6.1%</td><td class="r">99</td><td class="r">32.5%</td><td class="r">1.9%</td></tr><tr><td class="sc-label">Win (OT)</td><td class="r">79.9%</td><td class="r sc-up">+4.6%</td><td class="r">99</td><td class="r">32.0%</td><td class="r">2.0%</td></tr><tr><td class="sc-label">Loss (OT)</td><td class="r">75.1%</td><td class="r sc-down">-0.1%</td><td class="r">98</td><td class="r">30.0%</td><td class="r">1.6%</td></tr><tr><td class="sc-label">Loss (REG)</td><td class="r">68.3%</td><td class="r sc-down">-7.0%</td><td class="r">97</td><td class="r">27.0%</td><td class="r">1.6%</td></tr></tbody></table></div>
 
 <h3 style="margin-top:28px">Eastern Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">CAR</a></td><td class="r">99.9%</td><td class="r">63.3%</td><td class="r">40.4%</td><td class="r">22.6%</td><td class="r">13.0%</td><td class="r">110</td><td class="r">90.4%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">TBL</a></td><td class="r">99.7%</td><td class="r">62.1%</td><td class="r">39.1%</td><td class="r">21.8%</td><td class="r">12.2%</td><td class="r">109</td><td class="r">76.9%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">BUF</a></td><td class="r">91.8%</td><td class="r">39.6%</td><td class="r">15.8%</td><td class="r">6.6%</td><td class="r">2.8%</td><td class="r">102</td><td class="r">10.4%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">PIT</a></td><td class="r">85.7%</td><td class="r">47.1%</td><td class="r">21.4%</td><td class="r">10.7%</td><td class="r">5.2%</td><td class="r">100</td><td class="r">6.5%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">MTL</a></td><td class="r">84.9%</td><td class="r">37.1%</td><td class="r">15.6%</td><td class="r">6.7%</td><td class="r">3.0%</td><td class="r">101</td><td class="r">6.5%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">DET</a></td><td class="r">81.4%</td><td class="r">37.2%</td><td class="r">16.7%</td><td class="r">7.4%</td><td class="r">3.5%</td><td class="r">100</td><td class="r">4.3%</td></tr><tr class="sens-row"><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">NYI</a></td><td class="r">74.7%</td><td class="r">30.1%</td><td class="r">10.7%</td><td class="r">4.2%</td><td class="r">1.6%</td><td class="r">98</td><td class="r">2.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">BOS</a></td><td class="r">61.9%</td><td class="r">25.5%</td><td class="r">11.1%</td><td class="r">5.0%</td><td class="r">2.2%</td><td class="r">97</td><td class="r">1.5%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">CBJ</a></td><td class="r">45.8%</td><td class="r">21.3%</td><td class="r">9.3%</td><td class="r">4.4%</td><td class="r">2.1%</td><td class="r">95</td><td class="r">0.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">OTT</a></td><td class="r">39.4%</td><td class="r">20.7%</td><td class="r">12.3%</td><td class="r">7.1%</td><td class="r">3.9%</td><td class="r">95</td><td class="r">0.4%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">WSH</a></td><td class="r">18.6%</td><td class="r">9.5%</td><td class="r">4.8%</td><td class="r">2.5%</td><td class="r">1.2%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">PHI</a></td><td class="r">11.4%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">FLA</a></td><td class="r">3.0%</td><td class="r">1.5%</td><td class="r">0.8%</td><td class="r">0.4%</td><td class="r">0.2%</td><td class="r">87</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">NJD</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">TOR</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">NYR</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/car/carolina-hurricanes" target="_blank" rel="noopener" class="tcol-link">CAR</a></td><td class="r">99.9%</td><td class="r">63.6%</td><td class="r">40.0%</td><td class="r">22.8%</td><td class="r">13.0%</td><td class="r">110</td><td class="r">90.1%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning" target="_blank" rel="noopener" class="tcol-link">TBL</a></td><td class="r">99.7%</td><td class="r">62.4%</td><td class="r">39.3%</td><td class="r">21.6%</td><td class="r">12.0%</td><td class="r">109</td><td class="r">78.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/buf/buffalo-sabres" target="_blank" rel="noopener" class="tcol-link">BUF</a></td><td class="r">92.0%</td><td class="r">39.7%</td><td class="r">16.0%</td><td class="r">6.5%</td><td class="r">2.7%</td><td class="r">102</td><td class="r">11.1%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/pit/pittsburgh-penguins" target="_blank" rel="noopener" class="tcol-link">PIT</a></td><td class="r">86.1%</td><td class="r">47.8%</td><td class="r">21.8%</td><td class="r">10.8%</td><td class="r">5.1%</td><td class="r">100</td><td class="r">6.7%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/det/detroit-red-wings" target="_blank" rel="noopener" class="tcol-link">DET</a></td><td class="r">82.4%</td><td class="r">37.4%</td><td class="r">16.7%</td><td class="r">7.7%</td><td class="r">3.5%</td><td class="r">100</td><td class="r">4.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/mtl/montreal-canadiens" target="_blank" rel="noopener" class="tcol-link">MTL</a></td><td class="r">79.2%</td><td class="r">34.0%</td><td class="r">14.7%</td><td class="r">6.2%</td><td class="r">2.6%</td><td class="r">100</td><td class="r">4.2%</td></tr><tr class="sens-row"><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyi/new-york-islanders" target="_blank" rel="noopener" class="tcol-link">NYI</a></td><td class="r">75.3%</td><td class="r">29.9%</td><td class="r">10.9%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">98</td><td class="r">2.5%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/bos/boston-bruins" target="_blank" rel="noopener" class="tcol-link">BOS</a></td><td class="r">62.8%</td><td class="r">26.2%</td><td class="r">11.4%</td><td class="r">4.9%</td><td class="r">2.2%</td><td class="r">97</td><td class="r">1.6%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cbj/columbus-blue-jackets" target="_blank" rel="noopener" class="tcol-link">CBJ</a></td><td class="r">46.1%</td><td class="r">21.7%</td><td class="r">9.6%</td><td class="r">4.4%</td><td class="r">2.0%</td><td class="r">95</td><td class="r">0.6%</td></tr><tr class=""><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ott/ottawa-senators" target="_blank" rel="noopener" class="tcol-link">OTT</a></td><td class="r">41.1%</td><td class="r">21.3%</td><td class="r">12.3%</td><td class="r">7.0%</td><td class="r">3.9%</td><td class="r">95</td><td class="r">0.3%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wsh/washington-capitals" target="_blank" rel="noopener" class="tcol-link">WSH</a></td><td class="r">19.1%</td><td class="r">9.4%</td><td class="r">4.8%</td><td class="r">2.5%</td><td class="r">1.3%</td><td class="r">91</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/phi/philadelphia-flyers" target="_blank" rel="noopener" class="tcol-link">PHI</a></td><td class="r">11.5%</td><td class="r">4.4%</td><td class="r">1.7%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">90</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/fla/florida-panthers" target="_blank" rel="noopener" class="tcol-link">FLA</a></td><td class="r">3.2%</td><td class="r">1.5%</td><td class="r">0.9%</td><td class="r">0.5%</td><td class="r">0.2%</td><td class="r">87</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/tor/toronto-maple-leafs" target="_blank" rel="noopener" class="tcol-link">TOR</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">85</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nj/new-jersey-devils" target="_blank" rel="noopener" class="tcol-link">NJD</a></td><td class="r">0.9%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers" target="_blank" rel="noopener" class="tcol-link">NYR</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">77</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
@@ -1161,7 +1177,9 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Marshall Warren to Bridgeport (AHL). Activated G Ilya Sorokin from injured reserve. Assigned G Marcus Hogberg to Bridgeport.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNRHdiQkszSTZSR3JYcWlDak9BN1FBdkd5c182cXR3d21TWkxDNWg1SllVMi1nSzUzd2lXcTFFdURnaXBFRTZaRzROdTRKNHNMTURkZjRvZVNRaGRqekNyY0JDeVRGNU9XcUpEMWZmU0JoOEhiZFUzeERsdUZsdE9iVWE1eFBYZUdmb2h1eU9fRzg2UXVPekNVYWdwODlrem5PUmFnUzVPM3c0ODlrdDNIOUU2Ul9SSDVGSllieDR1c01JeWF5Yy1aeTh3?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE55UWlzd0hReU5NQjJpcE1rX3Yxc3ZGY0NWMmZUdWEwaV9YZlBucElRWVdKbEZNQm51R1hjS2RialV0TVRxUm1WYXo4cThKYU5GaUh3d25STzllWVI0X0xSQ05XaC0tNjlXNnB0eV95OEZpXzNNbTdDaEtrbS0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:52 AM</span></div>
+<div class="news-title">Game Preview: Islanders at Ducks Mar. 4</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNRHdiQkszSTZSR3JYcWlDak9BN1FBdkd5c182cXR3d21TWkxDNWg1SllVMi1nSzUzd2lXcTFFdURnaXBFRTZaRzROdTRKNHNMTURkZjRvZVNRaGRqekNyY0JDeVRGNU9XcUpEMWZmU0JoOEhiZFUzeERsdUZsdE9iVWE1eFBYZUdmb2h1eU9fRzg2UXVPekNVYWdwODlrem5PUmFnUzVPM3c0ODlrdDNIOUU2Ul9SSDVGSllieDR1c01JeWF5Yy1aeTh3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:27 AM</span></div>
 <div class="news-title">What A Win Against The Anahiem Ducks Would Mean For Surging Islanders</div></a><a href="https://news.google.com/rss/articles/CBMirgJBVV95cUxONWNQVWtJQ3M5ajBUZVZoMXNTaGZBcFRENHJ6RUZyMW14WTA3c0ZRd1VTaUVqaDJrVzNNd2E5WWpRZ25oRHI0a0JNcF93RzI5eWpxalhscTYyeDIwMmd4Q3pjZGViUl9udzFPcmdSbEpwbUgwWDF0RzlYRXVmTnhsWEtnUlBxQnNtdkxpbTZYU2JORE9laUF0QWZnRmNkUmlxSmJ2UTJ1bWRaNlYwRlJ0bVdjLXpKQ3F3dnU3RU1ObmtORUpXSDlxNWQ0c1MxWDF1b0M4OUpKOERrcFVFRTRJcE15NEJRNnJWN2NsTm9WTHBIWG05a29aVzhnN21xaGh1Rmtqd1p3YlplNDcwTXE1SUZ2MmZKVHh1OTBDQVdFanlKYVRKejhHb2xHYjBvZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">12News</span><span class="news-date">Mar 4 &middot; 4:32 AM</span></div>
@@ -1179,7 +1197,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 12:02 AM</span></div>
 <div class="news-title">Islanders close to trade for $6 million Canucks forward, but get bad Tyler Myers news</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNNDIzUDlMU0l4eGRkRWh6ZUxBNi1VRWt5TjBSYkEyblFsYmJUU040MzkxN3NyRTh5eDdZQ2RRN1dpSVZiSmR3NVpVMEZGb2k2VW5vOGFmVjBrZS0xT2o2ZU5fQmcxMzNKOXVsM3RGcGhuRGhycDdzdG1HQkl4N3VlV2VGckpucFRqbk1uc1k2ak00SWo0NFlPcnlKQzQyblJG?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">canadiansportscene.com</span><span class="news-date">Mar 3 &middot; 11:23 PM</span></div>
-<div class="news-title">Islanders defenseman Matt Schaefer named NHL First Star of the Week</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUS1LNVJOVHgtYm9DUmdtbHk1QldHT0Q2dnU1VkpNMHJpdkVQNWFWTnJhYnUyNjRyajFHQjRDVHpmYlpwQ1dGcmR5X0tYdjM5eF93STF4ZUoxTTBmcXVTWkExMG9qTUF2WHJaaGgtZ2lxWFl2aDZIUFUwSVBHNVM2S3dENzE0cl9PTGd0dTJUcmFwRGNKN1FuNnEyTDhjU1FpTDFoUnpYVG5fNzZucWhKb290MEpNX2gyeWlCZTdiMTVEV2s?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Islanders defenseman Matt Schaefer named NHL First Star of the Week</div></a><a href="https://news.google.com/rss/articles/CBMirAJBVV95cUxQSlllaE50WW5JSWc4QUFiMUdSRUdwMGc1R19iRFpIdERLa1JiV1AtUkh2X0ZyR1paM1lkTjdPS2RseWRYNk9qY0hfdFl6VVpxSzE2SGM1RHlvZTVLakU0SDZORFFSMl9NeXB2QjZzdkVrdmN4MnVyQTBqMEJpb0RmUGdQazY4bXNlV2hwZzVtM0RWLVhFVzM1dVNqMWxxbVpPWFYyZXNfcHpNZ2MzRVUxOV9xWGxhMDVkUWpWTnZhNG9WWXBuZXlXVi05RlM4QVMtLWZEZ3ZPeFlIb0N0SXQtYzlDMHdsb2N1M1ZfODZQUlhVRGRhZVBTZFo1UkNWa3lxX3RFS2pYZ3E4TmZtQjhsOVZ2Y3ZLVTFTVHVJSzhIMmQ2R2dxV2JJUks0YlU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Reuters Connect</span><span class="news-date">Mar 3 &middot; 11:13 PM</span></div>
+<div class="news-title">NHL: New York Islanders at Montreal Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUS1LNVJOVHgtYm9DUmdtbHk1QldHT0Q2dnU1VkpNMHJpdkVQNWFWTnJhYnUyNjRyajFHQjRDVHpmYlpwQ1dGcmR5X0tYdjM5eF93STF4ZUoxTTBmcXVTWkExMG9qTUF2WHJaaGgtZ2lxWFl2aDZIUFUwSVBHNVM2S3dENzE0cl9PTGd0dTJUcmFwRGNKN1FuNnEyTDhjU1FpTDFoUnpYVG5fNzZucWhKb290MEpNX2gyeWlCZTdiMTVEV2s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 3 &middot; 10:59 PM</span></div>
 <div class="news-title">Islanders in ‘serious discussions’ with Canucks about Conor Garland, Tyler Myers: report</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9xVGotUURpZVV6YWp4a0ZObkRUTFktX3BEV1JvNGlKX241Skk1QkxRR2VBYnJYMmJ6dEh0VTNKSG9NSXpVMVVoLTU5OF83T2MzVXZpOEN4LXNwQTRSREw2YW9ORnJrMFoySTFDZ01qNkZFSHdhSTEzajN0dFVjUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:45 PM</span></div>
@@ -1191,8 +1211,12 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:51 PM</span></div>
 <div class="news-title">New York Islanders vs Anaheim Ducks Prediction, 3/4/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMisAJBVV95cUxPRVlmQXBMUUlIbnpCdjB1cjRSdzRQR0NFLVFHcEI5UVRYd0FPdl9hcHpGZC1yZXBfM0E0MDNFWVFqRU1mOGVFNVY0a1VuTHQ1eE1OSjQ2RmhqcEkxREpCaGFtT3NiWlc1VVVPU0lIT2QyamNXeFMwZUVwSlZOY1ZaZXFKNzRyUHp1aC0zbUI3WlNOSExDYl9YaFlNM0h0ZDFJTjd1MzdjYmdhRE05MGFIZHd5UU1oblpCd1c5UlhMdGhVUW03RkVWZWZDZU5WQ0pkU29LcVl2cll0aUlHZ2hDWTY5eDJPRDNyTDFGNWItT2cwc1FacHNIVlZzWmcwazBkbWlnZ2h6M0NLWE1iRVhubEs2cmlkX1JKQlFLd3liclBLVzFTNG1OVHhYMHdYTHFo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">5newsonline.com</span><span class="news-date">Mar 3 &middot; 9:29 PM</span></div>
+<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMipwJBVV95cUxOMkF2Qjc5OEo0TjJVamh1UlphVkt4ZERwTjNMTTUxaGFqTVpzMUp2SjVRSlNMQjBoOXh5NzZyNUtUWmswVlotUlBFN3pDT0hXclV2YVZabWVYYTFURDdjVXlmcmd0NnA2Q3JBd3JnczYwT1hnX19lMjFZQWZqY2xUSmJJYXdLMnlYRWxRX1p6Vmw1ZVpfVFhOLXpjT01PQm5UbFloVGotX1RWRWZZTWlZMTZJMW5TdjVwemJvR1AtMy1PU010amRCcmM0MzNZNzN0a0cta2pwdjFTenEzVTBYYkJfRktwLXgwRWZDcVBkVlN0VHBUWmFUQjBlRzJqZ3IxUjhMVG9oYVBkS05uQlRMSHdJdE9uc0Y2cUQxVUd0QUx4c3BHLTZv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">KSDK</span><span class="news-date">Mar 3 &middot; 9:25 PM</span></div>
 <div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxONDctMVlJU0RxOHVrVGhiaTk0UXE0NFpHdjg1azg5aGc2eFVDdHNHLWxtOWN5OU9KZk91WTZGUlFReFhrUlJ0S2dwYm5hZHEzS1NBbEpYRnlHTktsUEN3d0dEUXBZZWt2eWh3RVZVTjU2cm1hMFJlV1lldUlpUDJPRG50R25JcC1yQmp1S2lDNHdNUnhLTVN0SlE3cFNuLTZHd3V5YjBlaTYtemxFX0p6WURrNVdpS0Rzek5zSXR3eE9kWlp3cDMtcW1pTXRXSnRKOXg4TW5XTDk4RUlOWnVrWlZEYVpmRGJBcEkyZ1BjV1lWcU9NSUtNMnZOWVVlWnM5SnhtTDhOUUpYVFUzOWtPNzcyVV9keWFoNTd0QUduMVhhUE03ZnlMXw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">fox61.com</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
+<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMirgJBVV95cUxQelhsQ1dDTVVfQzVIVG4zRmRLRVZEN2JCZzhsQ05iLTJULTlSY0EtaGpSVHBSZDFNdGJ4aVFIcVpobFBpN3JMenluMk9PeUN2aUxjRXo1Z3FKVFprbUY2QTBvQk1BRUdJeXFWWVpkNGJwbWlrNEJweTl0a1pmRGMzMjAxaEhmSjVFczVsRVhZa0hFWmcxRWRXQl9KSUpUX2ZSZGxaaHYxVzVaS0VBTmtkVUdmLUhvb3loaXNIRkNRcno2aUtBYWQ5amlMWUYzbVB5RVVoQUhIdm9selJ2cWdHemZLS2EyX1p3THBKWTNMNkRGTE9vVUJZeEtWQ1ozSVo2MTVPSi15VEFWQlRaUnN3MFp5NF9FTWVxWDM4MURfT1kzUDNYYWR3VmpBSjdHdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">wfmynews2.com</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
 <div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMitAJBVV95cUxPdHpxRGlkY1pIOHkyS1pTNGVGUEJTTDViaFNyWkE1S2VQbWQwVWwtc19IYUNaaElOZ1QtcEJ1dDMxT3dtOHY2elRIQkJ3YzZiOWllUUxOanZUanRkSEVvTVRxRnpHUmR3bkZ0aExJR1NXSWxFSGhjM3JvVERLWkRmc0owUHlzV0NQcTlpYmw3WFVOTUMtUUw5R3E3dzF0M2xDejZuS2hXQW01eEVURlF6RWZIMmh5YzNVZzlwVVd6cWFkNVM1VG8tZUcwNTl3SkRvWFRuMTV6ckNxNlQtbGZtazlWTWRWcngyZGo1dlh4OFhDZUdNS3FSbWllREE4MlhBVnNLelItblZYT25JbjF5MGs1WWdTcjEtSzNuSjhRbjFubDVCQ2xiUEtGMEZtTkYwc1FIeQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">firstcoastnews.com</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
 <div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPNWNKandxdElPRzY5b1huSThqTFRBM2Z5Mmo0dHE0NXFkYk5pMHZtRnIzSUotMGZsTmpCWDhVUTFsSjBqOWVnQl9EY2Noa3dQMU5WUFN2NHlfTHVWM3dubjB1TXRaemFORjhVQWdxM2pJNHN4RzNvM1JBZGMxMDgtV2R3MnhlWGVUampKSXBodEszbUF2X181bG10OFdXa2NsYTNremFPRlo?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1203,20 +1227,31 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 7:25 PM</span></div>
 <div class="news-title">Islanders’ 5-on-5 Struggles Continue to Limit Stanley Cup Potential</div></a><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBEQnl4UkVRc2JKWTE5Z29NRnhLMVYwa0dpZDRiOG5rUFRPcE5XTUlqMTlTdVItS2FnNk9FbkVfalpWNzd6ZUczdXdMbnhaWFV5Sm8zZVBvTVNKSjJEVmJOSmFRZWl3OVEwaFAwZ2J3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:21 PM</span></div>
-<div class="news-title">Alex Jefferies’ Path to Pro</div></a><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOM0NXUGRzTWFYbGJJWnhNbDRpQkpoRVpIei1uaGo5NUhwdHZTN011UWJjcmgyekVuSGxQUURpcTNzRF9oUHBBVFBaQllNaWo0YWdJbDVITkhFSm9hUkNOcV9kRnVna0FndXc4N1FYYmxxMjdPTjMtb2RETGdhdFAwM25FYWNGUTd6MWRhU0Z6cjEyVlNYLXYxR2FOY1FMRWs4Wnp3VXAyR3ZES0RZMGJZeWtKQXRWSVNZbjE4ZXcwbnVZWklrb1l1ckd6aDZEVG1tQ1dTdUVR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:22 PM</span></div>
-<div class="news-title">Islanders Sought Dmitri Voronkov In Noah Dobson Trade Talks — Could They Revisit?</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxON2wycmpVTkg2TFRGenprSjluZ3VuVmRJY3luQTc0b0NrSVBlNVhjSXFzYjlEcklleXc3R3lSZk50ZG5YNFFUb19kcmdjMGdpSUFPWjFVXzdyQ0Q2WXRCRG55cENKYmx5ZGdRdE9kU2trT3NlN19wcVhQRFhZQzdIREhEYno?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:46 PM</span></div>
-<div class="news-title">NHL Rumors: New Team Emerging for Blues' Jordan Kyrou</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQOUNYVWpmbHpTNGk2SEQ3UXpCSy05Q01nNnhwSURPS3pjY2kwYnBrSWEyVGdFb2RpMzRmRlRzR0RTWU1uVGVsNGpfWDdiazFYZ0c3V09pWEh5VjRVeGp3WjRGRllPMWdlcTF0Z2VYY3hjQm1UMmFKeTZ3NEJsM18tUy15NFVRN3M1SG92ckpId1ltczhtUllIN1lDUHNsTlk2QlNDTjNrYnNSQXVQYWRR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NY Sports Day</span><span class="news-date">Mar 3 &middot; 12:03 PM</span></div>
-<div class="news-title">Islanders Trade Rumors: Owen Tippett Could Be A Strong Fit On Top Line</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a></div></div>
+<div class="news-title">Alex Jefferies’ Path to Pro</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/NewYorkIslanders/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/NewYorkIslanders</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
       <a href="https://forums.hfboards.com/forums/new-york-islanders.22/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — New York Islanders</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
+  </div>
+  <div class="panel" id="p-cap">
+    <div class="cap-header">
+      <h3 style="margin-bottom:0">New York Islanders — Salary Cap</h3>
+      <div class="cap-source-links">
+        <a href="https://www.capfriendly.com/teams/islanders" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=capfriendly.com&sz=32" alt="" class="cap-link-icon">CapFriendly
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+        <a href="https://www.spotrac.com/nhl/new-york-islanders/yearly" target="_blank" rel="noopener" class="cap-link">
+          <img src="https://www.google.com/s2/favicons?domain=spotrac.com&sz=32" alt="" class="cap-link-icon">Spotrac
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8M10 2L2 10"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cap-frame-wrap">
+      <iframe class="cap-frame" id="cap-iframe" src="" title="New York Islanders Salary Cap — CapFriendly" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    </div>
+    <p class="sub-note" style="margin-top:10px;text-align:center">Cap data via CapFriendly &mdash; <a href="https://www.capfriendly.com/teams/islanders" target="_blank" rel="noopener">open in full tab</a> if the embed doesn't load</p>
   </div>
 </div>
 <div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
@@ -1224,7 +1259,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 1:34 AM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 2:05 AM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1289,6 +1324,24 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+// Lazy-load the cap iframe only when the Salary Cap tab is first clicked
+(function(){
+  var capLoaded=false;
+  var capInput=document.getElementById('tab-cap');
+  if(!capInput) return;
+  function loadCap(){
+    if(capLoaded) return;
+    capLoaded=true;
+    var iframe=document.getElementById('cap-iframe');
+    if(iframe) iframe.src='https://www.capfriendly.com/teams/islanders';
+  }
+  capInput.addEventListener('change',loadCap);
+  // Also handle label click in case browser fires label click without change
+  var capLabel=document.querySelector('label[for="tab-cap"]');
+  if(capLabel) capLabel.addEventListener('click',function(){setTimeout(loadCap,50)});
+})();
 </script>
 <script>
 (function(){
