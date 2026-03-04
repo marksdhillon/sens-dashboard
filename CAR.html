@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" alt="Carolina Hurricanes" class="team-logo">
       <div>
         <h1>Carolina Hurricanes</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -988,8 +1008,31 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated D Charles-Alexis Legault from injured reserve and sent him to Chicago (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 29</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Joel Nystrom to Chicago (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Viktor Neuchev from Buffalo Sabres for D Gavin Bayreuther.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Jaccob Slavin from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Joel Nystrom to Chicago (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:35 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:56 AM</span></div>
 <div class="news-title">Canucks Close Two-Game Homestand with Canes in Town on Wednesday Night</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxPdGxtYUs0MGRvRnhOVW5QQVEwNTFiSjZ4YlNYMUhMajhrZ21zYy1xbE9rRF83clpyYVg3SGZDQmFpT1N2RnhPYjNNR0xtNzJUSnFpMDk3UlVhdGZnR2RFYURvY01EWjVDOFBsTmdteS0yZ1FrTHVnZkhTMjZfT3U0cVVyNy03bnFhU0RMTnhGMnNFRzZ5dF9OQ3JRcEp4Ynh1cTNzOTBiV3VBTlc0NGdhY290aFlOaWNJTm9ZYko3U3diUXNsRWRNVHJhaU1qTllDQW9LYzEwUUdVdVE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:49 PM</span></div>
 <div class="news-title">Carolina Hurricanes vs Vancouver Canucks Prediction, 3/4/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZ1NjV1NrZXpQVUx2dlYzb1RuV0prS08xMDBKbldXcmZHeHJpSENWLVFMSTNoX3dkbzBPNmtqYVltdlZtM3p5N2FpczJxQWx1YnJOUmdnLXdRaWhsOU5mYkpNeUZ1UUFXUUdmZnpOZk85am1aYUo4VkM5NTQtVlc0UXg0TzRkbk9ZWldZ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1006,7 +1049,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 2:12 PM</span></div>
 <div class="news-title">Daccord makes 35 saves, Kraken end Hurricanes’ point streak at 12</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFA2bzRBaGZHSmQwamJiN0JnQTcyQklMckFKQkVxcmgxWnYyaVdkYkszTHk4eGVIUXVYcDFUVWRjTmFrNkkzYkQ2WDh1a1lYeHZZQ0ExMHBUeWVFTTVQWGZZazhNd21fWnZWTjBaelRfMEdSUUFGS3ZvZDJBc1Q?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFA2bzRBaGZHSmQwamJiN0JnQTcyQklMckFKQkVxcmgxWnYyaVdkYkszTHk4eGVIUXVYcDFUVWRjTmFrNkkzYkQ2WDh1a1lYeHZZQ0ExMHBUeWVFTTVQWGZZazhNd21fWnZWTjBaelRfMEdSUUFGS3ZvZDJBc1Q?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:50 AM</span></div>
 <div class="news-title">Recap: Canes Come Up Short In Seattle</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9haDZwTUppSnNjN0NhRG1DdjFESVk4bTloMGRvQ0RnblNmUmNfaUNGV05Gbl9OZXRxVGYtLU02Rnk5bG9vSWlYZVFMMVpaOG9qTy0xYW9RVGVwem54MDM2b1ZXaENLYmMzMC16Qnk4d1gxRG5NdmFDa3FKY0h0ams?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 10:36 AM</span></div>
@@ -1039,16 +1082,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">NHL trade rumors, updates on Vincent Trocheck, Elias Pettersson, more</div></a><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxQTDRCdW1EODBlaGpJTlpNWTFyUWpYRndheGlOVGNFenh6azNyQWMzdi1FcXM0R2hKcGV0QXgxTTVJTHJjLWJ6YklxdHVMbFpVei05a3lIcndrLVJVYnF3aDhya0dDdHQyRHp1S3BGX25rY1R0Z3RHXzUzRm1FeERwdGpOSmxic2RkYVMzQWdscmV6S3FMVFBMU0xLM1N5eUtZcVhjMXNhLVBhNWR4dXlRWG9mX1BTSDNaMUFrRXJVclJSVk12LURwY2NhZThZcl9qMlBCRlN3NFRsSVdfR3RocE9BNDJHcHJlcHlLdDl0aXFYaURy?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 8:19 PM</span></div>
 <div class="news-title">NHL power rankings: Hurricanes join three-team race for top spot</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canes/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canes</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Carolina%20Hurricanes%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Carolina Hurricanes mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/carolina-hurricanes.26/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Carolina Hurricanes</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

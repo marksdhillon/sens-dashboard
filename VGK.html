@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg" alt="Vegas Golden Knights" class="team-logo">
       <div>
         <h1>Vegas Golden Knights</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:25 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1011,6 +1031,73 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Raphael Lavoie from Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Colton Sissons from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated D Brayden McNabb and F Brandon Saad from injured reserve. Recalled Ds Dylan Coghlan and Kai Uchacz from Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 7</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Kai Uchacz to Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Sent D Dylan Coghlan and F Tanner Laczynski to Henderson (AHL) and recalled F Kai Uchacz from Henderson.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Jonas Rondbjerg on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 30</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Tanner Laczynski to Henderson (AHL). Recalled D Dylan Coghlan from Henderson.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Jakub Demek to Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 23</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Jaycob Megna to Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Jonas Rondbjerg from Henderson (AHL). Placed F Brett Howden on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Dylan Coghlan from Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 15</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated G Adin Hill from injured reserve. Placed F Brandon Saad on injured reserve. Recalled F Tanner Laczynski from Henderson (AHL). Placed G Carter Hart on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Dylan Coghlan to Henderson (AHL). Activated D Shea Theodore from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Carl Lindbom from Henderson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Placed D Brayden McNabb on injured reserve. Recalled D Dylan Coghlan from Henderson (AHL). Assigned D Jaycob Megna to Henderson.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 1</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Jaycob Megna from Henderson (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMUs3bkpPclBuOTJSRjNULVZrektVcnhmT0lwdzJBa21jVmdBVnczQktEWTlYN01qVWlaeFNHS3BESU5YSFB6YXAxS3F0cnlwTUsxYzhCQzlKTzFtcXFCVzNXcm5ZWFlfVTIweUwxczJUNzgycmZ3T0NJdGtCLUY4V19WckNlWGJrSVVBSmltZTR3NzZ1WkRpX1dkTUVjeHFOaWU2S3cyTUJ5QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Vegas Hockey Knight</span><span class="news-date">Mar 3 &middot; 11:57 PM</span></div>
 <div class="news-title">NHL rumors: Elliotte Friedman thinks the Golden Knights might not be done yet</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85ZGNYY3dCbXpyQTgwd3I5c19XUFVqMWRnZ1BLdmdpa2RfM2Y3b01KRzF3bk9OeEtHcVdoX0xjdDd4aTR2SXFyRUxxbTlCZGJtLWQ4NFVUZFhWTkc5OEd3QnUwdGZTRUVacVMzSkVYNEREN2NGSGRrSlBn?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1023,13 +1110,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">DraftKings Network</span><span class="news-date">Mar 3 &middot; 6:53 PM</span></div>
 <div class="news-title">NHL Best Bets Today: Top DK Network Betting Group Picks for Tuesday 3/3/26</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNcVRYcy1rNlZ3ZzYyNmhDd00tTGJMdWRGMXRmNmctMG1WbHd6S29pa0FKZWZ3eHAtR0Y0dlhaS01BY0pyeDVkTVlmbW5wWTYtQ1dxdUxVdVNaTVhjb0NyMkVscjZEdU9HNzJZZ0JKNmFvWDZROFVSRUJFaG16U1NjcXVuMXQ1c2xXUUliejM4cjZhUHho?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:39 PM</span></div>
-<div class="news-title">🎥 PREGAME SOUND: Eichel, Sissons & Cassidy</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQc1JueE4weC1fMmRpTW5oN3p6MHBXQTJqN1dPdzh3S29PLVRkWlQ1XzBwLWgtUFJCd0J4X0dHdkFIYlhTdUE3U1YzbmM2ZDdxQlZNazNIbllLXzh1cHRRa2QtZVBuREE3VjJyaFFBY3BXcDVIc3BWdmJQWTlpSl9FQlVXeG1VSlQzeTg2d0ZIcw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">🎥 PREGAME SOUND: Eichel, Sissons & Cassidy</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE56ZERNYzc4cGlvMXVQSnRyMjVZNWVKV013VUtqZ0h6Z0EyYTdCWTRka0VyR2JVZDd4UWNOSmN0U05mN0cxek00dkZNMFhhN2psWWxkSWJyZDlxWHUwSkE5anZjYkZscm5XTk56XzZkT3lCVkUtV0l4eg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Odds Shark</span><span class="news-date">Mar 3 &middot; 6:27 PM</span></div>
+<div class="news-title">Vegas Golden Knights vs Buffalo Sabres Odds - Tuesday March 3 2026</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQc1JueE4weC1fMmRpTW5oN3p6MHBXQTJqN1dPdzh3S29PLVRkWlQ1XzBwLWgtUFJCd0J4X0dHdkFIYlhTdUE3U1YzbmM2ZDdxQlZNazNIbllLXzh1cHRRa2QtZVBuREE3VjJyaFFBY3BXcDVIc3BWdmJQWTlpSl9FQlVXeG1VSlQzeTg2d0ZIcw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:09 PM</span></div>
 <div class="news-title">Golden Knights at Sabres projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNWDRXQ2RQemtZeVMtV0hIMVU2N2M2SWRSWThoWUJjVmRCdWFJMUk0RkdsaGNfb0o2S2VhX19vRkRfWEU3NFQ1ZDg3UVl6S2lPeE1ndE1tczNPbTdWX0FlQXB0T3pWc0hvSVdBTEw4M1J6VmRTcHFhVDhkakdISmZSaEVFM25jMUxLdG1iM0hGOHlBYkpDQjVuVXAwLUhtUENpY2oyYVFBcGE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 5:18 PM</span></div>
 <div class="news-title">Golden Knights vs Sabres NHL Prediction, Pick, Odds -- 3/3</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaEpuNUgtZnEwLWk3MHBucDFJQ1hoQXVCUlFseExSc0h1eXlJWjVzanZHakM3cTctdUN5UU1fQXM2Rmk2QklzNjhYeEVBeWZub0VsRjdzd3hTaEl5U0ZrYkFhV3JoSTZ1M1BLQUlLcC0wMkVIamd3V282Q1BvQWFKUVVyLUJYWm1WSWpwNjEzTklEMXEyZENXOUpvcGpPdDVvSFAwRGFCRlU1ZnpfenhUSWxYTWFUSlY3MHVJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:09 PM</span></div>
-<div class="news-title">Forward Lavoie Recalled from Henderson Silver Knights to Vegas Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQbDhYTWFwRHhwWnRxbWJ2MXUyb0dzbHB2dmpWTzd0cEF4ZXZfcHh3c0FFblZwOGxPVXduQ1NLRl9LajlMbUoxazNiUHI2TUluRURpRHZ5NUFuRTAyeFNCZnhwTlZyVXV3bmJNZmd3REJOM0I0MWJkRGg1cjVXZDhsWHFROW9icWNjR1luUFd3WWxIU05RYU03d2dpWmxsMlI4dWZUMG5JRmlZcVgycW9R?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Forward Lavoie Recalled from Henderson Silver Knights to Vegas Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOSlVGOTNDN0k1LURlSGRWUjNTLXA5c1owUF93bWNVMm1WS2VZUjYwYWtxbnc1S3ItNFlkOWxfNHJlVkotZGhfUF9VQ0UzQUFQRFhGaUdBMi1ibnZpUk5IQ0lwVTNfX2c0NDlVWi14V1otcUpDUUxVQ0VaNzJhNGxsMXlVTFpPNFRXRWtCeUt6b3RYN0UxUjhqOVhuSlJPZ2R5SXlOZ012WWR2Ums?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:23 PM</span></div>
+<div class="news-title">Sabres Hope To Keep Rolling Against Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQbDhYTWFwRHhwWnRxbWJ2MXUyb0dzbHB2dmpWTzd0cEF4ZXZfcHh3c0FFblZwOGxPVXduQ1NLRl9LajlMbUoxazNiUHI2TUluRURpRHZ5NUFuRTAyeFNCZnhwTlZyVXV3bmJNZmd3REJOM0I0MWJkRGg1cjVXZDhsWHFROW9icWNjR1luUFd3WWxIU05RYU03d2dpWmxsMlI4dWZUMG5JRmlZcVgycW9R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 3:46 PM</span></div>
 <div class="news-title">NHL Predictions: March 3 Vegas Golden Knights vs Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPVTVtNUJiUkxwb2lxTElTblhzOFAzUWJpaE9aaGliVVVTYkkzOUZSY1k4VTd5azJoTmJIZjluZjNMRXlWN05wanZJVVZKUTVreEpuQTNobEV3akFzT1ZMclYzRDNuQ3lMODFMSDRaZ0tTY2tkWHNIZzJ2VFVOOU9YYmVYS0dQa28?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Substack</span><span class="news-date">Mar 3 &middot; 3:15 PM</span></div>
@@ -1043,7 +1134,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 11:09 AM</span></div>
 <div class="news-title">NHL Game Preview: Vegas Golden Knights at Buffalo Sabres with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPM3pObnN0VkktaGdFTU5iR2x2eWU2N3c1TXY3amp3bm5rOVVGNXpsdHRnQXJnQ0NyMEl4OXFpb04tNl9sODBQMXFScVZ2ZDRHNXFybHkydTdJSzBHUHp4cHRTMEw1d0tvVGp3V254RTdsbkUweXI5RnJIcFFia3R0ckpKOE5GZVVaenJ2NU81aXdocWR0SWh5WXVULS1HTkxUN0cwTGpBMjZZbFBUU2lzQVFjb3ZvU3k0WnJJU1NFam8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPM3pObnN0VkktaGdFTU5iR2x2eWU2N3c1TXY3amp3bm5rOVVGNXpsdHRnQXJnQ0NyMEl4OXFpb04tNl9sODBQMXFScVZ2ZDRHNXFybHkydTdJSzBHUHp4cHRTMEw1d0tvVGp3V254RTdsbkUweXI5RnJIcFFia3R0ckpKOE5GZVVaenJ2NU81aXdocWR0SWh5WXVULS1HTkxUN0cwTGpBMjZZbFBUU2lzQVFjb3ZvU3k0WnJJU1NFam8?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Las Vegas Review-Journal</span><span class="news-date">Mar 3 &middot; 12:12 AM</span></div>
 <div class="news-title">4 players Golden Knights could target before NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOOGc0dzRlOFFRMVY4YjJTckRDQ2tCLWFoLXhYbTM3dlZtUGZ3bWl0bG1TZDBQZFNLVkFxcGs0cEcySUkxaG5jRmVkU0Z0TTJURnRGeGplY0E2cFdZb2NGSnhhQXJBVF96alpTcVJIUVJxSnZ3a0VON3BzQjNZLWdHa0lkOHFxUVhWbEE0bnUtT0JaSUxQZ29zVWlRR2tLdGFxNU1KYTJENngwU19ZUWM5cTlUVDE2XzZoTlRta2lsU1FtNjlxUDJyZGJ6WFE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 9:42 PM</span></div>
@@ -1055,23 +1146,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 8:49 PM</span></div>
 <div class="news-title">Golden Knights’ Mark Stone Out Day-To-Day</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5iVXdZN2ZGVkwyRW40MkVQc3NCM1NfM0xpOXloQkJ6eWdlOXR1d2JWa0JMd3R1WWh5RnVQQi1DM2dIR0RGLVRZbHhjRGdBTW1VRl8zZDhXdWlyTF95c0hENFNFRzFSQVBMcDRCTEgxLV91bVZLeGRsOVh3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:03 PM</span></div>
-<div class="news-title">🎥 SOUND: Cassidy</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNbVNTdkhKZHVRTlRWNWJtUjZVanVZWTM3QmwwZExpQmdYZFNlOXYyblZWeE1hU0hJNFJNNDEyakd6MFhQcVZBQ2FNQlB0UDF3ZV9LQktzRUJoazNxSFVBejljd25yd3BpQ3NOVmJPX25mZDF2UXFSck9hWHZyVTYtMTZOV20tSV9WV1RSQWxZR1paTUw5VHp4WjZrSzBRX3lXb20ybm9fOHB3cVlETlp6bE5Zcw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pittsburgh Hockey Now</span><span class="news-date">Mar 2 &middot; 5:33 PM</span></div>
-<div class="news-title">Dan’s Daily: Trade Deadline Heat; Rangers Purge? Penguins Learning</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxNbldOUVQ5UGJrc25SUWV6SWxETUI4a29oU2M2YTlsWVM0S3h3c2F0U0lEVkw1b2dlN014MTlFZ2NqQ2N2R3JyeU5VeVp5Umh4Zmhfd1EwdUhCVTZKcTUzSXJEQW9MTURCckdmaVJmNWg4OHVFcHVNc2pUeTA2cy0zMTllaHVKV3J6VWtsa1RBNlBXb3ZjU040bFBGZ0x2cjBJZUoyaXBB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 5:09 PM</span></div>
-<div class="news-title">Vegas Golden Knights Foundation Now Accepting Grant Applications</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPMXFHc09VeTJVVGxjTU84VHY4NVFCT19oS202a1ZuS3JLcGdfX0pTWG9Xemo2NkdWa1dobHg2UXN4azdaSjU5TlQ0ZUxZTFNfU0x0dFNJRzMtcXNnZ08tYm5RY2RmaFM0WGdiM0Z3OXBxZEtSZGsxSkZEQmxqc1ZITnVNaDlwdmx5R3Q3X0NjZnRlUDlNTEtPMVZGZkx0cXdNUnRobi1WcEdpZzBwa2s1SENvTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 2 &middot; 5:05 PM</span></div>
-<div class="news-title">Golden Knights’ dream, nightmare scenario for 2026 NHL Trade Deadline</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">🎥 SOUND: Cassidy</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE5haUZNY3pqTERrVnE3a3FjemJVcUd3UUdkcUlKNnVFeU0wMVhWMjBwZU04Zm83NTA2ZzRNY0JhZnV5UThCUDc5TTdUbWNURzZVbTFmYnpBTGc2b0JteUNMb2hqSUhZbW5nQThzR3M5TWVWQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">SinBin.vegas</span><span class="news-date">Mar 2 &middot; 7:11 PM</span></div>
+<div class="news-title">Which Player Is VGK’s Face Of The Franchise</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/goldenknights/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/goldenknights</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Vegas%20Golden%20Knights%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Vegas Golden Knights mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/vegas-golden-knights.257/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Vegas Golden Knights</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:25 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

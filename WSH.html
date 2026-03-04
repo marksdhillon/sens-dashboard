@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="Washington Capitals" class="team-logo">
       <div>
         <h1>Washington Capitals</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">20</div><div class="sm-label">Games Left</div></div>
@@ -960,9 +980,66 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85ZGNYY3dCbXpyQTgwd3I5c19XUFVqMWRnZ1BLdmdpa2RfM2Y3b01KRzF3bk9OeEtHcVdoX0xjdDd4aTR2SXFyRUxxbTlCZGJtLWQ4NFVUZFhWTkc5OEd3QnUwdGZTRUVacVMzSkVYNEREN2NGSGRrSlBn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:47 PM</span></div>
-<div class="news-title">NHL Status Report: Stone out for Golden Knights against Sabres, still day to day</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNSlBjcWZMYXJCaS1ITWZ4MkQ2Z005LU1BNUdZb3RQdFBvNXNDR3lHUFNUMmJRRk1GNVM5VXFiX2FxWGVhNUl4VTFhLUJxMm5BZ3JIVDJpRVpKNW1BeTRyX29mbjhkS055eGRjenFSTmFIVklPQW5vZXlnMVlIUUQwNTYyRDZFblZuNUdnU05sdE1fS2FXeVhR?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Designated F Sonny Milano for waivers. Reinstated F Connor McMichael from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated G Charlie Lindgren from injured reserve. Sent G Garin Bjorklund to Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 10</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Sent G Clay Stevenson to Hershey (AHL). Recalled G Garin Bjorklund from Hershey.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Activated D Logan Thompson from injured reserve. Assigned G Garin Bjorklund to Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Bogdan Trineyev to Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed G Logan Thompson on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 31</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Connor McMichael and D Matt Roy on injured reserve. Recalled G Garin Bjorklund and F Bogdan Trineyev from Hershey (AHL). Placed G Charlie Lindgren on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 29</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Clay Stevenson from Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated RW Tom Wilson from injured reserve. Sent F Ivan Miroshnichenko to Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Justin Sourdif from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 18</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Brett Leason to Hershey (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Ivan Miroshnichenko from Hershey (AHL). Placed F Justin Sourdif on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Tom Wilson on injured reserve. Activated F Aliaksei Protas from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 7</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Brett Leason from Hershey (AHL). Placed F Aliaksei Protas on injured reserve.</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNSlBjcWZMYXJCaS1ITWZ4MkQ2Z005LU1BNUdZb3RQdFBvNXNDR3lHUFNUMmJRRk1GNVM5VXFiX2FxWGVhNUl4VTFhLUJxMm5BZ3JIVDJpRVpKNW1BeTRyX29mbjhkS055eGRjenFSTmFIVklPQW5vZXlnMVlIUUQwNTYyRDZFblZuNUdnU05sdE1fS2FXeVhR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 9:43 PM</span></div>
 <div class="news-title">NHL rumblings: Oilers’ next trade target, Sabres in on Thomas, plus latest on Predators, more</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOMWp6Um5VRGJmaXE3c054SzNlTzNlVmExQW8ydlNLYU9zNlhUaXNoYno0b3FCcFZOVmRPSkFyUVVVRC1wZEQyWlpqWEJRdkt4My1DN0ZPd1RDRE9uV25jbUdUY0lFY2tVOEh3RGZOWkhBenFoYkNkY0lHS0kybzFqaw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 9:02 PM</span></div>
@@ -1010,17 +1087,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 1 &middot; 1:26 PM</span></div>
 <div class="news-title">Canadiens encouraged with rebound win over Capitals</div></a><a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxQd1BjUTJ2LWQtNXhyVmFucXMtY2JyWjdDMHVUNzdNdlVfei1DOHNMbTNZaG9aMFU0bGU0RDd2ZFZ6clEtOWNlNjFsMXJsR1dMX0o2YUxTQmphVHBaNkdFb1IzTUlvQ2NnQmlaQ3VJSHhiamljd2VNWEZUQ01PTkZOWEJLbWszbGVrRjh5OUlxRkNuWUNqOGNoSElHQlpsSm1vbUx6b2YzU2V0UERXcFlnNUpGNGVJTG4xc013eXM4T1ZzOV9NMUJ1am1kdjJEY0pJcmtCSkl4YUlMcHNIM3JZb2lwT1hNdms?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Montreal Gazette</span><span class="news-date">Mar 1 &middot; 5:02 AM</span></div>
-<div class="news-title">Hidden Game: Caufield scores twice, Dobes holds the fort as Canadiens finally defeat Capitals</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Hidden Game: Caufield scores twice, Dobes holds the fort as Canadiens finally defeat Capitals</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQTzczdDFJNUJhekRPRmk1X3huWi15NXJXTkdCM2xtTFowU2FvVTFxZzdLZmJkcWlvRlEwalpodWtqN3BLcWQteFczTGUtbGlfeDJ2a2FJTldBUWpmZWhyOHNpRzJsQ0UtblVMd2lIajhrVjgwU0pIWC0wS0NfNGNGdGdlM1ozSFhOM3dELS1reEYwMUtzaHc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 1 &middot; 4:55 AM</span></div>
+<div class="news-title">Caufield scores twice, Canadiens top Capitals to push point streak to 7</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/caps/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/caps</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Washington%20Capitals%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Washington Capitals mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/washington-capitals.25/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Washington Capitals</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

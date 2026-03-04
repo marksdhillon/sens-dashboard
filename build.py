@@ -26,42 +26,42 @@ MONEYPUCK = "https://moneypuck.com/moneypuck"
 TEAM_INFO = {
     # --- Eastern Conference ---
     # Atlantic
-    "BOS": {"name": "Boston Bruins", "franchise_id": 6, "accent": "#e8b230", "subreddit": "BostonBruins", "div": "Atlantic"},
-    "BUF": {"name": "Buffalo Sabres", "franchise_id": 19, "accent": "#6b9fff", "subreddit": "sabres", "div": "Atlantic"},
-    "DET": {"name": "Detroit Red Wings", "franchise_id": 12, "accent": "#e8384f", "subreddit": "DetroitRedWings", "div": "Atlantic"},
-    "FLA": {"name": "Florida Panthers", "franchise_id": 33, "accent": "#c8102e", "subreddit": "FloridaPanthers", "div": "Atlantic"},
-    "MTL": {"name": "Montreal Canadiens", "franchise_id": 1, "accent": "#d42e42", "subreddit": "Habs", "div": "Atlantic"},
-    "OTT": {"name": "Ottawa Senators", "franchise_id": 30, "accent": "#e8384f", "subreddit": "OttawaSenators", "div": "Atlantic"},
-    "TBL": {"name": "Tampa Bay Lightning", "franchise_id": 31, "accent": "#6b9fff", "subreddit": "TampaBayLightning", "div": "Atlantic"},
-    "TOR": {"name": "Toronto Maple Leafs", "franchise_id": 5, "accent": "#6b9fff", "subreddit": "leafs", "div": "Atlantic"},
+    "BOS": {"name": "Boston Bruins", "franchise_id": 6, "accent": "#e8b230", "subreddit": "BostonBruins", "div": "Atlantic", "espn_id": 1, "hfboards": "https://forums.hfboards.com/forums/boston-bruins.15/"},
+    "BUF": {"name": "Buffalo Sabres", "franchise_id": 19, "accent": "#6b9fff", "subreddit": "sabres", "div": "Atlantic", "espn_id": 2, "hfboards": "https://forums.hfboards.com/forums/buffalo-sabres.18/"},
+    "DET": {"name": "Detroit Red Wings", "franchise_id": 12, "accent": "#e8384f", "subreddit": "DetroitRedWings", "div": "Atlantic", "espn_id": 5, "hfboards": "https://forums.hfboards.com/forums/detroit-red-wings.34/"},
+    "FLA": {"name": "Florida Panthers", "franchise_id": 33, "accent": "#c8102e", "subreddit": "FloridaPanthers", "div": "Atlantic", "espn_id": 26, "hfboards": "https://forums.hfboards.com/forums/florida-panthers.28/"},
+    "MTL": {"name": "Montreal Canadiens", "franchise_id": 1, "accent": "#d42e42", "subreddit": "Habs", "div": "Atlantic", "espn_id": 10, "hfboards": "https://forums.hfboards.com/forums/montreal-canadiens.16/"},
+    "OTT": {"name": "Ottawa Senators", "franchise_id": 30, "accent": "#e8384f", "subreddit": "OttawaSenators", "div": "Atlantic", "espn_id": 14, "hfboards": "https://forums.hfboards.com/forums/ottawa-senators.19/"},
+    "TBL": {"name": "Tampa Bay Lightning", "franchise_id": 31, "accent": "#6b9fff", "subreddit": "TampaBayLightning", "div": "Atlantic", "espn_id": 20, "hfboards": "https://forums.hfboards.com/forums/tampa-bay-lightning.27/"},
+    "TOR": {"name": "Toronto Maple Leafs", "franchise_id": 5, "accent": "#6b9fff", "subreddit": "leafs", "div": "Atlantic", "espn_id": 21, "hfboards": "https://forums.hfboards.com/forums/toronto-maple-leafs.17/"},
     # Metropolitan
-    "CAR": {"name": "Carolina Hurricanes", "franchise_id": 26, "accent": "#e8384f", "subreddit": "canes", "div": "Metropolitan"},
-    "CBJ": {"name": "Columbus Blue Jackets", "franchise_id": 36, "accent": "#6b9fff", "subreddit": "BlueJackets", "div": "Metropolitan"},
-    "NJD": {"name": "New Jersey Devils", "franchise_id": 23, "accent": "#e8384f", "subreddit": "devils", "div": "Metropolitan"},
-    "NYI": {"name": "New York Islanders", "franchise_id": 22, "accent": "#f47d30", "subreddit": "NewYorkIslanders", "div": "Metropolitan"},
-    "NYR": {"name": "New York Rangers", "franchise_id": 10, "accent": "#6b9fff", "subreddit": "rangers", "div": "Metropolitan"},
-    "PHI": {"name": "Philadelphia Flyers", "franchise_id": 16, "accent": "#f47d30", "subreddit": "Flyers", "div": "Metropolitan"},
-    "PIT": {"name": "Pittsburgh Penguins", "franchise_id": 17, "accent": "#e8b230", "subreddit": "penguins", "div": "Metropolitan"},
-    "WSH": {"name": "Washington Capitals", "franchise_id": 24, "accent": "#c8102e", "subreddit": "caps", "div": "Metropolitan"},
+    "CAR": {"name": "Carolina Hurricanes", "franchise_id": 26, "accent": "#e8384f", "subreddit": "canes", "div": "Metropolitan", "espn_id": 7, "hfboards": "https://forums.hfboards.com/forums/carolina-hurricanes.26/"},
+    "CBJ": {"name": "Columbus Blue Jackets", "franchise_id": 36, "accent": "#6b9fff", "subreddit": "BlueJackets", "div": "Metropolitan", "espn_id": 29, "hfboards": "https://forums.hfboards.com/forums/columbus-blue-jackets.31/"},
+    "NJD": {"name": "New Jersey Devils", "franchise_id": 23, "accent": "#e8384f", "subreddit": "devils", "div": "Metropolitan", "espn_id": 11, "hfboards": "https://forums.hfboards.com/forums/new-jersey-devils.20/"},
+    "NYI": {"name": "New York Islanders", "franchise_id": 22, "accent": "#f47d30", "subreddit": "NewYorkIslanders", "div": "Metropolitan", "espn_id": 12, "hfboards": "https://forums.hfboards.com/forums/new-york-islanders.22/"},
+    "NYR": {"name": "New York Rangers", "franchise_id": 10, "accent": "#6b9fff", "subreddit": "rangers", "div": "Metropolitan", "espn_id": 13, "hfboards": "https://forums.hfboards.com/forums/new-york-rangers.24/"},
+    "PHI": {"name": "Philadelphia Flyers", "franchise_id": 16, "accent": "#f47d30", "subreddit": "Flyers", "div": "Metropolitan", "espn_id": 15, "hfboards": "https://forums.hfboards.com/forums/philadelphia-flyers.21/"},
+    "PIT": {"name": "Pittsburgh Penguins", "franchise_id": 17, "accent": "#e8b230", "subreddit": "penguins", "div": "Metropolitan", "espn_id": 16, "hfboards": "https://forums.hfboards.com/forums/pittsburgh-penguins.23/"},
+    "WSH": {"name": "Washington Capitals", "franchise_id": 24, "accent": "#c8102e", "subreddit": "caps", "div": "Metropolitan", "espn_id": 23, "hfboards": "https://forums.hfboards.com/forums/washington-capitals.25/"},
     # --- Western Conference ---
     # Central
-    "CHI": {"name": "Chicago Blackhawks", "franchise_id": 11, "accent": "#e8384f", "subreddit": "hawks", "div": "Central"},
-    "COL": {"name": "Colorado Avalanche", "franchise_id": 27, "accent": "#c84060", "subreddit": "ColoradoAvalanche", "div": "Central"},
-    "DAL": {"name": "Dallas Stars", "franchise_id": 15, "accent": "#00a651", "subreddit": "DallasStars", "div": "Central"},
-    "MIN": {"name": "Minnesota Wild", "franchise_id": 37, "accent": "#2e8540", "subreddit": "wildhockey", "div": "Central"},
-    "NSH": {"name": "Nashville Predators", "franchise_id": 34, "accent": "#ffb81c", "subreddit": "Predators", "div": "Central"},
-    "STL": {"name": "St. Louis Blues", "franchise_id": 18, "accent": "#4477ce", "subreddit": "stlouisblues", "div": "Central"},
-    "UTA": {"name": "Utah Hockey Club", "franchise_id": 28, "accent": "#69b3e7", "subreddit": "UtahHC", "div": "Central"},
-    "WPG": {"name": "Winnipeg Jets", "franchise_id": 35, "accent": "#6888b0", "subreddit": "winnipegjets", "div": "Central"},
+    "CHI": {"name": "Chicago Blackhawks", "franchise_id": 11, "accent": "#e8384f", "subreddit": "hawks", "div": "Central", "espn_id": 4, "hfboards": "https://forums.hfboards.com/forums/chicago-blackhawks.30/"},
+    "COL": {"name": "Colorado Avalanche", "franchise_id": 27, "accent": "#c84060", "subreddit": "ColoradoAvalanche", "div": "Central", "espn_id": 17, "hfboards": "https://forums.hfboards.com/forums/colorado-avalanche.35/"},
+    "DAL": {"name": "Dallas Stars", "franchise_id": 15, "accent": "#00a651", "subreddit": "DallasStars", "div": "Central", "espn_id": 9, "hfboards": "https://forums.hfboards.com/forums/dallas-stars.44/"},
+    "MIN": {"name": "Minnesota Wild", "franchise_id": 37, "accent": "#2e8540", "subreddit": "wildhockey", "div": "Central", "espn_id": 30, "hfboards": "https://forums.hfboards.com/forums/minnesota-wild.39/"},
+    "NSH": {"name": "Nashville Predators", "franchise_id": 34, "accent": "#ffb81c", "subreddit": "Predators", "div": "Central", "espn_id": 27, "hfboards": "https://forums.hfboards.com/forums/nashville-predators.33/"},
+    "STL": {"name": "St. Louis Blues", "franchise_id": 18, "accent": "#4477ce", "subreddit": "stlouisblues", "div": "Central", "espn_id": 19, "hfboards": "https://forums.hfboards.com/forums/st-louis-blues.32/"},
+    "UTA": {"name": "Utah Hockey Club", "franchise_id": 28, "accent": "#69b3e7", "subreddit": "UtahHC", "div": "Central", "espn_id": 129764, "hfboards": "https://forums.hfboards.com/forums/utah-mammoth.287/"},
+    "WPG": {"name": "Winnipeg Jets", "franchise_id": 35, "accent": "#6888b0", "subreddit": "winnipegjets", "div": "Central", "espn_id": 28, "hfboards": "https://forums.hfboards.com/forums/winnipeg-jets.29/"},
     # Pacific
-    "ANA": {"name": "Anaheim Ducks", "franchise_id": 32, "accent": "#f47d30", "subreddit": "AnaheimDucks", "div": "Pacific"},
-    "CGY": {"name": "Calgary Flames", "franchise_id": 21, "accent": "#d2001c", "subreddit": "CalgaryFlames", "div": "Pacific"},
-    "EDM": {"name": "Edmonton Oilers", "franchise_id": 25, "accent": "#ff6b2b", "subreddit": "EdmontonOilers", "div": "Pacific"},
-    "LAK": {"name": "Los Angeles Kings", "franchise_id": 14, "accent": "#a2aaad", "subreddit": "losangeleskings", "div": "Pacific"},
-    "SEA": {"name": "Seattle Kraken", "franchise_id": 39, "accent": "#68cfd1", "subreddit": "SeattleKraken", "div": "Pacific"},
-    "SJS": {"name": "San Jose Sharks", "franchise_id": 29, "accent": "#009aa6", "subreddit": "SanJoseSharks", "div": "Pacific"},
-    "VAN": {"name": "Vancouver Canucks", "franchise_id": 20, "accent": "#4080c4", "subreddit": "canucks", "div": "Pacific"},
-    "VGK": {"name": "Vegas Golden Knights", "franchise_id": 38, "accent": "#b4975a", "subreddit": "goldenknights", "div": "Pacific"},
+    "ANA": {"name": "Anaheim Ducks", "franchise_id": 32, "accent": "#f47d30", "subreddit": "AnaheimDucks", "div": "Pacific", "espn_id": 25, "hfboards": "https://forums.hfboards.com/forums/anaheim-ducks.41/"},
+    "CGY": {"name": "Calgary Flames", "franchise_id": 21, "accent": "#d2001c", "subreddit": "CalgaryFlames", "div": "Pacific", "espn_id": 3, "hfboards": "https://forums.hfboards.com/forums/calgary-flames.37/"},
+    "EDM": {"name": "Edmonton Oilers", "franchise_id": 25, "accent": "#ff6b2b", "subreddit": "EdmontonOilers", "div": "Pacific", "espn_id": 6, "hfboards": "https://forums.hfboards.com/forums/edmonton-oilers.38/"},
+    "LAK": {"name": "Los Angeles Kings", "franchise_id": 14, "accent": "#a2aaad", "subreddit": "losangeleskings", "div": "Pacific", "espn_id": 8, "hfboards": "https://forums.hfboards.com/forums/los-angeles-kings.42/"},
+    "SEA": {"name": "Seattle Kraken", "franchise_id": 39, "accent": "#68cfd1", "subreddit": "SeattleKraken", "div": "Pacific", "espn_id": 124292, "hfboards": "https://forums.hfboards.com/forums/seattle-kraken.275/"},
+    "SJS": {"name": "San Jose Sharks", "franchise_id": 29, "accent": "#009aa6", "subreddit": "SanJoseSharks", "div": "Pacific", "espn_id": 18, "hfboards": "https://forums.hfboards.com/forums/san-jose-sharks.43/"},
+    "VAN": {"name": "Vancouver Canucks", "franchise_id": 20, "accent": "#4080c4", "subreddit": "canucks", "div": "Pacific", "espn_id": 22, "hfboards": "https://forums.hfboards.com/forums/vancouver-canucks.36/"},
+    "VGK": {"name": "Vegas Golden Knights", "franchise_id": 38, "accent": "#b4975a", "subreddit": "goldenknights", "div": "Pacific", "espn_id": 37, "hfboards": "https://forums.hfboards.com/forums/vegas-golden-knights.257/"},
 }
 
 def accent_rgba(hex_color, alpha):
@@ -936,7 +936,7 @@ def build_roster_html(skaters, goalies, mp_players):
 
 def build_news_html(articles):
     if not articles:
-        return '<div class="empty-state"><span>&#128240;</span>No recent trade rumors found. Check back later.</div>'
+        return '<div class="empty-state"><span>&#128240;</span>No recent news found. Check back later.</div>'
     items = []
     for a in articles:
         items.append(f'''<a href="{a["link"]}" target="_blank" rel="noopener" class="news-item">
@@ -983,6 +983,73 @@ def build_injuries_html(injuries):
 <tbody>{"".join(rows)}</tbody>
 </table>
 </div>'''
+
+def fetch_transactions():
+    """Fetch recent transactions for the current team from ESPN API."""
+    espn_id = TEAM_INFO.get(TEAM, {}).get("espn_id", 0)
+    if not espn_id:
+        return []
+    url = f"https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/transactions?team={espn_id}&limit=50"
+    data = fetch_json(url)
+    txns = []
+    for t in data.get("transactions", []):
+        date_str = t.get("date", "")
+        desc = t.get("description", "")
+        if not desc:
+            continue
+        # Parse date
+        display_date = ""
+        if date_str:
+            try:
+                dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+                display_date = dt.strftime("%b %-d")
+            except Exception:
+                display_date = date_str[:10]
+        # Classify transaction type
+        dl = desc.lower()
+        if "trade" in dl or "acquired" in dl or "in exchange" in dl:
+            tx_type = "Trade"
+            tx_cls = "tx-trade"
+        elif "sign" in dl or "contract" in dl:
+            tx_type = "Signing"
+            tx_cls = "tx-sign"
+        elif "waiver" in dl or "claimed" in dl:
+            tx_type = "Waivers"
+            tx_cls = "tx-waiver"
+        elif "injured reserve" in dl or "long-term" in dl or " ir" in dl:
+            tx_type = "IR"
+            tx_cls = "tx-ir"
+        elif "recalled" in dl or "call" in dl:
+            tx_type = "Recall"
+            tx_cls = "tx-recall"
+        elif "assigned" in dl or "loaned" in dl or "sent" in dl:
+            tx_type = "Assignment"
+            tx_cls = "tx-assign"
+        elif "activated" in dl or "reinstated" in dl:
+            tx_type = "Activated"
+            tx_cls = "tx-activate"
+        else:
+            tx_type = "Move"
+            tx_cls = "tx-other"
+        txns.append({"date": display_date, "desc": desc, "type": tx_type, "cls": tx_cls})
+    return txns
+
+
+def build_transactions_html(txns):
+    """Build the transactions tab HTML."""
+    if not txns:
+        return '<div class="empty-state"><span>&#128221;</span>No recent transactions found.</div>'
+    rows = []
+    for t in txns:
+        rows.append(f'''<div class="tx-row">
+<span class="tx-date">{t["date"]}</span>
+<span class="tx-badge {t["cls"]}">{t["type"]}</span>
+<span class="tx-desc">{t["desc"]}</span>
+</div>''')
+    return f'''<h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list">{"".join(rows)}</div>'''
+
 
 def build_leaders_html(skater_leaders, goalie_leaders):
     """Build the NHL Leaders tab HTML with mini leaderboard cards."""
@@ -1480,7 +1547,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams):
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
@@ -1488,6 +1555,7 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
     accent_light = darken_hex(accent, 0.85)
     accent_soft_light = accent_rgba(accent, 0.08)
     subreddit = team_info["subreddit"]
+    hfboards_url = team_info.get("hfboards", "https://forums.hfboards.com/")
 
     # Build team switcher dropdown (all 4 divisions)
     div_groups = [("Atlantic", []), ("Metropolitan", []), ("Central", []), ("Pacific", [])]
@@ -1672,14 +1740,16 @@ input[name="tab"]{{display:none}}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{{display:block}}
+#tab-forums:checked~#p-forums{{display:block}}
 
 /* Typography */
 h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}}
@@ -1816,9 +1886,25 @@ a.pname:hover{{color:var(--text-strong)}}
 .stnd-card .scroll-x{{padding:0}}
 .stnd-card .nhl-tbl thead th{{background:transparent}}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}}
 .cc-head{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
+
+/* Transactions */
+.tx-list{{display:flex;flex-direction:column;gap:0}}
+.tx-row{{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}}
+.tx-row:last-child{{border-bottom:none}}
+.tx-date{{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}}
+.tx-badge{{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}}
+.tx-trade{{background:rgba(232,56,79,0.15);color:#e8384f}}
+.tx-sign{{background:rgba(0,166,81,0.15);color:#00a651}}
+.tx-waiver{{background:rgba(244,125,48,0.15);color:#f47d30}}
+.tx-ir{{background:rgba(232,178,48,0.15);color:#e8b230}}
+.tx-recall{{background:rgba(107,159,255,0.15);color:#6b9fff}}
+.tx-assign{{background:rgba(160,160,160,0.15);color:var(--text-muted)}}
+.tx-activate{{background:rgba(0,166,81,0.15);color:#00a651}}
+.tx-other{{background:rgba(160,160,160,0.15);color:var(--text-muted)}}
+.tx-desc{{font-size:12px;color:var(--text-secondary);line-height:1.5}}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -1926,27 +2012,28 @@ body{{animation:fadeIn 0.15s ease}}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule">{schedule_html}</div>
   <div class="panel" id="p-playoffs">{projections_html}</div>
   <div class="panel" id="p-roster">{roster_html}</div>
   <div class="panel" id="p-injuries">{injuries_html}</div>
+  <div class="panel" id="p-transactions">{transactions_html}</div>
   <div class="panel" id="p-news">{news_html}</div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/{subreddit}/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/{subreddit}</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22{team_name.replace(" ", "%20")}%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of {team_name} mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="{hfboards_url}" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — {team_name}</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
@@ -3241,7 +3328,11 @@ def main():
         schedule_html = build_schedule_html(remaining, above500_count, home_count, away_count, team_records_map, mp_stats, mp_odds, results)
         news_html = build_news_html(news_articles)
         injuries_html = build_injuries_html(all_injuries.get(TEAM, []))
-        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, vs500, mp_odds, deltas, mp_stats, all_teams)
+        print(f"  Fetching transactions...")
+        txns = fetch_transactions()
+        transactions_html = build_transactions_html(txns)
+        print(f"  {len(txns)} transactions found")
+        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"

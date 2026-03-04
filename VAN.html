@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" alt="Vancouver Canucks" class="team-logo">
       <div>
         <h1>Vancouver Canucks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:25 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -944,7 +964,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="rank" data-sort="27">27</td>
 <td class="name-cell" data-sort="Derek Forbort"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/VAN/8475762.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Derek+Forbort" target="_blank" rel="noopener" class="pname">Derek Forbort</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="34">34</td>
+<td class="r" data-sort="33">33</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0.00">0.00</td>
@@ -1103,15 +1123,68 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Pierre-Olivier Joseph on injured reserve and G Thatcher Demko on long-term injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Mar 1</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Placed D Guillaume Brisebois on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reinstated Ds Zeev Buium and Marco Rossi from injured reserve. Reassigned G Jiri Patera to Abbotsford (AHL). Placed F Filip Chytil on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Nikita Tolopilo from Abbotsford (AHL). Sent G Aku Koskenvuo to Abbotsford.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Aku Koskenvuo from Abbotsford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 26</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled Fs Victor Mancini and Jonathan Lekkerimaki from Abbotsford (AHL). Placed F Brock Boeser and D Zeev Buium on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Recalled G Nikita Tolopilo from Abbotsford (AHL). Assigned G Jiri Patera to Abbotsford.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated C Teddy Blueger from injured reserve. Sent F Arshdeep Bains to Abbotsford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired a 2026 second-round pick, a 2027 second-round pick and F Cole Clayton from San Jose Sharks for F Kiefer Sherwood.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 18</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Recalled G Jiri Patera (emergency conditions) and C Elias Pettersson from Abbotsford (AHL). Assigned G Nikita Tolopilo and D Victor Mancini to Abbotsford.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 11</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled G Nikita Tolopilo and D Victor Mancini from Abbotsford (AHL). Sent C Elias Pettersson to Abbotsford. Placed G Thatcher Demko on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Marco Rossi on injured reserve. Recalled F Arshdeep Bains from Abbotsford (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:35 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:56 AM</span></div>
 <div class="news-title">Canucks Close Two-Game Homestand with Canes in Town on Wednesday Night</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMWlzQVJlZXQzZUhMYVBETVBaWURoMC1QYmdrclg4T3ZyWFN6cW9BSmhaUHRLSDZlOTI3aXBNNVUtVFFTRU9TWUxTb3ZTelBjNzVLOFp0ZFVEcFlnOGtFeTVWSFE1dGk5ZmZRS0l0ME5IN1RyOUNwdGdZazcwaWYtbnpUaGdqTjcyVUZDT01Jb01KZ2JGRWpkcjRDOVMxRmtCc3Jz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 4 &middot; 12:25 AM</span></div>
 <div class="news-title">Canucks: Elias Pettersson's struggles pain him. Is his future here?</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNWkJ2anNpTzhvSnU2T2ZkWENLam85ZGxScjdCRDc2clA0bXJPdUZZOHczdGdVakNTeGY2VkNLbFhzeTFOaFRtOFJIN21IbkQtZkhfc3VRVXgyZDhZWTYxeVlqTXpDUkp4bS13dU9hQlgybTRNbExqR1JWRzNTUTJTdVZ6NjlUb0lrd3c1UDNQWm40MFZ2YS1sR3BWaXF5U205bDJSM2tLRG80eFo0VkhqZm9fVzExc2RBakIzS1VhN0ZfWWw2N0t3OW93?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 4 &middot; 12:22 AM</span></div>
 <div class="news-title">Canucks Live: UPDATE: Adam Foote brings out blender; EP40 more defensive off ice than on; DeBrusk questions stomach for rebuild</div></a><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOMUxEYVVjQjAtMk5wa3RTYVMzay1ILVV3eVNmdjNxMU9DaWsteUNLc2I4aDJPS3RSMUxnSTZaU0FCbkRtc3NadmFYdGRIRGR6OHpvMk9lay1oaTRncE1vaFRsV243VHFIVmJYZWFCU1A1NTRUbmdoQ29RLUFKNFp6Wlh6VjlhajNZRm1VTklyVnlINWN1UXczWHFSSXkzd2dPVUkyOU5xVDNYMUVqanVrRXZsMFl4ZDMzY1A4bjFRVVJDUkFEXzdMNXBaUlowRGpmWGZOODlEaUJCNGsxeTBsWXpHVWdyak1sVWRiaTh3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 12:02 AM</span></div>
-<div class="news-title">Islanders close to trade for $6 million Canucks forward, but get bad Tyler Myers news</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNNWk0ZDlhWDlnb05tVDdNelN1UENmMkpmQXZlR3NxNTBDdHMwd2h3bzFyOTd2Y0RKQTBIZHlMRnlER3A2cml6UTRHSTNYUUNwZHpzckEwTmVHbk5CSXIyNnVaTzNwbXVwcEV5LWpjbk9WQ3E3UF81eHM4dUpZbXp5LWFJOVUtbWVrZDVTTmIxRDNuR0ZWa0xweA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Islanders close to trade for $6 million Canucks forward, but get bad Tyler Myers news</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPM2tmcFJ2R3VjRnBiUTZ2SndVY0lQbDkwR2ROQW5UdTl4VUNlQzcxbm94RUtMY2VPU18zNXVtbUROV2l3djlvYlotQUpVMlY0R3V0MXhDdGUxR2lTbFRfaGpobUhaQjM4NmRBZmxuTHE0dkpxZlRGdFdYZGtsWXBidXZNbm5LWEMzRXRuNEFkcHh6WjJhYkhXUU9IMlZDUXo4LV9LQ0Izb29xME9tbHBfTmZB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:58 PM</span></div>
+<div class="news-title">NHL Trade Deadline Central 2026: Trade Tracker, Analysis, Lists And More</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNNWk0ZDlhWDlnb05tVDdNelN1UENmMkpmQXZlR3NxNTBDdHMwd2h3bzFyOTd2Y0RKQTBIZHlMRnlER3A2cml6UTRHSTNYUUNwZHpzckEwTmVHbk5CSXIyNnVaTzNwbXVwcEV5LWpjbk9WQ3E3UF81eHM4dUpZbXp5LWFJOVUtbWVrZDVTTmIxRDNuR0ZWa0xweA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">kliksolonews.com</span><span class="news-date">Mar 3 &middot; 11:40 PM</span></div>
 <div class="news-title">Vancouver Canucks Mini Hockey Puck Keychain - Officially Licensed NHL Team Merch</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPNDNYeUR6LXpzSUU4ZDNfMFYtMG1FMldDRkNnS25KQWk2VXhuR20zQXZNbFlHQ05PUGtHcUpZNHRtTmItanF6M1FMd3JnX3lYMmpyc0kzazdnTWN4U3N1V2NqT0lVTi1ub0Y0VU1waVJ4UkRvSGZrV3FNLXYtV21ldk9MMUpWNzBDZUJZZC1nVnZyYUxDTDFJWkRuODkzaWY5VjM3ZTlPVkpiMG1TSEpRRVVzWC00dG8yOHc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 11:28 PM</span></div>
@@ -1121,9 +1194,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:55 PM</span></div>
 <div class="news-title">CANUCKS TO HOST CELEBRATION OF WOMEN IN SPORT, PRESENTED BY TD, ON MARCH 4TH</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdGt2UXBsVmxWN21aU2JqUzNGeFVBWFJ5a1FsTmR0NmNrek0yX2V5THhBbnF5RGx5Z2NoSTBQUFBGVzdrY1BQdTJkeHZiNEViSF9KZUJMc2R3bm42bjYtRVZvMnVmcGZRUTVUT1A4Qjgxc3hEUXpWRnMtRVVxckNHckdITGQwWFRLbjJwdkZB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 10:42 PM</span></div>
-<div class="news-title">Canucks clear cap space by moving Demko to LTIR</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPcXlvNC1Jak5Fa0VLWmpwVHFTWVgtcUpLREZJdV9aaW1RdmdoYVJRVElXOVRIV0I1QUpZdDlwSU9RdHphb0JKNjZUVWR4V1UyNnZiQnhwbElUQVFla2hzVVdQMlJKS0ZvTXdvTGN4Q3VQbDJaNXVSUmtxN3F3ZlRiLTlScm1QeWUySHJGTW5EMEZ0VGZNUE5EU011QkpXZWVqbUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 3 &middot; 10:39 PM</span></div>
-<div class="news-title">Canucks: These are the darkest days in the franchise's history</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5INDlLeE05cl9KMFRkYXhraDNLaXBtS1VkR0d1TzhJcFZJZkE1SkVmLWxSaHdKX2lWcXB2SUlQbmtwU1lOY2xORF9qQ2lhMGhNVnpMU3E0R2lYMnlrTm41QjVmaGJ2akx3M2lLSzBsS1ozLUVBUFJfQg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Canucks clear cap space by moving Demko to LTIR</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5INDlLeE05cl9KMFRkYXhraDNLaXBtS1VkR0d1TzhJcFZJZkE1SkVmLWxSaHdKX2lWcXB2SUlQbmtwU1lOY2xORF9qQ2lhMGhNVnpMU3E0R2lYMnlrTm41QjVmaGJ2akx3M2lLSzBsS1ozLUVBUFJfQg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:37 PM</span></div>
 <div class="news-title">PRACTICE | Jake Debrusk</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNeVlibDNLZ0U1bElZdTJqeWlHMUo1S0pqRnVVZzB1S3dCenpBVmZOMHZ3T2tBSWdJS2dwWXZiMmpRNnIyNVVCanlsRS1jZUZSd19pQWxybEkxdFVhWTA4TEZKNlpNaHZPX2p2eUpaS0dXZ1gxbExCODRtS3RXYy1oS1pVM1d0SjNJOEJnZGNwTGZ0SjR3alVjMw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 10:31 PM</span></div>
@@ -1137,7 +1208,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 10:00 PM</span></div>
 <div class="news-title">Canucks place G Demko on LTIR</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1rb1ljN1BEZUVQM29mT3dzOEE3eGpER280TEhMT1lYRUFkeVlzZmExRGRyc3BRUFIyN0IzUHg3LVBtOUllMWxNMkxGYkdjUDhEUkRFNlJxQno1bkpQbTAwUmFDU05XM29iRC1mcFl4NWVaYkdIVjBfWVRNRQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 9:55 PM</span></div>
-<div class="news-title">Islanders & Canucks in Serious Discussions For Trade</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcVVhaDNmeWFBR2R6aEZSa2VYYUozOXBKTVlETFoyak9xaDR4Z1RfQU12NzhtQl9URGVYNC1vU09Ud1RQaWdqQkdOU2l4REtVRFp0ZGQ5Tm1QeXZCTkplOFlJTWkyMmpJYUF0TE5vcHo2N3J2eXpIejhqN0tiZWxqajRobXZleDhWTXVDS3ptZ0swaldldy1ULUNuNjYzVldPWHZWZmthSk5sVWtaTzh4eG92NmcyQ01Sa0tONkhkMXpBRmc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Islanders & Canucks in Serious Discussions For Trade</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQanRFUUUwSVFfWEx6WjB4YkpVcnY5amJ6QVdlaUMtSTZXelRaT181LU0xQ1ZreHIycUVNODE4aE5CYUZlSDNaYVB0R0xxbWZhWEJsaTdiMWZaUzFZWjF6VzBtMDhYQ2lSWFVac3Yzc0xjMVZuUnJLQ1RTdVYwT1prVHBiYkQ4ZTIwYlBhS2JaRUV3UEw4Z0lreGVXUmdBUUZYZlRDdGJFelBBZXR3WnZMcklQWGU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 9:46 PM</span></div>
+<div class="news-title">Canucks discuss handling trade rumours with the deadline fast approaching</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcVVhaDNmeWFBR2R6aEZSa2VYYUozOXBKTVlETFoyak9xaDR4Z1RfQU12NzhtQl9URGVYNC1vU09Ud1RQaWdqQkdOU2l4REtVRFp0ZGQ5Tm1QeXZCTkplOFlJTWkyMmpJYUF0TE5vcHo2N3J2eXpIejhqN0tiZWxqajRobXZleDhWTXVDS3ptZ0swaldldy1ULUNuNjYzVldPWHZWZmthSk5sVWtaTzh4eG92NmcyQ01Sa0tONkhkMXpBRmc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 9:38 PM</span></div>
 <div class="news-title">Canucks Place Defenceman Pierre-Olivier Joseph On Injured Reserve</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQdVpGbmVVZ0xaX0lJVlYtc05ZVDdwMTJaSk9GbEpMR3NVaVQwdWdrV0RMeWoxN0tFUWthVlA5cldQYklBZ05lNm03UTNXZ2VPLVdXdW5ZT0xFQkNzTVZPemR3eVlTVnlFOE9PRC1pcko2bkFkaVVFTEg2aTlXX1Jkb3FXZWxrdENt?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 9:21 PM</span></div>
@@ -1151,19 +1224,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 8:17 PM</span></div>
 <div class="news-title">B.C.'s daylight savings switch will affect Vancouver Canucks game times</div></a><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE42djB0SVBOTGNVdEU4UkNoQmVwNERnY255c3p4S01PWWNQTFdlRVp4OWxYOWdWUHQ3TjB3QWtlUUtQYVN5b3h6ZS1Tc2NFbzZQRHZrWTFKaENkSEJjV1RaSlhKYU1Hb28yVnFyVGFrY0luSVBE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 8:15 PM</span></div>
-<div class="news-title">Sounds like Jake DeBrusk is ready to move on from Vancouver Canucks but where could he go?</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOSUFqV0lPS1hVTWthQk1mN052NkJSTlFSdjVRakhJblZYNGtIaGhSSEE2MjVucmFybmNFWFRpeDV5bGdHdkoyU0x6eWYzX0RhS0JjWDRZcno0YXpZQ0hmVlljSjF0ZVVqRG00WUdLNHhRcEFKdDhfOE5jUW1wZmhkWlhQWUZITm5Na3hRVU9DUXk3c1JhM2tielltNzhnU3pyOTkzclZJMm1kQWxiQlA0UEk5Tmp4M1E?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 3 &middot; 7:50 PM</span></div>
-<div class="news-title">Scenes from practice: Canucks shake up forward lines amid plenty of trade speculation</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Sounds like Jake DeBrusk is ready to move on from Vancouver Canucks but where could he go?</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canucks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canucks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Vancouver%20Canucks%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Vancouver Canucks mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/vancouver-canucks.36/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Vancouver Canucks</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:25 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

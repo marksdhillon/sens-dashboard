@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" alt="Pittsburgh Penguins" class="team-logo">
       <div>
         <h1>Pittsburgh Penguins</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -1135,6 +1155,93 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 27</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Filip Hallander from Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed C Sidney Crosby on injured reserve. Reinstated D Kris Letang from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired D Samuel Girard and a 2028 second-round draft pick from Colorado in exchange for D Brett Kulak.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Avery Hayes from Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Filip Hallander to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 6</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned Fs Rutger McGroarty and Avery Hayes to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Avery Hayes from Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Melvin Fernström to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated D Ryan Graves from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 1</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Tanner Howe to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 31</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Kris Letang on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 29</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Rutger McGroarty from Wilkes-Barre/Scranton (AHL). Placed D Jack St. Ivany on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 22</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Erik Karlsson from injured reserve. Placed D Ryan Graves on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired D Ilya Solovyov from Colorado in exchange for F Valtteri Puustinen and a 2026 seventh-round draft pick. Sent F Joona Koppanen to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 18</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Recalled F Joona Koppanen from Wilkes-Barre/Scranton (AHL). Reinstated F Rutger McGroarty from injured reserve and assigned him to Wilkes-Barre/Scranton.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 14</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Tristan Broz to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 13</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Placed D Erik Karlsson on injured reserve. Promoted Fs Tristan Broz and Ryan Graves from Wilkes-Barre/Scranton (AHL). Reassigned F Rafael Harvey-Pinard to Wilkes-Barre/Scranton.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 12</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Caleb Jones to Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Rafael Harvey-Pinard from Wilkes-Barre/Scranton (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Ville Koivunen to Wilkes-Barre/Scranton (AHL). Activated F Evgeni Malkin from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 7</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Rutger McGroarty on injured reserve.</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOOTFzeDV3X1pUUWhEM1pzemhJeFowbzhBTUYzeEhxWHBTcGFVWDIwTEdlUFpOeVVDblAtTGRablF4eG5LZUszSXhpTTUwYl9BRWpjcFR2Z2gtRHg5enlmd2ZVamQ5TzRJM2trY0Jqd205cUNrLUY0UUpBU0U3Q3lFNHhQQW1aZXdTTHJhS0tLWEJjaWswYkVnMm0zd3l6eWU5eWc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:20 AM</span></div>
 <div class="news-title">PIT@BOS: Karlsson scores goal against Jeremy Swayman</div></a><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQcWtmRWV4X3pLV3VoZlBGbk9JQVBjWTUzUTNYYXZwMDBidVNzdnFqdEZnN1RaZVBOLXc3MFA0MEhBRHdSWTJCYmR0TWRXdkNiNkgyejFTU25UNzE5RnF2WDdSQlEta0xFdjZXdmVfRlBaTVROclZRT2MwQU1ra1JIYlFDMjBKT1NPd2UtMVFCUVFGZkpuV2UxYVM1SFc3Q05GLXIzWlBENE1ZMWQya0w0TlhrOE5ERHhSN1QzQThtZnU2bUs4eEZyUG1vYklfSlU4QWNYSUgtX3VuVnVuWExYSTVDSXpxQlVzZEZxUkVGQXQ2SkRNRkxfbUNRcmppU210WVIxc1FJZkttdw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1186,16 +1293,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">NHL trade deadline tracker: Analysis on all of the big moves</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQV3VOeVcwYmgwVnBQZHZ5dUoxSTF0RGVsYzRZZ04tTlJCU3NvWFM0NkhJZzltMWt1eFY0dVFUQ0JzS1Z3T1NNUHVremxBMHU5RVNULXppamhrdml5ZS0tcHRtVW5hZ09aX1hqYlN1SmhsQk53NE9ZTW1DOVpFZmFOcGdsV3ZVd0pWeUtyeFl1T1BtWGFLVDZGb3Y0RlRrNDB4MExN?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pittsburgh Hockey Now</span><span class="news-date">Mar 2 &middot; 7:33 PM</span></div>
 <div class="news-title">Penguins Blog: Trade Deadline Strategy? Playoff Push Numbers</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/penguins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/penguins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Pittsburgh%20Penguins%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Pittsburgh Penguins mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/pittsburgh-penguins.23/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Pittsburgh Penguins</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

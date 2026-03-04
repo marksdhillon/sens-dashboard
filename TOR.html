@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="Toronto Maple Leafs" class="team-logo">
       <div>
         <h1>Toronto Maple Leafs</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">21</div><div class="sm-label">Games Left</div></div>
@@ -1000,7 +1020,72 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOV3lmTWZwVmRpXzhXYURibkNwVjBRM1VTQWJMLWZwdm1PNXBQQ0lOR0M4eElXZURuR1BweFJOQjdkVmppekM0T2otemdsZFZxQTlMYlU4dEtFeGtXalJFZllSRmFsS2tXWGcyRjZJM1pFblNiMzFwYTRJVjZHbVYwcWRJYUdyVS1sR0pSbG55ZE5rZDljTktIajBLNzFGSktjMTBZMEhoVmZITXZiQ1BSbFBPMlk4WUJYTzBreVMtTGtFRjFSUmdsMUxuMGdqQk5NOHctRA?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Dakota Joshua from long-term injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 20</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Bo Groulx and D William Villeneuve to Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 19</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Bo Groulx from Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D William Villeneuve from Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 6</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Marshall Rifai to Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 31</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Activated F William Nylander from injured reserve. Assigned F Jacob Quillan to Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 28</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Sent D Henry Thrun to Toronto (AHL). Recalled D Marshall Rifai from Toronto.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Placed D Dakota Mermis on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 23</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Recalled D Henry Thrun from Toronto (AHL). Assigned G Dennis Hildeby and D Matt Benning to Toronto.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Sent G Anthony Stolarz to Toronto (AHL) on a conditioning assignment.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled C Jacob Quillan from Toronto (AHL). Placed RW William Nylander on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 12</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Dakota Mermis to Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated F William Nylander from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Jacob Quillan to Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 5</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled D Marshall Rifai from Toronto (AHL). Placed F William Nylander on injured reserve.</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNMXVkdlJGLVJqeG1FR25VVUNDa0dnbG56d0MzSmF2RnVHRW9pekJkUVlINzhreXd1ZWxzd0FkaUFWeHlNTXVjdTA1Vm9VNHEzNWQ1UTA1em1CU3Y5aTFVUVRhUkFyTlBQQ3VHemx0dVFRQm56ZC1lMnJ1M3p1VEN5cms5RFp4QnNvOFNub2I5SWlLTndDMG15Z2xfYjZsV0Zqb1VYRGF4WS1KSW9hY1hUTmRoNk1kTDF3SnZtTS1RbzAwOXRUOWpYc1ZPSkdObmphZ2VfRkstVTFzWTg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yardbarker</span><span class="news-date">Mar 4 &middot; 1:03 AM</span></div>
+<div class="news-title">Surprising news emerges regarding Maple Leafs' Nicolas Roy ahead of NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOV3lmTWZwVmRpXzhXYURibkNwVjBRM1VTQWJMLWZwdm1PNXBQQ0lOR0M4eElXZURuR1BweFJOQjdkVmppekM0T2otemdsZFZxQTlMYlU4dEtFeGtXalJFZllSRmFsS2tXWGcyRjZJM1pFblNiMzFwYTRJVjZHbVYwcWRJYUdyVS1sR0pSbG55ZE5rZDljTktIajBLNzFGSktjMTBZMEhoVmZITXZiQ1BSbFBPMlk4WUJYTzBreVMtTGtFRjFSUmdsMUxuMGdqQk5NOHctRA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 4 &middot; 12:09 AM</span></div>
 <div class="news-title">Maple Leafs retool challenged as trade market falls short of first-round returns</div></a><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOb3o3bE8tTlZ0SDlIdEdrbjRaU3hMNzhxbnE3NEhZRUk0UGNBTXlnWlJvRjlVUlJCN0ZJME0xMEN6bTZyNEdLVkdkX3lJZHlqMVQ3cmFIZ0dNVVdTbzZYaGh2a1l6aFRRMHJoSlFPMkpFSEdKNlpiOU1oTS1ORDd2TkxwZTRzbDlOTlNfcGRMTnh0cDVNVWhvS1dEdnBId0F4MUw4LVhMZ1ZIVldsYm1SX3V1QlN5ekFSTzkwYQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 3 &middot; 11:56 PM</span></div>
@@ -1018,7 +1103,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 7:58 PM</span></div>
 <div class="news-title">Maple Leafs have an unexpected trade rumor player added to list</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNbTU0WjloZGdram9JREd2THV4ZmdERHpZdk56U20tS1hPd0d2SVRtRGg4bjdBTFd2LTBGTUxnYTJIS1VfOFVuYVIzUE9yYTRtMUJrN3JHSVhTYXI2SWx3STNGRTVpc3JlbmhOc2l1anZ3bjlBTjBQMEhuWWlSbUlaLUxnSVJibllDMUVRWWJqSHJ2b1JLQ1pyYW9rZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Big Lead</span><span class="news-date">Mar 3 &middot; 7:13 PM</span></div>
-<div class="news-title">Maple Leafs’ trade deadline ‘win’ would be stockpiling picks, prospects</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxPRFg4cldRXzg0VmlKVHptTmdyTU41WkZUemNtbmdjVU84a08wd0c5LVpWVzBzTy11OGRhdWlsdmxDY1lIRTNkRlZOOXZxMUVTZV80R0J0QnVsb0Y4b3c3Ulkzb0R3VDBHdTYzdEZEaHFVRkgwTWZxOXhDa2xoR1NfdU9Ea1ByU2NMLVZtZzg0NjRKUHZiUWlYUmJWZ0tEeXg3RUNETy15WDdFeDBBVG1oOHd0UklGZTJkSlRNWUdESXV5b2FjcTNwODVSMUR0VGNYMk1ROEhMQVBLUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs’ trade deadline ‘win’ would be stockpiling picks, prospects</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxQTnlsdFF0TmJvdHh3Rl9HS2VJTm9qc3hCeGs4U2hOckIyZjBoY1ZWc0Z4WGNuWXZrbDAxMUFaSmJTT3RYTTNCX1BLYzJhejNWZFh0a0tYVnU4RVJuMjZkdkZsdHNXVExyQU1ibEhndi1PNGNiRE9WM3d4RmJDeEZHV3lseHpGNmdDNEFtN2dvaE9MTDZEN0J6a1gwdWE0clRBTW5ZTWc0cUZRRU1jaVNWOVJUV2cxV1I0em1RTHBDQnRLVlAtVVhoUzNvUG05cnMtTTVWeE1TMUZFUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 7:08 PM</span></div>
 <div class="news-title">Maple Leafs' looming goalie problem could mean Anthony Stolarz trade</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQMXJGcTN4MTVtZFN4OERqU3Ftdi1YT2RKNXlvdEZoR2NsWGJ1WGVUVWRNMXRuN3diVUw3OEtrdnhzQ2hxUHN2aUZJWHFtanhWNE1fSWtLUl9KbU5JYXV0OHlHLVVOdnkzb0Z2YnRVd01mOUxoUFM2MDBZcnFyX1A4a1NKeFlfbW9RNmZzSVB2cnRlS3JfU0lEQ1BB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 7:00 PM</span></div>
@@ -1030,7 +1115,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 6:37 PM</span></div>
 <div class="news-title">Maple Leafs urged to keep veteran trade candidate with a contract extension</div></a><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxQaUREM1VMSGhhMDBBOHlrdjVfc20wbWtkVEFoOGxfLUJEdlpZSlR5amtyQ3dma2xiWlNYUnBSWTRNZWF0aXlkSG9uWERUVzRxelVFbnhfOWpWVEYtUDI5ejlRcFIxaG5vYjBVUFJTcXFOTVZXWWJUTXVwMHRXeXhjUEZGb05yN3VoSUJpTHBOZGpEY0NwZUFJbHVueDlqeGNuUXJITE15b29VY3R0N3pvb09zQVE2OXhrQkdFV19OdmxWemRzbjRKWUI4c3U?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 6:26 PM</span></div>
-<div class="news-title">This is the 'no-brainer' cost for Maple Leafs to trade Bobby McMann</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPVl9PaWlwNVZ5aEVFc0FJZm5WbVNKQnFiMjNNVW1BdHBwbW1XaWROMGdVdUJiS1Jld0xfcm5XNlpnbmFLWDZQOUdQTE5jeUtOa1h6QWhKNnBVVkVBU2U4NXNKX2hUdThjN3hzeFVIaTl4aF9RYmdFX3JCZVZfWkVJTWFzZGxIaHRSR1NfdVZFZGxiaV9JSjMwZmhnMTIzNGtSUjNERE13LTVqRkJmeDdlTkRQdzhkUUlHSGc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">This is the 'no-brainer' cost for Maple Leafs to trade Bobby McMann</div></a><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNMVpXSmc2cXRLV1ZaY0ZUNDRfMDJPamxDZFhGaEJELU5SM1RuOGlhdXhMUTJpNW1JU05aX3dtTVNfQy1HMlhVLU5BQmZjYXVfZF82Z3l3M2FsN2FmMm9lbDZyM1dpNTc5MUZKWjM2NUxfS1pwZlBvbUtfNEVTcWR2Q1UtSno0TGs0cDJ6MXJJVlNkSjFvRnB5d1MtZlpMRHVQMzRVdGdvV0hkVUkzazJUVFh0RDV6eFl1VFVGa2IxLTJOOElqSF80Q0YxZWt3Zw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Athlon Sports</span><span class="news-date">Mar 3 &middot; 6:25 PM</span></div>
+<div class="news-title">Toronto Maple Leafs: NHL Analyst Believes It's Time for Team to Trade Auston Matthews and William Nylander</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPVl9PaWlwNVZ5aEVFc0FJZm5WbVNKQnFiMjNNVW1BdHBwbW1XaWROMGdVdUJiS1Jld0xfcm5XNlpnbmFLWDZQOUdQTE5jeUtOa1h6QWhKNnBVVkVBU2U4NXNKX2hUdThjN3hzeFVIaTl4aF9RYmdFX3JCZVZfWkVJTWFzZGxIaHRSR1NfdVZFZGxiaV9JSjMwZmhnMTIzNGtSUjNERE13LTVqRkJmeDdlTkRQdzhkUUlHSGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 3 &middot; 6:25 PM</span></div>
 <div class="news-title">Nic Roy expected to be traded before NHL deadline, per Darren Dreger</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNT244d1BmLVF0Mm9QbFFRRHpVeFM0VHhiUWdackRxazlLZlp5QW1Zb2sxNG5ERExCZ1o2NS1nUG5sUnVtRm5oMEY1QW5SR3BGWXd3dG5MbHBnSHo3Ylk5SXJ5RS1hQi1jLWRWb3FOdkhUcHZudFFQV3FLNGpJbkladDFfbEo4ZDdoMFVXb2JvLUkwVnRjMzFZQg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 6:11 PM</span></div>
@@ -1046,21 +1133,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 3 &middot; 5:47 PM</span></div>
 <div class="news-title">Scott Laughton, Maple Leafs pending UFA on the trade block, evaluating deadline return</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPX1BzTlYtenFhdEx3VElNdkpoRG5GTVNWeWM3V2dKWXFxUDROWGRWVGpfLXJJSGZJQzMwTDFNd3dxUTJENDdFZ21UdmN5Snh1STdtX0dJLVlEdVdyZ1ZieWhyT19leGVmZHI5aldqYi1FaU5Zd3FXWGJWVzVTLUtoWlhqaDhPLUFYWXJILUpXV1RQWHhJT2JQV1QwWVZjc3pEZjlZ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 5:33 PM</span></div>
-<div class="news-title">SIMMONS: Stunning decline of Morgan Rielly is near-impossible to explain</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOVnhpb2VNbDdMSmpZRWp5RExUNTA3RlhVSEZONXlyWnd2S1JHN21KNXpFeXFjMWlNbWhYTjZHZHhCNkNYVG5zcTBRN1hMRmYtblc0SGFSeUZaVUdzcTVuZ0lXNUg3aENhcElzOXlUQTA5ZWNWUlhHYUNmbXY4M1R0ejlNek1WSXlqVl8yVktnNzRNaHZDX2VzZWNn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 5:09 PM</span></div>
-<div class="news-title">Maple Leafs trade deadline preview: No choice but to sell</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQSy1lQW1HU1I5cGVEeVZIc2NHUjVtc0pHU1pMNFVxdWItRWRSa2N0NEJTRkgxdXVkV3FKX2Y3RTdyTXYwNGljdGlaWnc3MDZtNWxia2hOU0diM3M3djNKcDE5Q1J5UUVVOV91TjViQV9qRmVOQ3ZiaDQ5RW1GOG13eXpKMkxQb3c?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 3 &middot; 4:57 PM</span></div>
-<div class="news-title">5 Maple Leafs named on NHL insider's latest trade board</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">SIMMONS: Stunning decline of Morgan Rielly is near-impossible to explain</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/leafs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/leafs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Toronto%20Maple%20Leafs%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Toronto Maple Leafs mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/toronto-maple-leafs.17/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Toronto Maple Leafs</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

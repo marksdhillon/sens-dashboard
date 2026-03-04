@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/ANA_dark.svg" alt="Anaheim Ducks" class="team-logo">
       <div>
         <h1>Anaheim Ducks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -977,6 +997,37 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Leo Carlsson from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Fs Tim Washe and Ian Moore from San Diego (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Ian Moore to San Diego (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Tim Washe to San Diego (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 1</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Troy Terry from injured reserve. Placed C Leo Carlsson on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Jeffrey Viel from the Boston Bruins in exchange for a 2026 fourth-round draft pick. Recalled F Sam Colangelo from Anaheim (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 7</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Tim Washe from San Diego (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQNWZsT2FFdGF0VUl5ZmZXM2NJcUR6cVlsMEZiWl9Jd1dvMWp6ZjhvcG52czBaZS1qN0g1Y18wRW1ZWVhDSDRqaEVnYnNWdmgteG03UjB2SXM5T0s3cjVVbEw5bjNCeWFjNl8wbG5MM1M4VjU1VGc3cXl0dHdaOE4yOHlvenZJaHhfVEJQcFJJcWxfVFY5dm4zUGVEcDlyb19mY3IxNWhLODJ0ZjN3ZUlsOWRDMTlFUTBjczI2MWp4ZlFxemdEbEVz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:31 PM</span></div>
 <div class="news-title">Beckett Sennecke Leads Rookie Scorers, Will Soon Face Fellow Calder Favorites</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxQNjVHN3pqWmVzSXVkWjhjZlJVRHE0TEVOTU1xcWI0SXZXRmxrOGhSbVU0MHF0SlZiOWF3QkY2aWhGbXFtOXNmX2xTUDlzYkpIaUhvbXBPZDZTMWU5WFdndzlTUU9oa0gxdFZIMzJSVTR0cDV1cjgxekppRmxhck9TR0lGNVhBUHBHdVNUb2JicExxdmUwWVFrT1hYQTZ6T1FQLUtQTDFUUXhxYloxNEctQjQzSDNlN1dQYmJQYURDbkhHMnBkamVDQ1lzcGp4a1dmVkZxUw?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1028,16 +1079,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Ducks honor Quenneville for 1,000 career wins</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQLTE2YTNyOFprTFNENXdnR0JjT2hKeGVTYjhiN1BRa1ZZSjVDZVFsNnNpTVVIMTRZc1gxdmJObzFmbnFJNjZIc2NEVUhfU0hhRGgxMzVndDJHWlFDdEpGRmhXN09GMVNtcHA4SDdDeXFhWGpvbnVaSkNUc001Um9ScEotYnlKdE9zOTFGQlJocEd1Q05yVnpyS1RITQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 2:53 AM</span></div>
 <div class="news-title">Gauthier Gets Ducks on the Board | Anaheim Ducks</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/AnaheimDucks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/AnaheimDucks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Anaheim%20Ducks%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Anaheim Ducks mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/anaheim-ducks.41/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Anaheim Ducks</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

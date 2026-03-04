@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg" alt="Dallas Stars" class="team-logo">
       <div>
         <h1>Dallas Stars</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -975,6 +995,41 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Roope Hintz on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Arttu Hyry from Texas (AHL). Sent G Remi Poirier to Texas.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled G Remi Poirier from Texas (AHL). Placed Radek Faksa on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Mikko Rantanen on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Claimed D Vladislav Kolyachonok off waivers from Boston.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reinstated G Casey DeSmith from the non-roster list. Reinstated F Nathan Bastian from his conditioning assignment. Sent G Remi Poirier to Texas (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 4</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Luke Krys to Texas (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Remi Poirier from Texas (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPVmZ2Zmg1Rk1tUXBBck1EOE9vNm1LSGlfRzhYNEdGSUlUQW9MUXEtSHVCMUk2UnlkS3lVOWRnenBZYU5UN1RpUjNkakFrUVJ4THpvRy1aUndXMUpXbXZTSnAwN3hueDBsMmdRbEpZa0JidjFjblJCcC1CREVBZ3IxbFZHaDFDN2V4TXJWTw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 3 &middot; 10:30 PM</span></div>
 <div class="news-title">Stars place Roope Hintz on IR with illness</div></a><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPQTAzU2VndDNyMkg5VXNmTDNUWVRiNnl5cVBYVWFXbjREWExCd3JtaTJNSGpHVnlwMk5GVFZscUdSQzl2dzNQb0VPSXpkaVdveHlsclJXMWJwQWF5dFd0WGttMHlSenB3cFl3QjU5d3NoVGpEVEJ3RU1UNERYZmlKZUNkWmN0ZWlUd0h3VUl0V0gtaGxnTWFaUnA5ekpqMmMxNTRvUlhIUDd4aFhOWmV4cml0eFBEd2s5NGR3RFU5d3F2QjI3NVpPTGV1MEc?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1005,7 +1060,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 12:19 PM</span></div>
 <div class="news-title">NHL Game Preview: Dallas Stars at Calgary Flames with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNcWFrVk52VmNPOFAyUUNqeVhKM1ZfVExzc1NhZkpLcXUxYnQ1MUdiZWVVZEFoY09GRzQzcmx1WkhNVTRFSFB5Tkp1SUNDNXJfMXoxR0g0cHUwS01IUFFoV1lvZlRXeW5EOGctZ21PQi1DMl9yNy1mZ2wxVmZJYVlhVm16RnRCb1l5Zm1RRXBiMHRPYjJqS2Y1Z2QzZzItX0E5NVg5UGJjSzJ4bUlwNW53bFhR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNcWFrVk52VmNPOFAyUUNqeVhKM1ZfVExzc1NhZkpLcXUxYnQ1MUdiZWVVZEFoY09GRzQzcmx1WkhNVTRFSFB5Tkp1SUNDNXJfMXoxR0g0cHUwS01IUFFoV1lvZlRXeW5EOGctZ21PQi1DMl9yNy1mZ2wxVmZJYVlhVm16RnRCb1l5Zm1RRXBiMHRPYjJqS2Y1Z2QzZzItX0E5NVg5UGJjSzJ4bUlwNW53bFhR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsgambler</span><span class="news-date">Mar 3 &middot; 9:25 AM</span></div>
 <div class="news-title">Dallas Stars vs Calgary Flames Prediction, Picks & Odds | 03 Mar 2026</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdXlvQ2ZfX1R2S1dJbDFrSHpzcGVvaGhGUGFCcGxxWFVlYWJ3NnBFbzg0V1hIQzktS3h3QXFLWG5VN3pVZkdGaG9lNFctVTBVSnQ4eEh1M0szR0c3UzF6Z09aTnRpQzFRZ0g1SEhxNVRCRi1KQm1lRnh6Mk9ydjNwR1I5NWFOc0JENW1jZDFHSTZIc29SelhOaGRJTm9XeklsRm1OWEoybm1TQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Reuters</span><span class="news-date">Mar 3 &middot; 8:14 AM</span></div>
@@ -1026,16 +1081,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Bichsel nets 2 as Dallas Stars thump slumping Canucks 6-1</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOUVR0N0xwbDRMeTBnZmtBa2t6UklmRGpsLUwxQlphX052emhZSzhGY3QzNXI4dVpoUDhfdGVWdEhDWkxoQjM3ZzNWbmhETER6TWt5QUp3ZFFnYlpqVWxHOW9fSXV6R3FYMkg2ZkZrWFQ4RkVIMDVLV3EtM1FpLXRQeXdNREVoUmZoNTlJOXZTX2pzekgwelFtcUNaVFNfdV9UbXc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 4:34 AM</span></div>
 <div class="news-title">Stars’ dream, nightmare scenario for 2026 NHL Trade Deadline</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/DallasStars/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/DallasStars</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Dallas%20Stars%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Dallas Stars mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/dallas-stars.44/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Dallas Stars</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

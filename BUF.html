@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" alt="Buffalo Sabres" class="team-logo">
       <div>
         <h1>Buffalo Sabres</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1038,13 +1058,74 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 28</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Activated F Zach Benson from injured reserve. Assigned F Anton Wahlberg to Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Jordan Greenway on injured reserve. Reinstated F Joshua Dunne from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Anton Wahlberg from Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated G Ukko-Pekka Luukkonen and F Joshua Norris from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 22</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Zach Metsa from Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated D Jacob Bryson from injured reserve and placed G Ukko-Pekka Luukkonen on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 1</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Isak Rosén from Rochester (AHL). Sent D Zachary Jones to Rochester.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired D Gavin Bayreuther from the Carolina Hurricanes in exchange for F Viktor Neuchev. Assigned D Gavin Bayreuther to Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 23</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Zachary Jones from Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed F Josh Doan to a seven-year contract extension.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated G Alex Lyon from injured reserve. Placed C Joshua Norris on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 15</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Konsta Helenius from Rochester (AHL). Placed F Joshua Dunne on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 14</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Loaned D Zachary Jones to Rochester (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Zac Jones from Rochester Americans (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Zachary Jones to Rochester (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1SME5NYmN2eEpyTXRhamJzQ2lqaHJzNzVoSEZ2NkFyVUFnZlNsWXdDelVpYm96QVFPcW14cnROVEk2WmZNUDJwV3pZQmp2dFhJUDJxRFZUNWdHc1o3cHhNLVVCV0kySFdId2p6YnJQOA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:31 AM</span></div>
 <div class="news-title">Sabres honor Olympians</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE14a25YdXA3UGZGVDNLTG9EdFRQQm1NMmh5OFBBcmZSV1QzY0pqcGNHV3R1XzBmM3pla052LW1Jck1FN3Z4aU1xVHc0SmVPSHhtdkJzOVhMc0xQcEVmUTJsWE9SbEgtbkR4OHpNUk1NamdVb3kyVUdNUHln?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:31 AM</span></div>
-<div class="news-title">Team USA Women's Hockey</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQZ0wza2ZBT2lQMDFLWm9ZRmFVYW9xaFZENWlHaDh3MkphbzdCUVR5RWtaWkxMQXhUZV9RVGgyNVhtejFLb1dQbW9sUmVFZkd1NWZSMUFWekVoeE1kZnZxYkpKTU52c083b09EalA2QWw4ZzFNamNyNVFzaFdhb1ptUk5YUWpkTGswNkpwdmgzMnZpNGRLUHRhaWlkWHNqbkk2ZlFiQTFlX1RXMk83LU1HQ3hIaUVya3p0cGpZSmhjYmo?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 3 &middot; 11:49 PM</span></div>
-<div class="news-title">Buffalo Sabres 'heating up' trade talks for St. Louis Blues' Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPVl9rcEQ5STc5dXpaVkViQ2JSdjRXamtCUXR2a3J0RzRza0xZMUxyZTRGMEFycUxHWDhfamRJa3ZvamRGQTh5ZDIzbk8tQzI3c3IxZi1tall5SlRlRjBTRXYyX09HWlE5NEh0djVKb3NiTlAyOS1RM1ZPTXUtNkUtdWpjZjBHbUdrbjl2WDBLOTNhSTlYcW5IYkRPY2w0QQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Team USA Women's Hockey</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPVl9rcEQ5STc5dXpaVkViQ2JSdjRXamtCUXR2a3J0RzRza0xZMUxyZTRGMEFycUxHWDhfamRJa3ZvamRGQTh5ZDIzbk8tQzI3c3IxZi1tall5SlRlRjBTRXYyX09HWlE5NEh0djVKb3NiTlAyOS1RM1ZPTXUtNkUtdWpjZjBHbUdrbjl2WDBLOTNhSTlYcW5IYkRPY2w0QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 11:40 PM</span></div>
 <div class="news-title">GAME PHOTOS | Sabres vs. Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPQndjek54WlRjbkUzek5vV25IODltV0g0bUpLVlA0aHBGSV8xSDFlT0o0YVBaSzFPRDJROHowdTNyTkdTeTJIbElGdW9hMWNQWGlJYjZwZkcwSHpkblRRaXBMbFdVSGRnb3Y2VDROMUQwYi1EYmNxdWs2czZIdDFjc2Jnd0ZoMTQ0YnJMOGhqTEY0TTZVY0lUSFFVMHZEaWhJeVZweUZ0cw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 11:07 PM</span></div>
@@ -1088,17 +1169,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 7:45 PM</span></div>
 <div class="news-title">Sabres' Robert Thomas trade rumor could change Stanley Cup ambitions</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPOWpCMDF0cnVLWEF1d0FfZTJ6VnNXMDRpRnNiRkhLdGFWa2R1Z1hPSjBUR3pjQ25kajhzV2lBOXBYcGVqSERVcXZZSHE2UmJ5NlQ5Yk1xTFVXdkNpWTZsUHlxTHVWeHJjY0RGR2hzRXNXclh1SWZuYnFCUDN5b3J2Z1VHSWdrd1BZdWJveFMyUVlHUEtidTdjZ05ITEc2bzhO?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
-<div class="news-title">Report: Thomas trade talks between Sabres, Blues heating up</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Report: Thomas trade talks between Sabres, Blues heating up</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPeFZGVTB1RkV2QW5EZU9oNmppQkhMNHJ4VkxMWWpHSWh1VDNhblJZTkNYQm1sOUNsMEIzWmZaNGFqczZ5VDRUbzhNS29ISmhERDg1cVVPVDByVl9rTVN5VGJwelZ0UWROSzIwVE5BcGhUQ1A2RDhENkgzS1ZKRHQtUkMzM0dQd29FSDlSLWQ2bGdaT2ViZWs4cFhPWEZJd2FhbWdjYnozcmp5QmhiTjloX1BwOFo?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 3 &middot; 7:30 PM</span></div>
+<div class="news-title">'Absolutely not:' NHL analyst says Sabres shouldn't meet Alex Tuch's asking price</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/sabres/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/sabres</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Buffalo%20Sabres%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Buffalo Sabres mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/buffalo-sabres.18/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Buffalo Sabres</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

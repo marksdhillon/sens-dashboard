@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" alt="San Jose Sharks" class="team-logo">
       <div>
         <h1>San Jose Sharks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:25 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">24</div><div class="sm-label">Games Left</div></div>
@@ -990,6 +1010,69 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent Nick Leddy to San Jose (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Ryan Reaves from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 22</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent Filip Bystedt to San Jose (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Fs Filip Bystedt and Nick Leddy from San Jose (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Activated F Kiefer Sherwood from waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 31</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated F Philipp Kurashev and D Shakir Mukhamadullin from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 30</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Waived D Vincent Iorio.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 22</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Igor Chernyshov to San Jose (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Kiefer Sherwood from Vancouver in exchange for a 2026 second-round pick, a 2027 second-round pick and F Cole Clayton.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 18</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Placed D Nick Leddy on waivers. Reinstated D Vincent Desharnais from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 15</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Ty Dellandrea on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 11</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D John Klingberg from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Patrick Giles to San Jose (AHL)</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 5</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Patrick Giles from San Jose (AHL). Placed D John Klingberg on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 4</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed F Alexander Wennberg to a three-year contract extension.</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOVDN5d3lOUXV1LWo0RzJTaDFBWkFSQjRCQ0hVcVA5cjhwTG1FeWxrdTA3MW4tM2FIMWhKZWhvMlBGYVZWcmhOc01hemxJRkxBRlhtSkdkVVNYU01sNXkzaGxKWGNHczhVbXBtdC1BRFJTdEpjM1NHaUt4a09nWHhYM0hFSHRwanFMTFJ0Umk0TFo1LVIyLTV4WA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sharks Hockey Digest</span><span class="news-date">Mar 3 &middot; 11:18 PM</span></div>
 <div class="news-title">Sharks’ Ferraro Excited To Play Meaningful Games; Not Bothered By Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNMzZaVHhNMG5UZEhJTWVGQ1BrbHYzN3U0OWRkbjNkZFQtSTlHN0d5dloxU093Zlo4YmJERnpNRXZEUFFITll1WVU4Y0huaTY1ZFloZEVxWHZCZjNMMVVGOGV4MmN2bVlVWmpkWkp5STIwYkxWaW1rMThJdjRndkRGS2lnY2EyclhWVWphOHd4bHE4V1NpbEN3SldCckpzX2ZheGRBNGJOX2ZFQ3ZJbTlDUkppa1I2TjhVaHfSAb8BQVVfeXFMUG5aTlR1Zzl0STFkR1lrd1hfbk5LRnkxbjBxTm5TM1NjV3o2dEhuYWRQVGFPc2Nwdm56d0hkNkhtZ0xLZHN2S3NWbS1UYi1GU000QnRVZ2F0LXB5R3VkTXJ6MlRSUDlyazh1MThDZ3hPcjQwUG9RbkpuaDBPT2oyM2tWckM0TFBwNjdQUi1iNjM3V0dfWlI2MjBhTFJlT0QyMVZBSU0zclB1WjJfc04wR0tIRkRvTVVnZ3ZCRjBDSmM?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1008,13 +1091,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:26 PM</span></div>
 <div class="news-title">Sharks Mic Check: Cole McKinney</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPcS1iR1kzaVlzVXB5ZkUxc2dvOHBmR1MwMGVXTk1XSFNzbzQxTXdheHRIWVZWMVVOanExbnFVMW42UFlGeTBqdGJUZzg0Ni1ULVplcjVScE1QdEREc2s5MEExWXJnYUVSVEMtREJQTGpvd08tZF85YVJMeXR5NHh4MWM2X0g4bFFmRlhaUjhfVHI1OEJpMmllWUVwUllfazl0dGU0cw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:00 PM</span></div>
-<div class="news-title">'NHL Goal Chase' picks for upcoming games</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPTEI1WnVVdXRFVUtGb05pUkNrSVBUTERuRmptbURRZmhpNkIweXlJZmI1YWJ1cE1wUVExUndDMW1FY3Y2dlI2SERsU3RDNnR4UTE2STkxVVpsVVhMcmZNVU56SXI0SkFJYnVvb0hNdlgtaEhvWVpkYUkwRnQ4WXFabGV0Z0EyWTBKRl9oWjY3RQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">'NHL Goal Chase' picks for upcoming games</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNUXJ3a1VMQm82TmRkSkEtSm9TMW5STVdGb2VTcVY4bll4Z2pwT2ZyaUx4amh3X0daZ0lvSHFYbkVmMjhkTmRxcDFtTXdqY1hGLXZ3a1FwV3hhSUpfVmFoNXJsZTUzX3kySy1IM19pekIxeldiU1ZhR3ZrTlJGOFBMSA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 2:49 PM</span></div>
+<div class="news-title">MTL@SJS: What you need to know</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPTEI1WnVVdXRFVUtGb05pUkNrSVBUTERuRmptbURRZmhpNkIweXlJZmI1YWJ1cE1wUVExUndDMW1FY3Y2dlI2SERsU3RDNnR4UTE2STkxVVpsVVhMcmZNVU56SXI0SkFJYnVvb0hNdlgtaEhvWVpkYUkwRnQ4WXFabGV0Z0EyWTBKRl9oWjY3RQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 1:33 PM</span></div>
 <div class="news-title">Countdown to TradeCentre: Will the Canadiens flip Laine?</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNT0Z0cGtYNGE3WFpZX2xtVTJiSFRTSGNvMldWdHpwZktVQ0Vhc0lKV2NDU3NneC0tSjBSSzQ0dmgxMk9WeXhrZWpOUm1hb3U1bGVQSTVwYnB2ZXFwSTdOajJoRkJHdkRERFJfak15SEVXWmZTUDFKbHJXWl9ZYy1saC04ZVRNS1FHTmNVb29CMndmUF9LVTlXOVEyUEpKemo5QW9qS3dhMHltTHE4YmxDWlFXOHdQZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 11:49 AM</span></div>
-<div class="news-title">NHL Game Preview: Montreal Canadiens at San Jose Sharks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOOUhhTXJ5QlJISVZscHU3ZGYyeUllX1pLQXlUb1Z4YndvdEY5bEEwZ2VoU0EzZjY2VkE2Qmk5OGJrTTFMcFByZlh2MjJKSEtscGVQY2lZczF0ZXc2TWdfT1hRalhhdnRqWDZ5VkNPRUFyTGtqTG9jc3N3RzNuX1dRTTFmNEFtWUF1OTBZMmpsWDV4RGZDMnRtZklETzZKckQzdVAzV0g0TUxOSnRKTFJpQThtdW9HNkd5OHdv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsgambler</span><span class="news-date">Mar 3 &middot; 8:45 AM</span></div>
-<div class="news-title">Montreal Canadiens vs San Jose Sharks Prediction, Picks & Odds | 03 Mar 2026</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOaEhKbXFoT1BrTWhIU1VvR2JBY0Y5WnNsR2ZyX0RGcEtLYXhFWDEzbGVkV2RCcVpKeU9faHJ0amRaQm1nVWJVSndGRUFfS2E2YjJFdm04c1FucTZHTkJpM3pndkhsRU1IMGxXSzVjZjRWbjlURjlnVlVQQkZ5WTFuZl9LVHMwUFVQckcyWTZOUzFYN2x0T2FlNQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Game Preview: Montreal Canadiens at San Jose Sharks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOaEhKbXFoT1BrTWhIU1VvR2JBY0Y5WnNsR2ZyX0RGcEtLYXhFWDEzbGVkV2RCcVpKeU9faHJ0amRaQm1nVWJVSndGRUFfS2E2YjJFdm04c1FucTZHTkJpM3pndkhsRU1IMGxXSzVjZjRWbjlURjlnVlVQQkZ5WTFuZl9LVHMwUFVQckcyWTZOUzFYN2x0T2FlNQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:19 AM</span></div>
 <div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxQSFJDcFFmZ2xXZ19aWDg3SzI0MS1yZmVqUHc1elVyTUVwcDBQVnA0ekpWUnNVM1FBRXFUWkdZeUlNR090bmRLcTRGTjBqYktKancxVkdfYmU5OUhqUl9QazJ4cmhMWFhLc2RMUkhiZGFwdjNIUm1mSUhDVVpuSDl4Z0loY0tTbE1PVDRORVExQzc3OU5neEl1VDZoajRWWWwyYWc5bXdJVmkwWUpyRlNrV2RKRTNLWGJ4MVdQZUsxOC1ZdmN6MEVjZkFLT1dSTU9EbTNYeFhqMDE1dm1OcnZwYVUyREtSNGxDM0gtUGlqN1FSWE4zV291ZWVaV2haSkJzRnJQbm5PNHJ3dUU4bE1PQWp6c3FmZF9fMWphVUozSEdWTENfOWlUR3o3QmNFYWs?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">13newsnow.com</span><span class="news-date">Mar 3 &middot; 4:28 AM</span></div>
@@ -1032,25 +1115,23 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 2 &middot; 11:57 PM</span></div>
 <div class="news-title">3 Under-The-Radar Trade Candidates For $2.5M or Less</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPbGt4a0F1VzhpVnhmZlRvdXo2eFJzTFUwSi0tNEk1TDQwNjNKSWZFYTdqb2hVY2dCbVRSa0NZWEFIeTVJbERzY1lCWHkzN245dkFySFZPWHlyNXlPbV9walBnajVWN3hjeDR3X2xBb2VpdTFja1JvcktMMFpDLTZ0ZDZNTE9MUVdRTHQyVQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 2 &middot; 11:48 PM</span></div>
-<div class="news-title">Sharks Celebrate South Asian Culture and Women in Sports at SAP Center This Weekend</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQQ0ZTbVZHVjVXWVpDR2t0TFoxMlpWTXZCeDl1T3JVU2Q0Vzc4VDhxMmNzbUQ2alV6Mk52ZzBETURXWmJNR0xsenE4SENDSWNHQ0pFeU96akwzeEJyM00zeDFlNzhsWFV2bWZ1dlRxMHQ4UnFtRWRrLVJaR1JtTGFKRlFIZXowUC1zekFMV3FKVTU4dENJNjdwcnpYaWJCSTZKa3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Sharks Celebrate South Asian Culture and Women in Sports at SAP Center This Weekend</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPSi1pVE5KM2JQa3N0bVJfcEZaY0RUVFZRU3JYc3JsM3kzaDZlQU0tSW0wVTJua0NKTm9TYmNtSVNkSWtPblpLZ0lKTXRzam1kVzdWOG16b1ZBWWwza2RHZEpwM01pN2tlUkxFZGk1TmJjMHczcXgzMlpwTUQ5MmFCYWczZ0V3WnpEcFhxVnlWZXFxY0tjRXkxMDZPVHJweWNFUXJlNFBQb0IwX0tRX0NxdE41RXBmVHRIYW1KeFJ5dndJN1VaLXBxN2JCdDNoWmw0VjczdWl1Zw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 11:09 PM</span></div>
+<div class="news-title">Montreal Canadiens vs San Jose Sharks Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQQ0ZTbVZHVjVXWVpDR2t0TFoxMlpWTXZCeDl1T3JVU2Q0Vzc4VDhxMmNzbUQ2alV6Mk52ZzBETURXWmJNR0xsenE4SENDSWNHQ0pFeU96akwzeEJyM00zeDFlNzhsWFV2bWZ1dlRxMHQ4UnFtRWRrLVJaR1JtTGFKRlFIZXowUC1zekFMV3FKVTU4dENJNjdwcnpYaWJCSTZKa3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 11:00 PM</span></div>
 <div class="news-title">Sharks showing so much potential ahead of playoff push</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNck9qTDJiWk04R25MV0RScU5Pc1JoR0VqV2FLVE9qUlJyd2Vqd3pFT3dvdXE3ZTAtNDh3Vk9CWW4wQTV5Q3lJVkNIWmJJSlBuckFBN0pkdEx3dEloWmJBWVhVVk9WYjNORHFPQjBUV3BsRmMwdlNNY3c5YmlyVmsyRnRES0pzY3hpT0VBLTBLX1oxR1dNQ3pvWVBrcHZXSl9ySUhuMGdyeXQwRE92dnZmd0V6eVh1SEtE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 10:57 PM</span></div>
 <div class="news-title">Big Sharks weekend ahead with South Asian Culture Celebration and Women of Teal games</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ3g4YlZTUW1mQTlldjczTTF0LVlDVWYtZzRrb1NDOWw4c1RZLVNXVkNleEpDTVdZNTVTMVRaOE5DSS16OGJRR1lFaThJeFFNUXhyUGNuNC1NWmg0b19feWd0UTc4eVVCMi14eDdFRzdRRExHU1NwN3pwdU5pbXAycTRIY3pVUHpyRFdRR05SZm5iZm1aWTVuTUNfRlZkbEJ2akHSAacBQVVfeXFMTzh4c2xEbm9Tbk1IUERMTG5UUFV4Z1dCMTV0ZzRFV2VDbkNuTERaLVl1UWNjeHFaYUdCaUZDTllHZTZ0TGJoWERyMFVpcHJxaDYwS2tTZkdacDhTTGNVREFzSm9aNm5JT2xLbXhzanFrYm9rcmpmNFVTRWwxN1hYdVp0ZG1pZVVkbHpnVTlRY0pxX2htTXlacHRIM1V6NnctXzlGWldUQVk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 9:40 PM</span></div>
-<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOb25XY1BkZ25vSWhlNVFka1lvWUZvcDhxNjhUemNTaVFJTF9LaVphZFJ0ekVjVlh3QV9JVnNYU1hmVVBtRzdYdFRUS0FJejhERWRaQkNxT3FTVFBMLXFHT0MyYkNBZm5UNXJhZXJGakIzZUFNQ3JTcE9KN2N4dmJOOUNCMVpycVJ0OThMSElRRWVmbUV0cGVqLXlSQmliMlZxTUszTm5CLVBfendBQzlJOF8yN0VBZ1ZVeUlXc1FR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 2 &middot; 9:01 PM</span></div>
-<div class="news-title">Oilers GM Spreads The Blame For Struggling Defense Ahead Of NHL Trade Deadline</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/SanJoseSharks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/SanJoseSharks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22San%20Jose%20Sharks%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of San Jose Sharks mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/san-jose-sharks.43/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — San Jose Sharks</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:25 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

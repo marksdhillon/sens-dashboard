@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" alt="Utah Hockey Club" class="team-logo">
       <div>
         <h1>Utah Hockey Club</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -961,6 +981,65 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="306">306</td><td class="r" data-sort="0.8840">.884</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0:00</td></tr></tbody></table></div></div>
   <div class="panel" id="p-injuries"><div class="empty-state"><span>&#9989;</span>No reported injuries. Full health!</div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Sent Ds Maveric Lamoureux and Dmitry Simashev to Tucson (AHL). Reinstated Fs Logan Cooley and Alexander Kerfoot from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Ds Dmitry Simashev and Maveric Lamoureux from Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Kevin Connauton, D Maksymilian Szuber and F Ben McCartney to Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 22</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Maksymilian Szuber from Tucson (AHL). Sent Scott Perunovich to Tucson.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 21</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Ds Scott Perunovich and Kevin Connauton from Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 20</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned G Matt Villalta, F Daniil But, and Ds Dmitry Simashev and Maveric Lamoureux to Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Maveric Lamoureux, G Matt Villalta and Fs Dmitry Simashev, Ben McCartney and Daniil But from Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Daniil But to Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 30</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Dmitry Simashev to Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Sent F Cameron Hebig to Tucson (AHL). Recalled D Dmitry Simashev from Tucson.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Cameron Hebig from Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Kevin Rooney to Tucson (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 11</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled F Kevin Rooney from Tucson (AHL). Placed F Alexander Kerfoot on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 1</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned G Matt Villalta to Tucson (AHL). Activated G Karel Vejmelka from injured reserve.</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQNmtlQUFFdGtxSkhyTlVEZ1ZjX0NoeVlvbEM3RkxZcVQwMUQ2MGlfYVYzbEcyN1RDY3lfZDktT1F1dTFfQllvRkdVNnNjejlPM2RNTlhlUWUyV2hxakFmMWNETWpqS1UtRmQ3UTU5eHFXa1V6MUNLZnR6ZFVJRlVoa0VYdVFkRGtOcUc2YnFVSWplTmFYMkNPYk0yRURmUEQ5di1zLURra21Yb0RZRy1sbE1GeHg1NzU2Um0wQnRZRmNHTk45MWFJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">KSL Sports</span><span class="news-date">Mar 3 &middot; 12:26 AM</span></div>
 <div class="news-title">Video: NHL Trade Deadline Preview: Utah Mammoth Making Moves or Standing Pat? | KSL Sports Live</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNcE05N3duM2pUQUZwcVg1aExFdF9VZU9RdkozZzFPMlBROFpnQ2hWRG5LSVF6VWRsMVAtSUtJYTZ2aUJKTDNIdDJJdlllQXhNQmJoaGFTYlRLcDdMY0pLQ0l4LTRvVVRrZ09Bb20yTkFYdng3WlVtSEdDNEVKUmh2Q2JFd2VGVmJPTU5mRkJrMmRtTmRLWDlz?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -987,7 +1066,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">PFSN</span><span class="news-date">Oct 13 &middot; 7:00 AM</span></div>
 <div class="news-title">NHL Rumors: Oilers Fully Committed to Plan B After Giving Up on $66 Million Trade Target</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5jejV1YlhHTW80RUpCdHZLaXZHM2F2dEVTZFhGYkRWZUsxUkdHQmpiWFdnd2xTY1RYVkZKd2tUdjllbV9CT190WVVxV1JTdlVObXBpWlpfRVp1VnR4UW1ON0cwZGM2UUEzemVObFkyWFh5WjdYZU1ZeA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Oct 11 &middot; 7:30 AM</span></div>
-<div class="news-title">Utah Hockey Club Stats | NHL EDGE</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTFBSRVlRM2RFTkFPblRwamxMTjF0UEJzdzEwMGxUbGVLU1JLQk5FZWVZa0RXbTRkSGdFemVaTEZMdWZ4eWt3dWtUWkI0eFlCY1h3MGhyRGFXakRPeXQyNVlxR3Vpb2NMa0Vka01DRm4yTE9rUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Utah Hockey Club Stats | NHL EDGE</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZG9kRHdhci1QdndXWklra0F1LThzU29RM2U4MFduUGo0TkFRMEFGa3A1WXFub2ozc2xQR1llQ3VVR1ExdmNObTB2ZkhtRmd1V0JnaUN1M2tlYjJoR3pCY1dfOE9XT2puYmc2U2dyTU0wV0lZTm5vdm5lTXlsblNkTFZFWHl0Zndz0gGOAUFVX3lxTE1uTGZJVEtNR0I4c2pUX2RHcEZpYVBYR3BtNXlWU3d6akhTMmQ4WVM3MzRoNzdUNTdMMzlPQnAwZmFETDVVTmZqN1JUMmo4dEZXbTNSeHRBeWJCLUh0UEFKc0dEbjFvS201bS1rcWRRckFmdmhTOVRFempXdzZtSlN3V2ZtLUNwNVh6d2hLY0E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Oct 6 &middot; 7:00 AM</span></div>
+<div class="news-title">NHL Rumors: Utah Mammoth, and the Edmonton Oilers</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTFBSRVlRM2RFTkFPblRwamxMTjF0UEJzdzEwMGxUbGVLU1JLQk5FZWVZa0RXbTRkSGdFemVaTEZMdWZ4eWt3dWtUWkI0eFlCY1h3MGhyRGFXakRPeXQyNVlxR3Vpb2NMa0Vka01DRm4yTE9rUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Oct 3 &middot; 7:00 AM</span></div>
 <div class="news-title">Mammoth renovated arena, new practice facility 'crazy nice'</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQdEhpcDhkVmhZUm5ISWN3WFpNa3BhLTF1aDNmNVJ4akJYNlRrTnBWa3Q1T1BiakRqQXV3c25aa3NwSnMzM0NteXlQbTVIV3ZELUJGTXRVeFhNZHNENk5FVG1hdjU2bU1FX0dHNFhTc2l1VGxsYjMwbGZwN01IUjR3ZUo1ajZ6cjlKeXdiZFRNcVNwSUZpWkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Salt Lake Tribune</span><span class="news-date">Oct 1 &middot; 7:00 AM</span></div>
@@ -1003,25 +1084,21 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Sep 2 &middot; 7:00 AM</span></div>
 <div class="news-title">Utah Mammoth Should Shut the Door on Connor Ingram Trade Talk</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPcl9Dc3N3azFOY0RPRnBOZDdqZXg1OTFaYlhfU2FuTC1iVFIzR004dEJReGc3VUFUTnJXZWpBXzRhaDZibVNWMmkxanAwQzlUTW4zMGdtMmhUcThEWWRPZVVINmpEY2lUeTVMVDRCY2hMcEptbE9QUGFqVnpmemk3NjZRVDFRRk9ScVE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Deseret News</span><span class="news-date">Aug 21 &middot; 7:00 AM</span></div>
-<div class="news-title">Star Mason McTavish is still unsigned. Would he be a good fit in Utah?</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQbS0wM0RtM3VLSXRzZ2J1VTJFSm5MX21YMXdhTFkzMEhOOU40X2NYaDBWY2hZcEhYWGhVaWJDT1FvdHMzOEFXQ2dZcU0wa0s3WEJKOHdnY2U1UTVZT0QwWDFMd3Q1clRWdVFJdUFOYllKa2JhaVJTZlVXcDg2cEJJUXNkWlZpUXB4MjBjU1lIMjNMX1RQZG45aWdR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Star Mason McTavish is still unsigned. Would he be a good fit in Utah?</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE52Zm1nMWN6NElXNDFyNHBWREs3TkdkcHp0LWJ4ZWtOYVltUUZIeldDcGpnMTgyZzdaWWxWVjZSUVlyeTdycWEydjJSd1Y2dVd0dEZOSDBHLVFEVnh1bE9vTWRzVHRxWnlPWURj?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Stadium Rant</span><span class="news-date">Aug 15 &middot; 7:00 AM</span></div>
+<div class="news-title">NHL Rumors: Winnipeg Jets, Buffalo Sabres, Utah Mammoth</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQbS0wM0RtM3VLSXRzZ2J1VTJFSm5MX21YMXdhTFkzMEhOOU40X2NYaDBWY2hZcEhYWGhVaWJDT1FvdHMzOEFXQ2dZcU0wa0s3WEJKOHdnY2U1UTVZT0QwWDFMd3Q1clRWdVFJdUFOYllKa2JhaVJTZlVXcDg2cEJJUXNkWlZpUXB4MjBjU1lIMjNMX1RQZG45aWdR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Deseret News</span><span class="news-date">Aug 8 &middot; 7:00 AM</span></div>
 <div class="news-title">1 year later: Who’s winning the Mikhail Sergachev trade?</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxORnRJSTloMXVseUdsOXhYSGhncnhYcTJfeFRGU1NzOGxfbm5wclZUZmxJaFg5bmJ1b2VPaGNLbi1obVJYZ3ltcXctQWpkVFFnVHZCaWhFQmFjV0ROaVpLTk1vSHp4bjc4M0tURWpJSlVwVnM0Ql9SdnJBUWhxRzJtRkQwUzZPSVRuUXdKTm5jYTlQQWJRdlRlOWltRUkydw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Aug 8 &middot; 7:00 AM</span></div>
-<div class="news-title">1 move Utah Mammoth should’ve made in 2025 NHL offseason</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNYjEwRTdpWlBDb093N1I5b0FSMS1BWnFyTmxtSjJrc0t5WG5WczVkMFdiWmZKRXlVb2cyekVqTm5lSTVKZ3JDd0RGVmVaLUNpbUZYcGVLU2h0aXFVRm5zTk9paFpucTFiazRCd0VFMVM1cU5ZXzhGdUZ5TGQtejVLcHNSVUhfR1FtN0RLT2stSXZEV2tXQURIRTZRTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Jul 24 &middot; 7:00 AM</span></div>
-<div class="news-title">From The Archive: Utah Hockey Club - Future Watch</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOZWN1bFk4YVRqY3A3cGkzZWpzSGY2M25KQ0otWVRnWUdCd3JoY0Z5X2w2UzFNRDUyRjMzREdHbzNVVUdVUUhSQjB6a2Fma2F5dTM0OUNjcWwzejhwLVlLZTJQdkZoM1ZTM0s5dWhLMlRRRmc2Zm1ZNlB0M0lLd0ZvUjktZGcwRkxRb3gxS0FPVVUxQ21nV2E1OEJOeFI4MG1aNXMzYXNDX2JyeEhhOHlZTklOSm9zUlhVN2RZOTNwTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Jul 15 &middot; 7:00 AM</span></div>
-<div class="news-title">Utah GM Explains Decision Behind Maccelli Trade with Maple Leafs</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">1 move Utah Mammoth should’ve made in 2025 NHL offseason</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/UtahHC/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/UtahHC</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Utah%20Hockey%20Club%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Utah Hockey Club mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/utah-mammoth.287/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Utah Hockey Club</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

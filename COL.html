@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/COL_dark.svg" alt="Colorado Avalanche" class="team-logo">
       <div>
         <h1>Colorado Avalanche</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -592,7 +612,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="rank" data-sort="6">6</td>
 <td class="name-cell" data-sort="Valeri Nichushkin"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/COL/8477501.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Valeri+Nichushkin" target="_blank" rel="noopener" class="pname">Valeri Nichushkin</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
-<td class="r" data-sort="31">31</td>
+<td class="r" data-sort="30">30</td>
 <td class="r" data-sort="50">50</td><td class="r" data-sort="12">12</td><td class="r" data-sort="23">23</td>
 <td class="r pts-col" data-sort="35">35</td><td class="r" data-sort="5">+5</td>
 <td class="r" data-sort="20">20</td><td class="r" data-sort="0.70">0.70</td>
@@ -1009,6 +1029,81 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Jason Polin from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired D Brett Kulak from Pittsburgh Penguins for D Samuel Girard and a 2028 second-round draft pick.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 17</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Placed D Jacob MacDonald on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Taylor Makar to Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 31</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Keaton Middleton to Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed D Sam Malinski to a four-year contract. Recalled D Keaton Middleton from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 25</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Activated G Scott Wedgewood from non-roster list. Reassigned Ds Isak Posch and Jack Ahcan to Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Isak Posch from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Ds Taylor Makar and Jack Ahcan from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Valtteri Puustinen and a 2026 seventh-round draft pick from Pittsburgh Penguins for D Ilya Solovyov.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled C Ivan Ivan and F Alex Barre-Boulet from Colorado (AHL). Placed F Joel Kiviranta on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Ivan Ivan from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 14</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reinstated G MacKenzie Blackwood from injured reserve. Assigned G Trent Miner to Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 13</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reassigned F Zakhar Bardakov to Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 12</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Ivan Ivan from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F TJ Tynan from Toronto (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Ivan Ivan from Colorado (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 2</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed G MacKenzie Blackwood on injured reserve. Recalled G Trent Miner and F Taylor Makar from Colorado (AHL).</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNLXdvRUZ4MmdCWk1NbUV2R2RuSWxURjRzOTZJX05WX0xnN1I3UlJkcFFQRWFzaVY5b010N1A4T3JSN0hWNWdwVUxocTNGQ3BaOHpELTNIWW9lVGxmN05QQTBldFY5cmc0dW9Tcnl6Vlh5aTBHZXBONnVvRk5TVGZyUkFsZmh2UG9QanJ6b3ZhaTdJd3RFZVBrNVpCc1NlSVdtSWwyWDZoc0xkZVhPTmdhLWsyLWdyZkVFY2E4M01vcU93WDBTZnh2NTFzRQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">CBS Sports</span><span class="news-date">Mar 4 &middot; 12:00 AM</span></div>
 <div class="news-title">NHL power ratings: Avalanche make strong return, remain on top entering Week 20 of 2025-26 season</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNcHBVeC1fNFZJY3NNemxveGJ6TTZkR1BFc0l0R185cmJvQ1pzc0pWUFhKdngwLUJHeWNhMER2cUFfaW54dDY0a1BTbjZlN2E3VGh3Y2Z3OGZHZ3p3cmx4S2VDQzdQc0ltZHVhNFdXWDBwcGgySDVOTG13dGNJbkJnZQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1029,9 +1124,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Denver Post</span><span class="news-date">Mar 3 &middot; 6:48 PM</span></div>
 <div class="news-title">Avalanche GM Chris MacFarland on looming trade deadline: ‘We’re going to leave no stone unturned’</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOUzdqSGZvWVA4YV9lbTZZUExnOW51NzEwVFVWcFJsZHRVTWRIOUp1TVBYWGhwN3Z3eXZOcUNaRVNSeXNfZFNScWFNZEpNdUdtZVBvZG13QzYwNHBfazhaeXVJaE1zVmtCR2dpMWM1bGJkX2Vmc0NRc2k4d3NtUDhFY0UzRmVuXzMzY2NXLQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 6:35 PM</span></div>
-<div class="news-title">Avalanche Should Go All Out to Bring in Veteran Center</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSGRfdHE3YVhvOU10SzVFTFphVXRBczdTY2FyY1ZsaVQwazZ5VnVGV3M4WFRfTHU2RjBwSF9RTkhpR2xrRzRyZlhLMVBBSEVlczZmaVVpU2YxY1ZKQjdZek5hTDZ0Ullya01xX3hrclpLd1lmQUZqUTF3N2h2NEYwU19ENWFkM1RwSWxjTEJTSjIya1VidWpKYmlXdG5pWTlBd2NQN1RLbG5BWnM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:31 PM</span></div>
-<div class="news-title">Forward Polin Recalled from Colorado Eagles to Colorado Avalanche</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPOUlHdlFETXIxcWMxMTdXMHVMMUVzWXg5UHVneW92ZFhsMkF0cmtCMms5T0p6Z0U1VmhrUHpmTGMwNE1YRnVsYTNpYW5aM3JEaW5Ya2pXM0tmNDQxRHk2ZnhvX01pZ1JiMWN2aVhZT3kxX2lNT1pzYS1mOHZZYUdEY0J6UjlLV20yVWNBVlhzbG90c2xIWFZHdXJxU0YwUkVtTEJaZHN6YUNGS0Y2VkxNTmU4TlpYaU0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche Should Go All Out to Bring in Veteran Center</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPOUlHdlFETXIxcWMxMTdXMHVMMUVzWXg5UHVneW92ZFhsMkF0cmtCMms5T0p6Z0U1VmhrUHpmTGMwNE1YRnVsYTNpYW5aM3JEaW5Ya2pXM0tmNDQxRHk2ZnhvX01pZ1JiMWN2aVhZT3kxX2lNT1pzYS1mOHZZYUdEY0J6UjlLV20yVWNBVlhzbG90c2xIWFZHdXJxU0YwUkVtTEJaZHN6YUNGS0Y2VkxNTmU4TlpYaU0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 6:07 PM</span></div>
 <div class="news-title">Lehkonen Injury Forces Avalanche to Reassess Wing Depth</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQVm1ycl9kN05YbVNxMnNDdmU2TWF0NlFDUGdZbXREamhrQVZ4UmRBdlZienZMVTV5Rk8zUTNWR29tTTBZMUozOUY2V09OUUdXMmlGdjZGSUZxZHZNTy1KMHlibkl2cDBMTDVOSDlLT29pUnlvbko1aW53a3BVLUNsNHJMWHdEek50TWdhYkcyeGJQcVdTdUZBZlBfc3Zjd3h0d0JPTWpIMA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Colorado Hockey Now</span><span class="news-date">Mar 3 &middot; 6:02 PM</span></div>
@@ -1059,17 +1152,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:05 PM</span></div>
 <div class="news-title">A Duel with the Ducks</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQb2dmM2VzVnBidDRZeDlRcVBUYmsxRWxrdjJOOFlEWWJmeVZRdTZVWGRrNElOX2FpZUlaelJHR1lERzZGNkFwWXZkWHRrSzU5TnpSb2Vob2lSeEJtSGNVbllnSUlUV21VbnRoTFRvWU9FUTR6cGpCX2ZFRlpJeDJiSGRiS2szNG9PSTZsV05FejlzandBVndhMmdtblZFcVdEWnhhUjJiNWpHaDI5TXpTaEFtTHhQMDdr?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 3 &middot; 11:29 AM</span></div>
-<div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/ColoradoAvalanche/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/ColoradoAvalanche</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Colorado%20Avalanche%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Colorado Avalanche mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/colorado-avalanche.35/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Colorado Avalanche</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

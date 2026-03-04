@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/CHI_dark.svg" alt="Chicago Blackhawks" class="team-logo">
       <div>
         <h1>Chicago Blackhawks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -959,9 +979,50 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPWnRxZzFaWFBfRDE4UVBQa2RjY1NrVlRRd2J1a3gtMnhtYU9kTm1UQzhzMFZlRGJ2RXU2UGd6WEw1WU9EVzNlLVp0blFodi00THRoVXgxOHEyQlljczRwZXJ0eW9JOEZSNXp2aXpBUGRKaDIydlh4R2V1Z0E3RTVXUjBwS2NPeHFvUzl6ajMxSkNWY1RHVmxyVl81azAxd0xad2s3Y0gwdHNzbjBCTTgtUUpTanBMbkk0SkE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">National Today</span><span class="news-date">Mar 3 &middot; 11:36 PM</span></div>
-<div class="news-title">Blackhawks Fans Mourn Loss of Steady Defenseman Connor Murphy</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNZHQ2RDhNRW9OdS1YSVpsaFdod0tNT3pqNGRGcEVIb1F0M05ZTWgzaW1faG1OUzE2SjBHWGw1SnJmOHN6V0kyTjg0RzRpM1ZLVlZzZTRFZzJ2eTlHQm81LVdPTjJsQ01zbzU1azVOUDgzWGNyZFVXWTBqYlU5amJ2b21pWUtORHlBRzFvWGJXcUd0Y2d1b2RnVGw3V091NmcyTlNxZzctT2hTU28zZVRxTzg4SQ?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Ethan Del Mastro from Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled D Kevin Korchinski and D Sam Rinzel. Placed D Wyatt Kaiser on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Sam Rinzel to Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 30</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Sam Rinzel from Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 26</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Nick Lardis to Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 11</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent G Drew Commesso and Ds Stanislav Berezhnoy and Kevin Korchinski to Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Stanislav Berezhnoy from Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Kevin Korchinski and G Drew Commesso from Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Ethan Del Mastro to Rockford (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 3</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Dominic Toninato to Rockford (AHL).</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNZHQ2RDhNRW9OdS1YSVpsaFdod0tNT3pqNGRGcEVIb1F0M05ZTWgzaW1faG1OUzE2SjBHWGw1SnJmOHN6V0kyTjg0RzRpM1ZLVlZzZTRFZzJ2eTlHQm81LVdPTjJsQ01zbzU1azVOUDgzWGNyZFVXWTBqYlU5amJ2b21pWUtORHlBRzFvWGJXcUd0Y2d1b2RnVGw3V091NmcyTlNxZzctT2hTU28zZVRxTzg4SQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 9:55 PM</span></div>
 <div class="news-title">NHL Game Preview: Chicago Blackhawks at Winnipeg Jets with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOQzVGTEljNHlXOXNEbWNsV2UxSHZ0MGx0QmRkZGF0SEZ5VVJJV1VGYnJBZFlWY1pQWFpiX3hpUVBkbHZvYk85aWtZbVBrdEtDQmVkWmVaeXVzODRXN2Q5Mi1LLXFpU0NFakZrUEtEbzBEcW1QTVQ3bkQycWtaX2FfWjN2ZXN2UGdIVHdpNTRXRGItN2p4SWthMnBOdGV2TEhwVGZOTlVLNGNNbjZPblE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Chicago Sun-Times</span><span class="news-date">Mar 3 &middot; 9:20 PM</span></div>
@@ -1009,17 +1070,17 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 1:19 PM</span></div>
 <div class="news-title">NHL Predictions: March 3rd, Chicago Blackhawks vs Winnipeg Jets</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE95MnpzS19OS2lrMDJDRnFHTVNZSXlsQmtwWTVnTlIzVklVbTYteUVCdG9vUzlSbjlhTUhyUHVIT3J4N3RZcXd0ZGFPRGlhTVo2a0pqcml2Q2J0SjJYeUdzZ3RFNkpCU29RRThESGxVd1ljMGxPUmRPb0dR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Blackhawk Up</span><span class="news-date">Mar 3 &middot; 1:00 PM</span></div>
-<div class="news-title">Morning Chirps: Murphy trade reaction, Foligno to IR</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Morning Chirps: Murphy trade reaction, Foligno to IR</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOTUtSQ0FvSEMxTjExMjVGSmRLTUlxbkF5TW5zYXg0ZWVaMnZXS0VEUjNEcUdFWHd4ZnZTUUVrVGJiZnZKeWtZb2tPWk9JSXZueEtWTFg2X3Q1NWpvRDlsSXQxNFR6REV4b3V6WV9CTTJQbUVwd2RuZWlLTXRBX0J6WHZ4dHVtREd0Z0lraFJ3WjNWQmdTSTlkMg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">news.sportsinteraction.com</span><span class="news-date">Mar 3 &middot; 12:45 PM</span></div>
+<div class="news-title">Chicago Blackhawks vs. Winnipeg Jets Prediction, NHL Odds</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/hawks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/hawks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Chicago%20Blackhawks%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Chicago Blackhawks mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/chicago-blackhawks.30/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Chicago Blackhawks</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

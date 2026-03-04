@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" alt="New Jersey Devils" class="team-logo">
       <div>
         <h1>New Jersey Devils</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1072,67 +1092,136 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOREFBWXd4cGpHMWZSRC1ZVTRrQ01tLWtLQUkzMGVfbWFpaG1oMkJaaUJhMDJ0aUliRUE3VjVnNFpsYjR4NXJ6MTBrZUVNVnc4Y2pqQkhNQzFJMS0xVWNVRFp4ZXJvckVmNmJEYU1lN00zbUE1d1hzQzkycENIWTh3TFpFeXRpa0VHaG0zWlVKa2NJSnN6LUVNZnduVndhOUU3Wmc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:40 AM</span></div>
-<div class="news-title">FLA@NJD: Gritsyuk scores goal against Sergei Bobrovsky</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbkRCQUxoNzdkUWZGQklMQy1aLTYtcEJpLUNqaEs2eTRZdV80elZ4WkZmVS1jb0I1eVBIRndqcndGRG5Rd2VxcVppZWFFOW8wb2I5bm4ycEcza053RFZvazNwXzlZRmllME9waXpfdGlFYWNYSXdLX05wRU5PbmhPWERuWXRIeG9CWjREM1M0ZUtrYm1LT1NpZWxDZmU0b280cFRrZVVEWFFlN0U?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:19 PM</span></div>
-<div class="news-title">Game Preview: Florida Panthers At New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNWmpGYXBUaUtrRFdvVHRmc2Fqd3NpVm1hdUlRY1JHbW1CSkp6Y2JIRDJUWmZRSy1ZeWNvZUpna1J0Vzd3VkZ5ZXBVRW9udmlILU9vdV9ENkZScVpNbTdibFhua1llcWtuZFdSMEVPSHo5TlhSODducDJMdzFmdEQwUmNBb0NISlljVXVEQi1NenVjQ1VDQTNjN1dIUkplSUE1OThuUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 2</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed F Matyas Melovsky to a two-year entry-level contract.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 28</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Colton White to Utica (AHL). Activated D Luke Hughes from long-term injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Dylan Wendt to Adirondack (ECHL) and D Dennis Cholowski to Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 20</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned G Jakub Malek to Utica (AHL). Recalled F Dylan Wendt from Utica.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 18</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Jakub Málek and D Dennis Cholowski from Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Lenni Hämeenaho and D Colton White from Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 11</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Reinstated F Marc McLaughlin from long-term injured reserve and placed him on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Waived F Juho Lammikko.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Nick Bjugstad from St. Louis in exchange for F Thomas Bordeleau and a 2026 fourth-round pick. Sent F Juho Lammikko to Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-trade">Trade</span>
+<span class="tx-desc">Acquired F Maxim Tsyplakov from the New York Islanders in exchange for F Ondrej Palat, a 2026 third-round pick and a 2027 sixth-round pick.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 21</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Luke Hughes on long-term injured reserve. Recalled D Colton White from Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Lenni Hämeenaho from Utah (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Waived F Juho Lammikko and D Colton White.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 11</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Evgenii Dadonov and D Johnathan Kovacevic from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Placed F Stefan Noesen on injured reserve. Assigned D Dennis Cholowski to Utica (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 9</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Waived D Dennis Cholowski.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Simon Nemec from injured reserve.</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNWmpGYXBUaUtrRFdvVHRmc2Fqd3NpVm1hdUlRY1JHbW1CSkp6Y2JIRDJUWmZRSy1ZeWNvZUpna1J0Vzd3VkZ5ZXBVRW9udmlILU9vdV9ENkZScVpNbTdibFhua1llcWtuZFdSMEVPSHo5TlhSODducDJMdzFmdEQwUmNBb0NISlljVXVEQi1NenVjQ1VDQTNjN1dIUkplSUE1OThuUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 3 &middot; 11:00 PM</span></div>
-<div class="news-title">Do the Devils find a suitor for Dougie Hamilton?</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxQZkVhbE8zanc4Tk42WXdPY0d1RWY0bXkyeU5BcmxrZUFSRFR4UUZHZXFRU0Fkc0N3WUZIWWdTXzgxT2hnV3VZVmFLUEt3QTd2Z2Y0NjNvN2NmamZGdlJ3czlBN3piNldxT0o0THN1aDRGY1c4cDA3Qk9qRWpBNDRLM3FvanA1dC1pVEIzdldUZlJoUHAwYUVjLWlKWGJ6V191UTFwNHo3ZGJVSEV3UHlOUkFDdjRMYUdpaFBhSWh5SlBJcWhlYmNOM3NBYUxlb3hGTWxXOGlQVk1aazA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:49 PM</span></div>
-<div class="news-title">Toronto Maple Leafs vs New Jersey Devils Prediction, 3/4/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE9vU1NaY01LWWFWem9kemVtNjZTS1F1SHRMd0piQmluYzVnVFJ1OWJmU0tPV0VFenR1NG5IcklHdHFlczhlbVRFYTV2U2E2RVB5Um02c2x0N0VvRkVaQkxIMURwRmZndllLQUhVVkFmX1pGRThMREw2Wg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Do the Devils find a suitor for Dougie Hamilton?</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE9vU1NaY01LWWFWem9kemVtNjZTS1F1SHRMd0piQmluYzVnVFJ1OWJmU0tPV0VFenR1NG5IcklHdHFlczhlbVRFYTV2U2E2RVB5Um02c2x0N0VvRkVaQkxIMURwRmZndllLQUhVVkFmX1pGRThMREw2Wg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 3 &middot; 9:48 PM</span></div>
 <div class="news-title">NHL Deadline Looms; Devils Should Trade Em' All...Or Most</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOUWNWeUx1N3ZTSUdxd2tFdl9BY3BRSldVQWVubVN3NHNPaDhjRGZrVlYtbkRKQUVOcVhfOGMwaFZPT1NoV3FHTEJrV2MyX2NFVmJKaldJLTJmTlVqNE12X09WZEZFQmRVNV9ZbjFFMHZUZVdLY1lMWTJFVnJHMU9NcGVJWkoxTzVmdTNpa0g4dlMydmVKYWR1VkdnU2pSaDM0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NY Sports Day</span><span class="news-date">Mar 3 &middot; 8:25 PM</span></div>
 <div class="news-title">Steven Stamkos To The Devils? Breaking Down The Cap And Cost</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOHJYMXQ3MHlvb3MzWW92N0tVaTBWU2N0cXltY2RkdmJ4TFRZLVd5S3AwMVNTelppQnh3dnNMMmVrMFZzTVRJbTlheXZqNUVxRHExY0RYRzdJZW5rMUtlWFBFemVyZlNNWHc0eEgySlVsWHNTc1ZSRWN5cG5oTm9CTld4QzFwRkZoS0VLVDF4Vng4RlJTVk56NlFmUmdPZThpUm9Xaw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NJ.com</span><span class="news-date">Mar 3 &middot; 8:13 PM</span></div>
-<div class="news-title">Uh, what? Devils might trade player they just acquired last month</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQRnBVanNEY1Vib1V1Q1p2TjQ2QWR0Q3E2bzJ0cUlnSnIzUnNMcmJkNWJ6aEVqSDBkN19iTEE4WXZIY2J2NTc0VEk4OWt6Y0VuZEdmZWpHdTJLaEZyWkJNUHNLeUFaT1J4eVFabkRUNUdFYUhrd2xNV1dwcUJyeVNMZnZZRW9scHNtVTdyeXJYYnlHaVdhbEE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 7:04 PM</span></div>
-<div class="news-title">Jack Hughes returns to his day job in the NHL after TV tour</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxObVo1Q2hCVW96bW1vQklBMWJfbk43SUxsNkZ2WUZXQ0tlenR6QVMyT1A0N3BVQ3BXWnI4aGd0TjhSalJUZFhNYjhCSThvNmVtZjNCY2VmYk1UakFYT3hBNGg0TDRXUjdkcHAzRjFVTEpSeVQ3OHRxejZLdXlHSm1WZ1ZfOEhSc25vdVk4ZEJ0czU3eVRYVldwNXJfcGdPOVdERkt1Y25RWFZWTTdCSHVackw4bmlkTUthY0hCc1RzYw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Uh, what? Devils might trade player they just acquired last month</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxObVo1Q2hCVW96bW1vQklBMWJfbk43SUxsNkZ2WUZXQ0tlenR6QVMyT1A0N3BVQ3BXWnI4aGd0TjhSalJUZFhNYjhCSThvNmVtZjNCY2VmYk1UakFYT3hBNGg0TDRXUjdkcHAzRjFVTEpSeVQ3OHRxejZLdXlHSm1WZ1ZfOEhSc25vdVk4ZEJ0czU3eVRYVldwNXJfcGdPOVdERkt1Y25RWFZWTTdCSHVackw4bmlkTUthY0hCc1RzYw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 6:53 PM</span></div>
-<div class="news-title">New Jersey Devils must land prospects, not young NHLers or draft picks at NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQdUxjRGJya2FILVoyNk1EbnJpcUxhUHVsd0QtOE9Nbk1QMXNJRExSMF96MXZGQ3ZTbnNPMUw0TnYxc255eXdXV3RrQUxPdUhFclByMDlwUGpZakFIcTZkR01VenZrdXREQ01LRDRjYS1XZU4temdhLXhQMmZLaE9YLXAxeWlsLTkweXhBbE13?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:29 PM</span></div>
-<div class="news-title">Panthers at Devils projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQZm5LTVVXS2pTQ0tuVzhVdFVmOGQtNF9LaW1qQy1qdUJPdDZpME5XRXNiWXBJNllkeEdOdXB1azNmOXBWYXA3dGg5eTBVSWNuam1SVk01VVE3X20zQnp2VnJJWkdYRmpFUnFFSUEySXI5dkI0VFo3UTB5Y0JXYXYyMUpLUk81QkFab0YtV0N0b05JZnR1LW5mVU1qWVozZlRRRjhST1EwcmlMY29PUnhNdUNhV01tM1AyLTlwR29OOW1TQ3R30gHKAUFVX3lxTE1ZbE9hV3hQM3FDTVRiZjhQMk10ZnZnU3kxU29Sa2xhbk1LTTRDeGVSMERTd0JWaGl4TWVlcDRvczZ0ejVIWFZIaDRKMXRxWFo2QmlPUFN4OHhsY2xra3hiQVVrOUZZc2g2TmlLdlYtRnpSUWVFRFk0N1Z5SDduZExweTJBTWhFLTN6SDU1VHZNMTNRN3RvTENENEd6LXBMSVlCTUtfcHVnbGlwRXl1cjdIQTQxU1JfSkNjZGxySWtYaTZjek1kVGtXTFE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KWKT - FOX 44</span><span class="news-date">Mar 3 &middot; 6:21 PM</span></div>
-<div class="news-title">Jack Hughes returns to his day job in the NHL after TV tour as the US Olympic hockey hero</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSlhIZHBZcllXUDAybmk0Wjg3YnpiNEg4ZEotWFFXcWdmY1dwMDVWX3Q4QzhGSmJ2cWZnNllmRk40RW1YWVAteUxjWDNWUGNLaHAxaVZRRG0yaFRTMW5oR0dudDJzYkJqTjUyOGRJNnNyWm54SXYxeGlDV0J1WFIxUjNrT3VUdlhMSVRUR1VieG42bHZaQ21yS01odVpVRzJySFdEYmhRb3ZpcElSWG9YQkJEMVZXYm14?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">New Jersey Devils must land prospects, not young NHLers or draft picks at NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSlhIZHBZcllXUDAybmk0Wjg3YnpiNEg4ZEotWFFXcWdmY1dwMDVWX3Q4QzhGSmJ2cWZnNllmRk40RW1YWVAteUxjWDNWUGNLaHAxaVZRRG0yaFRTMW5oR0dudDJzYkJqTjUyOGRJNnNyWm54SXYxeGlDV0J1WFIxUjNrT3VUdlhMSVRUR1VieG42bHZaQ21yS01odVpVRzJySFdEYmhRb3ZpcElSWG9YQkJEMVZXYm14?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 6:19 PM</span></div>
 <div class="news-title">Nichols’ Notes: Devils Trade Finder; Deadline Sparking Action; Hidden Gem</div></a><a href="https://news.google.com/rss/articles/CBMi-AFBVV95cUxPdnI4aWotRzQ1UW1Qdm9kWWI1aWs2VldEblpvaUNfdC1SVjhUOFZFa3JCXzZKcnZPQndlZXhrb25oSTB5YnJSWlpOQld2M2l6ZHRjaUxxZ1ViZk9FU3FiRmNwS2F1ZEY3QkpLLU1sSXd2UHFtVnJGTUxmWUlwVS1CZ3J2V0c4NkQ4Y0lDbVVJNkVuUGlfQU95MFBmSXJoMS1nMXRmV3FSVFBTRzl0aGk4RUNjcmNpUFdIZmI0NDNUQWQxWWJTakR2M0Q3TlZsTFprVElIdjRSdENVTm01RVhKSnpvZlViOVRlcTVKdk8xVEtkNlM4WGRvY9IB_gFBVV95cUxNSkZ2Y2xscFU3X0VQTndtc3g4NWY4M2VkYTdHRnZ1ODlyOUNZUXdrREZzLXV1RW9vb2NKTjY3UmFPZlRHeTJtLUE3UGpuX3lLUi1pNWZkQlJlTmdvYl9kM0lPcm5jcFRQaWg5UWpWa09OeUZEMmlfbHR6OTZrUlFVeUprblhwNDNXMUJyWUo1eDh2Qm9RV2E5ZHVOQzU1UWRRanlwVFdjeW9UWjh3UWduSTZpdXVFM051VC1ldzVxdEdtZnFTRk5GSzFrWWVocWVoNjdxOGJjWDd2OXUwLU8tSm82Ulp4VDM4ZlBYdHZhTXhtQjBSYjdtamdrdGN3UQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 6:00 PM</span></div>
 <div class="news-title">New Jersey Devils Defenseman Dougie Hamilton Could Be Available Before March 6 Deadline</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNcjlQZVF5SFJQaU02MWIxVVFoTktTeE1LSWM0RnAtaklsOVNWalhJOWJYRnhhbHdXSEt5dE9MUDNOdENMZDhoVVo0cFZDSXhtazlTQkM4UGZSWVhfTmZpM0Q3MXBmMko3YWJDNDA2bWNwSmU4a1N6ZS16NjZKb1pQd2ZSX2llaDVMZjgwRGVyYS1uaGM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 5:51 PM</span></div>
-<div class="news-title">New Jersey Devils ECHL Team Are Having A Tremendous Season</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNTjU3eFVqVWNtRFJKcXc3TS1XYkZ4a0ZCQnJpRUZ1a3NidU1MYjNKdFA1anNVNUZfd2NjNGpoLUxPODNSczNhcGxDTEhEUWk3RXR1MTFOSWlLd2RCaFVabVVNRllma3hxalVmNHMwMmZYUTRKNENibXRHakdZdDJtbVlMeGhuTG9xdGVONFF2OHR4Mk5sT1ZyMHJwYXFQakZDNW1ESTBzSjFTQUNrZDFKYzQzb2dxV1BsTnc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:32 PM</span></div>
-<div class="news-title">Tomas Nosek To Make Season Debut For Panthers In New Jersey</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOS0hZNnAwNEp2YlU0NjFiYnRYdy16WmROZFkyUi0xYkE3bXpFMmZuck1HR1MzVVF5YmplZkxjUGVVRzM1dU9ScnJRRWFiZUFaVkJDTG5Ydm8xTGhqWTlWVlhSbDNoS3licG5SMDdiWkxLQ25wMVFXcE9aZFRkbUpyNVdHcw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:25 PM</span></div>
-<div class="news-title">First of Seven | DEVILS DOWNLOAD</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNUHdhVFljVm1nak44RWVIOUZkNnNpbGhieGZyVjRlbGFEV05YLWZRZ1Z0a1ZJTUI0dWI0QjN5b0JHZ3NvcTM4MUNTT0tZZ24wM1piNGhXTmY3cUVkVlU5a19NSmYwN01Fc1dZX1VVaV9YTmRzbGlPdUQwUS1ZRGFxdQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">New Jersey Devils ECHL Team Are Having A Tremendous Season</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNUHdhVFljVm1nak44RWVIOUZkNnNpbGhieGZyVjRlbGFEV05YLWZRZ1Z0a1ZJTUI0dWI0QjN5b0JHZ3NvcTM4MUNTT0tZZ24wM1piNGhXTmY3cUVkVlU5a19NSmYwN01Fc1dZX1VVaV9YTmRzbGlPdUQwUS1ZRGFxdQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 4:39 PM</span></div>
 <div class="news-title">Surprising Team Emerging In Dougie Hamilton Trade Talks</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNejFSNl9kUDczbnNCTzBzQlpoWkFNLWhfVVV2ajNTUDJYNFNQTlBZZUJlVHZ4R3N1eHBhOGc2UEhhdnR4a3hkVnFhcFZ2Z05FRUFuLXI1ZTN4QnI5NzVFYldkX2pyN1BGQUk4TUdsMkVtRk9HSklFTERsR2F6VjZiSjdua05FR0dGUmlSeU9BMEh5TFNvblZqUm5JM2xqdi1USklNRHRTOWppTUlkQ2JVUTl4S0s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 3 &middot; 4:20 PM</span></div>
-<div class="news-title">Game Preview #61: New Jersey Devils vs. Florida Panthers</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPRXVFQW1RQ0poV092R1ZxUVptVERlaDM0M1pURUVpVjNjZm51WHNHU2U2eGRqaXRMY3ZGdzJOcF9xTWp4QjNwMzZ3NlBONF8zNmg0V2I5TE02cVJSaDIyV2JrbXhXeWkxU2Z4VVd3V25XVkdBdWtOclZqVlA4MU9tc1Y3M0JuRnhkWFhXZld6Q0NrNG9UOUcxbTBpRExMQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 4:13 PM</span></div>
-<div class="news-title">Devils Game 61 Vs. Panthers Lines, Notes, & How to Watch</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPeGp3OTNTOU1ZNDlER1I2OHFjTHhqV3laMlJRT0dqajJqWjN0ZkNKSFNTYzlXLVJjaHBWeU56ekhUbnJrN0x0WnRuSXk4U0FMcXJpSmZiXzlPMUNvRmxXSnEtenc4UzZlZVc5Z18xTmpuTHRBb3lCWnlPQ1k2RUgzZVFCN3hTRS1UUXYtV1RQRmhrdzk2dU56VDduZDgwZDJIMzI3WWVnUQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 4:10 PM</span></div>
-<div class="news-title">Panthers vs Devils NHL Prediction, Pick, Odds -- 3/3</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNdzctc1pWR0pYb0haRjVqY3FVeVBqdFZUdEI3Rkh0TnFnZGJDMGFPQWpJZzJSeFAzRDdnaVEwTlVkWG96c2FTYVhQWHRjNHVrQU9rYTM5bFpsUjBiTlNjZmtaUmVkSDFjaUFJSzV2V2tSVzRkY1ptVmItdjFEYm5SVTR4YXg0VjBkODEydzBMekFjTTg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Game Preview #61: New Jersey Devils vs. Florida Panthers</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNdzctc1pWR0pYb0haRjVqY3FVeVBqdFZUdEI3Rkh0TnFnZGJDMGFPQWpJZzJSeFAzRDdnaVEwTlVkWG96c2FTYVhQWHRjNHVrQU9rYTM5bFpsUjBiTlNjZmtaUmVkSDFjaUFJSzV2V2tSVzRkY1ptVmItdjFEYm5SVTR4YXg0VjBkODEydzBMekFjTTg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Devils on the Rush</span><span class="news-date">Mar 3 &middot; 3:44 PM</span></div>
-<div class="news-title">Devils Rumor Roundup: Defensemen Available & Bjugstad</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOYmg3R01SNU5BajNEUk9tVkFxUTFPdlRBNGtudTNvc21VQzZLTVpDRF9KZ1h5RklaUlFEWi0weUNYYjVKZDhqOEx1U0oydDBDY0dUWFNpMko5RlRDNTc5VTlmMml4ZkNNUE1wR1lUV1F5RkxxNUZpMU9vSm5tU0lsdUMwVDQzR29aa09IUzF4Y241amM5N0lN?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 3:40 PM</span></div>
-<div class="news-title">Game Reports: Devils vs Panthers • Mar 3, 2026 | New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxOZzJkdzY5UEEySFlGbTkxOTV1Si1GNjNZc2xKRExoYTBWXzlQNEo2SnlnWTY3UkcwM1JYYURrNlB6b3FjS3o5cTNvNWt1UXZfekx1VUgwN3BhUkxEUzJQTTA2VS1oV1M5N2NZVDctZGdaaGdhMVk4SElkMXdVMUphM055UnlPZjkyczFabGN5b2Y5LUJiTFBWR1dDQ3JiY2IxcmlhZVJ4dk9OczZQdC14a0FQZ1NicHp3d2ZkbW5QeDQtaUJqQUtobThKRXktYW0ycmZjMXJIS2dsaE9RbXhCYQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:22 PM</span></div>
-<div class="news-title">Panthers Arrive In New Jersey As Late-Season Push For Playoff Spot Continues Against Devils</div></a><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWlk1TTFkcEZXU2xKU3hvWE1fSEFnWmZyZlh2MVZpY2ZfOGQ0Z0VRRDJyQ0c3SldVbGpOYWF4dFRqQlo2cnBnN0JhaUZlVlZOLV9DbDA0WmJzSnB4aFVpOFpUR0lWVTVyUFlVTmJVZS1QaURNeXExb2dNSF9jZmNJVUZrSDdMWTM0dEE3VWxDR3I5aHptSk45QWM2aVp0ZEplMnRILWpoTzlhbDh3N1AzSy1mWlJpa1A1YlFzTFdJcjB0c01XQmFiWVAxcnZublJLSEFz?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 3 &middot; 2:00 PM</span></div>
-<div class="news-title">New Jersey Devils Prospect Update: Parent’s Hatty Caps Big Comet Weekend</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxONXZYYk1rUjVKVlE5ZVVQcGhvOUpSWW1Jcl9WdTJBSHlFbWdBaDNCTERSZEhkaDNBVXFxTl80SklGUDJqXzlucDBHLTg5N1FxZ1cyN0dfQmVXT2pNeE9DWkZtYnUyWVBWT21qTVVCcEVHOWUwekRZc2JOOHY2eDZKUmdtTWNhRU9fNVY2bEVyMFRUZnc5RUliMGpXcHRDeHkyM1o3RUZKdzAtRGRyNGp3T2FQUlk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 1:59 PM</span></div>
-<div class="news-title">NHL Game Preview: Florida Panthers at New Jersey Devils with Line Combinations 03/3/2026</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Devils Rumor Roundup: Defensemen Available & Bjugstad</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNcUNvWENyMl9mYjdYaTVGZUpkaTJrWGxEM3hseTFTZ0I0cmFhU0c5Nm1OMEpMb09wdk1uczZ5clR3anBqUGpqZzUxMktJbTRKMzg1WW5lRHE3RzlJYXNOcGRkN0tya0RNbzcySWxfOUtMQWQ3dWNlZkdzbHJvbUx1NVVQNF9uRF9Jam1kVVp0VTFZdUNJRTlLTlZLams?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
+<div class="news-title">What does Dougie Hamilton have left in the tank as an NHL trade target?</div></a><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQc3B5bU1BYjJ3RHhldUx3cEdpZzl2NHEtMW9iN3lHUEpqTEIwcjN2WjZMa2REVjlGY1I5aTNMZzlvTmJiakk2MlNGcURBTWUzVXpHYkl1V3lrMlhPclVTRVZuNGFkb09MVGFTYmt0WUhheFhxYTJaQ2xLRWdDOW1BMGR3d1NGN2RjQ3FOYm16ckdFdUUyZDVfQkJOU0RjYUJ3dTdqUVRsUzBTenlm?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 4:03 AM</span></div>
+<div class="news-title">Insider's latest New Jersey Devils rumor sounds crazy at first but actually makes sense</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNTFJTaTNiNEREM3dlRW5xZkZyaWZBZkJQbWxKVGhERHpnNnMwTXREU2tMY0JGbE9KLTBXTzB5THlNNlNyQ1BqRW1aNlhDN1g4cjBDRkY0Yk9UY1hxOXpRNExwMzl4ck9Za3VwelJGZG1aQU5Gd211dzgySkZsUEdLeTh5SFJ2dloxY2plQUxBOXlJWmw2UmZr0gGcAUFVX3lxTE54TkwtSnFsTTdxaUdVdFBCT1h5S2lhS0FfeExrd2EwVjZVV2NwZmw0a2FTNzJRNGJ2Smo4VXdDcEpTNTMyZjNPRWV1cnRGYWZNZURIWFZ5eDZHWnIwZ0dxdmI2RGRnVno4YTAyaUg1bnFoQWQ2S1lGVkFCSUtBYkwxcEE4QnVzZXh5QmRXZ0JrZmZNYlR1WGpROHVpaA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 2:30 AM</span></div>
+<div class="news-title">NHL Rumors: New Jersey Devils, and the Carolina Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQU09mUFBfZ1VHYk1mV0hDNjd0Z3hya0NkRFdKODBYb2F2aEUtZWI3U3dTNTRWUTU2clk3Ny0xWmxBX3N1OXpDYjJjOF9Tam5tVy1yMmRpOHgwWUNJSTlrSkFvWTk2RzQyVTRRa3hjNEhvZXN2OGJQRm8zMDh2YjVPREtHRDFmc0RodDFpQW5tbnlRNllpclAydWJCQ0VQREJPb29zWEhFMTc5Mm5JU2Q2SlBiVzRmakpiWGhJ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 1:05 AM</span></div>
+<div class="news-title">This young budding star is the perfect trade deadline addition for the New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQVHFiVzAwc3NkZlhuMEdpblpmTVNMTmdUTnY3ZUViMzRwamZSWmktV3d4YjRDME5UUXB4Z3o2ZTNvT2hkRjNlT3BKMXA0bHJWeXZBcFVOZENnS2xOLTF4dy1hQlBsVEJscHVUU3ZaWkpzNkNiY3hJRFlpa0hHcE03SkplbC1hOGtsZ0RGZnBDOFhfQ1VtaG5GOVdRcHJHQmgxVTFJeXZadkMyUnFWU3E5ZVFBa29iOEE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pucks and Pitchforks</span><span class="news-date">Mar 3 &middot; 1:03 AM</span></div>
+<div class="news-title">Dougie Hamilton, Dawson Mercer, and the Pucks and Pitchforks NHL Trade Deadline preview</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQdDFkcDFJTGZnYmFGc210bmFTMnhhbm9BSURyU0JVcnJDTF9QWVAzM3pOUVdwb24zQ2h1X2hnN3M4YXpxbVQ4WXdxTEREekdrcXRHeWprMXVKd0tSWC1Iel92cjBKaEE2V0xJWkJWTzJWZGZSWlluMkRnWFpzZkZlbUxuOGwyUE0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 3 &middot; 12:00 AM</span></div>
+<div class="news-title">Will Devils trade Dougie Hamilton this week? | Devils Rink Report</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPZTVnRFo4dFZsR0YxdlRJejRXY2dQYWZYUWJtVEF0N2puNlZVWVdwSDZJZ25yRWEybDNoX0FMQTRIYktST0U5UmNVRkc0b3JScTJpbGVaY1lXdi1nUVBaZUIzaFdSZ3YwUUFEVzlzZTJBRVVFenpxdWtPYnhBNmNVcEYwMlpabG5sN20tVmRlYV9VQlNqMUdLTmd6YTJ6VUtHZ0NNN2FGUTBnbzNiN28wdDFNRHg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NJ.com</span><span class="news-date">Mar 2 &middot; 8:40 PM</span></div>
+<div class="news-title">Devils on ‘short list’ to trade for 30-goal scorer despite terrible record</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOMnBycDR3YXZfVEh1MzZQX3Vhd202cF9PTTJhUUtLNTZMZ3I0SFMwaTR0RHZiQkNBQk9CbHFHSnk5ejdiUUZjT1dJSkVJZEI3S1lLQkJCaVg2RlU1OEtDM0RMTERzVnpNSkVCYjZDd2w3YTJDVUc1TE5iNUVQTGhXQnUzbFdzdmstZ2UxbFF1Q1ZvWC1OTzl0UFNyaC1hTW1aY1dBaE1TUDFZYmU4SDJEOGhibndHUGM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 2 &middot; 5:52 PM</span></div>
+<div class="news-title">Devils Trade Matchmaker: Six Players that Could Move at the Deadline</div></a><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxQTDVKRzNmZ09yYlF4d1BzQ0I4N040bzZvdnR5a1lVZVFQUEdkcXVER01saW96aWpVQnF6ZVZzSFp0eG1QcXJOVWFvTTQtT1dyR2FoUVZYLU11aUFKS3QzMWN0dHUyVWtmeEhybGtBb2tjUkkxNGNQY3QwV0JHLXRQNTNlNFYxTXFzS1F2bUx3WHRYTWg1d29GUGl4OE5ZQU1iVmNYUGRZa1NvVXo5dDhxWlJ6elE5enAydjhWY29qTVdMX2xORXZZYlNMdU55T3VGTjJ4aG5Cb2Q?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 2 &middot; 4:00 PM</span></div>
+<div class="news-title">If The New Jersey Devils Sell At The Trade Deadline, What Are Their Options?</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOcGF2aWtPdUN0OVVvRS1IbUtSSGRLSm96bXlPVHpVOE9qUmhUaHdWTTZTeEltSWktY1J3YmxzNWNIOHphTFF0UkdON2IyOVQwRzBFQ2JHZUxQVXJ3aFZNaEEzRU5XNGszYmxHRzBKdXlSQnpWdFVUV1B0VlEwSXRfdkVhbjhicFZwOTI1a2UzMmY?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Devils on the Rush</span><span class="news-date">Mar 2 &middot; 3:52 PM</span></div>
+<div class="news-title">5 Potential Low-Risk, Low-Cost Trade Targets for the Devils</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQc3VGX080d2tObmEzcWU1bmxRem84WnJRTnRqRHpVZmhwUEVHSTRZcFE5WVgxYVhFRkR4NDI3NmJ6WDBsYkxHMENLckF2OHhOaExTdzQtWGFkdkNrZUpDcU1zek1qeW54TlY4NkU2TWU3M29lekdQN0NMWDBvZ19XcWViVmpiY0xWRlJwT0RMSEllMHNZSG55dFZ0RzUtWDhnUW5QMTZXcUZHQUl3dDlZ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 2 &middot; 3:48 PM</span></div>
+<div class="news-title">Nichols’ Notes: Devils Trade Buzz; Trocheck Reunion at Deadline?</div></a><a href="https://news.google.com/rss/articles/CBMiogJBVV95cUxNMWRVcWVDUFpjX25sM1BkWmJCcVJjRGRBdTZvYkgyaTAtVlJMWlpLS3JHSXREdUI5M2pTeTFWNkU3S3c0ZGdxRUlnaGRtblVGZXVGVUFrbXc2NFpyY29YT3pxSm9jMnpnY3BYa1J0VEJTZUFZc0JFY3o5TlFIb2NmUHljaHRwNzNOOWIwX2NBWlVPQUhWVk5IWTdxVURERmdGOS04Z0tYZmhzZWd0UVlCLXllYVNuQjUtUlUtRDZZWVNXSy04SDRUU0laTFNKNkg4MXl1cDg5cFZRUUZjbHhhTWsyVGpJOGhRZnhnOTY0WGpiT0l3d1pJUTdOdU5NejBlVDUwOVk4V2VsZzJMQVZIRGRLdGdQb1luZVd1UEhoOFMzd9IBpwJBVV95cUxNMkVDdFgtNzRHM2I0bXhFU1liRU10MG5Pd2t1OWVRem1Pbm1GWjgyY1hoNHdQNHI1TnpEMDBLY2VCUFNaeFZETGZES3k0Nk14dXhqeHBwellLaTZsM1REMEhIMGdzN0tRZ2FmN1ZXSmRidzhJTS1oS3VWUjU0R3p1em9KdDAyRmVzOGhaa2N1M3NiLW9xR3cwSWREMjQ0bHQ2UmhtWUZ0QzB1YnY1YnFZN1RUOTRwR3UtQUhEdHg1S0NaQmlmWGxldzRiVFg5NG5nNmpPZWc1eUdTNUFyMi1hN0tUUzEtSU1QVjlGM2VwSF95V29vel9VVG5hWUVubW5yVnUyVjQzaFNMWVNBbW80a0ktUHMzaHZQYkJRNFBOSTdsUmctZEpJ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 2 &middot; 1:29 PM</span></div>
+<div class="news-title">New Jersey Devils consider acquiring Steven Stamkos from Nashville Predators despite current playoff stru</div></a><a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxNSzduX1VTRnY2S2M2VzExZ1FJdVBFUml0WTlwRzJwSkZmOFBmUEc5RGF4dnc4NXFBdGgyNmdQSlpENWZjdllPcE9MR1Y4QTYycWxBMGo5dVRWUTZ2Yk4tc2dmY2ZjMHM0WGYwc0dPQ1oxVXlsRXpINXMtaFRfNjVLVVF1MEVyamh1UzJna1FYOFg2YTY4S050SWhhZU5TQ3RUbnV3SmlnTXRYTHNCOEZiQTIwMmZzdGFQOGxqMGplRW8waDljZlA5bzBXUnlyRlV5YmM0S3pYV3ppX3ZkUTUySVFaVmFHN2dia1VfTERNRXljUdIB9wFBVV95cUxPcm5aZWU3bEFCV1NyQnlNME9sWWZuNG9RRUM1UXV2czlYUkFnLVNpZGhlZTY4dUFTRHpCVmRiQlJvcExhYi00VU1LdU0xRVpWckRYZ3BFZ3ZYalk3VWt0d3lIWXRINmtaT19HREtGb3VzQ0ZsemFSNXdUTkN3YVV2US1lSmlBRXJfMGNmdXBMX3JzQVA5Tl9BenRmQm9IaWlHcmhmcWttVGtQbm51U0xJQlFoNFc3aUZMWGotSGtRXzBZV2diczA3VjBHNDBCcU51TW0zVmhydTNkRGx2QS1MQWl1aHFMYUlFbTM1bTVjRTJXaC1WRmFj?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 2 &middot; 12:54 PM</span></div>
+<div class="news-title">New Jersey Devils face Dougie Hamilton rumor ahead of NHL trade deadline decisions</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRHJJLWtYYmdZSVJsay1vblB1MHI3cFBuRHdQaGlJZ2Y0WDBjVGd3Y3o2ZENFWnJFNWgzMWdBR1FXN0lXMng2TjdnYVhNME1taTZaRWdlaU9NQ2xBaDFBd1R4TXNYU3JCUGQ2MWl3OUtrclpGQXVGRFh0c0RzNk5heEhsMUJjR09aVnZ6d0o1OXplV0huMlZCT3A4ZHpSZGd0TTdUNUQyeXNycEEtV3dhYjlJZ1RWWUZCclZsN1FRNGktUEk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 1 &middot; 11:00 PM</span></div>
+<div class="news-title">In Need of a Retool: Who Should the Devils Target in Trades?</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/devils/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/devils</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22New%20Jersey%20Devils%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of New Jersey Devils mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/new-jersey-devils.20/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — New Jersey Devils</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

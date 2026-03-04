@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" alt="Nashville Predators" class="team-logo">
       <div>
         <h1>Nashville Predators</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -957,18 +977,89 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNVHV2Z0JZUWhfODdvRFg0Zzk4bm4yYk5ISDk4RFY1a2lRQzZxU2N5bXBNUk5SNU1JelBOdEhMNmhudURxcTVSdzIwcFVsRkYwWDlaTTYxZVdjb0RldWZBaGJTVGRtVDFoQXRaSkcyYWJ1c2dJSUdoWUhFR3BIaEpoOThtcEpxX0JFX0dnZXBhYy1GUW4xbUY3cW4yZm1hVzRDeUZyaVo1N21LbWV1cTdXS09HZVU?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent G Matthew Murray to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed F Jake Lucchini to a one-year contract.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 22</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Zachary L’Heureux and Matthew Wood from Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 19</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled G Matt Murray from Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 6</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Reid Schaefer to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Matthew Wood to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 4</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Reid Schaefer from Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 3</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Andreas Englund to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 2</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Announced the retirement of general manager Barry Trotz.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 29</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Fedor Svechkov to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Andreas Englund from Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Ozzy Wiesblatt from injured reserve. Sent F Reid Schaefer to Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 17</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reassigned D Andreas Englund to Milwaukee (AHL). Activated F Jonathan Marchessault from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Andreas Englund from Milwaukee (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 13</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Jonathan Marchessault on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed G Justus Annunen to a two-year contract.</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxNWmhTLXFaMXNwS1pkZjVZNFNTSlNDeGNaUm1jREVFdE80cWFYZzZ2NElWeTRmbWplNXJZOTVQY296b2JGNE9kZW9uUlhGYkd4dWdWM0ZIRE1ldGx3d05qaWY2UXZqcFR4RGF6bTVOd2lRQm9LUUJtX19DNW5XdE1NUVJEdE5HLURvOHBVWjFfS2x4OFlNc01CcDhmTVJVOEVJdERFeWNlM0NJOFp6bmxyM2VIbnI1SzVsOHlVZkJMdXQ4MFhaVGRKaXNYczc3TDh2dVVJYkdvZWpldElsM3VBTThLVnZlUjhmMlE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Columbus Dispatch</span><span class="news-date">Mar 4 &middot; 1:09 AM</span></div>
+<div class="news-title">NHL highlights of Columbus Blue Jackets, Nashville Predators game</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPbmpDazc1Y1ZzLW1yT3RPMmZqazZnQUoxd2R1V1VoMnJWT29rcGlIaTFCRV9hdGhlS3BxRUpUd2tYUXBZcnBFcTQ4MzJJY3VjcWhySnByT01pdHJFSzBkRmktNzU1MDdwVjNjcmZnc2U5MWQ5R0RsV0hQb0dMbzhxRzVmclcyclVvTEVzaHV2bHd5S2k4dUFqLUZrczZpZ2laajVlTTRXbDhHU1R2aEdIbWFGM0MzQkU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 4 &middot; 1:03 AM</span></div>
+<div class="news-title">Wild trade for Predators center ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOdEJyZnVYM2djdTdUdFlRZTM5WUo2enJoTGFjSXpiNWxDWTYtdlNHSzQ5TlRoVXMwN2xTTVNlcGhQeFlBV3pSalQxM01BaWQ2NC1jMHpnT2FHYkloaDlZbUNCQ2lNU3BJRW1DT2FLbWFxallUWmZ4TDZCZGNwWjRQVDVKMkg2Z2p2SVlycUlFQnZWVDlVdHhwT3NUdEVuYUtOTXZoV09EME01cFVKSVpV?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:02 AM</span></div>
+<div class="news-title">McCarron traded to Wild by Predators for 2nd-round pick in 2028 Draft</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNVHV2Z0JZUWhfODdvRFg0Zzk4bm4yYk5ISDk4RFY1a2lRQzZxU2N5bXBNUk5SNU1JelBOdEhMNmhudURxcTVSdzIwcFVsRkYwWDlaTTYxZVdjb0RldWZBaGJTVGRtVDFoQXRaSkcyYWJ1c2dJSUdoWUhFR3BIaEpoOThtcEpxX0JFX0dnZXBhYy1GUW4xbUY3cW4yZm1hVzRDeUZyaVo1N21LbWV1cTdXS09HZVU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:57 AM</span></div>
-<div class="news-title">Predators Acquire Second-Round Pick in 2028 NHL Draft From Minnesota</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOdEJyZnVYM2djdTdUdFlRZTM5WUo2enJoTGFjSXpiNWxDWTYtdlNHSzQ5TlRoVXMwN2xTTVNlcGhQeFlBV3pSalQxM01BaWQ2NC1jMHpnT2FHYkloaDlZbUNCQ2lNU3BJRW1DT2FLbWFxallUWmZ4TDZCZGNwWjRQVDVKMkg2Z2p2SVlycUlFQnZWVDlVdHhwT3NUdEVuYUtOTXZoV09EME01cFVKSVpV?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:50 AM</span></div>
-<div class="news-title">McCarron traded to Wild by Predators for 2nd-round pick in 2028 Draft</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOS2l2b014TUhDQUlQTXV5SjBmTWVUNGZIZVNiODQ1MjVJZElKdF9IeVgyYnVKOHhjTFZSSWI3Mm5PWmZfdzVsVHN5MlRWYXY5c1dTclpLa195aW9qam8xNXZmbWlZWEViNEN4TlMyZDR0RHpsNzZRck5VWjRubzFTUktxNTM?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Newsday</span><span class="news-date">Mar 4 &middot; 12:50 AM</span></div>
-<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPV3pubGlhQzB3dnJDQ1hTcTY4MWI3NXAyajA1ZmJqaU4xTzhrTWpGS0d2blhrU0hYWC1aa09QTG5ZSUV1a2hndTByTGtOSUd2aWFmS3NjZVJmcDlUVWxIY21SWkJBWTB5WGZ1czdwbUVGVHBDTVhDRUo4R1UtUVRXdmNNTlFidXVDS0d3MlNTcHZDV29Ucl9OS3B6VDI2UQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Predators Acquire Second-Round Pick in 2028 NHL Draft From Minnesota</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPV3pubGlhQzB3dnJDQ1hTcTY4MWI3NXAyajA1ZmJqaU4xTzhrTWpGS0d2blhrU0hYWC1aa09QTG5ZSUV1a2hndTByTGtOSUd2aWFmS3NjZVJmcDlUVWxIY21SWkJBWTB5WGZ1czdwbUVGVHBDTVhDRUo4R1UtUVRXdmNNTlFidXVDS0d3MlNTcHZDV29Ucl9OS3B6VDI2UQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 12:49 AM</span></div>
-<div class="news-title">Predators trade Michael McCarron to Wild for 2nd-round pick</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxNM3ozRm1HS0FhMXJTLWhLc1d2YXQ2Rjc3MW4tSldFa0szc3ZqTkdLdUgyb2FQTEl5VGN4YXJ3Rmdma3BqU2M0SGdjQVNtZGljOVZuQzVZSGljVWxsem1aZl9TMVkyS3FKZjd3M01YQlUtRXhzRmpjbTNVc3hwcmI5bVJvQlRQZHYtTTU4UW5TRWMyekRxSU45cnBrMFkwOFg2aVdubFNpbnhqRnRFZTNxVmZGcjVJb3JSSzVqZExERTlTbmxkZ215R3h4eDVVZ1B0bFh4UG85TWJ0Nl92OEs3Xzg2MkEwSXJ2dVhyazZsaEphY3F2aEFTQ2QwcDJzdUVTdTE3SkZJeVpMWThfUnlQU0l0SQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Bluefield Daily Telegraph</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
-<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMipwJBVV95cUxNS3BlZ1FiakpqVFBKU0RJcXp6cEFTdThoZkZoNjZ1YkgtOVlITXNUb3gxN3ZYQ040S1hYMUJmamlZWDZNa21wMjVNRDhjSWVYbEdUWlN4a3JsV3BfdUtkazFtRi11dWs1MzlmVVNWSHRkZi1acWtrb2R1M0E2MXB1Ylo1dnpaZmFzbHhOb1NNYTVuU1pkenlFaDhNN0J0cmtDQ3hqeERRLUdsMWItdFIyb2FVVUJQZVRfd0JhdmlrXzloVGZRLXZYV2YzVmpwVTAwbkpzZmxKMXJ0dUFJbzJ1R2RlOWlIQXQzRFNiTnVldEhtaERTNkdpNzM5TXU2VnlsaDFjVVFBX0Vid2szQjR6YVlTZDhFaldVWmtkcGJrNTZNOW45c3Jz?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Winchester Star</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Predators trade Michael McCarron to Wild for 2nd-round pick</div></a><a href="https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVFdsTXZ0aThoVWFacUFxVXJpNUJ1cFZqdGlIclkwQnhuS3lYd2lMalIyeG5WQkhuRXBnd3VGYXRIb3BIYWZwU21sNlk2ZXdjdFFwNzdfanpLY203T2hzbUo0S2wzSEhKcWdCODVJaGsyZEV5SVBURUdYMFV0RGQyMjBWYUROTlRXb1QwOG94UzVNdXFmWVVGUS1yVTd5RnJBdzZycElsVUhjakp0NWdNNzZsMi1OS0N4T2t3VFNfdTlvZEJQNjBOV0JrTXN3Z01CY1JzZ0tyd1pkVS1URkxwQkRIdG53dGNxOExBYkNhYzlEZmNJU0ZCd1FfQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Killeen Daily Herald</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMingJBVV95cUxQV3RUWEgzRlpFQ2oxTUx3S0dmVWViMFZuWWJLYWIxY2tsSmRhcGZXWmVuZzFocEtTc01oTkJ5RnBlR2VPeFFKZmEzOWhXMmdzX1dObGxYcDdKTWJuaUZMaVhpZkszV1htRlctUFVWc3UzT24wckxVNU5FZ0haWjhQT01WRWlKQTUzREg3N2x5WXRHRE01ZVJLYUZXRndtYXlSLW5FWHJrSHB3TDVERXhlbUtJUmdpcVpzX3YyRExDOTRELVhOT1BpYTdaRXhoODF5SVFfb1BndUVlV205QkVMaDh4VW1GWkg0M3pqRGVjQzd6ZkpBWE5WTFFTZzRoa3VfYXdWUVVLNXlVeE9HeER3RXQyLTl2SWw4UkdqbVJB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Rutland Herald</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMi-AFBVV95cUxPMU5XS09Zb2JWZEthbXJnWFVJVkhMX3BwTnYyZ29DUkVHbWlXdW9EdWk4XzVTMWhwWVk5My1wQlNWRkZtTUVvY19yRmoxdmJmdGozdy1pMGUyWmhmakJxeEY1Q3hlTjZveEo1V0NKSHZxVmtiWFV5dFNlbTFOYzhxakY3NHoxSjlMNF85Yko0Z2hIVHo0ZnJ5d3JTaTF2c25jV2c5dVBXei0zR1Y4SFV4cmFwamh6dktIcm5NUWdqd2dqcVJLQ0ctSWJyYUVXaGZHLWVNdzBoektod3o2dnAzN1R1RFU4enBTdms4eU9LSExxV0VWRFRyMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Eagle-Tribune</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
 <div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNazBHLXk5dWx1czFIZk85ekQ4UWVyTlF4YzdzejUwMDBFaDV6ak9SS2ptVXQwdlFZekVWcUZBRlFLWGczUU9fZFdMVnlfOHdBdUlja3NGTFJpZ0xwR2MxMG5TMGItRlpjdVM0S1dCV2d1RzdZaS0tRDRERkFKeHNsbjdDWmNvNmhmRnZ1Mkx6X2hYbkV6STh4VDZuVUE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 12:47 AM</span></div>
 <div class="news-title">Wild Land Michael McCarron in Trade With Predators</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPdkhacjlEaVB0SXNQYkcxQXRtb1VYV2hVb2NsNlNNQUZ2cDhseFg3QU12MVd6UlpvM29LZjdpc3lETGJJNDVkTmJ2aGRHWFl2cmNNT29JUnhfbVZaR3kzUTVOLXRGZEgxSTl6SGlzTDN2bmRKMTQ2WEtOOXZBUDVnVnZ3dXVwZWhIN1p1dVEzMzJ3MFlKbTJNMlk4NEp4aFRYNnBMZjh0UmhuLTQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -981,7 +1072,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 12:19 AM</span></div>
 <div class="news-title">Report: Predators trade forward Michael McCarron to Wild</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPSVE2c0pTNWJIaTdPLTBDcXlMVXRYYmlUUDdSeUdtY2liUkFhaWxvcGFLLW9SbkZQVjd5TkxKSVhFdk9uWng1MzYyTkRvWDhEZy1CUDE5di1IdEl3dEIwd1hYYkM5OEJUUjFBdXJwZUZSNVUtSmpoMFZLX1hzQ2taaWM3aktHMjJ3eENhZUtGQlkzZG9mY2VBbDN5Yw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 4 &middot; 12:17 AM</span></div>
-<div class="news-title">Minnesota Wild Trade For Former First-Round Center</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbXJoMk9mYTFtVGpLZHQ4TW5JQ1ctX1ZKTlRUV0R2VDNxc0VWb3Iya2ZLcDVPaGpSMUF4aUd4VmdueEh1d0s2OFEzVXFoRnVUVVlPRGNldXdua2R2ZTR4NzJ2aWV5eUxYdkRrSTBjQVFEWkNPUGlPUklxaWRGQmNiTjF5aHFnOENmM2R5N2lGdXhjaElBY1ZpWE5ldGNJenFOM2pUcVVPMTJRM3U5SThmLU9MN3BseEQ4MWVZcGZ5SVQxVnI0bUhvYmdFWk41cGhJdnZmbnA2ajFZWGdWbVk4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Minnesota Wild Trade For Former First-Round Center</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQd2RySFhZNEpmU0l0RHdhMms5dzJXY05rUkFGVzlYam5TN2hlcThDZGRXNzFlcS05MHZYdGhyX0dJZlNNSDJaWGZKbkk1YkUwRjZtUVhzU2lDQUNyR216T05NbUpDbW5RVXc5UXgzM19LeVExZERsd3Awc2VqcFpQellmSVVGRHJHWjFNMXpJel85YXJzZFlHdi1OZjRnZ25WVHgxeHRweFQ3bzJTMzlDc0lMbw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">All Montreal Hockey</span><span class="news-date">Mar 4 &middot; 12:15 AM</span></div>
+<div class="news-title">Nashville Predators trade Michael McCarron to the Wild for a second-round pick</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbXJoMk9mYTFtVGpLZHQ4TW5JQ1ctX1ZKTlRUV0R2VDNxc0VWb3Iya2ZLcDVPaGpSMUF4aUd4VmdueEh1d0s2OFEzVXFoRnVUVVlPRGNldXdua2R2ZTR4NzJ2aWV5eUxYdkRrSTBjQVFEWkNPUGlPUklxaWRGQmNiTjF5aHFnOENmM2R5N2lGdXhjaElBY1ZpWE5ldGNJenFOM2pUcVVPMTJRM3U5SThmLU9MN3BseEQ4MWVZcGZ5SVQxVnI0bUhvYmdFWk41cGhJdnZmbnA2ajFZWGdWbVk4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 12:11 AM</span></div>
 <div class="news-title">Predators Scratch Michael McCarron vs. Blue Jackets Due To ‘Roster Management Purposes’</div></a><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNMmJmTElLRUtfQUxvM19HLWZ6eHZoeFBkZDRuNFFuY3l4N1MwR1ZrejRaVU9POUZxUU5YR0pFZjZKcXlFdFJBYjZHWVNsTUx3OTVLNWZBZGVGb0NzUDlIRkh4UkVqU19ha1BKSExkV0lnYjNmS0lQemhoLXpkdk83bWJRUHlTNnRiQWpaSV9MM0JFUW8?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 12:11 AM</span></div>
@@ -993,31 +1086,23 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:59 PM</span></div>
 <div class="news-title">Wild acquire Michael McCarron, sending 2nd-rounder to Predators for 6-foot-6 center: Sources - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOOFZEa2xjLTZacUUzZjhzcHAxeEc1andGTWYtekoyY0x3Z1k2Ykp6V1JRQ2czc2JySEQtOFFHODRiMnY0NTV6ZF95bWdpS0oyZ2gxeU1iNVF0RmxjdUdwTkFyTkl5ak1uVzVjaGZmaVlSUTUtZzdOMnVnLUdLWklURE9aejJWVDA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 11:59 PM</span></div>
-<div class="news-title">Breaking Trade: Michael McCarron Heads To Central Division Rival For Playoff Run</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPM2tmcFJ2R3VjRnBiUTZ2SndVY0lQbDkwR2ROQW5UdTl4VUNlQzcxbm94RUtMY2VPU18zNXVtbUROV2l3djlvYlotQUpVMlY0R3V0MXhDdGUxR2lTbFRfaGpobUhaQjM4NmRBZmxuTHE0dkpxZlRGdFdYZGtsWXBidXZNbm5LWEMzRXRuNEFkcHh6WjJhYkhXUU9IMlZDUXo4LV9LQ0Izb29xME9tbHBfTmZB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:58 PM</span></div>
-<div class="news-title">NHL Trade Deadline Central 2026: Trade Tracker, Analysis, Lists And More</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNWFowSlktVUtCUWJjejVibHZqczhybktGak5UZzJpVGo2T2FXdlhfM3lrY1VmbndXd1RvNVIxRGgtMndLSUQ5M1B0aWE2OTRMVnA3NElfQjR4WTVicHhoaG94S09CNWx1a2lfVXJCOWV5c01IbzU5cTRDZ3pMRWlzS2pHWlYwZE5KRWpnUFlYNWlsMHp1ai1VYno3cGgwMW5GSEZidDhETThFbEljci05NDVyTXlsdw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Breaking Trade: Michael McCarron Heads To Central Division Rival For Playoff Run</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNWFowSlktVUtCUWJjejVibHZqczhybktGak5UZzJpVGo2T2FXdlhfM3lrY1VmbndXd1RvNVIxRGgtMndLSUQ5M1B0aWE2OTRMVnA3NElfQjR4WTVicHhoaG94S09CNWx1a2lfVXJCOWV5c01IbzU5cTRDZ3pMRWlzS2pHWlYwZE5KRWpnUFlYNWlsMHp1ai1VYno3cGgwMW5GSEZidDhETThFbEljci05NDVyTXlsdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Predlines</span><span class="news-date">Mar 3 &middot; 11:58 PM</span></div>
-<div class="news-title">Ryan O'Reilly and Steven Stamkos showing ultimate loyalty to Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxOSkVCUDNidndyQUcwenlwNldqNWM1YlBCU05JOUx5N0hRSVN4aUlQRjQ5b01sa1o4b2hOSGo4RmxfdHZrbnBFVW52MkVLcDFIRlJUQXBYTF9kTFo0blBWTEpDWkJYNy1rZlk1SWRPaGZVbFhKbkZWeXdEUEEwNXRlUnFHWUk3ZHJrSUg0RmNOOUE4dWJ3NTN4ZjdLSldfZ1pia3c3dllGbmxTbVl2OHkzWkFxYklzOVJkQzFSMlo5b1BNdVRmcW93?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Ryan O'Reilly and Steven Stamkos showing ultimate loyalty to Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxPZllwYmNES2w5ZHlIS0c5QUM0ck0yWUVaaFJUeWdtZUg3dEt4Z3RXamRIMXRWNHE0QXBYNHN5aXF1Z1pwRFJLSE9JVWxIUlVtMDg3c2VEUExzc0hqZm81dkxYRVhjZlhsVEpJTTh1ZUtuTWpBUkk3cWJHTzA2bzFpWWo3UVBCelVMN2NiRFozeWRjakhrRC1YRkZJSENnbk55T1UwQXJtLUtxVnFkWEtpcVJVNjlLQmtVTXdYMVg0cDRUTlg2eEcwNTNWSk1DWGR1aFNGWWRwa2xRWm5LTVA0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Columbus Dispatch</span><span class="news-date">Mar 3 &middot; 11:49 PM</span></div>
+<div class="news-title">Zach Werenski, Boone Jenner out with illness vs Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxOSkVCUDNidndyQUcwenlwNldqNWM1YlBCU05JOUx5N0hRSVN4aUlQRjQ5b01sa1o4b2hOSGo4RmxfdHZrbnBFVW52MkVLcDFIRlJUQXBYTF9kTFo0blBWTEpDWkJYNy1rZlk1SWRPaGZVbFhKbkZWeXdEUEEwNXRlUnFHWUk3ZHJrSUg0RmNOOUE4dWJ3NTN4ZjdLSldfZ1pia3c3dllGbmxTbVl2OHkzWkFxYklzOVJkQzFSMlo5b1BNdVRmcW93?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 3 &middot; 11:45 PM</span></div>
 <div class="news-title">Should Sharks, Predators and Kings buy or sell at NHL trade deadline?</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPWEtVUXlORTFaSEZhdjVIVWd0SHltNEVFS0puTzl4c29VVDMybW9EWXBKRWFySTNFWFNxQ1pXVWtsSk5WcXZqb1VSMWwydUFYYnlUY2doMkhGUWR5Ym1KdktoM2ZQbURmYUtNWHZNaHp0c3JCUUpueFNLRG5HcnBnOGJFRTlHcDJzYXZmcHkxWk1DWkhwMTdaNWc0Rm5DNW9WUWVMOXhqNTBiZHNlLU01Vg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 10:46 PM</span></div>
-<div class="news-title">NHL Trade Deadline: Should The Sharks, Predators And Kings Buy Or Sell?</div></a><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxQRzhQWUVNa2hxV1ZPWmp3TXVEUFJXaVVDWDd1ZkNVbElVMUV3a0xDbklFWTFsX1ctZ2VUT0NzYzlUc1FuOWNRTGh4Q05sNjYyNGE5a1VDSUtSX1UtUDBUN1Jad3RpQ2k2MndZbkRpZzNQaVVJVjRNV2RpRXpOdmRyWGFfWDhITUVoeTJkdEU0U3h0ZEJKdnpFSkN0b29FU1FxU0pJYmdsbS1LUFR6Vk4wN1MxcG9XT0dKWTRsdUlGMm05QzFjR3d3NUFfOHZZR3BkVE1nQTMwaU5DUkFPZVhGTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Tennessean</span><span class="news-date">Mar 3 &middot; 7:44 PM</span></div>
-<div class="news-title">Will Predators' Steven Stamkos, Ryan O'Reilly be traded? Here are 4 deadline scenarios</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNcjFwd0QyN1pNY2dvMDl6blJSTUxQZTlYT2p6d3BQWjRLNlFuSDFmOE1CWUg0dEwyTWtvb0h2Q1poa3k0T29URk00aU1wejZkbldIakpnbjlmVlpWc2pNMm5OT2N0M0VjQl9SVTI4cjJEZ2ZFdnM5OXNPSUFWYnJKZFpvZFVteC1Rb3lWZldwcnVOeXFsWnVGNVI4M1RsZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Ottawa Citizen</span><span class="news-date">Mar 3 &middot; 6:11 PM</span></div>
-<div class="news-title">Silly season begins for Senators as baseless Brady Tkachuk trade rumours go viral</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNVEJoSTRLdEpfejB3VEhlZVQwSk1lMUNKRlFDd05JUDV4dk95TzFOeGd6c3dkZThVanlkU3NqUzEwel9IOVAyMTZCUGJVakVqV0VZajZzMEtmdVhQT01IZFQ5c1pCVWpTcktkMDZqWlppZE43V1E0MUFYSV83SF9FdGRhVEY5TmtyTThYdHQyWWcwWnItZXVv?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:09 PM</span></div>
-<div class="news-title">Predators at Blue Jackets projected lineups</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">NHL Trade Deadline: Should The Sharks, Predators And Kings Buy Or Sell?</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/Predators/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/Predators</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Nashville%20Predators%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Nashville Predators mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/nashville-predators.33/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Nashville Predators</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

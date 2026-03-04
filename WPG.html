@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" alt="Winnipeg Jets" class="team-logo">
       <div>
         <h1>Winnipeg Jets</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:06 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:24 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -1024,6 +1044,69 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="54">54</td><td class="r" data-sort="0.8710">.871</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="8318">138:38</td></tr></tbody></table></div></div>
   <div class="panel" id="p-injuries"><div class="empty-state"><span>&#9989;</span>No reported injuries. Full health!</div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 1</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Kale Clague to Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 28</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Haydn Fleury from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 27</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reassigned G Domenic DiVincentiis to Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 26</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Nino Niederreiter on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Kale Clague from Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled G Domenic DiVincentiis from Manitoba (AHL). Placed D Josh Morrissey on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 22</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent Domenic DiVincentiis to Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 17</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled Fs Walker Duehr and Elias Salomonsson, D Ville Heinola and G Domenic DiVincentiis from Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned Ds Isaak Phillips and Elias Salomonsson to Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 26</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Isaak Phillips from Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 23</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Isaak Phillips and F Danny Zhilkin to Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 14</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Neal Pionk on injured reserve, retroactive to Jan. 13. Recalled D Elias Salomonsson from Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 12</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Colin Miller on injured reserve. Recalled D Isaak Phillips from Manitoba (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 7</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Promoted F Danny Zhilkin from Manitoba (AHL). Placed D Haydn Fleury on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 4</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Suspended D Logan Stanley for one game.</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxPbFlnSnNUcUh0LWZfdXpyRGZwXzY5dU5pTmFjSlZiM283dHpTVzdISTJoQUNtMGNDbVQySWNGNkhiazJlWldWVXRxcWZ4MF9EUklOV2xXS1BSYlNKdk9TRHVrZjVGUWtVTmJtREh0UEZqa3Z3M3l0ZlZtYl81NzQ1X183a3BBbXhXVEUtc3dEZzIwTXhiSHlnY0xvUUxJMTRqS0VmNGNoV2czUjg1M1pxMDZ1UF9ld0MyZ3lBVllPMTFNSUtDanprNlljU3FXUUVMRHRXVk0wNl9HNDl1?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Winnipeg Sun</span><span class="news-date">Mar 4 &middot; 12:16 AM</span></div>
 <div class="news-title">Winnipeg Jets get a failing grade with the NHL numbers game</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxON0M1czVfUTNaWkZuUk9qXzhSWjlVbGJmVWpJNmdrYnBWV3pielRuMFA3djRxMXYxZEtJVDlaM3VzQTNQeTZGUmpYYlc1ejliLVFKaHZNUGkxX2VacFBSRGN6SDNibG4xUW1IVGtPa1o1ZFpjandiR3h1UTZDNlFHdzJaRk9uTmdYSjRNMFRsZ9IBlAFBVV95cUxOaUk3T2NOV1FZeURTZ1lVVVFLa1NFZjBZaU5qdnI3YUdRWlV1ZmFxZmw2ZG1UX2RwNFRtODJnTTFXbFZ1V2xYNUVabzc4Q1ZseWNqc3UxZ2hRYUZLOGlrX3BtNzg5QlhmODdaSmhCQkJlb21VcHItakZMQUJqMGVXUkdCRGlzS290UWhDUGNUX25FQVh4?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1075,16 +1158,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Jets' Josh Morrissey could return by end of week</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9HUlgtTktQZEFNbEFqMWpXZ29iX0NacTFjbFpfTV92dEhabS1XTnJXenBPcXBNSTh5WVhabWtWeFlYbEtqQ1g5M1diUFh1RWd4UzdwQVV0eGlNZXBYcHk2Ynk2WGpXVllCYVAxbUFJbF83c1FETUpzU0t3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
 <div class="news-title">NHL Status Report: Stone day to day for Golden Knights</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/winnipegjets/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/winnipegjets</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Winnipeg%20Jets%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Winnipeg Jets mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/winnipeg-jets.29/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Winnipeg Jets</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:06 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:24 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

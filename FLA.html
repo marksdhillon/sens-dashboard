@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg" alt="Florida Panthers" class="team-logo">
       <div>
         <h1>Florida Panthers</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">22</div><div class="sm-label">Games Left</div></div>
@@ -1020,11 +1040,54 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQQmY0YVRGZUJTbFY3c0dNU2FiRVNORE1LQjJNUlVMdFRVYVVsdnJ2aEk4N3pxRUJqT3huLXdCSTBVZVVULUZnRUhWSjdSVVFqN21pUl9ycUxUM3pHU2ktbnhXNC1VcmVWdmVzVjFVakdtdE42Qi0tWGlLaDYyUjlWYXhjbDg5T0NHWDA4dm9hX3hlZ2dlV3NJVnRPN2R4Q2xrOWZ6enFsTdIBuwFBVV95cUxQb2t3ZlJBVXZoa3h3akdYZ2JsMG9VVmZYcTVYYVg4UWJvX3B3Ui1pVXIzSEhYLU1OaXdKSmlzVUpMZUU0UEs0aG55SkZIVlhVdm9TSTNXLVBrUWJ0aFFtalpKTEFwRmxaSURpTktXS3djUXhKN05uT0FEbVY1elhEQXBpeTgyN0FWU3dmQUhxcGR6VEdaWVNkVzN0RFhRZGNsOFhQR3RMckxQY095Tzh1bXd5YkMta2wzOXFv?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated Tomas Nosek from non-roster injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Mar 1</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Reinstated D Dmitry Kulikov from long-term injured reserve. Placed F Cole Schwindt on injured reserve. Placed F Luke Kunin on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 27</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Tobias Bjornfo from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 6</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Mikulas Hovorka to Charlotte (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 5</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Tobias Bjornfot on injured reserve. Recalled D Mikulas Hovorka from Charlotte (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 19</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reinstated LW Matthew Tkachuk from non-roster injured reserve. Assigned F Noah Gregor to Charlotte (AHL). Placed D Seth Jones on long-term injured reserve. Placed F Jack Studnicka on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 17</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed LW Brad Marchand on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Seth Jones on injured reserve. Recalled F Sandis Vilmanis from Charlotte (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 4</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled D Tobias Björnfot from Charlotte (AHL).</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbkRCQUxoNzdkUWZGQklMQy1aLTYtcEJpLUNqaEs2eTRZdV80elZ4WkZmVS1jb0I1eVBIRndqcndGRG5Rd2VxcVppZWFFOW8wb2I5bm4ycEcza053RFZvazNwXzlZRmllME9waXpfdGlFYWNYSXdLX05wRU5PbmhPWERuWXRIeG9CWjREM1M0ZUtrYm1LT1NpZWxDZmU0b280cFRrZVVEWFFlN0U?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 11:19 PM</span></div>
+<div class="news-title">Game Preview: Florida Panthers At New Jersey Devils</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQQmY0YVRGZUJTbFY3c0dNU2FiRVNORE1LQjJNUlVMdFRVYVVsdnJ2aEk4N3pxRUJqT3huLXdCSTBVZVVULUZnRUhWSjdSVVFqN21pUl9ycUxUM3pHU2ktbnhXNC1VcmVWdmVzVjFVakdtdE42Qi0tWGlLaDYyUjlWYXhjbDg5T0NHWDA4dm9hX3hlZ2dlV3NJVnRPN2R4Q2xrOWZ6enFsTdIBuwFBVV95cUxQb2t3ZlJBVXZoa3h3akdYZ2JsMG9VVmZYcTVYYVg4UWJvX3B3Ui1pVXIzSEhYLU1OaXdKSmlzVUpMZUU0UEs0aG55SkZIVlhVdm9TSTNXLVBrUWJ0aFFtalpKTEFwRmxaSURpTktXS3djUXhKN05uT0FEbVY1elhEQXBpeTgyN0FWU3dmQUhxcGR6VEdaWVNkVzN0RFhRZGNsOFhQR3RMckxQY095Tzh1bXd5YkMta2wzOXFv?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NJ.com</span><span class="news-date">Mar 3 &middot; 10:00 PM</span></div>
 <div class="news-title">Devils vs. Panthers FREE LIVE STREAM (3/3/26) | Time, TV, channel for NHL game</div></a><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE52dl9kM0Y4V3pUeFpJb0hsRWIyTmdhZGFEN1EyX05vWXEyUXZHMVRoUThwZlJJbTZvX0xNMFA5cWhhNlZZYzNpVnEza2txSkxvcjRjWGd4M0ZxbXVPX211QU9iS3lsZlRj?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Transport Topics</span><span class="news-date">Mar 3 &middot; 9:15 PM</span></div>
-<div class="news-title">ParkPro Adds Truck Parking at NHL’s Florida Panthers Arena</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">ParkPro Adds Truck Parking at NHL’s Florida Panthers Arena</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPNUNUY0cwcEhXcjZ6RjFRXzhObk83UG05RUFFUjV1X21uS2EtVU1OalFaVmN5amY0eWpYRG1uV01iaGhXMXNvZUk4VklBM0dSV1hVR1Y4cF9YdWpqeGg5THluVTRtSDI1cFhFZ3RqSUtRd0FsUEIzaXk5NDdPN0JPSGZoNU1fNXNQekE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:22 PM</span></div>
+<div class="news-title">PREVIEW: Nosek returns for Panthers in New Jersey</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Bleacher Report</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
 <div class="news-title">Buying or Selling Latest Rumors 3 Days From 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxORFU4SEM5ZnloYWRMS1VwT0pMZm0tY1k3QjBFWTlPLUFJVFpVRThUUk1Cekw3NGRZWk1XTzBBR3lLVlRZMTBhSk5FNUp3ZzdQSlhrWlJzTmYweXBMdzUtem11YVhuM2xhdk5fS3YxS0FDbXpVNzlsR01QSGM5bDdZSF9FYjdnVHpCNU94RVRqTTVOWi1lb0U3bXY4LWNYam93SmpRWmM1bXNpVUUyTWFYSEJ6YzF5WXNka21ZbFlFa1BzNmRwUlN6Umc4VzlPWk9EeThEWVE4XzJXdGduczZLM1Y5MXBzWllvdFJteXlMYmxLX0hmMHVNcVBRdEpZUdIBgwJBVV95cUxOdHdCYmZVWV9lOHV6R1YzZXc0bUJNQTJ0ZlJnV3hURWdyTFpiS3ZsWTNCRzRWWF9TRG1zNTk2SEdQMC1XaUpxV1RIelI5amlYSmNDWHBEQmJmTEtGU04wcnN0WGRvTXJkcHRJN3V0OHY2eXhPTmpCRjFTX09OeTlaMFVWMGhQdUNfUE1jT3RpUjhpeXMxbGVGUVZNenRtTDhsdi13aURjVFAzaWgtZU4wcXZ5WWFiVVpaTzhuTVk3LU13T1dOX0ZmMkVza1B6NjBDVTZxYXZGWUh1d1lscGRjZWR5cnpLUjZoQWlNWlVidmItNC1ZblZVYjh1bkJJUVdCbHRn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 7:23 PM</span></div>
@@ -1040,9 +1103,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">All About The Jersey</span><span class="news-date">Mar 3 &middot; 4:20 PM</span></div>
 <div class="news-title">Game Preview #61: New Jersey Devils vs. Florida Panthers</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9LaU44REZsNHprWkxCNFU0MHVNN1RnQm1YSVIxWC1HX2RvcTNkRUYtSWhUQ19sbkFMM1FLUFVVNTdnS3NPUHJCdkctN1RqdGJnZWVBbWFvRHI3c3NIM2dYX2g3TmxLbnNPRTl1aC04YWRDblZoeTJoRUJlNXRxZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:05 PM</span></div>
-<div class="news-title">Jack Hughes | PRE-RAW 3.3.26</div></a><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBMY2llOGU2X3p5ZncxakpIVzVyb1dlcUFFNVZTRjltbmpJcms3MXFoZmhQeHlNSnhqRE5Ha1ZJSExYMVEtOUR2bmRPVThDVUlvcnZxU0l5cFBHdWU5WldF?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:03 PM</span></div>
-<div class="news-title">Devils Host Champs | PREVIEW</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONmw0TFlVN0FwYUVwOE5BVjhfTjg0RDZIQk1tTUhsWE1CdEJaNmxEb1Z2bFFwQjQtTzU5Z0puYVVjQkJFSVJwZHBzNVhuYU5KM2h2RU1SSy1mRzBobnJtZGF1dlhFVl9HaVRKb2Jqa1lZUzU4OHU2V1RfRHF5elRNenBrS0hmTzlqb21YRTU3ZXVWNlFRdmF5cE9SVFhDMXhmTThsclp1N3dELUo5aVJ6U0dYZWRidGRacDl1WTM3a1pCNDliNFhWbXdwYzBaSGFBVkFGalpyREhzMzY2RGtz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Jack Hughes | PRE-RAW 3.3.26</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONmw0TFlVN0FwYUVwOE5BVjhfTjg0RDZIQk1tTUhsWE1CdEJaNmxEb1Z2bFFwQjQtTzU5Z0puYVVjQkJFSVJwZHBzNVhuYU5KM2h2RU1SSy1mRzBobnJtZGF1dlhFVl9HaVRKb2Jqa1lZUzU4OHU2V1RfRHF5elRNenBrS0hmTzlqb21YRTU3ZXVWNlFRdmF5cE9SVFhDMXhmTThsclp1N3dELUo5aVJ6U0dYZWRidGRacDl1WTM3a1pCNDliNFhWbXdwYzBaSGFBVkFGalpyREhzMzY2RGtz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:01 PM</span></div>
 <div class="news-title">NHL Rumor Roundup: Latest On Flames' Kadri, Rangers' Trocheck, Panthers' Bobrovsky And Other Trade Candidates</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPMHU0bi1OcVVSQXkyam44ckJNZzhUY0I3blNBZ2p3R0Zvb0hYZnVvSGZ4Q043MUZKdXlwN3ozOFFyYkVjS1Ruc3RKSTBJVWY4S2NwcEFPUG1YdXUydEE4TjJOb1lkdFU4RnY5RmRSNlQxc29OTmk5X1hSVXVpdVNXano3b9IBgwFBVV95cUxPQVoteFY4QTVueTFqa0tqSnpxYlJPMU1rLXRKbWdpcVgwU2JNbzQtdDBvSXJLNEhGRXUzcHZQQXoxSXVnb1BhUUo0eWtWQi04VUNWLXhXRURhaFNmdmVsZFBmdmRkMUp6RFdvMWhsNl8xMDNDRE85WlFGWWhhUmJjdFNUNA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Miami Herald</span><span class="news-date">Mar 3 &middot; 3:17 PM</span></div>
@@ -1050,9 +1111,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 2:22 PM</span></div>
 <div class="news-title">Panthers Arrive In New Jersey As Late-Season Push For Playoff Spot Continues Against Devils</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxONXZYYk1rUjVKVlE5ZVVQcGhvOUpSWW1Jcl9WdTJBSHlFbWdBaDNCTERSZEhkaDNBVXFxTl80SklGUDJqXzlucDBHLTg5N1FxZ1cyN0dfQmVXT2pNeE9DWkZtYnUyWVBWT21qTVVCcEVHOWUwekRZc2JOOHY2eDZKUmdtTWNhRU9fNVY2bEVyMFRUZnc5RUliMGpXcHRDeHkyM1o3RUZKdzAtRGRyNGp3T2FQUlk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 1:59 PM</span></div>
-<div class="news-title">NHL Game Preview: Florida Panthers at New Jersey Devils with Line Combinations 03/3/2026</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQb2dmM2VzVnBidDRZeDlRcVBUYmsxRWxrdjJOOFlEWWJmeVZRdTZVWGRrNElOX2FpZUlaelJHR1lERzZGNkFwWXZkWHRrSzU5TnpSb2Vob2lSeEJtSGNVbllnSUlUV21VbnRoTFRvWU9FUTR6cGpCX2ZFRlpJeDJiSGRiS2szNG9PSTZsV05FejlzandBVndhMmdtblZFcVdEWnhhUjJiNWpHaDI5TXpTaEFtTHhQMDdr?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 3 &middot; 11:29 AM</span></div>
-<div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOWUFOMmoycnY3QW41SlhDWDk1OWdZZHRqZmRSa0xGNXQzUkhfV3VkbWlOUmg0WS01TDlMdnpaOW1tWUpMM05LR3BZcjdTYWR6M2RORDdKT3Z2aFU4SWdGSEw4UFJzaEU4UEI5RjA2UkNLRUc5UWoyNE9uRHFwaVA2bTdITlM3N2Y0N0hraDlqSXRQTDNoZ2VKc2dpONIBoAFBVV95cUxPNnVmajZSWjF4Q2RuNjNRcXFhRm5wZzd0MmtCMDdLd0dvQzJacjBGN2FsbWxNMFBjeVFMZUM4TDVodHQ1TTg2LWhsOEJsdmxuaVNHVU5mQUljVXgzd1R6X1VLZlJxeHpRN2EwQnV4VGJVNnlvbTNhMlNXWXM1ZTEtVzlONVp6OUlXNzNWTVdXRDZRYTB0dWpHWnhJQ3NkZjI0?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Game Preview: Florida Panthers at New Jersey Devils with Line Combinations 03/3/2026</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOWUFOMmoycnY3QW41SlhDWDk1OWdZZHRqZmRSa0xGNXQzUkhfV3VkbWlOUmg0WS01TDlMdnpaOW1tWUpMM05LR3BZcjdTYWR6M2RORDdKT3Z2aFU4SWdGSEw4UFJzaEU4UEI5RjA2UkNLRUc5UWoyNE9uRHFwaVA2bTdITlM3N2Y0N0hraDlqSXRQTDNoZ2VKc2dpONIBoAFBVV95cUxPNnVmajZSWjF4Q2RuNjNRcXFhRm5wZzd0MmtCMDdLd0dvQzJacjBGN2FsbWxNMFBjeVFMZUM4TDVodHQ1TTg2LWhsOEJsdmxuaVNHVU5mQUljVXgzd1R6X1VLZlJxeHpRN2EwQnV4VGJVNnlvbTNhMlNXWXM1ZTEtVzlONVp6OUlXNzNWTVdXRDZRYTB0dWpHWnhJQ3NkZjI0?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 11:20 PM</span></div>
 <div class="news-title">NHL Rumors: Florida Panthers Have Several Directions To Choose</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOZjBfLXlVMmR6aFVkRzBNV2x1c19YaVBCX1ZZYVRVMktpa1g1WXBVOVZweVRoaGZKTnI4SGxhNldBbDZzMTFpREhGYVJvWFd2VnpGSlBLUVFPQzVWUEZ6MEwyZEI1MGVVX3pMTlBtaE1NXzFiUFpKSVUxbHJsU3c3eGhVWlV0MDNnQjFMLUxFY3lneFM0R0FGWDhZNjN3UUtWbS1V?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 11:14 PM</span></div>
@@ -1071,16 +1130,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">If the Panthers sell at the trade deadline, who might be on the block?</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOTVgzTGpfUVMwVE5pRzVFY2VnNTBTNEpDWHBQbUU2Z2V0SjQyd05TcGxoZGVuZ0g1bzRkRzhNRlZqMTdJTDdDbDFvX1dGbVJwNUpwTWJQQ0hYZWJKTDJTdXFrR2l2cEZmVUpTaWwwQ2t4Tnpkdk9KWGJ5WjRwUU1kRUNxbndNeE9pazRmUHJ3TGU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 2 &middot; 6:13 PM</span></div>
 <div class="news-title">Florida Panthers Could Trade Sergei Bobrovsky, 5 Best Landing Spots</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/FloridaPanthers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/FloridaPanthers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Florida%20Panthers%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Florida Panthers mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/florida-panthers.28/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Florida Panthers</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

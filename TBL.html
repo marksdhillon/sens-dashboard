@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" alt="Tampa Bay Lightning" class="team-logo">
       <div>
         <h1>Tampa Bay Lightning</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">24</div><div class="sm-label">Games Left</div></div>
@@ -1054,6 +1074,81 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Mar 3</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled Conor Geekie from Syracuse (AHL). Placed Dominic James on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed F Nick Paul on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 24</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated D Emil Lilleberg and D Brayden Point from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 21</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Placed D Maxwell Crozier on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 6</span>
+<span class="tx-badge tx-other">Move</span>
+<span class="tx-desc">Waived F Jack Finley.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 3</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Scott Sabourin from Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 1</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Sent F Maxim Groshev to Syracuse (AHL). Reinstated D Victor Hedman from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 29</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Ryan McDonagh from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 27</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent D Simon Lundmark and F Jakob Pelletier to Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 26</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Curtis Douglas from a conditioning loan with Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled D Max Groshev from Syracuse (AHL). Placed D Charle-Edouard D’Astous on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 24</span>
+<span class="tx-badge tx-recall">Recall</span>
+<span class="tx-desc">Recalled F Jakob Pelletier from Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 23</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated F Scott Sabourin from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 18</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Reassigned G Brandon Halverson to Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Recalled G Brandon Halverson from Syracuse (AHL). Placed F Brayden Point on injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 12</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Curtis Douglas to Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 5</span>
+<span class="tx-badge tx-assign">Assignment</span>
+<span class="tx-desc">Sent F Maxim Groshev to Syracuse (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 2</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Signed D Charle-Edouard D’Astous to a one-year, one-way contract extension.</span>
+</div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPaUM0TG9RbVF4V1lhQnlZUFZHRWJzZWpCN2JaV1l5MVYxejV6Ukdrb3oxM3F4SFVNQW1jeUNmNVU1V0I3Q2Y0Y0Viek1ZRWZVdHdvUV9fX3dYcDZiMTZvdnhUOFpFSlgyT0xfVGU3b3hUQmRDQVdnZkVINndOdWEydGtidnFBQW1OR0pWSHBFckg2eVdkc09QMDlWamJQNy1S?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 10:55 PM</span></div>
 <div class="news-title">(3-3-26) Wild Vs Lightning: Line Combinations</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1086,7 +1181,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 11:03 AM</span></div>
 <div class="news-title">Lightning trade rumor lands Steven Stamkos for high-powered reunion</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdGxkSDVTMEVFc2VzWkhLdUtXSFlUenk2eUNlN3NqZkh6WG94djZzMnhnTE52VVJtZE1EV3YtTS1IVFhQa3hTTFYtWEZyRTJzRC1yd2pGTk1hZmhEZVk5M1FkNGViRmUzTlNWODNFdXJyQmVCZ0Rrbjd2b1Y4MVl0bG8yZk1XSzJUb0g5bjJKVFktRVZZSUQ5aDVtZWg5TlQx?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 11:00 AM</span></div>
-<div class="news-title">One bold 2026 NHL trade deadline prediction for every team</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5TS19SdFZ5VUxiVFUzRG1TVnROQ1BwQ3N6NU1CdUpnVWhPVUtEOFFHYWctMDFIZkVWQTZ5dWt6a1VYaUlnbUhHUGpNMHdoUVZIWXRMZmQxRi0xbE1sU3NnZ3pYSjNHVFluM1pHSHBXQnllODc0Z21NSXZraw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">One bold 2026 NHL trade deadline prediction for every team - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5TS19SdFZ5VUxiVFUzRG1TVnROQ1BwQ3N6NU1CdUpnVWhPVUtEOFFHYWctMDFIZkVWQTZ5dWt6a1VYaUlnbUhHUGpNMHdoUVZIWXRMZmQxRi0xbE1sU3NnZ3pYSjNHVFluM1pHSHBXQnllODc0Z21NSXZraw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 4:37 AM</span></div>
 <div class="news-title">NHL Trade Deadline affects players, talking point with coaches</div></a><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOdTlET0hySGV6YS1qXzVfaWxCUmxGWWdIeDctMHlJN1hjNXl0X09HaHdoUDNDandDN0NGWWR5V09Hb1FjUGliTks4ZUJzZ2c3a1FqNURHYkFYT3Vza1NobEZjZm8yUDhqYldQX21nb1gwUFpxSDFKOHRkMWYtRi1GN25WYVd5QXJ3Tll2VGxnYllrRnNYOXJiLS00MmlhZHBBN1dUYjk5ZVdvcHVYMm9QbXVQWWl1eU5xd2phWWhtY1lkZjNsd2xDUV9lOA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:39 AM</span></div>
@@ -1105,16 +1200,14 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Photos: 2026 Black Heritage Night</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNTTBaeDBoaWF3NEp5cWdUN2RldkFWaDZycXJ1NFl2dnVPdVl3dTZsRGZJOWF5VTBUak9hSk9wbHpSZmRyNzFWczJFWlVKaGZvNnF5cGQtV05yTmtjWVEtMkZ1aXlLNFhfUS1ETEx0TUZTc2ExQ1ktRzRFQXRyWHFuVw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 4:47 AM</span></div>
 <div class="news-title">NHL nationally televised games for week of March 2</div></a></div></div>
-  <div class="panel" id="p-community">
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/TampaBayLightning/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/TampaBayLightning</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Tampa%20Bay%20Lightning%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Tampa Bay Lightning mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/tampa-bay-lightning.27/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Tampa Bay Lightning</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){

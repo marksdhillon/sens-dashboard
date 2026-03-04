@@ -97,14 +97,16 @@ input[name="tab"]{display:none}
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
 #tab-injuries:checked~.tab-bar label[for="tab-injuries"],
+#tab-transactions:checked~.tab-bar label[for="tab-transactions"],
 #tab-news:checked~.tab-bar label[for="tab-news"],
-#tab-community:checked~.tab-bar label[for="tab-community"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
+#tab-forums:checked~.tab-bar label[for="tab-forums"]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}
 #tab-roster:checked~#p-roster,
 #tab-playoffs:checked~#p-playoffs,
 #tab-schedule:checked~#p-schedule,
 #tab-injuries:checked~#p-injuries,
+#tab-transactions:checked~#p-transactions,
 #tab-news:checked~#p-news,
-#tab-community:checked~#p-community{display:block}
+#tab-forums:checked~#p-forums{display:block}
 
 /* Typography */
 h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color:var(--text-secondary)}
@@ -241,9 +243,25 @@ a.pname:hover{color:var(--text-strong)}
 .stnd-card .scroll-x{padding:0}
 .stnd-card .nhl-tbl thead th{background:transparent}
 
-/* Community icons */
+/* Community / Forums icons */
 .cc-icon{width:20px;height:20px;border-radius:4px;flex-shrink:0;opacity:0.85}
 .cc-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* Transactions */
+.tx-list{display:flex;flex-direction:column;gap:0}
+.tx-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.tx-row:last-child{border-bottom:none}
+.tx-date{font-size:11px;color:var(--text-muted);min-width:44px;flex-shrink:0;padding-top:1px}
+.tx-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.3px}
+.tx-trade{background:rgba(232,56,79,0.15);color:#e8384f}
+.tx-sign{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-waiver{background:rgba(244,125,48,0.15);color:#f47d30}
+.tx-ir{background:rgba(232,178,48,0.15);color:#e8b230}
+.tx-recall{background:rgba(107,159,255,0.15);color:#6b9fff}
+.tx-assign{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-activate{background:rgba(0,166,81,0.15);color:#00a651}
+.tx-other{background:rgba(160,160,160,0.15);color:var(--text-muted)}
+.tx-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
 
 /* Mobile tabs — handled in 600px breakpoint above */
 
@@ -329,7 +347,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" alt="Montreal Canadiens" class="team-logo">
       <div>
         <h1>Montreal Canadiens</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:05 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:23 PM ET</div>
       </div>
     </div>
   </div>
@@ -351,15 +369,17 @@ body{animation:fadeIn 0.15s ease}
   <input type="radio" name="tab" id="tab-playoffs">
   <input type="radio" name="tab" id="tab-roster">
   <input type="radio" name="tab" id="tab-injuries">
+  <input type="radio" name="tab" id="tab-transactions">
   <input type="radio" name="tab" id="tab-news">
-  <input type="radio" name="tab" id="tab-community">
+  <input type="radio" name="tab" id="tab-forums">
   <div class="tab-bar">
     <label for="tab-schedule">Remaining Games</label>
     <label for="tab-playoffs">Playoff Odds</label>
     <label for="tab-roster">Player Stats</label>
     <label for="tab-injuries">Injuries</label>
-    <label for="tab-news">Trade Rumors</label>
-    <label for="tab-community">Community</label>
+    <label for="tab-transactions">Transactions</label>
+    <label for="tab-news">News</label>
+    <label for="tab-forums">Forums</label>
   </div>
   <div class="panel" id="p-schedule"><div class="sched-meta">
   <div class="sm-card"><div class="sm-val">23</div><div class="sm-label">Games Left</div></div>
@@ -1026,7 +1046,42 @@ body{animation:fadeIn 0.15s ease}
 </tr></tbody>
 </table>
 </div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOOGhha0M1NFZmYzBXdEZZZGZKU0o1ZTI3VTBETlg1MGduR3NJV0d5UHJaWWprQlNXSVpuOXBSdWhkNWJrVXpzQVhyN2RuQW9TZDhDcWFGak8wZTBDaUNyT0VfRS1WSlNsQkNFSzlJdkp6a1NUMThnTDgxTDVYMGNVdWdxcEcyWHM1OWV2VlZfQXhSQTMtVzdkUU1mS0FfWlR6OW05U1hkUU9HazhYX2VN?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-transactions"><h3>Transactions</h3>
+<div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
+<div class="tx-list"><div class="tx-row">
+<span class="tx-date">Feb 25</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Alex Newhook from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Feb 3</span>
+<span class="tx-badge tx-waiver">Waivers</span>
+<span class="tx-desc">Placed F Sammy Blais on waivers.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 20</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Reinstated F Kirby Dach from long-term injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 17</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated C Jake Evans from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 16</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned F Owen Beck and G Jacob Fowler to Laval (AHL).</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 10</span>
+<span class="tx-badge tx-ir">IR</span>
+<span class="tx-desc">Activated D Kaiden Guhle from injured reserve.</span>
+</div><div class="tx-row">
+<span class="tx-date">Jan 8</span>
+<span class="tx-badge tx-sign">Signing</span>
+<span class="tx-desc">Assigned D Adam Engström to Laval (AHL).</span>
+</div></div></div>
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQaW1UUHg0bEc4b0RyUnF4N1JyaEg5d0d0eDZFX1E4M0NCMlBHdVlvakQtckZGN0hjaHJfaVI4UlZOOEU5UnBRTTNjV2tnNWhwb29mNU9VN1BveXJieUR0X3FlejNBZ0JVYmN1Zk1Cbnh2WWVGRU13dDI2RG9lRFN4Y040bDRvRUxzaG50OE0yUVBmUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">hotelier.com.py</span><span class="news-date">Mar 4 &middot; 1:20 AM</span></div>
+<div class="news-title">NHL Montreal Canadiens Souvenir Hockey Puck, 6-oz | Canadian Tire</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQeTZFUW0wVFlzVWx2dno0VWM1eWdydmZKTjhOV2lua0dxNmUxdnAybG9LeWpRckJMYmE1VzdHLWNPVWxEZVNfN2gzVXM4MDZlbVlCZGJycVh1dmQxU3lvQlF0dWZNbHAtN1h1X2lqWHNDbXBsM083NHhTcGRPOGhMV2lhUWNxS0JPMGJ4bUEwX0xxUjUtMHc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 4 &middot; 1:14 AM</span></div>
+<div class="news-title">Canadiens Linked To Kings In Laine Trade Rumour</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOOGhha0M1NFZmYzBXdEZZZGZKU0o1ZTI3VTBETlg1MGduR3NJV0d5UHJaWWprQlNXSVpuOXBSdWhkNWJrVXpzQVhyN2RuQW9TZDhDcWFGak8wZTBDaUNyT0VfRS1WSlNsQkNFSzlJdkp6a1NUMThnTDgxTDVYMGNVdWdxcEcyWHM1OWV2VlZfQXhSQTMtVzdkUU1mS0FfWlR6OW05U1hkUU9HazhYX2VN?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 12:19 AM</span></div>
 <div class="news-title">Former Canadiens First-Rounder Traded To New Team</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNN2xUYkpyNTZPTDdzcUduOVRDNS1iWTN6ckxCYldidC1kU1RvVXgtQTlwX18xYjI0R2hYdVZUNnVuRmw1dzdpRFZyc3pTNGRLQzgyS1B1ZkwySktYbW9KM0preF9Md0J6cy1BSS1XYnlRSHBYTXRzYmJjdmNobXAtUVQ5Q0Q0TnUzX3NwMg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 12:19 AM</span></div>
@@ -1046,9 +1101,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 10:05 PM</span></div>
 <div class="news-title">Report: Canadiens' Arber Xhekaj Linked To Western Club</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPQ0Q2RnRGVFdETmlwWWItZjBiOW5UNnNGS1VWMHJmaG5VSVUxMUlwYlJUeHpWRlRjZl9fUVBWakE0dkpVOWJFYjFQOHRSM2UtYXBwMGt4YnpjUGhFZjBISkE1SnppcEJqQ0gtOUZEWW5DREs4ZmdrNnVYeWI0UXpfY0ZVZkFMLVcxT3RFckJHVUJCVTd6Tkl0c09tSmZ2QWpFZi12RQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 3 &middot; 9:53 PM</span></div>
-<div class="news-title">Canadiens rumours: NHL insider reports LA Kings back in on Laine</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQeTZFUW0wVFlzVWx2dno0VWM1eWdydmZKTjhOV2lua0dxNmUxdnAybG9LeWpRckJMYmE1VzdHLWNPVWxEZVNfN2gzVXM4MDZlbVlCZGJycVh1dmQxU3lvQlF0dWZNbHAtN1h1X2lqWHNDbXBsM083NHhTcGRPOGhMV2lhUWNxS0JPMGJ4bUEwX0xxUjUtMHc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 9:36 PM</span></div>
-<div class="news-title">Canadiens Linked To Kings In Laine Trade Rumour</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOUmdLYlFiTDhKaHhYY29iSV9YMnl6Qm9GVV9lS0pEOEVoM0x6aHpIU0lxQkxDbWY5X05CMGxyNDlOaDZ6U19NZ2l0bHRUVU1tcHRZTmFRNUR0VE5CWHhtRk5jUkFDcFNEemVSenh5TWQ3ZFBPMUlNY0dydWJZNDROdHY1MmkyaVF6WFFERldLbGZycEx4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Canadiens rumours: NHL insider reports LA Kings back in on Laine</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOUmdLYlFiTDhKaHhYY29iSV9YMnl6Qm9GVV9lS0pEOEVoM0x6aHpIU0lxQkxDbWY5X05CMGxyNDlOaDZ6U19NZ2l0bHRUVU1tcHRZTmFRNUR0VE5CWHhtRk5jUkFDcFNEemVSenh5TWQ3ZFBPMUlNY0dydWJZNDROdHY1MmkyaVF6WFFERldLbGZycEx4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 9:32 PM</span></div>
 <div class="news-title">Are the Habs About to Land Robert Thomas?</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPWmpsVWtCa1kxb1NaaURHLXhkdzFyaE5vLUpZWDdjNThXdi10RTc1RFM3dkxibEpRWjVrV2dJX0tmWWs1WEd4UzRHc3lRMEdSYS1FTmZISjFOYWFrX1EyYnhPS1o5ajFqQlNyQXQwbEI3WVo5eG0tSlRQZVNhOHFCOFBQVEllNlVVQXE0aTFPX1c2YWZTdzNoLVI5RmtOUUJ6dE9OV09YenhvU19CVS1zVFRBblVRQUtBaWdoWWMzWk8tc2VI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 3 &middot; 9:10 PM</span></div>
@@ -1074,19 +1127,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportscasting</span><span class="news-date">Mar 3 &middot; 7:22 PM</span></div>
 <div class="news-title">Canadiens Trade Rumors: Montreal Has Best Odds To Land Jordan Binnington at Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNak1MX2tDMDhtcVd0NzdTWGxkazRoVGVoRW5TNFNHV0ViTXpWUHhMelBiUWFacHltMHRuLVpfUjlxZXRQLWFqUW9STnNJV1dMSmxfaWxJSHVlZkxhalJIdzVJb0ZFN2REVndMRVFabndnTnA4Z1VmYXlaVFM0c2QzVm1KSTJwUTJBNk5xYQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 7:22 PM</span></div>
-<div class="news-title">Trade Pitch Sees Canadiens Acquiring $16.5M Gritty Defenseman to Bolster Blue Line</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNV0lXVi1MVC1NNUVTZ3FZOVRjR2VzT1BWd2YtTTB0Z2tmY0dyX3RCUXZTanFuWGxWbHlSYmlPWVlGQjFoczRNSGpDU0k1NEhaUjl0NTU2LXNFS2xVaVFzVlVjRzN4b3kwQUxlbUd2Z3h4b2FEY1lSNy0zTjYyczVybHNPT1p6TzQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 7:06 PM</span></div>
-<div class="news-title">Two Top Young Canadiens Players Blues Are Eyeing in a Robert Thomas Trade</div></a></div></div>
-  <div class="panel" id="p-community">
+<div class="news-title">Trade Pitch Sees Canadiens Acquiring $16.5M Gritty Defenseman to Bolster Blue Line</div></a></div></div>
+  <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/Habs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/Habs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
-      <a href="https://x.com/search?q=%22Montreal%20Canadiens%22&src=typed_query&f=live" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="" class="cc-icon"><div class="cc-name">X / Twitter</div></div><div class="cc-desc">Live feed of Montreal Canadiens mentions. Breaking news, insider tweets, fan reactions.</div></a>
-      <a href="https://forums.hfboards.com/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
-      <a href="https://www.nhl.com/stats/skaters?reportName=summary&amp;reportType=season&amp;sort=points,a_gamesPlayed&amp;seasonFrom=20252026&amp;seasonTo=20252026&amp;gameType=2" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=nhl.com&sz=64" alt="" class="cc-icon"><div class="cc-name">NHL League Stats</div></div><div class="cc-desc">Full league skater stats. Points leaders, goals, assists — sortable by every column.</div></a>
+      <a href="https://forums.hfboards.com/forums/montreal-canadiens.16/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=hfboards.com&sz=64" alt="" class="cc-icon"><div class="cc-name">HFBoards — Montreal Canadiens</div></div><div class="cc-desc">The longest-running hockey forum. Trade talk, game threads, prospect discussions.</div></a>
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:05 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:23 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
