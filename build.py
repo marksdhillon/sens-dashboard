@@ -1015,7 +1015,7 @@ def build_injuries_html(injuries):
     return f'''<h3>Current Injuries</h3>
 <div class="sub-note">Data from ESPN</div>
 <div class="inj-tbl-wrap">
-<table class="nhl-tbl inj-tbl">
+<table class="nhl-tbl inj-tbl sortable">
 <thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
 <tbody>{"".join(rows)}</tbody>
 </table>
@@ -1229,13 +1229,13 @@ def build_full_stats_html(full_skaters, full_goalies):
 <button class="fs-tab" onclick="switchFsTab(this,'fs-goalies')">Goaltending</button>
 </div>
 <div class="fs-panel" id="fs-skaters">
-<div class="fs-tbl-wrap"><table class="fs-tbl">
+<div class="fs-tbl-wrap"><table class="fs-tbl sortable">
 <thead><tr><th class="fs-rank-h">#</th><th class="fs-player-h">Player</th><th>GP</th><th>G</th><th>A</th><th>PTS</th><th>+/-</th><th>PIM</th><th>PPG</th><th>PPA</th><th>SOG</th><th>S%</th><th>TOI/G</th><th>GWG</th></tr></thead>
 <tbody>{skater_rows}</tbody>
 </table></div>
 </div>
 <div class="fs-panel" id="fs-goalies" style="display:none">
-<div class="fs-tbl-wrap"><table class="fs-tbl">
+<div class="fs-tbl-wrap"><table class="fs-tbl sortable">
 <thead><tr><th class="fs-rank-h">#</th><th class="fs-player-h">Player</th><th>GP</th><th>GS</th><th>W</th><th>L</th><th>OTL</th><th>GA</th><th>GAA</th><th>SA</th><th>SV</th><th>SV%</th><th>SO</th></tr></thead>
 <tbody>{goalie_rows}</tbody>
 </table></div>
@@ -1298,7 +1298,7 @@ def build_standings_section(conf_teams, conf_records, conf_name):
 
     def div_table(teams, name):
         rows = [team_row(t, i+1, i<3, i==2, t["abbrev"]==TEAM) for i, t in enumerate(teams)]
-        return f'''<div class="div-label">{name}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+        return f'''<div class="div-label">{name}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs {TEAM}</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div></div>'''
 
@@ -1326,7 +1326,7 @@ def build_standings_section(conf_teams, conf_records, conf_name):
         wc_rows.append(f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol">{espn_link(t["abbrev"], t["name"])}</td><td>{t["divAbbrev"][:3].upper()}</td><td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{vs_focus}</td><td class="r">{vs_above}</td><td class="r">{vs_below}</td></tr>''')
 
     wc_html = f'''<div class="div-label">Wild Card Race</div>
-<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">
+<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">
 <thead><tr><th class="rank"></th><th class="name-col">Team</th><th>Div</th><th class="r">GP</th><th class="r">W</th><th class="r">L</th><th class="r">OTL</th><th class="r">PTS</th><th class="r">P%</th><th class="r">GF</th><th class="r">GA</th><th class="r">DIFF</th><th class="r">Home</th><th class="r">Away</th><th class="r">L10</th><th class="r">STK</th><th class="r">vs {TEAM}</th><th class="r">vs &gt;.500</th><th class="r">vs &lt;.500</th></tr></thead>
 <tbody>{"".join(wc_rows)}</tbody></table></div></div>'''
 
@@ -1417,12 +1417,12 @@ def build_projections_html(sens, vs500, mp_odds, mp_stats, conf_teams):
 </div>
 
 <h3>Next Game Impact</h3>
-<div class="scroll-x"><table class="nhl-tbl">
+<div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th>Outcome</th><th class="r">Playoffs</th><th class="r">Change</th><th class="r">Proj Pts</th><th class="r">2nd Rd</th><th class="r">Cup</th></tr></thead>
 <tbody>{scenario_rows}</tbody></table></div>
 
 <h3 style="margin-top:28px">{conf_name} Conference</h3>
-<div class="scroll-x"><table class="nhl-tbl">
+<div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
 <tbody>{conf_rows}</tbody></table></div>
 
@@ -2103,21 +2103,23 @@ body{{animation:fadeIn 0.15s ease}}
 </div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated {now}</span></div>
 <script>
-document.querySelectorAll(".sortable").forEach(function(tbl){{
-  tbl.querySelectorAll(".sort-th").forEach(function(th){{
-    th.addEventListener("click",function(){{
-      var col=parseInt(th.dataset.col),asc=th.classList.contains("asc");
-      tbl.querySelectorAll(".sort-th").forEach(function(h){{h.classList.remove("asc","desc")}});
-      var dir=asc?"desc":"asc";
+document.querySelectorAll('table.sortable').forEach(function(tbl){{
+  tbl.querySelectorAll('thead th').forEach(function(th,idx){{
+    th.classList.add('sort-th');
+    th.addEventListener('click',function(){{
+      var asc=th.classList.contains('asc');
+      tbl.querySelectorAll('thead th').forEach(function(h){{h.classList.remove('asc','desc')}});
+      var dir=asc?'desc':'asc';
       th.classList.add(dir);
-      var tbody=tbl.querySelector("tbody");
-      var rows=Array.from(tbody.querySelectorAll("tr"));
+      var tbody=tbl.querySelector('tbody');
+      var rows=Array.from(tbody.querySelectorAll('tr'));
       rows.sort(function(a,b){{
-        var ca=a.children[col],cb=b.children[col];
-        var va=ca?ca.dataset.sort:"",vb=cb?cb.dataset.sort:"";
+        var ca=a.children[idx],cb=b.children[idx];
+        var va=ca?(ca.hasAttribute('data-sort')?ca.dataset.sort:ca.textContent.trim()):'';
+        var vb=cb?(cb.hasAttribute('data-sort')?cb.dataset.sort:cb.textContent.trim()):'';
         var na=parseFloat(va),nb=parseFloat(vb);
-        if(!isNaN(na)&&!isNaN(nb))return dir==="asc"?na-nb:nb-na;
-        return dir==="asc"?va.localeCompare(vb):vb.localeCompare(va);
+        if(!isNaN(na)&&!isNaN(nb))return dir==='asc'?na-nb:nb-na;
+        return dir==='asc'?va.localeCompare(vb):vb.localeCompare(va);
       }});
       rows.forEach(function(r){{tbody.appendChild(r)}});
     }});
@@ -3209,7 +3211,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .fs-tab.fs-active{{color:var(--text-strong);font-weight:600;border-bottom-color:var(--text-strong)}}
 .fs-tbl-wrap{{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}}
 .fs-tbl{{width:100%;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}}
-.fs-tbl thead th{{padding:8px 8px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted);text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0}}
+.fs-tbl thead th{{padding:8px 8px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted);text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;cursor:pointer;user-select:none;transition:color 0.15s}}.fs-tbl thead th:hover{{color:var(--text-secondary)}}.fs-tbl thead th::after{{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}}.fs-tbl thead th.asc::after{{content:"\25B2";opacity:0.8}}.fs-tbl thead th.desc::after{{content:"\25BC";opacity:0.8}}
 .fs-tbl tbody tr{{transition:background 0.1s}}
 .fs-tbl tbody tr:hover td{{background:var(--bg-hover)}}
 .fs-tbl td{{padding:6px 8px;color:var(--text-secondary);white-space:nowrap;border-bottom:1px solid var(--border)}}
@@ -3332,6 +3334,27 @@ function switchFsTab(btn,panelId){{
   var target=document.getElementById(panelId);
   if(target) target.style.display='';
 }}
+document.querySelectorAll('table.sortable').forEach(function(tbl){{
+  tbl.querySelectorAll('thead th').forEach(function(th,idx){{
+    th.addEventListener('click',function(){{
+      var asc=th.classList.contains('asc');
+      tbl.querySelectorAll('thead th').forEach(function(h){{h.classList.remove('asc','desc')}});
+      var dir=asc?'desc':'asc';
+      th.classList.add(dir);
+      var tbody=tbl.querySelector('tbody');
+      var rows=Array.from(tbody.querySelectorAll('tr'));
+      rows.sort(function(a,b){{
+        var ca=a.children[idx],cb=b.children[idx];
+        var va=ca?(ca.hasAttribute('data-sort')?ca.dataset.sort:ca.textContent.trim()):'';
+        var vb=cb?(cb.hasAttribute('data-sort')?cb.dataset.sort:cb.textContent.trim()):'';
+        var na=parseFloat(va),nb=parseFloat(vb);
+        if(!isNaN(na)&&!isNaN(nb))return dir==='asc'?na-nb:nb-na;
+        return dir==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+      }});
+      rows.forEach(function(r){{tbody.appendChild(r)}});
+    }});
+  }});
+}});
 </script>
 </body></html>'''
 
@@ -3369,7 +3392,7 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
 
     def div_table(teams, name):
         rows = [team_row(t, i+1, i<3, i==2) for i, t in enumerate(teams)]
-        return f'''<div class="div-label">{name}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">{hdr_no_div}<tbody>{"".join(rows)}</tbody></table></div></div>'''
+        return f'''<div class="div-label">{name}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">{hdr_no_div}<tbody>{"".join(rows)}</tbody></table></div></div>'''
 
     # ── Conference view (divisions + wild card) ──
     def conf_view(conf_teams, conf_name):
@@ -3386,7 +3409,7 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
         for i, t in enumerate(wc_all):
             label = f"WC{i+1}" if i < 2 else str(i+1)
             wc_rows.append(team_row(t, i+1, i<2, i==1, True, label))
-        html += f'''<div class="div-label">Wild Card Race</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">{hdr_with_div}<tbody>{"".join(wc_rows)}</tbody></table></div></div>'''
+        html += f'''<div class="div-label">Wild Card Race</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">{hdr_with_div}<tbody>{"".join(wc_rows)}</tbody></table></div></div>'''
         return html
 
     east_html = f'<h3 class="conf-label">Eastern Conference</h3>' + conf_view(east_teams, "Eastern")
@@ -3399,14 +3422,14 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
     for dname, cname in divs:
         dt = sorted([t for t in all_teams if t["div"] == dname], key=lambda x: -x["pts"])
         rows = [team_row(t, i+1, i<3, i==2) for i, t in enumerate(dt)]
-        view_division += f'''<div class="div-label">{dname}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">{hdr_no_div}<tbody>{"".join(rows)}</tbody></table></div></div>'''
+        view_division += f'''<div class="div-label">{dname}</div><div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">{hdr_no_div}<tbody>{"".join(rows)}</tbody></table></div></div>'''
 
     # ── League view (all 32 teams ranked by points) ──
     league_sorted = sorted(all_teams, key=lambda x: (-x["pts"], -x["w"], x["gp"]))
     league_rows = []
     for i, t in enumerate(league_sorted):
         league_rows.append(team_row(t, i+1, i<16, i==15, True))
-    view_league = f'''<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl">{hdr_with_div}<tbody>{"".join(league_rows)}</tbody></table></div></div>'''
+    view_league = f'''<div class="stnd-card"><div class="scroll-x"><table class="nhl-tbl stnd-tbl sortable">{hdr_with_div}<tbody>{"".join(league_rows)}</tbody></table></div></div>'''
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -3448,7 +3471,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .stnd-card .scroll-x{{padding:0}}
 .scroll-x{{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 .nhl-tbl{{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}}
-.nhl-tbl thead th{{background:transparent;color:var(--text-muted);padding:8px 6px;font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}}
+.nhl-tbl thead th{{background:transparent;color:var(--text-muted);padding:8px 6px;font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;transition:color 0.15s}}.nhl-tbl thead th:hover{{color:var(--text-secondary)}}.nhl-tbl thead th::after{{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}}.nhl-tbl thead th.asc::after{{content:"\25B2";opacity:0.8}}.nhl-tbl thead th.desc::after{{content:"\25BC";opacity:0.8}}
 .nhl-tbl thead th.r{{text-align:right}}
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
 .nhl-tbl thead th.name-col{{min-width:140px}}
@@ -3543,6 +3566,27 @@ function switchStView(btn,viewId){{
   }});
   document.getElementById(viewId).style.display='';
 }}
+document.querySelectorAll('table.sortable').forEach(function(tbl){{
+  tbl.querySelectorAll('thead th').forEach(function(th,idx){{
+    th.addEventListener('click',function(){{
+      var asc=th.classList.contains('asc');
+      tbl.querySelectorAll('thead th').forEach(function(h){{h.classList.remove('asc','desc')}});
+      var dir=asc?'desc':'asc';
+      th.classList.add(dir);
+      var tbody=tbl.querySelector('tbody');
+      var rows=Array.from(tbody.querySelectorAll('tr'));
+      rows.sort(function(a,b){{
+        var ca=a.children[idx],cb=b.children[idx];
+        var va=ca?(ca.hasAttribute('data-sort')?ca.dataset.sort:ca.textContent.trim()):'';
+        var vb=cb?(cb.hasAttribute('data-sort')?cb.dataset.sort:cb.textContent.trim()):'';
+        var na=parseFloat(va),nb=parseFloat(vb);
+        if(!isNaN(na)&&!isNaN(nb))return dir==='asc'?na-nb:nb-na;
+        return dir==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+      }});
+      rows.forEach(function(r){{tbody.appendChild(r)}});
+    }});
+  }});
+}});
 </script>
 </body></html>'''
 
