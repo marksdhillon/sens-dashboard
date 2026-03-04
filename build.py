@@ -2067,8 +2067,8 @@ body{{animation:fadeIn 0.15s ease}}
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
     <span class="stat-pill" title="Record against teams at or above .500"><span class="sl">vs .500</span> <span class="sv">{vs500_str}</span></span>
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">{goal_diff_str}</span></span>
-    <span class="stat-pill" title="Power play — {ordinal(pp_rank)} in NHL"><span class="sl">PP</span> <span class="sv">{pp_pct}%</span></span>
-    <span class="stat-pill" title="Penalty kill — {ordinal(pk_rank)} in NHL"><span class="sl">PK</span> <span class="sv">{pk_pct}%</span></span>
+    <span class="stat-pill" title="Power play — {ordinal(pp_rank)} in NHL"><span class="sl">PP · {ordinal(pp_rank)}</span> <span class="sv">{pp_pct}%</span></span>
+    <span class="stat-pill" title="Penalty kill — {ordinal(pk_rank)} in NHL"><span class="sl">PK · {ordinal(pk_rank)}</span> <span class="sv">{pk_pct}%</span></span>
   </div>
 </div>
 
