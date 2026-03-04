@@ -2575,9 +2575,14 @@ def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, swi
                          f'<span class="ds-date">{month_day}</span>'
                          f'{today_dot}{count_badge}</button>')
 
-        # Build game cards for this day
+        # Build game cards for this day — live games first, then upcoming, then final
+        def _game_sort_key(g):
+            s = g.get("gameState", "")
+            if s in ("LIVE", "CRIT"): return 0
+            elif s in ("FUT", "PRE"): return 1
+            else: return 2
         game_cards = []
-        for g in games:
+        for g in sorted(games, key=_game_sort_key):
             game_cards.append(_build_game_card(g, all_game_details, eastern, team_records, mp_stats, mp_odds))
 
         display_style = "" if is_today else ' style="display:none"'
@@ -2911,6 +2916,11 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   // Track whether all today's games are final so we can slow down polling
   var allFinal=false;
 
+  // Real-time clock: maps gameId -> {{secs, fetchedAt, pNum, pType, inIntermission}}
+  var liveClocks={{}};
+  function parseClockSecs(tr){{var p=(tr||'').split(':');return p.length===2?parseInt(p[0]||0)*60+parseInt(p[1]||0):0;}}
+  function fmtSecs(s){{if(s<0)s=0;var m=Math.floor(s/60),r=s%60;return m+':'+(r<10?'0':'')+r;}}
+
   // NHL API doesn't send CORS headers, so we need a proxy for browser fetches
   function nhlFetch(url){{
     var e=encodeURIComponent(url);
@@ -3004,6 +3014,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               statusEl.textContent=txt;
               if(rows[0])rows[0].className='sb-team-row';
               if(rows[1])rows[1].className='sb-team-row';
+              liveClocks[gid]={{secs:parseClockSecs(tr),fetchedAt:Date.now(),pNum:pNum,pType:pType,inIntermission:!!(clk.inIntermission)}};
             }} else if(st==='FUT'||st==='PRE'){{
               hasFut=true;
             }}
@@ -3023,6 +3034,20 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
           pollInterval=60000;
           pollTimer=setInterval(refreshScores,pollInterval);
         }}
+        // Re-sort today's game cards: live first, then upcoming, then final
+        if(hasLive){{
+          var dayEl=document.getElementById('day-'+TODAY);
+          if(dayEl){{
+            var stOrd={{'LIVE':0,'CRIT':0,'FUT':1,'PRE':1,'FINAL':2,'OFF':2}};
+            var cards=Array.from(dayEl.querySelectorAll('.sb-game'));
+            cards.sort(function(a,b){{
+              var sa=stOrd[a.getAttribute('data-state')];if(sa==null)sa=99;
+              var sb=stOrd[b.getAttribute('data-state')];if(sb==null)sb=99;
+              return sa-sb;
+            }});
+            cards.forEach(function(c){{dayEl.appendChild(c);}});
+          }}
+        }}
       }})
       .catch(function(){{}});
   }}
@@ -3031,6 +3056,25 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   var hasLiveNow=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
   var pollInterval=hasLiveNow?15000:60000;
   var pollTimer=setInterval(refreshScores,pollInterval);
+
+  // 1-second ticker: counts down live clocks between API polls
+  setInterval(function(){{
+    for(var gid in liveClocks){{
+      var c=liveClocks[gid];
+      if(c.inIntermission) continue;
+      var card=document.querySelector('[data-gid="'+gid+'"]');
+      if(!card) continue;
+      var st=card.getAttribute('data-state');
+      if(st!=='LIVE'&&st!=='CRIT'){{delete liveClocks[gid];continue;}}
+      var elapsed=Math.floor((Date.now()-c.fetchedAt)/1000);
+      var remaining=Math.max(0,c.secs-elapsed);
+      var statusEl=card.querySelector('.sb-status');
+      if(!statusEl) continue;
+      var ords={{1:'1st',2:'2nd',3:'3rd'}};
+      var txt=c.pType==='OT'?'OT '+fmtSecs(remaining):c.pType==='SO'?'Shootout':(ords[c.pNum]||'P'+c.pNum)+' '+fmtSecs(remaining);
+      statusEl.textContent=txt;
+    }}
+  }},1000);
 
   // Also refresh immediately on page load (data may be stale from build)
   refreshScores();
