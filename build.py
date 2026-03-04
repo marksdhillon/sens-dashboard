@@ -2236,6 +2236,18 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
   }}
   checkLive();
   setInterval(checkLive,30000);
+  // Convert UTC times to user's local timezone
+  document.querySelectorAll('[data-utc]').forEach(el => {{
+    const utc = el.getAttribute('data-utc');
+    if (!utc) return;
+    try {{
+      const dt = new Date(utc);
+      const fmt = new Intl.DateTimeFormat('en-US', {{hour:'numeric',minute:'2-digit',hour12:true,timeZoneName:'short'}});
+      const parts = fmt.formatToParts(dt);
+      const time = parts.map(p => p.value).join('');
+      el.textContent = time;
+    }} catch(e) {{}}
+  }});
 }})();
 </script>
 </body></html>'''
@@ -2244,6 +2256,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
 
 def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=None, mp_odds=None):
     """Build a single game card HTML. Returns the card HTML string."""
+    start_utc = ""  # Initialize for client-side timezone conversion
     state = g.get("gameState", "")
     game_id = g.get("id", 0)
     away = g.get("awayTeam", {})
@@ -2290,6 +2303,7 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
         status_cls = "sb-live"
     elif state == "FUT" or state == "PRE":
         start = g.get("startTimeUTC", "")
+        start_utc = start  # Store for client-side timezone conversion
         status = "Upcoming"
         if start:
             try:
@@ -2302,6 +2316,7 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
     else:
         status = state
         status_cls = ""
+        start_utc = ""
 
     # Winner highlighting
     away_win = "sb-winner" if state in ("FINAL", "OFF") and away_score > home_score else ""
@@ -2472,7 +2487,7 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
 <span class="gd-panel-vs">vs</span>
 <img src="https://assets.nhle.com/logos/nhl/svg/{home_abbrev}_dark.svg" class="gd-panel-logo"><span>{home_full}</span>
 </div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">{away_score} — {home_score}</span><span class="gd-panel-status">{status}</span></div>
+<div class="gd-panel-score"><span class="gd-panel-score-val">{away_score} — {home_score}</span><span class="gd-panel-status"{f' data-utc="{start_utc}"' if start_utc else ""}>{status}</span></div>
 </div>
 {f'<div class="gd-section"><div class="gd-section-title">Scoring Summary</div>{scoring_html}</div>' if scoring_html else ''}
 {f'<div class="gd-section"><div class="gd-section-title">Box Score</div>{box_html}</div>' if box_html else ''}
@@ -2566,8 +2581,8 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
     has_detail = f' data-game="{game_id}"' if detail_html else ""
     clickable_cls = " sb-clickable" if detail_html else ""
 
-    return f'''<div class="sb-game{clickable_cls}" id="game-{game_id}"{has_detail if detail_html else ""} data-gid="{game_id}" data-away="{away_abbrev}" data-home="{home_abbrev}" data-state="{state}">
-<div class="sb-status {status_cls}">{status}</div>
+    return f'''<div class="sb-game{clickable_cls}" id="game-{game_id}"{has_detail if detail_html else ""} data-gid="{game_id}" data-away="{away_abbrev}" data-home="{home_abbrev}" data-state="{state}"{f' data-start-utc="{start_utc}"' if start_utc else ""}>
+<div class="sb-status {status_cls}"{f' data-utc="{start_utc}"' if start_utc else ""}>{status}</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row {away_win}">
 <a href="{away_href}" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/{away_abbrev}_dark.svg" alt="{away_abbrev}" class="sb-logo"></a>
@@ -3171,6 +3186,18 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
     }}
   }})();
 }})();
+  // Convert UTC times to user's local timezone
+  document.querySelectorAll('[data-utc]').forEach(el => {{
+    const utc = el.getAttribute('data-utc');
+    if (!utc) return;
+    try {{
+      const dt = new Date(utc);
+      const fmt = new Intl.DateTimeFormat('en-US', {{hour:'numeric',minute:'2-digit',hour12:true,timeZoneName:'short'}});
+      const parts = fmt.formatToParts(dt);
+      const time = parts.map(p => p.value).join('');
+      el.textContent = time;
+    }} catch(e) {{}}
+  }});
 </script>
 </body></html>'''
 
