@@ -881,20 +881,6 @@ def get_results(schedule_data):
         results.append({"oppAbbrev": opp_abbrev, "result": result})
     return results
 
-def make_sparkline(results, w=88, h=26):
-    pts = [0]
-    for r in results:
-        pts.append(pts[-1] + (2 if r['result']=='W' else 1 if r['result']=='OTL' else 0))
-    if len(pts) < 3:
-        return ''
-    mx = max(pts) or 1
-    n = len(pts)
-    coords = ' '.join(f"{round(i/(n-1)*w,1)},{round((1-p/mx)*(h-3)+1,1)}" for i,p in enumerate(pts))
-    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" fill="none" '
-            f'xmlns="http://www.w3.org/2000/svg">'
-            f'<polyline points="{coords}" stroke="var(--accent)" stroke-width="1.5" '
-            f'stroke-linejoin="round" stroke-linecap="round"/></svg>')
-
 def compute_vs_above500(results, above500):
     w, l, otl = 0, 0, 0
     for r in results:
@@ -1601,7 +1587,7 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams, sparkline_svg=''):
+def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams):
     team_page_url = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
@@ -1792,8 +1778,6 @@ a.pname{{font-size:11px}}
 .stat-pill:hover{{background:var(--bg-elevated)}}
 .stat-pill .sl{{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}}
 .stat-pill .sv{{font-weight:600;color:var(--text)}}
-.spark-pill .sv{{font-weight:normal;padding:0;display:flex;align-items:center}}
-.spark-svg{{display:block}}
 .pill-accent{{background:var(--accent-soft)}}.pill-accent .sv{{color:var(--accent);font-weight:700}}
 
 /* Tabs */
@@ -2088,7 +2072,6 @@ body{{animation:fadeIn 0.15s ease}}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">{goal_diff_str}</span></span>
     <span class="stat-pill" title="Power play — {ordinal(pp_rank)} in NHL"><span class="sl">PP · {ordinal(pp_rank)}</span> <span class="sv">{pp_pct}%</span></span>
     <span class="stat-pill" title="Penalty kill — {ordinal(pk_rank)} in NHL"><span class="sl">PK · {ordinal(pk_rank)}</span> <span class="sv">{pk_pct}%</span></span>
-    {f'<span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg">{sparkline_svg}</span></span>' if sparkline_svg else ''}
   </div>
 </div>
 
@@ -3729,7 +3712,6 @@ def main():
         schedule_data = all_schedules.get(TEAM, {"games": []})
         remaining = get_remaining_schedule(schedule_data, above500)
         results = get_results(schedule_data)
-        sparkline_svg = make_sparkline(results)
         vs500 = compute_vs_above500(results, above500)
         print(f"  {len(remaining)} remaining, vs .500: {vs500[0]}-{vs500[1]}-{vs500[2]}")
 
@@ -3786,7 +3768,7 @@ def main():
         txns = fetch_transactions()
         transactions_html = build_transactions_html(txns)
         print(f"  {len(txns)} transactions found")
-        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams, sparkline_svg=sparkline_svg)
+        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"

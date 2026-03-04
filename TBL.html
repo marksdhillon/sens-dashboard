@@ -92,8 +92,6 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
-.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
-.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
@@ -374,7 +372,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Tampa Bay Lightning</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:32 PM ET</div>
       </div>
     </div>
   </div>
@@ -388,7 +386,6 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+52</span></span>
     <span class="stat-pill" title="Power play — 13th in NHL"><span class="sl">PP · 13th</span> <span class="sv">14.8%</span></span>
     <span class="stat-pill" title="Penalty kill — 8th in NHL"><span class="sl">PK · 8th</span> <span class="sv">87.9%</span></span>
-    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,24.0 3.0,24.0 4.5,23.4 6.0,23.1 7.5,22.8 8.9,22.8 10.4,22.8 11.9,22.3 13.4,21.7 14.9,21.1 16.4,20.6 17.9,20.0 19.4,20.0 20.9,19.4 22.4,18.8 23.9,18.8 25.4,18.2 26.8,18.2 28.3,17.7 29.8,17.1 31.3,16.5 32.8,16.0 34.3,15.4 35.8,14.8 37.3,14.2 38.8,14.2 40.3,14.2 41.8,14.2 43.3,14.2 44.7,13.7 46.2,13.1 47.7,12.8 49.2,12.8 50.7,12.8 52.2,12.2 53.7,11.6 55.2,11.1 56.7,10.5 58.2,9.9 59.7,9.3 61.2,8.8 62.6,8.2 64.1,7.6 65.6,7.0 67.1,6.5 68.6,6.2 70.1,5.6 71.6,5.0 73.1,4.5 74.6,4.5 76.1,3.9 77.6,3.3 79.1,2.7 80.5,2.2 82.0,1.6 83.5,1.0 85.0,1.0 86.5,1.0 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1354,7 +1351,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:32 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
