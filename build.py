@@ -1701,7 +1701,7 @@ a:hover{{color:var(--text-strong)}}
 .team-logo{{width:40px;height:40px;opacity:0.9}}
 .header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}}
 .header .subtitle{{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}}
-.live-badge{{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin-top:6px;transition:background 0.2s,border-color 0.2s}}
+.live-badge{{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;background:rgba(255,59,48,0.08);border:1px solid rgba(255,59,48,0.2);border-radius:100px;text-decoration:none;margin:10px 0 8px;transition:background 0.2s,border-color 0.2s}}
 .live-badge:hover{{background:rgba(255,59,48,0.13);border-color:rgba(255,59,48,0.32)}}
 .live-dot{{width:6px;height:6px;border-radius:50%;background:#ff3b30;flex-shrink:0;animation:liveDot 1.6s ease-in-out infinite}}
 @keyframes liveDot{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(0.55);opacity:0.45}}}}
