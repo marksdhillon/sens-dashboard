@@ -3221,7 +3221,7 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
 
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Standings</title>
+<title>NHL Standings</title>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -3313,7 +3313,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 </div>
 
 <div class="st-header">
-  <h1>Standings</h1>
+  <h1>NHL Standings</h1>
   <div class="view-toggle">
     <button class="view-btn vt-active" onclick="switchStView(this,'st-conference')">Conference</button>
     <button class="view-btn" onclick="switchStView(this,'st-division')">Division</button>
