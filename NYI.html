@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>New York Islanders — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','NYI.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#f47d30;--accent-soft:rgba(244,125,48,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>New York Islanders</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:53 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+10</span></span>
     <span class="stat-pill" title="Power play — 25th in NHL"><span class="sl">PP · 25th</span> <span class="sv">11.6%</span></span>
     <span class="stat-pill" title="Penalty kill — 4th in NHL"><span class="sl">PK · 4th</span> <span class="sv">89.5%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.4,24.0 2.9,24.0 4.3,24.0 5.8,23.4 7.2,22.8 8.7,22.2 10.1,21.5 11.5,21.2 13.0,21.2 14.4,21.2 15.9,20.6 17.3,20.0 18.8,19.7 20.2,19.7 21.6,19.1 23.1,18.5 24.5,17.9 26.0,17.3 27.4,17.3 28.9,16.6 30.3,16.0 31.7,16.0 33.2,15.4 34.6,15.4 36.1,15.1 37.5,15.1 39.0,14.5 40.4,13.9 41.8,13.3 43.3,13.3 44.7,12.7 46.2,12.0 47.6,11.4 49.0,11.4 50.5,11.4 51.9,11.1 53.4,10.5 54.8,9.9 56.3,9.9 57.7,9.3 59.1,9.3 60.6,8.7 62.0,8.1 63.5,7.7 64.9,7.1 66.4,7.1 67.8,6.5 69.2,6.5 70.7,5.9 72.1,5.9 73.6,5.9 75.0,5.3 76.5,4.7 77.9,4.1 79.3,4.1 80.8,4.1 82.2,3.5 83.7,2.8 85.1,2.2 86.6,1.6 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1173,7 +1178,9 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Marshall Warren to Bridgeport (AHL). Activated G Ilya Sorokin from injured reserve. Assigned G Marcus Hogberg to Bridgeport.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPeFZrNnhFVHVoekUtQkh5TEVYelVsdGJ0M1RHLU1xaGtzbEo0aVl1YWQ2ZWhmT3FvNTVqT3FsZGlNOGstdUV6Q202VzRYY1NUUURvdDdULThMQm9NbVNaTVFib1c5NkE3em5TR20zSTBnY3A0YUV2YTZVREE2S0ExTlFn?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9GUEwzMk13LVRXVS05ZUtWM29rLTJ0Y0tCTG1tUTVhOWxVZDhHU3YwUkptcHFxazJzR09STG5xZ0cySGVKXzFQSVRxVG85amlkaWV3QjNraXpsUzZocTZSZ2tueUN4bU52RklQTXgtbnNFNWtPZVNSMy1n?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 10:07 PM</span></div>
+<div class="news-title">NHL Status Report: Gibson day to day for Red Wings with upper-body injury</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPeFZrNnhFVHVoekUtQkh5TEVYelVsdGJ0M1RHLU1xaGtzbEo0aVl1YWQ2ZWhmT3FvNTVqT3FsZGlNOGstdUV6Q202VzRYY1NUUURvdDdULThMQm9NbVNaTVFib1c5NkE3em5TR20zSTBnY3A0YUV2YTZVREE2S0ExTlFn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 9:41 PM</span></div>
 <div class="news-title">NYI at ANA 3/4: Patrick Roy</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQajdZdWxVR2FjbE1SVFUzaUY5SW8wUE5rc1JOSmEtQXQ5b2d4VlFYTzVFaXZIcTQ4di1Hb0JPb21lNVkzN0FocUk5WVZSaHNyakxwQmpqQVcyY3ViSFd5WUpxd2xvdk8wM0RRRmM1dkI5anNHMTR6RHdWSFB3NWFoNzVwVlNsdmZheV9lNzc5TTFsVHJreTBWUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 9:41 PM</span></div>
@@ -1217,9 +1224,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Reuters Connect</span><span class="news-date">Mar 3 &middot; 11:13 PM</span></div>
 <div class="news-title">NHL: New York Islanders at Montreal Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxON2d5UnFDME1nX1F4WFliYTdOOWJQbEowc1NxWUtSbmZLVDVYV2VvMU9pSk92STc3aEJ6dEVaNWdCbTBsM1pYN1RwWXNWczhyeHRaclc2eVB5TjhPbmNYVVcxdzFjUmpWZWNNbV9ISFlKZ3RzSWhGckNCNHNfWS12eEVFN3RxN3F3SXBQUE52MDJ6TDdYUl9NZzVhYzQtazZYdXpJUWVNUGpZMFZKNDBNQXlxdlVScWVweDJ30gHAAUFVX3lxTE5OWU9nbFZVOFBfaFl6VnN4Z1NzUndwWlQ5MU92QWtVUFN0bWRmRUpxYUdsbTB5RUp5ZE42SnRDUDVzQl9zZW5zT3dYMjdmcWczdGU2Z0FnNnpZd3gwMzdESTVhdjBPMTdlQ2pzVE1RaXFNR0laUUM2dk9xVURQcjVUNzU0SjlzblYtUENiQVhGZzliN1YxQUI0UkdJeDY1QVFJY3c1REppalRFbE1wQnFJUHdWVFNORnhyWjF2TUJXVg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 10:15 PM</span></div>
-<div class="news-title">NHL Rumors: New York Islanders, Vancouver Canucks, Buffalo Sabres, and the St. Louis Blues</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxQbTJERHlkMXRyZ2VhNzd2QWlURHJEMnhlT2FualhzVnpkT2liWTU4ZVJXWW44UUlXaUk3VXl5aERCcEJ5U3hpajFkZnphYzVRU0ZKZHRLaHNONmlzMUVBYWVPMmlGZzgxbjAwb05DR1VsMzFZLWlxVWJqWHBwS0F5Ry1PcWdEVWJvTDN3SXB6Z3BnNS1RRXZPUjFtQWd4MXVzZkRrMWFiMnM2ZkVQak80YW5zc2FTMnVhUkYwWXFRNVpxN0daeTNJVHdLdGpuZjRmWkRhUV9JTFBnYU5NSWtnbV9PaGRMTllfUUxzRkFKY3NCemVBdllod0JDMXJKSDFCUDZkOUhaRWJiUG1xUV9BSVUwNTB2c2dMai1NVzFFQVlCckttMFBhTg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">kens5.com</span><span class="news-date">Mar 3 &middot; 10:13 PM</span></div>
-<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1rb1ljN1BEZUVQM29mT3dzOEE3eGpER280TEhMT1lYRUFkeVlzZmExRGRyc3BRUFIyN0IzUHg3LVBtOUllMWxNMkxGYkdjUDhEUkRFNlJxQno1bkpQbTAwUmFDU05XM29iRC1mcFl4NWVaYkdIVjBfWVRNRQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: New York Islanders, Vancouver Canucks, Buffalo Sabres, and the St. Louis Blues</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1rb1ljN1BEZUVQM29mT3dzOEE3eGpER280TEhMT1lYRUFkeVlzZmExRGRyc3BRUFIyN0IzUHg3LVBtOUllMWxNMkxGYkdjUDhEUkRFNlJxQno1bkpQbTAwUmFDU05XM29iRC1mcFl4NWVaYkdIVjBfWVRNRQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 9:55 PM</span></div>
 <div class="news-title">Islanders & Canucks in Serious Discussions For Trade</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxQNjVHN3pqWmVzSXVkWjhjZlJVRHE0TEVOTU1xcWI0SXZXRmxrOGhSbVU0MHF0SlZiOWF3QkY2aWhGbXFtOXNmX2xTUDlzYkpIaUhvbXBPZDZTMWU5WFdndzlTUU9oa0gxdFZIMzJSVTR0cDV1cjgxekppRmxhck9TR0lGNVhBUHBHdVNUb2JicExxdmUwWVFrT1hYQTZ6T1FQLUtQTDFUUXhxYloxNEctQjQzSDNlN1dQYmJQYURDbkhHMnBkamVDQ1lzcGp4a1dmVkZxUw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:51 PM</span></div>
@@ -1243,7 +1248,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:53 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1278,7 +1283,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Florida Panthers — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','FLA.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#c8102e;--accent-soft:rgba(200,16,46,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Florida Panthers</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:20 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">-19</span></span>
     <span class="stat-pill" title="Power play — 17th in NHL"><span class="sl">PP · 17th</span> <span class="sv">13.9%</span></span>
     <span class="stat-pill" title="Penalty kill — 21st in NHL"><span class="sl">PK · 21st</span> <span class="sv">84.9%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.4,23.3 2.9,22.5 4.3,21.8 5.8,21.8 7.2,21.8 8.7,21.8 10.1,21.8 11.5,21.1 13.0,21.1 14.4,20.3 15.9,20.0 17.3,19.3 18.8,19.3 20.2,18.5 21.6,18.5 23.1,17.8 24.5,17.1 26.0,17.1 27.4,16.3 28.9,15.6 30.3,15.6 31.7,14.9 33.2,14.9 34.6,14.9 36.1,14.9 37.5,14.5 39.0,13.8 40.4,13.0 41.8,12.3 43.3,12.3 44.7,11.6 46.2,10.9 47.6,10.1 49.0,9.4 50.5,9.4 51.9,8.7 53.4,8.7 54.8,7.9 56.3,7.6 57.7,7.6 59.1,6.8 60.6,6.8 62.0,6.8 63.5,6.1 64.9,5.4 66.4,5.4 67.8,4.7 69.2,4.7 70.7,3.9 72.1,3.2 73.6,2.5 75.0,2.5 76.5,2.5 77.9,2.5 79.3,2.5 80.8,1.7 82.2,1.7 83.7,1.0 85.1,1.0 86.6,1.0 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1224,7 +1229,11 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled D Tobias Björnfot from Charlotte (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOMTlqQjBTdFJ6TG85bHZ2T2xGN3I2NDlQTVAxZ1BVQWRtSmFaVVNka21jSlQ4cHRqbExjVVFzd3RLaDR6UUVZb0dWcVBBT05EdnE3R1Y2WENjNjBOM1lsVWQxRGdUX2F1b0R4bFRDVlRFZTJud3RPYWkxaUZyaVV0S2hIME1rb05Ka0UzdkR0VzZTT0Q2YXI5dXluWlNveVpOa2dhOVBB?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPYlFaWjFaeTRMaXFBQ01qY1FTTjZWYnhJWE9QY2dXRGpxWXBYY0FVRnpnSVNNSVhSaC16RjZXeG10U0t2VmV6Q2xwbFM3NHZBM3RhcEE2a3N3M2FieFR4cEY1N2tzTEc3QVh1cmZZNHh1U2ZZQmZ1azcwVW5taFNrejJBTGxsZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 4 &middot; 10:02 PM</span></div>
+<div class="news-title">BREAKING: Mammoth Acquiring Mackenzie Weegar From Flames</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOMElrTUNDODFuNktBV1V0bTAtbTBaTXNvX0hmWUIwNmdCSW5pV0E2Zl9yMUZXUTdPQmdzNmZCcFdza1NHLTVFSGN2U3pZZlBVOElLcl9NYTNFdjNGM1JfQkZ6N2JrNWQxUlJkQjQ4eXE0NW85UzkxUko1TGZqMXhvbEhLUXBVcF84TVE4RjdlR0FxZ3U2LVlxLWc1Z2ZpZkpjS1lvYmpkdXlXdGxLZkpfbFhZSXhLOXpkbmo5NjdIdGNnRTZaaXBnX1pPQ3dzUW8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">CP24</span><span class="news-date">Mar 4 &middot; 9:36 PM</span></div>
+<div class="news-title">Panthers and Maple Leafs are trade deadline sellers with the playoffs likely out of reach</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOMTlqQjBTdFJ6TG85bHZ2T2xGN3I2NDlQTVAxZ1BVQWRtSmFaVVNka21jSlQ4cHRqbExjVVFzd3RLaDR6UUVZb0dWcVBBT05EdnE3R1Y2WENjNjBOM1lsVWQxRGdUX2F1b0R4bFRDVlRFZTJud3RPYWkxaUZyaVV0S2hIME1rb05Ka0UzdkR0VzZTT0Q2YXI5dXluWlNveVpOa2dhOVBB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">USA Today</span><span class="news-date">Mar 4 &middot; 9:23 PM</span></div>
 <div class="news-title">Florida Panthers reportedly will become sellers and listen to offers</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxORE8yeVA1elBQSkNnc2tCek5xRlhjWjVkT0pFa0FLUDZGSzdhQnZieFozbl9ENW9VRW10Y2NEWXZZMVhqNnZuUHJWX1g1UHpXSnlRWjdoNGdHMEdPb2xkSnJnejlmTm44b2ZkWi1aSzVEeFV6UWowMm5aYTJfaENwcE9LQUZ6SWhOQVVFU3JCcU1nZTI3enIzZk9VMkc1eXcyakpWMG0tMUJtMTlON0VNZ2xPejhpWk5u?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 9:13 PM</span></div>
@@ -1244,7 +1253,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 7:16 PM</span></div>
 <div class="news-title">Panthers Sign Goaltender Louis Domingue To A Two-Way Contract</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNMXlQUUpoN0Z1WHQyUzNsZE92aHFZeVJaZDNzX0YzNFlmQmpReDZaMDdVLVNLMkV4Y2U4LTIyd3VMWmVPcG5tUmJuSzN6OXBDcVR2eE5YNkNobGdtWjNxZGdVMW1BZmpPV3JYbklrc1BvYWZIOFFGajBnVkVzbl9xS3Z1cThsVWVHMEVaZGdfc0owZ1VIMktubU9ETi1td1FGTzdXQ2ZiOVhRSjJwNGxxdjNrZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 4 &middot; 7:02 PM</span></div>
-<div class="news-title">Two NHL players on waivers for March 4</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxObHlqNFQ3NVA2OFlrYVl5akFsXy1aV0JoM18zSXFOb0Uwb0s0U3lJdzJhUHlVWEFJTGhSRlppREw2dG5YaHBJQ3J1d28zX056bkdCQXFJM2FLZ1FwbU9fdGJrY0wyTUhlYWlJR1RJakpGZF92NHFwLTV3cnVGX0tKZQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Two NHL players on waivers for March 4</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOXZkNnNLZVV2TFBwZVFRWEgwOEFiT2JqenpzM09DWEQwRHQxNzVNV0h6M0pzZWpnTlBUMVF1OUNpeS02eGphSDVBQURPUUJpXzVQLWhZek42MVZ4Y1dGdkkwSjlKWWhfZ3hQRURxdi1IVFAwUG1HSkhUbUtkUy1kNU5KMTJSTFpZRVVCSTFBSERuOWpSb1lZdUFlZC13NlU3ZDZyeg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 6:53 PM</span></div>
+<div class="news-title">NHL rumblings: Panthers ready to sell, potential Bobrovsky suitors, latest on Thomas, Parayko, more - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxObHlqNFQ3NVA2OFlrYVl5akFsXy1aV0JoM18zSXFOb0Uwb0s0U3lJdzJhUHlVWEFJTGhSRlppREw2dG5YaHBJQ3J1d28zX056bkdCQXFJM2FLZ1FwbU9fdGJrY0wyTUhlYWlJR1RJakpGZF92NHFwLTV3cnVGX0tKZQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 4 &middot; 6:47 PM</span></div>
 <div class="news-title">Florida Panthers Make Big Decision on Plans for 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMikgJBVV95cUxOaHBCV1I0dXNDNk5sMmpkNHg2b2pERXhTVGJPeEoyWjJuS2llZlp5MXRJU05KSktXcElTbjl5OHNjbjB6SGVuXzNZU05xOXNVSUlueDZsZjBPTGhDR19ITmdkLV9IRE9zdlFZeWdyVW1aMjlJeEVYdTIyVmFLQnQ3WWtadHM3YkhvMXR6MTllUjQ3My0yajlJMXNCLUF6TEFRV2JyVU5yNmJCWUlJVHVBSjBhTVdNTHpKSmtOaHpmSzY3emZPWGo4Qk83U1lpSmdoZGpEcWpxNm5xaTZGMWZZTGV3ejZVc3RIRTY4UmZTdDF5NEsxbnlCVG1qYkgwU01XWkZpLW9WRURPOXJSM2RqR0pR0gGSAkFVX3lxTE5ocEJXUjR1c0M2TmwyamQ0eDZvakRFeFNUYk94SjJaMm5LaWVmWnkxdElTTkpKS1dwSVNuOXk4c2NuMHpIZW5fM1lTTnE5c1VJSW54NmxmME9MaENHX0hOZ2QtX0hET3N2UVl5Z3JVbVoyOUl4RVh1MjJWYUtCdDdZa1p0czdiSG8xdHoxOWVSNDczLTJqOUkxc0ItQXpMQVFXYnJVTnI2YkJZSUlUdUFKMGFNV01MekpKa05oemZLNjd6Zk9YajhCTzdTWWlKZ2hkakRxanE2bnFpNkYxZllMZXd6NlVzdEhFNjhSZlN0MXk0SzFueUJUbWpiSDBTTVdaRmktb1ZFRE85clIzZGpHSlE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 4 &middot; 6:45 PM</span></div>
@@ -1254,9 +1265,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 6:00 PM</span></div>
 <div class="news-title">Panthers sign new goalie, which sparks Sergei Bobrovsky trade rumors</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOeHdUeHVXTElXWGZTS0ozd1pmcmNVdlVhTEJWcnBIY2VZSGo0YVNXRzdHR0llRGI2c2Y5ODBEenR6Z2wwT0lOZ2dia1Y2ZldMS0Y3ZnhKQTVBTWR4SWd5M3RSUXc5ZDk2MEtWYU9MYnVrNkRTUjVzVEdNQV9PWVp5dnpSR1lQTFh2LS1BMnJFdVFWUnB2d1VuOFZIdkVLdkpLX2xvU0ZsdG1Ec0hRWnJ0REI2c1JibS1hVFUzLXN1NE9ZN2hmWm5yZVpiWXVqV213MXE0UFFnTEhCUdIB3wFBVV95cUxQUmdRRTlxdllyNmVqekFwZTIwNU4wSGlGekZtQ1RMVmZmb2U0M1lHdDNfWUtDNy15VVljRXBoZDVtQlNNV1JOQk1BanY3cHpBaFJjRVFqcjVmSjV2bHdYV0hsS2wyQmJ6QWNRV0Y5U0otbVN1YU5SY1VVSER0QkhIMnJpZVdUR3RaSGdiWmRLaHhaWE5FZjdJUk13aGgtajE1LV96b19BbFhzanQ4VkZOXzczVG9oQlBCcHhrRVNUQXBPNGtkTGNEY2FJUzhYbDNENWtLanBfSGNUTGxUaVVr?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 4 &middot; 5:48 PM</span></div>
-<div class="news-title">Canadiens get encouraging signal as Panthers sign goalie with past on NY Rangers amid Sergei Bobrovsky trad...</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOXZkNnNLZVV2TFBwZVFRWEgwOEFiT2JqenpzM09DWEQwRHQxNzVNV0h6M0pzZWpnTlBUMVF1OUNpeS02eGphSDVBQURPUUJpXzVQLWhZek42MVZ4Y1dGdkkwSjlKWWhfZ3hQRURxdi1IVFAwUG1HSkhUbUtkUy1kNU5KMTJSTFpZRVVCSTFBSERuOWpSb1lZdUFlZC13NlU3ZDZyeg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 5:45 PM</span></div>
-<div class="news-title">NHL rumblings: Panthers ready to sell, potential Bobrovsky suitors, latest on Thomas, Parayko, more - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNTUdVelM2aUxPbEJXdXJGRHFaWlBld1FpRG5BYTR4MzJhSEt2d3pxRkFra2pIYnpzZFVncGlhaWI5YTlaa1NqcmptanVMUE52ZHNNS25WQjRsd3RucFFpTndkSm5GZ05GeUJGVzR3LVJUX2QxOUNuOERMVzhybVZTbVhUbmJkcXhXN21GUXZCeC1tOTVLQ1pIVTZPUEkxNmdYTld2VktGZlB0ZTJhZEVia0pWUFBlbGZ3LTViWlJEbDFucVJpUVE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Canadiens get encouraging signal as Panthers sign goalie with past on NY Rangers amid Sergei Bobrovsky trad...</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNTUdVelM2aUxPbEJXdXJGRHFaWlBld1FpRG5BYTR4MzJhSEt2d3pxRkFra2pIYnpzZFVncGlhaWI5YTlaa1NqcmptanVMUE52ZHNNS25WQjRsd3RucFFpTndkSm5GZ05GeUJGVzR3LVJUX2QxOUNuOERMVzhybVZTbVhUbmJkcXhXN21GUXZCeC1tOTVLQ1pIVTZPUEkxNmdYTld2VktGZlB0ZTJhZEVia0pWUFBlbGZ3LTViWlJEbDFucVJpUVE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:40 PM</span></div>
 <div class="news-title">Florida Panthers Agree to Terms with Goaltender Louis Domingue on a One-Year, Two-Way Contract</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQLWFSWEU4RVdrV3VITHVEaXlkcjV6OTN2ZlRwY1o3ZDV2bEFNZWhTejhiZkFWTkVYeFdHRWljdTE1RXVFWnU5UG81NVFKdkROWUNXSm9MQlhiX3NWUW5kRmtVaHpSTy02OUNrWDVXbzJFSVdlWXdubFJUeW8wT1BqQ2k2T3lMQnBE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 4 &middot; 5:37 PM</span></div>
@@ -1270,11 +1279,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">All Montreal Hockey</span><span class="news-date">Mar 4 &middot; 4:15 PM</span></div>
 <div class="news-title">Florida Panthers become trade deadline sellers, creating opportunity for Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOTmlEa0JlbHZQcXhqNWVWYl9wZFl1cE1hbjVUZnJiY3RNQ2JMaWFYS2h5M1ltR2kxb0VKYnN6cXpfNkhYQjRRZXhPemNfRmsyUFpIYmRYVW9Hb2VWWFdUb1F4bk43RXZ0Q2R4d3I5eXNYRjk0TGpLVmlyMzNIQTh6amgtS1BSaWFyYXJvZS1GTWpsck5RMTZrSWNIeVlrbkoyNWp4S2pFTjVLTHFlYUhaLVo4MGxSc2VmcEpYdnRBeXZERXlhTXJ2TkhB0gHPAUFVX3lxTE1OTmQyMzBXQThYempvYjREazZIQVQ1MlRveGdWcWxMRldYaE4wVjRiQ2Y2NUxaeFZlM2I3SkJ5WUlBNjZ5QXlNZTJ6bW13LXdUMmpGS0wyNmhzbE9uLWVxYUM1dEs5bGU2VXhleExRRVVhejdHMzc1RWdkWWlpZFo2a01UbU9Kck5YU0JwOEJOb1Jfb1F3RW5SaFllUFMwSFVua0IwYlp0ZzhlLU5EUl80RGdfT0N0ekRlSkJ1WUk5NFc3eDJsdEcwTVFMYVBQdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 4 &middot; 4:04 PM</span></div>
-<div class="news-title">Florida Panthers reportedly decide to become sellers with two candidates to leave before trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRjNPNkJIX0Q2eVIzUmhLVEpST2E1QjI4YngwTHBmVXk2Y3Z6MjRyWGZoTzVrMUNYZkcySy13bXk0N1pqWHdNajJGSG1CVUNhOHMxRW9mOVRvZWZ6TXBMZk5TSGhRYlI5azhrSTQxV2J0X1E5LTg0VnFzVDFKZjdoVGkzYU53QXQ4bE4w?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 3:53 PM</span></div>
-<div class="news-title">Florida Panthers: NHL Insider Hints at the Franchise Potentially Trading Goalie Sergei Bobrovsky</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTFBUcW5KWVlCY2liXzFVRTZCQ0Rod2oyUlFyaFB2YWRaMHRrT1BOSV96dzk4ajBiYWhZc3p4Nk51Mm1PRFpMYmVFMkl6RHFoVGRVNTNyZk1XSXhYbHhzOFE1U0FpdnZPbW5UUncw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:49 PM</span></div>
-<div class="news-title">NHL Now: Buy or Sell</div></a></div></div>
+<div class="news-title">Florida Panthers reportedly decide to become sellers with two candidates to leave before trade deadline</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/FloridaPanthers/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/FloridaPanthers</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1294,7 +1299,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:20 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1329,7 +1334,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Buffalo Sabres — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','BUF.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#6b9fff;--accent-soft:rgba(107,159,255,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Buffalo Sabres</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:20 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+26</span></span>
     <span class="stat-pill" title="Power play — 14th in NHL"><span class="sl">PP · 14th</span> <span class="sv">14.7%</span></span>
     <span class="stat-pill" title="Penalty kill — 1st in NHL"><span class="sl">PK · 1st</span> <span class="sv">90.8%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.4,24.0 2.9,24.0 4.3,24.0 5.8,23.4 7.2,22.8 8.7,22.8 10.1,22.2 11.5,21.6 13.0,21.3 14.4,21.1 15.9,20.8 17.3,20.2 18.8,19.9 20.2,19.9 21.6,19.9 23.1,19.9 24.5,19.9 26.0,19.3 27.4,18.7 28.9,18.7 30.3,18.1 31.7,17.5 33.2,17.5 34.6,17.5 36.1,16.9 37.5,16.3 39.0,16.3 40.4,16.3 41.8,16.3 43.3,15.7 44.7,15.2 46.2,14.6 47.6,14.0 49.0,13.4 50.5,12.8 51.9,12.2 53.4,11.6 54.8,11.0 56.3,10.4 57.7,10.4 59.1,9.8 60.6,9.3 62.0,8.7 63.5,8.7 64.9,8.1 66.4,7.5 67.8,7.2 69.2,7.2 70.7,6.6 72.1,6.0 73.6,5.4 75.0,4.8 76.5,4.2 77.9,4.2 79.3,3.7 80.8,3.4 82.2,3.4 83.7,2.8 85.1,2.2 86.6,1.6 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1247,11 +1252,25 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Zachary Jones to Rochester (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNLUtNSmt4TzNKSEZTWU93RFpzTTFXTEtpcjZEWEFHTUpWZzlkVVVzRGwxUmFVNk12YlNsamF0OHlJVzVkN1M4TzJDdHYyYWZsaUNQX202TmVUd0FpRTNmdFAza2pYakkyWmRfWjRiUkYtWFB0M284ZFEyQW1YaTF5SmV3RUp1OTFWaXA0dTNPV0ZKLWoy?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxOT0R0cldXTVo3MDdJdy0yUDNqTDRPLThrQTJfZmR5M2lrNWN3U2xHUENjZ2Q0UjBzME5nTm5RRTBFQVNzWVNOTmhvSWsyRDU0VEJURUZUSE03azZXZ1p2QjdQakg4X0MydzAta19vazlUZVJCa0RmbFp5SW1SSk1ISkRlVm1sM2pkWGxzel9BTFYxOTB2UTEydm5BUENGSXZuaDdjY2JPMmFsUFM0ellPLTJFelp5M19McG5JTFRzeU5kVUY1cXow?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 10:15 PM</span></div>
+<div class="news-title">Sabres close to massive Colton Parayko trade with Blues</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQRDZwTnhSZ3d1OGNGZy1nQmNadnNMMzc1b2lscGxobkRoNkNWMzQ1WUxFeGcwVVdTUXJyVG9PMnE3RldQZmMwcGVMRWk2dlNIZFhaVzZGOGVQMDhKazVIN19rVi1LdEo2SnlLdUtvN1Qxak1tZXg1QmVEb2VNdFVyZUFRMUxCX2tZRFZDWE5zSW5vOVdkTXZ0UkZzSTBoUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 4 &middot; 10:05 PM</span></div>
+<div class="news-title">Sabres make big splash with Colton Parayko trade</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOeDAzeW5YYU0zaVotSkY5ekoyUzJlRWxXUUJJaENKaENVYVU5eWhualpvVHRueVhndzlhd28zNjJfQl80YnZpMXNYOHNEdE9aYWlRWEdkSXBSaGZrRnVfVVRadDd4cjkwYll4U1ppV2l5SHIzRDZmSlk5NEdwR0hCRUtHQ2o1cmRTSFFIRUJ3Yw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 10:05 PM</span></div>
+<div class="news-title">Blues agree to trade Colton Parayko to Sabres, pending Parayko’s approval: Sources</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPSnotWHVGVDJNUEkzOVJ5Slpfank0ZjJ5SDc0V3FBNzRneG1NOVgzNlFtb3VLTk5EMzdxRW1ldjB4RDBmUXEtS2J0TXJvUGU4MVBhUEZpeVFlR2J1UHktQlhXMDhoQVlGSjBuYm5Pem1HY2RtYlNWbUxwVGkwSFF5SFRtSVpJeXlEME92RnJxVFlGQ05ORGhvOG93?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 4 &middot; 10:00 PM</span></div>
+<div class="news-title">Blues and Sabres are approaching a deal regarding Parayko</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOdDY0RGVscmFMZGY4ckxDRjVULVZ0SEctRGx5R3RzS1A1QXZVb3ZIZEFreld6SEREdl9MYkRoU191ZHVNRkRLYWp6NWcyUGEwMlY5Q1dBdEFjbnJ2Rlk5S2dReGpjTnJFQXRMUW1DUzNwUHU5R19ENjJMQTBudlQ0MlNjbWJFZU5SOGNnVG56V1VLejh6akVCMmpNbXZ4eXNRZFluakYxeXRVLUlNME1uRjFWY25FWlF6X1E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 4 &middot; 9:57 PM</span></div>
+<div class="news-title">Colton Parayko to Buffalo: Sabres land elite right-shot defenseman</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQWHhVOU4xbzlLOXR4Q1BMQ0VKWS1sWmxvYWdUQkxKVEhuaGpKOGJFSFFsckxfbHJhbXNfbjNjbm5TbmgzSFNlbDJ3VkdZVFp5M2JHcERWcUg1dXNpalN3bmhhclNjM3JzS1pMeV9Jc1VCM1FIM2RnbkZzR3ZRVklEX2l4Y3lxbVhaRUpDTG9qTno4RjdCQTRxMmZ4QTlJZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 9:49 PM</span></div>
+<div class="news-title">Sabres trading for Colton Parayko in blockbuster with Blues</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPNGFDeDc1N0NEWEFsVXBlMjVqVUtFazhsZjhQdVNQREpEckNsNjZfeldDQUpjc3BoME5RVDZnbnN2YUJhQ1J6NHdaYXQ4R2NpdHd4dExLNm9ORnU2eFhCUi1ZZWFUSGNzWG1KcU1ZdDdld25ocW9xS2FpcE1BUC0wRDRwX0xRZGM2WXUyNlVBNVJvazViTE5KTVB5Smpjb1R2Zi1vN0VCVGluUFYyR2gzOA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 4 &middot; 9:48 PM</span></div>
+<div class="news-title">The Sergei Bobrovsky rumor that doesn’t fully add up for the Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNLUtNSmt4TzNKSEZTWU93RFpzTTFXTEtpcjZEWEFHTUpWZzlkVVVzRGwxUmFVNk12YlNsamF0OHlJVzVkN1M4TzJDdHYyYWZsaUNQX202TmVUd0FpRTNmdFAza2pYakkyWmRfWjRiUkYtWFB0M284ZFEyQW1YaTF5SmV3RUp1OTFWaXA0dTNPV0ZKLWoy?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">diebytheblade.com</span><span class="news-date">Mar 4 &middot; 9:46 PM</span></div>
 <div class="news-title">Sabres close to a trade for defenseman Colton Parayko</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPN0JWUzQtOE9lQjNCZ0FZdkxXdFBPLUhkbWtBb1JIY2EzUWM2MG1fVHpueTR5VUFSWlByRW9hUnY4ZkZtQ29oSldjbTg2UTFyS1ZxeEFnSlQ2TTJEbEhxMUw3UVF0ZGpPWmVsekxDTjBRZlBWZmhjNUoyRVQ0aVJFQ0pTWDNkaVY3Qk11dmEtU3VTQXBqdzZ2NHQ0RU9LdV9Keml3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 4 &middot; 9:43 PM</span></div>
-<div class="news-title">Breaking News: St. Louis Blues Trade Colton Parayko to Buffalo</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNQnlCVVhYOVViYnkzZDZDVkViRmdIMGN6dmkxdHFVRkprQnZQUW9yR0c1SDZndDJrNHBkQnRmdjI2X1RaNjI1MVcxcjFZTmhWc2UwNGlPYWhpSjhCc1NrbkhVMWMydzZ0NWlmQkItLUp1NlVvYlZ3UU1FVW95MWdXTlUtQzdYcUlPWmZ5RE0zWmZLSUF5?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Breaking News: St. Louis Blues Trade Colton Parayko to Buffalo</div></a><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9DM0lrOFh4MEpQWWlkUHRxdFFYRDlCallnaHByZ29BZmh2N016OWZTdXB1b1ZZWC0zWFdMTFFPS0NjV1lCVjg5dFFfcVNfZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 4 &middot; 9:40 PM</span></div>
 <div class="news-title">Report: Sabres finalizing trade for Blues' Parayko</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPTF9VWldkc1F2ZFdZODFKcXY2eUJqaDdYeXBNY3o3ME9NTmZxUDY0S2VyY3Rqc21nekgyRUtsNy1FYWVZeDlTT3V6YzFjNnBhc2NYTmdaQjQ5RjdXdHNtV3oyVFloUF9wYXNWZUhjLTBNRTJTSEM5Q2g1ZHp0aHM2Xy1zdS1KWWc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 4 &middot; 9:38 PM</span></div>
@@ -1271,11 +1290,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 4 &middot; 8:06 PM</span></div>
 <div class="news-title">Reports: Sabres & Blues Still Talking Trade—Now For Defenseman</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQTUFpUVYzamc4NHU2VV9EQnljSnNDblV3STdjeElRRV9PYlFhdVVBYk9TVXRHS3doT3VzeW1mX2RBNzJiQ05PT005WFljbkRfQi1kc1Q4N3lSN2NqdmExUERtWnhpd0Jla0tZOGQ1M0tpMGZHMVlZcjRGS1Y3TW1kVkVtUUtmTGs4NlU1MHlpV19aYlJPMExoYm1JS1RiemdfeDEwX21kdVhUZHZzNERzdDZ1eHpxbzN5?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 4 &middot; 7:45 PM</span></div>
-<div class="news-title">Maple Leafs' seller status creates intriguing trade opportunity for Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQc3JGVmRBRlc3a3owcXVVdlhRZTluLVB3VGhBWTJQVWZEZjBPNXlfN1cxb0FmVEVkZGswcW1MYUlhMm1mOWpENEFRaXZFWGtOQ1F0dEpjZUl6STZXQlFieXpZN0VpVFNSQldZMDJBMnl1amFZbXBleDhlZExPTVAwY0s5MHBSWUVsVEZVeUgzZy0wWHV5MUpuVlZFM0Jkc3pzYlVWNXBoeWZDaVhCZktwNmRXc2otclpBdmVlcE9lNjJhYk9uNHVR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs' seller status creates intriguing trade opportunity for Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOXZkNnNLZVV2TFBwZVFRWEgwOEFiT2JqenpzM09DWEQwRHQxNzVNV0h6M0pzZWpnTlBUMVF1OUNpeS02eGphSDVBQURPUUJpXzVQLWhZek42MVZ4Y1dGdkkwSjlKWWhfZ3hQRURxdi1IVFAwUG1HSkhUbUtkUy1kNU5KMTJSTFpZRVVCSTFBSERuOWpSb1lZdUFlZC13NlU3ZDZyeg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 6:53 PM</span></div>
+<div class="news-title">NHL rumblings: Panthers ready to sell, potential Bobrovsky suitors, latest on Thomas, Parayko, more - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQc3JGVmRBRlc3a3owcXVVdlhRZTluLVB3VGhBWTJQVWZEZjBPNXlfN1cxb0FmVEVkZGswcW1MYUlhMm1mOWpENEFRaXZFWGtOQ1F0dEpjZUl6STZXQlFieXpZN0VpVFNSQldZMDJBMnl1amFZbXBleDhlZExPTVAwY0s5MHBSWUVsVEZVeUgzZy0wWHV5MUpuVlZFM0Jkc3pzYlVWNXBoeWZDaVhCZktwNmRXc2otclpBdmVlcE9lNjJhYk9uNHVR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 5:51 PM</span></div>
-<div class="news-title">This is the 1 asset the Sabres might trade for the first time in a long time</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOXZkNnNLZVV2TFBwZVFRWEgwOEFiT2JqenpzM09DWEQwRHQxNzVNV0h6M0pzZWpnTlBUMVF1OUNpeS02eGphSDVBQURPUUJpXzVQLWhZek42MVZ4Y1dGdkkwSjlKWWhfZ3hQRURxdi1IVFAwUG1HSkhUbUtkUy1kNU5KMTJSTFpZRVVCSTFBSERuOWpSb1lZdUFlZC13NlU3ZDZyeg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 5:45 PM</span></div>
-<div class="news-title">NHL rumblings: Panthers ready to sell, potential Bobrovsky suitors, latest on Thomas, Parayko, more - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE8xdms2VkMxN2g5SHBhYUtTR18xZEV0QkZ4YnlzMjNQZjgzUEczWUhwdWd6a1N0Qm0tTmxaUGxjSFlZRFB6cHRsY3k4em9scnpoMlhnOUo4cHp6LWVtakpMeENGZFZOamlIUVZGU0pYM1hPNm5DTjc5dU5R?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">This is the 1 asset the Sabres might trade for the first time in a long time</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE8xdms2VkMxN2g5SHBhYUtTR18xZEV0QkZ4YnlzMjNQZjgzUEczWUhwdWd6a1N0Qm0tTmxaUGxjSFlZRFB6cHRsY3k4em9scnpoMlhnOUo4cHp6LWVtakpMeENGZFZOamlIUVZGU0pYM1hPNm5DTjc5dU5R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 4:34 PM</span></div>
 <div class="news-title">NHL: Golden Knights 2, Sabres 3</div></a><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUUFzNDZsNlZ2NWE2VjUtdVdQQ2lQTVRvNXNrY0V4WXJoVDBJb3ktZVRkVHozX0h2RzA3bk1zWWtGZ1RXdnljTjhxcGYzSmtEQkJHNVJOeGtXREplODZtdTFnbnB5cHd0U2diZXdXck0yblZ1TU9obDBmVThZWXg5WTkxdmo4Y1NGWFBJNWZzLWhEZks4Y3RocXNqZ3pEc2xxeGJDcVlleldHcjVKaGliSXNQSWRlR1dldzhvYWhtOHk1c21NVHM5eDNldlZ0eDMzMG1pandB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yardbarker</span><span class="news-date">Mar 4 &middot; 4:32 PM</span></div>
@@ -1283,21 +1302,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 4 &middot; 4:15 PM</span></div>
 <div class="news-title">NHL Rumors: Sabres' Josh Norris is a 'name you hear' on deadline trade market</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOSEZmNWo3WEpHY0s4TEhBSlJCU0Z3ZFJkZnRZSWRIcHE1bUR3S2RWa0RPMVZDN05Xb1JjenQzb1dyMTZaLUhMeGNJMzRwVzR6TjBFMUVpbzZvMHI5bVdsS3N0NHA2cFN5RkdPTEpKZkJQeGtHLW4wR3MzcmVjaURidUhtNThYZ3oyd0V3d1lwWThxM0U5YmNGcnpPaVNBVlBRZTNyRkpn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 4 &middot; 3:45 PM</span></div>
-<div class="news-title">NHL Rumors: Panthers Selling, Oilers Big Splash, Thomas to Sabres</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQNmJqWHlVb0JyVUFMUzladVVUWjNBWlNXZXpreEdnMnJzZ1UwZl93UlhZdWpfZ2xBZk9UR3NzZHpQeGdZemh4TWREVnNXZmxJR2hpenVVUjg2dmRLVGlPVmxRR0kwcGg5M0tKY2tOQ1lqZFdvaHZvMEpqY3RZRzVPM0JLUnVaX3FUZmZYaE9halA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 4 &middot; 3:39 PM</span></div>
-<div class="news-title">Robert Thomas heading to the Buffalo Sabres?</div></a><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOMVI5eXBoRFlDM2dqLUs1bFY2Si03UldUd2pUbDJXNDFTOFFPTFpfc1d3dmUxMGlOSzFoRWF6SGkwUlFlQ25WXzFtSk5JbDNvME1KRm9McUg5aHEtRy1ickhkb2d5ejgwMzlseWk4OXhNWDRDcDZXVzFuMFJEWkRLc0JWVUR4S05qekhIN2c3RFcxTWxwNnkwVFlWVnlkZWdwUHRkTDRZcG1oWjR6QXdrLWk3Z3pZS1FmS3dRdg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Philly Hockey Now</span><span class="news-date">Mar 4 &middot; 3:38 PM</span></div>
-<div class="news-title">PhHN Daily: Flyers Updates; Blockbuster NHL Trade Rumors; Nashville Dealing</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOcUpJdGhYcFAtUnlGb3pxcHF2c2Jabm1pVkY5Rkx2c093WlVrQ0g5bXFtREtuZjhGNzFVNXRwel9WUkdmRmpTZ3JSNUZTbkJBQmx1TzJ0eThhRVFJUnJ6NHdWNWFvS19yb2gwWFo0cTFxTjJaODJ0d0VZTkdRSDdDdUJiVnlvWG5CaXlFcDh1QWlVRlVWRVhHMEs4OFZaU1EtU0E?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pittsburgh Hockey Now</span><span class="news-date">Mar 4 &middot; 3:34 PM</span></div>
-<div class="news-title">Dan’s Daily: Blockbuster Trade Talks; Small Deals; Penguins Anger</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQM3Nvem5fdVZ1TDFLXzhqbnNWbTF1RkQxQ215UmVVNXRMQ2QwYVp5TjVnR3NqcWZGUHdGSWpiOVNUN000TnBTUmJZUjdxNzhqTV9nQnhDUElOTHVPSXoyTkZlQXJEOElJYlA4WjRvSTA5YlRmcDZDd285QmdDNDZMbG1uQ3d6aWFuYl8zX0ItQmk2Tlk4VHVMR0JRVnlsbXlyNmNTeFFNVFVRWlprbWhuOXVjNnN4RXc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sabre Noise</span><span class="news-date">Mar 4 &middot; 3:30 PM</span></div>
-<div class="news-title">NHL Trade Rumors: Sabres get worrisome update amid pursuit of Blues' Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQcEM2OU5rTmQwTFRkb05PY0pTVzFCUjZsWnlPMTAxaFpNbmtTTmJNMU9HZm1heHRQbGZVVTdhOE1aU1dld0doSWRDd25WakdoS0MwN2FqMlFYM0RLVnFJUEl2bFNsN1dTakUyZFlHVkZLSWRhbkZQNmlsMmwyU1VLSDlVRUNHbG1sMTN6aTNyd0Nwd21nbGRtRDZrdlc5M3BvUHEtejBQcUdFVGR6TGNV?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 4 &middot; 3:29 PM</span></div>
-<div class="news-title">NHL rumors: Robert Thomas trade talks 'go distance' with Blues' demands to Sabres holding firm</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNV0g5ekZua1kzbGk0RWtvQkloZkVPSDcwaHlMVXlVSzJfWTlTRVYzcEVYVHVsbEF5SlJ1ZUotT3hqYjA2ek5raTdFQkFzMVZaOHN4T3RUdG9oRlZoLXJoZVA5Q1Y5ZXZLcHRxaGFLZHFHa2liSXc5d0lDMHVINHZMcjZyenkyT3VoVGJDTmFnVUN6aENHZkszbHlXaHd4QQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CBS Sports</span><span class="news-date">Mar 4 &middot; 3:26 PM</span></div>
-<div class="news-title">NHL Power Rankings: Sabres, Mammoth poised to swing big as trade deadline approaches</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQQUZSTFNoRmlSSTNIcm1rTGpjSldiUS1UWlFydjlLcXlDT1I3RG5WMmgzMjBvd3g4NFpzXy0yOW1POURjbk9xSWI4d1lCcDV0UmNNQlJTbVBpNlY0b3dIVGJOTmlTQmVibXpZZ2lGWjBvSGpvc01oZ2I4WGtfTm15bU9nUEczMFE1RVYyM3B4SUFrSXdtUU16OTJQZ25meURHa2t5YWxOY3dWazczUC1vbHZ1ODhsdHpYSmE1QUU2RzgteXVKOWNFalhrVTY0Rkk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 3:12 PM</span></div>
-<div class="news-title">Sabres get great news on Alex Tuch trade rumors before deadline</div></a></div></div>
+<div class="news-title">NHL Rumors: Panthers Selling, Oilers Big Splash, Thomas to Sabres</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/sabres/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/sabres</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1317,7 +1322,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:20 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1352,7 +1357,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

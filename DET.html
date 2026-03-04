@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Detroit Red Wings — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','DET.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--accent-soft:rgba(232,56,79,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Detroit Red Wings</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:20 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">-1</span></span>
     <span class="stat-pill" title="Power play — 10th in NHL"><span class="sl">PP · 10th</span> <span class="sv">16.2%</span></span>
     <span class="stat-pill" title="Penalty kill — 19th in NHL"><span class="sl">PK · 19th</span> <span class="sv">85.1%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.4,24.0 2.9,23.4 4.3,22.8 5.8,22.2 7.2,21.6 8.7,21.0 10.1,21.0 11.5,21.0 13.0,20.4 14.4,19.8 15.9,19.2 17.3,19.2 18.8,18.6 20.2,18.6 21.6,18.6 23.1,18.6 24.5,17.9 26.0,17.6 27.4,17.0 28.9,16.4 30.3,16.4 31.7,15.8 33.2,15.8 34.6,15.8 36.1,15.8 37.5,15.5 39.0,14.9 40.4,14.6 41.8,14.0 43.3,13.4 44.7,12.8 46.2,12.8 47.6,12.2 49.0,11.6 50.5,11.6 51.9,11.0 53.4,10.4 54.8,9.8 56.3,9.8 57.7,9.2 59.1,8.6 60.6,8.3 62.0,8.3 63.5,7.7 64.9,7.1 66.4,6.4 67.8,5.8 69.2,5.8 70.7,5.2 72.1,4.6 73.6,4.0 75.0,3.7 76.5,3.1 77.9,3.1 79.3,2.8 80.8,2.8 82.2,2.2 83.7,2.2 85.1,1.6 86.6,1.6 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1145,7 +1150,9 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled F John Leonard from Grand Rapids (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOOUJYekxqR2M3NlVBdTM1YXpmbWxFei1vNDE0NkFfM0hybGZabHByc0dzeHQyZFk4N2wyY0VFQzVyVXBEczVqR3hsMlVwY19mWkNZOXpJemhld1FhaFNGVzZMeWZQVm5pNU1sQkUtb1ZONmhNQ2ZfTXlUVHN1NzR6S2x5WjBSeHpmeENMMnBhMWM2YXNhbjNRYUtaYllfZGZrV1JDdmxLOUtYb2JkckJ0WHRFcznSAcgBQVVfeXFMTjhLWFpBMHI5RVBtUmdpcEpmWVFpcU5oSEltZEdyS1I1YnRDVVNfMzlwU29GOFdoMFc2R3BEdy10emt4TDhYTmFVM3NOcVl5SHg3eUUtQkpFUlJLZHg3ampBeHF2WmM5eWQ1b0FWeEFtTWotZVZZaHhhZVUwdHNVdHdRazg1aWpmZmZfdkhuY1VOQ0N2S2E5WXp2R3hxbTRvV2dkZ1h1bFZVeTBRNjMxck42cG9GZnppTU9kc0s0M25XZjBDN291bkw?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9GUEwzMk13LVRXVS05ZUtWM29rLTJ0Y0tCTG1tUTVhOWxVZDhHU3YwUkptcHFxazJzR09STG5xZ0cySGVKXzFQSVRxVG85amlkaWV3QjNraXpsUzZocTZSZ2tueUN4bU52RklQTXgtbnNFNWtPZVNSMy1n?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 10:07 PM</span></div>
+<div class="news-title">NHL Status Report: Gibson day to day for Red Wings with upper-body injury</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOOUJYekxqR2M3NlVBdTM1YXpmbWxFei1vNDE0NkFfM0hybGZabHByc0dzeHQyZFk4N2wyY0VFQzVyVXBEczVqR3hsMlVwY19mWkNZOXpJemhld1FhaFNGVzZMeWZQVm5pNU1sQkUtb1ZONmhNQ2ZfTXlUVHN1NzR6S2x5WjBSeHpmeENMMnBhMWM2YXNhbjNRYUtaYllfZGZrV1JDdmxLOUtYb2JkckJ0WHRFcznSAcgBQVVfeXFMTjhLWFpBMHI5RVBtUmdpcEpmWVFpcU5oSEltZEdyS1I1YnRDVVNfMzlwU29GOFdoMFc2R3BEdy10emt4TDhYTmFVM3NOcVl5SHg3eUUtQkpFUlJLZHg3ampBeHF2WmM5eWQ1b0FWeEFtTWotZVZZaHhhZVUwdHNVdHdRazg1aWpmZmZfdkhuY1VOQ0N2S2E5WXp2R3hxbTRvV2dkZ1h1bFZVeTBRNjMxck42cG9GZnppTU9kc0s0M25XZjBDN291bkw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">MLive.com</span><span class="news-date">Mar 4 &middot; 9:01 PM</span></div>
 <div class="news-title">Where to watch the Golden Knights vs. Red Wings NHL livestream today for free</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOVjZEV3l3TDJDVk1oSU1qSW5HN0VvdHFKRURPYkF2R0RobjZuS1NMX0V2MjU5a1U1cHFuVlFlYVRPYnNXcnlpVHI2UGpzWmRYaXBvWUVJdDJsRzhGU3NvRkw0NkJRTUJOa2p1VDZzcFZLc2lvSEs4OU1lRi1hTTJOYWZJeTFnZjBGQmhTSVFGM08yeG14UmstMC16Q2dKeTdEYkR3YWNrQ0ZIbjBIN1JEUndEYVdWcWt6ZTFDeHFFN2tPbmdOcU8wdWRkdTdtaGdmcE1iaEgyZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 8:04 PM</span></div>
@@ -1157,7 +1164,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 4 &middot; 7:38 PM</span></div>
 <div class="news-title">Red Wings May Target Breakout Star Blueliner After Failed Trade</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxNbWxRSXZBWm5pMlRFWXB4V0pLN3R2U3VRUV9Ja2Z3NktXM1A0MkY2YTFvLU9lVWlySVBVbHRjLUl2N3BsaWRUU2Z6VkZsRVZQczE3RFZMNHdlTWhxbm5wUlRxMEdnNkJlY1E0SDQwS2RITlJmUXFueFhoRm1jMlhfd3p4NGc2aFhJaF9NdlZxbGc3eVROdHZxVGZnaWN4T28wcjJEQUFGOE5wdkZ2enc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Detroit Hockey Now</span><span class="news-date">Mar 4 &middot; 7:13 PM</span></div>
-<div class="news-title">Red Wings Recall Goalie Sebastian Cossa from Grand Rapids</div></a><a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPX3h0bk1USWdNYktXOXlfWUVWLWludUFEUFlBREFRVzhYNXVCaXQ2OVlOYm80c3J0TDgtVmZuVVhSQVhZd0xOT01hTC1YdmoxLWwxSHhHZ01ZaGlBX2dsSUVSMEFJT3Y4UFlHcWtlXzFHeUFsb3g2cHhmS3duTk0yNC1YaVhOTVFEVUY2UXc0T2pPNEc4Z0hrZmZKdzM5TjVWZmZZZldFR0NZRHlLalVqQm5ZbXN1a3RnMnJPQ3NFdXI5YWEwRjljZEFORGVGdEo1VlEzRENtMVZzMUY3VjRPaF9VQlQyNDVwOE0xejZtRjFfZTV4cm43ZlBDd3RVZk1CX1FBSNIBigJBVV95cUxQd1BYLTRoNVNkTlNNZlhiM0pkNGUweTRtTDZhMTJoMEdGb0E5VDBVQ19yUUZXSUR0b2VqcGJyYkFrQnJ0Q0xCMHhtRFVveFNUTkxtY00wVXktOE9MZ2NOYmFtMHNNM1FycWNaVG9XcUFGMTRub2w2c3ZZdU5aa3pOaC1VLU5BNjNzbE9mZDBoSGUyUDU4VXZFVFIteTU0dUt4dFRYVkUtX1pxck43WTROczljS3NIYWNWYTI3TkF2aTdfa3dtQ1AyNWtrMGZ5alhRaUwtM0diVWJacUZ5Q3o2M2FwM3QzZVo3MFp5Y1JBX1Vic2hPV1doc0gzNzItTGNOajU0YVd5aWE5UQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Red Wings Recall Goalie Sebastian Cossa from Grand Rapids</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxQZ2JmSHY1UlNYSndvWFh4U3loVjhhNnJ3a0lES2Y4bVJ5LThySU96N1N3NDN6bHZENjAxUFhNd3RVdjdqOUpNYmRsQld1dlpsY2xfWVl3bi00LWdwRW9ucXU0aDhWYmJGaFBkZVFoMWJ1QW9IRVJTWUVERk9Wa1dpRjFXUzVIS1I1cVhzZHMxaGFVWi1mb2NZWkFPSFNSRDhPWE1mSVBMT2s4NU5fVnp0eGpBWm5jSXZydzJMTHJLT3c1WG9RMk1yMHYwemhmUTAwQnRySG1GTlE4NW56YWRv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Detroit News</span><span class="news-date">Mar 4 &middot; 7:02 PM</span></div>
+<div class="news-title">Red Wings promote Sebastian Cossa, as John Gibson is day-to-day</div></a><a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPX3h0bk1USWdNYktXOXlfWUVWLWludUFEUFlBREFRVzhYNXVCaXQ2OVlOYm80c3J0TDgtVmZuVVhSQVhZd0xOT01hTC1YdmoxLWwxSHhHZ01ZaGlBX2dsSUVSMEFJT3Y4UFlHcWtlXzFHeUFsb3g2cHhmS3duTk0yNC1YaVhOTVFEVUY2UXc0T2pPNEc4Z0hrZmZKdzM5TjVWZmZZZldFR0NZRHlLalVqQm5ZbXN1a3RnMnJPQ3NFdXI5YWEwRjljZEFORGVGdEo1VlEzRENtMVZzMUY3VjRPaF9VQlQyNDVwOE0xejZtRjFfZTV4cm43ZlBDd3RVZk1CX1FBSNIBigJBVV95cUxQd1BYLTRoNVNkTlNNZlhiM0pkNGUweTRtTDZhMTJoMEdGb0E5VDBVQ19yUUZXSUR0b2VqcGJyYkFrQnJ0Q0xCMHhtRFVveFNUTkxtY00wVXktOE9MZ2NOYmFtMHNNM1FycWNaVG9XcUFGMTRub2w2c3ZZdU5aa3pOaC1VLU5BNjNzbE9mZDBoSGUyUDU4VXZFVFIteTU0dUt4dFRYVkUtX1pxck43WTROczljS3NIYWNWYTI3TkF2aTdfa3dtQ1AyNWtrMGZ5alhRaUwtM0diVWJacUZ5Q3o2M2FwM3QzZVo3MFp5Y1JBX1Vic2hPV1doc0gzNzItTGNOajU0YVd5aWE5UQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 4 &middot; 6:59 PM</span></div>
 <div class="news-title">Head Coach Todd McLellan Says John Gibson Not Ready to Play With Detroit Red Wings Against Vegas</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPVGJRSnlwSGZtdDdMbjhLcFJuQ01QZGVzMDU0LW5XYkZwS0V6cExnNjdmQ3VDenpuODJ5VC1xOU5LQjRzOURMRXpjMm92bGlMUjJOVVVxblJCVXZmMDRGYWhRT3FnZGw3UFlSR1FzMUZSZC0tV21lR1VHclk1X3ltaW1Eb3ViVll0UXhFaUw2QllDcnljTmI4eUtnV19oZmhSSXhTaDBia0gxWHFKR2huNw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NY Sports Day</span><span class="news-date">Mar 4 &middot; 6:40 PM</span></div>
@@ -1191,9 +1200,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:00 PM</span></div>
 <div class="news-title">Sebastian Cossa, Todd McLellan Morning Skate</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQS3MxTDZqemk1UXZQUi1XTnItSnFIYnEwQ01IUzFiYzJXb1hKcUtqd1NSRV94N2xiUlk3aU1EUk9LZGl4RzNRZnc2a3Z5SEpGV05zeTEtTXd2dmlSc2ItNjNySEoyV2NUR2puVkVDS0kzeDY0Yl9XV2RDUWt3SXVnczNtUDBTVmVNTmxaUFdDSF9HZWhBS3IxemZFaC1wTzVrekdFag?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:00 PM</span></div>
-<div class="news-title">Line Combinations: Red Wings vs Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPVFdvbVlLWkEtWGJDbWVZVVNUcVo0OHZCZXAtaVFLZkM0b2xZMk1WTHZENE03eTFubzhCcHZFWUxEVkYzc1BCb2ZnVDY5ZHgxWjc0WXhRM0JkUkpxY1YyTnI3TzdONzJwZkxfbHVFWmJ1cFFHZHNDSnNCc0h2eGlGUk1YVndXSHYzRjgzZFVMeWNtbTFHWm5BQU53ZkxSRmw4akEwdVEydTMwZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Detroit Hockey Now</span><span class="news-date">Mar 4 &middot; 4:51 PM</span></div>
-<div class="news-title">Golden Knights at Red Wings: Notes, Lines, Goalies, How to Watch</div></a></div></div>
+<div class="news-title">Line Combinations: Red Wings vs Golden Knights</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/DetroitRedWings/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/DetroitRedWings</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1213,7 +1220,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:20 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1248,7 +1255,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

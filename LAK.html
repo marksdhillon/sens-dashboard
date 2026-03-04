@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Los Angeles Kings — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','LAK.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#a2aaad;--accent-soft:rgba(162,170,173,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Los Angeles Kings</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:53 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:22 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">-24</span></span>
     <span class="stat-pill" title="Power play — 26th in NHL"><span class="sl">PP · 26th</span> <span class="sv">11.2%</span></span>
     <span class="stat-pill" title="Penalty kill — 28th in NHL"><span class="sl">PK · 28th</span> <span class="sv">82.1%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,24.0 2.9,23.3 4.4,23.3 5.9,22.9 7.3,22.9 8.8,22.5 10.3,21.8 11.7,21.0 13.2,20.7 14.7,19.9 16.1,19.2 17.6,18.8 19.1,18.8 20.5,18.1 22.0,18.1 23.5,17.3 24.9,16.6 26.4,15.8 27.9,15.1 29.3,15.1 30.8,14.7 32.3,14.4 33.7,13.6 35.2,13.2 36.7,12.5 38.1,12.5 39.6,12.5 41.1,11.8 42.5,11.0 44.0,10.6 45.5,10.3 46.9,10.3 48.4,10.3 49.9,9.5 51.3,9.5 52.8,9.5 54.3,8.8 55.7,8.8 57.2,8.8 58.7,8.0 60.1,7.3 61.6,6.9 63.1,6.9 64.5,6.2 66.0,6.2 67.5,5.8 68.9,5.5 70.4,5.1 71.9,4.3 73.3,3.6 74.8,2.9 76.3,2.9 77.7,2.1 79.2,1.7 80.7,1.7 82.1,1.7 83.6,1.7 85.1,1.7 86.5,1.0 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -582,21 +587,40 @@ body{animation:fadeIn 0.15s ease}
 <h3 style="margin-top:28px">Western Conference</h3>
 <div class="scroll-x"><table class="nhl-tbl sortable">
 <thead><tr><th class="rank">#</th><th class="name-col">Team</th><th class="r">Playoffs</th><th class="r">2nd Rd</th><th class="r">Conf F.</th><th class="r">Cup F.</th><th class="r">Win Cup</th><th class="r">Proj Pts</th><th class="r">Win Div</th></tr></thead>
-<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.3%</td><td class="r">33.8%</td><td class="r">21.2%</td><td class="r">12.0%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.1%</td><td class="r">35.1%</td><td class="r">21.6%</td><td class="r">11.6%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">42.1%</td><td class="r">20.3%</td><td class="r">11.2%</td><td class="r">5.5%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">90.2%</td><td class="r">43.0%</td><td class="r">19.9%</td><td class="r">7.7%</td><td class="r">3.1%</td><td class="r">95</td><td class="r">34.8%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">89.6%</td><td class="r">46.2%</td><td class="r">24.2%</td><td class="r">10.3%</td><td class="r">4.7%</td><td class="r">94</td><td class="r">33.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">84.7%</td><td class="r">40.8%</td><td class="r">20.6%</td><td class="r">9.0%</td><td class="r">4.1%</td><td class="r">93</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.1%</td><td class="r">37.6%</td><td class="r">19.4%</td><td class="r">8.8%</td><td class="r">4.0%</td><td class="r">91</td><td class="r">13.9%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">71.0%</td><td class="r">32.3%</td><td class="r">14.9%</td><td class="r">5.9%</td><td class="r">2.5%</td><td class="r">91</td><td class="r">13.0%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">37.8%</td><td class="r">12.3%</td><td class="r">4.1%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.2%</td></tr><tr class="sens-row"><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.5%</td><td class="r">10.2%</td><td class="r">4.1%</td><td class="r">1.6%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">18.2%</td><td class="r">6.1%</td><td class="r">2.2%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.5%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.2%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.8%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
+<tbody><tr class=""><td class="rank">1</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/col/colorado-avalanche" target="_blank" rel="noopener" class="tcol-link">COL</a></td><td class="r">100.0%</td><td class="r">66.1%</td><td class="r">35.1%</td><td class="r">21.6%</td><td class="r">11.6%</td><td class="r">119</td><td class="r">86.0%</td></tr><tr class=""><td class="rank">2</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/dal/dallas-stars" target="_blank" rel="noopener" class="tcol-link">DAL</a></td><td class="r">100.0%</td><td class="r">60.3%</td><td class="r">33.8%</td><td class="r">21.2%</td><td class="r">12.0%</td><td class="r">112</td><td class="r">13.2%</td></tr><tr class=""><td class="rank">3</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/min/minnesota-wild" target="_blank" rel="noopener" class="tcol-link">MIN</a></td><td class="r">100.0%</td><td class="r">42.1%</td><td class="r">20.3%</td><td class="r">11.2%</td><td class="r">5.5%</td><td class="r">106</td><td class="r">0.8%</td></tr><tr class=""><td class="rank">4</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/ana/anaheim-ducks" target="_blank" rel="noopener" class="tcol-link">ANA</a></td><td class="r">90.2%</td><td class="r">43.0%</td><td class="r">19.9%</td><td class="r">7.7%</td><td class="r">3.1%</td><td class="r">95</td><td class="r">34.8%</td></tr><tr class=""><td class="rank">5</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/vgs/vegas-golden-knights" target="_blank" rel="noopener" class="tcol-link">VGK</a></td><td class="r">89.6%</td><td class="r">46.2%</td><td class="r">24.2%</td><td class="r">10.3%</td><td class="r">4.7%</td><td class="r">94</td><td class="r">33.9%</td></tr><tr class=""><td class="rank">6</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/utah/utah-hockey-club" target="_blank" rel="noopener" class="tcol-link">UTA</a></td><td class="r">84.7%</td><td class="r">40.8%</td><td class="r">20.6%</td><td class="r">9.0%</td><td class="r">4.1%</td><td class="r">93</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">7</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/edm/edmonton-oilers" target="_blank" rel="noopener" class="tcol-link">EDM</a></td><td class="r">73.1%</td><td class="r">37.6%</td><td class="r">19.4%</td><td class="r">8.8%</td><td class="r">4.0%</td><td class="r">91</td><td class="r">13.9%</td></tr><tr class=""><td class="rank">8</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sea/seattle-kraken" target="_blank" rel="noopener" class="tcol-link">SEA</a></td><td class="r">71.0%</td><td class="r">32.3%</td><td class="r">14.9%</td><td class="r">5.9%</td><td class="r">2.5%</td><td class="r">91</td><td class="r">13.0%</td></tr><tr class=""><td class="rank">9</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/sj/san-jose-sharks" target="_blank" rel="noopener" class="tcol-link">SJS</a></td><td class="r">37.8%</td><td class="r">12.3%</td><td class="r">4.1%</td><td class="r">1.2%</td><td class="r">0.4%</td><td class="r">87</td><td class="r">3.2%</td></tr><tr class="sens-row"><td class="rank">10</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/la/los-angeles-kings" target="_blank" rel="noopener" class="tcol-link">LAK</a></td><td class="r">26.5%</td><td class="r">10.2%</td><td class="r">4.1%</td><td class="r">1.6%</td><td class="r">0.6%</td><td class="r">86</td><td class="r">1.2%</td></tr><tr class=""><td class="rank">11</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/nsh/nashville-predators" target="_blank" rel="noopener" class="tcol-link">NSH</a></td><td class="r">18.2%</td><td class="r">6.1%</td><td class="r">2.2%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">84</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">12</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/wpg/winnipeg-jets" target="_blank" rel="noopener" class="tcol-link">WPG</a></td><td class="r">6.5%</td><td class="r">2.3%</td><td class="r">0.9%</td><td class="r">0.4%</td><td class="r">0.2%</td><td class="r">82</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">13</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/cgy/calgary-flames" target="_blank" rel="noopener" class="tcol-link">CGY</a></td><td class="r">1.8%</td><td class="r">0.7%</td><td class="r">0.3%</td><td class="r">0.1%</td><td class="r">0.1%</td><td class="r">79</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">14</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/chi/chicago-blackhawks" target="_blank" rel="noopener" class="tcol-link">CHI</a></td><td class="r">0.4%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">76</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">15</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/stl/st-louis-blues" target="_blank" rel="noopener" class="tcol-link">STL</a></td><td class="r">0.2%</td><td class="r">0.1%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">75</td><td class="r">0.0%</td></tr><tr class=""><td class="rank">16</td><td class="tcol"><a href="https://www.espn.com/nhl/team/_/name/van/vancouver-canucks" target="_blank" rel="noopener" class="tcol-link">VAN</a></td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">0.0%</td><td class="r">63</td><td class="r">0.0%</td></tr></tbody></table></div>
 
 <p class="footnote">Data from <a href="https://moneypuck.com/predictions.htm">MoneyPuck</a></p></div>
   <div class="panel" id="p-roster"><div class="scroll-x"><table class="nhl-tbl sortable" id="skater-tbl">
 <thead><tr><th class="rank sort-th" data-col="0" title="Rank by points">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Position (C, L, R, D)">Pos</th><th class="r sort-th" data-col="3" title="Games played this season">GP</th><th class="r sort-th" data-col="4" title="Goals scored">G</th><th class="r sort-th" data-col="5" title="Assists">A</th><th class="r sort-th" data-col="6" title="Points (goals + assists)">P</th><th class="r sort-th" data-col="7" title="Plus/minus: on-ice goal differential at even strength">+/-</th><th class="r sort-th" data-col="8" title="Penalty minutes">PIM</th><th class="r sort-th" data-col="9" title="Points per game played">P/GP</th><th class="r sort-th" data-col="10" title="Even-strength goals">EVG</th><th class="r sort-th" data-col="11" title="Even-strength points">EVP</th><th class="r sort-th" data-col="12" title="Power-play goals">PPG</th><th class="r sort-th" data-col="13" title="Power-play points">PPP</th><th class="r sort-th" data-col="14" title="Short-handed goals">SHG</th><th class="r sort-th" data-col="15" title="Short-handed points">SHP</th><th class="r sort-th" data-col="16" title="Overtime goals">OTG</th><th class="r sort-th" data-col="17" title="Game-winning goals">GWG</th><th class="r sort-th" data-col="18" title="Shots on goal">S</th><th class="r sort-th" data-col="19" title="Shooting %: goals ÷ shots on goal">S%</th><th class="r sort-th" data-col="20" title="Average time on ice per game">TOI</th><th class="r sort-th" data-col="21" title="Faceoff win %: faceoffs won ÷ total faceoffs">FO%</th><th class="r sort-th adv-hdr" data-col="22" title="Goals minus expected goals. Positive = scoring more than expected (MoneyPuck)">G-xG</th><th class="r sort-th adv-hdr" data-col="23" title="Expected goals for %: share of expected goals when on ice at 5v5 (MoneyPuck)">xGF%</th><th class="r sort-th adv-hdr" data-col="24" title="GameScore per game: composite rating combining goals, assists, shots, blocks, etc. (MoneyPuck)">GS/GP</th><th class="r sort-th" data-col="25" title="Player age">Age</th><th class="r sort-th" data-col="26" title="Date of birth">Birthday</th><th class="r sort-th" data-col="27" title="Birth city and country">From</th></tr></thead>
 <tbody><tr class="player-summary">
 <td class="rank" data-sort="1">1</td>
+<td class="name-cell" data-sort="Artemi Panarin"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8478550.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Artemi+Panarin" target="_blank" rel="noopener" class="pname">Artemi Panarin</a></div></td>
+<td class="r pos-col" data-sort="L">L</td>
+<td class="r" data-sort="56">56</td><td class="r" data-sort="19">19</td><td class="r" data-sort="41">41</td>
+<td class="r pts-col" data-sort="60">60</td><td class="r" data-sort="-17">-17</td>
+<td class="r" data-sort="16">16</td><td class="r" data-sort="1.07">1.07</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
+<td class="r" data-sort="167">167</td><td class="r" data-sort="11.4">11.4</td>
+<td class="r" data-sort="1249">20:49</td><td class="r" data-sort="100.0">100.0</td>
+<td class="r adv adv-pos" data-sort="1.8">+1.8</td>
+<td class="r adv" data-sort="50.0">50.0</td>
+<td class="r adv" data-sort="1.11">1.11</td>
+<td class="r" data-sort="34">34</td>
+<td class="r bio-col" data-sort="Oct 30, 1991">Oct 30, 1991</td>
+<td class="r bio-col" data-sort="Korkino, RUS">Korkino, RUS</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="2">2</td>
 <td class="name-cell" data-sort="Adrian Kempe"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8477960.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Adrian+Kempe" target="_blank" rel="noopener" class="pname">Adrian Kempe</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="22">22</td><td class="r" data-sort="28">28</td>
 <td class="r pts-col" data-sort="50">50</td><td class="r" data-sort="5">+5</td>
 <td class="r" data-sort="54">54</td><td class="r" data-sort="0.83">0.83</td>
-<td class="r" data-sort="19">19</td><td class="r" data-sort="38">38</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="10">10</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="3">3</td><td class="r" data-sort="5">5</td>
 <td class="r" data-sort="168">168</td><td class="r" data-sort="13.1">13.1</td>
 <td class="r" data-sort="1152">19:12</td><td class="r" data-sort="36.2">36.2</td>
@@ -606,15 +630,15 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="29">29</td>
 <td class="r bio-col" data-sort="Sep 13, 1996">Sep 13, 1996</td>
 <td class="r bio-col" data-sort="Kramfors, SWE">Kramfors, SWE</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="2">2</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="3">3</td>
 <td class="name-cell" data-sort="Kevin Fiala"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8477942.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Kevin+Fiala" target="_blank" rel="noopener" class="pname">Kevin Fiala</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="56">56</td><td class="r" data-sort="18">18</td><td class="r" data-sort="22">22</td>
 <td class="r pts-col" data-sort="40">40</td><td class="r" data-sort="-11">-11</td>
 <td class="r" data-sort="34">34</td><td class="r" data-sort="0.71">0.71</td>
-<td class="r" data-sort="14">14</td><td class="r" data-sort="23">23</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="17">17</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
 <td class="r" data-sort="147">147</td><td class="r" data-sort="12.2">12.2</td>
@@ -625,16 +649,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="29">29</td>
 <td class="r bio-col" data-sort="Jul 22, 1996">Jul 22, 1996</td>
 <td class="r bio-col" data-sort="St. Gallen, CHE">St. Gallen, CHE</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="3">3</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="4">4</td>
 <td class="name-cell" data-sort="Quinton Byfield"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482124.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Quinton+Byfield" target="_blank" rel="noopener" class="pname">Quinton Byfield</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="13">13</td><td class="r" data-sort="20">20</td>
 <td class="r pts-col" data-sort="33">33</td><td class="r" data-sort="-5">-5</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="0.57">0.57</td>
-<td class="r" data-sort="9">9</td><td class="r" data-sort="23">23</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="9">9</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="3">3</td>
 <td class="r" data-sort="123">123</td><td class="r" data-sort="10.6">10.6</td>
 <td class="r" data-sort="1199">19:59</td><td class="r" data-sort="43.0">43.0</td>
@@ -644,15 +668,15 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="23">23</td>
 <td class="r bio-col" data-sort="Aug 19, 2002">Aug 19, 2002</td>
 <td class="r bio-col" data-sort="Newmarket, ON, CAN">Newmarket, ON, CAN</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="4">4</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="5">5</td>
 <td class="name-cell" data-sort="Brandt Clarke"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482730.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brandt+Clarke" target="_blank" rel="noopener" class="pname">Brandt Clarke</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="8">8</td><td class="r" data-sort="22">22</td>
 <td class="r pts-col" data-sort="30">30</td><td class="r" data-sort="4">+4</td>
 <td class="r" data-sort="42">42</td><td class="r" data-sort="0.50">0.50</td>
-<td class="r" data-sort="6">6</td><td class="r" data-sort="20">20</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="10">10</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
 <td class="r" data-sort="119">119</td><td class="r" data-sort="6.7">6.7</td>
@@ -663,15 +687,15 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="23">23</td>
 <td class="r bio-col" data-sort="Feb 9, 2003">Feb 9, 2003</td>
 <td class="r bio-col" data-sort="Nepean, ON, CAN">Nepean, ON, CAN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="5">5</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="6">6</td>
 <td class="name-cell" data-sort="Corey Perry"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8470621.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Corey+Perry" target="_blank" rel="noopener" class="pname">Corey Perry</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="49">49</td><td class="r" data-sort="11">11</td><td class="r" data-sort="17">17</td>
 <td class="r pts-col" data-sort="28">28</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="59">59</td><td class="r" data-sort="0.57">0.57</td>
-<td class="r" data-sort="7">7</td><td class="r" data-sort="17">17</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="11">11</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="83">83</td><td class="r" data-sort="13.3">13.3</td>
@@ -682,16 +706,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="40">40</td>
 <td class="r bio-col" data-sort="May 16, 1985">May 16, 1985</td>
 <td class="r bio-col" data-sort="Peterborough, ON, CAN">Peterborough, ON, CAN</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="6">6</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="7">7</td>
 <td class="name-cell" data-sort="Alex Laferriere"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482155.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Alex+Laferriere" target="_blank" rel="noopener" class="pname">Alex Laferriere</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="14">14</td><td class="r" data-sort="13">13</td>
 <td class="r pts-col" data-sort="27">27</td><td class="r" data-sort="4">+4</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.45">0.45</td>
-<td class="r" data-sort="12">12</td><td class="r" data-sort="24">24</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
 <td class="r" data-sort="143">143</td><td class="r" data-sort="9.8">9.8</td>
 <td class="r" data-sort="1047">17:27</td><td class="r" data-sort="42.1">42.1</td>
@@ -701,15 +725,15 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="24">24</td>
 <td class="r bio-col" data-sort="Oct 28, 2001">Oct 28, 2001</td>
 <td class="r bio-col" data-sort="Chatham, NJ, USA">Chatham, NJ, USA</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="7">7</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="8">8</td>
 <td class="name-cell" data-sort="Andrei Kuzmenko"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8483808.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Andrei+Kuzmenko" target="_blank" rel="noopener" class="pname">Andrei Kuzmenko</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="52">52</td><td class="r" data-sort="13">13</td><td class="r" data-sort="12">12</td>
 <td class="r pts-col" data-sort="25">25</td><td class="r" data-sort="-4">-4</td>
 <td class="r" data-sort="16">16</td><td class="r" data-sort="0.48">0.48</td>
-<td class="r" data-sort="5">5</td><td class="r" data-sort="12">12</td>
-<td class="r" data-sort="8">8</td><td class="r" data-sort="13">13</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="8">8</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
 <td class="r" data-sort="69">69</td><td class="r" data-sort="18.8">18.8</td>
@@ -720,15 +744,15 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="30">30</td>
 <td class="r bio-col" data-sort="Feb 4, 1996">Feb 4, 1996</td>
 <td class="r bio-col" data-sort="Yakutsk, RUS">Yakutsk, RUS</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="8">8</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="9">9</td>
 <td class="name-cell" data-sort="Anze Kopitar"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8471685.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Anze+Kopitar" target="_blank" rel="noopener" class="pname">Anze Kopitar</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="45">45</td><td class="r" data-sort="6">6</td><td class="r" data-sort="18">18</td>
 <td class="r pts-col" data-sort="24">24</td><td class="r" data-sort="11">+11</td>
 <td class="r" data-sort="8">8</td><td class="r" data-sort="0.53">0.53</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="16">16</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="8">8</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="3">3</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="55">55</td><td class="r" data-sort="10.9">10.9</td>
@@ -739,16 +763,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="38">38</td>
 <td class="r bio-col" data-sort="Aug 24, 1987">Aug 24, 1987</td>
 <td class="r bio-col" data-sort="Jesenice, SVN">Jesenice, SVN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="9">9</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="10">10</td>
 <td class="name-cell" data-sort="Joel Armia"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8476469.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Joel+Armia" target="_blank" rel="noopener" class="pname">Joel Armia</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="53">53</td><td class="r" data-sort="10">10</td><td class="r" data-sort="10">10</td>
 <td class="r pts-col" data-sort="20">20</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="24">24</td><td class="r" data-sort="0.38">0.38</td>
-<td class="r" data-sort="5">5</td><td class="r" data-sort="14">14</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="5">5</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="66">66</td><td class="r" data-sort="15.2">15.2</td>
 <td class="r" data-sort="859">14:19</td><td class="r" data-sort="38.4">38.4</td>
@@ -758,16 +782,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="32">32</td>
 <td class="r bio-col" data-sort="May 31, 1993">May 31, 1993</td>
 <td class="r bio-col" data-sort="Pori, FIN">Pori, FIN</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="10">10</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="11">11</td>
 <td class="name-cell" data-sort="Joel Edmundson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8476441.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Joel+Edmundson" target="_blank" rel="noopener" class="pname">Joel Edmundson</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="2">2</td><td class="r" data-sort="15">15</td>
 <td class="r pts-col" data-sort="17">17</td><td class="r" data-sort="3">+3</td>
 <td class="r" data-sort="21">21</td><td class="r" data-sort="0.28">0.28</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="14">14</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="76">76</td><td class="r" data-sort="2.6">2.6</td>
 <td class="r" data-sort="1106">18:26</td><td class="r" data-sort="0">--</td>
@@ -777,16 +801,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="32">32</td>
 <td class="r bio-col" data-sort="Jun 28, 1993">Jun 28, 1993</td>
 <td class="r bio-col" data-sort="Brandon, MB, CAN">Brandon, MB, CAN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="11">11</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="12">12</td>
 <td class="name-cell" data-sort="Trevor Moore"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8479675.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Trevor+Moore" target="_blank" rel="noopener" class="pname">Trevor Moore</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="47">47</td><td class="r" data-sort="7">7</td><td class="r" data-sort="9">9</td>
 <td class="r pts-col" data-sort="16">16</td><td class="r" data-sort="-4">-4</td>
 <td class="r" data-sort="6">6</td><td class="r" data-sort="0.34">0.34</td>
-<td class="r" data-sort="6">6</td><td class="r" data-sort="14">14</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
 <td class="r" data-sort="87">87</td><td class="r" data-sort="8.0">8.0</td>
 <td class="r" data-sort="954">15:54</td><td class="r" data-sort="18.8">18.8</td>
@@ -796,16 +820,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="30">30</td>
 <td class="r bio-col" data-sort="Mar 31, 1995">Mar 31, 1995</td>
 <td class="r bio-col" data-sort="Thousand Oaks, CA, USA">Thousand Oaks, CA, USA</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="12">12</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="13">13</td>
 <td class="name-cell" data-sort="Drew Doughty"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8474563.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Drew+Doughty" target="_blank" rel="noopener" class="pname">Drew Doughty</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="50">50</td><td class="r" data-sort="3">3</td><td class="r" data-sort="11">11</td>
 <td class="r pts-col" data-sort="14">14</td><td class="r" data-sort="1">+1</td>
 <td class="r" data-sort="30">30</td><td class="r" data-sort="0.28">0.28</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="12">12</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="71">71</td><td class="r" data-sort="4.2">4.2</td>
 <td class="r" data-sort="1367">22:47</td><td class="r" data-sort="0">--</td>
@@ -815,16 +839,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="36">36</td>
 <td class="r bio-col" data-sort="Dec 8, 1989">Dec 8, 1989</td>
 <td class="r bio-col" data-sort="London, ON, CAN">London, ON, CAN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="13">13</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="14">14</td>
 <td class="name-cell" data-sort="Brian Dumoulin"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8475208.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Brian+Dumoulin" target="_blank" rel="noopener" class="pname">Brian Dumoulin</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="1">1</td><td class="r" data-sort="12">12</td>
 <td class="r pts-col" data-sort="13">13</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.22">0.22</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="12">12</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="53">53</td><td class="r" data-sort="1.9">1.9</td>
 <td class="r" data-sort="1107">18:27</td><td class="r" data-sort="0">--</td>
@@ -834,14 +858,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="34">34</td>
 <td class="r bio-col" data-sort="Sep 6, 1991">Sep 6, 1991</td>
 <td class="r bio-col" data-sort="Biddeford, ME, USA">Biddeford, ME, USA</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="14">14</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="15">15</td>
 <td class="name-cell" data-sort="Alex Turcotte"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8481532.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Alex+Turcotte" target="_blank" rel="noopener" class="pname">Alex Turcotte</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="53">53</td><td class="r" data-sort="3">3</td><td class="r" data-sort="9">9</td>
 <td class="r pts-col" data-sort="12">12</td><td class="r" data-sort="-9">-9</td>
 <td class="r" data-sort="19">19</td><td class="r" data-sort="0.23">0.23</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="12">12</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -853,14 +877,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="25">25</td>
 <td class="r bio-col" data-sort="Feb 26, 2001">Feb 26, 2001</td>
 <td class="r bio-col" data-sort="Elk Grove, IL, USA">Elk Grove, IL, USA</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="15">15</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="16">16</td>
 <td class="name-cell" data-sort="Warren Foegele"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8477998.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Warren+Foegele" target="_blank" rel="noopener" class="pname">Warren Foegele</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="47">47</td><td class="r" data-sort="7">7</td><td class="r" data-sort="2">2</td>
 <td class="r pts-col" data-sort="9">9</td><td class="r" data-sort="-6">-6</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.19">0.19</td>
-<td class="r" data-sort="7">7</td><td class="r" data-sort="9">9</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
@@ -872,14 +896,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="29">29</td>
 <td class="r bio-col" data-sort="Apr 1, 1996">Apr 1, 1996</td>
 <td class="r bio-col" data-sort="Markham, ON, CAN">Markham, ON, CAN</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="16">16</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="17">17</td>
 <td class="name-cell" data-sort="Mikey Anderson"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8479998.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Mikey+Anderson" target="_blank" rel="noopener" class="pname">Mikey Anderson</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="58">58</td><td class="r" data-sort="2">2</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="9">9</td><td class="r" data-sort="2">+2</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="0.16">0.16</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="9">9</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -891,16 +915,16 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="26">26</td>
 <td class="r bio-col" data-sort="May 25, 1999">May 25, 1999</td>
 <td class="r bio-col" data-sort="Roseville, MN, USA">Roseville, MN, USA</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="17">17</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="18">18</td>
 <td class="name-cell" data-sort="Cody Ceci"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8476879.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Cody+Ceci" target="_blank" rel="noopener" class="pname">Cody Ceci</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
 <td class="r" data-sort="60">60</td><td class="r" data-sort="1">1</td><td class="r" data-sort="7">7</td>
 <td class="r pts-col" data-sort="8">8</td><td class="r" data-sort="-7">-7</td>
 <td class="r" data-sort="10">10</td><td class="r" data-sort="0.13">0.13</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="7">7</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="45">45</td><td class="r" data-sort="2.2">2.2</td>
 <td class="r" data-sort="1065">17:45</td><td class="r" data-sort="0">--</td>
@@ -910,14 +934,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="32">32</td>
 <td class="r bio-col" data-sort="Dec 21, 1993">Dec 21, 1993</td>
 <td class="r bio-col" data-sort="Ottawa, ON, CAN">Ottawa, ON, CAN</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="18">18</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="19">19</td>
 <td class="name-cell" data-sort="Jeff Malott"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482408.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Jeff+Malott" target="_blank" rel="noopener" class="pname">Jeff Malott</a></div></td>
 <td class="r pos-col" data-sort="L">L</td>
 <td class="r" data-sort="43">43</td><td class="r" data-sort="3">3</td><td class="r" data-sort="5">5</td>
 <td class="r pts-col" data-sort="8">8</td><td class="r" data-sort="-7">-7</td>
 <td class="r" data-sort="41">41</td><td class="r" data-sort="0.19">0.19</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="8">8</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -929,14 +953,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="29">29</td>
 <td class="r bio-col" data-sort="Aug 7, 1996">Aug 7, 1996</td>
 <td class="r bio-col" data-sort="Burlington, ON, CAN">Burlington, ON, CAN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="19">19</td>
+</tr><tr class="player-summary alt">
+<td class="rank" data-sort="20">20</td>
 <td class="name-cell" data-sort="Samuel Helenius"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482726.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Samuel+Helenius" target="_blank" rel="noopener" class="pname">Samuel Helenius</a></div></td>
 <td class="r pos-col" data-sort="C">C</td>
 <td class="r" data-sort="32">32</td><td class="r" data-sort="3">3</td><td class="r" data-sort="2">2</td>
 <td class="r pts-col" data-sort="5">5</td><td class="r" data-sort="-3">-3</td>
 <td class="r" data-sort="34">34</td><td class="r" data-sort="0.16">0.16</td>
-<td class="r" data-sort="3">3</td><td class="r" data-sort="5">5</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -948,14 +972,14 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="23">23</td>
 <td class="r bio-col" data-sort="Nov 26, 2002">Nov 26, 2002</td>
 <td class="r bio-col" data-sort="Dallas, TX, USA">Dallas, TX, USA</td>
-</tr><tr class="player-summary alt">
-<td class="rank" data-sort="20">20</td>
+</tr><tr class="player-summary">
+<td class="rank" data-sort="21">21</td>
 <td class="name-cell" data-sort="Taylor Ward"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8483406.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Taylor+Ward" target="_blank" rel="noopener" class="pname">Taylor Ward</a></div></td>
 <td class="r pos-col" data-sort="R">R</td>
 <td class="r" data-sort="18">18</td><td class="r" data-sort="2">2</td><td class="r" data-sort="2">2</td>
 <td class="r pts-col" data-sort="4">4</td><td class="r" data-sort="1">+1</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.22">0.22</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="4">4</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -967,25 +991,6 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="27">27</td>
 <td class="r bio-col" data-sort="Mar 31, 1998">Mar 31, 1998</td>
 <td class="r bio-col" data-sort="Kelowna, BC, CAN">Kelowna, BC, CAN</td>
-</tr><tr class="player-summary">
-<td class="rank" data-sort="21">21</td>
-<td class="name-cell" data-sort="Artemi Panarin"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8478550.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Artemi+Panarin" target="_blank" rel="noopener" class="pname">Artemi Panarin</a></div></td>
-<td class="r pos-col" data-sort="L">L</td>
-<td class="r" data-sort="4">4</td><td class="r" data-sort="0">0</td><td class="r" data-sort="3">3</td>
-<td class="r pts-col" data-sort="3">3</td><td class="r" data-sort="-1">-1</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="0.75">0.75</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="2">2</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
-<td class="r" data-sort="9">9</td><td class="r" data-sort="11.4">11.4</td>
-<td class="r" data-sort="1188">19:48</td><td class="r" data-sort="100.0">100.0</td>
-<td class="r adv adv-neg" data-sort="-17.2">-17.2</td>
-<td class="r adv" data-sort="50.0">50.0</td>
-<td class="r adv" data-sort="15.54">15.54</td>
-<td class="r" data-sort="34">34</td>
-<td class="r bio-col" data-sort="Oct 30, 1991">Oct 30, 1991</td>
-<td class="r bio-col" data-sort="Korkino, RUS">Korkino, RUS</td>
 </tr><tr class="player-summary alt">
 <td class="rank" data-sort="22">22</td>
 <td class="name-cell" data-sort="Andre Lee"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8481732.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Andre+Lee" target="_blank" rel="noopener" class="pname">Andre Lee</a></div></td>
@@ -993,7 +998,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="7">7</td><td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
 <td class="r pts-col" data-sort="2">2</td><td class="r" data-sort="-2">-2</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0.29">0.29</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="2">2</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -1012,7 +1017,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="1">1</td><td class="r" data-sort="1">+1</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1.00">1.00</td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
@@ -1088,29 +1093,29 @@ body{animation:fadeIn 0.15s ease}
 <thead><tr><th class="rank sort-th" data-col="0" title="Rank by games played">#</th><th class="name-col sort-th" data-col="1" title="Player name">Player</th><th class="r sort-th" data-col="2" title="Games played">GP</th><th class="r sort-th" data-col="3" title="Games started">GS</th><th class="r sort-th" data-col="4" title="Wins">W</th><th class="r sort-th" data-col="5" title="Losses">L</th><th class="r sort-th" data-col="6" title="Overtime losses">OT</th><th class="r sort-th" data-col="7" title="Shots against">SA</th><th class="r sort-th" data-col="8" title="Goals against">GA</th><th class="r sort-th" data-col="9" title="Goals against average: goals allowed per 60 minutes">GAA</th><th class="r sort-th" data-col="10" title="Saves: shots faced minus goals allowed">SV</th><th class="r sort-th" data-col="11" title="Save %: saves ÷ shots against">SV%</th><th class="r sort-th" data-col="12" title="Shutouts: games with zero goals allowed">SO</th><th class="r sort-th" data-col="13" title="Total time on ice">TOI</th><th class="r sort-th" data-col="14" title="Player age">Age</th><th class="r sort-th" data-col="15" title="Date of birth">Birthday</th><th class="r sort-th" data-col="16" title="Birth city and country">From</th></tr></thead>
 <tbody><tr class="goalie-row"><td class="rank" data-sort="1">1</td>
 <td class="name-cell" data-sort="Darcy Kuemper"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8475311.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Darcy+Kuemper" target="_blank" rel="noopener" class="pname">Darcy Kuemper</a></div></td>
-<td class="r" data-sort="37">37</td><td class="r" data-sort="37">37</td>
+<td class="r" data-sort="37">37</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="14">14</td><td class="r" data-sort="12">12</td><td class="r" data-sort="9">9</td>
 <td class="r" data-sort="917">917</td><td class="r" data-sort="94">94</td><td class="r" data-sort="2.68">2.68</td>
 <td class="r" data-sort="823">823</td><td class="r" data-sort="0.8970">.897</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="126498">2108:18</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0:00</td>
 <td class="r" data-sort="35">35</td>
 <td class="r bio-col" data-sort="May 5, 1990">May 5, 1990</td>
 <td class="r bio-col" data-sort="Saskatoon, SK, CAN">Saskatoon, SK, CAN</td></tr><tr class="goalie-row alt"><td class="rank" data-sort="2">2</td>
 <td class="name-cell" data-sort="Anton Forsberg"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8476341.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Anton+Forsberg" target="_blank" rel="noopener" class="pname">Anton Forsberg</a></div></td>
-<td class="r" data-sort="26">26</td><td class="r" data-sort="22">22</td>
+<td class="r" data-sort="26">26</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="10">10</td><td class="r" data-sort="9">9</td><td class="r" data-sort="5">5</td>
 <td class="r" data-sort="691">691</td><td class="r" data-sort="66">66</td><td class="r" data-sort="2.70">2.70</td>
 <td class="r" data-sort="625">625</td><td class="r" data-sort="0.9040">.904</td>
-<td class="r" data-sort="2">2</td><td class="r" data-sort="88086">1468:06</td>
+<td class="r" data-sort="2">2</td><td class="r" data-sort="0">0:00</td>
 <td class="r" data-sort="33">33</td>
 <td class="r bio-col" data-sort="Nov 27, 1992">Nov 27, 1992</td>
 <td class="r bio-col" data-sort="Härnösand, SWE">Härnösand, SWE</td></tr><tr class="goalie-row"><td class="rank" data-sort="3">3</td>
 <td class="name-cell" data-sort="Pheonix Copley"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8477831.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Pheonix+Copley" target="_blank" rel="noopener" class="pname">Pheonix Copley</a></div></td>
-<td class="r" data-sort="1">1</td><td class="r" data-sort="1">1</td>
+<td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="0">0</td><td class="r" data-sort="1">1</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="28">28</td><td class="r" data-sort="3">3</td><td class="r" data-sort="3.07">3.07</td>
 <td class="r" data-sort="25">25</td><td class="r" data-sort="0.8930">.893</td>
-<td class="r" data-sort="0">0</td><td class="r" data-sort="3514">58:34</td>
+<td class="r" data-sort="0">0</td><td class="r" data-sort="0">0:00</td>
 <td class="r" data-sort="0"></td>
 <td class="r bio-col" data-sort=""></td>
 <td class="r bio-col" data-sort=""></td></tr></tbody></table></div></div>
@@ -1281,15 +1286,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">vancouverhockeydaily.com</span><span class="news-date">Mar 3 &middot; 6:36 PM</span></div>
 <div class="news-title">Blockbuster trade proposal sees Vancouver Canucks land former 20-goal scorer from Los Angeles Kings</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
-<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQXy02UC1ZT0FxZzRvbDhuVi1GR1pwY1dXbmNXMGNDVUtRVUpTem81T2Y2YUthR1ZrajhITXdqdWVVMng2NEJlYlRFdE5CTGRJekN2N3JnX0Nkb0RPXzN3MmdGalh2bXgxSjBsMi1aVG9vX0hGTEQ4ems5NW9kNnYtcnFlUVVnWUdWUTRic2VnQzZna3UzMGFPcHpmTjM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Scouting TOR-PHI and COL-LA, Kings, Avs, Flames, and Leafs</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQY25PbzB6cWNLYVV5bG1BY3pJVVFXZmlmaURIZ25xMTRUd2cwdGUwQVY5eG9NV1pRbC1yZnppRjBuNUNWNlZyRDZyT1kyWExiMnhNZncwZFZ1OFZheHZBVWRVNWdzUElBMU4tMFFSUXEzNzZSSHU4eDNId2EyLVJNN3A0LTVUUmk0eUw5Qy1kdHFWbXJxa1I1eg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 3:44 PM</span></div>
+<div class="news-title">Kings’ Quinton Byfield Sustains Upper-Body Injury</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQXy02UC1ZT0FxZzRvbDhuVi1GR1pwY1dXbmNXMGNDVUtRVUpTem81T2Y2YUthR1ZrajhITXdqdWVVMng2NEJlYlRFdE5CTGRJekN2N3JnX0Nkb0RPXzN3MmdGalh2bXgxSjBsMi1aVG9vX0hGTEQ4ems5NW9kNnYtcnFlUVVnWUdWUTRic2VnQzZna3UzMGFPcHpmTjM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 3:31 PM</span></div>
 <div class="news-title">The Kings Schedule Is Interesting</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOZXdqcGZsOGZKRG9TbkpQWTVwaU1kcEFwRXFXMHR2MlpPZG5xcVhlal90T1lQbzhKQ1REVzVYRDY4UEE0ckVPRXNKT2RHdnhsNHlwQjFwNmdlNzAyM1BsTC1YQmF3TXV2aFd1Y1FTb1N1SU9HalNVcGRreUF4TXhjUkZ2N3RGOXdUR05nZm51Qk13WW9RMmFkcHpWMVlzQ1ZxM1RkQndLa2dKNC15RGkzRzlJcDRrdTE4U1lKNmQ4Z2FGSm1tNWxMWjA3cWNQZHM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Windsor Star</span><span class="news-date">Mar 3 &middot; 2:31 PM</span></div>
 <div class="news-title">Former Spitfires player and coach D.J. Smith ready for another chance to be an NHL head coach with Kings</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOYVhqRE5nYWRMTm51by15YzIydXhtUHJnSmJ5T3dWYzNvQV9rdTRVaHpsOG9FQ3BpaUxjcG9tRHliWEdXZ2ZrUHdCVFVvdTllQ1NMdDk2cVlmUUtSWktWSVRkWndmQW5Eamd3a0o4azdSc21GQVlaSHNncGlKa2hON0J0c18wRFI5dkc4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Rumors - ProHockeyRumors.com</span><span class="news-date">Mar 3 &middot; 12:17 PM</span></div>
-<div class="news-title">Kings Reassign Erik Portillo, Angus Booth</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNdng4SzFBcnpLVG9UQXRMS0doWXY5VWxxYXItV1J5cFItQ2xmc3dKNVhIa0RlVW1IVGEzcE5aaUVDb09RcTI2LS04cHcxMXR2UVAyQzZpcnBJV2VIT3NPRWVQUk44TVdjYnlVdHgtOVA2aTNPeElIYjE1YXIyU0NvN2FSbjRrTnFBbmRDb2Nn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 9:42 AM</span></div>
-<div class="news-title">Smith's 1st game as Kings coach spoiled by Toews, Avalanche</div></a></div></div>
+<div class="news-title">Kings Reassign Erik Portillo, Angus Booth</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/losangeleskings/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/losangeleskings</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1309,7 +1314,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:53 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:22 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1344,7 +1349,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

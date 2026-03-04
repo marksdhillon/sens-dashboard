@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Philadelphia Flyers — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','PHI.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#f47d30;--accent-soft:rgba(244,125,48,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Philadelphia Flyers</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:53 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">-11</span></span>
     <span class="stat-pill" title="Power play — 27th in NHL"><span class="sl">PP · 27th</span> <span class="sv">11.0%</span></span>
     <span class="stat-pill" title="Penalty kill — 18th in NHL"><span class="sl">PK · 18th</span> <span class="sv">85.3%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,24.0 2.9,23.7 4.4,23.0 5.9,23.0 7.3,22.3 8.8,21.6 10.3,21.6 11.7,20.9 13.2,20.2 14.7,19.5 16.1,19.5 17.6,19.5 19.1,18.9 20.5,18.2 22.0,17.8 23.5,17.5 24.9,16.8 26.4,16.8 27.9,16.1 29.3,15.4 30.8,15.4 32.3,14.7 33.7,14.0 35.2,13.4 36.7,13.4 38.1,12.7 39.6,12.7 41.1,12.0 42.5,11.6 44.0,11.3 45.5,11.0 46.9,10.3 48.4,10.3 49.9,9.9 51.3,9.2 52.8,8.6 54.3,8.6 55.7,7.9 57.2,7.9 58.7,7.2 60.1,6.5 61.6,6.1 63.1,6.1 64.5,6.1 66.0,6.1 67.5,6.1 68.9,6.1 70.4,5.5 71.9,5.1 73.3,4.4 74.8,4.4 76.3,4.4 77.7,4.4 79.2,4.1 80.7,3.4 82.1,3.1 83.6,3.1 85.1,2.4 86.5,1.7 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1250,7 +1255,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 7:42 PM</span></div>
 <div class="news-title">NHL Trade Rumors: Flyers Should Be All-In On Simon Nemec</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQdEVBR3d2Z1AyaWhTUGZmTnM0NGEwcE5Sb0JabjVfY21ubWp5b0U2NXdWWlBCazRKbXJoMG1QOWh3X3d4ekp4ZFQ0WHBnSnJCTGRTN1VkZ3pHa3ZRR3kzUVh0RGVxbTFhcko5OWg1M0JGQ3JXYjgxQklOSDI3RmNkekpJZE5VYmdlRU53UWV6M1BnSnk5amdBUUlwdzk0R2NOTFpJY0JSNzh4X05mX0pTcnBNT3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Broad Street Hockey</span><span class="news-date">Mar 4 &middot; 7:13 PM</span></div>
-<div class="news-title">How the Tyler Myers trade could shape the Flyers’ Rasmus Ristolainen return</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNRFFVbHBZR0M1QnFQVVJ5N2pSY0lXVUo4bjl1ZW5EZk5BclRaME1rRG9uZlNCT3RkUWhtbktzT0FCT1NuUWtjYktuOTBFbHR3M2lTM0NETmhHWFpYU20yTFpPb29haWhnUUkxSi1IamFLWHFRX0xDa1Ntb3pTbjRWU0xXcm9wRklJeUd2czdRWTJOTmlhNE44Uk1VZkhMVk1u?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">How the Tyler Myers trade could shape the Flyers’ Rasmus Ristolainen return</div></a><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE1fWWx3cWJ3VmdPWjZYeHlMR0JwUDJjXzJfX29jWTZOVFVaRE1HTHp1d2V1ZXJyVDNPeVVOQ3lmel9PMGZwSkdhN2F4NVV4V3JaU2hZLWl5ZzVqdlZsRS1IQUZKWFl0cktwa3FuRkt6cnI?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:28 PM</span></div>
+<div class="news-title">John Tavares | Pre Game at New Jersey Devils | March 4, 2026</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNRFFVbHBZR0M1QnFQVVJ5N2pSY0lXVUo4bjl1ZW5EZk5BclRaME1rRG9uZlNCT3RkUWhtbktzT0FCT1NuUWtjYktuOTBFbHR3M2lTM0NETmhHWFpYU20yTFpPb29haWhnUUkxSi1IamFLWHFRX0xDa1Ntb3pTbjRWU0xXcm9wRklJeUd2czdRWTJOTmlhNE44Uk1VZkhMVk1u?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Broad Street Hockey</span><span class="news-date">Mar 4 &middot; 5:55 PM</span></div>
 <div class="news-title">Could this Flyers forward be included in a Rasmus Ristolainen trade?</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNU016bFlzemJKVFdkd2VReHdkbVBFNVVWejQyaWw3NDFwTTZ6RFk0WjJZak9HRHljRG5sVWZ1dklkck1lUkFqSUFpUjhRT0wwbENkQWhXc0c3eDFxX2JTcU1DR21aTGYyNFB1NUhmVHdyQy1LMzhxQ1A0VlJIdEh4ZUt1Qm1UVGNBRXBVRzdvYk12ZnhDYjRoU2EtbjVQRW5Fd3Y0UFN0SmRib0N2Skx1XzFnY1YtSkxQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Philly Hockey Now</span><span class="news-date">Mar 4 &middot; 4:32 PM</span></div>
@@ -1270,7 +1277,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 4 &middot; 2:15 PM</span></div>
 <div class="news-title">Flyers Tried & Failed to Make Cutter Gauthier an Enemy</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNRE13Wl9ITFZNWFdfcThXRXVncHZHRXgxbi1aMVhTVFJZUnNwNTZYSGIzTnZqMWpsN0JGckZGV21XNmJ1dFg3eEFxWnhJVmVaUEdZWHkyU3E0TzhTRUtOV3pSSzNnNlFLdVphcFZPMEhpM0hlYnBfQTg5Vk5vU1RZSmVCT1pxX1EzamM3QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Broad Street Buzz</span><span class="news-date">Mar 4 &middot; 1:30 PM</span></div>
-<div class="news-title">The Flyers would be just fine without Rasmus Ristolainen</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPeWNUWHppTzh0aElFVG80SkV3cXVkR3R1enhrYkctR3hieGVRekVTRkFyREUzVFM5Z05ZTHJ0UDI5dTlUbGFoVHlmOWllanhIN3lqNy16QWxmNm9TYnRWTW1NckMyYUs3ZVNKSkhDemxIY0p4YUJXYVRjWlZHTjVfUUc3dWJhQTVMM3hySjZkdDJUZ3lEUHRnVDZicnFpeVAzLXU4VHZhbXNOb3dXbGfSAbMBQVVfeXFMT3dHdW90ZklzVDEzaGxXMnZnV1VkRVBmSDFIcm5xeGU0dXpuUW9TNDhKcmtrT0R6SXAtRHhwOXNjYzg3M09Mdk90NDl4cXVYdzREdzI0RmR6T3NRZXR4UDRvV0FpRlhpX0N4eTNFNklnbmhVakFRelFZYk9nUmpKWTRXa3JzSGVBOURZQXA4Wjhfalg1NVZvODNCOE1jbDd1bHlrX3MtcmJVNnE2ajBZSzN1NUU?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">The Flyers would be just fine without Rasmus Ristolainen</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQcHp2RnBCNmc2eEhXbDlrNzhBS2ktWFV5NW1hUW4wRF9kVDIzVE5mZVNia1BKbEFaSmV2WnR2UlhIMlNGR045RWpDWDZIRjVPYWYwWVEzQ2dYUnFyMUtMNUp5NnRldldqbXRLSUMwcjNiUVFvQkVFRUk5OE9WR2tCYnF0dDBUckltXzE5M0JoaUhsaVhMZnhqVXowMHdCQmVldUlUVm9ZbGwzaVBGVjg0cXZrYVdXS28?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 1:00 PM</span></div>
+<div class="news-title">Flyers Can Solve Immediate and Long-Term Needs With Panthers Center</div></a><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPeWNUWHppTzh0aElFVG80SkV3cXVkR3R1enhrYkctR3hieGVRekVTRkFyREUzVFM5Z05ZTHJ0UDI5dTlUbGFoVHlmOWllanhIN3lqNy16QWxmNm9TYnRWTW1NckMyYUs3ZVNKSkhDemxIY0p4YUJXYVRjWlZHTjVfUUc3dWJhQTVMM3hySjZkdDJUZ3lEUHRnVDZicnFpeVAzLXU4VHZhbXNOb3dXbGfSAbMBQVVfeXFMT3dHdW90ZklzVDEzaGxXMnZnV1VkRVBmSDFIcm5xeGU0dXpuUW9TNDhKcmtrT0R6SXAtRHhwOXNjYzg3M09Mdk90NDl4cXVYdzREdzI0RmR6T3NRZXR4UDRvV0FpRlhpX0N4eTNFNklnbmhVakFRelFZYk9nUmpKWTRXa3JzSGVBOURZQXA4Wjhfalg1NVZvODNCOE1jbDd1bHlrX3MtcmJVNnE2ajBZSzN1NUU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 4 &middot; 12:30 PM</span></div>
 <div class="news-title">NHL Rumors: Philadelphia Flyers, and the top College and European Free Agents</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOS2dyTHUwWDFFc0NKWjJPczIxa0tZZHUwa2FYWHZLVnJ5TzNXbUIwT25XSEN5blF6Wm9ZNGw4SWEwSUlEZV9WdnRMbWI2dklqOVdQdUZCTGYtN2pnZC1TV293cjRybmNsLVM3U2twQ1UxaG85SHhneFRqRG5GMkdfcW1rMHJqQzY0VXFxdEt2eFpBQ2ZSbzBlV3FJTGw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 12:00 PM</span></div>
@@ -1280,9 +1289,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NBC10 Philadelphia</span><span class="news-date">Mar 4 &middot; 3:06 AM</span></div>
 <div class="news-title">Similar to two years ago, Briere faces tough call as Flyers meet trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQOVhleE1EbnBDZGZSNFdVSFhaejl4ME00dzFZOVBfdGxfYUxPT2EzWTFabFVDUEYySHNNeV81aThkczJpTUpsYlozNXJJQkljVHo5eGtlRVBBOGJnQUtTSFRmNUU4LXlZT3JtWng0YzJMak5KVkdDczhvbng0Und2a2RmT0pUS2dEWmhkdjF1RTQ1anlHaFI2bTJpX25QN1Vi?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:35 AM</span></div>
-<div class="news-title">Flyers, Building Hope for Kids unveil newly renovated Philadelphia home</div></a><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxQWGpOTG5zN1E2R2dFenFrODVneUZFWUVuSng2MWJLVjk1XzVXS3R4YV9MQUJKU2lrb3hXVlhxbkZsUWhrTVJ2a29IYXdlU3BvSXNRSjFfVkFiTWZiZ0laTG9vZHJqd1VaM1FnamdONzRmOEszVDZCa2ktSFdacGZtOXdWUjJhbXhrZUZiWjBpWWlXV1M1SDVKbXZSRUZ0dnJaN1ZJVkx0VzNoZEt3RzRmQ1JSbXNFaTVsRjllNktuVEVKUjFuVzhjcFI3N1U1VFlYQkV4bmpqYkVjV1hpRVR2ajZPSQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:00 AM</span></div>
-<div class="news-title">Flyers Charities, Wives, and Michael's Way Mark Milestone Home Renovation as Part of 2026 Building Hope For Kids</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0xBZGhKRklKX0l0c252N0U3Rzd0OWdPWTRLT203UFUxd3JrekZzdkZvZVpDT0RxRXNXckluNFZUZTBWZ1daUW9IQ0VGUkZBdVJxc2tTblRTQnV0X2Q1U2NlTWszLXl2VU1NN1NMRnlZNHI3MFV2aFp3U1JUTFAzdjQzS3pIT3EwMzBsel92N1ExcnFXUVdielpqbEI5LVZkbXVpRHdEMWQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Flyers, Building Hope for Kids unveil newly renovated Philadelphia home</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0xBZGhKRklKX0l0c252N0U3Rzd0OWdPWTRLT203UFUxd3JrekZzdkZvZVpDT0RxRXNXckluNFZUZTBWZ1daUW9IQ0VGUkZBdVJxc2tTblRTQnV0X2Q1U2NlTWszLXl2VU1NN1NMRnlZNHI3MFV2aFp3U1JUTFAzdjQzS3pIT3EwMzBsel92N1ExcnFXUVdielpqbEI5LVZkbXVpRHdEMWQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Broad Street Buzz</span><span class="news-date">Mar 3 &middot; 10:55 PM</span></div>
 <div class="news-title">Flyers price tag on Ristolainen reportedly scared off Atlantic Division rival</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcG1KZ3hrWlV5UjdlQ1BIT1c2cl9BUTdTR1l4cnUyaWlzVngyLURWYTRudmZPc1I5TE52bDlxcXFaQmdvUTVXMWIxRUkyOV9KT09hcUlTMFVyXzB6OXVtU2I2aWFEUmFRT1BXSGpfZEhDYklHb0kwSGRodEtHTGt1SGgxU0JtTVM1?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:10 PM</span></div>
@@ -1290,9 +1297,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 9:15 PM</span></div>
 <div class="news-title">NHL Rumors: Seattle Kraken, and the Philadelphia Flyers</div></a><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNcGVUZjlhNTlrVDhKQ0RxeENRWFBleGdsbUZsMU0ycnRKS0VEaFBSXzdDaktvOVRqQTFZVVhpRGlPeGZDR1dVV1pOY3MwYVBVcmdubmRDYTgyU2EwOW1IdEpxU2ktZ1dwaE0tckprM0dVZnBfYURFSnAwa3hHSDZSVmpPRTlxZWpKY1NvR0lBc1p0X0FjQWlSekg2ZDE0dE92aHl6ODNFRDI3ZFdNMURiWE1aNWltcFZTdHpZOUMxVlBsY3c1NXpxbg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Philly Hockey Now</span><span class="news-date">Mar 3 &middot; 8:36 PM</span></div>
-<div class="news-title">Flyers Practice: Ristolainen’s Maintenance; Updates on Konecny and Seeler</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeVZueFlnTFhVWHhPT2JYM2NzeDU0Q19VNXJxdk0xczBxcTFwQ2RXV0w1NldjdWxMSzg3dDgwSFcyWEVSNjdrZ1ljQkhoazZ1RE9WR2tqQ0tNNUV0TVdyS0FNVGM4aHBVWnh6cEhzaDRFdzVTNU9SaThwdWJYUUpkWjF3dlVFaFpON3RXQkJKMXRheWlqWVBfczFEMy1Cem5J?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Broad Street Hockey</span><span class="news-date">Mar 3 &middot; 8:21 PM</span></div>
-<div class="news-title">5 prospects Flyers can target in a Rasmus Ristolainen trade</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPbGNOTmszdWlLWC00MkduWVhxSmtrNktYeHB4d1F4Q1RLbzh3cFVXbTc1MDhET1NjTndDcUdjX00tRlUtU1h6UVlyM3M1dE02cXZaOV9SazU1QUhsQVVRaEx6b0h0ckZnbEhFRWpLV1FZTDBiWlBTcm1xZElVSng5THZ4a0wtNFBIVWNncHdpaUlJNzdrbTZWb3p4bU9STVVGOU1SY2dYZTdxdDZQd2trTzB1SllzSml4amNUejVWM00xeG9H?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Flyers Practice: Ristolainen’s Maintenance; Updates on Konecny and Seeler</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPbGNOTmszdWlLWC00MkduWVhxSmtrNktYeHB4d1F4Q1RLbzh3cFVXbTc1MDhET1NjTndDcUdjX00tRlUtU1h6UVlyM3M1dE02cXZaOV9SazU1QUhsQVVRaEx6b0h0ckZnbEhFRWpLV1FZTDBiWlBTcm1xZElVSng5THZ4a0wtNFBIVWNncHdpaUlJNzdrbTZWb3p4bU9STVVGOU1SY2dYZTdxdDZQd2trTzB1SllzSml4amNUejVWM00xeG9H?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 8:00 PM</span></div>
 <div class="news-title">NHL Rumours: Philadelphia Flyers Forward Generating Interest from Bruins</div></a></div></div>
   <div class="panel" id="p-forums">
@@ -1314,7 +1319,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:53 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1349,7 +1354,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

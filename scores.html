@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Scoreboard</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12);--panel-bg:#1e1c20;--overlay:rgba(0,0,0,0.6)}
@@ -5762,7 +5762,7 @@ a{color:var(--text);text-decoration:none}
 </div></div>
 </div>
 
-<div class="footer">Data from NHL API<span class="footer-ts">Updated March 4, 2026 at 4:54 PM ET</span></div>
+<div class="footer">Data from NHL API<span class="footer-ts">Updated March 4, 2026 at 5:23 PM ET</span></div>
 
 <!-- Side panel -->
 <div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
@@ -5781,7 +5781,7 @@ a{color:var(--text);text-decoration:none}
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

@@ -881,6 +881,20 @@ def get_results(schedule_data):
         results.append({"oppAbbrev": opp_abbrev, "result": result})
     return results
 
+def make_sparkline(results, w=88, h=26):
+    pts = [0]
+    for r in results:
+        pts.append(pts[-1] + (2 if r['result']=='W' else 1 if r['result']=='OTL' else 0))
+    if len(pts) < 3:
+        return ''
+    mx = max(pts) or 1
+    n = len(pts)
+    coords = ' '.join(f"{round(i/(n-1)*w,1)},{round((1-p/mx)*(h-3)+1,1)}" for i,p in enumerate(pts))
+    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" fill="none" '
+            f'xmlns="http://www.w3.org/2000/svg">'
+            f'<polyline points="{coords}" stroke="var(--accent)" stroke-width="1.5" '
+            f'stroke-linejoin="round" stroke-linecap="round"/></svg>')
+
 def compute_vs_above500(results, above500):
     w, l, otl = 0, 0, 0
     for r in results:
@@ -1587,7 +1601,8 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
 </div>
 <div class="sched-list">{"".join(cards)}</div>'''
 
-def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams):
+def generate_html(sens, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams, sparkline_svg=''):
+    team_page_url = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"
     team_info = TEAM_INFO.get(TEAM, TEAM_INFO["OTT"])
     team_name = team_info["name"]
     accent = team_info["accent"]
@@ -1686,7 +1701,7 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{team_name} — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));{f"var _fav=localStorage.getItem('lastTeamPage');localStorage.setItem('lastTeamPage','index.html');if(_fav&&_fav!=='index.html')window.location.replace(_fav);" if TEAM == DEFAULT_TEAM else f"localStorage.setItem('lastTeamPage','{team_page_url}');"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:{accent};--accent-soft:{accent_soft_dark};--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}}
@@ -1777,15 +1792,18 @@ a.pname{{font-size:11px}}
 .stat-pill:hover{{background:var(--bg-elevated)}}
 .stat-pill .sl{{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}}
 .stat-pill .sv{{font-weight:600;color:var(--text)}}
+.spark-pill .sv{{font-weight:normal;padding:0;display:flex;align-items:center}}
+.spark-svg{{display:block}}
 .pill-accent{{background:var(--accent-soft)}}.pill-accent .sv{{color:var(--accent);font-weight:700}}
 
 /* Tabs */
 .container{{max-width:880px;margin:0 auto;padding:0 28px 60px}}
 input[name="tab"]{{display:none}}
-.tab-bar{{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}}
+.tab-bar{{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}}.tab-bar::-webkit-scrollbar{{display:none}}
 .tab-bar label{{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}}
 .tab-bar label:hover{{color:var(--text-secondary)}}
-.panel{{display:none}}
+.panel{{display:none;animation:tabFade 0.18s ease}}
+@keyframes tabFade{{from{{opacity:0;transform:translateY(4px)}}to{{opacity:1;transform:translateY(0)}}}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -1812,6 +1830,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .nhl-tbl thead th{{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}}
 .nhl-tbl thead th.r{{text-align:right}}
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
+.nhl-tbl tbody tr:hover td{{background:var(--bg-hover)}}
 .nhl-tbl thead th.name-col{{min-width:160px}}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{{border-collapse:separate;border-spacing:0}}
@@ -1842,8 +1861,8 @@ a.pname:hover{{color:var(--text-strong)}}
 .adv-hdr{{background:var(--bg) !important}}
 .bio-col{{white-space:nowrap;font-size:11px;color:var(--text-muted)}}
 .sens-row td{{background:var(--accent-soft)}}.sens-row td:first-child{{font-weight:700;color:var(--accent)}}
-.cutoff td{{border-bottom:2px dashed var(--text-muted)}}
-.rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
+.cutoff td{{border-bottom:2px solid rgba(0,166,126,0.5)}}[data-theme="dark"] .cutoff td{{border-bottom:2px solid rgba(0,201,167,0.4)}}
+.rank-in{{font-weight:600;color:var(--green)}}.rank-out{{color:var(--text-muted)}}
 .tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none;transition:color 0.15s}}.tcol-link:hover{{color:var(--text-strong)}}.bpts{{font-weight:700;color:var(--text)}}
 .div-label{{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}}
 .div-label:first-child{{margin-top:0}}
@@ -2069,6 +2088,7 @@ body{{animation:fadeIn 0.15s ease}}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">{goal_diff_str}</span></span>
     <span class="stat-pill" title="Power play — {ordinal(pp_rank)} in NHL"><span class="sl">PP · {ordinal(pp_rank)}</span> <span class="sv">{pp_pct}%</span></span>
     <span class="stat-pill" title="Penalty kill — {ordinal(pk_rank)} in NHL"><span class="sl">PK · {ordinal(pk_rank)}</span> <span class="sv">{pk_pct}%</span></span>
+    {f'<span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg">{sparkline_svg}</span></span>' if sparkline_svg else ''}
   </div>
 </div>
 
@@ -2151,7 +2171,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){{
   }}
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
@@ -2641,7 +2661,7 @@ def build_scoreboard_html(all_days_scores, today_date_str, all_game_details, swi
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Scoreboard</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12);--panel-bg:#1e1c20;--overlay:rgba(0,0,0,0.6)}}
@@ -2881,7 +2901,7 @@ a{{color:var(--text);text-decoration:none}}
   }}
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
@@ -3182,7 +3202,7 @@ def build_leaders_page(skater_leaders, goalie_leaders, full_skaters, full_goalie
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Stats</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
@@ -3331,7 +3351,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 (function(){{
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
     b.addEventListener('click',function(){{
@@ -3460,7 +3480,7 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NHL Standings</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#00c9a7;--green:#00c9a7;--red:#f87171;--text-strong:rgba(255,255,255,0.95);--footer-link-deco:rgba(255,255,255,0.12)}}
@@ -3500,14 +3520,15 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 .nhl-tbl thead th{{background:transparent;color:var(--text-muted);padding:8px 6px;font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;transition:color 0.15s}}.nhl-tbl thead th:hover{{color:var(--text-secondary)}}.nhl-tbl thead th::after{{content:"";display:inline-block;margin-left:3px;opacity:0.3;font-size:8px;vertical-align:middle}}.nhl-tbl thead th.asc::after{{content:"\25B2";opacity:0.8}}.nhl-tbl thead th.desc::after{{content:"\25BC";opacity:0.8}}
 .nhl-tbl thead th.r{{text-align:right}}
 .nhl-tbl thead th.rank{{width:30px;text-align:center}}
+.nhl-tbl tbody tr:hover td{{background:var(--bg-hover)}}
 .nhl-tbl thead th.name-col{{min-width:140px}}
 .nhl-tbl td{{padding:7px 6px;border:none;border-bottom:1px solid var(--border-subtle);white-space:nowrap;color:var(--text-secondary)}}
 .nhl-tbl td.r{{text-align:right}}
 .stnd-tbl td{{padding:7px 6px;font-size:11px}}.stnd-tbl thead th{{padding:8px 6px;font-size:9px}}
-.rank-in{{font-weight:600;color:var(--text)}}.rank-out{{color:var(--text-muted)}}
+.rank-in{{font-weight:600;color:var(--green)}}.rank-out{{color:var(--text-muted)}}
 .tcol{{font-weight:600;white-space:nowrap}}.tcol-link{{color:var(--text);text-decoration:none;transition:color 0.15s}}.tcol-link:hover{{color:var(--text-strong)}}
 .bpts{{font-weight:700;color:var(--text)}}
-.cutoff td{{border-bottom:2px dashed var(--text-muted)}}
+.cutoff td{{border-bottom:2px solid rgba(0,166,126,0.5)}}[data-theme="dark"] .cutoff td{{border-bottom:2px solid rgba(0,201,167,0.4)}}
 
 .footer{{text-align:center;padding:36px 28px;font-size:11px;color:var(--text-muted);max-width:1200px;margin:0 auto}}
 .footer a{{color:var(--text-muted);text-decoration:underline;text-decoration-color:var(--footer-link-deco);text-underline-offset:2px}}.footer a:hover{{color:var(--text-secondary)}}
@@ -3571,7 +3592,7 @@ h3{{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;colo
 (function(){{
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   btns.forEach(function(b){{
     if(b.dataset.theme===saved) b.classList.add('active');
     b.addEventListener('click',function(){{
@@ -3708,6 +3729,7 @@ def main():
         schedule_data = all_schedules.get(TEAM, {"games": []})
         remaining = get_remaining_schedule(schedule_data, above500)
         results = get_results(schedule_data)
+        sparkline_svg = make_sparkline(results)
         vs500 = compute_vs_above500(results, above500)
         print(f"  {len(remaining)} remaining, vs .500: {vs500[0]}-{vs500[1]}-{vs500[2]}")
 
@@ -3764,7 +3786,7 @@ def main():
         txns = fetch_transactions()
         transactions_html = build_transactions_html(txns)
         print(f"  {len(txns)} transactions found")
-        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams)
+        html = generate_html(team_entry, roster_html, projections_html, schedule_html, news_html, injuries_html, transactions_html, vs500, mp_odds, deltas, mp_stats, all_teams, sparkline_svg=sparkline_svg)
 
         # Write file
         filename = "index.html" if TEAM == DEFAULT_TEAM else f"{TEAM}.html"

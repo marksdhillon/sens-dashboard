@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Ottawa Senators — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));var _fav=localStorage.getItem('lastTeamPage');localStorage.setItem('lastTeamPage','index.html');if(_fav&&_fav!=='index.html')window.location.replace(_fav);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--accent-soft:rgba(232,56,79,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Ottawa Senators</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+8</span></span>
     <span class="stat-pill" title="Power play — 7th in NHL"><span class="sl">PP · 7th</span> <span class="sv">16.6%</span></span>
     <span class="stat-pill" title="Penalty kill — 32nd in NHL"><span class="sl">PK · 32nd</span> <span class="sv">79.6%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,23.3 2.9,23.3 4.4,23.3 5.9,23.3 7.3,22.6 8.8,22.6 10.3,22.3 11.7,21.6 13.2,20.9 14.7,20.2 16.1,20.2 17.6,19.5 19.1,19.2 20.5,18.9 22.0,18.2 23.5,17.5 24.9,17.1 26.4,16.4 27.9,16.4 29.3,15.8 30.8,15.1 32.3,15.1 33.7,14.4 35.2,14.4 36.7,14.4 38.1,13.7 39.6,13.7 41.1,13.7 42.5,13.7 44.0,13.0 45.5,13.0 46.9,12.3 48.4,11.6 49.9,11.0 51.3,10.3 52.8,9.9 54.3,9.9 55.7,9.9 57.2,9.2 58.7,8.6 60.1,8.6 61.6,8.6 63.1,8.6 64.5,8.6 66.0,7.9 67.5,7.2 68.9,6.8 70.4,6.5 71.9,5.8 73.3,5.8 74.8,5.8 76.3,5.1 77.7,4.4 79.2,3.7 80.7,3.1 82.1,3.1 83.6,2.4 85.1,2.0 86.5,1.3 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1227,7 +1232,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 4:02 PM</span></div>
 <div class="news-title">Evaluating five potential defensive trade targets for the Senators</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQdTk0cjAyUW0xMVZFSGU4ZV9tczF1N2Judm5QWURTLWYtckg3d3FPaDBkVW1zOWtZcmZQNlZuWFpLaXhxU1RNb3Zad1ZhcmR5ZmJpWm9zVmJ6OF9YMHQ1TU84anNKcFdMVHQ1SndrSi1xd0xMWGVydGZsZjZMbGlZV2dJZUVpVVBWYUtkMHJlNjNTSy1NSGo2ZUYxRmc0UmhRT3ZEWDU5Z3dYclZmQ3pF?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 3:33 PM</span></div>
-<div class="news-title">Why Senators need to add top-four defenceman at trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPS0QyNzJKbWVqVmYwVWxfS1FLdWlJSUtDUFBBbzRlSEdGZXVMQ2hrTUZFc2xjSHVtVHlRam8wMUVWQWJUblN2dEQyS3hfdVZOc2lLWGtCUFdXbGI2dVg4QWZadjBBZnpJZzBLZDhmNnJ1R1g2akUzYjdUY3pCbm9TWFNGYWh6RFk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Why Senators need to add top-four defenceman at trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPaVdJNk9EcU13cWtLU3ZxcnRPRE9QZUtTOTVGUV9CdjdQRTQxdUswS19odTJYNkpPQ2tDTnd4TGR3bFppS1Q3bWF2b2ZBNnp6RGdqOTJtaUhsVlJFMEwzRnlYdzlmaERWMHFQQ0lmMVdUR1NaVUJYSTJfUGJ1SnpmbnBpLWdLNDgza0dfNUtRNGd3OExlR3Rz?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 6:47 AM</span></div>
+<div class="news-title">Senators let lead slip, fall to Oilers in OT</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPS0QyNzJKbWVqVmYwVWxfS1FLdWlJSUtDUFBBbzRlSEdGZXVMQ2hrTUZFc2xjSHVtVHlRam8wMUVWQWJUblN2dEQyS3hfdVZOc2lLWGtCUFdXbGI2dVg4QWZadjBBZnpJZzBLZDhmNnJ1R1g2akUzYjdUY3pCbm9TWFNGYWh6RFk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:46 AM</span></div>
 <div class="news-title">Draisaitl gets 5 points, Oilers rally late for OT win against Senators</div></a><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxQOWV2YTRUWXllMjFSdzRrM0YzVXBnTkZ0SVg3ZWU5NThuN0FZa1YxMXBhUmpCZm9vd25OU0tETGFpR3Izc3gzV09aM0tmX2VyTlk5NGtnSVp6MVJOMDhndkQ2c3pTclk0V3g2eVNfREdFYjl1NDVFMUhvWkZjZHRTR1lLQVpNeGpCOFFxY0hxVDVPUnNBYWVNQ1V5T3J5YzEzMExhTm5FS21CdW1KOFE1VTNTZGZHSGtYY0IwTnpDVXhEbnFuN3ptLWtEaFhIZktKOXRIbHRyMXJlbWNrN0FhUzFNVUltRTI4Z0poY2xZTGE5a2U0a3lSMGJJQUpZMDQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 4 &middot; 6:32 AM</span></div>
@@ -1235,13 +1242,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:59 AM</span></div>
 <div class="news-title">GAME RECAP: Oilers 5, Senators 4 (OT)</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPY2dJVEJVbnNCUTFzYmVuaVRJY1VpRmZyUUZ4RWxWYm4tT3VmTzVFbGVfUmpuM0JjZnJBNnNXcklMT2hLN3NHVkZwZ1FRYTJYcGVwNHp6UXh0Y3JTREtBRGdnYklTSzF6ZnFQaUtuYS1iYzZjRi15Tno1akVMTXpXeEQtVFl1Zk5uU1dPMTVuM1RxaEZ0RlVrVmlJNUJpX0IzZzd1Q2ppRFpRd290U2QwaHNzdWtxQzNzNEhtbllxdGw5UUJpLWFral9R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Edmonton Journal</span><span class="news-date">Mar 4 &middot; 5:41 AM</span></div>
-<div class="news-title">Ottawa Senators left stunned after patented Edmonton Oilers comeback</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQUlFHSUtWT2hIaWdIZV9ocW1lRFQ0SWhDMEtFU01tbTNRZ2JUS1pHemJjWHdPSS1CM2V2ZGZaQmtQYkNmR3ZiZFN1VVFnQThBQnlMR0loZGt6VkN2a3dYVzRTR3RVeGlrX2ZtWlFNMmo1VW50djlpb3VjVnNMQUYtWDQtYkVHdzFfLWZpaE5XZm52Q2gxWml5b0RR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:33 AM</span></div>
-<div class="news-title">Lazar, Walman both pick up injuries in Oilers’ win over Senators</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPZUFyMnFwaW5NYWlTdThndmw2c0ZEZmZJVXZrSW02R2ZUN1V6VEpWTXJ1Q0o5Tjh6TnI0YmtjMWtZVDRXS3AySlBSX0N5S0VmSG16TWgwS3c3Vk9jeGI3b0x6WkVSbnJUS0FwUFhWVUpPeExZR1dQTHpZVDNzUmt5aTV5YWxJRmNtYzN1YVpjdGxIT2Fjci1PdG5HOTN0eDlTNXR2dF84RWt3RjVuSjhDanBlbWRGUEg4WVdNNm9wekZqYnhjamxDdldn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Ottawa Citizen</span><span class="news-date">Mar 4 &middot; 5:11 AM</span></div>
-<div class="news-title">Ottawa Senators third period collapse turns out costly in 5-4 OT loss to Edmonton Oilers</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPRkVMYndxQVc5YnBXeWQ2M3IyWGdhVFVlQTFLdVJubkpxTTVLOExoNmRsVmRuU2hpMUN4a1JlUE1uLWVxdGhITmxqOWtPNnZFTm9jQU16emRiczdDX0xrbFJtVHpNQnZvSEZNZEtuQnIwRXlyTllVT0F3T1dpb0oxVkdEV09YMHZlZ056ZVdSOA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 5:03 AM</span></div>
-<div class="news-title">Draisaitl, Bouchard lead Oilers to OT win over Senators</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPS3FpQzg4VkN0SDBlTGVIak9WaFdNNUVCaUYyQkg3UDEwVlVHNXd5MWhGemdwb2s5alFhZDNJQWltZ1pUWGlBWWxkbDZtX01BdWFJeTNBZmFjNUdXWHJaRWxQemRsRWttLVBpdzFPVkJnUkhYWGN2RFE1TXZPQVNxcFR4VWY0ZFUtODNsVFpoNUpiY0F3TmpvZzM3eG9RU1NaU3hNb2prS3FJTXFkUnFUOEk3TjFJQTZRSl90bUtEdlk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Ottawa Senators left stunned after patented Edmonton Oilers comeback</div></a><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPS3FpQzg4VkN0SDBlTGVIak9WaFdNNUVCaUYyQkg3UDEwVlVHNXd5MWhGemdwb2s5alFhZDNJQWltZ1pUWGlBWWxkbDZtX01BdWFJeTNBZmFjNUdXWHJaRWxQemRsRWttLVBpdzFPVkJnUkhYWGN2RFE1TXZPQVNxcFR4VWY0ZFUtODNsVFpoNUpiY0F3TmpvZzM3eG9RU1NaU3hNb2prS3FJTXFkUnFUOEk3TjFJQTZRSl90bUtEdlk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 5:03 AM</span></div>
 <div class="news-title">Senators Blow 4-2 Third Period Lead, Fall 5-4 In Overtime In Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1LRjR0X3YwYVRYYjJOVU9DbmtOeFc0Zm5hRGlodmZpZjlzbEhiYkRfS3VwakZVVkUxVDI3VTNmaElfU1E5YXV4d1FuUFM5anFjSkhZU2duQmtlc1QzbUdlY2hqWXF0NjU0dkJmQ2NlS0xVOG8?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:55 AM</span></div>
@@ -1261,11 +1262,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Ottawa Citizen</span><span class="news-date">Mar 3 &middot; 6:11 PM</span></div>
 <div class="news-title">Silly season begins for Senators as baseless Brady Tkachuk trade rumours go viral</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPVjVCRU9pUTlNWkVYZ19LMTkxSWFEdHpqaDhTTlNXVnNEcnkxMVUzR1k2UUd4cHdRejUtdGhFNENMeHMyc1pBeUJVcE1OV0NLU2R1SmlVdEdxZTc4MEw2VUx6cGJNMktPZEktdm1OcGRjd2JscjhXQ21aMl9kQkVNc1hpYzM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo News Canada</span><span class="news-date">Mar 3 &middot; 6:08 PM</span></div>
-<div class="news-title">Silly season begins for Senators as baseless Brady Tkachuk trade rumours go viral</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPbS1USDQ5QnAyU3pSS0hDbnVOVWRBd0x5Y2pJQ1JpNUk1dTJ3a3JucjdvRERQb0VRSUwxRVVsRnNYMEI4SEs4WG9VSGd4dVhsMU9DQXRYRGloTjJyNWpMYWFqQ3NyRmN2MXdoR2d4LWpNRDV0NGhqRUl0Z3c5NUg1b0dXOW5xUVRYQUNPNGRWd29QUTdEVllQdA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">news.sportsinteraction.com</span><span class="news-date">Mar 3 &middot; 5:56 PM</span></div>
-<div class="news-title">Ottawa Senators vs. Edmonton Oilers Prediction, NHL Odds</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNLUJnSXF1UWUwdmNGc2EzSFlSWnBvMEV6Y0Z3Qkp3MUtMMklOaTdVMl9PMnZCRnBQaXRnY2FRN1FrVlROTXFQR3VaSWEySjFnY0JQMm5rZjR4Y2JwU2NCMXNVa3dqaWRNM0pyYndZY1VpR0ZXbUVVazRCU1dlcG9zTk1lV0YwSWV6Mjl2NHVEd1paUWFZN0lnSkNBczZTT3liZlByQjNKUlkxTnBhRFlBRm5B?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Silly season begins for Senators as baseless Brady Tkachuk trade rumours go viral</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNLUJnSXF1UWUwdmNGc2EzSFlSWnBvMEV6Y0Z3Qkp3MUtMMklOaTdVMl9PMnZCRnBQaXRnY2FRN1FrVlROTXFQR3VaSWEySjFnY0JQMm5rZjR4Y2JwU2NCMXNVa3dqaWRNM0pyYndZY1VpR0ZXbUVVazRCU1dlcG9zTk1lV0YwSWV6Mjl2NHVEd1paUWFZN0lnSkNBczZTT3liZlByQjNKUlkxTnBhRFlBRm5B?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 2:14 PM</span></div>
-<div class="news-title">NHL Game Preview: Edmonton Oilers vs Ottawa Senators with Line Combinations 03/03/2026</div></a></div></div>
+<div class="news-title">NHL Game Preview: Edmonton Oilers vs Ottawa Senators with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQQ0FJdnAzN2JCTDYybFdyaUJYZFpMUnk5R2dQb2xCckpNajFkS2tTTzN0aDd1Q3VpMGZteHlKdGNtcEdZcUZQcnBmNWtxbjNZbzVxTFpoc0pmTTJhTVBiSVFrQkIwbThiRjd1T1Z1b2praVVrbS02ZHN1bXpwNmdHX0x0Rml1elhvS2h3VG44TzdIWFRNY2hqd21zVGNCWW43M0RfajFfaXI0NWptaV82TGVDM21QRlpGZy1lM0NwbmhhZ20zSGc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 1:53 PM</span></div>
+<div class="news-title">All-Canadian Edition of NHL Predictions with Ottawa Senators at Edmonton Oilers</div></a><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9QMWJLaWxyVFVKdDY5R19peVQ1dHI2YnNPd0FZVUxfRWl2Mjg0eDdMLTRINTltRDJCNnRUUEI4OGNxZFdZaGN1b3N1NTF1eWtUVnNuUGZ6UWFMQUhEaHFPRzV4MkNkaTdod3loQXdNX0FYYjlER0E?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:05 AM</span></div>
+<div class="news-title">PREVIEW: Oilers vs. Senators</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQUTNnQ0hzeUtnME1ob0ZOS0NEOWQtVnRVTjVZNFhzbVBiQ2gzdWFkSzh5UjcwMmNHeVczMF9rX3dHSWUwaGNlTGNNbzEwOUwyZTVmckhxakxJNEtHXzJ6SS1zc25GOExQbW9DYVVUZV9seUhhdzJGREttcG5RYVBhdjFMUUpFUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:55 AM</span></div>
+<div class="news-title">Tim Stützle Media Availability</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/OttawaSenators/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/OttawaSenators</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1285,7 +1290,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1320,7 +1325,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

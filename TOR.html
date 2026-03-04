@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Toronto Maple Leafs — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','TOR.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#6b9fff;--accent-soft:rgba(107,159,255,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Toronto Maple Leafs</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">-16</span></span>
     <span class="stat-pill" title="Power play — 30th in NHL"><span class="sl">PP · 30th</span> <span class="sv">10.8%</span></span>
     <span class="stat-pill" title="Penalty kill — 2nd in NHL"><span class="sl">PK · 2nd</span> <span class="sv">90.6%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.4,23.3 2.9,23.3 4.3,23.3 5.8,22.6 7.2,21.8 8.7,21.5 10.1,21.5 11.5,21.5 13.0,20.8 14.4,20.0 15.9,20.0 17.3,19.3 18.8,18.6 20.2,17.9 21.6,17.9 23.1,17.9 24.5,17.9 26.0,17.5 27.4,17.5 28.9,16.8 30.3,16.5 31.7,16.5 33.2,15.7 34.6,15.7 36.1,15.0 37.5,14.3 39.0,13.6 40.4,13.2 41.8,12.5 43.3,12.1 44.7,12.1 46.2,11.4 47.6,11.4 49.0,11.4 50.5,11.4 51.9,10.7 53.4,10.0 54.8,9.6 56.3,8.9 57.7,8.2 59.1,7.8 60.6,7.1 62.0,6.4 63.5,5.7 64.9,5.0 66.4,5.0 67.8,4.6 69.2,3.9 70.7,3.9 72.1,3.5 73.6,3.5 75.0,3.5 76.5,3.5 77.9,3.5 79.3,2.8 80.8,2.1 82.2,1.4 83.7,1.4 85.1,1.4 86.6,1.4 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1141,24 +1146,6 @@ body{animation:fadeIn 0.15s ease}
 <table class="nhl-tbl inj-tbl sortable">
 <thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
 <tbody><tr>
-<td class="inj-name">Bobby McMann</td>
-<td class="inj-pos">C</td>
-<td><span class="inj-badge inj-out">Out</span></td>
-<td class="inj-return">Mar 7</td>
-<td class="inj-comment"></td>
-</tr><tr>
-<td class="inj-name">Scott Laughton</td>
-<td class="inj-pos">C</td>
-<td><span class="inj-badge inj-out">Out</span></td>
-<td class="inj-return">Mar 7</td>
-<td class="inj-comment">Mar 4: Laughton won&#x27;t play Wednesday in New Jersey for roster-management reasons, per Chris Johnston of The Athletic.</td>
-</tr><tr>
-<td class="inj-name">Oliver Ekman-Larsson</td>
-<td class="inj-pos">D</td>
-<td><span class="inj-badge inj-out">Out</span></td>
-<td class="inj-return">Mar 7</td>
-<td class="inj-comment">Mar 4: Ekman-Larsson will not be in the lineup versus New Jersey on Wednesday for roster management, Chris Johnston of The Athletic reports.</td>
-</tr><tr>
 <td class="inj-name">Chris Tanev</td>
 <td class="inj-pos">D</td>
 <td><span class="inj-badge inj-other">Injured Reserve</span></td>
@@ -1232,8 +1219,8 @@ body{animation:fadeIn 0.15s ease}
 </div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOR1JjcWlCbDNDaExRS2JCeXdhb1dxR2NuMlc4cWtURkRoV1NaWXNVbGt3cW44Nmg1dzg2MlJIakRFWlVBUjFHMzJHR3FPN3p5TDJxYjc0bkxnSFV0TDRPNy1Ja1JpU29LdTlBYUJ1VUhFNmFyMkJxSllXbHRjSjNKZU9LS21CalM5UWFwNk1vRHc0ZlJNeDFleWF3a1pCYnhqQ0FXZA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 4 &middot; 9:51 PM</span></div>
-<div class="news-title">Trade winds gusting as Maple Leafs scratch three players against Devils</div></a><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNLVlEdzJ4d194Z29XSXJtZGczUVJZTDZpdmFSRFpaX2xkSldhUlZ4bzA0TlpONFBMVDdoTDBXaWptV2dOc0xNVkh2a2hvNTZad05xc20xR0lKMEtUZFFnTFpTT0Vmdy1aX1lOMkRvaU43N2tqM1NOcnk2ZlVyNVhkVDhZVWd2amYzWmpJUks0QWkzc01wQllNSzdobDMxc0ZPYm82WWxMMnlJazUzdVU1VWU3MFowcE9oSkRWb0tlaW01MEVRckFyUzczMXRlSkxpQUE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">CTV News</span><span class="news-date">Mar 4 &middot; 9:36 PM</span></div>
+<div class="news-title">Trade winds gusting as Maple Leafs scratch three players against Devils</div></a><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOMElrTUNDODFuNktBV1V0bTAtbTBaTXNvX0hmWUIwNmdCSW5pV0E2Zl9yMUZXUTdPQmdzNmZCcFdza1NHLTVFSGN2U3pZZlBVOElLcl9NYTNFdjNGM1JfQkZ6N2JrNWQxUlJkQjQ4eXE0NW85UzkxUko1TGZqMXhvbEhLUXBVcF84TVE4RjdlR0FxZ3U2LVlxLWc1Z2ZpZkpjS1lvYmpkdXlXdGxLZkpfbFhZSXhLOXpkbmo5NjdIdGNnRTZaaXBnX1pPQ3dzUW8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">CP24</span><span class="news-date">Mar 4 &middot; 9:36 PM</span></div>
 <div class="news-title">Panthers and Maple Leafs are trade deadline sellers with the playoffs likely out of reach</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNNzlsYzJIN3RNOTg4VjRKaU5EYkQ1bURjVUV3VmsxU2ZpRlMxbEM0dDJrNDg3SzQzTzY4UDdrWjJoa194LXpONjFCMHlUS3dKMTNqRTVhdEVMbE5SRklPSXBBNmFhVzJwaFFZelpRczEteVJfN2x0ZnFfMjJnYlc1SWxJM3h2QlE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 9:20 PM</span></div>
 <div class="news-title">Roy the latest Leaf to surge up Trade Bait board</div></a><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNU0Vzdi1nakhsN3NDanIxZWVhZ3ZKWHV2SXJoQWFmbzRLM2FvYzhpYWxJYmZwSXF0SERCVkNvTTVhWHhtWk9aZndJdkRydW1iUjNXdktWVEJabm1LT245YktlRmpGVFQ3M1d5LVRpWEJHSkEzZmtrQUQ4YzEzMXlDZktZT0dfQ0hMNU1FSF96R3pSOXd0aW9BQ0VB?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1246,19 +1233,21 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 9:13 PM</span></div>
 <div class="news-title">Florida Panthers, Toronto Maple Leafs are trade deadline sellers with the playoffs likely out of reach</div></a><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxNVVd0QUlXYnRJNm1Yd2lNakF3SVhHSFlxNXZ2YndkZFd4WlBfb2dnYWFkd241VWk0WUxJUFVjU0pPMVIyOC11Z05oNjBpMjI3V0FlOG1FWklBSXVQbVd2NzNqUmJFN2VhaWJnMXl2SlNoQ1pNOEpaSXg5ZEhmSDZpTGViSXVJUGtlNjdqOFd3bHZuRmxSLXlwUFlFQzlxYVoxcXE1Z2F2My1XektzbXZ2Y3BLdnFXUHZLNkdYUjh4bXJ1VVJuMW1ZUWxpTDhON1hUWmZzMEVpbUthdklpdnBtVU9GYzVId1gxNE9CSg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">All Montreal Hockey</span><span class="news-date">Mar 4 &middot; 9:12 PM</span></div>
-<div class="news-title">Maple Leafs scratch Laughton, Ekman-Larsson and McMann as Brad Treliving signals trade deadline sell-off</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPQ1RKemxKb1E0QWcycmlZSWdRRW51R2dGWlU3RngzeTg4eU8ybEJ6ZFBoaV9sNnh2UDVGb0EwYkViX2hveHRDNDFkRFliUDBnS1N5WE9IeDJudFZUalRoTW9yZkVBZGF3YzVCMDN4dzY5U3l5dWlOY08yYnkyOHppcVVDdTd6b2VmR0dGai1hbw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs scratch Laughton, Ekman-Larsson and McMann as Brad Treliving signals trade deadline sell-off</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQVk1zazhZbUQ5UnF5MGFFa0x5SzlDMklaRnBJUjEweFFSZE5CVGJJdGtMVkRpYmhUSkx0cVVHaXV4STFoaWJMTW1WUnJzcTVseDBnN2YtTlBoa25ZSGNvb1lJQ2ZjNzFTSXgzOFRtMnhsWUtyUFJYN1hqdlBLblFjR1p2bVk4NmFZWFdrTQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 9:10 PM</span></div>
+<div class="news-title">Maple Leafs Scratch McMann, Laughton And Ekman-Larsson Ahead Of NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPQ1RKemxKb1E0QWcycmlZSWdRRW51R2dGWlU3RngzeTg4eU8ybEJ6ZFBoaV9sNnh2UDVGb0EwYkViX2hveHRDNDFkRFliUDBnS1N5WE9IeDJudFZUalRoTW9yZkVBZGF3YzVCMDN4dzY5U3l5dWlOY08yYnkyOHppcVVDdTd6b2VmR0dGai1hbw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">HockeyBuzz.com</span><span class="news-date">Mar 4 &middot; 9:08 PM</span></div>
 <div class="news-title">Maple Leafs Scratch OEL, Laughton, & McMann for Trade Protection</div></a><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNQTU4YThxTjlfUV91TjFYend2NDRlMmlmbzJFWEdEeHpkM256aWhySEh0QjlCN1JCVzFBbXVQTUNObjg4a2NQaERYM2NwRG1Ib2hsNGlKQy1HVjRwNFZtOFBEOGFndEd4YmxBcWt4SnU5dXNxVmdlYkJuUzIwNVk4VjRDTHdmQ1V5UThUWDIzWm9fVXdISno4WV96dzIzN2h6Q2pyOEluY3lFUlZBV0JNbGszUlYyS3JnVzZFXzV5MnEwRzFtZGNueEZkOFM?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 4 &middot; 9:02 PM</span></div>
-<div class="news-title">Maple Leafs scratch Laughton, McMann, and OEL; Trade deadline sell-off begins</div></a><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTFBibkgzZjRza041S1U3Wkd3dy1wQ1Z0LWVySkV0TGc5Z0ZSOUZGdHE3OVMtWnplcmZVd3hIMFUycFVhQ2l1N0h2NHYxemxBZm5ILUE00gFTQVVfeXFMUGJuSDNmNHNrTjVLVTdaR3d3LXBDVnQtZXJKRXRMZzlnRlI5RkZ0cTc5Uy1aemVyZlV3eEgwVTJwVWFDaXU3SHY0djF6bEFmbkgtQTQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 4 &middot; 9:01 PM</span></div>
-<div class="news-title">It's time for a full teardown in Leaf Land</div></a><a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxPcmg4cnVpaUlSWndYenpZTWdUb1RoZTI3VXRySGJxd2U5UnFlc1dzUmYzZmU3X082RkI0RXdrVW1BY3VyNmJCRHI3UVVRbTZOV1RzSEtuYjdWVjBuX19zUzllUm1UU2xBY1pteGgtdGhnUDFyOU5lajA2TlVBc0hyWHhMWWx6cWhNOXczREdXMlRCU1RBVEU2QWs2SGNFZEVxM28xNjlDSXU5bi1QaTlLUm9lQXlZRHllRkJ1ekVvWGI1UDMwcTNnajdUVl9vcHduNHdrU3dhVTA4S0xYOEUzSzFyZFlKODhuLXJUaGkxTUliQTVCbE9DZEV3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs scratch Laughton, McMann, and OEL; Trade deadline sell-off begins</div></a><a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxPcmg4cnVpaUlSWndYenpZTWdUb1RoZTI3VXRySGJxd2U5UnFlc1dzUmYzZmU3X082RkI0RXdrVW1BY3VyNmJCRHI3UVVRbTZOV1RzSEtuYjdWVjBuX19zUzllUm1UU2xBY1pteGgtdGhnUDFyOU5lajA2TlVBc0hyWHhMWWx6cWhNOXczREdXMlRCU1RBVEU2QWs2SGNFZEVxM28xNjlDSXU5bi1QaTlLUm9lQXlZRHllRkJ1ekVvWGI1UDMwcTNnajdUVl9vcHduNHdrU3dhVTA4S0xYOEUzSzFyZFlKODhuLXJUaGkxTUliQTVCbE9DZEV3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 9:00 PM</span></div>
 <div class="news-title">Maple Leafs appear close to trades for Bobby McMann, Oliver Ekman-Larsson, Scott Laughton</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPcU5ETUJsQlJ0TUZGYldhZ3BIUG5ZRGtKOFdFTzM0dDhYNXZhdmZpLW44aWtmVl9iLTd5Qi0zZTBoLThEOTR4TlBacWZFUzRreUlhdjJ1YzIyQlI0bzZsbVFRc2pXS25WSjFKdzZCV2RSazVDdHptTS1aU0dMcTV2Y01rWQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 4 &middot; 8:56 PM</span></div>
-<div class="news-title">Breaking: Maple Leafs Scratch 3 Key Players From Game for 'Roster Management'</div></a><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE11MG5aWmZSNmhGZ013VmxHYlBIa2tuaXdCWXdjdjJBRG03dFBubWJEQ0tkVWE2a1R2dzVkcU9FeTY3NmZLVHNnSVlxc2ZZWW5GdjBZ0gFTQVVfeXFMTXUwblpaZlI2aEZnTXdWbEdiUEhra25pd0JZd2N2MkFEbTd0UG5tYkRDS2RVYTZrVHZ3NWRxT0V5Njc2ZktUc2dJWXFzZllZbkZ2MFk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Breaking: Maple Leafs Trade Talks Intensifying on McMann, Laughton & Ekman-Larsson</div></a><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE11MG5aWmZSNmhGZ013VmxHYlBIa2tuaXdCWXdjdjJBRG03dFBubWJEQ0tkVWE2a1R2dzVkcU9FeTY3NmZLVHNnSVlxc2ZZWW5GdjBZ0gFTQVVfeXFMTXUwblpaZlI2aEZnTXdWbEdiUEhra25pd0JZd2N2MkFEbTd0UG5tYkRDS2RVYTZrVHZ3NWRxT0V5Njc2ZktUc2dJWXFzZllZbkZ2MFk?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">theScore.com</span><span class="news-date">Mar 4 &middot; 8:54 PM</span></div>
-<div class="news-title">Leafs scratching McMann, Laughton, OEL as deadline looms</div></a><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxQVVVDbkxvOW1mMmhVZUNqM1F2SlluY0tGT2hEWkxXQWpwV28tZm53aWM3V2swRE56dVppNFh1V0hsOU13ajA5ZldKNVZHZnpuN3ViZTJDVWc0dEVZUzhYRGNtT2wtdm4zakJwRVgzWU9TSkxmWVBnd2ZydkNrbWdnVHlRMElmNWFoc3RhRml6cEFPT00wMlUwcW9jeVlUZ0dmQ29HMlVFNVRsRVJmX3JTR19aRm5RZ3Y2bHpHOXQ2dGJ5anRpajEyaWRiMlAzVlJ2SXFyb3ZHYVhyTmZyZDA4SVBiYlZla3NHVkNRRko5MDlBTHgzcmZtcm5QWjBueDd0bU1HQk94aks?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Leafs scratching McMann, Laughton, OEL as deadline looms</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOMHRKV0dqMEltZktRUDJmV2hjTURvMUdrb1cybGdvLUhKWkp4emd6RUZJYVlnQXVNTFBxUHFtVzNXQmszQVM5RFd2MjBITGJ6clVWZWJ1ekxJbm5mREluYk9TVXhPb25kZmNPSDNpakdsMVNvX1k4bWlXYkxZQ0JVT3pfeDFkNFBZRWZpLW1ueHpBX25ZRU1yQV9vWQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Leafs Nation</span><span class="news-date">Mar 4 &middot; 8:54 PM</span></div>
+<div class="news-title">Maple Leafs scratch Bobby McMann, Oliver Ekman-Larsson, Scott Laughton vs. Devils as trade deadline looms</div></a><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxQVVVDbkxvOW1mMmhVZUNqM1F2SlluY0tGT2hEWkxXQWpwV28tZm53aWM3V2swRE56dVppNFh1V0hsOU13ajA5ZldKNVZHZnpuN3ViZTJDVWc0dEVZUzhYRGNtT2wtdm4zakJwRVgzWU9TSkxmWVBnd2ZydkNrbWdnVHlRMElmNWFoc3RhRml6cEFPT00wMlUwcW9jeVlUZ0dmQ29HMlVFNVRsRVJmX3JTR19aRm5RZ3Y2bHpHOXQ2dGJ5anRpajEyaWRiMlAzVlJ2SXFyb3ZHYVhyTmZyZDA4SVBiYlZla3NHVkNRRko5MDlBTHgzcmZtcm5QWjBueDd0bU1HQk94aks?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 4 &middot; 8:49 PM</span></div>
 <div class="news-title">Leafs to sit three potential trade candidates against Devils</div></a><a href="https://news.google.com/rss/articles/CBMi5AFBVV95cUxQWjQyY0JZZTZ5Tm8zbGtNRjE0WDJMbWdPcWhfOWRFZWVjMHdzWjQwamZGajZqYmcxTXgzcTVNLTVSUVA4Szg4Z1V1ZkpOSWF4aUFmUF9CNmMxNFpySmNPVTVZRzZRZGJvVm5xMDFzN1YtQktsanp1OUtvd1FvV3dZLWpmTmxrMFVtSEhvT2R6UDFyRm1BU000Sl9EdXVxX25xU1BTWldNcUt2VVFFX0dXM1Fvd3RQS3AwZHcwRFNtakRNd1BUdVVCSXhseEJmbWIxSmdtWlFLSUpxM2JkTmNCclVUdUU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 8:43 PM</span></div>
@@ -1266,9 +1255,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 4 &middot; 8:05 PM</span></div>
 <div class="news-title">Maple Leafs prospect power rankings: Several players running hot as trade-deadline shakeup looms</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQMGJ5VE5VQV9xcmUwcWlZUkYxT0FWZ2FNNGhCT29WeFJlVnZfUVZkU3VjSjRsdm1sazhQQ0J4SElXd1RTdEwzaUFZSk9PQXA1N3VTUVRfMDFwazJONWluNUdpVTFEUWVlbjNWVXdLZURUVHJwenU2cVZZbGxoX1BoSE5QTlJST3dQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 4 &middot; 8:05 PM</span></div>
-<div class="news-title">Maple Leafs' Chris Tanev Out for Season</div></a><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOeW9lcTZzOGdRUW1wbmhLNlBLZlhoNnFPTjJ0NFRjdFZNNkxYYXAyQ1ZkNXJ1d3Y1WlQwcGZqTmRGbGxnb1lYZXNfZmFOM3BzNHlzTGU3UGxTa1hmbkU5b3RWa3dRb3R3LUhGa2tFTEJQUHdzczhZYURpMWh1Z0dqVzhrek54M2JOcWNHSWJwNkFIZw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 8:02 PM</span></div>
-<div class="news-title">Trade Buzz: Maple Leafs won’t withhold players from lineup against Devils</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE5LeEtRUDJhS0k2ZkhNcHhSUXJ4d0M3a2FSZnhCeDkxUnpmd2xOWVU4Tm1SNFpRdUl6YkVhdHJpY0p4Q0pkV0FERk1VbmZwN0xmODNpUm5MMEpmTk95WUVDTmpNSlczYlVlT1VkSFg2NzRwMk40MjE0S3JxeW5LQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Maple Leafs' Chris Tanev Out for Season</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE5LeEtRUDJhS0k2ZkhNcHhSUXJ4d0M3a2FSZnhCeDkxUnpmd2xOWVU4Tm1SNFpRdUl6YkVhdHJpY0p4Q0pkV0FERk1VbmZwN0xmODNpUm5MMEpmTk95WUVDTmpNSlczYlVlT1VkSFg2NzRwMk40MjE0S3JxeW5LQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Substack</span><span class="news-date">Mar 4 &middot; 8:00 PM</span></div>
 <div class="news-title">Maple Leafs News & Rumours: 2026 NHL Trade Deadline Preview - McMann, Carlo, Ekman-Larsson & More</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOX3VnX3hVZU55djJMOENSUUl0dEUxcXNVNnpEc3cxV1JaLWFjMjlRb1pLb0d0NHEwN0lHQmFGbkM4bnpBeFpqS1RWbHptS0U1WnR4TnVPMGZ3SVdrVk9FUkpzY0FScmFnVGZpcGdlNmlCRWtXNlpaZjRLblZXOVRRY3ZDVDMyWUNMZnhMLUMyUGh2VGVnbE9B?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Leafs Nation</span><span class="news-date">Mar 4 &middot; 8:00 PM</span></div>
@@ -1280,9 +1267,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Editor In Leaf</span><span class="news-date">Mar 4 &middot; 7:07 PM</span></div>
 <div class="news-title">Unexpected name emerging in Maple Leafs trade talks</div></a><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPbVNnM2RWM2JGcVdISWZLV0c5M2tmOEoyeE51X3Q0M0RqN0N1ZWJOYlFGcTdWSGhZd3A4VkVST3FDSTdZc1RTQkl3WmZSaG1EX1Vjc2FIQXlFWGR2ZXA2aU9xbC1jX0JlNEhHbzRwR0tDcTFKWHFQc0NuV2RTUlhjTllwRFVZeTJLaU9PNmtMWEJXV2piQ1E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 4 &middot; 6:43 PM</span></div>
-<div class="news-title">NHL Insider Confirms Morgan Rielly’s Fate With Maple Leafs</div></a><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE54Q3E5QzQtRWk3MnRjLVBHd2xEQkRIQWlxa3J6Rm0wZThKUnpMUGN2YUItX19WV0QtQkZDVm9JM2preGlxY0l5SmFIeHZWdVBYOHdWbktKd25BSGxwdHVYOURLN25DanNLZ2gwbXpsMA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:38 PM</span></div>
-<div class="news-title">Maple Leafs Full Media Availability | Pre Game at New Jersey Devils | March 4, 2026</div></a></div></div>
+<div class="news-title">NHL Insider Confirms Morgan Rielly’s Fate With Maple Leafs</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/leafs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/leafs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1302,7 +1287,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1337,7 +1322,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

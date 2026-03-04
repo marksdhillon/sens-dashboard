@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Carolina Hurricanes — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','CAR.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8384f;--accent-soft:rgba(232,56,79,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Carolina Hurricanes</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:21 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+37</span></span>
     <span class="stat-pill" title="Power play — 18th in NHL"><span class="sl">PP · 18th</span> <span class="sv">13.5%</span></span>
     <span class="stat-pill" title="Penalty kill — 26th in NHL"><span class="sl">PK · 26th</span> <span class="sv">83.4%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,23.4 2.9,22.9 4.4,22.3 5.9,21.8 7.3,21.2 8.8,21.2 10.3,20.6 11.7,20.6 13.2,20.6 14.7,20.1 16.1,20.1 17.6,19.5 19.1,19.0 20.5,18.4 22.0,17.8 23.5,17.8 24.9,17.3 26.4,17.0 27.9,16.4 29.3,16.1 30.8,15.6 32.3,15.6 33.7,15.6 35.2,15.0 36.7,14.5 38.1,14.5 39.6,13.9 41.1,13.9 42.5,13.3 44.0,12.8 45.5,12.2 46.9,11.7 48.4,11.1 49.9,10.8 51.3,10.8 52.8,10.8 54.3,10.3 55.7,9.7 57.2,9.7 58.7,9.7 60.1,9.7 61.6,9.1 63.1,8.6 64.5,8.0 66.0,7.5 67.5,7.2 68.9,7.2 70.4,6.6 71.9,6.0 73.3,5.5 74.8,5.2 76.3,4.6 77.7,4.1 79.2,3.8 80.7,3.2 82.1,2.7 83.6,2.1 85.1,1.6 86.5,1.0 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1164,15 +1169,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 4 &middot; 9:05 PM</span></div>
 <div class="news-title">Canucks Live: UPDATE Myers gone, who's next? Pettersson the centre of attention; Hurricanes hit town</div></a><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE44Vm1BZVVsRGhjYlRRWDUyR0tTdXR4OEgwYXBGTlRpOHFFVi01M1V6bnFXWlFybUJWQmZEWnl0cDFPaUFMOFJqdGxVeGxvTzQ1cFE1Yk5VU2wwMHZVQ3F4TV9tVnZNaHd5b1JpOXVkODdxdXE2T0c2alpKYk95QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 8:48 PM</span></div>
-<div class="news-title">Projected Lineup: March 4 at Vancouver</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQQ0Jkcy1Ud0RXZkRLMkEzekZuWjZjWGVMdmlVZXNvWjQ0SzVVa0ZXekY3MXhLd1FCRjJxdkZCc1o5eHdXLUs1QWlFcVpvRDVHUDRNY1kwYkp2NjRHWUgxX2xzN1ZXS2NwcG5RRTVrX2dBWXpGa3MwbndmMllsWVJSYXVQSk1BcDNkc2pSS3JheUJiVnRjTTdHUE12RVRyM00?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Covers.com</span><span class="news-date">Mar 4 &middot; 7:58 PM</span></div>
-<div class="news-title">Hurricanes vs Canucks Prediction, Picks & Odds for Tonight’s NHL Game</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPa0ZaWHR5UEVvMUx6bkV5dTlyXzBKRDhRcnAzckVwYkVQME9OS1lwWTFzRVloRWNCWEZ2Q3N1YlJoVm5LcjFwM20wdzZpeUhvaHF2YUd1anVBc0FKZjlZMWNKZVpvVDZ0OS1Dc1lSd1JZOEhtRFROdkx2YzQ0SnRQSjk2aWJEaG8yT3A0dlk3VGF6Mzk0YUFHeWR3TjZRU0dhMGg5YkFNbWhYVG1MbldkcTJQVC1lbEdsSVZ6YnVxdms5Rm1KeFdxdG41QW1fcnpMNVU0Zg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Projected Lineup: March 4 at Vancouver</div></a><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPa0ZaWHR5UEVvMUx6bkV5dTlyXzBKRDhRcnAzckVwYkVQME9OS1lwWTFzRVloRWNCWEZ2Q3N1YlJoVm5LcjFwM20wdzZpeUhvaHF2YUd1anVBc0FKZjlZMWNKZVpvVDZ0OS1Dc1lSd1JZOEhtRFROdkx2YzQ0SnRQSjk2aWJEaG8yT3A0dlk3VGF6Mzk0YUFHeWR3TjZRU0dhMGg5YkFNbWhYVG1MbldkcTJQVC1lbEdsSVZ6YnVxdms5Rm1KeFdxdG41QW1fcnpMNVU0Zg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 4 &middot; 7:12 PM</span></div>
 <div class="news-title">Lineup Notes: Canucks Take On The Hurricanes In First Game Since Tyler Myers Trade</div></a><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOdzY3eHRaSjVqNDZWS2VaUHkySVBPMjdoSGNXaUkzS1NhbmtwbDM3NkpJX0J5MTdiSndYZFZOTzNncHc2UGNWbVhXRklxc052aHA3ZXVrZ3N4Y2EzZXA3QzZlV3oxSjE5ZU92aVJMZlNDbU1fODJGa2VkM2dzd1NNdG9DTmtGU28wSTgxLWsyUU9zZDVST1ZDMGowUmNkejRGS2kwaWg2b1NGOE93UWlmVnZBY3BPc01uX2pYQm5yYjhieEhwRmJQTG4tTDdEUERqeGNwUVBVZ05pXzRGTnc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 6:51 PM</span></div>
-<div class="news-title">Hurricanes predicted to trade for $11.6 million star center before deadline</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOOXZkNnNLZVV2TFBwZVFRWEgwOEFiT2JqenpzM09DWEQwRHQxNzVNV0h6M0pzZWpnTlBUMVF1OUNpeS02eGphSDVBQURPUUJpXzVQLWhZek42MVZ4Y1dGdkkwSjlKWWhfZ3hQRURxdi1IVFAwUG1HSkhUbUtkUy1kNU5KMTJSTFpZRVVCSTFBSERuOWpSb1lZdUFlZC13NlU3ZDZyeg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 5:45 PM</span></div>
-<div class="news-title">NHL rumblings: Panthers ready to sell, potential Bobrovsky suitors, latest on Thomas, Parayko, more - The Athletic</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOQTlzNEFTMlVpNTB0MzFWeTZsYzVzNHBIRG5Gem5aSlJwNkFFcFdZaXBZbXZuY2hZVV9aRndpMVpoalltX3dwWjZ2QlcwZmhqcWR4dDA4eEJKQld5OWtSdGhUQ2MtQ19tNWd3Q2NqRUZSRk5tbmxkUFp2VkJiUXNGalRGZFBOX2pNX2VNNjJaTEwyNTNEMk1tMWE2WjdsUXpzWnY4MWlObmszeG9jTTEw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Hurricanes predicted to trade for $11.6 million star center before deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOQTlzNEFTMlVpNTB0MzFWeTZsYzVzNHBIRG5Gem5aSlJwNkFFcFdZaXBZbXZuY2hZVV9aRndpMVpoalltX3dwWjZ2QlcwZmhqcWR4dDA4eEJKQld5OWtSdGhUQ2MtQ19tNWd3Q2NqRUZSRk5tbmxkUFp2VkJiUXNGalRGZFBOX2pNX2VNNjJaTEwyNTNEMk1tMWE2WjdsUXpzWnY4MWlObmszeG9jTTEw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 4:21 PM</span></div>
 <div class="news-title">Top Shelf Picks: NHL Best Bets Today (Predictions for Hurricanes-Canucks, Blues-Kraken, Islanders-Ducks)</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQNHlpMjJCdkVKZ2lOYXpvaXZlM1pjVEtjTHVKSGpKTjNuUk5HcW1Db0VjZ3RURWJYU0JkM1JJbmdJRm9tdzZLY09SOFdDYThJX2dFM1dSMGVXSE5ja1R3THc2Ui05UXk3SjZkUi0ybERrZmJnQ09IZFBpWmlyUnEwTWRxUm9BQmg3dkkzNmR4N2JJNGozdVp4dzdKc18?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">news.sportsinteraction.com</span><span class="news-date">Mar 4 &middot; 4:12 PM</span></div>
@@ -1194,7 +1195,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 4 &middot; 6:40 AM</span></div>
 <div class="news-title">Hurricanes Game 61, Last Game Before Trade Deadline: Lines, Notes, and How to Watch vs. Canucks</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1JM183Sl9UZ3o2Mmx3UGJuUjlJVnZJTzRtQXU0d1B1Q0ZrSndXN3VQcmFxUGZtQ3RMYnh3bmlnS1ZhXzR1dVBvZzBfRmtxNWhwa2FoSUwzS09WVUZhb3p6OTBtb19hYUI2enQ3aldVYVk0UQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:00 AM</span></div>
-<div class="news-title">Preview: March 4 at Vancouver</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Preview: March 4 at Vancouver</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTmtnOUFzcHBwcndrLUtsWV9zbVBoQjFKMW44SW54Y01tTEwzS0pheGxpWndVRjBwazhuci1jZDl4Z3djakxLNmdTMXEzY2hiVVlGRmkzQ01ZdDh5ZFdpT0xsRU9VY0xkNnJ1WGFGc1RXeHp4VGhqdFFoRk5pQmR2VGFyendxaHBHMjhUUzNlSDNsVWZiMmN2TEV4cldULXFwQlhnUU95VHJpMmt4UzFrQXBYLUtwaTJPQV9B?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:47 AM</span></div>
+<div class="news-title">Blues (22-29-9) vs Kraken (28-22-9) | 7:00 p.m.</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:07 AM</span></div>
 <div class="news-title">Canucks Close Two-Game Homestand with Canes in Town on Wednesday Night</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxPdGxtYUs0MGRvRnhOVW5QQVEwNTFiSjZ4YlNYMUhMajhrZ21zYy1xbE9rRF83clpyYVg3SGZDQmFpT1N2RnhPYjNNR0xtNzJUSnFpMDk3UlVhdGZnR2RFYURvY01EWjVDOFBsTmdteS0yZ1FrTHVnZkhTMjZfT3U0cVVyNy03bnFhU0RMTnhGMnNFRzZ5dF9OQ3JRcEp4Ynh1cTNzOTBiV3VBTlc0NGdhY290aFlOaWNJTm9ZYko3U3diUXNsRWRNVHJhaU1qTllDQW9LYzEwUUdVdVE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:51 PM</span></div>
@@ -1210,7 +1213,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 3 &middot; 11:29 AM</span></div>
 <div class="news-title">Deals we'd like to see before the 2026 NHL trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFA2bzRBaGZHSmQwamJiN0JnQTcyQklMckFKQkVxcmgxWnYyaVdkYkszTHk4eGVIUXVYcDFUVWRjTmFrNkkzYkQ2WDh1a1lYeHZZQ0ExMHBUeWVFTTVQWGZZazhNd21fWnZWTjBaelRfMEdSUUFGS3ZvZDJBc1Q?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 10:50 AM</span></div>
-<div class="news-title">Recap: Canes Come Up Short In Seattle | Carolina Hurricanes</div></a></div></div>
+<div class="news-title">Recap: Canes Come Up Short In Seattle | Carolina Hurricanes</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9haDZwTUppSnNjN0NhRG1DdjFESVk4bTloMGRvQ0RnblNmUmNfaUNGV05Gbl9OZXRxVGYtLU02Rnk5bG9vSWlYZVFMMVpaOG9qTy0xYW9RVGVwem54MDM2b1ZXaENLYmMzMC16Qnk4d1gxRG5NdmFDa3FKY0h0ams?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 10:36 AM</span></div>
+<div class="news-title">NHL Highlights: Kraken 2, Hurricanes 1</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canes/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canes</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1230,7 +1235,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:21 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1265,7 +1270,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

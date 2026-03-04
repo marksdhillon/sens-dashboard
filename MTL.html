@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Montreal Canadiens — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','MTL.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#d42e42;--accent-soft:rgba(212,46,66,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Montreal Canadiens</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:20 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+13</span></span>
     <span class="stat-pill" title="Power play — 3rd in NHL"><span class="sl">PP · 3rd</span> <span class="sv">19.4%</span></span>
     <span class="stat-pill" title="Penalty kill — 20th in NHL"><span class="sl">PK · 20th</span> <span class="sv">85.0%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,24.0 2.9,23.4 4.4,22.8 5.9,22.2 7.3,21.5 8.8,21.5 10.3,20.9 11.7,20.3 13.2,20.3 14.7,19.7 16.1,19.1 17.6,18.5 19.1,18.2 20.5,17.9 22.0,17.3 23.5,17.3 24.9,17.3 26.4,17.3 27.9,16.9 29.3,16.9 30.8,16.3 32.3,15.7 33.7,15.1 35.2,15.1 36.7,15.1 38.1,14.5 39.6,13.9 41.1,13.9 42.5,13.9 44.0,13.3 45.5,13.0 46.9,12.3 48.4,12.3 49.9,11.7 51.3,11.1 52.8,10.8 54.3,10.2 55.7,9.9 57.2,9.3 58.7,8.7 60.1,8.7 61.6,8.1 63.1,7.4 64.5,6.8 66.0,6.8 67.5,6.2 68.9,5.9 70.4,5.9 71.9,5.3 73.3,4.7 74.8,4.7 76.3,4.7 77.7,4.1 79.2,3.5 80.7,2.8 82.1,2.5 83.6,1.9 85.1,1.6 86.5,1.0 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1203,9 +1208,9 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned D Adam Engström to Laval (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQUU1kZXhBOGI3ZjdFSDE3UjFVUDRXd25ESlFiUTgtNHVURGNXQ3pZMmRuY1JzWllBT0hsUENZZEtmdEUwZUxpYnRLWFQ5U2FlWmNCaHZvdURPVkU5UFJvT2E3TGdPVlhqd2txUUpwSWx3UHpQWFhsaXIzXzBZaWdfQ2RjaTFiN1pqdHFDbTFGS3RzSzBXM19nMlZrUXpKazAtSFN1RTdEel9pVngwd2RiaWVXU3c0aGk3LS1pZ19xUm1fall4elE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">All Montreal Hockey</span><span class="news-date">Mar 4 &middot; 9:37 PM</span></div>
-<div class="news-title">Michael Hage deemed untouchable by Canadiens amid Robert Thomas trade talks</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPZGh2ODQ2NmJra0haaHJ5V0QyaW4tOF9WdkQtLXZXWEF6MWwzN1pJU1RKVTg2dDhIdWJSUFA2cThJVVRmQWtxU2YzaW9fWjl0U19TbF9XV1NGbDJrZFJOaThXSUxxeEpfZVp6OEpyTnNYLU9vOTVIWUxaejQtWlcwUWxoTzRYdDNkZ0FQY0pLeTI?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQQ2ZxR3ZUVjZYRkRka2NheHppLWxNVkM1UnBuQVlPUVpjMXhMdUhMd015eUhJRDhVcVdKekFHY3lvb0NwMFBHV2JVRW1VX3d5NmJ4QmQ2VjV0aTFIQlhOSjRZWUJ6dU1GNy03ZmJyNENyYjBLNDRaaW5td3V6RlhISnV3QVBod2todm5Lb01mNGk2QlVSR0ZseG9Kc2xVM3JwanFGQkcwTmtsdlN0Njd3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportscasting</span><span class="news-date">Mar 4 &middot; 10:10 PM</span></div>
+<div class="news-title">Canadiens Trade Rumors: Montreal Has Best Odds To Land Predators Center</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPZGh2ODQ2NmJra0haaHJ5V0QyaW4tOF9WdkQtLXZXWEF6MWwzN1pJU1RKVTg2dDhIdWJSUFA2cThJVVRmQWtxU2YzaW9fWjl0U19TbF9XV1NGbDJrZFJOaThXSUxxeEpfZVp6OEpyTnNYLU9vOTVIWUxaejQtWlcwUWxoTzRYdDNkZ0FQY0pLeTI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 4 &middot; 9:00 PM</span></div>
 <div class="news-title">How Connor McDavid Could End up Being a Montreal Canadien</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPMlRsNWMwMy0zbzA0R0V5Z3BfLVZiOEZRQkwyd1dUaDFJNV9kdVJYOVU3QXItcTNfYlZKaVFSbnJYM2xyTi15N0hpTWpSVl9CNkI1VjJQU1RHRGhQb1hyU0NGQklfbTdJaVVQZ0pxRHFqdmo2WTdWS0liMjdsUjRyVmd0QmJNeng5bFgzbG5rREQ3U21SVkpB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 4 &middot; 8:10 PM</span></div>
@@ -1213,11 +1218,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 4 &middot; 6:50 PM</span></div>
 <div class="news-title">NHL Rumors: Expectations Are Patrik Laine Will Be Traded From Montreal</div></a><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNTldOSVdHNlpfcWcxZjFMVHNUMURONU5zOEI0Y2laaHBmNl9oY0dnb1ZIOFlORHdadDRySjlmMWsxS25PSUJ6QkkxWk9ZZzNfVFJVNElnRldndHIyUVJ5UllKTEE3SE52eS1IVlRVMmhoakJxRDdOYjJwaW9PR3V0WER4c0xKUGJOWWRVMEt3SERJaUlxMEYzOGYzOEdScDN5VG9EcEJURWNCaVZKZk0yNDE2Z2RPTDJFVFgtNkNSM0NVYnIzVEpidC1R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Montreal Gazette</span><span class="news-date">Mar 4 &middot; 6:27 PM</span></div>
-<div class="news-title">Will Shark attack trigger Canadiens to make a deadline move? | HI/O Show</div></a><a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxPN0ZDMENWSUpPY3RLNmktX0Q4bkhaaUVyZDZoYWplcFVfdTFPQXR6dFloOWhPS3ZUbklPT2RRZ1dQcHZwQ3FDaTJVY0l5ajdlU1dsRHFuVG0xcU53dEprVUplSWRQVDNEY3lJeEduN3RSR0d4cW9lRnh3N1NWREFiUmdiN3Y5ZXZVdWFrb0JJOFhNdWFRSTkzcmR1dzJKTFRYS2NJbVl1dFVXSmtudjNwLUZpWFlESFZvUExVTWk3Y3lQbWhYYVhGdVRRUExqRHlMaTN0cjE0UUlrR0R5?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Will Shark attack trigger Canadiens to make a deadline move? | HI/O Show</div></a><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQVTZIMGZLMkxxN3EwV1lub0loa2N3TDhtT1NvcnpXbXpSaUVYQkI0QTVKNmh5THp5OE1VbURJeEJyUnNWaEtBUGxOZmxlbUVfNS1SdDY4aVNCWjgxTFdqRDZkRjVVWkpaalVnZzY5aV8wQVFraFJ2VEhQd0dvTk1FNkY1cHVPUXF5Rnd6NWVfZ2RyTm1XUU8wOUI4U0pwQUFFLUhwQkxCRUY1dExfUlVBSmdlUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bleedin' Blue</span><span class="news-date">Mar 4 &middot; 6:00 PM</span></div>
+<div class="news-title">This Canadian Team has Emerged as a Likely Destination for Jordan Binnington</div></a><a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxPN0ZDMENWSUpPY3RLNmktX0Q4bkhaaUVyZDZoYWplcFVfdTFPQXR6dFloOWhPS3ZUbklPT2RRZ1dQcHZwQ3FDaTJVY0l5ajdlU1dsRHFuVG0xcU53dEprVUplSWRQVDNEY3lJeEduN3RSR0d4cW9lRnh3N1NWREFiUmdiN3Y5ZXZVdWFrb0JJOFhNdWFRSTkzcmR1dzJKTFRYS2NJbVl1dFVXSmtudjNwLUZpWFlESFZvUExVTWk3Y3lQbWhYYVhGdVRRUExqRHlMaTN0cjE0UUlrR0R5?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 4 &middot; 5:53 PM</span></div>
 <div class="news-title">robert-thomas-st-louis-blues-montreal-canadiens-trade</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOeHdUeHVXTElXWGZTS0ozd1pmcmNVdlVhTEJWcnBIY2VZSGo0YVNXRzdHR0llRGI2c2Y5ODBEenR6Z2wwT0lOZ2dia1Y2ZldMS0Y3ZnhKQTVBTWR4SWd5M3RSUXc5ZDk2MEtWYU9MYnVrNkRTUjVzVEdNQV9PWVp5dnpSR1lQTFh2LS1BMnJFdVFWUnB2d1VuOFZIdkVLdkpLX2xvU0ZsdG1Ec0hRWnJ0REI2c1JibS1hVFUzLXN1NE9ZN2hmWm5yZVpiWXVqV213MXE0UFFnTEhCUdIB3wFBVV95cUxQUmdRRTlxdllyNmVqekFwZTIwNU4wSGlGekZtQ1RMVmZmb2U0M1lHdDNfWUtDNy15VVljRXBoZDVtQlNNV1JOQk1BanY3cHpBaFJjRVFqcjVmSjV2bHdYV0hsS2wyQmJ6QWNRV0Y5U0otbVN1YU5SY1VVSER0QkhIMnJpZVdUR3RaSGdiWmRLaHhaWE5FZjdJUk13aGgtajE1LV96b19BbFhzanQ4VkZOXzczVG9oQlBCcHhrRVNUQXBPNGtkTGNEY2FJUzhYbDNENWtLanBfSGNUTGxUaVVr?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">bolavip.com</span><span class="news-date">Mar 4 &middot; 5:48 PM</span></div>
-<div class="news-title">Canadiens get encouraging signal as Panthers sign goalie with past on NY Rangers amid Sergei Bobrovsky trad...</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPbGN4ZFF2UVVEajN0WFgwUTd0MU9wSEtuUGxpMlFXN2U4RU5JMWk0cmU2d0FLb3EwN00tT2tkeXZENnR0RzE4bkEtMU5tUEhLY004N3pJVHMyWlM0cDNlZzYyUVRhSmJZOE56STBxYjdVMUxEMHQ2UGVrdC1NS0x1YTZZb2R1ZlVsTzZhOF9XLXV3ZUJJXy1lTm1HR3llRklJeVMzQUVSUTRRSC1QSHBVVXJvUVYtTFVX?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Canadiens get encouraging signal as Panthers sign goalie with past on NY Rangers amid Sergei Bobrovsky trad...</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPR1JFd3dtTGNPbUE0STh2VmxITGN5ekN0SEdVb1hxUHh0V2NrUEg3dEw5RFkwOGlMMGhwMVFWTVJmeC1GbEJTbGI2d0Q1UlJOMThLS1FiMzdfQ3dfRzljYlRnbGtSMS1mcnR4dE5VT1dlNDdqNWdMN21vSlRZX3RQV0l2LXc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 4 &middot; 4:05 PM</span></div>
+<div class="news-title">Canadiens’ Next Big Move Should Wait Until Summer</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPbGN4ZFF2UVVEajN0WFgwUTd0MU9wSEtuUGxpMlFXN2U4RU5JMWk0cmU2d0FLb3EwN00tT2tkeXZENnR0RzE4bkEtMU5tUEhLY004N3pJVHMyWlM0cDNlZzYyUVRhSmJZOE56STBxYjdVMUxEMHQ2UGVrdC1NS0x1YTZZb2R1ZlVsTzZhOF9XLXV3ZUJJXy1lTm1HR3llRklJeVMzQUVSUTRRSC1QSHBVVXJvUVYtTFVX?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 4 &middot; 3:35 PM</span></div>
 <div class="news-title">Canadiens rumors: Montreal's dream goalie target may have just become available</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaHdTVl83VWRjMHZQb3J6SHllbjFKOERqS3gzcDZJVUg3N25lVlRtMUViaUx2djR6MHp2NG5ROGdObHZrcFdQNFFSRmxrQ29VXzdCbUlqVUFNSHZjRi1hQkZPamhTR3ZEUHBQZ1JCZTRGUWFxWmNPSmVDejA0VnNleWlQSDNDQVdNTmVURk1Vb2kyZGM5ckxla1RyN3pSdC05bm1RNE5Sc20?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 3:00 PM</span></div>
@@ -1241,19 +1250,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 9:55 AM</span></div>
 <div class="news-title">Celebrini has 4 points, Sharks recover late after blowing 3-goal lead to Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQTjdOanQ5dDI3V291bndheHRXTThMUDlyeDB0QnFEWkk5eGdYajVCbE83cUlSUWI4NHROaDhMcUJaWHlHekdnT2NSR3Bhc195R2xYeTNKUHY1YkZXa3B1RDA1TGFuek5IckZNb2M3djNDWDhleUxkaVFzeHlNZ25LRXgxMnhHczVLQ3RFMXRKNHZsRW1OX3dFNmtnU3BwdWs?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 4 &middot; 8:50 AM</span></div>
-<div class="news-title">Habs Daily: Latest Trade Rumours, Top 5 Deadline Needs, Pickford</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9yY3hCUWNXVDJQOG1MdXc0RmpyS1NQQU5RdS1oV1VfajRwZ0NGTUlFVWR2R2lhaV8zMGlzcm1ycHFPUGU2RUp1b0hGQW52VERaRVRxY2hoOTNGMTdJQ2N3MTlYME91cDJSeVY4WnhrTWZNZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Habs Daily: Latest Trade Rumours, Top 5 Deadline Needs, Pickford</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQU0zbXFhZ3play1LMHRqVEJDVFpXdmNnWFNySEdUSEszVENBM3dLNXJWaF9OOW5sejlZMThSMFR0Q0k2VGk2a2MzaEtIalhsSVF3YnNyc1Zib1NvaGVzYm5oeHVUOWNlWWVVRS1YNlcycGoxdnJfSHg0YUQ5ODU5Y280T01iUkk4bWlaSE1KanlFUWJwRkpOVlJVMkgtYmU2LVlqZlZBZ2w?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 6:34 AM</span></div>
+<div class="news-title">Celebrini nets four points, Sherwood scores winner as Sharks tip Canadiens</div></a><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9yY3hCUWNXVDJQOG1MdXc0RmpyS1NQQU5RdS1oV1VfajRwZ0NGTUlFVWR2R2lhaV8zMGlzcm1ycHFPUGU2RUp1b0hGQW52VERaRVRxY2hoOTNGMTdJQ2N3MTlYME91cDJSeVY4WnhrTWZNZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:26 AM</span></div>
 <div class="news-title">MTL@SJS: Game recap</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE9EVnAtcm95bGVuZ0c0U2RXeEhaLVlpcGhUMGpBZEhkOE1iSnliR1JGZmkzTWJoMHFLSkdHTUU0TWZ1NnQ3VzZyNkswQzRxbWVDNEs3UjhUczl2RWFJLTAxbXRPVFB2THE1cFRvQVJmV1VxNzJsQTVta3FTVQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 6:20 AM</span></div>
-<div class="news-title">Postgame @ SJS: St-Louis</div></a><a href="https://news.google.com/rss/articles/CBMi-wFBVV95cUxPNzI2cGRoXzdtbDhjRFEwWEFyRVdyV3VSNHBGTEwycEF5R0xjR0oxVkROUlNCZE04NkxGVTd0ajFIVndHZ1NxUUQydDVETmgxVDdCZjRrS01aQ2JYZjdaY1lKYUZjbUEwdExmS05TUENLT3lBdzM0cXFHanNISXJnTXFHbFZCSWR5WFVYVDdoM3JnNjctQ0RSd0NXQ3Z5SW14dlFQeGszSzdVR1lLQW91aG1NY0R3NWpSNGtaRkRNQ3lSYV90c0hnMlhfMHpxY3dHY1RjZzZYNl9BNEwza3ZqVTZXVVU1bVFoUXp3cVhFc00zT1lPay1wak1kdw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">thecanadianpressnews.ca</span><span class="news-date">Mar 4 &middot; 6:19 AM</span></div>
-<div class="news-title">Celebrini nets 4 points, Sherwood scores winner as Sharks tip Canadiens 7-5</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOc1RqblVDdGRSLUp2UlNqQkdMNnI5SnVibHdTaDN4M3ZhMEVzZy1RVmtYRk9FTUEzdE9xRW9WQW16d0pmUVNsRjVyeVA0MVZVSGVXTEdGeDBPdVdMa01LYWt0MndwdGdXaFY3S3o0SndvTXFYb3gtSDFfMUxJaDcwNlJMYzdzTjRpQjZ3cVpoX1VVcG9IdHZyTmN4am9walVGSk5kSg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Postgame @ SJS: St-Louis</div></a><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOc1RqblVDdGRSLUp2UlNqQkdMNnI5SnVibHdTaDN4M3ZhMEVzZy1RVmtYRk9FTUEzdE9xRW9WQW16d0pmUVNsRjVyeVA0MVZVSGVXTEdGeDBPdVdMa01LYWt0MndwdGdXaFY3S3o0SndvTXFYb3gtSDFfMUxJaDcwNlJMYzdzTjRpQjZ3cVpoX1VVcG9IdHZyTmN4am9walVGSk5kSg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 5:34 AM</span></div>
-<div class="news-title">MTL@SJS: Newhook scores goal against Yaroslav Askarov</div></a><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQYVdjSUJXTzREbGx6bWFfc1JKOVNnWXJTbjJJeExiVE8wd2syTzQ5UFBDTmtxR2N4UHRIZGUyeFdwcmdZTGZ5d3d3SVZtal9tOFhFSXNPS3RvWXhHM25zLXZTcDMwYmZtQ0huNlZzVGpEUWJDekktUjZmWlJOZXA4NmJYdkJQeU5kM0J0MFVWTzY5VThEbFp2elhGSWRENV9lNUZrQk9mdjhHMmk4SzRkVUFPTEM0aUhZUm9MOTV6cHl1ZXVZMnc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Montreal Gazette</span><span class="news-date">Mar 4 &middot; 5:24 AM</span></div>
-<div class="news-title">Liveblog replay: Habs erase three-goal deficit, but lose 7-5 to Sharks</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZnFwX1pjWnYxS2FJTTRPT2o1UXhCQTJUSGlDTjh3S3VrVjhkVVdjQ1ViY3d6dW1jZ0tPb1ZVaElrSTR4RlZ0ZTdmV0lFakJnczV4S2pzUEtLMzFsRG83TE91VXk1b1E3WU94dEpoX2NXT2U1LXNfSWVsaGZrd3Q2ZE1OVi1uTE11MVFqZmd4d0ZUaDNiVWhxYUhtRnM2Ylg4bmU0UFRZc01mamJUdmN4WjJ2cFN3RjhH0gG0AUFVX3lxTE5kQVM2cmF1WlQ1dmM2b3VERmJ2cGVTYnp6RmozZHFJVF9oNjU5eGM0SUpCMmR4RWVfWlRDSEFsMGpJRzRicG9rcHR6aXhFYmYweU1oMXBoOThCalJ0ZFoxVFY4aTliNzB6WXZRRHZVemNaSjNrMWk2WDhJNWJmTVJmdk5IbnZLeFQ0d3UyaUJETmJ4elJhMGZsTnlQMnlRM1h4Sng3bzVUNWMzTWZwRUZYVEhLQw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The News International</span><span class="news-date">Mar 4 &middot; 5:15 AM</span></div>
-<div class="news-title">Arber Xhekaj rumours surface as Flames explore trade options with Canadiens</div></a></div></div>
+<div class="news-title">MTL@SJS: Newhook scores goal against Yaroslav Askarov</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/Habs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/Habs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1273,7 +1278,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:20 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1308,7 +1313,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');

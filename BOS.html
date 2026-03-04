@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Boston Bruins — 2025-26</title>
-<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light')</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));localStorage.setItem('lastTeamPage','BOS.html');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root,:root[data-theme="dark"]{--bg:#18171a;--bg-surface:rgba(255,255,255,0.035);--bg-elevated:rgba(255,255,255,0.055);--bg-hover:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.08);--border-subtle:rgba(255,255,255,0.05);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--accent:#e8b230;--accent-soft:rgba(232,178,48,0.12);--green:#34d399;--red:#f87171;--card-shadow:0 0 0 1px rgba(255,255,255,0.06);--card-shadow-hover:0 0 0 1px rgba(255,255,255,0.1);--text-strong:rgba(255,255,255,0.95);--ring-bg:rgba(255,255,255,0.06);--alt-row:rgba(255,255,255,0.02);--matchup-bg:rgba(255,255,255,0.02);--tag-bg:rgba(255,255,255,0.06);--tag-dash:rgba(255,255,255,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--loc-home-bg:rgba(52,211,153,0.1);--loc-away-bg:rgba(255,255,255,0.03);--tab-active-shadow:none;--tab-hover-bg:rgba(255,255,255,0.04);--hs-bg:rgba(255,255,255,0.06);--footer-link-deco:rgba(255,255,255,0.12)}
@@ -92,15 +92,18 @@ a.pname{font-size:11px}
 .stat-pill:hover{background:var(--bg-elevated)}
 .stat-pill .sl{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
 .stat-pill .sv{font-weight:600;color:var(--text)}
+.spark-pill .sv{font-weight:normal;padding:0;display:flex;align-items:center}
+.spark-svg{display:block}
 .pill-accent{background:var(--accent-soft)}.pill-accent .sv{color:var(--accent);font-weight:700}
 
 /* Tabs */
 .container{max-width:880px;margin:0 auto;padding:0 28px 60px}
 input[name="tab"]{display:none}
-.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border)}
+.tab-bar{display:flex;gap:0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:40;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-bar::-webkit-scrollbar{display:none}
 .tab-bar label{padding:10px 14px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:color 0.15s ease;white-space:nowrap;position:relative;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-bar label:hover{color:var(--text-secondary)}
-.panel{display:none}
+.panel{display:none;animation:tabFade 0.18s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 #tab-roster:checked~.tab-bar label[for="tab-roster"],
 #tab-playoffs:checked~.tab-bar label[for="tab-playoffs"],
 #tab-schedule:checked~.tab-bar label[for="tab-schedule"],
@@ -127,6 +130,7 @@ h3{font-size:14px;font-weight:600;margin-bottom:18px;letter-spacing:-0.1px;color
 .nhl-tbl thead th{background:var(--bg);color:var(--text-muted);padding:10px 8px;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;text-align:left;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--border)}
 .nhl-tbl thead th.r{text-align:right}
 .nhl-tbl thead th.rank{width:30px;text-align:center}
+.nhl-tbl tbody tr:hover td{background:var(--bg-hover)}
 .nhl-tbl thead th.name-col{min-width:160px}
 /* Frozen rank + player columns on horizontal scroll */
 #skater-tbl,#goalie-tbl{border-collapse:separate;border-spacing:0}
@@ -157,8 +161,8 @@ a.pname:hover{color:var(--text-strong)}
 .adv-hdr{background:var(--bg) !important}
 .bio-col{white-space:nowrap;font-size:11px;color:var(--text-muted)}
 .sens-row td{background:var(--accent-soft)}.sens-row td:first-child{font-weight:700;color:var(--accent)}
-.cutoff td{border-bottom:2px dashed var(--text-muted)}
-.rank-in{font-weight:600;color:var(--text)}.rank-out{color:var(--text-muted)}
+.cutoff td{border-bottom:2px solid rgba(0,166,126,0.5)}[data-theme="dark"] .cutoff td{border-bottom:2px solid rgba(0,201,167,0.4)}
+.rank-in{font-weight:600;color:var(--green)}.rank-out{color:var(--text-muted)}
 .tcol{font-weight:600;white-space:nowrap}.tcol-link{color:var(--text);text-decoration:none;transition:color 0.15s}.tcol-link:hover{color:var(--text-strong)}.bpts{font-weight:700;color:var(--text)}
 .div-label{margin:36px 0 14px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted)}
 .div-label:first-child{margin-top:0}
@@ -370,7 +374,7 @@ body{animation:fadeIn 0.15s ease}
       <div>
         <h1>Boston Bruins</h1>
         <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span><span class="live-word">Live</span><span class="live-sep"></span><span class="live-info" id="live-info"></span></a>
-        <div class="subtitle">Updated March 4, 2026 at 4:52 PM ET</div>
+        <div class="subtitle">Updated March 4, 2026 at 5:20 PM ET</div>
       </div>
     </div>
   </div>
@@ -384,6 +388,7 @@ body{animation:fadeIn 0.15s ease}
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">+14</span></span>
     <span class="stat-pill" title="Power play — 4th in NHL"><span class="sl">PP · 4th</span> <span class="sv">18.1%</span></span>
     <span class="stat-pill" title="Penalty kill — 23rd in NHL"><span class="sl">PK · 23rd</span> <span class="sv">84.6%</span></span>
+    <span class="stat-pill spark-pill" title="Cumulative points this season"><span class="sl">Pace</span><span class="sv spark-svg"><svg width="88" height="26" viewBox="0 0 88 26" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0.0,24.0 1.5,23.4 2.9,22.7 4.4,22.1 5.9,22.1 7.3,22.1 8.8,22.1 10.3,22.1 11.7,22.1 13.2,22.1 14.7,21.5 16.1,21.5 17.6,20.8 19.1,20.2 20.5,19.6 22.0,19.0 23.5,18.3 24.9,17.7 26.4,17.1 27.9,17.1 29.3,16.4 30.8,16.4 32.3,16.4 33.7,15.8 35.2,15.8 36.7,15.2 38.1,15.2 39.6,14.5 41.1,14.5 42.5,13.9 44.0,13.3 45.5,12.7 46.9,12.0 48.4,12.0 49.9,11.4 51.3,11.4 52.8,11.1 54.3,11.1 55.7,11.1 57.2,11.1 58.7,10.8 60.1,10.1 61.6,9.5 63.1,9.5 64.5,8.9 66.0,8.2 67.5,7.6 68.9,7.0 70.4,6.4 71.9,5.7 73.3,5.7 74.8,5.1 76.3,4.5 77.7,4.2 79.2,3.5 80.7,2.9 82.1,2.6 83.6,2.3 85.1,1.6 86.5,1.6 88.0,1.0" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span>
   </div>
 </div>
 
@@ -1226,7 +1231,7 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled D Billy Sweezey from Providence (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxNdFVTLVgtRWRVNEFIbldySFFoTWFXbjVvclJ5Y19TdG1CeE05Z0Q0eEpTNmxkZElKOUNRREpMNTUyNXN1aFNGWm9qQUEwelRURmo0bmRhLXRFYW8zMWk4Tjg4RmxMazlTUE9CREhvSUVObU9FcWNHZ0dXZXV6SElaNGJJTjdTanBjMzl5YlNjRzVNX0JUMGVTQ1JMTFpKUlNLR1hQVWdaRVJwblFUaVJqWW82bjBpTThDQm5Od0pUdDJ3cGQxT3lsU1hoX240eVJVMUZ2dzJNbF95Zw?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxQZGNoYUp4Vjd0eFJLYnhwQW9GRTFjOUJrTjdIaGRIYzZsNHoxblFfTXlZdWx6cjJUNkpyRDNxNGtOc2F6czB2akZvMzhKN0RaQ2NmdXpHV2lZZDZvdVhjX0NrTkxDaU9EWWVUNG1pbmdrX1FrT0kyQkdzSF9TM3M0TDl1TjFsZTRmckN5ZGEtVGVDd3hUR2Zqamhodk03Y0RtSVNrMUlsUFFYSGIzLWpySlNKWEU0bWtqSkRRdGx1NmF2c3ZqYXJuUzFpMzVKbURlS1F3bTlGNGpfdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 9:12 PM</span></div>
 <div class="news-title">Bruins' trade cost to get Robert Thomas from Blues revealed by NHL insider</div></a><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPVjlRNkh0X3JuVE9VUWFOVWlZZXhsNnU1SldJXzhLb3JmWVBoOVlROUstWUdSZ1c4VnBFSkVkTGY3UDJMbF9vaEdWb1NiVGZqekozQlVHMEYzX2xlcjdMaGxLWkpCdl90UDQxQnpyMThtWGJlaEE1WVNkaVV6U3NFcHhMQ25nQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 4 &middot; 9:12 PM</span></div>
@@ -1266,7 +1271,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 11:00 AM</span></div>
 <div class="news-title">Bruins Gearing Up to Buy at Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQcjIzREs5alNZTUZRbmpHczd5V2ZGV3llYnVoUzI2SEp2bExKV1RCRFlEVThmNmVELUFOMWdWTW16UGY5eldQbm9lSlpLTzc5bmtKTHRFQmMxMEJCZjNqQ2RNVE42UEJyb0U2d2ozaEQyTDNDc1lrLVlESlpWVHVNd3pwblF5cXV4TzVjTDRmU0x4TjB0OFo2NlNFWUhteHBJZ3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Boston Hockey Now</span><span class="news-date">Mar 4 &middot; 9:14 AM</span></div>
-<div class="news-title">‘He’s Sway Again’: Breaking Apart the Bruins’ Win Over Pittsburgh</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNbXFKQndmQzhTd2x1MHp5cGRIYXhnWFRhSXlfbXpXRDU5cWxHcEozOENOSlF4azZkVTIzODRvRVhqYmJ2bUkyQlRMdG1JcHBqOGtvenoxR0tPbGRESlJtX0s0ZG1EVjJBRm1SUWYxNnNjUVk3VGRuenk1dnk2eEJ0WXM0NTFOLWZSSWc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">‘He’s Sway Again’: Breaking Apart the Bruins’ Win Over Pittsburgh</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPSkdmT3RJT2hfN3RSRkx0WkxyQThPZk8xYXl0YkQ0U3JqaGYxMG5pU29VbWZHLVdkblBFYy1UTkFqNkhLb3k0RzZpbWN4Rnh5cjUwNTE3RHBwQkFlYVU5NHB1MjJnOUZ6NkFJanQwME9OVEg3X1RsclNpYUQxaEVRb2RRdlFmWWtDY3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 7:47 AM</span></div>
+<div class="news-title">Swayman makes 34 saves, Bruins halt Penguins point streak at 5</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNbXFKQndmQzhTd2x1MHp5cGRIYXhnWFRhSXlfbXpXRDU5cWxHcEozOENOSlF4azZkVTIzODRvRVhqYmJ2bUkyQlRMdG1JcHBqOGtvenoxR0tPbGRESlJtX0s0ZG1EVjJBRm1SUWYxNnNjUVk3VGRuenk1dnk2eEJ0WXM0NTFOLWZSSWc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:00 AM</span></div>
 <div class="news-title">Swayman Makes 34 Saves in Bruins Win Over Penguins</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNUTFVeVgwRF95TjJPamhBUjVHbWZRN1FhUDU1TWg5eS1tWk1McFE4aTlra3FsSE1aRk82ekJpcWRUWXh1eXpFZVFVbG5LTFlLVmRCTzhGc3JUaW55QVJaOFI3bG1BWGNqQklaa21lX2tLQW8zSjhGa3RsVGtnYmNSbDYtSmJJVFJGNERiVWprbG5DX19YSnNYY2pudzJpWU0zVHhaWkZScGtXbW40SjdteUVOcXVwRnJJS1pnQy1GNEZnZjF0dE4wbXdyYkZyMTFZVzExbGZCUQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 3:08 AM</span></div>
@@ -1274,9 +1281,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 3:04 AM</span></div>
 <div class="news-title">Bruins beat Penguins as Khusnutdinov, Mittelstadt score 50 seconds apart</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPLVVzcGVwdmNxeHFzaXctQUJXUF9tS2NXWHMyM3VkXzh0c185SWNCdkpQV2Z3MHhlSVhmc1NVZnF1Z1hKQ3FYVVJJdlZ2VjIzLXFhSzNSWUlNTGFCUnVHYUlaV3pJdm4xNmRiNXNRTmsxVGZXZzAxaDRJLU1lWXUwbFpUeHlRTjk5NnJyZkNkdER2SWxreEN6aURoSko3OUFQaG1LYmpkZUR4WE5vZktKd3hfRzFSUmJxbm4xa0hqN3hiTlIt?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 4 &middot; 2:11 AM</span></div>
-<div class="news-title">Bruins have re-engaged with Canucks on Garland; package may include Poitras, Lohrei: report</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxQX2RxcVByTUtCWFA2TU8wY2ttWF9uSG5ORDUwcXVPMl9VNUI4QU9UVFFRNU9iUkFwWXNCakxiLURxUHF1SUstY05NeE9WUlJGTzN5dV9XQWJ3OU1hT0JUdlA5R2VhMjNiX3pBdUd3eUNFbUhMNnM1eVRtS3ZrRDF4T2w3V0N0NnlhTVB0NVIxSk1ZZmlqUEl0S04ta1pkckwwYll6SXQydHVLejR3TXZacXFuQnN2T0xCNWtzWHh1cjY2SlZoeFdselU1S1ZmNWVBa0dmOXlOUE04cE9DdHRDN0hNN1prblJVa2FN?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">bostonhockeyinsider.com</span><span class="news-date">Mar 4 &middot; 1:48 AM</span></div>
-<div class="news-title">Bruins to part with two solid young players in blockbuster trade with Canucks for impact forward</div></a></div></div>
+<div class="news-title">Bruins have re-engaged with Canucks on Garland; package may include Poitras, Lohrei: report</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/BostonBruins/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/BostonBruins</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1296,7 +1301,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 4:52 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 4, 2026 at 5:20 PM ET</span></div>
 <script>
 document.querySelectorAll('table.sortable').forEach(function(tbl){
   tbl.querySelectorAll('thead th').forEach(function(th,idx){
@@ -1331,7 +1336,7 @@ document.querySelectorAll('table.sortable').forEach(function(tbl){
   }
   var root=document.documentElement;
   var btns=document.querySelectorAll('.theme-btn');
-  var saved=localStorage.getItem('theme')||'light';
+  var saved=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   swapLogos(saved);
   btns.forEach(function(b){
     if(b.dataset.theme===saved) b.classList.add('active');
