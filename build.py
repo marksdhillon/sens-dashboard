@@ -2892,32 +2892,72 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
 </script>
 <script>
 (function(){{
-  var hasLive=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
-  if(!hasLive) return;
-  function refreshLive(){{
+  // Find today's date from the button with the today-dot marker
+  var todayBtn=document.querySelector('.ds-today-dot');
+  var TODAY=todayBtn?todayBtn.closest('.ds-btn').dataset.date:'';
+  if(!TODAY) return;
+
+  // Track whether all today's games are final so we can slow down polling
+  var allFinal=false;
+
+  function isViewingToday(){{
     var active=document.querySelector('.ds-btn.ds-active');
-    if(!active) return;
-    var dateStr=active.dataset.date;
-    if(!dateStr) return;
-    fetch('https://api-web.nhle.com/v1/score/'+dateStr)
+    return active&&active.dataset.date===TODAY;
+  }}
+
+  function refreshScores(){{
+    // Always fetch today's scores via /score/now (most reliable, includes current game states)
+    fetch('https://api-web.nhle.com/v1/score/now')
       .then(function(r){{return r.json()}})
       .then(function(data){{
         var games=data.games||[];
+        var hasLive=false;
+        var hasFut=false;
         for(var i=0;i<games.length;i++){{
           var g=games[i];
           var gid=g.id;
           var card=document.querySelector('[data-gid="'+gid+'"]');
           if(!card) continue;
+          var prevState=card.getAttribute('data-state');
           var st=g.gameState||'';
           card.setAttribute('data-state',st);
+
           var statusEl=card.querySelector('.sb-status');
           var rows=card.querySelectorAll('.sb-team-row');
-          var aScore=card.querySelectorAll('.sb-score');
-          // Update scores
+          var scores=card.querySelectorAll('.sb-score');
+
+          // Update scores for any non-future game
           if(st!=='FUT'&&st!=='PRE'){{
-            if(aScore[0]) aScore[0].textContent=g.awayTeam.score||0;
-            if(aScore[1]) aScore[1].textContent=g.homeTeam.score||0;
+            var aS=g.awayTeam.score!=null?g.awayTeam.score:0;
+            var hS=g.homeTeam.score!=null?g.homeTeam.score:0;
+            if(scores[0]) scores[0].textContent=aS;
+            if(scores[1]) scores[1].textContent=hS;
           }}
+
+          // Update goal scorer chips
+          var goalArr=g.goals||[];
+          if(goalArr.length>0){{
+            var awaySc={{}},homeSc={{}};
+            var awayAbbr=card.getAttribute('data-away');
+            var homeAbbr=card.getAttribute('data-home');
+            for(var j=0;j<goalArr.length;j++){{
+              var gl=goalArr[j];
+              var sn=gl.name;if(typeof sn==='object')sn=sn['default']||'';
+              var ta=gl.teamAbbrev;if(typeof ta==='object')ta=ta['default']||'';
+              if(ta===awayAbbr)awaySc[sn]=(awaySc[sn]||0)+1;
+              else if(ta===homeAbbr)homeSc[sn]=(homeSc[sn]||0)+1;
+            }}
+            function buildChips(obj){{
+              var h='';for(var n in obj){{
+                var c=obj[n]>1?' ('+obj[n]+')':'';
+                h+='<span class="sb-scorer">'+n+c+'</span>';
+              }}return h;
+            }}
+            var scorerEls=card.querySelectorAll('.sb-scorers');
+            if(scorerEls[0])scorerEls[0].innerHTML=buildChips(awaySc);
+            if(scorerEls[1])scorerEls[1].innerHTML=buildChips(homeSc);
+          }}
+
           // Update status text
           if(statusEl){{
             var per=g.periodDescriptor||{{}};
@@ -2929,27 +2969,47 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               var txt=pType==='OT'?'Final/OT':pType==='SO'?'Final/SO':'Final';
               statusEl.className='sb-status sb-final';
               statusEl.textContent=txt;
-              // Add winner highlight
-              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
-              if(rows[0]) rows[0].className='sb-team-row'+(as>hs?' sb-winner':'');
-              if(rows[1]) rows[1].className='sb-team-row'+(hs>as?' sb-winner':'');
+              var aScore=g.awayTeam.score||0,hScore=g.homeTeam.score||0;
+              if(rows[0])rows[0].className='sb-team-row'+(aScore>hScore?' sb-winner':'');
+              if(rows[1])rows[1].className='sb-team-row'+(hScore>aScore?' sb-winner':'');
             }} else if(st==='LIVE'||st==='CRIT'){{
+              hasLive=true;
               var ords={{1:'1st',2:'2nd',3:'3rd'}};
               var txt=pType==='OT'?'OT '+tr:pType==='SO'?'Shootout':(ords[pNum]||'P'+pNum)+' '+tr;
               statusEl.className='sb-status sb-live';
               statusEl.textContent=txt;
-              if(rows[0]) rows[0].className='sb-team-row';
-              if(rows[1]) rows[1].className='sb-team-row';
+              if(rows[0])rows[0].className='sb-team-row';
+              if(rows[1])rows[1].className='sb-team-row';
+            }} else if(st==='FUT'||st==='PRE'){{
+              hasFut=true;
             }}
           }}
         }}
-        // Check if any games still live — if not, stop refreshing
-        var stillLive=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
-        if(!stillLive) clearInterval(liveTimer);
+        // Adjust polling rate: 15s when live, 60s when waiting for games, stop when all done
+        allFinal=!hasLive&&!hasFut;
+        if(allFinal&&pollTimer){{
+          clearInterval(pollTimer);
+          pollTimer=null;
+        }} else if(hasLive&&pollInterval!==15000){{
+          clearInterval(pollTimer);
+          pollInterval=15000;
+          pollTimer=setInterval(refreshScores,pollInterval);
+        }} else if(!hasLive&&hasFut&&pollInterval!==60000){{
+          clearInterval(pollTimer);
+          pollInterval=60000;
+          pollTimer=setInterval(refreshScores,pollInterval);
+        }}
       }})
       .catch(function(){{}});
   }}
-  var liveTimer=setInterval(refreshLive,15000);
+
+  // Start polling — 15s if any games already live, 60s if just future games
+  var hasLiveNow=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
+  var pollInterval=hasLiveNow?15000:60000;
+  var pollTimer=setInterval(refreshScores,pollInterval);
+
+  // Also refresh immediately on page load (data may be stale from build)
+  refreshScores();
 }})();
 </script>
 </body></html>'''
