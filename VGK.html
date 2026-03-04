@@ -362,7 +362,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg" alt="Vegas Golden Knights" class="team-logo">
       <div>
         <h1>Vegas Golden Knights <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 11:23 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 11:25 PM ET</div>
       </div>
     </div>
   </div>
@@ -1144,7 +1144,20 @@ body{animation:fadeIn 0.15s ease}
 <td class="r" data-sort="0"></td>
 <td class="r bio-col" data-sort=""></td>
 <td class="r bio-col" data-sort=""></td></tr></tbody></table></div></div>
-  <div class="panel" id="p-injuries"><div class="empty-state"><span>&#9989;</span>No reported injuries. Full health!</div></div>
+  <div class="panel" id="p-injuries"><h3>Current Injuries</h3>
+<div class="sub-note">Data from ESPN</div>
+<div class="inj-tbl-wrap">
+<table class="nhl-tbl inj-tbl">
+<thead><tr><th>Player</th><th>Pos</th><th>Status</th><th>Return</th><th>Details</th></tr></thead>
+<tbody><tr>
+<td class="inj-name">Mark Stone</td>
+<td class="inj-pos">RW</td>
+<td><span class="inj-badge inj-dtd">Day-To-Day</span></td>
+<td class="inj-return">Mar 4</td>
+<td class="inj-comment"></td>
+</tr></tbody>
+</table>
+</div></div>
   <div class="panel" id="p-transactions"><h3>Transactions</h3>
 <div class="sub-note">Data from ESPN &middot; 2025-26 Season</div>
 <div class="tx-list"><div class="tx-row">
@@ -1275,7 +1288,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:23 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:25 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
