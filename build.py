@@ -1613,7 +1613,7 @@ def generate_html(sens, roster_html, projections_html, schedule_html, news_html,
         switcher_opts += f'<optgroup label="{dname}">'
         for t in dlist:
             a = t["abbrev"]
-            fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
+            fn = f"{a}.html"  # All teams use consistent [ABBREV].html format
             sel = " selected" if a == TEAM else ""
             switcher_opts += f'<option value="{fn}"{sel}>{t["name"]}</option>'
         switcher_opts += '</optgroup>'
@@ -3438,7 +3438,7 @@ def build_standings_page(east_teams, west_teams, all_teams, mp_odds, switcher_op
         po = mp_odds.get(t["abbrev"], {}).get("ALL", {}).get("playoffPct", 0)
         po_str = f"{po*100:.0f}%"
         div_td = f'<td>{t["divAbbrev"][:3].upper()}</td>' if show_div else ''
-        fn = "index.html" if t["abbrev"] == DEFAULT_TEAM else f'{t["abbrev"]}.html'
+        fn = f'{t["abbrev"]}.html'  # All teams use consistent [ABBREV].html format
         return f'''<tr{cls}><td class="{rank_cls}">{label}</td><td class="tcol"><a href="{fn}" class="tcol-link">{t["name"]}</a></td>{div_td}<td class="r">{t["gp"]}</td><td class="r">{t["w"]}</td><td class="r">{t["l"]}</td><td class="r">{t["otl"]}</td><td class="r bpts">{t["pts"]}</td><td class="r">{pp}</td><td class="r">{t["gf"]}</td><td class="r">{t["ga"]}</td><td class="r">{diff_str}</td><td class="r">{home}</td><td class="r">{road}</td><td class="r">{l10}</td><td class="r">{t["streak"]}</td><td class="r">{po_str}</td></tr>'''
 
     # Column headers
@@ -3802,6 +3802,11 @@ def main():
         with open(filename, "w") as f:
             f.write(html)
         print(f"  -> {filename} generated")
+        # Also write OTT.html as a copy of index.html for consistent dropdown navigation
+        if TEAM == DEFAULT_TEAM:
+            with open(f"{TEAM}.html", "w") as f:
+                f.write(html)
+            print(f"  -> {TEAM}.html generated")
 
     # ── Scoreboard page ────────────────────────────────
     print(f"\n{'='*50}")
@@ -3848,7 +3853,7 @@ def main():
         sb_switcher += f'<optgroup label="{dname}">'
         for t in dlist:
             a = t["abbrev"]
-            fn = "index.html" if a == DEFAULT_TEAM else f"{a}.html"
+            fn = f"{a}.html"  # All teams use consistent [ABBREV].html format
             sb_switcher += f'<option value="{fn}">{t["name"]}</option>'
         sb_switcher += '</optgroup>'
 
