@@ -62,7 +62,8 @@ a.pname{font-size:11px}
 .game-right{gap:6px}
 .game-meta{font-size:10px}
 .game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
-.game-expand{padding:12px}
+.game-panel{width:100%}
+.game-panel .panel-body{padding:8px 16px 20px}
 .cmp-tbl{font-size:11px}
 .cmp-tbl thead th{padding:6px 4px;font-size:9px}
 .cmp-tbl td{padding:5px 4px}
@@ -174,17 +175,14 @@ a.pname:hover{color:var(--text-strong)}
 .sm-val{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
 .sm-label{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}
 .sched-list{display:flex;flex-direction:column;gap:4px}
-.game-detail{border-radius:8px;overflow:hidden}
+.game-card{border-radius:8px;overflow:hidden;cursor:pointer}
 .game-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
 .tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
 .tag-desperate{color:var(--amber);background:var(--amber-bg)}
 .tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
 .tag-hot{color:var(--text-strong);background:var(--accent)}
-.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
 .game-summary:hover{background:var(--bg-elevated)}
-.game-summary::-webkit-details-marker{display:none}
-.game-summary::marker{display:none;content:""}
-.game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .game-left{display:flex;align-items:center;gap:12px}
 .game-date{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}
 .game-opp{font-size:13px;font-weight:600;color:var(--text)}
@@ -193,7 +191,19 @@ a.pname:hover{color:var(--text-strong)}
 .game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
 .loc-home{background:var(--loc-home-bg);color:var(--green)}
 .loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
-.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
+/* Game side panel */
+.game-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+.game-overlay.open{opacity:1;pointer-events:auto}
+.game-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,90vw);background:var(--bg);z-index:101;transform:translateX(100%);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-left:1px solid var(--border)}
+.game-panel.open{transform:translateX(0)}
+.game-panel .panel-close{display:flex;justify-content:flex-end;padding:12px 16px 0}
+.game-panel .panel-close-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:6px;border-radius:6px}
+.game-panel .panel-close-btn:hover{background:var(--bg-elevated);color:var(--text)}
+.game-panel .panel-body{padding:8px 20px 24px}
+.gp-header{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.gp-date{font-size:11px;color:var(--text-muted);font-weight:500}
+.gp-matchup{font-size:16px;font-weight:700;color:var(--text-strong);letter-spacing:-0.3px}
+.gp-loc{font-size:11px;color:var(--text-muted)}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .cmp-tbl thead th:first-child{text-align:left}
@@ -347,7 +357,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="Toronto Maple Leafs" class="team-logo">
       <div>
         <h1>Toronto Maple Leafs</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:26 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:31 PM ET</div>
       </div>
     </div>
   </div>
@@ -387,112 +397,154 @@ body{animation:fadeIn 0.15s ease}
   <div class="sm-card"><div class="sm-val">13</div><div class="sm-label">Away</div></div>
   <div class="sm-card"><div class="sm-val">11</div><div class="sm-label">vs .500+</div></div>
 </div>
-<div class="sched-list"><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">@ New Jersey</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">29-29-2 &middot; 60p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+<div class="sched-list"><div class="game-card" onclick="openGamePanel('sg-0')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">@ New Jersey</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">29-29-2 &middot; 60p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-0" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 4</span><span class="gp-matchup">TOR @ New Jersey</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>TOR holds a 4-pt lead over NJD</li><li>NJD is fading — only 1% playoff odds</li><li>NJD is cold — 3-7-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>NJD</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-29-2</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">60</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">13-13-2</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-16-0</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">151</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">182</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">@ New York</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-29-8 &middot; 54p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-1')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 5</span><span class="game-opp">@ New York</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-29-8 &middot; 54p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-1" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 5</span><span class="gp-matchup">TOR @ New York</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>TOR leads season series 1-0-0</li><li>TOR holds a 10-pt lead over NYR</li><li>NYR is out of the playoff picture</li><li>NYR is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>NYR</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-29-8</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">54</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">7-15-6</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-14-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">160</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">190</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-2')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-2" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 7</span><span class="gp-matchup">TOR vs Tampa Bay</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>TBL holds a 16-pt lead over TOR</li><li>TBL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-3')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-3" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">TOR @ Montréal</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-1-1</li><li>MTL holds a 11-pt lead over TOR</li><li>MTL projected to make playoffs (85% odds)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-17-9</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-6-7</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">vs Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-4')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">vs Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-4" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 12</span><span class="gp-matchup">TOR vs Anaheim</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>ANA holds a 5-pt lead over TOR</li><li>ANA projected to make playoffs (94% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-5')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-5" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 14</span><span class="gp-matchup">TOR @ Buffalo</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>TOR trails season series 1-2-0</li><li>BUF holds a 12-pt lead over TOR</li><li>BUF projected to make playoffs (89% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-8-3</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-6')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-6" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 15</span><span class="gp-matchup">TOR @ Minnesota</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>TOR trails season series 0-1-0</li><li>MIN holds a 16-pt lead over TOR</li><li>MIN is a virtual lock for playoffs (100%)</li><li>MIN is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-16-10</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-7-7</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-9-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">204</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-7')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-7" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 17</span><span class="gp-matchup">TOR vs New York</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>NYI holds a 11-pt lead over TOR</li><li>NYI projected to make playoffs (74% odds)</li><li>NYI is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-2</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">172</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 20</span><span class="game-opp">vs Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-8')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 20</span><span class="game-opp">vs Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-8" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 20</span><span class="gp-matchup">TOR vs Carolina</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>CAR holds a 18-pt lead over TOR</li><li>CAR is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-6</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-2</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-1-2</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">171</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-9')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-9" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 21</span><span class="gp-matchup">TOR @ Ottawa</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 2 pts — a direct rival</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-8</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-10')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-10" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 24</span><span class="gp-matchup">TOR @ Boston</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>TOR trails season series 0-2-0</li><li>BOS holds a 7-pt lead over TOR</li><li>BOS is on the bubble (54% playoff odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>BOS</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-21-5</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">71</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-8-1</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-2-3</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">187</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 25</span><span class="game-opp">vs New York</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-29-8 &middot; 54p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-11')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 25</span><span class="game-opp">vs New York</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-29-8 &middot; 54p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-11" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 25</span><span class="gp-matchup">TOR vs New York</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>TOR leads season series 1-0-0</li><li>TOR holds a 10-pt lead over NYR</li><li>NYR is out of the playoff picture</li><li>NYR is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>NYR</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-29-8</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">54</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">7-15-6</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-14-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">160</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">190</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-12')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-12" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 28</span><span class="gp-matchup">TOR @ St. Louis</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>TOR leads season series 1-0-0</li><li>TOR holds a 11-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-13')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-13" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 30</span><span class="gp-matchup">TOR @ Anaheim</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>ANA holds a 5-pt lead over TOR</li><li>ANA projected to make playoffs (94% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-14')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-14" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 2</span><span class="gp-matchup">TOR @ San Jose</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>Separated by only 2 pts — a direct rival</li><li>SJS is on the bubble (31% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-15')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-15" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 4</span><span class="gp-matchup">TOR @ Los Angeles</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>Separated by only 2 pts — a direct rival</li><li>LAK is on the bubble (28% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">vs Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-16')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">vs Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-16" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 8</span><span class="gp-matchup">TOR vs Washington</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>TOR trails season series 0-2-0</li><li>WSH holds a 5-pt lead over TOR</li><li>WSH is on the bubble (27% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-24-7</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-3</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">186</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-17')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-17" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 9</span><span class="gp-matchup">TOR @ New York</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>NYI holds a 11-pt lead over TOR</li><li>NYI projected to make playoffs (74% odds)</li><li>NYI is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-2</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">172</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-18')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-18" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 11</span><span class="gp-matchup">TOR vs Florida</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>TOR leads season series 2-1-0</li><li>Separated by only 1 pts — a direct rival</li><li>FLA is fading — only 6% playoff odds</li><li>FLA is cold — 3-7-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Dallas</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W9</span></div><div class="game-right"><span class="game-meta">37-14-9 &middot; 83p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-19')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Dallas</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W9</span></div><div class="game-right"><span class="game-meta">37-14-9 &middot; 83p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-19" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 13</span><span class="gp-matchup">TOR vs Dallas</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>TOR trails season series 0-1-0</li><li>DAL holds a 19-pt lead over TOR</li><li>DAL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>DAL</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">37-14-9</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">83</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-7-3</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-7-6</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">9-1-0</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">164</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-20')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-20" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 15</span><span class="gp-matchup">TOR @ Ottawa</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 2 pts — a direct rival</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>TOR</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-8</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">11-14-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">195</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">211</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
-</div></details></div></div>
+</div></div></div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
   <div class="kpi"><div class="kpi-val">93</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">85 <span style="font-size:16px;color:var(--red)">(-8)</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -1127,13 +1179,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Hockey Writers</span><span class="news-date">Mar 3 &middot; 6:05 PM</span></div>
 <div class="news-title">Maple Leafs News & Rumours: Matthews, Holinka & Cowan’s Enigma</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQaXdjemY4VXk2TVNhRzlFYzRvYjd0OHEzeVp2elkxMzhoN01iUkJBQW42aEd3MzNsT0c3TG9LMXIwdERpdnhibGc2ZDVqdmR4c05iejNQZVI3bGlBUVdnQ1FPSWtZUUlCeW56WVpqeHhlb0ZTdEFLbGhYeWdvaVRoak9JZlY3cTZOdkwzVmpwaFdKQTVNMmhJdS1vRFFwdXVkcVZOZ2NFemFDMmZGei1adtIBtgFBVV95cUxNRWlEdEJxYmZrbVk3bEhBa29mcmNKY0pqWmxfc1VjT1VjZW9TdnBRR1BPN0dENGV6WERIZEZkLVJJTWpOYThLZ2ZhQzVrSmZneC1SVExxRjEyNW50dWN6ZklkVHUzMUVfcl9qUElqVmFhSUFMUVlhR0poWmJOMkdHSUFsVmU1VkI2bUgtc2JYb2U2UGtJSTN0MXl4cGh5dHltQnF0c1JHTjd3cUYxQ3lSUkh3WWRQZw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 6:00 PM</span></div>
-<div class="news-title">NHL Rumors: Toronto Maple Leafs, Boston Bruins, Vincent Trocheck, and Tyler Myers</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOT0dzOUVPWDF6dmZOUklIUjhPeWwxTVhrU2JHRlJxNXVuZHVvSWUxUXdMWkxaaF9UemhKaFJWeEIzdjBvcFk1U1UtZ2hfcnZlTWRVTDZ2Wl81OFBoaVNFM3pDcElfeTBZRm1wMDVob1VvaFp2bHJFYTdaSl84SC1XWURjSWktRERpSUJTNnFfeXN2Z21jOGFVN3NOUU05NlBzNFRqR3pObDBhMl9TRkVfbW81UTg3QQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL Rumors: Toronto Maple Leafs, Boston Bruins, Vincent Trocheck, and Tyler Myers</div></a><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNcEd6ZFVVZzliT3B1Z0lJOFVSeG9YLVpubDBHREpVOGwyVjYtVGFmT2VyMTBlZm9WZi1MYXdCN0dPNmg1R2JsbmFDWlkxLVVKX09MajVZYkEwLUt4cnpwYmZrMmoxMmJWVUduaFRMckhINFZSekVnUTFITUFJSDNOZUV4RGZNU1NkYTR4UmtKWUV1d3JXd012VV9YZU9vUnpENkRZdWRPYlpsMXpFN1FqZzRiUlhiVnBkcUxiNVd0TVk4NzhTTk5mRk8xZw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 3 &middot; 6:00 PM</span></div>
+<div class="news-title">What should selling look like for the Toronto Maple Leafs?</div></a><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOT0dzOUVPWDF6dmZOUklIUjhPeWwxTVhrU2JHRlJxNXVuZHVvSWUxUXdMWkxaaF9UemhKaFJWeEIzdjBvcFk1U1UtZ2hfcnZlTWRVTDZ2Wl81OFBoaVNFM3pDcElfeTBZRm1wMDVob1VvaFp2bHJFYTdaSl84SC1XWURjSWktRERpSUJTNnFfeXN2Z21jOGFVN3NOUU05NlBzNFRqR3pObDBhMl9TRkVfbW81UTg3QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:54 PM</span></div>
 <div class="news-title">Five Things The Maple Leafs Can Do Between Now And The End Of The Season</div></a><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVFdzRUFsS2FiM3I5Mm1yb2JVR2xra3V5dzN6ZjdXc21BdGd6VlIyTkR6S0FLODh3d3E1SnQ5WEwzVkpFM1NfdnFOUzBiemEyMnBOQ1d6NFZuUHVXUHlDd0JxVEFOVmxuWW5NMG9sSnlKSVo1TzZfdVN6VG1OenV4NlJoeTZPWnFQT1llS01ZdG5QeUVIdnZRZTFRbTlUTVhaUFp3XzF6SjVFWUFsODlIbGFWRzZvLVpHUk5VdVVOX1drSy01cTA4TVBhNlRiVWtfX3BDMi02QnJOdw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Hockey Patrol</span><span class="news-date">Mar 3 &middot; 5:47 PM</span></div>
-<div class="news-title">Scott Laughton, Maple Leafs pending UFA on the trade block, evaluating deadline return</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPX1BzTlYtenFhdEx3VElNdkpoRG5GTVNWeWM3V2dKWXFxUDROWGRWVGpfLXJJSGZJQzMwTDFNd3dxUTJENDdFZ21UdmN5Snh1STdtX0dJLVlEdVdyZ1ZieWhyT19leGVmZHI5aldqYi1FaU5Zd3FXWGJWVzVTLUtoWlhqaDhPLUFYWXJILUpXV1RQWHhJT2JQV1QwWVZjc3pEZjlZ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Toronto Sun</span><span class="news-date">Mar 3 &middot; 5:33 PM</span></div>
-<div class="news-title">SIMMONS: Stunning decline of Morgan Rielly is near-impossible to explain</div></a></div></div>
+<div class="news-title">Scott Laughton, Maple Leafs pending UFA on the trade block, evaluating deadline return</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/leafs/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/leafs</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1141,7 +1193,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:26 PM ET</span></div>
+<div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
+<div class="game-panel" id="gamePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="gamePanelBody"></div>
+</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:31 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1180,5 +1237,21 @@ document.querySelectorAll(".sortable").forEach(function(tbl){
     });
   });
 })();
+</script>
+<script>
+function openGamePanel(id){
+  var src=document.getElementById(id);
+  if(!src) return;
+  document.getElementById('gamePanelBody').innerHTML=src.innerHTML;
+  document.getElementById('gamePanel').classList.add('open');
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeGamePanel(){
+  document.getElementById('gamePanel').classList.remove('open');
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
 </body></html>

@@ -62,7 +62,8 @@ a.pname{font-size:11px}
 .game-right{gap:6px}
 .game-meta{font-size:10px}
 .game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
-.game-expand{padding:12px}
+.game-panel{width:100%}
+.game-panel .panel-body{padding:8px 16px 20px}
 .cmp-tbl{font-size:11px}
 .cmp-tbl thead th{padding:6px 4px;font-size:9px}
 .cmp-tbl td{padding:5px 4px}
@@ -174,17 +175,14 @@ a.pname:hover{color:var(--text-strong)}
 .sm-val{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
 .sm-label{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}
 .sched-list{display:flex;flex-direction:column;gap:4px}
-.game-detail{border-radius:8px;overflow:hidden}
+.game-card{border-radius:8px;overflow:hidden;cursor:pointer}
 .game-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
 .tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
 .tag-desperate{color:var(--amber);background:var(--amber-bg)}
 .tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
 .tag-hot{color:var(--text-strong);background:var(--accent)}
-.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
 .game-summary:hover{background:var(--bg-elevated)}
-.game-summary::-webkit-details-marker{display:none}
-.game-summary::marker{display:none;content:""}
-.game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .game-left{display:flex;align-items:center;gap:12px}
 .game-date{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}
 .game-opp{font-size:13px;font-weight:600;color:var(--text)}
@@ -193,7 +191,19 @@ a.pname:hover{color:var(--text-strong)}
 .game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
 .loc-home{background:var(--loc-home-bg);color:var(--green)}
 .loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
-.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
+/* Game side panel */
+.game-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+.game-overlay.open{opacity:1;pointer-events:auto}
+.game-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,90vw);background:var(--bg);z-index:101;transform:translateX(100%);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-left:1px solid var(--border)}
+.game-panel.open{transform:translateX(0)}
+.game-panel .panel-close{display:flex;justify-content:flex-end;padding:12px 16px 0}
+.game-panel .panel-close-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:6px;border-radius:6px}
+.game-panel .panel-close-btn:hover{background:var(--bg-elevated);color:var(--text)}
+.game-panel .panel-body{padding:8px 20px 24px}
+.gp-header{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.gp-date{font-size:11px;color:var(--text-muted);font-weight:500}
+.gp-matchup{font-size:16px;font-weight:700;color:var(--text-strong);letter-spacing:-0.3px}
+.gp-loc{font-size:11px;color:var(--text-muted)}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .cmp-tbl thead th:first-child{text-align:left}
@@ -347,7 +357,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" alt="San Jose Sharks" class="team-logo">
       <div>
         <h1>San Jose Sharks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:33 PM ET</div>
       </div>
     </div>
   </div>
@@ -387,127 +397,175 @@ body{animation:fadeIn 0.15s ease}
   <div class="sm-card"><div class="sm-val">12</div><div class="sm-label">Away</div></div>
   <div class="sm-card"><div class="sm-val">9</div><div class="sm-label">vs .500+</div></div>
 </div>
-<div class="sched-list"><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">vs Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+<div class="sched-list"><div class="game-card" onclick="openGamePanel('sg-0')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 3</span><span class="game-opp">vs Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-0" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 3</span><span class="gp-matchup">SJS vs Montréal</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>MTL holds a 13-pt lead over SJS</li><li>MTL projected to make playoffs (85% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-17-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-6-7</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 6</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-1')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 6</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-1" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 6</span><span class="gp-matchup">SJS vs St. Louis</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-2')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-2" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 7</span><span class="gp-matchup">SJS vs New York</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SJS trails season series 0-1-0</li><li>NYI holds a 13-pt lead over SJS</li><li>NYI projected to make playoffs (74% odds)</li><li>NYI is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-2</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">172</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-3')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-3" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">SJS @ Buffalo</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>BUF holds a 14-pt lead over SJS</li><li>BUF projected to make playoffs (89% odds)</li><li>BUF is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-8-3</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-4')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Boston</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">33-21-5 &middot; 71p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-4" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 12</span><span class="gp-matchup">SJS @ Boston</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SJS leads season series 1-0-0</li><li>BOS holds a 9-pt lead over SJS</li><li>BOS is on the bubble (54% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>BOS</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-21-5</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">71</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-8-1</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-13-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-2-3</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">200</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">187</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-5')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Montréal</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">33-17-9 &middot; 75p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-5" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 14</span><span class="gp-matchup">SJS @ Montréal</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>MTL holds a 13-pt lead over SJS</li><li>MTL projected to make playoffs (85% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>MTL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-17-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-11-2</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-6-7</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">193</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-6')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-6" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 15</span><span class="gp-matchup">SJS @ Ottawa</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SJS trails season series 0-1-0</li><li>OTT holds a 4-pt lead over SJS</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">@ Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-7')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">@ Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-7" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 17</span><span class="gp-matchup">SJS @ Edmonton</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>EDM holds a 4-pt lead over SJS</li><li>EDM projected to make playoffs (69% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-24-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-14-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-6-0</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">215</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">vs Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-8')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">vs Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-8" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 19</span><span class="gp-matchup">SJS vs Buffalo</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>BUF holds a 14-pt lead over SJS</li><li>BUF projected to make playoffs (89% odds)</li><li>BUF is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-8-3</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Philadelphia</span><span class="game-tag tag-sellers">Sellers</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">28-21-11 &middot; 67p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-9')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">vs Philadelphia</span><span class="game-tag tag-sellers">Sellers</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">28-21-11 &middot; 67p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-9" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 21</span><span class="gp-matchup">SJS vs Philadelphia</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SJS trails season series 0-1-0</li><li>PHI holds a 5-pt lead over SJS</li><li>PHI is fading — only 11% playoff odds</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>PHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-21-11</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-9-7</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-12-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-10')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-10" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 24</span><span class="gp-matchup">SJS @ Nashville</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>Separated by only 0 pts — a direct rival</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-11')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-11" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 26</span><span class="gp-matchup">SJS @ St. Louis</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">30-21-8 &middot; 68p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-12')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">30-21-8 &middot; 68p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-12" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 28</span><span class="gp-matchup">SJS @ Columbus</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SJS leads season series 1-0-0</li><li>CBJ holds a 6-pt lead over SJS</li><li>CBJ is on the bubble (39% playoff odds)</li><li>CBJ is hot — 8-1-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>CBJ</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-21-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">68</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-8-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-13-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-1-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">189</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">189</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-13')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-13" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 30</span><span class="gp-matchup">SJS vs St. Louis</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 1</span><span class="game-opp">vs Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-14')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 1</span><span class="game-opp">vs Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-14" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 1</span><span class="gp-matchup">SJS vs Anaheim</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>ANA holds a 7-pt lead over SJS</li><li>ANA projected to make playoffs (94% odds)</li><li>ANA is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Toronto</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-24-10 &middot; 64p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-15')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Toronto</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-24-10 &middot; 64p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-15" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 2</span><span class="gp-matchup">SJS vs Toronto</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SJS leads season series 1-0-0</li><li>Separated by only 2 pts — a direct rival</li><li>TOR is fading — only 1% playoff odds</li><li>TOR is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>TOR</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-24-10</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">64</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-7</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">195</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">211</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-16')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-16" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 4</span><span class="gp-matchup">SJS vs Nashville</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>Separated by only 0 pts — a direct rival</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">vs Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-17')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">vs Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-17" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 6</span><span class="gp-matchup">SJS vs Chicago</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SJS trails season series 0-1-0</li><li>SJS holds a 7-pt lead over CHI</li><li>CHI is fading — only 0% playoff odds</li><li>CHI is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>CHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-28-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-14-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">161</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">192</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">vs Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-18')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 8</span><span class="game-opp">vs Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-18" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 8</span><span class="gp-matchup">SJS vs Edmonton</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>EDM holds a 4-pt lead over SJS</li><li>EDM projected to make playoffs (69% odds)</li><li>High-scoring matchup — combined 6.6 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-24-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-14-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-6-0</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">215</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-19')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-19" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 9</span><span class="gp-matchup">SJS @ Anaheim</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>ANA holds a 7-pt lead over SJS</li><li>ANA projected to make playoffs (94% odds)</li><li>ANA is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-20')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-20" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 11</span><span class="gp-matchup">SJS vs Vancouver</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SJS leads season series 3-0-0</li><li>SJS holds a 19-pt lead over VAN</li><li>VAN is out of the playoff picture</li><li>VAN is cold — 1-7-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>VAN</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">18-35-7</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">43</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">6-18-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-17-2</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">1-7-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">153</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">224</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-21')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-21" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 13</span><span class="gp-matchup">SJS @ Nashville</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>Separated by only 0 pts — a direct rival</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-22')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-22" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 15</span><span class="gp-matchup">SJS @ Chicago</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SJS trails season series 0-1-0</li><li>SJS holds a 7-pt lead over CHI</li><li>CHI is fading — only 0% playoff odds</li><li>CHI is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>CHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-28-9</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-14-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-4</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">161</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">192</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-23')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-23" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 16</span><span class="gp-matchup">SJS @ Winnipeg</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SJS leads season series 2-0-0</li><li>SJS holds a 6-pt lead over WPG</li><li>WPG is fading — only 6% playoff odds</li><li>WPG is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-25-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-26-10</td></tr><tr><td class="cmp-stat-l">62</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">56</td></tr><tr><td class="cmp-stat-l">16-10-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-11-5</td></tr><tr><td class="cmp-stat-l">13-15-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">179</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">168</td></tr><tr><td class="cmp-stat-l">202</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">184</td></tr></tbody></table>
-</div></details></div></div>
+</div></div></div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
   <div class="kpi"><div class="kpi-val">93</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">86 <span style="font-size:16px;color:var(--red)">(-7)</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -1099,21 +1157,15 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 11:49 AM</span></div>
 <div class="news-title">NHL Game Preview: Montreal Canadiens at San Jose Sharks with Line Combinations 03/03/2026</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOaEhKbXFoT1BrTWhIU1VvR2JBY0Y5WnNsR2ZyX0RGcEtLYXhFWDEzbGVkV2RCcVpKeU9faHJ0amRaQm1nVWJVSndGRUFfS2E2YjJFdm04c1FucTZHTkJpM3pndkhsRU1IMGxXSzVjZjRWbjlURjlnVlVQQkZ5WTFuZl9LVHMwUFVQckcyWTZOUzFYN2x0T2FlNQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 6:19 AM</span></div>
-<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxQM1RiZUl5VVk4N1ZNRXNPaEo5anZsVTRXNVdnVFl2SEtlRGdVTjNHTmhaSGV5XzVXbGlId01sdjc4YkRPc0w2XzZ0SWxVRWlQQVdIazN2bk9LaDA3RnJzUWI0MFdFMkQxMDQ3dkRRSnhzcHVia3hVTkItQVgzc2pWeHIyd0hNU0dlVm5NRFpIRF9VYjZ3cnl2RERXcEw0Wnd0SDNlSGZDYVJHY1ZzMlAtTXVIU1Jvd19LVWhzcGFQU0FBaGY0TlhBN2hXd3lRWFZvYUVlVDEtQjEtblRuNHVLQ0UyUmhoT2pGQWFVWEhFRHZuaUVYVW1FNGR0MWE1aWV3QmZlVDR1THNYcXo2TmVWQWdkejlQNktobnI5WXphQUt2RWtnb0JaTg?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KHOU</span><span class="news-date">Mar 3 &middot; 4:36 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqwJBVV95cUxQRldNS05sSXN4REE0WEpxUTNaZ1BaOU5PMUQ1TmE4YjBzWWUzMC1reUh4Nm16T1BfNDREaVZYbTlNWXkzOTA0NndpY0VGNHQwXzFZLUpwT0RBVTEtN2ktSUdQdGNqSWJ3MDZwMlJyLUVYRkVMSHhlUlJwN29CT2g2VWlLZzJoUkVnSDhGaDVwZGM1SVZpLXdManZtSWw4STFtcng0dHo5QklpOVZoUE9uRVhaQk9QVWhuZTJIM0xpQ0dEWXpSOTNpdVRUaWJXQmZ6VmFqNW5raDFTak0zbGtuWjY0Y2gwWkxsdDJqZno4NjdHRThzNy1KdU1BWlNqdU1yY0pSb2gyUXNQaU9wQmxKQVdCUGJQbzJMSXB3OXV3WnNiOW93X3ExZHp0Yw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 3 &middot; 4:34 AM</span></div>
-<div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxOLTNnMVAyTGFIaURjUlRnM0ZxTTE2MXBMeC1SbnpQRC1QTkRwZ1JnNnFxUmNiM0Z2V0tBRHc4ODNPOFAtM3luSi1KeWJxWmd0VnBvNXdOQVBINTRpSUdJVHVUc21XWHpFNllxM0RhQ3hwclF2anJQOGwtQm93QlNLYnR1S1VJdUpEUm16Y3lueVJabW01blZTUGtsblFNMGw4NXRTblRCY2FIbEEyVDFyQUx4ZzJzd1gzS1JvbTItTFlSM24wdTZyV0drNVlYUkJreU5iS0pxQ01PWnZ1YkdnT3lsQ1NoUjRPNHNRam9RNmppcks3bVRDX1RHNm5GTE1TbzA2OWh2NUpFb3BReTJlODF2bGlMMzRnVFBvV1NOZHo4ZGFrT2piLQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">KREM</span><span class="news-date">Mar 3 &middot; 4:28 AM</span></div>
+<div class="news-title">1 player Sharks must trade before 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxQSFJDcFFmZ2xXZ19aWDg3SzI0MS1yZmVqUHc1elVyTUVwcDBQVnA0ekpWUnNVM1FBRXFUWkdZeUlNR090bmRLcTRGTjBqYktKancxVkdfYmU5OUhqUl9QazJ4cmhMWFhLc2RMUkhiZGFwdjNIUm1mSUhDVVpuSDl4Z0loY0tTbE1PVDRORVExQzc3OU5neEl1VDZoajRWWWwyYWc5bXdJVmkwWUpyRlNrV2RKRTNLWGJ4MVdQZUsxOC1ZdmN6MEVjZkFLT1dSTU9EbTNYeFhqMDE1dm1OcnZwYVUyREtSNGxDM0gtUGlqN1FSWE4zV291ZWVaV2haSkJzRnJQbm5PNHJ3dUU4bE1PQWp6c3FmZF9fMWphVUozSEdWTENfOWlUR3o3QmNFYWs?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">13newsnow.com</span><span class="news-date">Mar 3 &middot; 4:28 AM</span></div>
 <div class="news-title">IMPASSE: Will the San Jose Sharks TRADE or Re-SIGN Kiefer Sherwood at the NHL Deadline Frenzy?</div></a><a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxPWFFQNE9ISUktYkY0eHU2SW9XUk01TFVlTDBqT0laZ25DenJRSWNGNmN2dDZxTXZtb1g4SXhhdFZVQXc4UGx4WENOaDVnNXFBODJjX1h1UmxMV2dpeFd4LTlMYUQyUTJOWVUxb2JBcHVSNXVlT3FudVNYbmlTWWV2MklGanhXSGdWY2dHdWYzLVkzU3oyTXBzWk5heFlFSWJqX3ZSZzVUY084dF9tdlU4azNfVVpnQkk5QjNEUzJTcUxWTDJIZHZ3dU9ENTRWS24taXdwa0dlczNWeDhxOTc3akY5aHZMZ2JvSlBKVmt0V0RDRXhXTkhHOFF1bXJsdldQMzJDeDZyZ3M5RUgwZ1NJUnRxRVhUOVd4S09Ba2MxSDhUdHEzd0ZmY0hrMjBURmvSAbQCQVVfeXFMTi1ndXlZQ0tPSXBHazl0eGlVSFFNcVVhZEZEdUVXRHgzeGdWMzEySkhOWnA1eU5OaG91bzVWME5ia0NpWG5KQmxxSFM1TDB5aE8wUEZqbE5nanM4OTFPUDBSVjEzekZpLS1lQXhtQlh0ZTdIU1MwNl9PVHFqN1RlZGRwTEItaFdrT1dLLXpNSGhZQzBQN1hFMmRQUE9pS2NCM1EtbWJRQm4yQ19JS0E2UndRRi14TzMxbmpyX1RHZExyTkdwcUNfRUtPREtXMjVGVEZSMUNOT3E0S2FZSF9HakJ2Y1Z4Z3lKSTZxdERucU41N21ucGJjcUlsUDVZVW1KWERaS3JZMC13NDVLVFVwamlCRmY0aXYta01qY2hOWDctdnpYSVdGcjY3OWVyR2VHRml0X1g?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 3:46 AM</span></div>
 <div class="news-title">San Jose Sharks consider trading Kiefer Sherwood again with $1.5 million cap hit after brief stint from V</div></a><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNZXJ1eUtKYVhXMmhLT2VzTzJmVWMyTGJjRlotWmpHQXFEWGJRVl83VzR2cjVFTlBVdUVCX1FvUzVmanBjZWc5b0xaT0ZDb3lIQzdpUm1jeW1ieHBQSmJFMl9CcGZiOGNwYWF5NzZVdzljaVBNWVlWVUxUVnhwdDdPTkhQUjNGX19fb3B3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 3:25 AM</span></div>
 <div class="news-title">NHL Trade Rumors: Sharks looking to flip Recent Acquisition</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQdHRSWWZJeHFMaFVWTUdveGJ0NUp3em5JQkxLaWRPcHF0ZlBGVzZTTVRVUjhrTkhEb3FXdlBKQVVRSS1kNUs5SWdHQ19FWjc4ZXAzYmhMLVVweWJlQVFGV2JjOHZVYlFyYUh4YU5fRHlJVDZ0TUJSeTl0WXhVQTlpOUpR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 2:35 AM</span></div>
-<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQX29yMVJBZFZLa1dLTFNDT3d3cTJodmptTTZtcE1TVm53YzNuUWVzZFh5N04tWk9NSGxMUFZCcmZfQnJGUDlBT2NMNVZkVUkxdUFoVUtkd0JtQzVXa2FoOXRjb3J2bTdhajByVXdGVGNBQ205Q0M5ZlJIc3RtZXJINS04aWsyU0EydW1DWFJsVjNkQ0ZjeU1tWmxWLVBZb0lna1lWS2d6WkdyUGtUOEtpV2k0andvbXozcmJKMmxaTl9laHNPUk1Z?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">National Today</span><span class="news-date">Mar 3 &middot; 2:31 AM</span></div>
-<div class="news-title">Sharks Weigh Surprising Kiefer Sherwood Trade Weeks After Canucks Deal</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNdVVmN09KX3Y5ck01R213WWJzSElfX1FPbndOR3ZfNWJSRGEwbFRiM0IzUV9qRHY5eXhLQmVMUzVJT0tvU0UyWmc2T1E2SHN4OVN3N3BLdmM4REdrMlVZY0Z2V2w0bkRfWXZ5LU5aWXJadGF1ZUlQWVZ4UUxNeUZ2TjVnbUZIa3pydzNRa2hKSmxIV19FU3pNZGlocnVvekx0TENUcHUtamlOWDgzSGZYMTY0Y2tRd1VRTVBqd04wWlYwcWh0MWZGbXRSSXltUENDbDFoOTRmeGxkVXY0Ym1oakNLUWkybm1rZXpV?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">The Avalanche could bolster their lineup with $1.5 M forward</div></a><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNdVVmN09KX3Y5ck01R213WWJzSElfX1FPbndOR3ZfNWJSRGEwbFRiM0IzUV9qRHY5eXhLQmVMUzVJT0tvU0UyWmc2T1E2SHN4OVN3N3BLdmM4REdrMlVZY0Z2V2w0bkRfWXZ5LU5aWXJadGF1ZUlQWVZ4UUxNeUZ2TjVnbUZIa3pydzNRa2hKSmxIV19FU3pNZGlocnVvekx0TENUcHUtamlOWDgzSGZYMTY0Y2tRd1VRTVBqd04wWlYwcWh0MWZGbXRSSXltUENDbDFoOTRmeGxkVXY0Ym1oakNLUWkybm1rZXpV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 2:11 AM</span></div>
 <div class="news-title">Sharks consider shocking Kiefer Sherwood trade 6 weeks after Canucks move</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPVkRFbTBCTnpPbzh2MjlpMWU0bzMwRXJZX2R1RjVwc1hPMEdwZmVWQmVxejV6bG1VWU1zbjZnT1RqSFdvTTlWSUl1X3JIM0VDTFpoZjRlU2RsZDFoMFZQa2tsSjFsQkFnX0ZETG1pS0lSc2R0bUFfUGg0dWVUVFJ1eElmbDhObmQ0VWlOX0l1aDNDVnNBaVJj?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 1:40 AM</span></div>
@@ -1123,7 +1175,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 2 &middot; 11:48 PM</span></div>
 <div class="news-title">Sharks Celebrate South Asian Culture and Women in Sports at SAP Center This Weekend</div></a><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPSi1pVE5KM2JQa3N0bVJfcEZaY0RUVFZRU3JYc3JsM3kzaDZlQU0tSW0wVTJua0NKTm9TYmNtSVNkSWtPblpLZ0lKTXRzam1kVzdWOG16b1ZBWWwza2RHZEpwM01pN2tlUkxFZGk1TmJjMHczcXgzMlpwTUQ5MmFCYWczZ0V3WnpEcFhxVnlWZXFxY0tjRXkxMDZPVHJweWNFUXJlNFBQb0IwX0tRX0NxdE41RXBmVHRIYW1KeFJ5dndJN1VaLXBxN2JCdDNoWmw0VjczdWl1Zw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 2 &middot; 11:09 PM</span></div>
-<div class="news-title">Montreal Canadiens vs San Jose Sharks Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a></div></div>
+<div class="news-title">Montreal Canadiens vs San Jose Sharks Prediction, 3/3/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQQ0ZTbVZHVjVXWVpDR2t0TFoxMlpWTXZCeDl1T3JVU2Q0Vzc4VDhxMmNzbUQ2alV6Mk52ZzBETURXWmJNR0xsenE4SENDSWNHQ0pFeU96akwzeEJyM00zeDFlNzhsWFV2bWZ1dlRxMHQ4UnFtRWRrLVJaR1JtTGFKRlFIZXowUC1zekFMV3FKVTU4dENJNjdwcnpYaWJCSTZKa3c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 2 &middot; 11:00 PM</span></div>
+<div class="news-title">Sharks showing so much potential ahead of playoff push</div></a><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNck9qTDJiWk04R25MV0RScU5Pc1JoR0VqV2FLVE9qUlJyd2Vqd3pFT3dvdXE3ZTAtNDh3Vk9CWW4wQTV5Q3lJVkNIWmJJSlBuckFBN0pkdEx3dEloWmJBWVhVVk9WYjNORHFPQjBUV3BsRmMwdlNNY3c5YmlyVmsyRnRES0pzY3hpT0VBLTBLX1oxR1dNQ3pvWVBrcHZXSl9ySUhuMGdyeXQwRE92dnZmd0V6eVh1SEtE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 10:57 PM</span></div>
+<div class="news-title">Big Sharks weekend ahead with South Asian Culture Celebration and Women of Teal games</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ3g4YlZTUW1mQTlldjczTTF0LVlDVWYtZzRrb1NDOWw4c1RZLVNXVkNleEpDTVdZNTVTMVRaOE5DSS16OGJRR1lFaThJeFFNUXhyUGNuNC1NWmg0b19feWd0UTc4eVVCMi14eDdFRzdRRExHU1NwN3pwdU5pbXAycTRIY3pVUHpyRFdRR05SZm5iZm1aWTVuTUNfRlZkbEJ2akHSAacBQVVfeXFMTzh4c2xEbm9Tbk1IUERMTG5UUFV4Z1dCMTV0ZzRFV2VDbkNuTERaLVl1UWNjeHFaYUdCaUZDTllHZTZ0TGJoWERyMFVpcHJxaDYwS2tTZkdacDhTTGNVREFzSm9aNm5JT2xLbXhzanFrYm9rcmpmNFVTRWwxN1hYdVp0ZG1pZVVkbHpnVTlRY0pxX2htTXlacHRIM1V6NnctXzlGWldUQVk?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 2 &middot; 9:40 PM</span></div>
+<div class="news-title">NHL Rumors: Oilers, Sharks, Canadiens, Blue Jackets, Senators and Stars</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/SanJoseSharks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/SanJoseSharks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1131,7 +1189,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:27 PM ET</span></div>
+<div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
+<div class="game-panel" id="gamePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="gamePanelBody"></div>
+</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:33 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1170,5 +1233,21 @@ document.querySelectorAll(".sortable").forEach(function(tbl){
     });
   });
 })();
+</script>
+<script>
+function openGamePanel(id){
+  var src=document.getElementById(id);
+  if(!src) return;
+  document.getElementById('gamePanelBody').innerHTML=src.innerHTML;
+  document.getElementById('gamePanel').classList.add('open');
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeGamePanel(){
+  document.getElementById('gamePanel').classList.remove('open');
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
 </body></html>

@@ -62,7 +62,8 @@ a.pname{font-size:11px}
 .game-right{gap:6px}
 .game-meta{font-size:10px}
 .game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
-.game-expand{padding:12px}
+.game-panel{width:100%}
+.game-panel .panel-body{padding:8px 16px 20px}
 .cmp-tbl{font-size:11px}
 .cmp-tbl thead th{padding:6px 4px;font-size:9px}
 .cmp-tbl td{padding:5px 4px}
@@ -174,17 +175,14 @@ a.pname:hover{color:var(--text-strong)}
 .sm-val{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
 .sm-label{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}
 .sched-list{display:flex;flex-direction:column;gap:4px}
-.game-detail{border-radius:8px;overflow:hidden}
+.game-card{border-radius:8px;overflow:hidden;cursor:pointer}
 .game-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
 .tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
 .tag-desperate{color:var(--amber);background:var(--amber-bg)}
 .tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
 .tag-hot{color:var(--text-strong);background:var(--accent)}
-.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
 .game-summary:hover{background:var(--bg-elevated)}
-.game-summary::-webkit-details-marker{display:none}
-.game-summary::marker{display:none;content:""}
-.game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .game-left{display:flex;align-items:center;gap:12px}
 .game-date{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}
 .game-opp{font-size:13px;font-weight:600;color:var(--text)}
@@ -193,7 +191,19 @@ a.pname:hover{color:var(--text-strong)}
 .game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
 .loc-home{background:var(--loc-home-bg);color:var(--green)}
 .loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
-.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
+/* Game side panel */
+.game-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+.game-overlay.open{opacity:1;pointer-events:auto}
+.game-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,90vw);background:var(--bg);z-index:101;transform:translateX(100%);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-left:1px solid var(--border)}
+.game-panel.open{transform:translateX(0)}
+.game-panel .panel-close{display:flex;justify-content:flex-end;padding:12px 16px 0}
+.game-panel .panel-close-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:6px;border-radius:6px}
+.game-panel .panel-close-btn:hover{background:var(--bg-elevated);color:var(--text)}
+.game-panel .panel-body{padding:8px 20px 24px}
+.gp-header{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.gp-date{font-size:11px;color:var(--text-muted);font-weight:500}
+.gp-matchup{font-size:16px;font-weight:700;color:var(--text-strong);letter-spacing:-0.3px}
+.gp-loc{font-size:11px;color:var(--text-muted)}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .cmp-tbl thead th:first-child{text-align:left}
@@ -347,7 +357,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" alt="Seattle Kraken" class="team-logo">
       <div>
         <h1>Seattle Kraken</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:33 PM ET</div>
       </div>
     </div>
   </div>
@@ -387,117 +397,161 @@ body{animation:fadeIn 0.15s ease}
   <div class="sm-card"><div class="sm-val">11</div><div class="sm-label">Away</div></div>
   <div class="sm-card"><div class="sm-val">8</div><div class="sm-label">vs .500+</div></div>
 </div>
-<div class="sched-list"><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+<div class="sched-list"><div class="game-card" onclick="openGamePanel('sg-0')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">vs St. Louis</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">22-29-9 &middot; 53p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-0" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 4</span><span class="gp-matchup">SEA vs St. Louis</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>SEA holds a 14-pt lead over STL</li><li>STL is fading — only 0% playoff odds</li><li>STL is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>STL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">22-29-9</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">53</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-12-6</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">8-17-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">156</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">208</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-1')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 7</span><span class="game-opp">vs Ottawa</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-22-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-1" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 7</span><span class="gp-matchup">SEA vs Ottawa</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>Separated by only 1 pts — a direct rival</li><li>OTT is on the bubble (41% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-8</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-10-5</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-12-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-2')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-2" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">SEA vs Nashville</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 1-0-0</li><li>SEA holds a 5-pt lead over NSH</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">vs Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-3')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">vs Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-3" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 12</span><span class="gp-matchup">SEA vs Colorado</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 0-1-0</li><li>COL holds a 22-pt lead over SEA</li><li>COL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">40-10-9</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">89</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-6-5</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">225</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">148</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-4')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 14</span><span class="game-opp">@ Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-4" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 14</span><span class="gp-matchup">SEA @ Vancouver</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 2-0-1</li><li>SEA holds a 24-pt lead over VAN</li><li>VAN is out of the playoff picture</li><li>VAN is cold — 1-7-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>VAN</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">18-35-7</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">43</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">6-18-5</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-17-2</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">1-7-2</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">153</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">224</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-5')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">vs Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-5" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 15</span><span class="gp-matchup">SEA vs Florida</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>FLA is fading — only 6% playoff odds</li><li>FLA is cold — 3-7-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-6')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 17</span><span class="game-opp">vs Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-6" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 17</span><span class="gp-matchup">SEA vs Tampa Bay</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>TBL holds a 13-pt lead over SEA</li><li>TBL is a virtual lock for playoffs (100%)</li><li>TBL is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-7')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 19</span><span class="game-opp">@ Nashville</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">27-25-8 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-7" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 19</span><span class="gp-matchup">SEA @ Nashville</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 1-0-0</li><li>SEA holds a 5-pt lead over NSH</li><li>NSH is on the bubble (27% playoff odds)</li><li>NSH is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>NSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-25-8</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-3</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-12-5</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">177</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">30-21-8 &middot; 68p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-8')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Columbus</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">30-21-8 &middot; 68p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-8" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 21</span><span class="gp-matchup">SEA @ Columbus</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>Separated by only 1 pts — a direct rival</li><li>CBJ is on the bubble (39% playoff odds)</li><li>CBJ is hot — 8-1-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>CBJ</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-21-8</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">68</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-8-5</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-13-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-1-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">189</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">189</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-9')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">@ Florida</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">30-27-3 &middot; 63p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-9" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 24</span><span class="gp-matchup">SEA @ Florida</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SEA holds a 4-pt lead over FLA</li><li>FLA is fading — only 6% playoff odds</li><li>FLA is cold — 3-7-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>FLA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">30-27-3</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">63</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-14-3</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-13-0</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-7-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-10')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">@ Tampa Bay</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-4 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-10" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 26</span><span class="gp-matchup">SEA @ Tampa Bay</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>TBL holds a 13-pt lead over SEA</li><li>TBL is a virtual lock for playoffs (100%)</li><li>TBL is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>TBL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-4</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-0</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-6-4</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">209</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">153</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-11')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">@ Buffalo</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W3</span></div><div class="game-right"><span class="game-meta">35-19-6 &middot; 76p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-11" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 28</span><span class="gp-matchup">SEA @ Buffalo</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 0-1-0</li><li>BUF holds a 9-pt lead over SEA</li><li>BUF projected to make playoffs (89% odds)</li><li>BUF is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>BUF</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-19-6</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">76</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-8-3</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">206</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">181</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">@ Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-12')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 31</span><span class="game-opp">@ Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-12" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 31</span><span class="gp-matchup">SEA @ Edmonton</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 1-2-0</li><li>Separated by only 1 pts — a direct rival</li><li>EDM projected to make playoffs (69% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-24-8</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-14-4</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-6-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">215</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-13')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 2</span><span class="game-opp">vs Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-13" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 2</span><span class="gp-matchup">SEA vs Utah</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 0-2-0</li><li>Separated by only 1 pts — a direct rival</li><li>UTA projected to make playoffs (77% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-4</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">190</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">167</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-14')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 4</span><span class="game-opp">vs Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-14" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 4</span><span class="gp-matchup">SEA vs Chicago</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 2-0-0</li><li>SEA holds a 12-pt lead over CHI</li><li>CHI is fading — only 0% playoff odds</li><li>CHI is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>CHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-28-9</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-14-5</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-4</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">161</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">192</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-15')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 6</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-15" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 6</span><span class="gp-matchup">SEA @ Winnipeg</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 2-0-0</li><li>SEA holds a 11-pt lead over WPG</li><li>WPG is fading — only 6% playoff odds</li><li>WPG is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-26-10</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">56</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-11-5</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">168</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">184</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-16')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">@ Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-16" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 7</span><span class="gp-matchup">SEA @ Minnesota</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 0-1-1</li><li>MIN holds a 13-pt lead over SEA</li><li>MIN is a virtual lock for playoffs (100%)</li><li>MIN is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-16-10</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-7-7</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-9-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">204</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-17')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-17" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 9</span><span class="gp-matchup">SEA vs Vegas</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 2-0-0</li><li>Separated by only 3 pts — a direct rival</li><li>VGK projected to make playoffs (93% odds)</li><li>VGK is cold — 3-5-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>VGK</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-18-14</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">70</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-8-7</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-10-7</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">191</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-28-7 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-18')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">vs Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-28-7 &middot; 55p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-18" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 11</span><span class="gp-matchup">SEA vs Calgary</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>SEA holds a 12-pt lead over CGY</li><li>CGY is fading — only 4% playoff odds</li><li>CGY is cold — 3-5-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>CGY</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-28-7</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">9-18-3</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">148</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">175</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-19')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-19" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 13</span><span class="gp-matchup">SEA vs Los Angeles</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 3-0-0</li><li>SEA holds a 5-pt lead over LAK</li><li>LAK is on the bubble (28% playoff odds)</li><li>LAK is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-20')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 15</span><span class="game-opp">@ Vegas</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">28-18-14 &middot; 70p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-20" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 15</span><span class="gp-matchup">SEA @ Vegas</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA leads season series 2-0-0</li><li>Separated by only 3 pts — a direct rival</li><li>VGK projected to make playoffs (93% odds)</li><li>VGK is cold — 3-5-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>VGK</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-18-14</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">70</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">14-8-7</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-10-7</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">191</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-21')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-21" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 16</span><span class="gp-matchup">SEA @ Colorado</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>SEA trails season series 0-1-0</li><li>COL holds a 22-pt lead over SEA</li><li>COL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.7 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>SEA</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-22-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">40-10-9</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">89</td></tr><tr><td class="cmp-stat-l">16-9-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">13-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-6-5</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">171</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">225</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">148</td></tr></tbody></table>
-</div></details></div></div>
+</div></div></div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
   <div class="kpi"><div class="kpi-val">93</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">91 <span style="font-size:16px;color:var(--red)">(-2)</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -1018,11 +1072,11 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The Lufkin Daily News</span><span class="news-date">Mar 3 &middot; 9:47 PM</span></div>
 <div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQYkYxZ215WkZMZ3pTOGhOZzhMMHZZcG56TTg3clBfTDhUSVpIVTFIOHdwU1prWV9vLUtlZjljS2VJaTVWREhrQjZOMGY2ZUtIT2xtUWpXQUFUZkhTT0lQblJxSkdpdUdRUmJFZ3g4cnZEdjRDLTJpVjJmWHNiUUJVRjRmQjl1dDB5bEE2bGYwVTZSZG90WTJxdnZpWlR1Y0YycmljalA1OGNmRDNINC1xRzhrZEk5TUk4YUF5R3BCbw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Idaho State Journal</span><span class="news-date">Mar 3 &middot; 8:02 PM</span></div>
-<div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQVWVXakg0NzdNekdSbDNZVFdpNFNEZ2lvdnYzOTVCTHJFS0IwU1ppUDJ4OEJSZEJQODBwaTNjY1ByNlpHNkNQX3BoMy1XNHJoWHdLZWFPN3dWUUpDdW9VZ0N3UThmX2NrN2FfR3cyOHBWZlhlZi1talVvNkZ3cnQzQnA0MV9NbmxPZ2Vab2pOcnNIQzgxQjVnY0xlcUk?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Vernon Morning Star</span><span class="news-date">Mar 3 &middot; 7:47 PM</span></div>
-<div class="news-title">Seattle Kraken sign Penticton Vees forward Ryden Evers</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQS2ZqQ1QtNVFFNWZEaTJ2NlE0SGFNNXpxVkxBemZCXzdtQ0lyeUk5V1RuT3hQUWtleTl0clgzLU9mYmd1T1lDYUZEREtHZWVFTHdMWmZsNWhuNm1IcFEtWVBjWEJRTkRvUVFBVDIxYWJGSGxPelpRT0xPQmFBQ3RDZm1MY1c?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Hurricanes Kraken Hockey</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQS2ZqQ1QtNVFFNWZEaTJ2NlE0SGFNNXpxVkxBemZCXzdtQ0lyeUk5V1RuT3hQUWtleTl0clgzLU9mYmd1T1lDYUZEREtHZWVFTHdMWmZsNWhuNm1IcFEtWVBjWEJRTkRvUVFBVDIxYWJGSGxPelpRT0xPQmFBQ3RDZm1MY1c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 3 &middot; 7:39 PM</span></div>
-<div class="news-title">Kraken Sign, Reassign Gustav Olofsson</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNWGtwQUhqbmhlUno3c21xQWRvS3hqNzNQWGpPdHBEdHVmWlpCMnFXUlRTYTdnQVBNNFA1Zk96Ym1KeU9hVWljazFEbmpOYlljNDZsLVlVZkFHbTFjVGVKaDdTN2pOeTJ3NjlxYkRMa25Kek1fRmFJam5CWjVyeC1aTHBucko?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Kraken Sign, Reassign Gustav Olofsson</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOdWVJVEVHUGdwUk9qX3NmazFsOEpxeEJ6aGdlcU1WSVVlaXZYaWpPUGQ3c0V5TnVnOXpMTkJGQV8wYndUV2sxZS1VRUFlUWJnQVlySk9hb3FzNzFmTjhybmhmWkV5dUJ1d2VkZWV1Y1FIZ1NwWUVZd1JkNVl2Wjh6V3h2OFJ3ejVZa0Z4aEhvaUlpM1djVFBFMlJGUV9RRmZy?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Penticton Western News</span><span class="news-date">Mar 3 &middot; 7:31 PM</span></div>
+<div class="news-title">Seattle Kraken sign Penticton Vees forward Ryden Evers</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNWGtwQUhqbmhlUno3c21xQWRvS3hqNzNQWGpPdHBEdHVmWlpCMnFXUlRTYTdnQVBNNFA1Zk96Ym1KeU9hVWljazFEbmpOYlljNDZsLVlVZkFHbTFjVGVKaDdTN2pOeTJ3NjlxYkRMa25Kek1fRmFJam5CWjVyeC1aTHBucko?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 5:03 PM</span></div>
 <div class="news-title">Black Hockey History Night Recap</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1XMDU3ZEszNGZsZ3ZOeWtvbjRtbVRkUWJ1ZFJnYi1kazRiZjJ3UUVqbUl1VmpOalE2TW02TE1iSlBIaXpVdy1KOHJkc3l1MUhValVGZ1NSNlVaVDEtLU44azZDc0VaUjVNR1NEVnVWNkdVMVVJOGFUU2VYV19iSEE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Substack</span><span class="news-date">Mar 3 &middot; 3:10 PM</span></div>
@@ -1070,7 +1124,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:27 PM ET</span></div>
+<div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
+<div class="game-panel" id="gamePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="gamePanelBody"></div>
+</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:33 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1109,5 +1168,21 @@ document.querySelectorAll(".sortable").forEach(function(tbl){
     });
   });
 })();
+</script>
+<script>
+function openGamePanel(id){
+  var src=document.getElementById(id);
+  if(!src) return;
+  document.getElementById('gamePanelBody').innerHTML=src.innerHTML;
+  document.getElementById('gamePanel').classList.add('open');
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeGamePanel(){
+  document.getElementById('gamePanel').classList.remove('open');
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
 </body></html>

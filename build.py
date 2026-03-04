@@ -1532,12 +1532,15 @@ def build_schedule_html(remaining, above500_count, home_count, away_count, team_
                     tags += f'<span class="game-tag tag-hot">W{streak_n}</span>'
             except ValueError:
                 pass
-        cards.append(f'''<details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span>{tags}</div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></summary>
-<div class="game-expand">
+        game_id = f"sg-{len(cards)}"
+        cards.append(f'''<div class="game-card" onclick="openGamePanel('{game_id}')">
+<div class="game-summary"><div class="game-left"><span class="game-date">{g["date"]}</span><span class="game-opp">{prefix}{g["opp"]}</span>{tags}</div><div class="game-right"><span class="game-meta">{opp_record} &middot; {o_pts}p</span><span class="game-loc loc-{g["loc"]}">{loc_text}</span></div></div>
+</div>
+<div class="game-detail-data" id="{game_id}" style="display:none">
+  <div class="gp-header"><span class="gp-date">{g["date"]}</span><span class="gp-matchup">{TEAM} {prefix}{g["opp"]}</span><span class="gp-loc">{loc_text}</span></div>
   <ul class="matchup-notes">{notes_html}</ul>
   <table class="cmp-tbl"><thead><tr><th>{TEAM}</th><th></th><th>{opp}</th></tr></thead><tbody>{rows}</tbody></table>
-</div></details>''')
+</div>''')
 
     return f'''<div class="sched-meta">
   <div class="sm-card"><div class="sm-val">{len(remaining)}</div><div class="sm-label">Games Left</div></div>
@@ -1705,7 +1708,8 @@ a.pname{{font-size:11px}}
 .game-right{{gap:6px}}
 .game-meta{{font-size:10px}}
 .game-tag{{font-size:8px;padding:1px 5px;margin-left:4px}}
-.game-expand{{padding:12px}}
+.game-panel{{width:100%}}
+.game-panel .panel-body{{padding:8px 16px 20px}}
 .cmp-tbl{{font-size:11px}}
 .cmp-tbl thead th{{padding:6px 4px;font-size:9px}}
 .cmp-tbl td{{padding:5px 4px}}
@@ -1817,17 +1821,14 @@ a.pname:hover{{color:var(--text-strong)}}
 .sm-val{{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}}
 .sm-label{{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}}
 .sched-list{{display:flex;flex-direction:column;gap:4px}}
-.game-detail{{border-radius:8px;overflow:hidden}}
+.game-card{{border-radius:8px;overflow:hidden;cursor:pointer}}
 .game-tag{{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}}
 .tag-playoff{{color:var(--text-muted);background:var(--tag-bg)}}
 .tag-desperate{{color:var(--amber);background:var(--amber-bg)}}
 .tag-sellers{{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}}
 .tag-hot{{color:var(--text-strong);background:var(--accent)}}
-.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}}
+.game-summary{{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}}
 .game-summary:hover{{background:var(--bg-elevated)}}
-.game-summary::-webkit-details-marker{{display:none}}
-.game-summary::marker{{display:none;content:""}}
-.game-detail[open] .game-summary{{border-bottom-left-radius:0;border-bottom-right-radius:0}}
 .game-left{{display:flex;align-items:center;gap:12px}}
 .game-date{{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}}
 .game-opp{{font-size:13px;font-weight:600;color:var(--text)}}
@@ -1836,7 +1837,19 @@ a.pname:hover{{color:var(--text-strong)}}
 .game-loc{{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}}
 .loc-home{{background:var(--loc-home-bg);color:var(--green)}}
 .loc-away{{background:var(--loc-away-bg);color:var(--text-muted)}}
-.game-expand{{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}}
+/* Game side panel */
+.game-overlay{{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}}
+.game-overlay.open{{opacity:1;pointer-events:auto}}
+.game-panel{{position:fixed;top:0;right:0;bottom:0;width:min(440px,90vw);background:var(--bg);z-index:101;transform:translateX(100%);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-left:1px solid var(--border)}}
+.game-panel.open{{transform:translateX(0)}}
+.game-panel .panel-close{{display:flex;justify-content:flex-end;padding:12px 16px 0}}
+.game-panel .panel-close-btn{{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:6px;border-radius:6px}}
+.game-panel .panel-close-btn:hover{{background:var(--bg-elevated);color:var(--text)}}
+.game-panel .panel-body{{padding:8px 20px 24px}}
+.gp-header{{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}}
+.gp-date{{font-size:11px;color:var(--text-muted);font-weight:500}}
+.gp-matchup{{font-size:16px;font-weight:700;color:var(--text-strong);letter-spacing:-0.3px}}
+.gp-loc{{font-size:11px;color:var(--text-muted)}}
 .cmp-tbl{{width:100%;border-collapse:collapse;font-size:12px}}
 .cmp-tbl thead th{{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}}
 .cmp-tbl thead th:first-child{{text-align:left}}
@@ -2037,6 +2050,11 @@ body{{animation:fadeIn 0.15s ease}}
     </div>
   </div>
 </div>
+<div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
+<div class="game-panel" id="gamePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="gamePanelBody"></div>
+</div>
 <div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated {now}</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){{
@@ -2076,6 +2094,22 @@ document.querySelectorAll(".sortable").forEach(function(tbl){{
     }});
   }});
 }})();
+</script>
+<script>
+function openGamePanel(id){{
+  var src=document.getElementById(id);
+  if(!src) return;
+  document.getElementById('gamePanelBody').innerHTML=src.innerHTML;
+  document.getElementById('gamePanel').classList.add('open');
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}}
+function closeGamePanel(){{
+  document.getElementById('gamePanel').classList.remove('open');
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}}
+document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePanel()}});
 </script>
 </body></html>'''
 

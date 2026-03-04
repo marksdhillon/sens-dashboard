@@ -62,7 +62,8 @@ a.pname{font-size:11px}
 .game-right{gap:6px}
 .game-meta{font-size:10px}
 .game-tag{font-size:8px;padding:1px 5px;margin-left:4px}
-.game-expand{padding:12px}
+.game-panel{width:100%}
+.game-panel .panel-body{padding:8px 16px 20px}
 .cmp-tbl{font-size:11px}
 .cmp-tbl thead th{padding:6px 4px;font-size:9px}
 .cmp-tbl td{padding:5px 4px}
@@ -174,17 +175,14 @@ a.pname:hover{color:var(--text-strong)}
 .sm-val{font-size:22px;font-weight:700;line-height:1;color:var(--text-strong);letter-spacing:-0.5px}
 .sm-label{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:7px;font-weight:500}
 .sched-list{display:flex;flex-direction:column;gap:4px}
-.game-detail{border-radius:8px;overflow:hidden}
+.game-card{border-radius:8px;overflow:hidden;cursor:pointer}
 .game-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:0.3px;vertical-align:middle}
 .tag-playoff{color:var(--text-muted);background:var(--tag-bg)}
 .tag-desperate{color:var(--amber);background:var(--amber-bg)}
 .tag-sellers{color:var(--text-muted);background:transparent;border:1px dashed var(--tag-dash)}
 .tag-hot{color:var(--text-strong);background:var(--accent)}
-.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
+.game-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--bg-surface);border-radius:8px;border:1px solid var(--border);transition:all 0.15s ease}
 .game-summary:hover{background:var(--bg-elevated)}
-.game-summary::-webkit-details-marker{display:none}
-.game-summary::marker{display:none;content:""}
-.game-detail[open] .game-summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .game-left{display:flex;align-items:center;gap:12px}
 .game-date{font-size:11px;color:var(--text-muted);min-width:44px;font-weight:500;font-variant-numeric:tabular-nums}
 .game-opp{font-size:13px;font-weight:600;color:var(--text)}
@@ -193,7 +191,19 @@ a.pname:hover{color:var(--text-strong)}
 .game-loc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.3px}
 .loc-home{background:var(--loc-home-bg);color:var(--green)}
 .loc-away{background:var(--loc-away-bg);color:var(--text-muted)}
-.game-expand{background:var(--matchup-bg);border:1px solid var(--border);border-top:0;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:16px}
+/* Game side panel */
+.game-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+.game-overlay.open{opacity:1;pointer-events:auto}
+.game-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,90vw);background:var(--bg);z-index:101;transform:translateX(100%);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-left:1px solid var(--border)}
+.game-panel.open{transform:translateX(0)}
+.game-panel .panel-close{display:flex;justify-content:flex-end;padding:12px 16px 0}
+.game-panel .panel-close-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:6px;border-radius:6px}
+.game-panel .panel-close-btn:hover{background:var(--bg-elevated);color:var(--text)}
+.game-panel .panel-body{padding:8px 20px 24px}
+.gp-header{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.gp-date{font-size:11px;color:var(--text-muted);font-weight:500}
+.gp-matchup{font-size:16px;font-weight:700;color:var(--text-strong);letter-spacing:-0.3px}
+.gp-loc{font-size:11px;color:var(--text-muted)}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cmp-tbl thead th{font-size:10px;font-weight:500;padding:8px 8px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .cmp-tbl thead th:first-child{text-align:left}
@@ -347,7 +357,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" alt="St. Louis Blues" class="team-logo">
       <div>
         <h1>St. Louis Blues</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:27 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 8:32 PM ET</div>
       </div>
     </div>
   </div>
@@ -387,117 +397,161 @@ body{animation:fadeIn 0.15s ease}
   <div class="sm-card"><div class="sm-val">13</div><div class="sm-label">Away</div></div>
   <div class="sm-card"><div class="sm-val">9</div><div class="sm-label">vs .500+</div></div>
 </div>
-<div class="sched-list"><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">@ Seattle</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-22-9 &middot; 67p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+<div class="sched-list"><div class="game-card" onclick="openGamePanel('sg-0')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 4</span><span class="game-opp">@ Seattle</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-22-9 &middot; 67p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-0" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 4</span><span class="gp-matchup">STL @ Seattle</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>SEA holds a 14-pt lead over STL</li><li>SEA projected to make playoffs (73% odds)</li><li>SEA is hot — 7-3-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>SEA</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-22-9</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">67</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-9-5</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-13-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">171</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">176</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 6</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-1')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 6</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-1" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 6</span><span class="gp-matchup">STL @ San Jose</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>SJS is on the bubble (31% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 8</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-2')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 8</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-2" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 8</span><span class="gp-matchup">STL @ Anaheim</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>ANA holds a 16-pt lead over STL</li><li>ANA projected to make playoffs (94% odds)</li><li>ANA is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-3')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 10</span><span class="game-opp">vs New York</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">35-21-5 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-3" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 10</span><span class="gp-matchup">STL vs New York</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>STL leads season series 1-0-0</li><li>NYI holds a 22-pt lead over STL</li><li>NYI projected to make playoffs (74% odds)</li><li>NYI is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-21-5</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-10-2</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">182</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">172</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-4')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 12</span><span class="game-opp">@ Carolina</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">38-16-6 &middot; 82p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-4" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 12</span><span class="gp-matchup">STL @ Carolina</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL leads season series 1-0-0</li><li>CAR holds a 29-pt lead over STL</li><li>CAR is a virtual lock for playoffs (100%)</li><li>CAR is hot — 7-1-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>CAR</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-16-6</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">82</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">23-8-2</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-1-2</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">171</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 13</span><span class="game-opp">vs Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-5')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 13</span><span class="game-opp">vs Edmonton</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">29-24-8 &middot; 66p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-5" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 13</span><span class="gp-matchup">STL vs Edmonton</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>EDM holds a 13-pt lead over STL</li><li>EDM projected to make playoffs (69% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>EDM</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-24-8</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-14-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-6-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">215</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-6')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 15</span><span class="game-opp">@ Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-6" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 15</span><span class="gp-matchup">STL @ Winnipeg</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 3 pts — a direct rival</li><li>WPG is fading — only 6% playoff odds</li><li>WPG is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-26-10</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">56</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-11-5</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">168</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">184</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 18</span><span class="game-opp">@ Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-28-7 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-7')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 18</span><span class="game-opp">@ Calgary</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">24-28-7 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-7" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 18</span><span class="gp-matchup">STL @ Calgary</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL leads season series 2-0-0</li><li>Separated by only 2 pts — a direct rival</li><li>CGY is fading — only 4% playoff odds</li><li>Low-scoring matchup — combined 5.1 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>CGY</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-28-7</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-10-4</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">9-18-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">148</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">175</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-8')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 21</span><span class="game-opp">@ Vancouver</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">18-35-7 &middot; 43p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-8" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 21</span><span class="gp-matchup">STL @ Vancouver</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 1-0-1</li><li>STL holds a 10-pt lead over VAN</li><li>VAN is out of the playoff picture</li><li>Low-scoring matchup — combined 5.1 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>VAN</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">18-35-7</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">43</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">6-18-5</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-17-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">1-7-2</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">153</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">224</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">vs Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-9')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 24</span><span class="game-opp">vs Washington</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">31-24-7 &middot; 69p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-9" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 24</span><span class="gp-matchup">STL vs Washington</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>WSH holds a 16-pt lead over STL</li><li>WSH is on the bubble (27% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-24-7</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">19-10-3</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-14-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-3-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">186</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">vs San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-10')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 26</span><span class="game-opp">vs San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-10" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 26</span><span class="gp-matchup">STL vs San Jose</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>SJS is on the bubble (31% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">vs Toronto</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-24-10 &middot; 64p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-11')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 28</span><span class="game-opp">vs Toronto</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">27-24-10 &middot; 64p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-11" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 28</span><span class="gp-matchup">STL vs Toronto</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-1</li><li>TOR holds a 11-pt lead over STL</li><li>TOR is fading — only 1% playoff odds</li><li>TOR is cold — 3-6-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>TOR</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-24-10</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">64</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-7</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">195</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">211</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-12')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Mar 30</span><span class="game-opp">@ San Jose</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">29-25-4 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-12" style="display:none">
+  <div class="gp-header"><span class="gp-date">Mar 30</span><span class="gp-matchup">STL @ San Jose</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>First meeting of the season</li><li>SJS holds a 9-pt lead over STL</li><li>SJS is on the bubble (31% playoff odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>SJS</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">29-25-4</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-10-3</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-1</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-5-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">179</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 1</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-13')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 1</span><span class="game-opp">@ Los Angeles</span><span class="game-tag tag-desperate">Desperate</span></div><div class="game-right"><span class="game-meta">24-22-14 &middot; 62p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-13" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 1</span><span class="gp-matchup">STL @ Los Angeles</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>Season series: 0-0-2</li><li>LAK holds a 9-pt lead over STL</li><li>LAK is on the bubble (28% playoff odds)</li><li>Low-scoring matchup — combined 5.2 goals/game avg</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>LAK</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">24-22-14</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">62</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-14-7</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">155</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 3</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-14')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 3</span><span class="game-opp">@ Anaheim</span><span class="game-tag tag-playoff">Playoff Team</span><span class="game-tag tag-hot">W5</span></div><div class="game-right"><span class="game-meta">33-23-3 &middot; 69p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-14" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 3</span><span class="gp-matchup">STL @ Anaheim</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>ANA holds a 16-pt lead over STL</li><li>ANA projected to make playoffs (94% odds)</li><li>ANA is hot — 8-2-0 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-3</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">69</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-8-1</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">8-2-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">199</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">206</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 5</span><span class="game-opp">@ Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-15')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 5</span><span class="game-opp">@ Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-15" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 5</span><span class="gp-matchup">STL @ Colorado</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>COL holds a 36-pt lead over STL</li><li>COL is a virtual lock for playoffs (100%)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">40-10-9</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">89</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-6-5</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">225</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">148</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">vs Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-16')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 7</span><span class="game-opp">vs Colorado</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">40-10-9 &middot; 89p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-16" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 7</span><span class="gp-matchup">STL vs Colorado</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>COL holds a 36-pt lead over STL</li><li>COL is a virtual lock for playoffs (100%)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>COL</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">40-10-9</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">89</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-4-4</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-6-5</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">225</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">148</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-17')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 9</span><span class="game-opp">vs Winnipeg</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-26-10 &middot; 56p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-17" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 9</span><span class="gp-matchup">STL vs Winnipeg</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>Separated by only 3 pts — a direct rival</li><li>WPG is fading — only 6% playoff odds</li><li>WPG is cold — 3-3-4 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-26-10</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">56</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-11-5</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-3-4</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">168</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">184</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-18')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 11</span><span class="game-opp">@ Chicago</span><span class="game-tag tag-sellers">Sellers</span></div><div class="game-right"><span class="game-meta">23-28-9 &middot; 55p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-18" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 11</span><span class="gp-matchup">STL @ Chicago</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL trails season series 1-2-0</li><li>Separated by only 2 pts — a direct rival</li><li>CHI is fading — only 0% playoff odds</li><li>CHI is cold — 2-6-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>CHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">23-28-9</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">55</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">12-14-5</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-14-4</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">2-6-2</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">161</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">192</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-19')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 13</span><span class="game-opp">vs Minnesota</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">35-16-10 &middot; 80p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-19" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 13</span><span class="gp-matchup">STL vs Minnesota</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>Season series tied 1-1-0</li><li>MIN holds a 27-pt lead over STL</li><li>MIN is a virtual lock for playoffs (100%)</li><li>MIN is hot — 7-2-1 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>MIN</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">35-16-10</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">80</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">17-7-7</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-9-3</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-2-1</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">204</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">179</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 14</span><span class="game-opp">vs Pittsburgh</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-15-13 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-20')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 14</span><span class="game-opp">vs Pittsburgh</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-15-13 &middot; 75p</span><span class="game-loc loc-home">Home</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-20" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 14</span><span class="gp-matchup">STL vs Pittsburgh</span><span class="gp-loc">Home</span></div>
   <ul class="matchup-notes"><li>STL trails season series 0-1-0</li><li>PIT holds a 22-pt lead over STL</li><li>PIT projected to make playoffs (90% odds)</li><li>PIT is hot — 7-1-2 in last 10</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>PIT</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-15-13</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-8-7</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-7-6</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-1-2</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">203</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">173</td></tr></tbody></table>
-</div></details><details class="game-detail">
-<summary class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></summary>
-<div class="game-expand">
+</div><div class="game-card" onclick="openGamePanel('sg-21')">
+<div class="game-summary"><div class="game-left"><span class="game-date">Apr 16</span><span class="game-opp">@ Utah</span><span class="game-tag tag-playoff">Playoff Team</span></div><div class="game-right"><span class="game-meta">31-25-4 &middot; 66p</span><span class="game-loc loc-away">Away</span></div></div>
+</div>
+<div class="game-detail-data" id="sg-21" style="display:none">
+  <div class="gp-header"><span class="gp-date">Apr 16</span><span class="gp-matchup">STL @ Utah</span><span class="gp-loc">Away</span></div>
   <ul class="matchup-notes"><li>STL trails season series 1-2-0</li><li>UTA holds a 13-pt lead over STL</li><li>UTA projected to make playoffs (77% odds)</li></ul>
   <table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">22-29-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">31-25-4</td></tr><tr><td class="cmp-stat-l">53</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">66</td></tr><tr><td class="cmp-stat-l">14-12-6</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-10-2</td></tr><tr><td class="cmp-stat-l">8-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-15-2</td></tr><tr><td class="cmp-stat-l">3-6-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-5-0</td></tr><tr><td class="cmp-stat-l">156</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">190</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">167</td></tr></tbody></table>
-</div></details></div></div>
+</div></div></div>
   <div class="panel" id="p-playoffs"><div class="kpi-row">
   <div class="kpi"><div class="kpi-val">93</div><div class="kpi-label">Playoff Target</div></div>
   <div class="kpi"><div class="kpi-val">75 <span style="font-size:16px;color:var(--red)">(-18)</span></div><div class="kpi-label">Projected Pts</div></div>
@@ -1057,7 +1111,9 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-sign">Signing</span>
 <span class="tx-desc">Assigned F Zach Dean to Springfield (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1NVzBOMnVGbkZFX0k1UlRGRk4xYlRzQ0hWNlRDYURpTGFGaEpTUjY2Z0tKbkZZSmpadXVsQ2x6VDFDZS1jRVZndUxPbDVfcWgtazVwbEtZbHBVV0k0dmNtY1hPMWNvNjlXWGJGbWV3?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNbV9LV0wzQWJVVGx2ckZsanBOd0hJeHdFT3hRUHMzN2IzTjlkT1RhTUlwVjctNDV1S2RVN1hUd0VNaVNZWC1kdTZ0ZXVNeU1PZTIzMU53SGpuWGFNVDFBWnROZDRxanRnWmJJTHluUHJrMmpqaUNyTnlyUEJtaGRBdTVsR0tSSndRdVhQc2NDNDF4NWl6WlB4S3dBQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 1:20 AM</span></div>
+<div class="news-title">Robert Thomas to Sabres? Breaking down what a trade could look like with Blues</div></a><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1NVzBOMnVGbkZFX0k1UlRGRk4xYlRzQ0hWNlRDYURpTGFGaEpTUjY2Z0tKbkZZSmpadXVsQ2x6VDFDZS1jRVZndUxPbDVfcWgtazVwbEtZbHBVV0k0dmNtY1hPMWNvNjlXWGJGbWV3?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:05 AM</span></div>
 <div class="news-title">Preview: Blues vs. Kraken</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPQndjek54WlRjbkUzek5vV25IODltV0g0bUpLVlA0aHBGSV8xSDFlT0o0YVBaSzFPRDJROHowdTNyTkdTeTJIbElGdW9hMWNQWGlJYjZwZkcwSHpkblRRaXBMbFdVSGRnb3Y2VDROMUQwYi1EYmNxdWs2czZIdDFjc2Jnd0ZoMTQ0YnJMOGhqTEY0TTZVY0lUSFFVMHZEaWhJeVZweUZ0cw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 11:07 PM</span></div>
@@ -1065,9 +1121,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 11:05 PM</span></div>
 <div class="news-title">What sport would you play if you were more athletic?</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNMWNsRXdkaElQMjNKd1BlQ0JCWXQwNzQ2ZWlHMW1UT21Fa2FQZHl6X3h4NlZHSVlWNHd3X1oyTGVDSmZlWk1mUGtnSmwzZ2prY3J6VUhSdHlXcnlOd0VWb1poYWdCRURzS1o5NGxQd3NacUpncmNTUmFRZzJHeTF4OFppbHk5UHBhdFhiWFFVQzZicDExSEJrQw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 3 &middot; 11:00 PM</span></div>
-<div class="news-title">Sabres Emerge as Dark Horse Buyers in Robert Thomas Talks</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPZVRmcnFlY2VwYnVuN01zR283ZS0tRU9LT3hVZmpVaHI4VEFORVlfOW1Za2JMVjZad0FuNExrcUd0elNPZHV5REZ6T1JIekh0bGVyWlhSUms1NlhGRHBMRHVXOWhSWE83ZmV1blJKSm5IYXoyRDl1X1pmUTA0c1IwRm8weUhkclhrUU4tTkkzRGJtdTVTRFJjRHdJejQwTlJwV0FpLTc3RUpNUldhQ01MZHZsRXZ5Tm_SAbwBQVVfeXFMUDAtSlFKU1dXRC0yR0IyQnEtWVlsQVN3Y0FSdjdnZDhmcW41akVFaERlRktxQ1VqSXZ0U2ZEZkdldTREY2ZzQ01xek1ub3JCMmt2X0lPc1dCVVdzSU8zR20ydTB0Qm1tcjkyMFZ1SjVfWDFlTmNjUHJDQ3drdDZCa3pVdkVmYmxhWWhyaUpuZHpFbHJKMmFQOGdGRFYyM2tvVkJTdFpMMzlabVZHNl9xNXE4UG95SjR0X2ZxUVA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">FOX 2</span><span class="news-date">Mar 3 &middot; 10:32 PM</span></div>
-<div class="news-title">Could the St. Louis Blues trade Robert Thomas? The cases for and against it</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxON2d5UnFDME1nX1F4WFliYTdOOWJQbEowc1NxWUtSbmZLVDVYV2VvMU9pSk92STc3aEJ6dEVaNWdCbTBsM1pYN1RwWXNWczhyeHRaclc2eVB5TjhPbmNYVVcxdzFjUmpWZWNNbV9ISFlKZ3RzSWhGckNCNHNfWS12eEVFN3RxN3F3SXBQUE52MDJ6TDdYUl9NZzVhYzQtazZYdXpJUWVNUGpZMFZKNDBNQXlxdlVScWVweDJ30gHAAUFVX3lxTE5OWU9nbFZVOFBfaFl6VnN4Z1NzUndwWlQ5MU92QWtVUFN0bWRmRUpxYUdsbTB5RUp5ZE42SnRDUDVzQl9zZW5zT3dYMjdmcWczdGU2Z0FnNnpZd3gwMzdESTVhdjBPMTdlQ2pzVE1RaXFNR0laUUM2dk9xVURQcjVUNzU0SjlzblYtUENiQVhGZzliN1YxQUI0UkdJeDY1QVFJY3c1REppalRFbE1wQnFJUHdWVFNORnhyWjF2TUJXVg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Sabres Emerge as Dark Horse Buyers in Robert Thomas Talks</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxON2d5UnFDME1nX1F4WFliYTdOOWJQbEowc1NxWUtSbmZLVDVYV2VvMU9pSk92STc3aEJ6dEVaNWdCbTBsM1pYN1RwWXNWczhyeHRaclc2eVB5TjhPbmNYVVcxdzFjUmpWZWNNbV9ISFlKZ3RzSWhGckNCNHNfWS12eEVFN3RxN3F3SXBQUE52MDJ6TDdYUl9NZzVhYzQtazZYdXpJUWVNUGpZMFZKNDBNQXlxdlVScWVweDJ30gHAAUFVX3lxTE5OWU9nbFZVOFBfaFl6VnN4Z1NzUndwWlQ5MU92QWtVUFN0bWRmRUpxYUdsbTB5RUp5ZE42SnRDUDVzQl9zZW5zT3dYMjdmcWczdGU2Z0FnNnpZd3gwMzdESTVhdjBPMTdlQ2pzVE1RaXFNR0laUUM2dk9xVURQcjVUNzU0SjlzblYtUENiQVhGZzliN1YxQUI0UkdJeDY1QVFJY3c1REppalRFbE1wQnFJUHdWVFNORnhyWjF2TUJXVg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 10:15 PM</span></div>
 <div class="news-title">NHL Rumors: New York Islanders, Vancouver Canucks, Buffalo Sabres, and the St. Louis Blues</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNcHZ5YjR1Sm5PRERGdEdwUG1tSTZMektTMjltM1R5dnY1eUw3U3JhQkIwakx0Y0Z3dFV2ZGs2dlFKS3NUWHFib094bDFtR1gwZEdJbnlYczl0ZFRTZ0ZZSUNZSktnZy15N3ItUmVPQ1FzdEZGX3dsLXZXUjBMS1BndHpJODRhY0xRYWpOd2o1U283anpDR2gyLXh5TlRJSU5HVExfc3pPR21ZaE9QQXZtcEcxbGNYT2dKcmc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 9:59 PM</span></div>
@@ -1115,7 +1169,12 @@ body{animation:fadeIn 0.15s ease}
     </div>
   </div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:27 PM ET</span></div>
+<div class="game-overlay" id="gameOverlay" onclick="closeGamePanel()"></div>
+<div class="game-panel" id="gamePanel">
+  <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+  <div class="panel-body" id="gamePanelBody"></div>
+</div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:32 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1154,5 +1213,21 @@ document.querySelectorAll(".sortable").forEach(function(tbl){
     });
   });
 })();
+</script>
+<script>
+function openGamePanel(id){
+  var src=document.getElementById(id);
+  if(!src) return;
+  document.getElementById('gamePanelBody').innerHTML=src.innerHTML;
+  document.getElementById('gamePanel').classList.add('open');
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeGamePanel(){
+  document.getElementById('gamePanel').classList.remove('open');
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
 </script>
 </body></html>
