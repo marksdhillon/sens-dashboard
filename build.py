@@ -2942,7 +2942,8 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
 
   function refreshScores(){{
     // Always fetch today's scores via /score/now (most reliable, includes current game states)
-    nhlFetch('https://api-web.nhle.com/v1/score/now')
+    // Append timestamp so the CORS proxy never serves a cached response
+    nhlFetch('https://api-web.nhle.com/v1/score/now?_='+Date.now())
       .then(function(data){{
         var games=data.games||[];
         var hasLive=false;
@@ -3006,6 +3007,8 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               var aScore=g.awayTeam.score||0,hScore=g.homeTeam.score||0;
               if(rows[0])rows[0].className='sb-team-row'+(aScore>hScore?' sb-winner':'');
               if(rows[1])rows[1].className='sb-team-row'+(hScore>aScore?' sb-winner':'');
+              var dp=document.getElementById('gd-'+gid);
+              if(dp){{var ps=dp.querySelector('.gd-panel-score');if(ps)ps.innerHTML=aScore+' \u2014 '+hScore+'<span class="gd-panel-status">'+txt+'</span>';}}
             }} else if(st==='LIVE'||st==='CRIT'){{
               hasLive=true;
               var ords={{1:'1st',2:'2nd',3:'3rd'}};
@@ -3015,6 +3018,9 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
               if(rows[0])rows[0].className='sb-team-row';
               if(rows[1])rows[1].className='sb-team-row';
               liveClocks[gid]={{secs:parseClockSecs(tr),fetchedAt:Date.now(),pNum:pNum,pType:pType,inIntermission:!!(clk.inIntermission)}};
+              var dp=document.getElementById('gd-'+gid);
+              if(dp){{var ps=dp.querySelector('.gd-panel-score');if(ps)ps.innerHTML=aS+' \u2014 '+hS+'<span class="gd-panel-status">'+txt+'</span>';}}
+
             }} else if(st==='FUT'||st==='PRE'){{
               hasFut=true;
             }}
@@ -3073,6 +3079,8 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
       var ords={{1:'1st',2:'2nd',3:'3rd'}};
       var txt=c.pType==='OT'?'OT '+fmtSecs(remaining):c.pType==='SO'?'Shootout':(ords[c.pNum]||'P'+c.pNum)+' '+fmtSecs(remaining);
       statusEl.textContent=txt;
+      var dp=document.getElementById('gd-'+gid);
+      if(dp){{var pst=dp.querySelector('.gd-panel-status');if(pst)pst.textContent=txt;}}
     }}
   }},1000);
 
