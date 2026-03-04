@@ -362,7 +362,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="Washington Capitals" class="team-logo">
       <div>
         <h1>Washington Capitals <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 11:50 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 11:59 PM ET</div>
       </div>
     </div>
   </div>
@@ -1150,7 +1150,7 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-desc">Recalled F Brett Leason from Hershey (AHL). Placed F Aliaksei Protas on injured reserve.</span>
 </div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFB4d2s4UDg5Rjh3ZjZiN0ZtT2xvTUVPSVVTNlMtTGpMWWs0S1ZyTDU5bWdaZkNGSm9BUmt4N3ZqS29pbVQtS3c0OHU3cUliYjlHM2xHWjMwaDRxVXl3cmF6YUFCNXVtMXV5YkE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:11 AM</span></div>
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 4:52 AM</span></div>
 <div class="news-title">Caps Fall to Mammoth, 3-2</div></a><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE1LRDBCWVVxV1VpbWJXdW5pVFV1MHlqU2R1dE5sV1BGVUZ0b0dnRVZoRHJWVm9ndUItQVB5WXNqTzdZeldseTJvSWRXNWNMZW94clBibzFPSEdrZ1QwYXRQa3d4el9DTjFzM3c0Z0pwQzZjM0h4UHJv?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 3:20 AM</span></div>
 <div class="news-title">Tom Wilson | Postgame</div></a><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBubzlUVWdPSlZZS1VYcFMyTHRqVl9ITjMyVWs5eFYzVjZVNWUwZVBhalpkNzNxcGdadi1DNHBtNnh4ZUZKUXNESnlESS1CYmZURHFOSndPYlQwbEJaYzVIRzFud09zaDQ?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1212,7 +1212,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:50 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:59 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1273,13 +1273,17 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
   var team='WSH';
   function nhlFetch(url){
     var e=encodeURIComponent(url);
-    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    }).catch(function(){
-      return fetch('https://corsproxy.io/?'+e).then(function(r){
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
+    function tryProxy(base){
+      return fetch(base+e).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});
+    }
+    // Race both proxies — resolve with whichever responds first successfully
+    return new Promise(function(resolve,reject){
+      var done=false,errs=0;
+      var proxies=['https://api.allorigins.win/raw?url=','https://corsproxy.io/?'];
+      proxies.forEach(function(base){
+        tryProxy(base)
+          .then(function(d){if(!done){done=true;resolve(d);}} )
+          .catch(function(){if(++errs===proxies.length&&!done)reject(new Error('all proxies failed'));});
       });
     });
   }

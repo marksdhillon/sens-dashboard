@@ -362,7 +362,7 @@ body{animation:fadeIn 0.15s ease}
       <img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" alt="Montreal Canadiens" class="team-logo">
       <div>
         <h1>Montreal Canadiens <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
-        <div class="subtitle">Updated March 3, 2026 at 11:49 PM ET</div>
+        <div class="subtitle">Updated March 3, 2026 at 11:59 PM ET</div>
       </div>
     </div>
   </div>
@@ -1263,7 +1263,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:49 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 11:59 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1324,13 +1324,17 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePan
   var team='MTL';
   function nhlFetch(url){
     var e=encodeURIComponent(url);
-    return fetch('https://api.allorigins.win/raw?url='+e).then(function(r){
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    }).catch(function(){
-      return fetch('https://corsproxy.io/?'+e).then(function(r){
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
+    function tryProxy(base){
+      return fetch(base+e).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});
+    }
+    // Race both proxies — resolve with whichever responds first successfully
+    return new Promise(function(resolve,reject){
+      var done=false,errs=0;
+      var proxies=['https://api.allorigins.win/raw?url=','https://corsproxy.io/?'];
+      proxies.forEach(function(base){
+        tryProxy(base)
+          .then(function(d){if(!done){done=true;resolve(d);}} )
+          .catch(function(){if(++errs===proxies.length&&!done)reject(new Error('all proxies failed'));});
       });
     });
   }
