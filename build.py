@@ -1911,9 +1911,10 @@ body{{animation:fadeIn 0.15s ease}}
   <div class="stat-row">
     <a href="standings.html" class="stat-pill pill-accent" title="{ordinal(conf_rank)} in {team_conf} Conference, {ordinal(div_rank)} in {team_div} Division"><span class="sl">Conf</span> <span class="sv">{ordinal(conf_rank)}</span></a>
     <a href="standings.html" class="stat-pill" title="{ordinal(div_rank)} in {team_div} Division"><span class="sl">{team_div}</span> <span class="sv">{ordinal(div_rank)}</span></a>
-    <span class="stat-pill" title="MoneyPuck playoff probability"><span class="sl">Playoffs</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
+    <span class="stat-pill" title="MoneyPuck playoff probability"><span class="sl">Playoff Odds</span> <span class="sv">{playoff_pct*100:.0f}%</span></span>
     <span class="stat-pill"><span class="sl">Record</span> <span class="sv">{record}</span></span>
     <span class="stat-pill"><span class="sl">L10</span> <span class="sv">{l10}</span></span>
+    <span class="stat-pill" title="Record against teams at or above .500"><span class="sl">vs .500</span> <span class="sv">{vs500_str}</span></span>
     <span class="stat-pill" title="Goals scored minus goals allowed"><span class="sl">Diff</span> <span class="sv">{goal_diff_str}</span></span>
     <span class="stat-pill" title="Power play — {ordinal(pp_rank)} in NHL"><span class="sl">PP</span> <span class="sv">{pp_pct}%</span></span>
     <span class="stat-pill" title="Penalty kill — {ordinal(pk_rank)} in NHL"><span class="sl">PK</span> <span class="sv">{pk_pct}%</span></span>
