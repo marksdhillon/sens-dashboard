@@ -1664,6 +1664,10 @@ a:hover{{color:var(--text-strong)}}
 .team-logo{{width:40px;height:40px;opacity:0.9}}
 .header h1{{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}}
 .header .subtitle{{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}}
+.live-badge{{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}}
+.live-badge:hover{{background:rgba(232,56,79,0.2);text-decoration:none}}
+.live-dot{{width:6px;height:6px;border-radius:50%;background:#e8384f}}
+@keyframes livePulse{{0%,100%{{opacity:1}}50%{{opacity:0.5}}}}
 .hdr-pct{{text-align:right}}
 .pct-val{{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}}
 .pct-label{{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}}
@@ -2002,7 +2006,7 @@ body{{animation:fadeIn 0.15s ease}}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/{TEAM}_dark.svg" alt="{team_name}" class="team-logo">
       <div>
-        <h1>{team_name}</h1>
+        <h1>{team_name} <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
         <div class="subtitle">Updated {now}</div>
       </div>
     </div>
@@ -2110,6 +2114,40 @@ function closeGamePanel(){{
   document.body.style.overflow='';
 }}
 document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePanel()}});
+</script>
+<script>
+(function(){{
+  var team='{TEAM}';
+  function checkLive(){{
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){{return r.json()}})
+      .then(function(data){{
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){{
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){{
+            var badge=document.getElementById('live-badge');
+            if(badge){{
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{{}};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={{1:'1st',2:'2nd',3:'3rd'}};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }}
+            return;
+          }}
+        }}
+      }})
+      .catch(function(){{}});
+  }}
+  checkLive();
+  setInterval(checkLive,30000);
+}})();
 </script>
 </body></html>'''
 
@@ -2436,7 +2474,7 @@ def _build_game_card(g, all_game_details, eastern, team_records=None, mp_stats=N
     has_detail = f' data-game="{game_id}"' if detail_html else ""
     clickable_cls = " sb-clickable" if detail_html else ""
 
-    return f'''<div class="sb-game{clickable_cls}"{has_detail if detail_html else ""}>
+    return f'''<div class="sb-game{clickable_cls}"{has_detail if detail_html else ""} data-gid="{game_id}" data-away="{away_abbrev}" data-home="{home_abbrev}" data-state="{state}">
 <div class="sb-status {status_cls}">{status}</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row {away_win}">
@@ -2813,6 +2851,68 @@ function closePanel(){{
   document.body.style.overflow='';
 }}
 document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel()}});
+</script>
+<script>
+(function(){{
+  var hasLive=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
+  if(!hasLive) return;
+  function refreshLive(){{
+    var active=document.querySelector('.ds-btn.ds-active');
+    if(!active) return;
+    var dateStr=active.dataset.date;
+    if(!dateStr) return;
+    fetch('https://api-web.nhle.com/v1/score/'+dateStr)
+      .then(function(r){{return r.json()}})
+      .then(function(data){{
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){{
+          var g=games[i];
+          var gid=g.id;
+          var card=document.querySelector('[data-gid="'+gid+'"]');
+          if(!card) continue;
+          var st=g.gameState||'';
+          card.setAttribute('data-state',st);
+          var statusEl=card.querySelector('.sb-status');
+          var rows=card.querySelectorAll('.sb-team-row');
+          var aScore=card.querySelectorAll('.sb-score');
+          // Update scores
+          if(st!=='FUT'&&st!=='PRE'){{
+            if(aScore[0]) aScore[0].textContent=g.awayTeam.score||0;
+            if(aScore[1]) aScore[1].textContent=g.homeTeam.score||0;
+          }}
+          // Update status text
+          if(statusEl){{
+            var per=g.periodDescriptor||{{}};
+            var pType=per.periodType||'REG';
+            var pNum=per.number||0;
+            var clk=g.clock||{{}};
+            var tr=clk.timeRemaining||'';
+            if(st==='FINAL'||st==='OFF'){{
+              var txt=pType==='OT'?'Final/OT':pType==='SO'?'Final/SO':'Final';
+              statusEl.className='sb-status sb-final';
+              statusEl.textContent=txt;
+              // Add winner highlight
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              if(rows[0]) rows[0].className='sb-team-row'+(as>hs?' sb-winner':'');
+              if(rows[1]) rows[1].className='sb-team-row'+(hs>as?' sb-winner':'');
+            }} else if(st==='LIVE'||st==='CRIT'){{
+              var ords={{1:'1st',2:'2nd',3:'3rd'}};
+              var txt=pType==='OT'?'OT '+tr:pType==='SO'?'Shootout':(ords[pNum]||'P'+pNum)+' '+tr;
+              statusEl.className='sb-status sb-live';
+              statusEl.textContent=txt;
+              if(rows[0]) rows[0].className='sb-team-row';
+              if(rows[1]) rows[1].className='sb-team-row';
+            }}
+          }}
+        }}
+        // Check if any games still live — if not, stop refreshing
+        var stillLive=document.querySelector('[data-state="LIVE"],[data-state="CRIT"]');
+        if(!stillLive) clearInterval(liveTimer);
+      }})
+      .catch(function(){{}});
+  }}
+  var liveTimer=setInterval(refreshLive,15000);
+}})();
 </script>
 </body></html>'''
 

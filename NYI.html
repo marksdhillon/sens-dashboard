@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" alt="New York Islanders" class="team-logo">
       <div>
-        <h1>New York Islanders</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:34 PM ET</div>
+        <h1>New York Islanders <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:41 PM ET</div>
       </div>
     </div>
   </div>
@@ -1094,7 +1098,11 @@ body{animation:fadeIn 0.15s ease}
 </div></div></div>
   <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE80MWVCVnJEaThHWWFIVWR2SlpCRHFsaG1iZUpJRFNTQW1MUERDNlBma1VRMzJfTVlYSHNFUVc4M3pyMmhpVk9KbkEtaG9ka1hlaTRxY2ZrSTNaV2NoWmhrUGxlVW0zMHpZaElFemd6N1V3VzNiZUh2ai01b2ItQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Newsday</span><span class="news-date">Mar 4 &middot; 1:32 AM</span></div>
-<div class="news-title">Gross: Winger Conor Garland could be trade target for Islanders</div></a><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOb3pES3p0eUZDWWtWaGhaY0pORXYyaVNPRHRuX3M5ZXh1Nlk2VkpqaHQtejhSd0xpcWxzYm9pZlRJbV9nQUZybURnbWVHOHZ6ZGgybDgtNDBOZHYzejYxRTRwcE5iZVhucEJpUHBYX3VtY2NEY0JBYUF2Zmo5VmJwRG12VDFUT01JcGNHQzZQSnNFbzVzbWJwV3pxWWx5RVFVbDRyWmpNdVlYQmdKNWo1SjR0UG5qbGZHdndpZVJGakhyQk5zdlVEZkFBRS1tRkVxZXEwY0ZxV0FONlI3VklGSm1pLWxmcGNaVjRFUEZB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Gross: Winger Conor Garland could be trade target for Islanders</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOQWNucUxfWXVkbHJNMkdBSmpwSmhFandKOGJFbnhCa0JDMzB0TkMtb0dFcTZ4djJvYkZrOG1zZlpHVGpJNUdzVlJGZnBnbloteDEzXzYzMW50Z0dfVmd0ci1PWHdoTmF4V2ZUTXc4S1E5Yk1qMFNCR1R5NUlRTXpPWU4tNUtlbW5mMzR2TFRKMW8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 4 &middot; 1:30 AM</span></div>
+<div class="news-title">Latest Trade Rumours Link Vancouver Canucks Forward Conor Garland To The New York Islanders</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQTFhFWTJ2TGhwUkpnUUtJSDhfVkEtaU1hNlI1R0dTU2p4WU1SUWo5Slo4YmpHUWl6NHpCNTI2bkdDd1N5SG1PRmRUaHI2ekRjYlR6Ykg3Mkc5Szh1RnJMQ2dtdmpjVGJlWFRfNTBxM1E0RXhiWk1CRDVpb0dMVGJpSjJzOGdoUGlZb1FZaG9pTTM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">New York Post</span><span class="news-date">Mar 4 &middot; 1:13 AM</span></div>
+<div class="news-title">Exclusive | The factors helping Mat Barzal evolve as a player — and fueling the Islanders’ hot streak</div></a><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOb3pES3p0eUZDWWtWaGhaY0pORXYyaVNPRHRuX3M5ZXh1Nlk2VkpqaHQtejhSd0xpcWxzYm9pZlRJbV9nQUZybURnbWVHOHZ6ZGgybDgtNDBOZHYzejYxRTRwcE5iZVhucEJpUHBYX3VtY2NEY0JBYUF2Zmo5VmJwRG12VDFUT01JcGNHQzZQSnNFbzVzbWJwV3pxWWx5RVFVbDRyWmpNdVlYQmdKNWo1SjR0UG5qbGZHdndpZVJGakhyQk5zdlVEZkFBRS1tRkVxZXEwY0ZxV0FONlI3VklGSm1pLWxmcGNaVjRFUEZB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 12:02 AM</span></div>
 <div class="news-title">Islanders close to trade for $6 million Canucks forward, but get bad Tyler Myers news</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNNDIzUDlMU0l4eGRkRWh6ZUxBNi1VRWt5TjBSYkEyblFsYmJUU040MzkxN3NyRTh5eDdZQ2RRN1dpSVZiSmR3NVpVMEZGb2k2VW5vOGFmVjBrZS0xT2o2ZU5fQmcxMzNKOXVsM3RGcGhuRGhycDdzdG1HQkl4N3VlV2VGckpucFRqbk1uc1k2ak00SWo0NFlPcnlKQzQyblJG?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">canadiansportscene.com</span><span class="news-date">Mar 3 &middot; 11:23 PM</span></div>
@@ -1108,10 +1116,8 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Doc's Sports</span><span class="news-date">Mar 3 &middot; 9:51 PM</span></div>
 <div class="news-title">New York Islanders vs Anaheim Ducks Prediction, 3/4/2026 NHL Picks, Best Bets & Odds</div></a><a href="https://news.google.com/rss/articles/CBMisAJBVV95cUxPRVlmQXBMUUlIbnpCdjB1cjRSdzRQR0NFLVFHcEI5UVRYd0FPdl9hcHpGZC1yZXBfM0E0MDNFWVFqRU1mOGVFNVY0a1VuTHQ1eE1OSjQ2RmhqcEkxREpCaGFtT3NiWlc1VVVPU0lIT2QyamNXeFMwZUVwSlZOY1ZaZXFKNzRyUHp1aC0zbUI3WlNOSExDYl9YaFlNM0h0ZDFJTjd1MzdjYmdhRE05MGFIZHd5UU1oblpCd1c5UlhMdGhVUW03RkVWZWZDZU5WQ0pkU29LcVl2cll0aUlHZ2hDWTY5eDJPRDNyTDFGNWItT2cwc1FacHNIVlZzWmcwazBkbWlnZ2h6M0NLWE1iRVhubEs2cmlkX1JKQlFLd3liclBLVzFTNG1OVHhYMHdYTHFo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">5newsonline.com</span><span class="news-date">Mar 3 &middot; 9:29 PM</span></div>
-<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxONDctMVlJU0RxOHVrVGhiaTk0UXE0NFpHdjg1azg5aGc2eFVDdHNHLWxtOWN5OU9KZk91WTZGUlFReFhrUlJ0S2dwYm5hZHEzS1NBbEpYRnlHTktsUEN3d0dEUXBZZWt2eWh3RVZVTjU2cm1hMFJlV1lldUlpUDJPRG50R25JcC1yQmp1S2lDNHdNUnhLTVN0SlE3cFNuLTZHd3V5YjBlaTYtemxFX0p6WURrNVdpS0Rzek5zSXR3eE9kWlp3cDMtcW1pTXRXSnRKOXg4TW5XTDk4RUlOWnVrWlZEYVpmRGJBcEkyZ1BjV1lWcU9NSUtNMnZOWVVlWnM5SnhtTDhOUUpYVFUzOWtPNzcyVV9keWFoNTd0QUduMVhhUE03ZnlMXw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">fox61.com</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
-<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMitAJBVV95cUxPdHpxRGlkY1pIOHkyS1pTNGVGUEJTTDViaFNyWkE1S2VQbWQwVWwtc19IYUNaaElOZ1QtcEJ1dDMxT3dtOHY2elRIQkJ3YzZiOWllUUxOanZUanRkSEVvTVRxRnpHUmR3bkZ0aExJR1NXSWxFSGhjM3JvVERLWkRmc0owUHlzV0NQcTlpYmw3WFVOTUMtUUw5R3E3dzF0M2xDejZuS2hXQW01eEVURlF6RWZIMmh5YzNVZzlwVVd6cWFkNVM1VG8tZUcwNTl3SkRvWFRuMTV6ckNxNlQtbGZtazlWTWRWcngyZGo1dlh4OFhDZUdNS3FSbWllREE4MlhBVnNLelItblZYT25JbjF5MGs1WWdTcjEtSzNuSjhRbjFubDVCQ2xiUEtGMEZtTkYwc1FIeQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">firstcoastnews.com</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
+<div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAJBVV95cUxPbEJ2Q3J3WDRzdlNKOXFfejNYWUF4ajU4S3NDY1dRTFhXZ3lxU0daLWFMbF9IOURvTU1LZFN0TzNVdWxWZ19WZUdndVRiTVBPSFVCRkhwUDVKMHZDamo2bmt0Rk1fS2djWTljQlVwR2VGa2k0dHZqMl8tMDFoVDR1VlNsWDNNSUFFaUdQR2JtVHlRVjZfVzdVT1dzN0xOc05QUHlaR0lKMXpuemhtZE8tckt1RmNrb0hwMEt1ajkyWWo3aUc2eE9aZ3JOSEk5TzJSdHhoYjlkZXh0TTNOcnZOcy04R01VVGRPSnlvYnpUMTJSTkFvTzg3QVhIUXBGcWpfdTljRS1GeVFKRW1yRjU5LWptbURGYXo5QXdHcFMxdG5OX0I1a2hVZg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">WUSA9</span><span class="news-date">Mar 3 &middot; 9:22 PM</span></div>
 <div class="news-title">PULOCK MYSTERY: New York Islanders ADJUST Lineup While Trade Rumors SPIKE Before Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPNWNKandxdElPRzY5b1huSThqTFRBM2Z5Mmo0dHE0NXFkYk5pMHZtRnIzSUotMGZsTmpCWDhVUTFsSjBqOWVnQl9EY2Noa3dQMU5WUFN2NHlfTHVWM3dubjB1TXRaemFORjhVQWdxM2pJNHN4RzNvM1JBZGMxMDgtV2R3MnhlWGVUampKSXBodEszbUF2X181bG10OFdXa2NsYTNremFPRlo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 9:19 PM</span></div>
 <div class="news-title">NHL rumors: Islanders, Canucks discussing Conor Garland trade ahead of deadline</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBUS0hvY01xRURud09oOTZyRUFnN2hxaTNlTWxGVEdXTU9RVE5NSWY4alNseHQ1NWhsUC1DcWpLcW4za2lkVmo3aG45T29LYnJZV1IxQXMwUGhTZHhVRzBiY19UeW1Yc2VpcnI2WnBQR09IdWNyc2dWRHFJNA?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1140,9 +1146,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sportscasting</span><span class="news-date">Mar 3 &middot; 1:40 AM</span></div>
 <div class="news-title">Bruins Trade Rumors: Boston Linked to Flyers’ Owen Tippett; Islanders Also Interested</div></a><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOcnUxN3ltNHpRRmltbDBJX2RpeFVyc1Z4WXVLVjNkMUxFM3o0bHJCUFF6dzZUV20tTWg3RDJkOTlyOWQ2LXhzR2JROXR0SUtsSHJKd3Z0a3U3LWNqM1RPR0ZsZ1dBSndIbjdlOU9ZckV2c1RReVBhUTdGc3BiNE5wY1RvZkJwMWc3MVVPdXdpMW5lT25BN3lmd3pQbUlnQ3A3VVprV1lVYXg2MnB1ZFFWczZ0QjdBSHF2TXQwbE1MclZJZ2RXUDl5RGVLdUw3djZ5b3ZEWVY0LVdVWDFhbWJn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Eyes On Isles</span><span class="news-date">Mar 3 &middot; 1:02 AM</span></div>
-<div class="news-title">NY Islanders prospects Kashawn Aitcheson and Victor Eklund will be highly coveted by potential trade partners</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQZ2VVQjNfRHhsWHVGWHhfRlJHY21sS1FFVVlKejVTWUw0cGppMEVSZ1daQzlhZkxSbFY2bDI2dTRuSFlwdm1SWU1CSVlUYjZMZ0JYUWFXTkxFUU5rQ0pHV0ZTZWxEU3piWDhnT2lYNG5UdTc3OUVNOEdOR2RmejJFUHA3cVFCSURWZzRQOTVB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 12:52 AM</span></div>
-<div class="news-title">Schaefer leads 3 Stars of the Week</div></a></div></div>
+<div class="news-title">NY Islanders prospects Kashawn Aitcheson and Victor Eklund will be highly coveted by potential trade partners</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/NewYorkIslanders/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/NewYorkIslanders</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1155,7 +1159,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:34 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:41 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1210,5 +1214,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='NYI';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

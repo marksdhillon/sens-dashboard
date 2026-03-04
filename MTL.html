@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" alt="Montreal Canadiens" class="team-logo">
       <div>
-        <h1>Montreal Canadiens</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:34 PM ET</div>
+        <h1>Montreal Canadiens <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:41 PM ET</div>
       </div>
     </div>
   </div>
@@ -1148,7 +1152,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-title">Canadiens rumours: Arber the "X" factor in a potential trade with the Flames</div></a><a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxPRTNiUlZLTTRvQ3ZzeXlFam1GbTN5Z1pzMmJaY3Y5aUFUdndsYUlrWVk5R09QRlVnNlJkRFB3Q2tTaFktQTE5N2VYVnM5NXAtSHpxam41UjVrbXE3UnhENmM4U0xZdGFyQVZzbkVOdklpeDF2SFlMV0pZZHN0aXo0YzhkckN5ZDBwU3Q5NXNIVW5WeEZoRjhjLUt4T1RUUzRXZGVIVVJ1VjlqbExPQ29NV29nUWVFNE1YcE1zMFcwNzVsMHEySy14SkZBZk9OblljUEhtSlE0bDBILTBuUDZtbDd6dG9QX1dvRjJ3WTRHQVlQcHl6ZW40bGE2WlhHb09Pc1NaeXp4RjdQWGIy0gGSAkFVX3lxTFB5ZzlXXzhJMnZLblJOa0ZhdG5qU1BvNVdtOFFRQ21ZeVNsMFB2d2lTVFFuZFJ6cFNrWng1MGNnZWcyLVRnRjM5RjlORGxRV1ZKYlNRdVNVSnV5eXh4Yl9mMV80Qkt4NVItNmJnRjZXbElrSnBnbWItYzA3M3A4dXVDRTVURlpZMG1kQzBIajM1TXJfTVRRRjlhWGgwUTlycTBROGVkTV84VndVUTIwV3hkNHNxbWV2cWlPN0k3RlJ2cm9YcTg0dnh4NFo5c2FIZndrbzJPN25CTm5qMVlxcVJaOEFiejlILVpEYTNtVDZWRndqMnR0dldYUmJiVlVCbXM5NzRGQVoydWhoOU9tSEJYc3c?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 3 &middot; 11:59 PM</span></div>
 <div class="news-title">NHL Trade Rumors: Canadiens push aggressively for $65M top-line center ahead of crucial March 6 deadline</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNdldCdXhyMUNCenY3RXlWek9ZSXNQNFh5ZmlULWVubERybWhNN21HcmZrd2lpX3hzRGg2RmV4alEwcVBKT3lWUnZQUmhrM05mNHlSSHNhVG1VSkxWQ1FlNTgxUWp4Qnc0dnNOZHJ2aFlubTU0V1NhZzBOSWdyTG9qYTFodFRaQ0pNWFpkOFVibnpHa0g2czB3?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 11:19 PM</span></div>
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 11:47 PM</span></div>
 <div class="news-title">Top 5 Canadiens Needs Heading Into NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQTWcxanAyUjNqclBYTlYweHROQ0dZa2hUczdES0NQYXpaODBDQjRXbHJMdG1Jc3lUcVFzTU1ZQUNkWTFBZ3UyckIycHhVUGpSOWstRkNGZFp6bHVWaEgxZXFhYjFIeGo3TTY2X1ZnRmFKdFE5SU5ZMzhGX2Z0aVB1dWJDRQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 11:16 PM</span></div>
 <div class="news-title">Calgary Flames & Montreal Canadiens Talking Trade</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNZk4wOUVNUENCUXI1ZjNHMUU1OFZQc24wblh4YWNkMHpqNERXS2RWemJTUDhrcE9xTHBZTjZiTkVwNkhJOHFTQWx0Q1hmV01hdUN2T3dqU0VVT0tCd0xWNGpMb19RMEJnU2tjWERvTW1tZ0puS1FxdDJuSk9hcUUzTTBkczU2bXNQX1E?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1196,7 +1200,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:34 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:41 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1251,5 +1255,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='MTL';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

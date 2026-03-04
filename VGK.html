@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg" alt="Vegas Golden Knights" class="team-logo">
       <div>
-        <h1>Vegas Golden Knights</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:35 PM ET</div>
+        <h1>Vegas Golden Knights <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:42 PM ET</div>
       </div>
     </div>
   </div>
@@ -1133,12 +1137,10 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled D Jaycob Megna from Henderson (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPcFk0blcxOVFtSzF4eGprRW9uTk5STXhhc3JiY2J3bG9wTUtST0hlQnZQNWRyWkdnS2k0aDJ0ZmZNQzZ1QnNqTHV4NE5GbmsxRDU4TlRwc1RJWTY3QWVoVERIMVUxZFNtWnpZWllNMHdKRGZiU2dRbXF3RlpoOFR1LXR0ejB0NWZvNHJQNUQwN1JIblpEMjdVcUtVNzhCaXMtNGFr?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPbkJ6emtMR19tT2tncWFmMTBrbzhlSzJOQjA5S3RNbVBHMTJYenFtQzNNYndMQXM1QUZZTGo4Q1hTbS1NR2JjOG5TdURaaV9TQzk2SnlCRGNwZEtRekVfUUpxQjNmS0NnYnlBZVFCblRZVVVzMXFPaGgzUFpJUGFBY0Z3MHpYcjZYTUhXcURjOG5VcnU5RHhQVnVJRXhyeWFWcTZn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:34 AM</span></div>
-<div class="news-title">VGK@BUF: Dorofeyev scores goal against Alex Lyon</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPbkJ6emtMR19tT2tncWFmMTBrbzhlSzJOQjA5S3RNbVBHMTJYenFtQzNNYndMQXM1QUZZTGo4Q1hTbS1NR2JjOG5TdURaaV9TQzk2SnlCRGNwZEtRekVfUUpxQjNmS0NnYnlBZVFCblRZVVVzMXFPaGgzUFpJUGFBY0Z3MHpYcjZYTUhXcURjOG5VcnU5RHhQVnVJRXhyeWFWcTZn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:34 AM</span></div>
-<div class="news-title">VGK@BUF: Barbashev scores goal against Alex Lyon</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPXzVId3ZQV2R4RjUyNzVZdXJ5MXJGNk9yMmxZT3NwSUtXdEUtM3NMaWpTTHp1LWJOeTNLOV9hZGJYUmFhcGtfZ3ZTVHhzMGw3eEN1WHI5Mm0wck1LdmIxWEgwVHhvSUVNUnZoMW12dllPMC1BQW9ES1FZUlZUOTY3SDVBRlo2aDc5cXExN2dLNGZ1SnRsbWlNR3hwQXZXWkl3azRjLW16SlJaR3hVWFU4TW4zZkJDMWs3UFd3RVVqOWwxazZq?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Idaho State Journal</span><span class="news-date">Mar 4 &middot; 1:00 AM</span></div>
+<div class="news-title">VGK@BUF: Barbashev scores goal against Alex Lyon</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNNzVZTnRXVWlWQjRlakF6cGVud2k5SDZPbWZraUpMOExra3NOc0Yzd2FOZktKV2toWnV4RjY5UlJMaDhjY3MwTE91LTRIS29HYWJuNHFMNDF4SFhueGYyUUUyQThSNmZVQWZqdjEyWUs1UnBTMEdEQ01hV3dQbFl2ODB5d1VGb0NfMGJlVG9aMmd3dVVyYnZTX1VjSDN5VWdrWVA0RjlSY2lSdnlRRFBUZ1hKMDhsT1ltMDVrQ3R5NEVNZGdl?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Idaho State Journal</span><span class="news-date">Mar 4 &middot; 1:01 AM</span></div>
 <div class="news-title">Golden Knights Sabres Hockey</div></a><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMUs3bkpPclBuOTJSRjNULVZrektVcnhmT0lwdzJBa21jVmdBVnczQktEWTlYN01qVWlaeFNHS3BESU5YSFB6YXAxS3F0cnlwTUsxYzhCQzlKTzFtcXFCVzNXcm5ZWFlfVTIweUwxczJUNzgycmZ3T0NJdGtCLUY4V19WckNlWGJrSVVBSmltZTR3NzZ1WkRpX1dkTUVjeHFOaWU2S3cyTUJ5QQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Vegas Hockey Knight</span><span class="news-date">Mar 3 &middot; 11:57 PM</span></div>
 <div class="news-title">NHL rumors: Elliotte Friedman thinks the Golden Knights might not be done yet</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85ZGNYY3dCbXpyQTgwd3I5c19XUFVqMWRnZ1BLdmdpa2RfM2Y3b01KRzF3bk9OeEtHcVdoX0xjdDd4aTR2SXFyRUxxbTlCZGJtLWQ4NFVUZFhWTkc5OEd3QnUwdGZTRUVacVMzSkVYNEREN2NGSGRrSlBn?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1147,7 +1149,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 3 &middot; 10:00 PM</span></div>
 <div class="news-title">Golden Knights Contender Status in Jeopardy</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOSllCTUdObWJ6N3BPRmpCcXhORlh6ZDNGU2hsbHRLM0kyMlNZZ2UyWjI4aHZwUlFvTkJTYU16elp5YjROdllYVFV1T3FGNVZQaUQ1bnFJZUd2V1gzejhqRENoWTdvVHRNTnlSbHh1Z0xzRGNRWnJKSFAwd042NFh0NDlRR0VkMmwxU1hHUHNvUmpUUTJwc0l4bWxULVRDa19LYzBMYUc5NEJUSWoyYmxWMEQwb2E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Las Vegas Review-Journal</span><span class="news-date">Mar 3 &middot; 8:17 PM</span></div>
-<div class="news-title">Golden Knights captain to miss Sabres game with injury</div></a><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNN0h1QXVuSGpDQl9wRGxYV2djdEpXN0dhbURpcnlyTGd0ZUg1U2VJSmtpR05WUFZDajRFbkduVGcyd0hyOTdSeTlVZm5GeWwtWU1iUDJfU1c0Ty1ITEdYLVlnLS02OFVmdU1OLUtuLU9GekFwbF9aRDY0VmVRd0g4c3R4VnktQ3JPTy1LRDctQ1U3QTNqWlB1SzIyYTljR282WXZRYlQ2NU9SdFNHU01VdEg4c1lfSkFCTlJ0LWZTVGVqVjlybmlRbw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Golden Knights captain to miss Sabres game with injury</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNU1RhRHpmalJBanNUX2IxaG12TC1kRFBucWZ0RDRVaXVfc1JJcUZQSllWa1VKWVBPSWpoSEt2TkVqdkZGLVBVcV9YZ2pGakc3N2VZMmJvcHJWOExvaTVwSFhKbFVoQzc4X1FieEQtQkN5cEZoaFVRTHFnWGc2dUNTaENNV3Y2eWlsakIwMjBtdUxWY2cwTHFQcVI3M0VldkJjbUE?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Pickswise</span><span class="news-date">Mar 3 &middot; 7:06 PM</span></div>
+<div class="news-title">Vegas Golden Knights vs Buffalo Sabres Prediction, Odds and Picks for Today, 03/03/26</div></a><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNN0h1QXVuSGpDQl9wRGxYV2djdEpXN0dhbURpcnlyTGd0ZUg1U2VJSmtpR05WUFZDajRFbkduVGcyd0hyOTdSeTlVZm5GeWwtWU1iUDJfU1c0Ty1ITEdYLVlnLS02OFVmdU1OLUtuLU9GekFwbF9aRDY0VmVRd0g4c3R4VnktQ3JPTy1LRDctQ1U3QTNqWlB1SzIyYTljR282WXZRYlQ2NU9SdFNHU01VdEg4c1lfSkFCTlJ0LWZTVGVqVjlybmlRbw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">DraftKings Network</span><span class="news-date">Mar 3 &middot; 6:53 PM</span></div>
 <div class="news-title">NHL Best Bets Today: Top DK Network Betting Group Picks for Tuesday 3/3/26</div></a><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE56ZERNYzc4cGlvMXVQSnRyMjVZNWVKV013VUtqZ0h6Z0EyYTdCWTRka0VyR2JVZDd4UWNOSmN0U05mN0cxek00dkZNMFhhN2psWWxkSWJyZDlxWHUwSkE5anZjYkZscm5XTk56XzZkT3lCVkUtV0l4eg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Odds Shark</span><span class="news-date">Mar 3 &middot; 6:27 PM</span></div>
@@ -1157,9 +1161,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Action Network</span><span class="news-date">Mar 3 &middot; 5:18 PM</span></div>
 <div class="news-title">Golden Knights vs Sabres NHL Prediction, Pick, Odds -- 3/3</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaEpuNUgtZnEwLWk3MHBucDFJQ1hoQXVCUlFseExSc0h1eXlJWjVzanZHakM3cTctdUN5UU1fQXM2Rmk2QklzNjhYeEVBeWZub0VsRjdzd3hTaEl5U0ZrYkFhV3JoSTZ1M1BLQUlLcC0wMkVIamd3V282Q1BvQWFKUVVyLUJYWm1WSWpwNjEzTklEMXEyZENXOUpvcGpPdDVvSFAwRGFCRlU1ZnpfenhUSWxYTWFUSlY3MHVJ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 5:09 PM</span></div>
-<div class="news-title">Forward Lavoie Recalled from Henderson Silver Knights to Vegas Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOSlVGOTNDN0k1LURlSGRWUjNTLXA5c1owUF93bWNVMm1WS2VZUjYwYWtxbnc1S3ItNFlkOWxfNHJlVkotZGhfUF9VQ0UzQUFQRFhGaUdBMi1ibnZpUk5IQ0lwVTNfX2c0NDlVWi14V1otcUpDUUxVQ0VaNzJhNGxsMXlVTFpPNFRXRWtCeUt6b3RYN0UxUjhqOVhuSlJPZ2R5SXlOZ012WWR2Ums?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 4:23 PM</span></div>
-<div class="news-title">Sabres Hope To Keep Rolling Against Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQbDhYTWFwRHhwWnRxbWJ2MXUyb0dzbHB2dmpWTzd0cEF4ZXZfcHh3c0FFblZwOGxPVXduQ1NLRl9LajlMbUoxazNiUHI2TUluRURpRHZ5NUFuRTAyeFNCZnhwTlZyVXV3bmJNZmd3REJOM0I0MWJkRGg1cjVXZDhsWHFROW9icWNjR1luUFd3WWxIU05RYU03d2dpWmxsMlI4dWZUMG5JRmlZcVgycW9R?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Forward Lavoie Recalled from Henderson Silver Knights to Vegas Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQbDhYTWFwRHhwWnRxbWJ2MXUyb0dzbHB2dmpWTzd0cEF4ZXZfcHh3c0FFblZwOGxPVXduQ1NLRl9LajlMbUoxazNiUHI2TUluRURpRHZ5NUFuRTAyeFNCZnhwTlZyVXV3bmJNZmd3REJOM0I0MWJkRGg1cjVXZDhsWHFROW9icWNjR1luUFd3WWxIU05RYU03d2dpWmxsMlI4dWZUMG5JRmlZcVgycW9R?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Last Word On Sports</span><span class="news-date">Mar 3 &middot; 3:46 PM</span></div>
 <div class="news-title">NHL Predictions: March 3 Vegas Golden Knights vs Buffalo Sabres</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPVTVtNUJiUkxwb2lxTElTblhzOFAzUWJpaE9aaGliVVVTYkkzOUZSY1k4VTd5azJoTmJIZjluZjNMRXlWN05wanZJVVZKUTVreEpuQTNobEV3akFzT1ZMclYzRDNuQ3lMODFMSDRaZ0tTY2tkWHNIZzJ2VFVOOU9YYmVYS0dQa28?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Substack</span><span class="news-date">Mar 3 &middot; 3:15 PM</span></div>
@@ -1183,7 +1185,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:52 PM</span></div>
 <div class="news-title">NHL Status Report: Stone day to day for Golden Knights</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOd09MMlV5OHRIR0U5Z2hUaWU4RlI4ckxySGtHaXROTGdmdnNMaEZycGk4Y2tpU3J3bmNIQVF0XzN1QkJrOXhWb0ZxZW05dXl0bkFLZEF1X09rLWdQY1BYZUg2WDFxb0duYVd4bmEtOHVXOE1Ja1YtSk94TmxWTV9SQV9XNXZzRDlLVHEyTHQxNTE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 2 &middot; 8:49 PM</span></div>
-<div class="news-title">Golden Knights’ Mark Stone Out Day-To-Day</div></a></div></div>
+<div class="news-title">Golden Knights’ Mark Stone Out Day-To-Day</div></a><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5iVXdZN2ZGVkwyRW40MkVQc3NCM1NfM0xpOXloQkJ6eWdlOXR1d2JWa0JMd3R1WWh5RnVQQi1DM2dIR0RGLVRZbHhjRGdBTW1VRl8zZDhXdWlyTF95c0hENFNFRzFSQVBMcDRCTEgxLV91bVZLeGRsOVh3?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 2 &middot; 8:03 PM</span></div>
+<div class="news-title">🎥 SOUND: Cassidy</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/goldenknights/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/goldenknights</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1196,7 +1200,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:35 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:42 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1251,5 +1255,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='VGK';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

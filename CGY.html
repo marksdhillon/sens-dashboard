@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" alt="Calgary Flames" class="team-logo">
       <div>
-        <h1>Calgary Flames</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:35 PM ET</div>
+        <h1>Calgary Flames <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:42 PM ET</div>
       </div>
     </div>
   </div>
@@ -1176,13 +1180,15 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-other">Move</span>
 <span class="tx-desc">Suspended F John Beecher for one game.</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQelFrRWFzTXFFV0xxZ0o5TVFSOFlmWS1RYUdkQ0hGa2tQM1NFdHNRbjlrcFlhaHB3VnZFMDFPRnJ2c3ppVHJOZnA4SkxRUXh1RVcyZEgyNVpvdVZjd05ZVVktQVoySS1CUDNIRXIydW5UZHVXR3c1eXk3ZC1VcFVoNg?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE8wb3FwU09lbWlNUEp4d3hPOVl6b3R0WXF6bVhHQW9jd2Uzbms2WlhHV1VJUTdWSXVhaUV5YUh0MlM1RDVteWhIUl9wejNCc0JlTmc4bEZLUUZPZnJxQmtyNXN6ZmRhY0l6MU9lcFBfSW9EYWtqUXBNeXM2eWxRQQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:38 AM</span></div>
+<div class="news-title">Projected Lineup - Flames vs. Stars</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQelFrRWFzTXFFV0xxZ0o5TVFSOFlmWS1RYUdkQ0hGa2tQM1NFdHNRbjlrcFlhaHB3VnZFMDFPRnJ2c3ppVHJOZnA4SkxRUXh1RVcyZEgyNVpvdVZjd05ZVVktQVoySS1CUDNIRXIydW5UZHVXR3c1eXk3ZC1VcFVoNg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:07 AM</span></div>
-<div class="news-title">Craig Conroy On Hockey Talks</div></a><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPTGlFZTRDMzhDNlJfOHJuQkJxdHJnSm5SeGNPYV9rOGVnaExwN2I4cTVmU3U0RFBJWVRfbkdKT0h2RUhfdGR0eTF0NFdxZjRJaldMZnQtVkxhYXZwU0cwTkxwR1l3NFcyV0xmYlRsaV8tTFhZUVZTRWJ3Z2FDT2VXVHJLV3loWVE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:02 AM</span></div>
-<div class="news-title">Flames’ new arena to be ‘incredible,’ Commissioner says</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNclJwY0xHS3gycThHdlUtQXB4MlNKZzdRemdIaGVaRG1iSGdwcEtxWUVBZWs3YWxzalp2ZXlDTmNoalFYTEpOMmRpZ044UkhMS3NRLW9KWUtGd3Fsc1ZqTk5IaFJrYzFJSjRHNVotWW45MmNZdllRM3RHVUtOTDkzSnlBTkdPQkdtaTIwem1vS0lyejJHSjIxd2NqS3MtMV84SVExRmtJRnRKMnExVEpHVFNEWXR6eFhPMHRiRjdOcEUxaHNFdXpOYkZjYjJra2hBUjhIUHdQWW55RjA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Craig Conroy On Hockey Talks</div></a><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNclJwY0xHS3gycThHdlUtQXB4MlNKZzdRemdIaGVaRG1iSGdwcEtxWUVBZWs3YWxzalp2ZXlDTmNoalFYTEpOMmRpZ044UkhMS3NRLW9KWUtGd3Fsc1ZqTk5IaFJrYzFJSjRHNVotWW45MmNZdllRM3RHVUtOTDkzSnlBTkdPQkdtaTIwem1vS0lyejJHSjIxd2NqS3MtMV84SVExRmtJRnRKMnExVEpHVFNEWXR6eFhPMHRiRjdOcEUxaHNFdXpOYkZjYjJra2hBUjhIUHdQWW55RjA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 4 &middot; 1:00 AM</span></div>
-<div class="news-title">Avalanche, Stars to battle for trade for $7 million Flames forward before deadline</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQVlVMV081OXhwOTZlMzZhSHAxY243dkk1MEZVNDh3cE4yTmRyamd3cDhoeEJMaTNRUkJFTGVuSVd5Z29kcWZVdTBMU2RQWENkbFpwUXBuUzd6YjFCS2xKTk1LS1dDb21GVUZoenhuV0h1UlJTdXFQaWNab2h6a3U1R3o3T1ROankwZlZLX1Z4T1BPY0dENFc4SDBkMGpTMWw0T1pvSkJXU01jeWdOSk9tSHFR?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Avalanche, Stars to battle for trade for $7 million Flames forward before deadline</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQc1Z4Zk54eHhOaF9zU18wQ3hQUmJ1aFhYRlplWWttY1hZdXp3amduMTh0YlRRSmtxWjZSNlRzUFZqNmtHMWtETVBiTzdKSVgxQ1JBQlpJUktRSlpEX0loRU5vTG0zSGxvR1AtV1RNQnZfZ3hyXzRPR0xxVlRLV1AwSmJpcU1SQWJ2MldSaGx4TnAxWGoxa3Vv?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Global News</span><span class="news-date">Mar 4 &middot; 12:36 AM</span></div>
+<div class="news-title">NHL Commissioner Gary Bettman visits Calgary to talk about World Cup of Hockey</div></a><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQVlVMV081OXhwOTZlMzZhSHAxY243dkk1MEZVNDh3cE4yTmRyamd3cDhoeEJMaTNRUkJFTGVuSVd5Z29kcWZVdTBMU2RQWENkbFpwUXBuUzd6YjFCS2xKTk1LS1dDb21GVUZoenhuV0h1UlJTdXFQaWNab2h6a3U1R3o3T1ROankwZlZLX1Z4T1BPY0dENFc4SDBkMGpTMWw0T1pvSkJXU01jeWdOSk9tSHFR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 4 &middot; 12:11 AM</span></div>
 <div class="news-title">Canadiens rumours: Arber the "X" factor in a potential trade with the Flames</div></a><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPWW9mSnRWcnIyMTk0cEREVU5OVEpGai0wd0VSbHJvU2hyU0FBanJuSm00SDF5QnpHOHdJVDNPMjB4OGFhMFlUQm5jcV8yUW9HYW1TUFJDaGZoaEJ3U21BMzNObWpUUEZGWXJPOENwVnVsbGJ4dUZ0YWJLbEMyeWY5MmNHNHhnQ0RjU2E2MXRHREMyR0RDVkxlM2h3X05KclhFOGc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 4 &middot; 12:00 AM</span></div>
@@ -1206,7 +1212,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:41 PM</span></div>
 <div class="news-title">Stars at Flames projected lineups</div></a><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNEJjUldhODc4MlAtMm52a0pnMmd5VWEydGdtZTRwXzNJNkdaSFk3cXhpdDBQNXU3eVNmcUg4TFpmOXFfbGN1UGZVbTAtUUxrc29pM2hnZGs4MEtVYmZ6TFJ2bnVsYUdBdnl6aUtlekJnVURGalVuN2NpWktFUjZjQXRPVzFOOUk4X0pMNnVBT2prSEhPRHJQUG5zbTRjcGEwU3ZHVDRraDdvX0E?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Bleacher Report</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
-<div class="news-title">Buying or Selling Latest Rumors 3 Days From 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQcVVTdlN3Mi1qemxBY0RaX3d6amhNa1RnbFhsaHpodktqeEFjTmNlWmU3X0NCd0RuTThuWkpXYkN0ZVZqUERyQkZFeWhzd3F3cDJMS0wzbWhBb2UtQjZDeUhsQTNkS09Fd09vaHpSeEdNM01QUzlqcmUtT2hfSi1mS3lham1jTlowUnBrWm1uONIBjwFBVV95cUxQcVVTdlN3Mi1qemxBY0RaX3d6amhNa1RnbFhsaHpodktqeEFjTmNlWmU3X0NCd0RuTThuWkpXYkN0ZVZqUERyQkZFeWhzd3F3cDJMS0wzbWhBb2UtQjZDeUhsQTNkS09Fd09vaHpSeEdNM01QUzlqcmUtT2hfSi1mS3lham1jTlowUnBrWm1uOA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Buying or Selling Latest Rumors 3 Days From 2026 NHL Trade Deadline</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPeHAtTnNaX0RXQ25XbWFIQi1lODcxOFQzVkw2S3k1QUZBc3pWd0F0c2VVSFcyZ09FMjNUX2J2X1VSUlp4cmdXLUxxRE5INnJTMElfYjk0RlNuZ183OGlyRnYtUmZXU2xNTGdFOE1fcWYtc1BZN1hKREVfdGt4MXF0YnZocnhXdUxqRXfSAY8BQVVfeXFMTWJ5MFd5dTZIMjRTdDNId2dNajFyWXo5cUFRUk84cmZMTlpRNG5wNVBkMS1PeUF6OE5sb3dSV2U0ZVlZYUhjMHNsaXNfNzZSVFBBU2FUUnNqOTB4VWtvWjZsZS1PZ3E2NWlINENzZFFRVk5iaWg5Z3FiRXV4WlFEZmc3Ym44Uk53UTVxZWlaZ0k?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 7:30 PM</span></div>
 <div class="news-title">NHL Rumors: How Active Will the Calgary Flames Be?</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNak1MX2tDMDhtcVd0NzdTWGxkazRoVGVoRW5TNFNHV0ViTXpWUHhMelBiUWFacHltMHRuLVpfUjlxZXRQLWFqUW9STnNJV1dMSmxfaWxJSHVlZkxhalJIdzVJb0ZFN2REVndMRVFabndnTnA4Z1VmYXlaVFM0c2QzVm1KSTJwUTJBNk5xYQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 3 &middot; 7:22 PM</span></div>
@@ -1214,9 +1220,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Inside The Rink</span><span class="news-date">Mar 3 &middot; 7:19 PM</span></div>
 <div class="news-title">Boston Bruins Trade Deadline Activity Could Be Stalling Out</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNX0VvTllXamNqSlpWZmc4YTJuYkdGcE5nM0ZpblhrRTVkR0tFdUY5N0dWLUIwLU85R0VyMHZmYVYydXBScGNjZHctWEh3dXB1RTFQNEsxaTdqY1pGNktYZFJ6R290ZHMtV0RqLWZ3UzFxWXZKeEk1ellIYVB6ZFBuR0ZhVXMtRGk0UGFwUjBNUWtDYi14?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:18 PM</span></div>
-<div class="news-title">Flames Set For Hockey Talks Night At Scotiabank Saddledome</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOcGx0aDNXT2JSX002Y3VQcXlINzR3QWhhM3M0R01hcjExTUFHLVo4LURCdnNKOHBYNGtyQ2NaYTF3bWZ4TkM5RXRXeGZEMFZpTEVablY3TFJTZ1hKWkg5MmRTMmRaV2dEdV9OVkxSOWZRWThaSmNLaC1OT1dMUUpyWDc1ZkZYZWo4dmNXcw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 6:51 PM</span></div>
-<div class="news-title">Photo Gallery - Morning Skate 03.03.26</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNOHdaN2hPV2lkY1ZCb1Z5bkNQNC1ERXdTMXIzY3lxSU9RWThwd194WHNyRXMtSlQzRDFmbHFEeDYyY2dEc1JVb0NoRngyVjZpaWpDWGc0ZWg0UVFvMDhSV3FpYWZpR20yQXIxc1N0NUNSUkR2WEZTeTRBTERrQzVJdWhrTmo0Z2NfSkhKaHRmNUgzWVJJcDg1S0VHckRJaVNIaEhFc3ZITEM5LUt1RUxWUg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Flames Set For Hockey Talks Night At Scotiabank Saddledome</div></a><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNOHdaN2hPV2lkY1ZCb1Z5bkNQNC1ERXdTMXIzY3lxSU9RWThwd194WHNyRXMtSlQzRDFmbHFEeDYyY2dEc1JVb0NoRngyVjZpaWpDWGc0ZWg0UVFvMDhSV3FpYWZpR20yQXIxc1N0NUNSUkR2WEZTeTRBTERrQzVJdWhrTmo0Z2NfSkhKaHRmNUgzWVJJcDg1S0VHckRJaVNIaEhFc3ZITEM5LUt1RUxWUg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportscasting</span><span class="news-date">Mar 3 &middot; 6:22 PM</span></div>
 <div class="news-title">Mackenzie Weegar Trade Rumors: 3 Teams That Could Land The Flames Defenseman</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOeDNBYkE1eXJRcGRxSHQtXzRwNl90N3loc2xUbkdvcEt3TzhQRXRMWGctRVpxcG9TRmtyMVNPNHowVkZRdDJkX2ZaRmVza21CdUVIMEltMkxzSkh6Qk5WTlppLVZZaml1S2xGNlBZRzR4Y1BSYnl6Y2dzS3ZQSHhvX3RVRlFNR0lXN1EySDRuSzNGRm5ZTDRJcHVhc1dfTkpF0gGmAUFVX3lxTE52amMwQjA2TFJjTllUVVJMSFF1SmxVb1p6NmFKSlJQTUhXTG4wMEpyRVQ4bUtXUmg3bWV1Qy1xVERUSGRBNzhBcHpGeHNjRDBTN21LUHN1OGpNeFR3U3FhZENnQlFIR3FNS3VXZUVTYnZzQzdoellGS2tndlBvaEZHZW9vQXJOSWhJZUg0bXdzT1EtUmxRTTE2ZWxsYU5TOFEweW5odkE?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 4:30 PM</span></div>
@@ -1239,7 +1243,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:35 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:42 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1294,5 +1298,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='CGY';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

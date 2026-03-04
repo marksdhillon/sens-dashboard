@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" alt="Vancouver Canucks" class="team-logo">
       <div>
-        <h1>Vancouver Canucks</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:35 PM ET</div>
+        <h1>Vancouver Canucks <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:42 PM ET</div>
       </div>
     </div>
   </div>
@@ -1018,7 +1022,7 @@ body{animation:fadeIn 0.15s ease}
 <td class="rank" data-sort="27">27</td>
 <td class="name-cell" data-sort="Derek Forbort"><div class="name-flex"><img src="https://assets.nhle.com/mugs/nhl/20252026/VAN/8475762.png" class="hs" alt=""><a href="https://www.hockeydb.com/ihdb/stats/find_player.php?full_name=Derek+Forbort" target="_blank" rel="noopener" class="pname">Derek Forbort</a></div></td>
 <td class="r pos-col" data-sort="D">D</td>
-<td class="r" data-sort="34">34</td>
+<td class="r" data-sort="33">33</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r pts-col" data-sort="0">0</td><td class="r" data-sort="0">0</td>
 <td class="r" data-sort="2">2</td><td class="r" data-sort="0.00">0.00</td>
@@ -1228,7 +1232,11 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-ir">IR</span>
 <span class="tx-desc">Placed F Marco Rossi on injured reserve. Recalled F Arshdeep Bains from Abbotsford (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxNZ1FCbE1ocXU5d1BTRU5vQTl4bXJvbHlFRUVKRm5SOTB4ZDVad1ZMVUlLcFVCV0luSGVXeUEwYTB1UjdIZ3JiLUZkQ0pEV29wbGtUSTY2WFdOekE4X1k3ZlJIMi1aUHJzU3hGU1dCdHpzX0RQbjVCZlJOM21qOWdNRElyVFlKSVdLb1ZIRFF5SUpXZjM3T0FXZFY1aDFZRVA5ZVlNSmV3SDJtaUtfTGFpUHJnV0UxbmV1Ym1Va09Tdk5zWWZVT3lIR2tYUUF5ekZaaTlidlliYnRUV29rNXhOaC1UTnVpVnNleWJITEtYSXc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">cbs19.tv</span><span class="news-date">Mar 4 &middot; 1:38 AM</span></div>
+<div class="news-title">Are the Canucks trading Garland to the Islanders?</div></a><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOQWNucUxfWXVkbHJNMkdBSmpwSmhFandKOGJFbnhCa0JDMzB0TkMtb0dFcTZ4djJvYkZrOG1zZlpHVGpJNUdzVlJGZnBnbloteDEzXzYzMW50Z0dfVmd0ci1PWHdoTmF4V2ZUTXc4S1E5Yk1qMFNCR1R5NUlRTXpPWU4tNUtlbW5mMzR2TFRKMW8?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 4 &middot; 1:30 AM</span></div>
+<div class="news-title">Latest Trade Rumours Link Vancouver Canucks Forward Conor Garland To The New York Islanders</div></a><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdzlwRTl6OS1yNlk0c0NvZEVoVklzaVBoZG5VVEJNNU84d3lHaXkxcURuYjdmZHdHNVdoVmlxbkpuaEJKOXgyNWlsNXY1aFJFdjNyNUlfaWlVOG5YT2JxOHV4X0hPaFZNTTB6Sk9HSVllODhlamJjWVF6VG8wR1hRTGpRejBwUHZMTVpia3BMZ01ZWklNRE5udTJfWGV4cmNKWFQzcnBn?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 12:56 AM</span></div>
 <div class="news-title">Canucks Close Two-Game Homestand with Canes in Town on Wednesday Night</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMWlzQVJlZXQzZUhMYVBETVBaWURoMC1QYmdrclg4T3ZyWFN6cW9BSmhaUHRLSDZlOTI3aXBNNVUtVFFTRU9TWUxTb3ZTelBjNzVLOFp0ZFVEcFlnOGtFeTVWSFE1dGk5ZmZRS0l0ME5IN1RyOUNwdGdZazcwaWYtbnpUaGdqTjcyVUZDT01Jb01KZ2JGRWpkcjRDOVMxRmtCc3Jz?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Province</span><span class="news-date">Mar 4 &middot; 12:25 AM</span></div>
@@ -1262,23 +1270,19 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 10:00 PM</span></div>
 <div class="news-title">Canucks place G Demko on LTIR</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1rb1ljN1BEZUVQM29mT3dzOEE3eGpER280TEhMT1lYRUFkeVlzZmExRGRyc3BRUFIyN0IzUHg3LVBtOUllMWxNMkxGYkdjUDhEUkRFNlJxQno1bkpQbTAwUmFDU05XM29iRC1mcFl4NWVaYkdIVjBfWVRNRQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 9:55 PM</span></div>
-<div class="news-title">Islanders & Canucks in Serious Discussions For Trade</div></a><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQanRFUUUwSVFfWEx6WjB4YkpVcnY5amJ6QVdlaUMtSTZXelRaT181LU0xQ1ZreHIycUVNODE4aE5CYUZlSDNaYVB0R0xxbWZhWEJsaTdiMWZaUzFZWjF6VzBtMDhYQ2lSWFVac3Yzc0xjMVZuUnJLQ1RTdVYwT1prVHBiYkQ4ZTIwYlBhS2JaRUV3UEw4Z0lreGVXUmdBUUZYZlRDdGJFelBBZXR3WnZMcklQWGU?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 9:46 PM</span></div>
-<div class="news-title">Canucks discuss handling trade rumours with the deadline fast approaching</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcVVhaDNmeWFBR2R6aEZSa2VYYUozOXBKTVlETFoyak9xaDR4Z1RfQU12NzhtQl9URGVYNC1vU09Ud1RQaWdqQkdOU2l4REtVRFp0ZGQ5Tm1QeXZCTkplOFlJTWkyMmpJYUF0TE5vcHo2N3J2eXpIejhqN0tiZWxqajRobXZleDhWTXVDS3ptZ0swaldldy1ULUNuNjYzVldPWHZWZmthSk5sVWtaTzh4eG92NmcyQ01Sa0tONkhkMXpBRmc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Islanders & Canucks in Serious Discussions For Trade</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcVVhaDNmeWFBR2R6aEZSa2VYYUozOXBKTVlETFoyak9xaDR4Z1RfQU12NzhtQl9URGVYNC1vU09Ud1RQaWdqQkdOU2l4REtVRFp0ZGQ5Tm1QeXZCTkplOFlJTWkyMmpJYUF0TE5vcHo2N3J2eXpIejhqN0tiZWxqajRobXZleDhWTXVDS3ptZ0swaldldy1ULUNuNjYzVldPWHZWZmthSk5sVWtaTzh4eG92NmcyQ01Sa0tONkhkMXpBRmc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">The Hockey News</span><span class="news-date">Mar 3 &middot; 9:38 PM</span></div>
 <div class="news-title">Canucks Place Defenceman Pierre-Olivier Joseph On Injured Reserve</div></a><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQdVpGbmVVZ0xaX0lJVlYtc05ZVDdwMTJaSk9GbEpMR3NVaVQwdWdrV0RMeWoxN0tFUWthVlA5cldQYklBZ05lNm03UTNXZ2VPLVdXdW5ZT0xFQkNzTVZPemR3eVlTVnlFOE9PRC1pcko2bkFkaVVFTEg2aTlXX1Jkb3FXZWxrdENt?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL Trade Rumors</span><span class="news-date">Mar 3 &middot; 9:21 PM</span></div>
 <div class="news-title">Jake DeBrusk Says He's Open To a Trade... In So Many Words</div></a><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPNWNKandxdElPRzY5b1huSThqTFRBM2Z5Mmo0dHE0NXFkYk5pMHZtRnIzSUotMGZsTmpCWDhVUTFsSjBqOWVnQl9EY2Noa3dQMU5WUFN2NHlfTHVWM3dubjB1TXRaemFORjhVQWdxM2pJNHN4RzNvM1JBZGMxMDgtV2R3MnhlWGVUampKSXBodEszbUF2X181bG10OFdXa2NsYTNremFPRlo?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 9:19 PM</span></div>
-<div class="news-title">NHL rumors: Islanders, Canucks discussing Conor Garland trade ahead of deadline</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBUS0hvY01xRURud09oOTZyRUFnN2hxaTNlTWxGVEdXTU9RVE5NSWY4alNseHQ1NWhsUC1DcWpLcW4za2lkVmo3aG45T29LYnJZV1IxQXMwUGhTZHhVRzBiY19UeW1Yc2VpcnI2WnBQR09IdWNyc2dWRHFJNA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">NHL rumors: Islanders, Canucks discussing Conor Garland trade ahead of deadline</div></a><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNU3pfdllGQjJjZERRYnZ5X1JzUlVBOERiSV9KTlQzc2NRMVpkbGhudF9aM0NNMzBDZjVyYWRWa3dqamd4aGU1WU1fNjRkVkRkcGotWnZFb1ZUOVNMUE1nc2EzXy0yS3ZsWFU3ZDNtcUpIeWtzazJMZnFrQVRTSS05S3ItUDM?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 3 &middot; 8:59 PM</span></div>
+<div class="news-title">Should the Habs pursue a Pettersson trade?</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBUS0hvY01xRURud09oOTZyRUFnN2hxaTNlTWxGVEdXTU9RVE5NSWY4alNseHQ1NWhsUC1DcWpLcW4za2lkVmo3aG45T29LYnJZV1IxQXMwUGhTZHhVRzBiY19UeW1Yc2VpcnI2WnBQR09IdWNyc2dWRHFJNA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 8:47 PM</span></div>
 <div class="news-title">Serious trade talks happening between Vancouver Canucks and New York Islanders: report</div></a><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUS1LNVJOVHgtYm9DUmdtbHk1QldHT0Q2dnU1VkpNMHJpdkVQNWFWTnJhYnUyNjRyajFHQjRDVHpmYlpwQ1dGcmR5X0tYdjM5eF93STF4ZUoxTTBmcXVTWkExMG9qTUF2WHJaaGgtZ2lxWFl2aDZIUFUwSVBHNVM2S3dENzE0cl9PTGd0dTJUcmFwRGNKN1FuNnEyTDhjU1FpTDFoUnpYVG5fNzZucWhKb290MEpNX2gyeWlCZTdiMTVEV2s?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Canucks Army</span><span class="news-date">Mar 3 &middot; 8:36 PM</span></div>
-<div class="news-title">Islanders in ‘serious discussions’ with Canucks about Conor Garland, Tyler Myers: report</div></a><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQWDg2LXExbUkyclJYTXBtUGVSZWs1Z0Z5VEJ0SThMZ3g0c2NYT0J2LVZrdjR5ajByUEpKWXNFTGtpbWo0aUZ5UDhMbEYtS1l3NVBKQzJ2eTJtZ0Y1Q1FoYmIzYmxteS1HZ3dyc2ZnLXBYbTVLNEFFWXdDY2FEdHNhZmJlNA?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 8:17 PM</span></div>
-<div class="news-title">B.C.'s daylight savings switch will affect Vancouver Canucks game times</div></a><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE42djB0SVBOTGNVdEU4UkNoQmVwNERnY255c3p4S01PWWNQTFdlRVp4OWxYOWdWUHQ3TjB3QWtlUUtQYVN5b3h6ZS1Tc2NFbzZQRHZrWTFKaENkSEJjV1RaSlhKYU1Hb28yVnFyVGFrY0luSVBE?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Daily Hive Vancouver</span><span class="news-date">Mar 3 &middot; 8:15 PM</span></div>
-<div class="news-title">Sounds like Jake DeBrusk is ready to move on from Vancouver Canucks but where could he go?</div></a></div></div>
+<div class="news-title">Islanders in ‘serious discussions’ with Canucks about Conor Garland, Tyler Myers: report</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/canucks/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/canucks</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1291,7 +1295,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:35 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:42 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1346,5 +1350,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='VAN';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

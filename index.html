@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="Ottawa Senators" class="team-logo">
       <div>
-        <h1>Ottawa Senators</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:34 PM ET</div>
+        <h1>Ottawa Senators <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:41 PM ET</div>
       </div>
     </div>
   </div>
@@ -1149,9 +1153,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">sportingnews.com</span><span class="news-date">Mar 3 &middot; 11:25 PM</span></div>
 <div class="news-title">Jason Robertson-Brady Tkachuk rumor has Stars, Senators fans riled up before trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPdmQyMlVqd2tLSnJsWWRaVTdtU2dfRlFHUHdPdXNkdjR1Y21oSVoyY1dvYzR2dTlMX2FfSmZwRjNWX2NTYUhsQ2d0ZkluN3MyMTRVclhMS0NkLWxnT25mTEhwYTZaT0xUVWJJbG1teGYxcUJOVzdRVE9ZWEl3MjIwcmRmc3c2dG9IbW5LMWxR?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 8:32 PM</span></div>
-<div class="news-title">Senators begin western swing with visit to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNeHdkV0U1dG1GU2J3RFBoaDhRMUxkR1NRTlhCQVFBeUJCOGV3MTA1SVdOWVV5MWszZlR3QnZEQmRMUXhRSm5Ia3NldDB3d0NnaDRfaXF4ODBlWFlsbmwwaUd0U21xRmEtUFZvZW5fMlcySTBQX3psVUpmQXpGVjNJdjQwRUlnbVVUZHc?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Senators begin western swing with visit to Edmonton</div></a><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNVjh3OGhDbnN1MHJuRkpFUEpYSVNFRzd3Znhpd3JuYm1QY0ZBc2lCU1FCMGROSlowNFVSLU9rTGktMHo5S2ljeGYtNWtrc2NkT25sTkN6aEFoR1ZBSHdTdTlodWJUTHpGaDU0SXRxUmNxVFhaWU9maHpZZHdyTW9lWVZaaWpXaS1FVWc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:35 PM</span></div>
-<div class="news-title">Dylan Cozens Pregame Media vs EDM</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQamtaNkp5V1NVUlZLdFpiakhkbFpUZVRGYjAtU05lRWd0djczOTRVMzhGSmg3M1k0WXFWYkVOUUFsd250QUhNWUJhWVA0S1Y3MGdQYm8wN3YyNjFBTlJrR2lnMjVoWllCb0F4VEZ2S1dMd0s3ZDRlNUdmbkJoNThuSGhB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Travis Green Pregame Media vs EDM</div></a><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQamtaNkp5V1NVUlZLdFpiakhkbFpUZVRGYjAtU05lRWd0djczOTRVMzhGSmg3M1k0WXFWYkVOUUFsd250QUhNWUJhWVA0S1Y3MGdQYm8wN3YyNjFBTlJrR2lnMjVoWllCb0F4VEZ2S1dMd0s3ZDRlNUdmbkJoNThuSGhB?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 7:18 PM</span></div>
 <div class="news-title">PROJECTED LINEUP: Oilers vs. Senators</div></a><a href="https://news.google.com/rss/articles/CBMilgJBVV95cUxQdm9nTjREak80SWxQczFlTUNreHFGQUh2eFNFeTVMeVJLRUxlSHZ2bnhXVXF6ajZIeVl2VFBWbkFuY21HZU5qVGJMZFU0NUFQQVpsb0dQbjkwVkY3SDhZSGtCa3MzVm52UjNidVZIejZBWDc4YjZaU0JKSlQ2Q2I1QjRoN0Z4ejdiZTdCSms3cWJPUkpmQ2JrODI2UUJjdmQzM3V0SXdZWkktdUZXcTltREhiN19QVmFmOTJTeFUzQ3BIZ2xVcTAzXzM1NDZKczRvZzRjVU04SlRmUGRaVXVmSXJTZGVVS2JHSGVycjJWc29qY0hHcjQ1U0RjbjhJVmJBRWxXOUFsWE56YXNHT0xIRU1Zc3ZJQQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">newswest9.com</span><span class="news-date">Mar 3 &middot; 7:04 PM</span></div>
@@ -1208,7 +1212,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:34 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:41 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1263,5 +1267,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='OTT';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

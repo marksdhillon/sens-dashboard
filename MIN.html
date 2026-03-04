@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/MIN_dark.svg" alt="Minnesota Wild" class="team-logo">
       <div>
-        <h1>Minnesota Wild</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:35 PM ET</div>
+        <h1>Minnesota Wild <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:41 PM ET</div>
       </div>
     </div>
   </div>
@@ -1170,22 +1174,28 @@ body{animation:fadeIn 0.15s ease}
 <span class="tx-badge tx-recall">Recall</span>
 <span class="tx-desc">Recalled D David Jiricek from Iowa (AHL).</span>
 </div></div></div>
-  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQREpKZXd4Yjd4TDlOTS1WZ0VKMHlvNGctd1ozbmJkWlczM2VYR0JadXNqUzYyMWxKRXNpeUc2dkFJRUMtWEFWbXlCMzE3MG1nXzc4TDhhTjZEbnQySUZjWUhCNTVldndWcDRmS21wa1JpNmQzY2VmSE9fLUNpWWZIbmFuNXNCajV2Q01raQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pioneer Press</span><span class="news-date">Mar 4 &middot; 1:10 AM</span></div>
-<div class="news-title">Wild trade for depth forward Michael McCarron</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPbmpDazc1Y1ZzLW1yT3RPMmZqazZnQUoxd2R1V1VoMnJWT29rcGlIaTFCRV9hdGhlS3BxRUpUd2tYUXBZcnBFcTQ4MzJJY3VjcWhySnByT01pdHJFSzBkRmktNzU1MDdwVjNjcmZnc2U5MWQ5R0RsV0hQb0dMbzhxRzVmclcyclVvTEVzaHV2bHd5S2k4dUFqLUZrczZpZ2laajVlTTRXbDhHU1R2aEdIbWFGM0MzQkU?oc=5" target="_blank" rel="noopener" class="news-item">
+  <div class="panel" id="p-news"><div class="news-list"><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYXNJT241OGk1QTVvUlVOdG1FMzM5QW04Sy13LWw4dzdIalRNbzI4WmlIU0VlR1RxSG9hLS02WUFSTWxyZTZvdkJ5U19xaE5FckE2bkpoTHo2aHUxTFBqYlhxNGY5WFdmZVE0dE1DSDUyUExldENmMUhKZmQyUXZ4TXdJcU5xYk9DQ25Fc0JSblBaTmk1Y01UOGVzLXR3cWpvOXNPNm1iZ1hLUQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Bring Me The News</span><span class="news-date">Mar 4 &middot; 1:38 AM</span></div>
+<div class="news-title">Wild trade for towering center to boost size and physical play</div></a><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNUmFGLXRuTzY1SUtvbzFqU3BkcXU1bUxoUWQ4c2pOS3I4YXRDWnRFMGt2bVBsTFhaZDY3cnRjUGtoVG5lc2ZMVWxkVllVSkdtMDZvQU9PY2ZQaWl4SjY5NEhoc1FOWTJybXVqT05fVG1tRVU5ZzlIZTdRRENCS0RpVENvWnRKcXU3VUZDSw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Perham Focus</span><span class="news-date">Mar 4 &middot; 1:34 AM</span></div>
+<div class="news-title">Wild trade for depth forward Michael McCarron - InForum | Fargo, Moorhead and West Fargo news, weather and sports</div></a><a href="https://news.google.com/rss/articles/CBMikAJBVV95cUxPUDFibFl2bm14Wk1xR1ZDTmdyQ05KYVNvZHFUdVJWYjE1QjZScXRZN1hlc0VjMzh1TDRhc2FsQUVUdkpjX04wU1hnOHZScXNSY2ladUotdXJUWU5JQ0tzVXB5QkRxbkRJdEpKS0tla0J3RVpiaDFUQVFURFBJbFQ0eWNIVl9UWlhQSmp4XzVEZTlpWXpHaFpJMF9LaEVGQ09fem9VTzNMMGtBaWhqcmpBeTVEdnBNeVFUMFczdnByRzRjMWgzTGd5ZlU4ZGxaZk5EM1ktb2lVRHJqMDNEcVdHTHN3MElMRHd6Z1pBd2xhODVxU21jb01sR29NNlRsbGdMWU45ajlubnhXZ1lZWXAxbdIBlgJBVV95cUxOS003c2tmQmN3bFNnend1VDZvODhsX3pWVHZTZlBlY1dzTEJGdGI0ZWRsdkJUNkxHd0diNkR5cThPelA5VE14Nks5RFNSVmkweVZCdlpORXRMSWgxNEU5VHZwTUhqdW1qS3R3WDhnZE4zRUNfLXRReG1MLXBjcXhOY1l3Tk53SWU0SWhEZjhRRDFkeXBjdnAtdWxSY0RrUXFleTM4ZllsS0JtQkplWXVCZXRmR0RNUG4ybzN0S2NqSVFmanVuMTRqM3EwdnBGZFFTX2NSQWVVTHhJNGVhU1U4Z3RoY293VzJyNTBoYlhnWnNPN3R4LUswVE5odmRHTFNDWnpoV0VSakJ5S3ZNUnVlR1hSZDA4dw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Times of India</span><span class="news-date">Mar 4 &middot; 1:29 AM</span></div>
+<div class="news-title">NHL Trade News: Predators flip Michael McCarron to Wild in calculated move for valuable second-round asse</div></a><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNME9YNTQ1dThjZV9ldXp4QXZwUGV3T24xTEszMXZReExfek5YU0FsWUhGSFJGbGV5RW9nbjB0M20tei1POG5jeUdHYmppZVdpR1J4bWZSeUdKVkJ1TkJ4eks2Z3h6TDhCQkxxZmdkWjFYYmJnT0JsWGZ5S3ZPN2R5a3B6alRLR1ZOemxjbVlUNU5NM21NVDBGV3hldVVOclhnLXMw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 4 &middot; 1:16 AM</span></div>
+<div class="news-title">NHL trade grades: Wild pay big for size and grit of center Michael McCarron</div></a><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPbmpDazc1Y1ZzLW1yT3RPMmZqazZnQUoxd2R1V1VoMnJWT29rcGlIaTFCRV9hdGhlS3BxRUpUd2tYUXBZcnBFcTQ4MzJJY3VjcWhySnByT01pdHJFSzBkRmktNzU1MDdwVjNjcmZnc2U5MWQ5R0RsV0hQb0dMbzhxRzVmclcyclVvTEVzaHV2bHd5S2k4dUFqLUZrczZpZ2laajVlTTRXbDhHU1R2aEdIbWFGM0MzQkU?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">kare11.com</span><span class="news-date">Mar 4 &middot; 1:03 AM</span></div>
 <div class="news-title">Wild trade for Predators center ahead of trade deadline</div></a><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOdEJyZnVYM2djdTdUdFlRZTM5WUo2enJoTGFjSXpiNWxDWTYtdlNHSzQ5TlRoVXMwN2xTTVNlcGhQeFlBV3pSalQxM01BaWQ2NC1jMHpnT2FHYkloaDlZbUNCQ2lNU3BJRW1DT2FLbWFxallUWmZ4TDZCZGNwWjRQVDVKMkg2Z2p2SVlycUlFQnZWVDlVdHhwT3NUdEVuYUtOTXZoV09EME01cFVKSVpV?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 4 &middot; 1:02 AM</span></div>
 <div class="news-title">McCarron traded to Wild by Predators for 2nd-round pick in 2028 Draft</div></a><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPV3pubGlhQzB3dnJDQ1hTcTY4MWI3NXAyajA1ZmJqaU4xTzhrTWpGS0d2blhrU0hYWC1aa09QTG5ZSUV1a2hndTByTGtOSUd2aWFmS3NjZVJmcDlUVWxIY21SWkJBWTB5WGZ1czdwbUVGVHBDTVhDRUo4R1UtUVRXdmNNTlFidXVDS0d3MlNTcHZDV29Ucl9OS3B6VDI2UQ?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 12:49 AM</span></div>
-<div class="news-title">Predators trade Michael McCarron to Wild for 2nd-round pick</div></a><a href="https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVFdsTXZ0aThoVWFacUFxVXJpNUJ1cFZqdGlIclkwQnhuS3lYd2lMalIyeG5WQkhuRXBnd3VGYXRIb3BIYWZwU21sNlk2ZXdjdFFwNzdfanpLY203T2hzbUo0S2wzSEhKcWdCODVJaGsyZEV5SVBURUdYMFV0RGQyMjBWYUROTlRXb1QwOG94UzVNdXFmWVVGUS1yVTd5RnJBdzZycElsVUhjakp0NWdNNzZsMi1OS0N4T2t3VFNfdTlvZEJQNjBOV0JrTXN3Z01CY1JzZ0tyd1pkVS1URkxwQkRIdG53dGNxOExBYkNhYzlEZmNJU0ZCd1FfQQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">The Killeen Daily Herald</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
-<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxNM3ozRm1HS0FhMXJTLWhLc1d2YXQ2Rjc3MW4tSldFa0szc3ZqTkdLdUgyb2FQTEl5VGN4YXJ3Rmdma3BqU2M0SGdjQVNtZGljOVZuQzVZSGljVWxsem1aZl9TMVkyS3FKZjd3M01YQlUtRXhzRmpjbTNVc3hwcmI5bVJvQlRQZHYtTTU4UW5TRWMyekRxSU45cnBrMFkwOFg2aVdubFNpbnhqRnRFZTNxVmZGcjVJb3JSSzVqZExERTlTbmxkZ215R3h4eDVVZ1B0bFh4UG85TWJ0Nl92OEs3Xzg2MkEwSXJ2dVhyazZsaEphY3F2aEFTQ2QwcDJzdUVTdTE3SkZJeVpMWThfUnlQU0l0SQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Bluefield Daily Telegraph</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Predators trade Michael McCarron to Wild for 2nd-round pick</div></a><a href="https://news.google.com/rss/articles/CBMingJBVV95cUxQV3RUWEgzRlpFQ2oxTUx3S0dmVWViMFZuWWJLYWIxY2tsSmRhcGZXWmVuZzFocEtTc01oTkJ5RnBlR2VPeFFKZmEzOWhXMmdzX1dObGxYcDdKTWJuaUZMaVhpZkszV1htRlctUFVWc3UzT24wckxVNU5FZ0haWjhQT01WRWlKQTUzREg3N2x5WXRHRE01ZVJLYUZXRndtYXlSLW5FWHJrSHB3TDVERXhlbUtJUmdpcVpzX3YyRExDOTRELVhOT1BpYTdaRXhoODF5SVFfb1BndUVlV205QkVMaDh4VW1GWkg0M3pqRGVjQzd6ZkpBWE5WTFFTZzRoa3VfYXdWUVVLNXlVeE9HeER3RXQyLTl2SWw4UkdqbVJB?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Rutland Herald</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMihgJBVV95cUxOVTI0cFAwYV9lTE1PaGh6NVdrbG1kOHhsZml5ZEt0WVlHQWh6VWhuSWRfNDA3dW04TU81MlRaMlFPX1VTOWQ4RTZzVmVISnp2U1Y3UDU4Z2lXNjNKVFIxcGo2TURCdnZmQWVNRmZWVGRlS3ppbEhMYXdseHRkbFhFVzNBdVdqS244dEhwSW9JTjRqSTNBc29Yc2hlV2RyVkZLWmlmS2FBejJoU0N0bkp2SkhtZmc3OGs1MGxJM0xXSDd3WjdNT2lMS3p0clVmWUZ1NGZSOUtUM2lJZzNCUFNwNGlsNkg1Ri15OHNMMl92V0JYdzJ6YnBMY2ZianBYbzF6azYxcFJn?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">The Daily Gazette</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
+<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMikwJBVV95cUxQN0VreV9Id1ViY3hIMUdJaUsyUGE1d2NfSHd1RjJXRnVRNUdXZmtIeTBtLTdsZVYxUGhsWnBRcktpdmNDc0FwQ2taOWp5QnZWZGhFVk5TSzlHOUVKeDZoaHJZeHREb0lVWUNPRmlhQnJWQk1OVUw0YkJ1b0tNU2xpYnEtbTVaNGVhdGI2aHdOYlZRUGhpd1hHWlYyTHhkcGtoelZ1czJGMUY1elkzRUpRM3BZZjRQVThLVlE4UWhQajZYNFIxWW40TVJyaVFOcFR2UnRJWGNYM3N4cTFhSHlKWS0yQ0kySHVWOUVRT1VCX0M1TzQxUVVMQ3pCV2ZLNVdweThGOUZrNlpFMjJFNzh3Y0xzMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">oskaloosa.com</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
 <div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMiiwJBVV95cUxNUEk1U2xvZDVhZDI5WG1qamlvc3NDbUZnNVJuV3lGLTFCS01oTmFWTURJcHQ4TmJ6SzBKMTNaSEkxNkUyaWxEUmc3NzJFamp0dEQyWU9xTVhGeUxfYWt4MF9Pb19WMWZ5QUI3dEVSTzMwRVJRX1oyWGtfWEV4elNLZU1JaFRmTHNOcHl2c3ZURkxKNkZyZW1PZXRsUThUa0xYOUE1eGxpb0R3dDBwQ3RmSllrTU1rZzRocjlDNE1qZXh0SWkyZTE0b09TRVZZSDl2TlhCdHBjWWNOdVNNMk4yWkM2TW9DN3M0NUFfZFQ2ejR1YTBYN3BRcFlkNEJ0QV9mSnJQMWdOR0hoaGs?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">chronicleonline.com</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
-<div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMingJBVV95cUxQV3RUWEgzRlpFQ2oxTUx3S0dmVWViMFZuWWJLYWIxY2tsSmRhcGZXWmVuZzFocEtTc01oTkJ5RnBlR2VPeFFKZmEzOWhXMmdzX1dObGxYcDdKTWJuaUZMaVhpZkszV1htRlctUFVWc3UzT24wckxVNU5FZ0haWjhQT01WRWlKQTUzREg3N2x5WXRHRE01ZVJLYUZXRndtYXlSLW5FWHJrSHB3TDVERXhlbUtJUmdpcVpzX3YyRExDOTRELVhOT1BpYTdaRXhoODF5SVFfb1BndUVlV205QkVMaDh4VW1GWkg0M3pqRGVjQzd6ZkpBWE5WTFFTZzRoa3VfYXdWUVVLNXlVeE9HeER3RXQyLTl2SWw4UkdqbVJB?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Rutland Herald</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
 <div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxONVZDX0I1V19rYXZKMy0xXy1RWU9jQjN0Z3JBa0s4MkNaclZVNi1hS2Q1eHBWTi1rYmFncUtWWW5mSkhHdE5xN3JEMmFLWXNOMU1xTXd3Y2MzcU1GUXJ1M1hMYWlVN2FNcFBhdzlQQkJvTzl2c3U4QnB3bnc3RDZaLUR3RkNNMVBOWkRkTjlMMA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Yahoo Sports</span><span class="news-date">Mar 4 &middot; 12:48 AM</span></div>
 <div class="news-title">Minnesota Wild acquire center Michael McCarron in a trade with the Nashville Predators</div></a><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNazBHLXk5dWx1czFIZk85ekQ4UWVyTlF4YzdzejUwMDBFaDV6ak9SS2ptVXQwdlFZekVWcUZBRlFLWGczUU9fZFdMVnlfOHdBdUlja3NGTFJpZ0xwR2MxMG5TMGItRlpjdVM0S1dCV2d1RzdZaS0tRDRERkFKeHNsbjdDWmNvNmhmRnZ1Mkx6X2hYbkV6STh4VDZuVUE?oc=5" target="_blank" rel="noopener" class="news-item">
@@ -1208,19 +1218,13 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">Yahoo Sports Canada</span><span class="news-date">Mar 4 &middot; 12:25 AM</span></div>
 <div class="news-title">Wild trade for 6-foot-6 Predators forward in completed move before deadline</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQUEYzZzhNRmJJZXpuZGZMTzIxZ0EycENoUEhPdDdsRmhTck9kcTJPRFk3RzlUS0oyNl9rR0RWcEpMcmNld0hJQ1QxU3c0YUZhSlZDNHB5T2JIdUh1TER3T0JocVk3N3U5bHdQcFVqTEdnOFhOa3NnSDRPYkh6aWdUV3ltWnpOY25HSnJOMVNqcGVwcGxWTUpxcmN6OA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">5 EYEWITNESS NEWS</span><span class="news-date">Mar 4 &middot; 12:22 AM</span></div>
-<div class="news-title">Wild acquire center Michael McCarron in trade with Nashville</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxPWHZrbkpLZVV2aE5FbkUySUlNNV9nMVVKQnY2dmVwNnYxNlJMN1h3NWpQSF9wSXNHRnYzaVFLOE1nQXY5MmpmYnRrSEE3ZVo0TU1VNUp0QWxGNjJBdVFERERpdDFDMzBodjNZVFgzaFh0OGxDbE1BbExpS2ZudE5vMA?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Wild acquire center Michael McCarron in trade with Nashville</div></a><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPcmwxV09Xc3h1NHlKa01JRlpad0tFWmNUclVfblgyZ3hKT0dJYkZGWVM0YW9XaHp5YXduQmYxLUlZZHZza0hqajBZUDg3cGRSM0JTRl9pNk9YYWNza2JBMW5aR2RIeEQ2d3I4WTRHeVJ1dEpsU2NHemp3MlhfUWwxMFJHbUs4ZGtWaWJLeGRQY21KNFVxMU9DN1dXOVdFRWl1ZVRMOS00dw?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Daily Faceoff</span><span class="news-date">Mar 4 &middot; 12:22 AM</span></div>
+<div class="news-title">Wild acquire McCarron from Predators for draft pick</div></a><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxPWHZrbkpLZVV2aE5FbkUySUlNNV9nMVVKQnY2dmVwNnYxNlJMN1h3NWpQSF9wSXNHRnYzaVFLOE1nQXY5MmpmYnRrSEE3ZVo0TU1VNUp0QWxGNjJBdVFERERpdDFDMzBodjNZVFgzaFh0OGxDbE1BbExpS2ZudE5vMA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Gone Puck Wild</span><span class="news-date">Mar 4 &middot; 12:19 AM</span></div>
 <div class="news-title">Wild just traded for a center ahead the deadline, just not the one everyone expected</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQTjUwc2U1U3c1YjBSdUhwREZWV0hzd0g1OE9Sb2VBbHFIVTBwVjVlWUc3SUNUWnJYRXNaVWY0RllXOGhOSzlCSjZhcWhyVm01WnB1bVVpbDlSN1VuS2NVMG9NV1h4UG9NNVFvQnZyQ2ZfQmUzb2Vvd3lHOHZ3RU9iMGN1cTh4M19Lb0dmbFNSTzlGVE1YQzJHdA?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 4 &middot; 12:19 AM</span></div>
-<div class="news-title">Report: Predators trade forward Michael McCarron to Wild</div></a><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPSVE2c0pTNWJIaTdPLTBDcXlMVXRYYmlUUDdSeUdtY2liUkFhaWxvcGFLLW9SbkZQVjd5TkxKSVhFdk9uWng1MzYyTkRvWDhEZy1CUDE5di1IdEl3dEIwd1hYYkM5OEJUUjFBdXJwZUZSNVUtSmpoMFZLX1hzQ2taaWM3aktHMjJ3eENhZUtGQlkzZG9mY2VBbDN5Yw?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">heavy.com</span><span class="news-date">Mar 4 &middot; 12:17 AM</span></div>
-<div class="news-title">Minnesota Wild Trade For Former First-Round Center</div></a><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE5TWDhqYU9LYVJYSDZCN245a1ZLdXZhRFlpMzZrX3lFeXl2bWdwMGdvaURoX1FjdlBCcDBWdUw3QWxucFE5NFBDVGtYenFaQnFNUUpOLTFvSm5sZk1VUmltd3RxSXcyRUt5NDVR?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">ESPN</span><span class="news-date">Mar 4 &middot; 12:15 AM</span></div>
-<div class="news-title">The Minnesota Wild are trading for veteran center Michael...</div></a><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOaUd0WHd6eS1LYU5ZWWdaUndybG5udWhnR0s1SzdmUmtGczdXRm9EZ1lvcTJmbm1paHBaQmtCeXdJZXFpVWRIX0YzS0VSTzhzMjU4MVlyX3RNclFrdUpZY3YwRjJPUUVIcGg0NTM5ajdhYlVJYU1malpiNERfWnZIYWY4MWdEVWZlY0piUXhfZnFzV3JVRERn?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">TSN</span><span class="news-date">Mar 4 &middot; 12:09 AM</span></div>
-<div class="news-title">Report: Predators send McCarron to Wild for second-round pick</div></a><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBCcjdUbGNWWF9TX1ZvaHlrSEhZREd1VXdtczRST0VPdFcydlJCRmw5c2tEWmtwNEZabXBTR3p0MmxCQkJPbERKSXJqR0k4MmtYWFY0ZWRvRWtVRTBIdUNYSFVfRlRYZy1BMDBIeElWLVhoNFdSZk1JLUt3eWhhWnc?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Pro Hockey Rumors</span><span class="news-date">Mar 4 &middot; 12:04 AM</span></div>
-<div class="news-title">Wild Acquire Michael McCarron</div></a></div></div>
+<div class="news-title">Report: Predators trade forward Michael McCarron to Wild</div></a></div></div>
   <div class="panel" id="p-forums">
     <div class="community-list">
       <a href="https://www.reddit.com/r/wildhockey/" target="_blank" rel="noopener" class="community-card"><div class="cc-head"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="" class="cc-icon"><div class="cc-name">r/wildhockey</div></div><div class="cc-desc">Reddit community. Memes, highlights, post-game threads, and fan takes.</div></a>
@@ -1233,7 +1237,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:35 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:41 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1288,5 +1292,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='MIN';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>

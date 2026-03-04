@@ -18,6 +18,10 @@ a:hover{color:var(--text-strong)}
 .team-logo{width:40px;height:40px;opacity:0.9}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;margin-bottom:0;color:var(--text-strong)}
 .header .subtitle{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#e8384f;background:rgba(232,56,79,0.12);padding:3px 10px;border-radius:20px;text-decoration:none;letter-spacing:0.5px;animation:livePulse 2s ease-in-out infinite;vertical-align:middle;margin-left:8px}
+.live-badge:hover{background:rgba(232,56,79,0.2);text-decoration:none}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#e8384f}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .hdr-pct{text-align:right}
 .pct-val{font-size:28px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--text)}
 .pct-label{display:block;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
@@ -356,8 +360,8 @@ body{animation:fadeIn 0.15s ease}
     <div class="hdr-left">
       <img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" alt="St. Louis Blues" class="team-logo">
       <div>
-        <h1>St. Louis Blues</h1>
-        <div class="subtitle">Updated March 3, 2026 at 8:35 PM ET</div>
+        <h1>St. Louis Blues <a href="scores.html" id="live-badge" class="live-badge" style="display:none"><span class="live-dot"></span>LIVE</a></h1>
+        <div class="subtitle">Updated March 3, 2026 at 8:42 PM ET</div>
       </div>
     </div>
   </div>
@@ -1121,7 +1125,9 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">NHL.com</span><span class="news-date">Mar 3 &middot; 11:05 PM</span></div>
 <div class="news-title">What sport would you play if you were more athletic?</div></a><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNMWNsRXdkaElQMjNKd1BlQ0JCWXQwNzQ2ZWlHMW1UT21Fa2FQZHl6X3h4NlZHSVlWNHd3X1oyTGVDSmZlWk1mUGtnSmwzZ2prY3J6VUhSdHlXcnlOd0VWb1poYWdCRURzS1o5NGxQd3NacUpncmNTUmFRZzJHeTF4OFppbHk5UHBhdFhiWFFVQzZicDExSEJrQw?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sports Illustrated</span><span class="news-date">Mar 3 &middot; 11:00 PM</span></div>
-<div class="news-title">Sabres Emerge as Dark Horse Buyers in Robert Thomas Talks</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxON2d5UnFDME1nX1F4WFliYTdOOWJQbEowc1NxWUtSbmZLVDVYV2VvMU9pSk92STc3aEJ6dEVaNWdCbTBsM1pYN1RwWXNWczhyeHRaclc2eVB5TjhPbmNYVVcxdzFjUmpWZWNNbV9ISFlKZ3RzSWhGckNCNHNfWS12eEVFN3RxN3F3SXBQUE52MDJ6TDdYUl9NZzVhYzQtazZYdXpJUWVNUGpZMFZKNDBNQXlxdlVScWVweDJ30gHAAUFVX3lxTE5OWU9nbFZVOFBfaFl6VnN4Z1NzUndwWlQ5MU92QWtVUFN0bWRmRUpxYUdsbTB5RUp5ZE42SnRDUDVzQl9zZW5zT3dYMjdmcWczdGU2Z0FnNnpZd3gwMzdESTVhdjBPMTdlQ2pzVE1RaXFNR0laUUM2dk9xVURQcjVUNzU0SjlzblYtUENiQVhGZzliN1YxQUI0UkdJeDY1QVFJY3c1REppalRFbE1wQnFJUHdWVFNORnhyWjF2TUJXVg?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Sabres Emerge as Dark Horse Buyers in Robert Thomas Talks</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5QWHJXQ2psZW9waldReXh5bFZtTTV1anFuU1lqUlBncndNOHZaZEpxMFVSWW9BTC1tblVfOHpHTDNjRUpVczNRc2dRbDVtZVpxQjJ1RjlQN0h4ODl2dzFjeFFRUXhUQzZieEZZR2FoUVRRSzI0dHVCc2lURQ?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 10:32 PM</span></div>
+<div class="news-title">Blues, Sabres Working on Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxON2d5UnFDME1nX1F4WFliYTdOOWJQbEowc1NxWUtSbmZLVDVYV2VvMU9pSk92STc3aEJ6dEVaNWdCbTBsM1pYN1RwWXNWczhyeHRaclc2eVB5TjhPbmNYVVcxdzFjUmpWZWNNbV9ISFlKZ3RzSWhGckNCNHNfWS12eEVFN3RxN3F3SXBQUE52MDJ6TDdYUl9NZzVhYzQtazZYdXpJUWVNUGpZMFZKNDBNQXlxdlVScWVweDJ30gHAAUFVX3lxTE5OWU9nbFZVOFBfaFl6VnN4Z1NzUndwWlQ5MU92QWtVUFN0bWRmRUpxYUdsbTB5RUp5ZE42SnRDUDVzQl9zZW5zT3dYMjdmcWczdGU2Z0FnNnpZd3gwMzdESTVhdjBPMTdlQ2pzVE1RaXFNR0laUUM2dk9xVURQcjVUNzU0SjlzblYtUENiQVhGZzliN1YxQUI0UkdJeDY1QVFJY3c1REppalRFbE1wQnFJUHdWVFNORnhyWjF2TUJXVg?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">NHLRumors.com</span><span class="news-date">Mar 3 &middot; 10:15 PM</span></div>
 <div class="news-title">NHL Rumors: New York Islanders, Vancouver Canucks, Buffalo Sabres, and the St. Louis Blues</div></a><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNcHZ5YjR1Sm5PRERGdEdwUG1tSTZMektTMjltM1R5dnY1eUw3U3JhQkIwakx0Y0Z3dFV2ZGs2dlFKS3NUWHFib094bDFtR1gwZEdJbnlYczl0ZFRTZ0ZZSUNZSktnZy15N3ItUmVPQ1FzdEZGX3dsLXZXUjBMS1BndHpJODRhY0xRYWpOd2o1U283anpDR2gyLXh5TlRJSU5HVExfc3pPR21ZaE9QQXZtcEcxbGNYT2dKcmc?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">Sportsnet</span><span class="news-date">Mar 3 &middot; 9:59 PM</span></div>
@@ -1133,9 +1139,7 @@ body{animation:fadeIn 0.15s ease}
 <div class="news-meta"><span class="news-source">The New York Times</span><span class="news-date">Mar 3 &middot; 9:43 PM</span></div>
 <div class="news-title">NHL rumblings: Oilers’ next trade target, Sabres in on Thomas, plus latest on Predators, more</div></a><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPT2JrUERkcXV1bTZGb3o4VVlsZTIyUWJERGdFdWdBb1JQcVR4X1RvVGJXalc3YXdySkk1Sm5MRkMwUURTZ3BNTjEweFBmYWI4dzNrUG5sV3NLOTBSMU1IckVrd0h0ejJJVFRIanpuTzQ4U1diUzRrWmtDYVd5NDdCdkFyMGNJOXJITklNQVZEQ0JMU0Y3eUl5MHA1dEh5akZC?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">ClutchPoints</span><span class="news-date">Mar 3 &middot; 9:42 PM</span></div>
-<div class="news-title">Blues rumors: Jordan Binnington trade a ‘forgone conclusion’, per report</div></a><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5QWHJXQ2psZW9waldReXh5bFZtTTV1anFuU1lqUlBncndNOHZaZEpxMFVSWW9BTC1tblVfOHpHTDNjRUpVczNRc2dRbDVtZVpxQjJ1RjlQN0h4ODl2dzFjeFFRUXhUQzZieEZZR2FoUVRRSzI0dHVCc2lURQ?oc=5" target="_blank" rel="noopener" class="news-item">
-<div class="news-meta"><span class="news-source">Sportsnaut</span><span class="news-date">Mar 3 &middot; 9:36 PM</span></div>
-<div class="news-title">Blues, Sabres Working on Blockbuster Trade for Robert Thomas</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOUmdLYlFiTDhKaHhYY29iSV9YMnl6Qm9GVV9lS0pEOEVoM0x6aHpIU0lxQkxDbWY5X05CMGxyNDlOaDZ6U19NZ2l0bHRUVU1tcHRZTmFRNUR0VE5CWHhtRk5jUkFDcFNEemVSenh5TWQ3ZFBPMUlNY0dydWJZNDROdHY1MmkyaVF6WFFERldLbGZycEx4?oc=5" target="_blank" rel="noopener" class="news-item">
+<div class="news-title">Blues rumors: Jordan Binnington trade a ‘forgone conclusion’, per report</div></a><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOUmdLYlFiTDhKaHhYY29iSV9YMnl6Qm9GVV9lS0pEOEVoM0x6aHpIU0lxQkxDbWY5X05CMGxyNDlOaDZ6U19NZ2l0bHRUVU1tcHRZTmFRNUR0VE5CWHhtRk5jUkFDcFNEemVSenh5TWQ3ZFBPMUlNY0dydWJZNDROdHY1MmkyaVF6WFFERldLbGZycEx4?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">nhltraderumor.com</span><span class="news-date">Mar 3 &middot; 9:32 PM</span></div>
 <div class="news-title">Are the Habs About to Land Robert Thomas?</div></a><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPWmpsVWtCa1kxb1NaaURHLXhkdzFyaE5vLUpZWDdjNThXdi10RTc1RFM3dkxibEpRWjVrV2dJX0tmWWs1WEd4UzRHc3lRMEdSYS1FTmZISjFOYWFrX1EyYnhPS1o5ajFqQlNyQXQwbEI3WVo5eG0tSlRQZVNhOHFCOFBQVEllNlVVQXE0aTFPX1c2YWZTdzNoLVI5RmtOUUJ6dE9OV09YenhvU19CVS1zVFRBblVRQUtBaWdoWWMzWk8tc2VI?oc=5" target="_blank" rel="noopener" class="news-item">
 <div class="news-meta"><span class="news-source">A Winning Habit</span><span class="news-date">Mar 3 &middot; 9:10 PM</span></div>
@@ -1174,7 +1178,7 @@ body{animation:fadeIn 0.15s ease}
   <div class="panel-close"><button class="panel-close-btn" onclick="closeGamePanel()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="panel-body" id="gamePanelBody"></div>
 </div>
-<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:35 PM ET</span></div>
+<div class="footer">Data from NHL API &amp; <a href="https://moneypuck.com">MoneyPuck</a><span class="footer-ts">Updated March 3, 2026 at 8:42 PM ET</span></div>
 <script>
 document.querySelectorAll(".sortable").forEach(function(tbl){
   tbl.querySelectorAll(".sort-th").forEach(function(th){
@@ -1229,5 +1233,39 @@ function closeGamePanel(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGamePanel()});
+</script>
+<script>
+(function(){
+  var team='STL';
+  function checkLive(){
+    fetch('https://api-web.nhle.com/v1/score/now')
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var games=data.games||[];
+        for(var i=0;i<games.length;i++){
+          var g=games[i];
+          var st=g.gameState||'';
+          if((st==='LIVE'||st==='CRIT')&&(g.awayTeam.abbrev===team||g.homeTeam.abbrev===team)){
+            var badge=document.getElementById('live-badge');
+            if(badge){
+              var away=g.awayTeam.abbrev,home=g.homeTeam.abbrev;
+              var as=g.awayTeam.score||0,hs=g.homeTeam.score||0;
+              var per=g.periodDescriptor||{};
+              var pn=per.number||0;
+              var tr=g.clock&&g.clock.timeRemaining||'';
+              var ords={1:'1st',2:'2nd',3:'3rd'};
+              var pstr=(ords[pn]||'OT')+' '+tr;
+              badge.innerHTML='<span class="live-dot"></span>LIVE: '+away+' '+as+' - '+home+' '+hs+' ('+pstr+')';
+              badge.style.display='inline-flex';
+            }
+            return;
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  checkLive();
+  setInterval(checkLive,30000);
+})();
 </script>
 </body></html>
