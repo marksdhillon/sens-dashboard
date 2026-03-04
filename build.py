@@ -2156,9 +2156,20 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeGamePa
 <script>
 (function(){{
   var team='{TEAM}';
+  var PROXIES=['https://corsproxy.io/?','https://api.allorigins.win/raw?url='];
+  var pIdx=0;
+  function nhlFetch(url){{
+    var pu=PROXIES[pIdx]+encodeURIComponent(url);
+    return fetch(pu).then(function(r){{
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }}).catch(function(err){{
+      if(pIdx<PROXIES.length-1){{pIdx++;return fetch(PROXIES[pIdx]+encodeURIComponent(url)).then(function(r){{return r.json()}})}}
+      throw err;
+    }});
+  }}
   function checkLive(){{
-    fetch('https://api-web.nhle.com/v1/score/now')
-      .then(function(r){{return r.json()}})
+    nhlFetch('https://api-web.nhle.com/v1/score/now')
       .then(function(data){{
         var games=data.games||[];
         for(var i=0;i<games.length;i++){{
@@ -2900,6 +2911,25 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
   // Track whether all today's games are final so we can slow down polling
   var allFinal=false;
 
+  // NHL API doesn't send CORS headers, so we need a proxy for browser fetches
+  var PROXIES=['https://corsproxy.io/?','https://api.allorigins.win/raw?url='];
+  var proxyIdx=0;
+  function nhlFetch(url){{
+    var proxyUrl=PROXIES[proxyIdx]+encodeURIComponent(url);
+    return fetch(proxyUrl).then(function(r){{
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }}).catch(function(err){{
+      // Try next proxy
+      if(proxyIdx<PROXIES.length-1){{
+        proxyIdx++;
+        var fallbackUrl=PROXIES[proxyIdx]+encodeURIComponent(url);
+        return fetch(fallbackUrl).then(function(r){{return r.json()}});
+      }}
+      throw err;
+    }});
+  }}
+
   function isViewingToday(){{
     var active=document.querySelector('.ds-btn.ds-active');
     return active&&active.dataset.date===TODAY;
@@ -2907,8 +2937,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')closePanel(
 
   function refreshScores(){{
     // Always fetch today's scores via /score/now (most reliable, includes current game states)
-    fetch('https://api-web.nhle.com/v1/score/now')
-      .then(function(r){{return r.json()}})
+    nhlFetch('https://api-web.nhle.com/v1/score/now')
       .then(function(data){{
         var games=data.games||[];
         var hasLive=false;
