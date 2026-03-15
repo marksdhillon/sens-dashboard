@@ -214,779 +214,25 @@ a{color:var(--text);text-decoration:none}
 
 <div class="date-strip-wrap">
   <div class="date-strip" id="dateStrip">
-    <button class="ds-btn" data-date="2026-03-07" onclick="showDay('2026-03-07')"><span class="ds-day">Sat</span><span class="ds-date">Mar 7</span><span class="ds-count">11</span></button>
-<button class="ds-btn" data-date="2026-03-08" onclick="showDay('2026-03-08')"><span class="ds-day">Sun</span><span class="ds-date">Mar 8</span><span class="ds-count">7</span></button>
+    <button class="ds-btn" data-date="2026-03-08" onclick="showDay('2026-03-08')"><span class="ds-day">Sun</span><span class="ds-date">Mar 8</span><span class="ds-count">7</span></button>
 <button class="ds-btn" data-date="2026-03-09" onclick="showDay('2026-03-09')"><span class="ds-day">Mon</span><span class="ds-date">Mar 9</span><span class="ds-count">5</span></button>
 <button class="ds-btn" data-date="2026-03-10" onclick="showDay('2026-03-10')"><span class="ds-day">Tue</span><span class="ds-date">Mar 10</span><span class="ds-count">13</span></button>
 <button class="ds-btn" data-date="2026-03-11" onclick="showDay('2026-03-11')"><span class="ds-day">Wed</span><span class="ds-date">Mar 11</span><span class="ds-count">2</span></button>
 <button class="ds-btn" data-date="2026-03-12" onclick="showDay('2026-03-12')"><span class="ds-day">Thu</span><span class="ds-date">Mar 12</span><span class="ds-count">14</span></button>
 <button class="ds-btn" data-date="2026-03-13" onclick="showDay('2026-03-13')"><span class="ds-day">Fri</span><span class="ds-date">Mar 13</span><span class="ds-count">2</span></button>
-<button class="ds-btn ds-active" data-date="2026-03-14" onclick="showDay('2026-03-14')"><span class="ds-day">Sat</span><span class="ds-date">Mar 14</span><span class="ds-today-dot"></span><span class="ds-count">14</span></button>
-<button class="ds-btn" data-date="2026-03-15" onclick="showDay('2026-03-15')"><span class="ds-day">Sun</span><span class="ds-date">Mar 15</span><span class="ds-count">6</span></button>
+<button class="ds-btn" data-date="2026-03-14" onclick="showDay('2026-03-14')"><span class="ds-day">Sat</span><span class="ds-date">Mar 14</span><span class="ds-count">14</span></button>
+<button class="ds-btn ds-active" data-date="2026-03-15" onclick="showDay('2026-03-15')"><span class="ds-day">Sun</span><span class="ds-date">Mar 15</span><span class="ds-today-dot"></span><span class="ds-count">6</span></button>
 <button class="ds-btn" data-date="2026-03-16" onclick="showDay('2026-03-16')"><span class="ds-day">Mon</span><span class="ds-date">Mar 16</span><span class="ds-count">5</span></button>
 <button class="ds-btn" data-date="2026-03-17" onclick="showDay('2026-03-17')"><span class="ds-day">Tue</span><span class="ds-date">Mar 17</span><span class="ds-count">9</span></button>
 <button class="ds-btn" data-date="2026-03-18" onclick="showDay('2026-03-18')"><span class="ds-day">Wed</span><span class="ds-date">Mar 18</span><span class="ds-count">6</span></button>
 <button class="ds-btn" data-date="2026-03-19" onclick="showDay('2026-03-19')"><span class="ds-day">Thu</span><span class="ds-date">Mar 19</span><span class="ds-count">11</span></button>
 <button class="ds-btn" data-date="2026-03-20" onclick="showDay('2026-03-20')"><span class="ds-day">Fri</span><span class="ds-date">Mar 20</span><span class="ds-count">5</span></button>
 <button class="ds-btn" data-date="2026-03-21" onclick="showDay('2026-03-21')"><span class="ds-day">Sat</span><span class="ds-date">Mar 21</span><span class="ds-count">11</span></button>
+<button class="ds-btn" data-date="2026-03-22" onclick="showDay('2026-03-22')"><span class="ds-day">Sun</span><span class="ds-date">Mar 22</span><span class="ds-count">9</span></button>
   </div>
 </div>
 
 <div class="sb-grid">
-<div class="sb-day" id="day-2026-03-07" style="display:none"><div class="sb-day-label">Saturday, March 7, 2026</div><div class="sb-game sb-clickable" id="game-2025020990" data-game="2025020990" data-gid="2025020990" data-away="WSH" data-home="BOS" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row ">
-<a href="WSH.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="WSH" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Washington Capitals</div><div class="sb-scorers"><span class="sb-scorer">A. Protas</span></div></div>
-<div class="sb-score">1</div>
-</div>
-<div class="sb-team-row sb-winner">
-<a href="BOS.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" alt="BOS" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Boston Bruins</div><div class="sb-scorers"><span class="sb-scorer">P. Zacha</span><span class="sb-scorer">V. Arvidsson</span><span class="sb-scorer">E. Lindholm</span></div></div>
-<div class="sb-score">3</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020990" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" class="gd-panel-logo"><span>Washington Capitals</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" class="gd-panel-logo"><span>Boston Bruins</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">1 — 3</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">04:07</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BOS/8478401.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Pavel Zacha <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Charlie McAvoy, David Pastrnak</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">07:21</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/WSH/8481656.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Aliaksei Protas </div><div class="gd-assists">Jakob Chychrun, Ryan Leonard</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">04:28</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BOS/8478042.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Viktor Arvidsson </div><div class="gd-assists">Casey Mittelstadt, Hampus Lindholm</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:36</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BOS/8477496.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Elias Lindholm </div><div class="gd-assists">David Pastrnak</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" class="bx-tab-logo">Washington Capitals</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg" class="bx-tab-logo">Boston Bruins</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>A. Protas</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>18:19</td></tr><tr><td>R. Leonard</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>13:18</td></tr><tr><td>J. Chychrun</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>2</td><td>5</td><td>24:40</td></tr><tr><td>A. Ovechkin</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>18:22</td></tr><tr><td>D. Strome</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>17:37</td></tr><tr><td>B. Duhaime</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>09:44</td></tr><tr><td>C. McMichael</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>17:19</td></tr><tr><td>H. Lapierre</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>05:39</td></tr><tr><td>J. Sourdif</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>13:45</td></tr><tr><td>T. Wilson</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>1</td><td>1</td><td>21:34</td></tr><tr><td>E. Frank</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>09:36</td></tr><tr><td>A. Beauvillier</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>14:25</td></tr><tr><td>P. Dubois</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>18:39</td></tr><tr><td>M. Roy</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>1</td><td>20:16</td></tr><tr><td>R. Sandin</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td><td>20:51</td></tr><tr><td>M. Fehérváry</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>7</td><td>20:35</td></tr><tr><td>D. Chisholm</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>11:38</td></tr><tr><td>T. van Riemsdyk</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>15:06</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>L. Thompson</td><td>27/29</td><td>0.931</td><td>58:06</td></tr><tr><td>C. Lindgren</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>P. Zacha</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>15:44</td></tr><tr><td>E. Lindholm</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>21:36</td></tr><tr><td>V. Arvidsson</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>13:48</td></tr><tr><td>D. Pastrnak</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>20:56</td></tr><tr><td>C. Mittelstadt</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>13:57</td></tr><tr><td>H. Lindholm</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>18:02</td></tr><tr><td>C. McAvoy</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>2</td><td>25:52</td></tr><tr><td>A. Steeves</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>0</td><td>10:31</td></tr><tr><td>M. Geekie</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>18:12</td></tr><tr><td>M. Kastelic</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>12:37</td></tr><tr><td>S. Kuraly</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>12:36</td></tr><tr><td>T. Jeannot</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>1</td><td>13:14</td></tr><tr><td>M. Khusnutdinov</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>14:13</td></tr><tr><td>F. Minten</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>15:34</td></tr><tr><td>M. Lohrei</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>15:54</td></tr><tr><td>A. Peeke</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>18:36</td></tr><tr><td>J. Aspirot</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>13:52</td></tr><tr><td>N. Zadorov</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>18:46</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Swayman</td><td>22/23</td><td>0.957</td><td>60:00</td></tr><tr><td>J. Korpisalo</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020991" data-game="2025020991" data-gid="2025020991" data-away="NYR" data-home="NJD" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row ">
-<a href="NYR.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" alt="NYR" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">New York Rangers</div><div class="sb-scorers"><span class="sb-scorer">W. Borgen</span><span class="sb-scorer">V. Gavrikov</span><span class="sb-scorer">W. Cuylle</span></div></div>
-<div class="sb-score">3</div>
-</div>
-<div class="sb-team-row sb-winner">
-<a href="NJD.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" alt="NJD" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">New Jersey Devils</div><div class="sb-scorers"><span class="sb-scorer">J. Bratt</span><span class="sb-scorer">D. Mercer</span><span class="sb-scorer">J. Hughes (3)</span><span class="sb-scorer">N. Hischier</span></div></div>
-<div class="sb-score">6</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020991" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="gd-panel-logo"><span>New York Rangers</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-panel-logo"><span>New Jersey Devils</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">3 — 6</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">01:06</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8479407.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jesper Bratt </div><div class="gd-assists">Cody Glass, Johnathan Kovacevic</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">06:26</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NYR/8478840.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Will Borgen </div><div class="gd-assists">Vincent Trocheck</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">08:36</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NYR/8478882.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Vladislav Gavrikov </div><div class="gd-assists">Noah Laba, Tye Kartye</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:47</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8482110.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Dawson Mercer <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Luke Hughes, Arseny Gritsyuk</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">15:52</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8481559.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jack Hughes <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Jesper Bratt, Dougie Hamilton</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">16:53</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NYR/8482157.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Will Cuylle </div><div class="gd-assists">Braden Schneider, Taylor Raddysh</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">08:05</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8480002.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Nico Hischier <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Jesper Bratt, Jack Hughes</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">16:56</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8481559.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jack Hughes </div><div class="gd-assists">Connor Brown</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:28</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NJD/8481559.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jack Hughes </div><div class="gd-assists">Connor Brown, Johnathan Kovacevic</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="bx-tab-logo">New York Rangers</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg" class="bx-tab-logo">New Jersey Devils</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>W. Cuylle</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>3</td><td>0</td><td>16:46</td></tr><tr><td>W. Borgen</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>3</td><td>2</td><td>16:25</td></tr><tr><td>V. Gavrikov</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22:42</td></tr><tr><td>T. Raddysh</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>16:29</td></tr><tr><td>V. Trocheck</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>22:52</td></tr><tr><td>T. Kartye</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>14:15</td></tr><tr><td>N. Laba</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>15:26</td></tr><tr><td>B. Schneider</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>2</td><td>0</td><td>19:49</td></tr><tr><td>A. Lafrenière</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>20:44</td></tr><tr><td>C. Sheary</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>13:28</td></tr><tr><td>J. Chmelar</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>06:30</td></tr><tr><td>J. Parssinen</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>06:48</td></tr><tr><td>A. Edstrom</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>07:34</td></tr><tr><td>M. Zibanejad</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td><td>24:00</td></tr><tr><td>G. Perreault</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22:21</td></tr><tr><td>V. Iorio</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>09:09</td></tr><tr><td>A. Fox</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>1</td><td>26:28</td></tr><tr><td>M. Robertson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>16:12</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>I. Shesterkin</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>J. Quick</td><td>29/34</td><td>0.853</td><td>57:35</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>J. Hughes</td><td>C</td><td class="gd-pts-hl">3</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">4</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>20:44</td></tr><tr><td>J. Bratt</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>16:51</td></tr><tr><td>N. Hischier</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>20:34</td></tr><tr><td>C. Brown</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>17:44</td></tr><tr><td>D. Mercer</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>20:07</td></tr><tr><td>J. Kovacevic</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>20:05</td></tr><tr><td>C. Glass</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>14:28</td></tr><tr><td>A. Gritsyuk</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>15:21</td></tr><tr><td>D. Hamilton</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>20:36</td></tr><tr><td>L. Hughes</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>19:13</td></tr><tr><td>T. Meier</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>19:25</td></tr><tr><td>L. Hameenaho</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>11:55</td></tr><tr><td>M. Tsyplakov</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>05:17</td></tr><tr><td>P. Cotter</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>06:11</td></tr><tr><td>N. Bjugstad</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>06:27</td></tr><tr><td>B. Dillon</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>0</td><td>2</td><td>19:41</td></tr><tr><td>S. Nemec</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>19:57</td></tr><tr><td>J. Siegenthaler</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>2</td><td>18:12</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Markstrom</td><td>17/20</td><td>0.850</td><td>59:12</td></tr><tr><td>J. Allen</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020992" data-game="2025020992" data-gid="2025020992" data-away="NSH" data-home="BUF" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row ">
-<a href="NSH.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" alt="NSH" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Nashville Predators</div><div class="sb-scorers"><span class="sb-scorer">Z. L'Heureux</span><span class="sb-scorer">M. Wood</span></div></div>
-<div class="sb-score">2</div>
-</div>
-<div class="sb-team-row sb-winner">
-<a href="BUF.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" alt="BUF" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Buffalo Sabres</div><div class="sb-scorers"><span class="sb-scorer">T. Thompson</span><span class="sb-scorer">J. Zucker</span><span class="sb-scorer">J. Doan</span></div></div>
-<div class="sb-score">3</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020992" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" class="gd-panel-logo"><span>Nashville Predators</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="gd-panel-logo"><span>Buffalo Sabres</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">2 — 3</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">01:17</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NSH/8482742.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Zachary L'Heureux </div><div class="gd-assists">Jonathan Marchessault, Ryan O'Reilly</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">12:39</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BUF/8479420.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Tage Thompson </div><div class="gd-assists">Alex Tuch</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">14:17</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BUF/8475722.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jason Zucker </div><div class="gd-assists">Jack Quinn, Rasmus Dahlin</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">00:16</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/BUF/8482659.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Josh Doan </div><div class="gd-assists">Josh Norris, Noah Ostlund</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">16:08</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NSH/8484241.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Matthew Wood <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Roman Josi, Steven Stamkos</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" class="bx-tab-logo">Nashville Predators</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="bx-tab-logo">Buffalo Sabres</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>Z. L'Heureux</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>1</td><td>13:26</td></tr><tr><td>M. Wood</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>0</td><td>2</td><td>15:57</td></tr><tr><td>J. Marchessault</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>17:03</td></tr><tr><td>R. O'Reilly</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>21:20</td></tr><tr><td>S. Stamkos</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>17:53</td></tr><tr><td>R. Josi</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>25:56</td></tr><tr><td>F. Forsberg</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>18:48</td></tr><tr><td>T. Jost</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>10:47</td></tr><tr><td>J. Kemell</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>15:00</td></tr><tr><td>F. Svechkov</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>09:49</td></tr><tr><td>E. Haula</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>16:12</td></tr><tr><td>L. Evangelista</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>15:48</td></tr><tr><td>O. Wiesblatt</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>09:21</td></tr><tr><td>J. Barron</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>12:49</td></tr><tr><td>N. Hague</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>2</td><td>20:59</td></tr><tr><td>N. Perbix</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>3</td><td>18:41</td></tr><tr><td>B. Skjei</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>21:35</td></tr><tr><td>R. Ufko</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>13:44</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Annunen</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>J. Saros</td><td>21/24</td><td>0.875</td><td>58:52</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>J. Zucker</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>14:42</td></tr><tr><td>T. Thompson</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>1</td><td>18:53</td></tr><tr><td>J. Doan</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>16:11</td></tr><tr><td>J. Norris</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>16:37</td></tr><tr><td>J. Quinn</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>14:10</td></tr><tr><td>N. Ostlund</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>14:46</td></tr><tr><td>A. Tuch</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>1</td><td>21:19</td></tr><tr><td>R. Dahlin</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+3</td><td>0</td><td>0</td><td>0</td><td>24:36</td></tr><tr><td>Z. Benson</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>09:32</td></tr><tr><td>S. Carrick</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>08:55</td></tr><tr><td>P. Krebs</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>14:27</td></tr><tr><td>B. Malenstyn</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>2</td><td>09:12</td></tr><tr><td>R. McLeod</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>17:32</td></tr><tr><td>B. Byram</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>23:11</td></tr><tr><td>M. Kesselring</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>3</td><td>10:28</td></tr><tr><td>M. Samuelsson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>24:36</td></tr><tr><td>O. Power</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>3</td><td>23:02</td></tr><tr><td>Z. Metsa</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>11:38</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>A. Lyon</td><td>23/25</td><td>0.920</td><td>60:00</td></tr><tr><td>C. Ellis</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020993" data-game="2025020993" data-gid="2025020993" data-away="PHI" data-home="PIT" data-state="OFF">
-<div class="sb-status sb-final">Final/SO</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="PHI.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" alt="PHI" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Philadelphia Flyers</div><div class="sb-scorers"><span class="sb-scorer">O. Tippett</span><span class="sb-scorer">A. Bump</span><span class="sb-scorer">D. Barkey</span><span class="sb-scorer">T. Zegras</span></div></div>
-<div class="sb-score">4</div>
-</div>
-<div class="sb-team-row ">
-<a href="PIT.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" alt="PIT" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Pittsburgh Penguins</div><div class="sb-scorers"><span class="sb-scorer">T. Novak</span><span class="sb-scorer">R. Rakell</span><span class="sb-scorer">E. Karlsson</span></div></div>
-<div class="sb-score">3</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020993" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="gd-panel-logo"><span>Philadelphia Flyers</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="gd-panel-logo"><span>Pittsburgh Penguins</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">4 — 3</span><span class="gd-panel-status">Final/SO</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">03:00</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8478438.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Tommy Novak <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Justin Brazeau, Ville Koivunen</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">03:54</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PHI/8480015.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Owen Tippett </div><div class="gd-assists">Trevor Zegras, Cam York</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">03:38</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8476483.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Rickard Rakell </div><div class="gd-assists">Egor Chinakhov, Bryan Rust</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">04:46</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PHI/8483731.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Alex Bump </div><div class="gd-assists">Nikita Grebenkin</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">05:45</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PIT/8474578.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Erik Karlsson </div><div class="gd-assists">Egor Chinakhov, Rickard Rakell</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">10:03</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PHI/8484142.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Denver Barkey </div><div class="gd-assists">Matvei Michkov, Noah Cates</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">SO</div><div class="gd-goal">
-<div class="gd-time">00:00</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/PHI/8481533.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Trevor Zegras </div><div class="gd-assists">Unassisted</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/PHI_dark.svg" class="bx-tab-logo">Philadelphia Flyers</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="bx-tab-logo">Pittsburgh Penguins</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>A. Bump</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>16:07</td></tr><tr><td>D. Barkey</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>14:41</td></tr><tr><td>O. Tippett</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>4</td><td>1</td><td>16:25</td></tr><tr><td>N. Cates</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>19:19</td></tr><tr><td>N. Grebenkin</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>10:30</td></tr><tr><td>M. Michkov</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>16:46</td></tr><tr><td>T. Zegras</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>18:15</td></tr><tr><td>C. York</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>1</td><td>1</td><td>30:48</td></tr><tr><td>S. Couturier</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>16:55</td></tr><tr><td>G. Hathaway</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>4</td><td>2</td><td>10:19</td></tr><tr><td>C. Dvorak</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>20:47</td></tr><tr><td>L. Glendening</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>2</td><td>11:44</td></tr><tr><td>C. Grundstrom</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6</td><td>0</td><td>09:51</td></tr><tr><td>T. Sanheim</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>4</td><td>28:26</td></tr><tr><td>J. Drysdale</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>1</td><td>2</td><td>22:18</td></tr><tr><td>E. Andrae</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>07:36</td></tr><tr><td>N. Juulsen</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>11:27</td></tr><tr><td>R. Ristolainen</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>23:26</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>S. Ersson</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>D. Vladar</td><td>20/23</td><td>0.870</td><td>65:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>R. Rakell</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>1</td><td>22:06</td></tr><tr><td>T. Novak</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>17:10</td></tr><tr><td>E. Chinakhov</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>21:02</td></tr><tr><td>E. Karlsson</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>26:12</td></tr><tr><td>J. Brazeau</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>15:22</td></tr><tr><td>B. Rust</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>24:19</td></tr><tr><td>V. Koivunen</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>12:35</td></tr><tr><td>C. Dewar</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>14:02</td></tr><tr><td>A. Mantha</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>18:51</td></tr><tr><td>B. Lizotte</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>15:02</td></tr><tr><td>N. Acciari</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13:27</td></tr><tr><td>B. Kindel</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>0</td><td>0</td><td>15:16</td></tr><tr><td>A. Hayes</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>1</td><td>1</td><td>07:48</td></tr><tr><td>R. Shea</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>15:32</td></tr><tr><td>P. Wotherspoon</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>3</td><td>1</td><td>17:48</td></tr><tr><td>S. Girard</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>17:38</td></tr><tr><td>K. Letang</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>23:55</td></tr><tr><td>C. Clifton</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>0</td><td>15:04</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>A. Silovs</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>S. Skinner</td><td>13/16</td><td>0.812</td><td>65:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020994" data-game="2025020994" data-gid="2025020994" data-away="TBL" data-home="TOR" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="TBL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" alt="TBL" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Tampa Bay Lightning</div><div class="sb-scorers"><span class="sb-scorer">R. McDonagh</span><span class="sb-scorer">J. Guentzel</span><span class="sb-scorer">C. Perry</span><span class="sb-scorer">O. Bjorkstrand</span><span class="sb-scorer">B. Hagel</span></div></div>
-<div class="sb-score">5</div>
-</div>
-<div class="sb-team-row ">
-<a href="TOR.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" alt="TOR" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Toronto Maple Leafs</div><div class="sb-scorers"><span class="sb-scorer">M. Maccelli</span><span class="sb-scorer">N. Robertson</span></div></div>
-<div class="sb-score">2</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020994" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-panel-logo"><span>Tampa Bay Lightning</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" class="gd-panel-logo"><span>Toronto Maple Leafs</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">5 — 2</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">04:50</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TOR/8481711.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Matias Maccelli </div><div class="gd-assists">William Nylander</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">05:36</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TBL/8474151.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Ryan McDonagh </div><div class="gd-assists">Nikita Kucherov, Brayden Point</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">12:30</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TBL/8477404.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jake Guentzel </div><div class="gd-assists">Brayden Point, Nikita Kucherov</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">13:48</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TBL/8470621.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Corey Perry </div><div class="gd-assists">Brandon Hagel, Anthony Cirelli</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">15:06</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TBL/8477416.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Oliver Bjorkstrand <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Nikita Kucherov, Jake Guentzel</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">15:41</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TBL/8479542.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Brandon Hagel </div><div class="gd-assists">Anthony Cirelli, Nikita Kucherov</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:29</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/TOR/8481582.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Nicholas Robertson </div><div class="gd-assists">Unassisted</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="bx-tab-logo">Tampa Bay Lightning</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg" class="bx-tab-logo">Toronto Maple Leafs</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>N. Kucherov</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">4</td><td class="gd-pts-hl">4</td><td>+3</td><td>0</td><td>0</td><td>0</td><td>18:36</td></tr><tr><td>B. Hagel</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>18:50</td></tr><tr><td>J. Guentzel</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>1</td><td>17:06</td></tr><tr><td>C. Perry</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14:58</td></tr><tr><td>B. Point</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>16:52</td></tr><tr><td>O. Bjorkstrand</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>3</td><td>1</td><td>14:56</td></tr><tr><td>A. Cirelli</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>1</td><td>2</td><td>15:43</td></tr><tr><td>R. McDonagh</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>1</td><td>1</td><td>17:25</td></tr><tr><td>C. Geekie</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>10:04</td></tr><tr><td>Z. Girgensons</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>0</td><td>13:18</td></tr><tr><td>P. Holmberg</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>1</td><td>14:01</td></tr><tr><td>Y. Gourde</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>16:33</td></tr><tr><td>S. Sabourin</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>10:07</td></tr><tr><td>D. Raddysh</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>3</td><td>0</td><td>20:45</td></tr><tr><td>C. D'Astous</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>16:04</td></tr><tr><td>V. Hedman</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>20:54</td></tr><tr><td>E. Cernak</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>2</td><td>19:45</td></tr><tr><td>J. Moser</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>18:44</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Johansson</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>A. Vasilevskiy</td><td>27/29</td><td>0.931</td><td>59:19</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>M. Maccelli</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>14:07</td></tr><tr><td>N. Robertson</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>15:08</td></tr><tr><td>W. Nylander</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>17:53</td></tr><tr><td>M. Domi</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>13:39</td></tr><tr><td>S. Lorentz</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>2</td><td>1</td><td>11:50</td></tr><tr><td>C. Jarnkrok</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>11:55</td></tr><tr><td>M. Knies</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>1</td><td>1</td><td>19:58</td></tr><tr><td>J. Quillan</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>08:44</td></tr><tr><td>A. Matthews</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>19:17</td></tr><tr><td>E. Cowan</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>15:18</td></tr><tr><td>D. Joshua</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>4</td><td>0</td><td>14:06</td></tr><tr><td>J. Tavares</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>19:13</td></tr><tr><td>S. Benoit</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>15:13</td></tr><tr><td>J. McCabe</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>2</td><td>1</td><td>22:11</td></tr><tr><td>B. Carlo</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>1</td><td>19:56</td></tr><tr><td>T. Stecher</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>16:07</td></tr><tr><td>M. Rielly</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>2</td><td>20:39</td></tr><tr><td>O. Ekman-Larsson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>18:49</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>A. Stolarz</td><td>28/32</td><td>0.875</td><td>59:22</td></tr><tr><td>J. Woll</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020995" data-game="2025020995" data-gid="2025020995" data-away="UTA" data-home="CBJ" data-state="OFF">
-<div class="sb-status sb-final">Final/OT</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="UTA.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" alt="UTA" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Utah Hockey Club</div><div class="sb-scorers"><span class="sb-scorer">M. Carcone</span><span class="sb-scorer">D. Guenther</span><span class="sb-scorer">A. Kerfoot</span><span class="sb-scorer">L. Cooley (2)</span></div></div>
-<div class="sb-score">5</div>
-</div>
-<div class="sb-team-row ">
-<a href="CBJ.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="CBJ" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Columbus Blue Jackets</div><div class="sb-scorers"><span class="sb-scorer">D. Severson</span><span class="sb-scorer">M. Olivier</span><span class="sb-scorer">A. Fantilli</span><span class="sb-scorer">M. Marchment</span></div></div>
-<div class="sb-score">4</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020995" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-panel-logo"><span>Utah Hockey Club</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-panel-logo"><span>Columbus Blue Jackets</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">5 — 4</span><span class="gd-panel-status">Final/OT</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">07:25</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/UTA/8479619.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Michael Carcone </div><div class="gd-assists">Kevin Stenlund, Alexander Kerfoot</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:25</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CBJ/8476923.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Damon Severson </div><div class="gd-assists">Charlie Coyle, Mathieu Olivier</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">12:12</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/UTA/8482699.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Dylan Guenther </div><div class="gd-assists">Clayton Keller, Nick DeSimone</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">16:03</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CBJ/8479671.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Mathieu Olivier </div><div class="gd-assists">Charlie Coyle, Damon Severson</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">03:00</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/UTA/8477021.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Alexander Kerfoot </div><div class="gd-assists">Michael Carcone, MacKenzie Weegar</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">04:54</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/UTA/8483431.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Logan Cooley </div><div class="gd-assists">Lawson Crouse, Ian Cole</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">13:38</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CBJ/8484166.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Adam Fantilli </div><div class="gd-assists">Mason Marchment, Kirill Marchenko</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">14:08</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CBJ/8478975.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Mason Marchment </div><div class="gd-assists">Kirill Marchenko, Adam Fantilli</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">OT</div><div class="gd-goal">
-<div class="gd-time">02:08</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/UTA/8483431.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Logan Cooley </div><div class="gd-assists">Clayton Keller, John Marino</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="bx-tab-logo">Utah Hockey Club</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="bx-tab-logo">Columbus Blue Jackets</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>L. Cooley</td><td>C</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>1</td><td>2</td><td>18:02</td></tr><tr><td>A. Kerfoot</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>0</td><td>0</td><td>0</td><td>3</td><td>10:12</td></tr><tr><td>M. Carcone</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>09:58</td></tr><tr><td>C. Keller</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>18:29</td></tr><tr><td>D. Guenther</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>18:18</td></tr><tr><td>L. Crouse</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>2</td><td>17:02</td></tr><tr><td>K. Stenlund</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>11:45</td></tr><tr><td>J. Marino</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>3</td><td>20:47</td></tr><tr><td>I. Cole</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>18:07</td></tr><tr><td>M. Weegar</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>3</td><td>23:21</td></tr><tr><td>N. DeSimone</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>0</td><td>3</td><td>15:05</td></tr><tr><td>N. Schmaltz</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>3</td><td>19:56</td></tr><tr><td>J. McBain</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>3</td><td>0</td><td>14:40</td></tr><tr><td>B. Hayton</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td><td>15:34</td></tr><tr><td>K. Yamamoto</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>12:56</td></tr><tr><td>J. Peterka</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14:04</td></tr><tr><td>S. Durzi</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>23:06</td></tr><tr><td>N. Schmidt</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>21:02</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>V. Vanecek</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>K. Vejmelka</td><td>27/31</td><td>0.871</td><td>62:08</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>M. Marchment</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>2</td><td>19:20</td></tr><tr><td>A. Fantilli</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>1</td><td>0</td><td>20:04</td></tr><tr><td>M. Olivier</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>11:29</td></tr><tr><td>D. Severson</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>23:14</td></tr><tr><td>C. Coyle</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>14:58</td></tr><tr><td>K. Marchenko</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>19:58</td></tr><tr><td>C. Sillinger</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>14:25</td></tr><tr><td>M. Wood</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>11:05</td></tr><tr><td>I. Lundestrom</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>11:40</td></tr><tr><td>S. Monahan</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>1</td><td>16:57</td></tr><tr><td>B. Jenner</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>5</td><td>1</td><td>11:59</td></tr><tr><td>C. Garland</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>3</td><td>0</td><td>16:40</td></tr><tr><td>K. Johnson</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>15:45</td></tr><tr><td>D. Mateychuk</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>18:13</td></tr><tr><td>E. Zamula</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>11:14</td></tr><tr><td>Z. Werenski</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>3</td><td>26:53</td></tr><tr><td>I. Provorov</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>1</td><td>23:22</td></tr><tr><td>E. Gudbranson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>17:08</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Greaves</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>E. Merzlikins</td><td>20/25</td><td>0.800</td><td>62:08</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020996" data-game="2025020996" data-gid="2025020996" data-away="VAN" data-home="WPG" data-state="OFF">
-<div class="sb-status sb-final">Final/OT</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row ">
-<a href="VAN.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" alt="VAN" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Vancouver Canucks</div><div class="sb-scorers"><span class="sb-scorer">L. Karlsson</span><span class="sb-scorer">L. Ohgren</span></div></div>
-<div class="sb-score">2</div>
-</div>
-<div class="sb-team-row sb-winner">
-<a href="WPG.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" alt="WPG" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Winnipeg Jets</div><div class="sb-scorers"><span class="sb-scorer">M. Scheifele</span><span class="sb-scorer">G. Vilardi</span><span class="sb-scorer">J. Morrissey</span></div></div>
-<div class="sb-score">3</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020996" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" class="gd-panel-logo"><span>Vancouver Canucks</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-panel-logo"><span>Winnipeg Jets</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">2 — 3</span><span class="gd-panel-status">Final/OT</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">07:28</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/VAN/8481024.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Linus Karlsson </div><div class="gd-assists">Max Sasson, Teddy Blueger</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">19:48</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8476460.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Mark Scheifele </div><div class="gd-assists">Jonathan Toews</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">00:33</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/VAN/8483499.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Liam Ohgren </div><div class="gd-assists">Teddy Blueger, Linus Karlsson</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">15:12</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8480014.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Gabriel Vilardi <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Mark Scheifele, Josh Morrissey</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">OT</div><div class="gd-goal">
-<div class="gd-time">01:49</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8477504.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Josh Morrissey </div><div class="gd-assists">Mark Scheifele, Kyle Connor</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg" class="bx-tab-logo">Vancouver Canucks</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="bx-tab-logo">Winnipeg Jets</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>L. Karlsson</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>13:42</td></tr><tr><td>T. Blueger</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>16:08</td></tr><tr><td>L. Ohgren</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>17:57</td></tr><tr><td>M. Sasson</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>2</td><td>14:37</td></tr><tr><td>B. Boeser</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>16:12</td></tr><tr><td>D. O'Connor</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>14:49</td></tr><tr><td>N. Hoglander</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>12:12</td></tr><tr><td>E. Pettersson</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>16:59</td></tr><tr><td>A. Räty</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>11:40</td></tr><tr><td>J. DeBrusk</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>16:08</td></tr><tr><td>E. Kane</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td><td>12:34</td></tr><tr><td>M. Rossi</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>16:57</td></tr><tr><td>T. Willander</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>2</td><td>1</td><td>20:55</td></tr><tr><td>F. Hronek</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>3</td><td>1</td><td>26:45</td></tr><tr><td>Z. Buium</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>16:35</td></tr><tr><td>E. Pettersson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>2</td><td>1</td><td>20:04</td></tr><tr><td>M. Pettersson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>3</td><td>23:51</td></tr><tr><td>V. Mancini</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>13:55</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>K. Lankinen</td><td>33/36</td><td>0.917</td><td>61:49</td></tr><tr><td>N. Tolopilo</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>M. Scheifele</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>+1</td><td>0</td><td>1</td><td>2</td><td>25:07</td></tr><tr><td>J. Morrissey</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>24:27</td></tr><tr><td>G. Vilardi</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>21:22</td></tr><tr><td>J. Toews</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11:32</td></tr><tr><td>K. Connor</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>25:09</td></tr><tr><td>A. Iafallo</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>0</td><td>17:13</td></tr><tr><td>G. Nyquist</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>12:07</td></tr><tr><td>A. Lowry</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>16:15</td></tr><tr><td>I. Rosen</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>11:24</td></tr><tr><td>M. Barron</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>12:13</td></tr><tr><td>C. Koepke</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>08:28</td></tr><tr><td>C. Perfetti</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>19:04</td></tr><tr><td>B. Lambert</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>07:26</td></tr><tr><td>D. DeMelo</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>20:14</td></tr><tr><td>H. Fleury</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>17:31</td></tr><tr><td>D. Samberg</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>22:01</td></tr><tr><td>E. Salomonsson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>18:28</td></tr><tr><td>J. Bryson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>15:58</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>E. Comrie</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>C. Hellebuyck</td><td>21/23</td><td>0.913</td><td>61:17</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020997" data-game="2025020997" data-gid="2025020997" data-away="MTL" data-home="LAK" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="MTL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" alt="MTL" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Montreal Canadiens</div><div class="sb-scorers"><span class="sb-scorer">J. Evans</span><span class="sb-scorer">J. Slafkovský (2)</span><span class="sb-scorer">N. Suzuki</span></div></div>
-<div class="sb-score">4</div>
-</div>
-<div class="sb-team-row ">
-<a href="LAK.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" alt="LAK" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Los Angeles Kings</div><div class="sb-scorers"><span class="sb-scorer">A. Kopitar</span><span class="sb-scorer">S. Laughton</span><span class="sb-scorer">A. Laferriere</span></div></div>
-<div class="sb-score">3</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020997" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="gd-panel-logo"><span>Montreal Canadiens</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="gd-panel-logo"><span>Los Angeles Kings</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">4 — 3</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">14:12</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8471685.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Anze Kopitar </div><div class="gd-assists">Adrian Kempe, Artemi Panarin</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">03:09</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/MTL/8478133.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jake Evans </div><div class="gd-assists">Kirby Dach, Zachary Bolduc</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">15:41</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/MTL/8483515.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Juraj Slafkovský </div><div class="gd-assists">Nick Suzuki, Alexandre Carrier</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">17:31</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8476872.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Scott Laughton </div><div class="gd-assists">Jared Wright, Brandt Clarke</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">06:44</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/LAK/8482155.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Alex Laferriere </div><div class="gd-assists">Brandt Clarke, Trevor Moore</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">14:38</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/MTL/8483515.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Juraj Slafkovský <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Lane Hutson, Nick Suzuki</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">15:27</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/MTL/8480018.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Nick Suzuki </div><div class="gd-assists">Juraj Slafkovský, Cole Caufield</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg" class="bx-tab-logo">Montreal Canadiens</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="bx-tab-logo">Los Angeles Kings</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>J. Slafkovský</td><td>L</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">3</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>16:38</td></tr><tr><td>N. Suzuki</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>17:14</td></tr><tr><td>J. Evans</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>17:03</td></tr><tr><td>C. Caufield</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13:16</td></tr><tr><td>Z. Bolduc</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>13:39</td></tr><tr><td>K. Dach</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>13:48</td></tr><tr><td>A. Carrier</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>3</td><td>18:31</td></tr><tr><td>L. Hutson</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>1</td><td>2</td><td>21:55</td></tr><tr><td>B. Gallagher</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>09:51</td></tr><tr><td>A. Newhook</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>13:18</td></tr><tr><td>J. Anderson</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>13:53</td></tr><tr><td>P. Danault</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>15:18</td></tr><tr><td>O. Kapanen</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>18:34</td></tr><tr><td>I. Demidov</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11:30</td></tr><tr><td>M. Matheson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>3</td><td>1</td><td>24:25</td></tr><tr><td>K. Guhle</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>2</td><td>24:26</td></tr><tr><td>N. Dobson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>21:31</td></tr><tr><td>A. Xhekaj</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>3</td><td>1</td><td>09:10</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>S. Montembeault</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>J. Dobes</td><td>36/39</td><td>0.923</td><td>60:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>A. Kopitar</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>22:53</td></tr><tr><td>A. Laferriere</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>3</td><td>1</td><td>20:48</td></tr><tr><td>S. Laughton</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>4</td><td>0</td><td>15:08</td></tr><tr><td>B. Clarke</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>3</td><td>24:38</td></tr><tr><td>A. Kempe</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>22:10</td></tr><tr><td>A. Panarin</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>23:46</td></tr><tr><td>T. Moore</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>18:05</td></tr><tr><td>J. Wright</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>10:44</td></tr><tr><td>A. Turcotte</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td><td>10:56</td></tr><tr><td>J. Malott</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>2</td><td>0</td><td>06:42</td></tr><tr><td>T. Ward</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>2</td><td>1</td><td>08:04</td></tr><tr><td>Q. Byfield</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>21:26</td></tr><tr><td>S. Helenius</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>7</td><td>0</td><td>07:08</td></tr><tr><td>B. Dumoulin</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14:31</td></tr><tr><td>C. Ceci</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>12:59</td></tr><tr><td>J. Edmundson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>18:00</td></tr><tr><td>D. Doughty</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>1</td><td>23:04</td></tr><tr><td>M. Anderson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>7</td><td>4</td><td>19:50</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>A. Forsberg</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>D. Kuemper</td><td>19/23</td><td>0.826</td><td>58:37</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020998" data-game="2025020998" data-gid="2025020998" data-away="CAR" data-home="CGY" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row ">
-<a href="CAR.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" alt="CAR" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Carolina Hurricanes</div><div class="sb-scorers"><span class="sb-scorer">S. Jarvis</span><span class="sb-scorer">S. Walker</span><span class="sb-scorer">A. Nikishin</span><span class="sb-scorer">A. Svechnikov</span></div></div>
-<div class="sb-score">4</div>
-</div>
-<div class="sb-team-row sb-winner">
-<a href="CGY.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" alt="CGY" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Calgary Flames</div><div class="sb-scorers"><span class="sb-scorer">R. Strome</span><span class="sb-scorer">J. Farabee (2)</span><span class="sb-scorer">M. Frost</span><span class="sb-scorer">B. Coleman</span></div></div>
-<div class="sb-score">5</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020998" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-panel-logo"><span>Carolina Hurricanes</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-panel-logo"><span>Calgary Flames</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">4 — 5</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">00:44</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CAR/8482093.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Seth Jarvis </div><div class="gd-assists">Andrei Svechnikov, Sebastian Aho</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">00:19</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CGY/8476458.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Ryan Strome </div><div class="gd-assists">Olli Määttä, Martin Pospisil</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">04:11</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CGY/8480797.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Joel Farabee </div><div class="gd-assists">Morgan Frost, Blake Coleman</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">07:06</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CGY/8480028.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Morgan Frost <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Zayne Parekh, Ryan Strome</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">02:24</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CGY/8476399.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Blake Coleman </div><div class="gd-assists">Joel Farabee</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">04:41</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CAR/8480336.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Sean Walker </div><div class="gd-assists">Taylor Hall, Sebastian Aho</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">05:43</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CAR/8482100.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Alexander Nikishin <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Sebastian Aho, Seth Jarvis</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">17:42</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CGY/8480797.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Joel Farabee </div><div class="gd-assists">Morgan Frost</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">19:48</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/CAR/8480830.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Andrei Svechnikov </div><div class="gd-assists">K'Andre Miller, Seth Jarvis</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="bx-tab-logo">Carolina Hurricanes</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="bx-tab-logo">Calgary Flames</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>S. Jarvis</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>+2</td><td>0</td><td>1</td><td>1</td><td>19:29</td></tr><tr><td>S. Aho</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">3</td><td class="gd-pts-hl">3</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>18:20</td></tr><tr><td>A. Svechnikov</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>16:01</td></tr><tr><td>A. Nikishin</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>16:45</td></tr><tr><td>S. Walker</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>23:22</td></tr><tr><td>T. Hall</td><td>L</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>14:47</td></tr><tr><td>K. Miller</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>23:51</td></tr><tr><td>J. Staal</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>6</td><td>2</td><td>15:30</td></tr><tr><td>L. Stankoven</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>18:17</td></tr><tr><td>N. Ehlers</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>14:40</td></tr><tr><td>W. Carrier</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>10:11</td></tr><tr><td>J. Martinook</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>1</td><td>12:28</td></tr><tr><td>E. Robinson</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>10:33</td></tr><tr><td>J. Blake</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>16:56</td></tr><tr><td>M. Jankowski</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>10:31</td></tr><tr><td>J. Chatfield</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>21:53</td></tr><tr><td>M. Reilly</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>09:30</td></tr><tr><td>J. Slavin</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22:24</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>F. Andersen</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>B. Bussi</td><td>20/25</td><td>0.800</td><td>58:26</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>J. Farabee</td><td>L</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">3</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>18:30</td></tr><tr><td>M. Frost</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>17:05</td></tr><tr><td>B. Coleman</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>2</td><td>17:50</td></tr><tr><td>R. Strome</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>15:07</td></tr><tr><td>M. Pospisil</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>3</td><td>0</td><td>12:10</td></tr><tr><td>O. Määttä</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>0</td><td>5</td><td>23:54</td></tr><tr><td>Z. Parekh</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>19:02</td></tr><tr><td>M. Backlund</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>18:03</td></tr><tr><td>Y. Sharangovich</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>13:18</td></tr><tr><td>J. Beecher</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>12:07</td></tr><tr><td>M. Coronato</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>17:26</td></tr><tr><td>A. Klapka</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>1</td><td>10:57</td></tr><tr><td>C. Zary</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>15:28</td></tr><tr><td>R. Lomberg</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>10:47</td></tr><tr><td>K. Bahl</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>25:50</td></tr><tr><td>Z. Whitecloud</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>06:16</td></tr><tr><td>Y. Kuznetsov</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>3</td><td>0</td><td>21:37</td></tr><tr><td>B. Pachal</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>4</td><td>0</td><td>20:20</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>D. Cooley</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>D. Wolf</td><td>25/29</td><td>0.862</td><td>59:46</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025020999" data-game="2025020999" data-gid="2025020999" data-away="NYI" data-home="SJS" data-state="OFF">
-<div class="sb-status sb-final">Final/OT</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="NYI.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" alt="NYI" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">New York Islanders</div><div class="sb-scorers"><span class="sb-scorer">T. DeAngelo</span><span class="sb-scorer">B. Horvat</span></div></div>
-<div class="sb-score">2</div>
-</div>
-<div class="sb-team-row ">
-<a href="SJS.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" alt="SJS" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">San Jose Sharks</div><div class="sb-scorers"><span class="sb-scorer">M. Celebrini</span></div></div>
-<div class="sb-score">1</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025020999" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" class="gd-panel-logo"><span>New York Islanders</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="gd-panel-logo"><span>San Jose Sharks</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">2 — 1</span><span class="gd-panel-status">Final/OT</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">11:37</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NYI/8477950.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Tony DeAngelo </div><div class="gd-assists">Calum Ritchie</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">00:33</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/SJS/8484801.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Macklin Celebrini </div><div class="gd-assists">Will Smith, John Klingberg</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">OT</div><div class="gd-goal">
-<div class="gd-time">04:20</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/NYI/8477500.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Bo Horvat </div><div class="gd-assists">Matthew Schaefer, Mathew Barzal</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" class="bx-tab-logo">New York Islanders</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="bx-tab-logo">San Jose Sharks</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>B. Horvat</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>2</td><td>23:17</td></tr><tr><td>T. DeAngelo</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>22:09</td></tr><tr><td>M. Barzal</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>24:23</td></tr><tr><td>C. Ritchie</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>15:56</td></tr><tr><td>M. Schaefer</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>29:01</td></tr><tr><td>B. Schenn</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>17:26</td></tr><tr><td>A. Duclair</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>08:52</td></tr><tr><td>M. Gatcomb</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>08:41</td></tr><tr><td>A. Lee</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>14:39</td></tr><tr><td>J. Pageau</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>16:23</td></tr><tr><td>E. Heineman</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>17:50</td></tr><tr><td>C. Cizikas</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>09:52</td></tr><tr><td>O. Palat</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>14:42</td></tr><tr><td>S. Holmstrom</td><td>R</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>17:04</td></tr><tr><td>A. Pelech</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>3</td><td>23:38</td></tr><tr><td>C. Soucy</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>14:38</td></tr><tr><td>R. Pulock</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>3</td><td>21:06</td></tr><tr><td>S. Mayfield</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>12:34</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>I. Sorokin</td><td>30/31</td><td>0.968</td><td>64:20</td></tr><tr><td>D. Rittich</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>M. Celebrini</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>23:10</td></tr><tr><td>W. Smith</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>21:57</td></tr><tr><td>J. Klingberg</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>19:28</td></tr><tr><td>A. Wennberg</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>3</td><td>21:39</td></tr><tr><td>B. Goodrow</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>3</td><td>2</td><td>10:23</td></tr><tr><td>K. Sherwood</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>3</td><td>16:32</td></tr><tr><td>C. Graf</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>18:54</td></tr><tr><td>Z. Ostapchuk</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>0</td><td>09:03</td></tr><tr><td>W. Eklund</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>17:08</td></tr><tr><td>T. Toffoli</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>14:15</td></tr><tr><td>R. Reaves</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>06:20</td></tr><tr><td>M. Misa</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14:23</td></tr><tr><td>A. Gaudette</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>13:51</td></tr><tr><td>V. Desharnais</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>20:38</td></tr><tr><td>S. Dickinson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>2</td><td>17:31</td></tr><tr><td>D. Orlov</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>1</td><td>22:23</td></tr><tr><td>M. Ferraro</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>3</td><td>22:57</td></tr><tr><td>S. Mukhamadullin</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>19:39</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>Y. Askarov</td><td>32/34</td><td>0.941</td><td>64:20</td></tr><tr><td>A. Nedeljkovic</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025021000" data-game="2025021000" data-gid="2025021000" data-away="OTT" data-home="SEA" data-state="OFF">
-<div class="sb-status sb-final">Final</div>
-<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
-<div class="sb-team-row sb-winner">
-<a href="index.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="OTT" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Ottawa Senators</div><div class="sb-scorers"><span class="sb-scorer">T. Kleven</span><span class="sb-scorer">D. Cozens</span><span class="sb-scorer">S. Pinto</span><span class="sb-scorer">M. Amadio</span><span class="sb-scorer">W. Foegele</span><span class="sb-scorer">T. Stützle</span><span class="sb-scorer">B. Tkachuk</span></div></div>
-<div class="sb-score">7</div>
-</div>
-<div class="sb-team-row ">
-<a href="SEA.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" alt="SEA" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Seattle Kraken</div><div class="sb-scorers"><span class="sb-scorer">J. Melanson</span><span class="sb-scorer">E. Tolvanen</span><span class="sb-scorer">M. Beniers</span><span class="sb-scorer">B. Montour</span></div></div>
-<div class="sb-score">4</div>
-</div>
-</div>
-<div class="gd-data" id="gd-2025021000" style="display:none">
-<div class="gd-panel-header">
-<div class="gd-panel-teams">
-<img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-panel-logo"><span>Ottawa Senators</span>
-<span class="gd-panel-vs">vs</span>
-<img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="gd-panel-logo"><span>Seattle Kraken</span>
-</div>
-<div class="gd-panel-score"><span class="gd-panel-score-val">7 — 4</span><span class="gd-panel-status">Final</span></div>
-</div>
-<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
-<div class="gd-time">08:45</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/SEA/8482874.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Jacob Melanson </div><div class="gd-assists">Ben Meyers, Ryan Winterton</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">09:19</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482095.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Tyler Kleven </div><div class="gd-assists">Shane Pinto, Michael Amadio</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">13:35</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481528.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Dylan Cozens </div><div class="gd-assists">Thomas Chabot, Nick Jensen</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">2nd Period</div><div class="gd-goal">
-<div class="gd-time">01:34</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8481596.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Shane Pinto </div><div class="gd-assists">Artem Zub, Nick Cousins</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">10:09</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8478020.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Michael Amadio </div><div class="gd-assists">Shane Pinto, Nick Cousins</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">15:00</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/SEA/8480009.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Eeli Tolvanen </div><div class="gd-assists">Unassisted</div></div>
-</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
-<div class="gd-time">02:42</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8477998.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Warren Foegele </div><div class="gd-assists">Lars Eller</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">03:58</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8482116.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Tim Stützle </div><div class="gd-assists">Drake Batherson</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">07:24</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/OTT/8480801.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Brady Tkachuk </div><div class="gd-assists">Thomas Chabot</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">10:16</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/SEA/8482665.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Matty Beniers </div><div class="gd-assists">Cale Fleury, Jordan Eberle</div></div>
-</div><div class="gd-goal">
-<div class="gd-time">17:45</div>
-<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="gd-team-logo"></div>
-<img src="https://assets.nhle.com/mugs/nhl/20252026/SEA/8477986.png" class="gd-headshot">
-<div class="gd-goal-info"><div class="gd-scorer-name">Brandon Montour <span class="gd-badge gd-pp">PP</span></div><div class="gd-assists">Vince Dunn, Jordan Eberle</div></div>
-</div></div></div>
-<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="bx-tab-logo">Ottawa Senators</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg" class="bx-tab-logo">Seattle Kraken</button></div>
-<div class="bx-panel" data-bx="0">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>S. Pinto</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">3</td><td>+2</td><td>0</td><td>2</td><td>1</td><td>18:18</td></tr><tr><td>M. Amadio</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>14:40</td></tr><tr><td>B. Tkachuk</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>15:18</td></tr><tr><td>T. Stützle</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>17:51</td></tr><tr><td>N. Cousins</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>13:40</td></tr><tr><td>D. Cozens</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>5</td><td>0</td><td>16:05</td></tr><tr><td>W. Foegele</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>11:49</td></tr><tr><td>T. Kleven</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>3</td><td>0</td><td>19:13</td></tr><tr><td>T. Chabot</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>26:12</td></tr><tr><td>D. Batherson</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>12:56</td></tr><tr><td>L. Eller</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>10:44</td></tr><tr><td>A. Zub</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>21:55</td></tr><tr><td>N. Jensen</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>1</td><td>0</td><td>20:32</td></tr><tr><td>F. Zetterlund</td><td>L</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>3</td><td>0</td><td>11:42</td></tr><tr><td>C. Giroux</td><td>R</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>12:50</td></tr><tr><td>R. Greig</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>17:11</td></tr><tr><td>J. Spence</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>18:19</td></tr><tr><td>J. Sanderson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>1</td><td>12:52</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>L. Ullmark</td><td>17/21</td><td>0.810</td><td>59:41</td></tr><tr><td>J. Reimer</td><td>0/0</td><td></td><td>00:00</td></tr></tbody></table></div>
-</div><div class="bx-panel" data-bx="1" style="display:none">
-<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>J. Eberle</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>-2</td><td>0</td><td>1</td><td>2</td><td>16:14</td></tr><tr><td>M. Beniers</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-2</td><td>0</td><td>2</td><td>2</td><td>17:46</td></tr><tr><td>E. Tolvanen</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>3</td><td>0</td><td>17:13</td></tr><tr><td>J. Melanson</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>4</td><td>0</td><td>11:10</td></tr><tr><td>B. Montour</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>2</td><td>2</td><td>28:18</td></tr><tr><td>R. Winterton</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>14:02</td></tr><tr><td>B. Meyers</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-1</td><td>0</td><td>1</td><td>0</td><td>14:02</td></tr><tr><td>C. Fleury</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>6</td><td>3</td><td>15:30</td></tr><tr><td>V. Dunn</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>-3</td><td>0</td><td>0</td><td>0</td><td>18:07</td></tr><tr><td>C. Stephenson</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>19:09</td></tr><tr><td>J. Schwartz</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>06:27</td></tr><tr><td>J. McCann</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>6</td><td>0</td><td>14:49</td></tr><tr><td>B. Catton</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>0</td><td>0</td><td>18:02</td></tr><tr><td>S. Wright</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>3</td><td>15:10</td></tr><tr><td>K. Kakko</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>16:06</td></tr><tr><td>A. Larsson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>1</td><td>1</td><td>15:18</td></tr><tr><td>J. Oleksiak</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>4</td><td>23:08</td></tr><tr><td>R. Evans</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>15:29</td></tr></tbody></table></div>
-<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>P. Grubauer</td><td>0/0</td><td></td><td>00:00</td></tr><tr><td>J. Daccord</td><td>30/37</td><td>0.811</td><td>60:00</td></tr></tbody></table></div>
-</div></div>
-</div>
-</div></div>
 <div class="sb-day" id="day-2026-03-08" style="display:none"><div class="sb-day-label">Sunday, March 8, 2026</div><div class="sb-game sb-clickable" id="game-2025021001" data-game="2025021001" data-gid="2025021001" data-away="MIN" data-home="COL" data-state="OFF">
 <div class="sb-status sb-final">Final/SO</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
@@ -3789,7 +3035,7 @@ a{color:var(--text);text-decoration:none}
 </div></div>
 </div>
 </div></div>
-<div class="sb-day" id="day-2026-03-14"><div class="sb-day-label">Saturday, March 14, 2026</div><div class="sb-game sb-clickable" id="game-2025021043" data-game="2025021043" data-gid="2025021043" data-away="ANA" data-home="OTT" data-state="OFF">
+<div class="sb-day" id="day-2026-03-14" style="display:none"><div class="sb-day-label">Saturday, March 14, 2026</div><div class="sb-game sb-clickable" id="game-2025021043" data-game="2025021043" data-gid="2025021043" data-away="ANA" data-home="OTT" data-state="OFF">
 <div class="sb-status sb-final">Final</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row ">
@@ -4640,62 +3886,97 @@ a{color:var(--text);text-decoration:none}
 </div></div>
 </div>
 </div></div>
-<div class="sb-day" id="day-2026-03-15" style="display:none"><div class="sb-day-label">Sunday, March 15, 2026</div><div class="sb-game sb-clickable" id="game-2025021057" data-game="2025021057" data-gid="2025021057" data-away="STL" data-home="WPG" data-state="FUT" data-start-utc="2026-03-15T19:00:00Z">
-<div class="sb-status sb-upcoming" data-utc="2026-03-15T19:00:00Z">2:00 PM ET</div>
+<div class="sb-day" id="day-2026-03-15"><div class="sb-day-label">Sunday, March 15, 2026</div><div class="sb-game sb-clickable" id="game-2025021057" data-game="2025021057" data-gid="2025021057" data-away="STL" data-home="WPG" data-state="CRIT">
+<div class="sb-status sb-live">3rd 03:47</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row ">
 <a href="STL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" alt="STL" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">St. Louis Blues</div><div class="sb-scorers"></div></div>
-<div class="sb-score"></div>
+<div class="sb-team-info"><div class="sb-team-name">St. Louis Blues</div><div class="sb-scorers"><span class="sb-scorer">D. Dvorsky</span></div></div>
+<div class="sb-score">1</div>
 </div>
 <div class="sb-team-row ">
 <a href="WPG.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" alt="WPG" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">Winnipeg Jets</div><div class="sb-scorers"></div></div>
-<div class="sb-score"></div>
+<div class="sb-team-info"><div class="sb-team-name">Winnipeg Jets</div><div class="sb-scorers"><span class="sb-scorer">H. Fleury</span><span class="sb-scorer">M. Scheifele</span><span class="sb-scorer">K. Connor</span></div></div>
+<div class="sb-score">3</div>
 </div>
 </div>
 <div class="gd-data" id="gd-2025021057" style="display:none">
 <div class="gd-panel-header">
 <div class="gd-panel-teams">
 <img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" class="gd-panel-logo"><span>St. Louis Blues</span>
-<span class="gd-panel-vs">@</span>
+<span class="gd-panel-vs">vs</span>
 <img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-panel-logo"><span>Winnipeg Jets</span>
 </div>
-<div class="gd-panel-score"><span class="gd-panel-status">2:00 PM ET</span></div>
+<div class="gd-panel-score"><span class="gd-panel-score-val">1 — 3</span><span class="gd-panel-status">3rd 03:47</span></div>
 </div>
-<div class="gd-section"><div class="gd-section-title">Game Preview</div>
-<ul class="pv-notes"><li>Separated by only 0 pts — a direct rival</li><li>STL fading — 3% playoff odds</li><li>WPG fading — 6% playoff odds</li><li>STL is hot — 7-2-1 in last 10</li></ul>
-<table class="cmp-tbl"><thead><tr><th>STL</th><th></th><th>WPG</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-29-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">27-28-10</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">64</td></tr><tr><td class="cmp-stat-l">15-12-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-13-5</td></tr><tr><td class="cmp-stat-l">12-17-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">11-15-5</td></tr><tr><td class="cmp-stat-l">7-2-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-3-2</td></tr><tr><td class="cmp-stat-l">175</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">185</td></tr><tr><td class="cmp-stat-l">219</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">200</td></tr></tbody></table>
+<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
+<div class="gd-time">02:31</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
+<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8477938.png" class="gd-headshot">
+<div class="gd-goal-info"><div class="gd-scorer-name">Haydn Fleury </div><div class="gd-assists">Brad Lambert, Morgan Barron</div></div>
+</div><div class="gd-goal">
+<div class="gd-time">07:51</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
+<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8476460.png" class="gd-headshot">
+<div class="gd-goal-info"><div class="gd-scorer-name">Mark Scheifele </div><div class="gd-assists">Josh Morrissey</div></div>
+</div></div><div class="gd-period"><div class="gd-period-label">3rd Period</div><div class="gd-goal">
+<div class="gd-time">05:17</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" class="gd-team-logo"></div>
+<img src="https://assets.nhle.com/mugs/nhl/20252026/STL/8484164.png" class="gd-headshot">
+<div class="gd-goal-info"><div class="gd-scorer-name">Dalibor Dvorsky </div><div class="gd-assists">Jonatan Berggren, Pius Suter</div></div>
+</div><div class="gd-goal">
+<div class="gd-time">11:53</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-team-logo"></div>
+<img src="https://assets.nhle.com/mugs/nhl/20252026/WPG/8478398.png" class="gd-headshot">
+<div class="gd-goal-info"><div class="gd-scorer-name">Kyle Connor </div><div class="gd-assists">Morgan Barron, Haydn Fleury</div></div>
+</div></div></div>
+<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/STL_dark.svg" class="bx-tab-logo">St. Louis Blues</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="bx-tab-logo">Winnipeg Jets</button></div>
+<div class="bx-panel" data-bx="0">
+<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>D. Dvorsky</td><td>R</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>10:10</td></tr><tr><td>P. Suter</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13:18</td></tr><tr><td>J. Berggren</td><td>R</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>09:30</td></tr><tr><td>A. Toropchenko</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>10:47</td></tr><tr><td>R. Thomas</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>19:20</td></tr><tr><td>J. Snuggerud</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>16:58</td></tr><tr><td>J. Kyrou</td><td>R</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>0</td><td>0</td><td>13:23</td></tr><tr><td>J. Finley</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11:03</td></tr><tr><td>J. Neighbours</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-2</td><td>0</td><td>3</td><td>0</td><td>12:32</td></tr><tr><td>O. Sundqvist</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>11:13</td></tr><tr><td>D. Holloway</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>18:26</td></tr><tr><td>P. Buchnevich</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-3</td><td>0</td><td>0</td><td>0</td><td>14:57</td></tr><tr><td>J. Holl</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>12:42</td></tr><tr><td>P. Broberg</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>22:02</td></tr><tr><td>C. Fowler</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>18:18</td></tr><tr><td>L. Mailloux</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>22:11</td></tr><tr><td>T. Lindstein</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>14:35</td></tr><tr><td>C. Parayko</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>2</td><td>1</td><td>20:35</td></tr></tbody></table></div>
+<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>J. Hofer</td><td>0/0</td><td>0.0</td><td>00:00</td></tr><tr><td>J. Binnington</td><td>13/16</td><td>0.812</td><td>55:36</td></tr></tbody></table></div>
+</div><div class="bx-panel" data-bx="1" style="display:none">
+<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>H. Fleury</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>2</td><td>0</td><td>11:32</td></tr><tr><td>M. Barron</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">2</td><td class="gd-pts-hl">2</td><td>+2</td><td>0</td><td>0</td><td>1</td><td>13:27</td></tr><tr><td>M. Scheifele</td><td>C</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>20:39</td></tr><tr><td>K. Connor</td><td>L</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>2</td><td>0</td><td>21:00</td></tr><tr><td>B. Lambert</td><td>C</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>09:08</td></tr><tr><td>J. Morrissey</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22:25</td></tr><tr><td>A. Iafallo</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>1</td><td>14:34</td></tr><tr><td>G. Vilardi</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>16:34</td></tr><tr><td>G. Nyquist</td><td>R</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>11:34</td></tr><tr><td>A. Lowry</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>15:33</td></tr><tr><td>J. Toews</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>0</td><td>11:58</td></tr><tr><td>I. Rosen</td><td>R</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>1</td><td>1</td><td>11:24</td></tr><tr><td>C. Koepke</td><td>L</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>5</td><td>0</td><td>09:10</td></tr><tr><td>C. Perfetti</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>2</td><td>15:02</td></tr><tr><td>D. DeMelo</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>20:42</td></tr><tr><td>D. Samberg</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>21:03</td></tr><tr><td>E. Salomonsson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>18:30</td></tr><tr><td>J. Bryson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>+2</td><td>0</td><td>0</td><td>0</td><td>11:53</td></tr></tbody></table></div>
+<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>E. Comrie</td><td>25/26</td><td>0.962</td><td>55:28</td></tr><tr><td>C. Hellebuyck</td><td>0/0</td><td>0.0</td><td>00:00</td></tr></tbody></table></div>
+</div></div>
 </div>
 </div>
-</div>
-<div class="sb-game sb-clickable" id="game-2025021058" data-game="2025021058" data-gid="2025021058" data-away="SJS" data-home="OTT" data-state="FUT" data-start-utc="2026-03-15T21:00:00Z">
-<div class="sb-status sb-upcoming" data-utc="2026-03-15T21:00:00Z">4:00 PM ET</div>
+<div class="sb-game sb-clickable" id="game-2025021058" data-game="2025021058" data-gid="2025021058" data-away="SJS" data-home="OTT" data-state="LIVE">
+<div class="sb-status sb-live">1st 12:38</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row ">
 <a href="SJS.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" alt="SJS" class="sb-logo"></a>
-<div class="sb-team-info"><div class="sb-team-name">San Jose Sharks</div><div class="sb-scorers"></div></div>
-<div class="sb-score"></div>
+<div class="sb-team-info"><div class="sb-team-name">San Jose Sharks</div><div class="sb-scorers"><span class="sb-scorer">M. Ferraro</span></div></div>
+<div class="sb-score">1</div>
 </div>
 <div class="sb-team-row ">
 <a href="index.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" alt="OTT" class="sb-logo"></a>
 <div class="sb-team-info"><div class="sb-team-name">Ottawa Senators</div><div class="sb-scorers"></div></div>
-<div class="sb-score"></div>
+<div class="sb-score">0</div>
 </div>
 </div>
 <div class="gd-data" id="gd-2025021058" style="display:none">
 <div class="gd-panel-header">
 <div class="gd-panel-teams">
 <img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="gd-panel-logo"><span>San Jose Sharks</span>
-<span class="gd-panel-vs">@</span>
+<span class="gd-panel-vs">vs</span>
 <img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="gd-panel-logo"><span>Ottawa Senators</span>
 </div>
-<div class="gd-panel-score"><span class="gd-panel-status">4:00 PM ET</span></div>
+<div class="gd-panel-score"><span class="gd-panel-score-val">1 — 0</span><span class="gd-panel-status">1st 12:38</span></div>
 </div>
-<div class="gd-section"><div class="gd-section-title">Game Preview</div>
-<ul class="pv-notes"><li>OTT holds a 5-pt lead</li><li>SJS on the bubble (55%)</li><li>OTT on the bubble (50%)</li></ul>
-<table class="cmp-tbl"><thead><tr><th>SJS</th><th></th><th>OTT</th></tr></thead><tbody><tr><td class="cmp-stat-l">32-26-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-23-9</td></tr><tr><td class="cmp-stat-l">70</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">17-10-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">15-11-5</td></tr><tr><td class="cmp-stat-l">15-16-1</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">18-12-4</td></tr><tr><td class="cmp-stat-l">5-3-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">200</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">218</td></tr><tr><td class="cmp-stat-l">222</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">201</td></tr></tbody></table>
-</div>
+<div class="gd-section"><div class="gd-section-title">Scoring Summary</div><div class="gd-period"><div class="gd-period-label">1st Period</div><div class="gd-goal">
+<div class="gd-time">04:05</div>
+<div class="gd-logo"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="gd-team-logo"></div>
+<img src="https://assets.nhle.com/mugs/nhl/20252026/SJS/8479983.png" class="gd-headshot">
+<div class="gd-goal-info"><div class="gd-scorer-name">Mario Ferraro </div><div class="gd-assists">Shakir Mukhamadullin</div></div>
+</div></div></div>
+<div class="gd-section"><div class="gd-section-title">Box Score</div><div class="bx-tabs"><button class="bx-tab bx-active" data-bx="0" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg" class="bx-tab-logo">San Jose Sharks</button><button class="bx-tab" data-bx="1" onclick="switchBoxTab(this)"><img src="https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg" class="bx-tab-logo">Ottawa Senators</button></div>
+<div class="bx-panel" data-bx="0">
+<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>M. Ferraro</td><td>D</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>01:13</td></tr><tr><td>S. Mukhamadullin</td><td>D</td><td class="gd-pts-hl">0</td><td class="gd-pts-hl">1</td><td class="gd-pts-hl">1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>01:38</td></tr><tr><td>W. Smith</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:40</td></tr><tr><td>B. Goodrow</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>00:48</td></tr><tr><td>K. Sherwood</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:24</td></tr><tr><td>C. Graf</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>00:31</td></tr><tr><td>Z. Ostapchuk</td><td>C</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>00:48</td></tr><tr><td>M. Celebrini</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:24</td></tr><tr><td>W. Eklund</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>03:34</td></tr><tr><td>T. Toffoli</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>03:27</td></tr><tr><td>M. Misa</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:33</td></tr><tr><td>A. Gaudette</td><td>R</td><td>0</td><td>0</td><td>0</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>00:55</td></tr><tr><td>P. Regenda</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:24</td></tr><tr><td>P. Kurashev</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>01:16</td></tr><tr><td>J. Klingberg</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>03:00</td></tr><tr><td>V. Desharnais</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>00:50</td></tr><tr><td>S. Dickinson</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:03</td></tr><tr><td>D. Orlov</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:57</td></tr></tbody></table></div>
+<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>A. Nedeljkovic</td><td>0/0</td><td>0.0</td><td>00:00</td></tr><tr><td>L. Brossoit</td><td>2/2</td><td>1.000</td><td>06:17</td></tr></tbody></table></div>
+</div><div class="bx-panel" data-bx="1" style="display:none">
+<div class="gd-tbl-wrap"><table class="gd-tbl"><thead><tr><th>Skater</th><th>Pos</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>SOG</th><th>HIT</th><th>BLK</th><th>TOI</th></tr></thead><tbody><tr><td>B. Tkachuk</td><td>L</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>00:58</td></tr><tr><td>S. Pinto</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>02:02</td></tr><tr><td>T. Stützle</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>01:47</td></tr><tr><td>D. Batherson</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:40</td></tr><tr><td>F. Zetterlund</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>00:43</td></tr><tr><td>N. Cousins</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>00:51</td></tr><tr><td>M. Amadio</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:44</td></tr><tr><td>D. Cozens</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>01:00</td></tr><tr><td>C. Giroux</td><td>R</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:46</td></tr><tr><td>W. Foegele</td><td>L</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:00</td></tr><tr><td>R. Greig</td><td>C</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>01:44</td></tr><tr><td>L. Eller</td><td>C</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:37</td></tr><tr><td>A. Zub</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:48</td></tr><tr><td>D. Gilbert</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>01:41</td></tr><tr><td>J. Spence</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>01:24</td></tr><tr><td>N. Matinpalo</td><td>D</td><td>0</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td><td>1</td><td>02:04</td></tr><tr><td>T. Kleven</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:06</td></tr><tr><td>T. Chabot</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>02:30</td></tr></tbody></table></div>
+<div class="gd-tbl-wrap"><table class="gd-tbl gd-goalie-tbl"><thead><tr><th>Goalie</th><th>Saves</th><th>SV%</th><th>TOI</th></tr></thead><tbody><tr><td>L. Ullmark</td><td>3/4</td><td>0.750</td><td>06:17</td></tr><tr><td>J. Reimer</td><td>0/0</td><td>0.0</td><td>00:00</td></tr></tbody></table></div>
+</div></div>
 </div>
 </div>
 <div class="sb-game sb-clickable" id="game-2025021059" data-game="2025021059" data-gid="2025021059" data-away="ANA" data-home="MTL" data-state="FUT" data-start-utc="2026-03-15T23:00:00Z">
@@ -6177,9 +5458,270 @@ a{color:var(--text);text-decoration:none}
 </div>
 </div>
 </div></div>
+<div class="sb-day" id="day-2026-03-22" style="display:none"><div class="sb-day-label">Sunday, March 22, 2026</div><div class="sb-game sb-clickable" id="game-2025021110" data-game="2025021110" data-gid="2025021110" data-away="WPG" data-home="NYR" data-state="FUT" data-start-utc="2026-03-22T16:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T16:00:00Z">11:00 AM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="WPG.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" alt="WPG" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Winnipeg Jets</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="NYR.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" alt="NYR" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">New York Rangers</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021110" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg" class="gd-panel-logo"><span>Winnipeg Jets</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg" class="gd-panel-logo"><span>New York Rangers</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">11:00 AM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>Separated by only 0 pts — a direct rival</li><li>WPG fading — 6% playoff odds</li><li>NYR fading — 0% playoff odds</li></ul>
+<table class="cmp-tbl"><thead><tr><th>WPG</th><th></th><th>NYR</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-28-10</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">28-30-8</td></tr><tr><td class="cmp-stat-l">64</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">64</td></tr><tr><td class="cmp-stat-l">16-13-5</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">9-15-6</td></tr><tr><td class="cmp-stat-l">11-15-5</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">19-15-2</td></tr><tr><td class="cmp-stat-l">5-3-2</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-2-2</td></tr><tr><td class="cmp-stat-l">185</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">189</td></tr><tr><td class="cmp-stat-l">200</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">205</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021111" data-game="2025021111" data-gid="2025021111" data-away="COL" data-home="WSH" data-state="FUT" data-start-utc="2026-03-22T16:30:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T16:30:00Z">11:30 AM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="COL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/COL_dark.svg" alt="COL" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Colorado Avalanche</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="WSH.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" alt="WSH" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Washington Capitals</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021111" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/COL_dark.svg" class="gd-panel-logo"><span>Colorado Avalanche</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/WSH_dark.svg" class="gd-panel-logo"><span>Washington Capitals</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">11:30 AM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>COL holds a 23-pt lead</li><li>COL is a virtual lock for playoffs (100%)</li><li>WSH fading — 7% playoff odds</li><li>High-scoring matchup — combined 6.9 goals/game avg</li><li>COL is hot — 7-3-0 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>COL</th><th></th><th>WSH</th></tr></thead><tbody><tr><td class="cmp-stat-l">44-12-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-27-8</td></tr><tr><td class="cmp-stat-l">97</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">74</td></tr><tr><td class="cmp-stat-l">23-5-4</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">20-11-4</td></tr><tr><td class="cmp-stat-l">21-7-5</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">13-16-4</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">5-4-1</td></tr><tr><td class="cmp-stat-l">247</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">212</td></tr><tr><td class="cmp-stat-l">163</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">203</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021112" data-game="2025021112" data-gid="2025021112" data-away="CAR" data-home="PIT" data-state="FUT" data-start-utc="2026-03-22T19:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T19:00:00Z">2:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="CAR.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" alt="CAR" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Carolina Hurricanes</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="PIT.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" alt="PIT" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Pittsburgh Penguins</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021112" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg" class="gd-panel-logo"><span>Carolina Hurricanes</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg" class="gd-panel-logo"><span>Pittsburgh Penguins</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">2:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>CAR holds a 9-pt lead</li><li>CAR is a virtual lock for playoffs (100%)</li><li>PIT projected for playoffs (78%)</li><li>High-scoring matchup — combined 6.9 goals/game avg</li><li>CAR is hot — 7-3-0 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>CAR</th><th></th><th>PIT</th></tr></thead><tbody><tr><td class="cmp-stat-l">42-18-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">33-18-15</td></tr><tr><td class="cmp-stat-l">90</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">81</td></tr><tr><td class="cmp-stat-l">24-9-2</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-9-8</td></tr><tr><td class="cmp-stat-l">18-9-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">17-9-7</td></tr><tr><td class="cmp-stat-l">7-3-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-3-3</td></tr><tr><td class="cmp-stat-l">234</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">223</td></tr><tr><td class="cmp-stat-l">192</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">202</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021113" data-game="2025021113" data-gid="2025021113" data-away="NSH" data-home="CHI" data-state="FUT" data-start-utc="2026-03-22T19:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T19:00:00Z">2:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="NSH.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" alt="NSH" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Nashville Predators</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="CHI.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CHI_dark.svg" alt="CHI" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Chicago Blackhawks</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021113" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg" class="gd-panel-logo"><span>Nashville Predators</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/CHI_dark.svg" class="gd-panel-logo"><span>Chicago Blackhawks</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">2:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>NSH holds a 6-pt lead</li><li>NSH on the bubble (23%)</li><li>CHI fading — 0% playoff odds</li><li>NSH is cold — 3-4-3 in last 10</li><li>CHI is cold — 3-5-2 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>NSH</th><th></th><th>CHI</th></tr></thead><tbody><tr><td class="cmp-stat-l">29-27-9</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">25-30-11</td></tr><tr><td class="cmp-stat-l">67</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">61</td></tr><tr><td class="cmp-stat-l">17-13-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">13-15-5</td></tr><tr><td class="cmp-stat-l">12-14-6</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">12-15-6</td></tr><tr><td class="cmp-stat-l">3-4-3</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-5-2</td></tr><tr><td class="cmp-stat-l">194</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">175</td></tr><tr><td class="cmp-stat-l">222</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">213</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021114" data-game="2025021114" data-gid="2025021114" data-away="CBJ" data-home="NYI" data-state="FUT" data-start-utc="2026-03-22T23:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T23:00:00Z">6:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="CBJ.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" alt="CBJ" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Columbus Blue Jackets</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="NYI.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" alt="NYI" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">New York Islanders</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021114" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg" class="gd-panel-logo"><span>Columbus Blue Jackets</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/NYI_dark.svg" class="gd-panel-logo"><span>New York Islanders</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">6:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>Separated by only 2 pts — a direct rival</li><li>CBJ projected for playoffs (68%)</li><li>NYI projected for playoffs (71%)</li><li>NYI is hot — 7-3-0 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>CBJ</th><th></th><th>NYI</th></tr></thead><tbody><tr><td class="cmp-stat-l">34-21-11</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">38-24-5</td></tr><tr><td class="cmp-stat-l">79</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">81</td></tr><tr><td class="cmp-stat-l">17-8-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-11-2</td></tr><tr><td class="cmp-stat-l">17-13-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">20-13-3</td></tr><tr><td class="cmp-stat-l">5-1-4</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">7-3-0</td></tr><tr><td class="cmp-stat-l">212</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">197</td></tr><tr><td class="cmp-stat-l">208</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">191</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021115" data-game="2025021115" data-gid="2025021115" data-away="VGK" data-home="DAL" data-state="FUT" data-start-utc="2026-03-22T23:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-22T23:00:00Z">6:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="VGK.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg" alt="VGK" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Vegas Golden Knights</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="DAL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg" alt="DAL" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Dallas Stars</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021115" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg" class="gd-panel-logo"><span>Vegas Golden Knights</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg" class="gd-panel-logo"><span>Dallas Stars</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">6:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>DAL holds a 18-pt lead</li><li>VGK projected for playoffs (89%)</li><li>DAL is a virtual lock for playoffs (100%)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li><li>DAL is hot — 9-0-1 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>VGK</th><th></th><th>DAL</th></tr></thead><tbody><tr><td class="cmp-stat-l">31-22-14</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">42-14-10</td></tr><tr><td class="cmp-stat-l">76</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">94</td></tr><tr><td class="cmp-stat-l">16-10-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-7-4</td></tr><tr><td class="cmp-stat-l">15-12-7</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">20-7-6</td></tr><tr><td class="cmp-stat-l">4-6-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">9-0-1</td></tr><tr><td class="cmp-stat-l">220</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">232</td></tr><tr><td class="cmp-stat-l">209</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">178</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021116" data-game="2025021116" data-gid="2025021116" data-away="TBL" data-home="CGY" data-state="FUT" data-start-utc="2026-03-23T00:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-23T00:00:00Z">7:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="TBL.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" alt="TBL" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Tampa Bay Lightning</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="CGY.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" alt="CGY" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Calgary Flames</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021116" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg" class="gd-panel-logo"><span>Tampa Bay Lightning</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/CGY_dark.svg" class="gd-panel-logo"><span>Calgary Flames</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">7:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>TBL holds a 25-pt lead</li><li>TBL is a virtual lock for playoffs (98%)</li><li>CGY fading — 0% playoff odds</li><li>TBL is cold — 3-7-0 in last 10</li><li>CGY is cold — 3-6-1 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>TBL</th><th></th><th>CGY</th></tr></thead><tbody><tr><td class="cmp-stat-l">40-21-4</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">26-33-7</td></tr><tr><td class="cmp-stat-l">84</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">59</td></tr><tr><td class="cmp-stat-l">20-12-0</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">16-12-4</td></tr><tr><td class="cmp-stat-l">20-9-4</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">10-21-3</td></tr><tr><td class="cmp-stat-l">3-7-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">3-6-1</td></tr><tr><td class="cmp-stat-l">231</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">165</td></tr><tr><td class="cmp-stat-l">182</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">207</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021117" data-game="2025021117" data-gid="2025021117" data-away="BUF" data-home="ANA" data-state="FUT" data-start-utc="2026-03-23T00:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-23T00:00:00Z">7:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="BUF.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" alt="BUF" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Buffalo Sabres</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="ANA.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/ANA_dark.svg" alt="ANA" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Anaheim Ducks</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021117" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg" class="gd-panel-logo"><span>Buffalo Sabres</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/ANA_dark.svg" class="gd-panel-logo"><span>Anaheim Ducks</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">7:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>BUF holds a 13-pt lead</li><li>BUF is a virtual lock for playoffs (99%)</li><li>ANA projected for playoffs (89%)</li><li>High-scoring matchup — combined 6.8 goals/game avg</li><li>BUF is hot — 9-1-0 in last 10</li></ul>
+<table class="cmp-tbl"><thead><tr><th>BUF</th><th></th><th>ANA</th></tr></thead><tbody><tr><td class="cmp-stat-l">41-20-6</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">36-27-3</td></tr><tr><td class="cmp-stat-l">88</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">75</td></tr><tr><td class="cmp-stat-l">22-9-3</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">22-10-1</td></tr><tr><td class="cmp-stat-l">19-11-3</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">14-17-2</td></tr><tr><td class="cmp-stat-l">9-1-0</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">6-4-0</td></tr><tr><td class="cmp-stat-l">235</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">219</td></tr><tr><td class="cmp-stat-l">200</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">230</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sb-game sb-clickable" id="game-2025021118" data-game="2025021118" data-gid="2025021118" data-away="LAK" data-home="UTA" data-state="FUT" data-start-utc="2026-03-23T01:00:00Z">
+<div class="sb-status sb-upcoming" data-utc="2026-03-23T01:00:00Z">8:00 PM ET</div>
+<div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
+<div class="sb-team-row ">
+<a href="LAK.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" alt="LAK" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Los Angeles Kings</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+<div class="sb-team-row ">
+<a href="UTA.html" class="sb-team-link" onclick="event.stopPropagation()"><img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" alt="UTA" class="sb-logo"></a>
+<div class="sb-team-info"><div class="sb-team-name">Utah Hockey Club</div><div class="sb-scorers"></div></div>
+<div class="sb-score"></div>
+</div>
+</div>
+<div class="gd-data" id="gd-2025021118" style="display:none">
+<div class="gd-panel-header">
+<div class="gd-panel-teams">
+<img src="https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg" class="gd-panel-logo"><span>Los Angeles Kings</span>
+<span class="gd-panel-vs">@</span>
+<img src="https://assets.nhle.com/logos/nhl/svg/UTA_dark.svg" class="gd-panel-logo"><span>Utah Hockey Club</span>
+</div>
+<div class="gd-panel-score"><span class="gd-panel-status">8:00 PM ET</span></div>
+</div>
+<div class="gd-section"><div class="gd-section-title">Game Preview</div>
+<ul class="pv-notes"><li>UTA holds a 5-pt lead</li><li>LAK on the bubble (37%)</li><li>UTA projected for playoffs (86%)</li></ul>
+<table class="cmp-tbl"><thead><tr><th>LAK</th><th></th><th>UTA</th></tr></thead><tbody><tr><td class="cmp-stat-l">27-24-15</td><td class="cmp-stat-label">Record</td><td class="cmp-stat-r">34-27-6</td></tr><tr><td class="cmp-stat-l">69</td><td class="cmp-stat-label">PTS</td><td class="cmp-stat-r">74</td></tr><tr><td class="cmp-stat-l">10-15-7</td><td class="cmp-stat-label">Home</td><td class="cmp-stat-r">18-11-3</td></tr><tr><td class="cmp-stat-l">17-9-8</td><td class="cmp-stat-label">Away</td><td class="cmp-stat-r">16-16-3</td></tr><tr><td class="cmp-stat-l">4-5-1</td><td class="cmp-stat-label">L10</td><td class="cmp-stat-r">4-4-2</td></tr><tr><td class="cmp-stat-l">176</td><td class="cmp-stat-label">GF</td><td class="cmp-stat-r">208</td></tr><tr><td class="cmp-stat-l">200</td><td class="cmp-stat-label">GA</td><td class="cmp-stat-r">188</td></tr></tbody></table>
+</div>
+</div>
+</div></div>
 </div>
 
-<div class="footer">Data from NHL API<span class="footer-ts">Updated March 15, 2026 at 6:30 AM ET</span></div>
+<div class="footer">Data from NHL API<span class="footer-ts">Updated March 15, 2026 at 4:21 PM ET</span></div>
 
 <!-- Side panel -->
 <div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
