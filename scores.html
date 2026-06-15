@@ -214,25 +214,26 @@ a{color:var(--text);text-decoration:none}
 
 <div class="date-strip-wrap">
   <div class="date-strip" id="dateStrip">
-    <button class="ds-btn" data-date="2026-06-08" onclick="showDay('2026-06-08')"><span class="ds-day">Mon</span><span class="ds-date">Jun 8</span><span class="ds-count ds-none">0</span></button>
+    <button class="ds-btn" data-date="2026-06-07" onclick="showDay('2026-06-07')"><span class="ds-day">Sun</span><span class="ds-date">Jun 7</span><span class="ds-count ds-none">0</span></button>
+<button class="ds-btn" data-date="2026-06-08" onclick="showDay('2026-06-08')"><span class="ds-day">Mon</span><span class="ds-date">Jun 8</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-09" onclick="showDay('2026-06-09')"><span class="ds-day">Tue</span><span class="ds-date">Jun 9</span><span class="ds-count">1</span></button>
 <button class="ds-btn" data-date="2026-06-10" onclick="showDay('2026-06-10')"><span class="ds-day">Wed</span><span class="ds-date">Jun 10</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-11" onclick="showDay('2026-06-11')"><span class="ds-day">Thu</span><span class="ds-date">Jun 11</span><span class="ds-count">1</span></button>
 <button class="ds-btn" data-date="2026-06-12" onclick="showDay('2026-06-12')"><span class="ds-day">Fri</span><span class="ds-date">Jun 12</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-13" onclick="showDay('2026-06-13')"><span class="ds-day">Sat</span><span class="ds-date">Jun 13</span><span class="ds-count ds-none">0</span></button>
-<button class="ds-btn" data-date="2026-06-14" onclick="showDay('2026-06-14')"><span class="ds-day">Sun</span><span class="ds-date">Jun 14</span><span class="ds-count">1</span></button>
-<button class="ds-btn ds-active" data-date="2026-06-15" onclick="showDay('2026-06-15')"><span class="ds-day">Mon</span><span class="ds-date">Jun 15</span><span class="ds-today-dot"></span><span class="ds-count ds-none">0</span></button>
+<button class="ds-btn ds-active" data-date="2026-06-14" onclick="showDay('2026-06-14')"><span class="ds-day">Sun</span><span class="ds-date">Jun 14</span><span class="ds-today-dot"></span><span class="ds-count">1</span></button>
+<button class="ds-btn" data-date="2026-06-15" onclick="showDay('2026-06-15')"><span class="ds-day">Mon</span><span class="ds-date">Jun 15</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-16" onclick="showDay('2026-06-16')"><span class="ds-day">Tue</span><span class="ds-date">Jun 16</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-17" onclick="showDay('2026-06-17')"><span class="ds-day">Wed</span><span class="ds-date">Jun 17</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-18" onclick="showDay('2026-06-18')"><span class="ds-day">Thu</span><span class="ds-date">Jun 18</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-19" onclick="showDay('2026-06-19')"><span class="ds-day">Fri</span><span class="ds-date">Jun 19</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-20" onclick="showDay('2026-06-20')"><span class="ds-day">Sat</span><span class="ds-date">Jun 20</span><span class="ds-count ds-none">0</span></button>
 <button class="ds-btn" data-date="2026-06-21" onclick="showDay('2026-06-21')"><span class="ds-day">Sun</span><span class="ds-date">Jun 21</span><span class="ds-count ds-none">0</span></button>
-<button class="ds-btn" data-date="2026-06-22" onclick="showDay('2026-06-22')"><span class="ds-day">Mon</span><span class="ds-date">Jun 22</span><span class="ds-count ds-none">0</span></button>
   </div>
 </div>
 
 <div class="sb-grid">
+<div class="sb-day" id="day-2026-06-07" style="display:none"><div class="sb-day-label">Sunday, June 7, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-08" style="display:none"><div class="sb-day-label">Monday, June 8, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-09" style="display:none"><div class="sb-day-label">Tuesday, June 9, 2026</div><div class="sb-game sb-clickable" id="game-2025030414" data-game="2025030414" data-gid="2025030414" data-away="CAR" data-home="VGK" data-state="OFF">
 <div class="sb-status sb-final">Final</div>
@@ -375,7 +376,7 @@ a{color:var(--text);text-decoration:none}
 </div></div>
 <div class="sb-day" id="day-2026-06-12" style="display:none"><div class="sb-day-label">Friday, June 12, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-13" style="display:none"><div class="sb-day-label">Saturday, June 13, 2026</div><div class="sb-empty">No games scheduled.</div></div>
-<div class="sb-day" id="day-2026-06-14" style="display:none"><div class="sb-day-label">Sunday, June 14, 2026</div><div class="sb-game sb-clickable" id="game-2025030416" data-game="2025030416" data-gid="2025030416" data-away="CAR" data-home="VGK" data-state="OFF">
+<div class="sb-day" id="day-2026-06-14"><div class="sb-day-label">Sunday, June 14, 2026</div><div class="sb-game sb-clickable" id="game-2025030416" data-game="2025030416" data-gid="2025030416" data-away="CAR" data-home="VGK" data-state="OFF">
 <div class="sb-status sb-final">Final</div>
 <div class="sb-matchup" onclick="if(this.closest('.sb-clickable'))openPanel(this.closest('.sb-game').dataset.game)">
 <div class="sb-team-row sb-winner">
@@ -424,17 +425,16 @@ a{color:var(--text);text-decoration:none}
 </div></div>
 </div>
 </div></div>
-<div class="sb-day" id="day-2026-06-15"><div class="sb-day-label">Monday, June 15, 2026</div><div class="sb-empty">No games scheduled.</div></div>
+<div class="sb-day" id="day-2026-06-15" style="display:none"><div class="sb-day-label">Monday, June 15, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-16" style="display:none"><div class="sb-day-label">Tuesday, June 16, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-17" style="display:none"><div class="sb-day-label">Wednesday, June 17, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-18" style="display:none"><div class="sb-day-label">Thursday, June 18, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-19" style="display:none"><div class="sb-day-label">Friday, June 19, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-20" style="display:none"><div class="sb-day-label">Saturday, June 20, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 <div class="sb-day" id="day-2026-06-21" style="display:none"><div class="sb-day-label">Sunday, June 21, 2026</div><div class="sb-empty">No games scheduled.</div></div>
-<div class="sb-day" id="day-2026-06-22" style="display:none"><div class="sb-day-label">Monday, June 22, 2026</div><div class="sb-empty">No games scheduled.</div></div>
 </div>
 
-<div class="footer">Data from NHL API<span class="footer-ts">Updated June 15, 2026 at 11:19 AM ET</span></div>
+<div class="footer">Data from NHL API<span class="footer-ts">Updated June 15, 2026 at 5:57 PM ET</span></div>
 
 <!-- Side panel -->
 <div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
